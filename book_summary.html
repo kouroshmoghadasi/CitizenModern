@@ -1,0 +1,1511 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>خلاصه کامل کتاب Discover Canada / Complete Book Summary</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Roboto', 'Open Sans', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #ffffff 0%, #f5f7fa 50%, #e8ecf1 100%);
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.8;
+            position: relative;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(241, 196, 15, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(30, 60, 114, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 
+                0 20px 60px rgba(30, 60, 114, 0.12),
+                0 8px 25px rgba(30, 60, 114, 0.08),
+                0 0 0 1px rgba(30, 60, 114, 0.05);
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2c5282 50%, #1e3c72 100%);
+            background-size: 200% 200%;
+            animation: gradientShift 8s ease infinite;
+            color: white;
+            padding: 50px 30px;
+            text-align: center;
+            box-shadow: 
+                0 8px 30px rgba(30, 60, 114, 0.3),
+                inset 0 -4px 0 0 #f1c40f;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            text-shadow: 
+                2px 2px 4px rgba(0,0,0,0.3),
+                0 0 20px rgba(241, 196, 15, 0.2);
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .header p {
+            font-size: 1.15em;
+            opacity: 0.95;
+            font-weight: 400;
+        }
+
+        .back-link {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .back-link:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .content {
+            padding: 50px 40px;
+        }
+
+        .summary-section {
+            margin-bottom: 50px;
+            padding: 35px;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-radius: 16px;
+            border-right: 6px solid #f1c40f;
+            border-top: 3px solid #1e3c72;
+            box-shadow: 
+                0 6px 30px rgba(30, 60, 114, 0.1),
+                0 3px 12px rgba(30, 60, 114, 0.06),
+                0 1px 4px rgba(30, 60, 114, 0.04);
+            transition: all 0.3s ease;
+        }
+
+        .summary-section:hover {
+            box-shadow: 
+                0 12px 40px rgba(30, 60, 114, 0.15),
+                0 6px 20px rgba(241, 196, 15, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .summary-section-title {
+            color: #1e3c72;
+            font-size: 1.8em;
+            font-weight: 700;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 4px solid #f1c40f;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .summary-section-title::before {
+            content: '📚';
+            font-size: 1.2em;
+        }
+
+        .summary-subsection {
+            margin-bottom: 30px;
+            padding: 25px;
+            background: #ffffff;
+            border-radius: 12px;
+            border-right: 4px solid #1e3c72;
+            box-shadow: 0 2px 10px rgba(30, 60, 114, 0.08);
+        }
+
+        .summary-subsection-title {
+            color: #1e3c72;
+            font-size: 1.3em;
+            font-weight: 700;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f1c40f;
+        }
+
+        .summary-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .summary-list-item {
+            padding: 15px 0 15px 25px;
+            position: relative;
+            line-height: 2;
+            border-bottom: 1px solid #e8ecf0;
+            transition: all 0.3s ease;
+        }
+
+        .summary-list-item:last-child {
+            border-bottom: none;
+        }
+
+        .summary-list-item::before {
+            content: '▸';
+            position: absolute;
+            right: 0;
+            color: #f1c40f;
+            font-weight: bold;
+            font-size: 1.3em;
+        }
+
+        .summary-list-item:hover {
+            background: #fff9e6;
+            padding-right: 10px;
+            border-right: 3px solid #f1c40f;
+        }
+
+        .summary-item-fa {
+            direction: rtl;
+            text-align: right;
+            color: #1e3c72;
+            font-weight: 600;
+            font-size: 1.05em;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .summary-item-en {
+            direction: ltr;
+            text-align: left;
+            color: #34495e;
+            font-weight: 500;
+            font-size: 1em;
+            padding-left: 20px;
+            border-left: 2px solid #e8ecf0;
+            margin-top: 5px;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #fff9e6 0%, #fffef5 100%);
+            border-right: 4px solid #f1c40f;
+            border-left: 4px solid #1e3c72;
+            padding: 20px 25px;
+            border-radius: 12px;
+            margin: 20px 0;
+            box-shadow: 0 4px 15px rgba(241, 196, 15, 0.2);
+        }
+
+        .highlight-box strong {
+            color: #1e3c72;
+            font-size: 1.1em;
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                padding: 30px 20px;
+            }
+
+            .summary-section {
+                padding: 25px;
+            }
+
+            .header h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="canadian-citizenship-practice.html" class="back-link">← بازگشت / Back</a>
+            <h1>📖 خلاصه کامل کتاب Discover Canada</h1>
+            <p>Complete Summary of Discover Canada Book</p>
+        </div>
+
+        <div class="content">
+            <!-- Section 1: Rights and Freedoms -->
+            <div class="summary-section">
+                <div class="summary-section-title">حقوق و آزادی‌ها / Rights and Freedoms</div>
+                
+                <div class="summary-subsection">
+                    <div class="summary-subsection-title">منشور حقوق و آزادی‌ها / Charter of Rights and Freedoms</div>
+                    <ul class="summary-list">
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">منشور حقوق و آزادی‌ها بخشی از قانون اساسی کانادا است</span>
+                            <div class="summary-item-en">The Charter of Rights and Freedoms is part of Canada's Constitution</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">این منشور در سال 1982 به تصویب رسید</span>
+                            <div class="summary-item-en">The Charter was enacted in 1982</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">حقوق اساسی شامل آزادی بیان، مذهب، تجمع و انجمن است</span>
+                            <div class="summary-item-en">Fundamental freedoms include freedom of expression, religion, assembly, and association</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">حقوق دموکراتیک شامل حق رای و نامزدی در انتخابات است</span>
+                            <div class="summary-item-en">Democratic rights include the right to vote and run for office</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">حقوق قانونی شامل حق برخورداری از وکیل، محاکمه عادلانه و محافظت در برابر بازداشت خودسرانه است</span>
+                            <div class="summary-item-en">Legal rights include the right to a lawyer, fair trial, and protection against arbitrary detention</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">حقوق برابری از تبعیض بر اساس نژاد، مذهب، جنسیت، سن یا معلولیت محافظت می‌کند</span>
+                            <div class="summary-item-en">Equality rights protect against discrimination based on race, religion, gender, age, or disability</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="highlight-box">
+                    <strong>نکته مهم / Important Note:</strong><br>
+                    <span style="direction: rtl;">منشور حقوق و آزادی‌ها برای همه شهروندان کانادا اعمال می‌شود و تضمین می‌کند که همه از حقوق برابر برخوردارند.</span><br>
+                    <span style="direction: ltr; margin-top: 8px; display: block;">The Charter of Rights and Freedoms applies to all Canadian citizens and ensures everyone has equal rights.</span>
+                </div>
+            </div>
+
+            <!-- Section 2: History -->
+            <div class="summary-section">
+                <div class="summary-section-title">تاریخ کانادا / Canadian History</div>
+                
+                <div class="summary-subsection">
+                    <div class="summary-subsection-title">مردم بومی / Aboriginal Peoples</div>
+                    <ul class="summary-list">
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">مردم بومی اولین ساکنان کانادا بودند که هزاران سال قبل از ورود اروپایی‌ها در اینجا زندگی می‌کردند</span>
+                            <div class="summary-item-en">Aboriginal peoples were the first inhabitants of Canada, living here thousands of years before Europeans arrived</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">سه گروه اصلی بومی شامل First Nations، Inuit و Métis هستند</span>
+                            <div class="summary-item-en">Three main Aboriginal groups include First Nations, Inuit, and Métis</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">آنها فرهنگ، زبان و سنت‌های غنی خود را داشتند</span>
+                            <div class="summary-item-en">They had rich cultures, languages, and traditions</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="summary-subsection">
+                    <div class="summary-subsection-title">استعمار اروپا / European Colonization</div>
+                    <ul class="summary-list">
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">ژاک کارتیه در سال 1534 به کانادا آمد</span>
+                            <div class="summary-item-en">Jacques Cartier arrived in Canada in 1534</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">فرانسوی‌ها در کبک و اونتاریو ساکن شدند</span>
+                            <div class="summary-item-en">French settled in Quebec and Ontario</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">انگلیسی‌ها در مناطق آتلانتیک و سایر مناطق ساکن شدند</span>
+                            <div class="summary-item-en">British settled in Atlantic regions and other areas</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">جنگ هفت ساله (1756-1763) بین فرانسه و بریتانیا رخ داد</span>
+                            <div class="summary-item-en">Seven Years' War (1756-1763) occurred between France and Britain</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">پس از جنگ، فرانسه جدید به بریتانیا واگذار شد</span>
+                            <div class="summary-item-en">After the war, New France was ceded to Britain</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="summary-subsection">
+                    <div class="summary-subsection-title">کنفدراسیون / Confederation</div>
+                    <ul class="summary-list">
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">کنفدراسیون کانادا در 1 جولای 1867 تشکیل شد</span>
+                            <div class="summary-item-en">Canadian Confederation was formed on July 1, 1867</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">چهار استان اولیه: انتاریو، کبک، نوا اسکوشیا و نیوبرانزویک</span>
+                            <div class="summary-item-en">Four original provinces: Ontario, Quebec, Nova Scotia, and New Brunswick</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">سایر استان‌ها و قلمروها به تدریج اضافه شدند</span>
+                            <div class="summary-item-en">Other provinces and territories were gradually added</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">سر جان مک‌دونالد اولین نخست‌وزیر کانادا بود</span>
+                            <div class="summary-item-en">Sir John A. Macdonald was Canada's first Prime Minister</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="summary-subsection">
+                    <div class="summary-subsection-title">جنگ‌های جهانی / World Wars</div>
+                    <ul class="summary-list">
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">کانادا در جنگ جهانی اول (1914-1918) شرکت کرد - بیش از 600,000 سرباز</span>
+                            <div class="summary-item-en">Canada participated in World War I (1914-1918) - Over 600,000 soldiers</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">نبرد ویمی ریج در سال 1917 یک پیروزی مهم کانادایی بود - اولین پیروزی به عنوان یک ملت مستقل</span>
+                            <div class="summary-item-en">Battle of Vimy Ridge in 1917 was an important Canadian victory - First victory as an independent nation</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">بیش از 60,000 کانادایی در جنگ جهانی اول کشته شدند</span>
+                            <div class="summary-item-en">Over 60,000 Canadians were killed in World War I</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">کانادا در جنگ جهانی دوم (1939-1945) نیز شرکت کرد - بیش از 1 میلیون سرباز</span>
+                            <div class="summary-item-en">Canada also participated in World War II (1939-1945) - Over 1 million soldiers</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">نیروهای کانادایی در نبرد دی-دی (D-Day) در ساحل Juno پیاده شدند</span>
+                            <div class="summary-item-en">Canadian forces participated in D-Day, landing at Juno Beach</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">بیش از 45,000 کانادایی در جنگ جهانی دوم کشته شدند</span>
+                            <div class="summary-item-en">Over 45,000 Canadians were killed in World War II</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">روز یادبود (Remembrance Day) در 11 نوامبر برای بزرگداشت سربازان برگزار می‌شود</span>
+                            <div class="summary-item-en">Remembrance Day on November 11th commemorates fallen soldiers</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="summary-subsection">
+                    <div class="summary-subsection-title">تاریخ معاصر / Modern History</div>
+                    <ul class="summary-list">
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">پرچم کانادا با برگ افرا در سال 1965 تصویب شد</span>
+                            <div class="summary-item-en">Canada's flag with maple leaf was adopted in 1965</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">قانون اساسی کانادا در سال 1982 تصویب شد</span>
+                            <div class="summary-item-en">Canada's Constitution was patriated in 1982</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">کانادا به عنوان یک کشور چندفرهنگی شناخته می‌شود</span>
+                            <div class="summary-item-en">Canada is recognized as a multicultural country</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Section 3: Government -->
+            <div class="summary-section">
+                <div class="summary-section-title">دولت و حکومت / Government</div>
+                
+                <div class="summary-subsection">
+                    <div class="summary-subsection-title">سیستم فدرال / Federal System</div>
+                    <ul class="summary-list">
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">کانادا یک دموکراسی پارلمانی با سیستم فدرال است</span>
+                            <div class="summary-item-en">Canada is a parliamentary democracy with a federal system</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">قدرت بین دولت فدرال و دولت‌های استانی تقسیم می‌شود</span>
+                            <div class="summary-item-en">Power is divided between federal and provincial governments</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">کانادا دارای 10 استان و 3 قلمرو است</span>
+                            <div class="summary-item-en">Canada has 10 provinces and 3 territories</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="summary-subsection">
+                    <div class="summary-subsection-title">رئیس دولت / Head of State</div>
+                    <ul class="summary-list">
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">پادشاه/ملکه بریتانیا رئیس دولت کانادا است</span>
+                            <div class="summary-item-en">The British monarch is the head of state of Canada</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">فرماندار کل نماینده پادشاه در کانادا است</span>
+                            <div class="summary-item-en">The Governor General represents the monarch in Canada</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">فرماندار کل توسط نخست‌وزیر پیشنهاد می‌شود</span>
+                            <div class="summary-item-en">The Governor General is recommended by the Prime Minister</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="summary-subsection">
+                    <div class="summary-subsection-title">نخست‌وزیر و کابینه / Prime Minister and Cabinet</div>
+                    <ul class="summary-list">
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">نخست‌وزیر رئیس دولت است</span>
+                            <div class="summary-item-en">The Prime Minister is the head of government</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">نخست‌وزیر معمولاً رهبر حزب اکثریت در مجلس عوام است</span>
+                            <div class="summary-item-en">The Prime Minister is usually the leader of the majority party in the House of Commons</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">کابینه شامل وزرای مختلف است که توسط نخست‌وزیر انتخاب می‌شوند</span>
+                            <div class="summary-item-en">The Cabinet includes various ministers chosen by the Prime Minister</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="summary-subsection">
+                    <div class="summary-subsection-title">پارلمان / Parliament</div>
+                    <ul class="summary-list">
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">پارلمان شامل مجلس عوام (House of Commons) و سنا (Senate) است</span>
+                            <div class="summary-item-en">Parliament consists of House of Commons and Senate</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">مجلس عوام دارای 338 عضو است که از طریق انتخابات انتخاب می‌شوند</span>
+                            <div class="summary-item-en">House of Commons has 338 members elected through elections</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">سنا دارای 105 عضو است که توسط نخست‌وزیر منصوب می‌شوند</span>
+                            <div class="summary-item-en">Senate has 105 members appointed by the Prime Minister</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">قوانین باید توسط هر دو مجلس تصویب شوند</span>
+                            <div class="summary-item-en">Laws must be passed by both houses</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="summary-subsection">
+                    <div class="summary-subsection-title">استان‌ها و قلمروها / Provinces and Territories</div>
+                    <ul class="summary-list">
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">هر استان دارای یک نخست‌وزیر و مجلس قانونگذاری است</span>
+                            <div class="summary-item-en">Each province has a premier and a legislative assembly</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">قلمروها قدرت کمتری نسبت به استان‌ها دارند</span>
+                            <div class="summary-item-en">Territories have less power than provinces</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">استان‌ها مسئول آموزش، بهداشت و جاده‌ها هستند</span>
+                            <div class="summary-item-en">Provinces are responsible for education, health, and roads</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Section 4: Geography -->
+            <div class="summary-section">
+                <div class="summary-section-title">جغرافیا / Geography</div>
+                
+                <div class="summary-subsection">
+                    <div class="summary-subsection-title">موقعیت و اندازه / Location and Size</div>
+                    <ul class="summary-list">
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">کانادا دومین کشور بزرگ جهان است</span>
+                            <div class="summary-item-en">Canada is the second largest country in the world</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">کانادا از اقیانوس اطلس تا اقیانوس آرام و از مرز آمریکا تا قطب شمال گسترش دارد</span>
+                            <div class="summary-item-en">Canada stretches from Atlantic to Pacific Ocean and from US border to Arctic</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">کانادا دارای طولانی‌ترین خط ساحلی جهان است (243,042 کیلومتر)</span>
+                            <div class="summary-item-en">Canada has the longest coastline in the world (243,042 km)</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="summary-subsection">
+                    <div class="summary-subsection-title">شهرهای مهم / Major Cities</div>
+                    <ul class="summary-list">
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">پایتخت کانادا: اتاوا (Ottawa)</span>
+                            <div class="summary-item-en">Capital of Canada: Ottawa</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">بزرگترین شهر: تورنتو (Toronto)</span>
+                            <div class="summary-item-en">Largest city: Toronto</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">شهرهای مهم دیگر: مونترال، ونکوور، کلگری، ادمونتون</span>
+                            <div class="summary-item-en">Other major cities: Montreal, Vancouver, Calgary, Edmonton</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="summary-subsection">
+                    <div class="summary-subsection-title">منابع طبیعی / Natural Resources</div>
+                    <ul class="summary-list">
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">پنج دریاچه بزرگ: Superior, Huron, Michigan, Erie, Ontario</span>
+                            <div class="summary-item-en">Five Great Lakes: Superior, Huron, Michigan, Erie, Ontario</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">رودخانه‌های مهم: سنت لارنس، مک‌کنزی، یوکان</span>
+                            <div class="summary-item-en">Major rivers: St. Lawrence, Mackenzie, Yukon</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">کانادا دارای منابع غنی نفت، گاز، طلا و الماس است</span>
+                            <div class="summary-item-en">Canada has rich resources of oil, gas, gold, and diamonds</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">کانادا یکی از بزرگترین تولیدکنندگان چوب در جهان است</span>
+                            <div class="summary-item-en">Canada is one of the world's largest wood producers</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="summary-subsection">
+                    <div class="summary-subsection-title">پایتخت‌های استان‌ها / Provincial Capitals</div>
+                    <ul class="summary-list">
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">انتاریو: تورنتو | کبک: شهر کبک | نوا اسکوشیا: هالیفکس</span>
+                            <div class="summary-item-en">Ontario: Toronto | Quebec: Quebec City | Nova Scotia: Halifax</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">نیوبرانزویک: فردریکتون | مانیتوبا: وینیپگ | بریتیش کلمبیا: ویکتوریا</span>
+                            <div class="summary-item-en">New Brunswick: Fredericton | Manitoba: Winnipeg | British Columbia: Victoria</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">جزیره پرنس ادوارد: شارلوت‌تاون | ساسکاچوان: رجینا | آلبرتا: ادمونتون</span>
+                            <div class="summary-item-en">PEI: Charlottetown | Saskatchewan: Regina | Alberta: Edmonton</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">نیوفاندلند و لابرادور: سنت جان | یوکان: وایتهورس | قلمروهای شمال غرب: یلوکنایف | نوناووت: ایکالویت</span>
+                            <div class="summary-item-en">Newfoundland: St. John's | Yukon: Whitehorse | NWT: Yellowknife | Nunavut: Iqaluit</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Section 5: Economy -->
+            <div class="summary-section">
+                <div class="summary-section-title">اقتصاد / Economy</div>
+                
+                <div class="summary-subsection">
+                    <div class="summary-subsection-title">سیستم اقتصادی / Economic System</div>
+                    <ul class="summary-list">
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">کانادا دارای اقتصاد بازار آزاد است</span>
+                            <div class="summary-item-en">Canada has a free market economy</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">کانادا عضو G7 (گروه هفت) است</span>
+                            <div class="summary-item-en">Canada is a member of G7 (Group of Seven)</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">دلار کانادا واحد پول رسمی است</span>
+                            <div class="summary-item-en">Canadian dollar is the official currency</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="summary-subsection">
+                    <div class="summary-subsection-title">صنایع اصلی / Major Industries</div>
+                    <ul class="summary-list">
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">صنعت انرژی: نفت، گاز طبیعی، برق آبی</span>
+                            <div class="summary-item-en">Energy industry: oil, natural gas, hydroelectricity</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">صنعت معدن: طلا، نیکل، روی، اورانیوم</span>
+                            <div class="summary-item-en">Mining industry: gold, nickel, zinc, uranium</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">صنعت جنگلداری: چوب و کاغذ</span>
+                            <div class="summary-item-en">Forestry industry: wood and paper</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">کشاورزی: گندم، کانولا، ذرت</span>
+                            <div class="summary-item-en">Agriculture: wheat, canola, corn</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">صنعت خودرو و فناوری</span>
+                            <div class="summary-item-en">Automotive and technology industries</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="summary-subsection">
+                    <div class="summary-subsection-title">تجارت / Trade</div>
+                    <ul class="summary-list">
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">آمریکا بزرگترین شریک تجاری کانادا است - بیش از 75% تجارت خارجی</span>
+                            <div class="summary-item-en">USA is Canada's largest trading partner - Over 75% of foreign trade</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">NAFTA (موافقتنامه تجارت آزاد آمریکای شمالی) در سال 1994 تصویب شد</span>
+                            <div class="summary-item-en">NAFTA (North American Free Trade Agreement) was implemented in 1994</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">USMCA/CUSMA در سال 2020 جایگزین NAFTA شد</span>
+                            <div class="summary-item-en">USMCA/CUSMA replaced NAFTA in 2020</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">صادرات اصلی: نفت، گاز، چوب، مواد معدنی، محصولات کشاورزی، خودرو</span>
+                            <div class="summary-item-en">Main exports: oil, gas, wood, minerals, agricultural products, automobiles</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">واردات اصلی: ماشین‌آلات، تجهیزات، خودرو، محصولات الکترونیکی</span>
+                            <div class="summary-item-en">Main imports: machinery, equipment, automobiles, electronic products</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">کانادا یکی از بزرگترین صادرکنندگان گندم در جهان است</span>
+                            <div class="summary-item-en">Canada is one of the world's largest wheat exporters</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Section 6: Culture -->
+            <div class="summary-section">
+                <div class="summary-section-title">فرهنگ / Culture</div>
+                
+                <div class="summary-subsection">
+                    <div class="summary-subsection-title">زبان‌ها / Languages</div>
+                    <ul class="summary-list">
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">کانادا دارای دو زبان رسمی است: انگلیسی و فرانسوی</span>
+                            <div class="summary-item-en">Canada has two official languages: English and French</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">انگلیسی زبان اکثریت است</span>
+                            <div class="summary-item-en">English is the majority language</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">فرانسوی عمدتاً در کبک صحبت می‌شود</span>
+                            <div class="summary-item-en">French is mainly spoken in Quebec</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">بسیاری از زبان‌های بومی نیز صحبت می‌شوند</span>
+                            <div class="summary-item-en">Many Aboriginal languages are also spoken</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="summary-subsection">
+                    <div class="summary-subsection-title">نمادهای ملی / National Symbols</div>
+                    <ul class="summary-list">
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">برگ افرا نماد ملی کانادا است</span>
+                            <div class="summary-item-en">Maple leaf is the national symbol of Canada</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">پرچم کانادا دارای برگ افرا قرمز است</span>
+                            <div class="summary-item-en">Canada's flag features a red maple leaf</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">سرود ملی: "O Canada"</span>
+                            <div class="summary-item-en">National anthem: "O Canada"</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">شعار ملی: "A Mari Usque Ad Mare" (از دریا تا دریا)</span>
+                            <div class="summary-item-en">National motto: "A Mari Usque Ad Mare" (From Sea to Sea)</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="summary-subsection">
+                    <div class="summary-subsection-title">تعطیلات ملی / National Holidays</div>
+                    <ul class="summary-list">
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">روز کانادا: 1 جولای - جشن کنفدراسیون</span>
+                            <div class="summary-item-en">Canada Day: July 1st - Celebration of Confederation</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">روز یادبود: 11 نوامبر - یادبود سربازان</span>
+                            <div class="summary-item-en">Remembrance Day: November 11th - Commemoration of soldiers</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">روز ویکتوریا: آخرین دوشنبه قبل از 25 می</span>
+                            <div class="summary-item-en">Victoria Day: Last Monday before May 25th</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="summary-subsection">
+                    <div class="summary-subsection-title">ورزش / Sports</div>
+                    <ul class="summary-list">
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">هاکی روی یخ ورزش ملی کانادا است</span>
+                            <div class="summary-item-en">Ice hockey is the national sport of Canada</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">لاکراس ورزش ملی تابستانی است</span>
+                            <div class="summary-item-en">Lacrosse is the national summer sport</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">فوتبال کانادایی، بسکتبال و بیسبال نیز محبوب هستند</span>
+                            <div class="summary-item-en">Canadian football, basketball, and baseball are also popular</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="summary-subsection">
+                    <div class="summary-subsection-title">چندفرهنگی / Multiculturalism</div>
+                    <ul class="summary-list">
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">کانادا کشوری چندفرهنگی است</span>
+                            <div class="summary-item-en">Canada is a multicultural country</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">سیاست چندفرهنگی در سال 1971 تصویب شد</span>
+                            <div class="summary-item-en">Multiculturalism policy was adopted in 1971</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">مهاجران از سراسر جهان به کانادا می‌آیند</span>
+                            <div class="summary-item-en">Immigrants come to Canada from all over the world</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">تنوع فرهنگی یکی از نقاط قوت کانادا است</span>
+                            <div class="summary-item-en">Cultural diversity is one of Canada's strengths</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Section 7: Citizenship -->
+            <div class="summary-section">
+                <div class="summary-section-title">شهروندی / Citizenship</div>
+                
+                <div class="summary-subsection">
+                    <div class="summary-subsection-title">حقوق شهروندی / Citizenship Rights</div>
+                    <ul class="summary-list">
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">حق رای در انتخابات فدرال و استانی</span>
+                            <div class="summary-item-en">Right to vote in federal and provincial elections</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">حق نامزدی در انتخابات</span>
+                            <div class="summary-item-en">Right to run for office</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">حق داشتن پاسپورت کانادایی</span>
+                            <div class="summary-item-en">Right to have a Canadian passport</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">حق ورود و خروج آزاد از کانادا</span>
+                            <div class="summary-item-en">Right to enter and leave Canada freely</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="summary-subsection">
+                    <div class="summary-subsection-title">مسئولیت‌های شهروندی / Citizenship Responsibilities</div>
+                    <ul class="summary-list">
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">اطاعت از قوانین کانادا</span>
+                            <div class="summary-item-en">Obeying Canadian laws</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">پرداخت مالیات</span>
+                            <div class="summary-item-en">Paying taxes</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">خدمت به جامعه</span>
+                            <div class="summary-item-en">Serving the community</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">حفاظت از محیط زیست</span>
+                            <div class="summary-item-en">Protecting the environment</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">احترام به حقوق دیگران</span>
+                            <div class="summary-item-en">Respecting others' rights</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="highlight-box">
+                    <strong>نکته مهم / Important Note:</strong><br>
+                    <span style="direction: rtl;">شهروندی کانادا شامل هم حقوق و هم مسئولیت‌ها است. همه شهروندان باید از قوانین پیروی کنند و در جامعه مشارکت کنند.</span><br>
+                    <span style="direction: ltr; margin-top: 8px; display: block;">Canadian citizenship includes both rights and responsibilities. All citizens must obey laws and participate in society.</span>
+                </div>
+            </div>
+
+            <!-- Section 8: Important Figures and Heroes -->
+            <div class="summary-section">
+                <div class="summary-section-title">قهرمانان و اشخاص مهم / Important Figures and Heroes</div>
+                
+                <div class="summary-subsection">
+                    <div class="summary-subsection-title">رهبران سیاسی / Political Leaders</div>
+                    <ul class="summary-list">
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">سر جان الکساندر مک‌دونالد (Sir John A. Macdonald) - اولین نخست‌وزیر کانادا (1867-1873, 1878-1891)</span>
+                            <div class="summary-item-en">Sir John A. Macdonald - First Prime Minister of Canada (1867-1873, 1878-1891)</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">ویلفرد لوریر (Wilfrid Laurier) - نخست‌وزیر از 1896 تا 1911، اولین فرانسوی-کانادایی</span>
+                            <div class="summary-item-en">Wilfrid Laurier - Prime Minister from 1896 to 1911, first French-Canadian</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">ویلیام لیون مکنزی کینگ (William Lyon Mackenzie King) - طولانی‌ترین دوره نخست‌وزیری (1921-1930, 1935-1948)</span>
+                            <div class="summary-item-en">William Lyon Mackenzie King - Longest-serving Prime Minister (1921-1930, 1935-1948)</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">پیر الیوت ترودو (Pierre Elliott Trudeau) - نخست‌وزیر از 1968 تا 1979 و 1980 تا 1984</span>
+                            <div class="summary-item-en">Pierre Elliott Trudeau - Prime Minister from 1968-1979 and 1980-1984</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">لستر بی. پیرسون (Lester B. Pearson) - برنده جایزه صلح نوبل و نخست‌وزیر (1963-1968)</span>
+                            <div class="summary-item-en">Lester B. Pearson - Nobel Peace Prize winner and Prime Minister (1963-1968)</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="summary-subsection">
+                    <div class="summary-subsection-title">قهرمانان نظامی / Military Heroes</div>
+                    <ul class="summary-list">
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">ژنرال آرتور کوری (General Arthur Currie) - فرمانده نیروهای کانادایی در جنگ جهانی اول</span>
+                            <div class="summary-item-en">General Arthur Currie - Commander of Canadian forces in World War I</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">نبرد ویمی ریج (1917) - اولین پیروزی بزرگ کانادا به عنوان یک ملت مستقل</span>
+                            <div class="summary-item-en">Battle of Vimy Ridge (1917) - First major victory for Canada as an independent nation</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">ژنرال اندرو مک‌ناتون (General Andrew McNaughton) - فرمانده نیروهای کانادایی در جنگ جهانی دوم</span>
+                            <div class="summary-item-en">General Andrew McNaughton - Commander of Canadian forces in World War II</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">نبرد دی-دی (D-Day) - نیروهای کانادایی در ساحل Juno پیاده شدند</span>
+                            <div class="summary-item-en">D-Day - Canadian forces landed at Juno Beach</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="summary-subsection">
+                    <div class="summary-subsection-title">مکتشفان و پیشگامان / Explorers and Pioneers</div>
+                    <ul class="summary-list">
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">ژاک کارتیه (Jacques Cartier) - اولین اروپایی که در سال 1534 به کانادا آمد</span>
+                            <div class="summary-item-en">Jacques Cartier - First European to arrive in Canada in 1534</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">ساموئل دو شامپلن (Samuel de Champlain) - بنیانگذار کبک در سال 1608</span>
+                            <div class="summary-item-en">Samuel de Champlain - Founder of Quebec in 1608</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">الکساندر مکنزی (Alexander Mackenzie) - اولین اروپایی که به اقیانوس آرام رسید (1793)</span>
+                            <div class="summary-item-en">Alexander Mackenzie - First European to reach the Pacific Ocean (1793)</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">دیوید تامپسون (David Thompson) - نقشه‌بردار و مکتشف بزرگ</span>
+                            <div class="summary-item-en">David Thompson - Great surveyor and explorer</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="summary-subsection">
+                    <div class="summary-subsection-title">قهرمانان حقوق مدنی / Civil Rights Heroes</div>
+                    <ul class="summary-list">
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">نلی مک‌کلانگ (Nellie McClung) - فعال حقوق زنان و یکی از "Famous Five"</span>
+                            <div class="summary-item-en">Nellie McClung - Women's rights activist and one of the "Famous Five"</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">Famous Five - پنج زن که برای حق رای زنان در دادگاه عالی مبارزه کردند</span>
+                            <div class="summary-item-en">Famous Five - Five women who fought for women's right to vote in the Supreme Court</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">تامی داگلاس (Tommy Douglas) - پدر Medicare کانادا</span>
+                            <div class="summary-item-en">Tommy Douglas - Father of Canadian Medicare</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">ویلیام کینگ (William Lyon Mackenzie King) - نقش مهم در ایجاد سیستم رفاه اجتماعی</span>
+                            <div class="summary-item-en">William Lyon Mackenzie King - Important role in creating social welfare system</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="summary-subsection">
+                    <div class="summary-subsection-title">هنرمندان و نویسندگان / Artists and Writers</div>
+                    <ul class="summary-list">
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">لوسی مود مونتگومری (Lucy Maud Montgomery) - نویسنده "آن در گرین گیبلز"</span>
+                            <div class="summary-item-en">Lucy Maud Montgomery - Author of "Anne of Green Gables"</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">مارگارت اتوود (Margaret Atwood) - نویسنده مشهور کانادایی</span>
+                            <div class="summary-item-en">Margaret Atwood - Famous Canadian author</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">گروه هفت (Group of Seven) - نقاشان مشهور منظره کانادا</span>
+                            <div class="summary-item-en">Group of Seven - Famous Canadian landscape painters</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Section 9: International Agreements and Treaties -->
+            <div class="summary-section">
+                <div class="summary-section-title">قراردادها و معاهدات بین‌المللی / International Agreements and Treaties</div>
+                
+                <div class="summary-subsection">
+                    <div class="summary-subsection-title">موافقتنامه‌های تجاری / Trade Agreements</div>
+                    <ul class="summary-list">
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">NAFTA (موافقتنامه تجارت آزاد آمریکای شمالی) - بین کانادا، آمریکا و مکزیک (1994)</span>
+                            <div class="summary-item-en">NAFTA (North American Free Trade Agreement) - Between Canada, USA, and Mexico (1994)</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">USMCA/CUSMA (موافقتنامه تجارت آزاد آمریکای شمالی جدید) - جایگزین NAFTA در سال 2020</span>
+                            <div class="summary-item-en">USMCA/CUSMA (New North American Free Trade Agreement) - Replaced NAFTA in 2020</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">CETA (موافقتنامه تجارت جامع اقتصادی) - بین کانادا و اتحادیه اروپا</span>
+                            <div class="summary-item-en">CETA (Comprehensive Economic and Trade Agreement) - Between Canada and European Union</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">CPTPP (موافقتنامه جامع و پیشرو برای مشارکت ترنس-پاسیفیک) - شامل 11 کشور</span>
+                            <div class="summary-item-en">CPTPP (Comprehensive and Progressive Agreement for Trans-Pacific Partnership) - Includes 11 countries</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="summary-subsection">
+                    <div class="summary-subsection-title">سازمان‌های بین‌المللی / International Organizations</div>
+                    <ul class="summary-list">
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">کانادا عضو سازمان ملل متحد (UN) است</span>
+                            <div class="summary-item-en">Canada is a member of the United Nations (UN)</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">کانادا عضو ناتو (NATO) - پیمان آتلانتیک شمالی است</span>
+                            <div class="summary-item-en">Canada is a member of NATO (North Atlantic Treaty Organization)</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">کانادا عضو G7 (گروه هفت) - کشورهای صنعتی پیشرفته</span>
+                            <div class="summary-item-en">Canada is a member of G7 (Group of Seven) - Advanced industrial countries</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">کانادا عضو G20 (گروه بیست) - بزرگترین اقتصادهای جهان</span>
+                            <div class="summary-item-en">Canada is a member of G20 (Group of Twenty) - World's largest economies</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">کانادا عضو کشورهای مشترک‌المنافع (Commonwealth) است</span>
+                            <div class="summary-item-en">Canada is a member of the Commonwealth</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">کانادا عضو سازمان فرانکوفونی (La Francophonie) است</span>
+                            <div class="summary-item-en">Canada is a member of La Francophonie</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="summary-subsection">
+                    <div class="summary-subsection-title">معاهدات تاریخی / Historical Treaties</div>
+                    <ul class="summary-list">
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">معاهده پاریس (1763) - پایان جنگ هفت ساله و واگذاری فرانسه جدید به بریتانیا</span>
+                            <div class="summary-item-en">Treaty of Paris (1763) - End of Seven Years' War and cession of New France to Britain</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">قانون کانادا (1867) - ایجاد کنفدراسیون کانادا</span>
+                            <div class="summary-item-en">British North America Act (1867) - Creation of Canadian Confederation</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">قانون اساسی کانادا (1982) - استقلال کامل قانون اساسی از بریتانیا</span>
+                            <div class="summary-item-en">Canada Act (1982) - Full constitutional independence from Britain</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">معاهدات با مردم بومی - بیش از 70 معاهده بین دولت کانادا و First Nations</span>
+                            <div class="summary-item-en">Treaties with Aboriginal peoples - Over 70 treaties between Canadian government and First Nations</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="summary-subsection">
+                    <div class="summary-subsection-title">موافقتنامه‌های مرزی / Border Agreements</div>
+                    <ul class="summary-list">
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">خط مرزی 49 درجه - مرز بین کانادا و آمریکا از اقیانوس تا دریاچه‌های بزرگ</span>
+                            <div class="summary-item-en">49th Parallel - Border between Canada and USA from ocean to Great Lakes</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">معاهده اورگان (1846) - تعیین مرز در غرب</span>
+                            <div class="summary-item-en">Oregon Treaty (1846) - Established border in the west</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">معاهده واترلو (1815) - تعیین مرز در شرق</span>
+                            <div class="summary-item-en">Treaty of Ghent (1814) - Established border in the east</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Section 10: Additional Important Information -->
+            <div class="summary-section">
+                <div class="summary-section-title">اطلاعات تکمیلی مهم / Additional Important Information</div>
+                
+                <div class="summary-subsection">
+                    <div class="summary-subsection-title">قوانین و مقررات مهم / Important Laws and Regulations</div>
+                    <ul class="summary-list">
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">قانون کانادا (1867) - قانون اساسی اصلی که کنفدراسیون را ایجاد کرد</span>
+                            <div class="summary-item-en">British North America Act (1867) - Original constitution that created Confederation</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">قانون اساسی 1982 - شامل منشور حقوق و آزادی‌ها</span>
+                            <div class="summary-item-en">Constitution Act 1982 - Includes Charter of Rights and Freedoms</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">قانون کانادا 1982 - استقلال کامل قانون اساسی</span>
+                            <div class="summary-item-en">Canada Act 1982 - Full constitutional independence</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">قانون چندفرهنگی (1988) - به رسمیت شناختن تنوع فرهنگی</span>
+                            <div class="summary-item-en">Multiculturalism Act (1988) - Recognition of cultural diversity</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">قانون زبان‌های رسمی (1969) - تضمین استفاده از انگلیسی و فرانسوی</span>
+                            <div class="summary-item-en">Official Languages Act (1969) - Guarantees use of English and French</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="summary-subsection">
+                    <div class="summary-subsection-title">نهادهای مهم / Important Institutions</div>
+                    <ul class="summary-list">
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">دادگاه عالی کانادا - بالاترین دادگاه در کانادا</span>
+                            <div class="summary-item-en">Supreme Court of Canada - Highest court in Canada</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">بانک کانادا - مسئول سیاست پولی</span>
+                            <div class="summary-item-en">Bank of Canada - Responsible for monetary policy</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">RCMP (گروه پلیس سواره سلطنتی کانادا) - پلیس فدرال</span>
+                            <div class="summary-item-en">RCMP (Royal Canadian Mounted Police) - Federal police</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">CBC (رادیو-تلویزیون کانادا) - شبکه ملی</span>
+                            <div class="summary-item-en">CBC (Canadian Broadcasting Corporation) - National broadcaster</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="summary-subsection">
+                    <div class="summary-subsection-title">رویدادهای تاریخی مهم / Important Historical Events</div>
+                    <ul class="summary-list">
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">شورش 1837 - شورش در کانادای علیا و سفلی</span>
+                            <div class="summary-item-en">Rebellions of 1837 - Uprisings in Upper and Lower Canada</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">کنفرانس شارلوت‌تاون (1864) - اولین کنفرانس کنفدراسیون</span>
+                            <div class="summary-item-en">Charlottetown Conference (1864) - First Confederation conference</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">کنفرانس کبک (1864) - تدوین اصول کنفدراسیون</span>
+                            <div class="summary-item-en">Quebec Conference (1864) - Drafting Confederation principles</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">اعتصاب عمومی وینیپگ (1919) - بزرگترین اعتصاب در تاریخ کانادا</span>
+                            <div class="summary-item-en">Winnipeg General Strike (1919) - Largest strike in Canadian history</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">بحران اکتبر (1970) - بحران تروریستی در کبک</span>
+                            <div class="summary-item-en">October Crisis (1970) - Terrorist crisis in Quebec</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">رفراندوم کبک (1980, 1995) - رفراندوم استقلال کبک</span>
+                            <div class="summary-item-en">Quebec Referendums (1980, 1995) - Quebec independence referendums</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="summary-subsection">
+                    <div class="summary-subsection-title">دستاوردهای علمی و فناوری / Scientific and Technological Achievements</div>
+                    <ul class="summary-list">
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">الکساندر گراهام بل - اختراع تلفن (اگرچه در آمریکا ثبت شد)</span>
+                            <div class="summary-item-en">Alexander Graham Bell - Invention of telephone (though patented in USA)</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">فردریک بانتینگ و چارلز بست - کشف انسولین (1921)</span>
+                            <div class="summary-item-en">Frederick Banting and Charles Best - Discovery of insulin (1921)</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">آرمسترانگ وایتهد - اختراع بمب هدایت شونده</span>
+                            <div class="summary-item-en">Armstrong Whitworth - Invention of guided missile</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">کانادارم - بازوی رباتیک برای شاتل فضایی</span>
+                            <div class="summary-item-en">Canadarm - Robotic arm for space shuttle</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="summary-subsection">
+                    <div class="summary-subsection-title">میراث فرهنگی / Cultural Heritage</div>
+                    <ul class="summary-list">
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">17 سایت میراث جهانی یونسکو در کانادا</span>
+                            <div class="summary-item-en">17 UNESCO World Heritage Sites in Canada</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">مکان‌های تاریخی ملی - بیش از 1000 مکان ثبت شده</span>
+                            <div class="summary-item-en">National Historic Sites - Over 1000 registered sites</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">موزه‌های ملی: موزه تاریخ کانادا، موزه تمدن، گالری ملی</span>
+                            <div class="summary-item-en">National museums: Canadian Museum of History, Museum of Civilization, National Gallery</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="highlight-box">
+                    <strong>نکته مهم / Important Note:</strong><br>
+                    <span style="direction: rtl;">این اطلاعات بر اساس کتاب رسمی "Discover Canada" تهیه شده است که منبع اصلی برای آزمون شهروندی کانادا است. برای اطلاعات کامل‌تر، حتماً کتاب اصلی را مطالعه کنید.</span><br>
+                    <span style="direction: ltr; margin-top: 8px; display: block;">This information is based on the official "Discover Canada" book, which is the primary source for the Canadian citizenship test. For complete information, please read the original book.</span>
+                </div>
+            </div>
+
+            <!-- Section 11: Regional Information -->
+            <div class="summary-section">
+                <div class="summary-section-title">اطلاعات منطقه‌ای / Regional Information</div>
+                
+                <div class="summary-subsection">
+                    <div class="summary-subsection-title">استان‌ها و ویژگی‌های آنها / Provinces and Their Features</div>
+                    <ul class="summary-list">
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">انتاریو: پرجمعیت‌ترین استان، خانه پایتخت کانادا (اتاوا) و بزرگترین شهر (تورنتو)</span>
+                            <div class="summary-item-en">Ontario: Most populous province, home to Canada's capital (Ottawa) and largest city (Toronto)</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">کبک: تنها استان با فرانسوی به عنوان زبان رسمی، دومین استان پرجمعیت</span>
+                            <div class="summary-item-en">Quebec: Only province with French as official language, second most populous province</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">بریتیش کلمبیا: در سواحل اقیانوس آرام، مشهور برای کوه‌ها و طبیعت</span>
+                            <div class="summary-item-en">British Columbia: On Pacific coast, known for mountains and nature</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">آلبرتا: مشهور برای صنعت نفت و گاز، کوه‌های راکی</span>
+                            <div class="summary-item-en">Alberta: Known for oil and gas industry, Rocky Mountains</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">ساسکاچوان: "سبد نان کانادا"، بزرگترین تولیدکننده گندم</span>
+                            <div class="summary-item-en">Saskatchewan: "Breadbasket of Canada", largest wheat producer</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">مانیتوبا: "استان هزار دریاچه"، مرکز جغرافیایی کانادا</span>
+                            <div class="summary-item-en">Manitoba: "Province of a Thousand Lakes", geographic center of Canada</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">نوا اسکوشیا: "کانادای اقیانوسی"، مشهور برای صنعت ماهیگیری</span>
+                            <div class="summary-item-en">Nova Scotia: "Ocean Playground of Canada", known for fishing industry</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">نیوبرانزویک: تنها استان رسمی دوزبانه (انگلیسی و فرانسوی)</span>
+                            <div class="summary-item-en">New Brunswick: Only officially bilingual province (English and French)</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">جزیره پرنس ادوارد: کوچکترین استان، مشهور برای سیب‌زمینی و آن در گرین گیبلز</span>
+                            <div class="summary-item-en">Prince Edward Island: Smallest province, known for potatoes and Anne of Green Gables</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">نیوفاندلند و لابرادور: جوان‌ترین استان (1949)، مشهور برای فرهنگ و ماهیگیری</span>
+                            <div class="summary-item-en">Newfoundland and Labrador: Youngest province (1949), known for culture and fishing</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="summary-subsection">
+                    <div class="summary-subsection-title">قلمروها / Territories</div>
+                    <ul class="summary-list">
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">یوکان: کوچکترین و غربی‌ترین قلمرو، مشهور برای تب طلای کلوندایک</span>
+                            <div class="summary-item-en">Yukon: Smallest and westernmost territory, known for Klondike Gold Rush</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">قلمروهای شمال غرب: بزرگترین قلمرو، دارای الماس و طلا</span>
+                            <div class="summary-item-en">Northwest Territories: Largest territory, has diamonds and gold</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">نوناووت: جوان‌ترین و بزرگترین قلمرو (1999)، بیشتر جمعیت Inuit</span>
+                            <div class="summary-item-en">Nunavut: Youngest and largest territory (1999), majority Inuit population</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Section 12: Key Dates and Numbers -->
+            <div class="summary-section">
+                <div class="summary-section-title">تاریخ‌ها و اعداد مهم / Key Dates and Numbers</div>
+                
+                <div class="summary-subsection">
+                    <div class="summary-subsection-title">تاریخ‌های مهم / Important Dates</div>
+                    <ul class="summary-list">
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">1534: ژاک کارتیه به کانادا آمد</span>
+                            <div class="summary-item-en">1534: Jacques Cartier arrived in Canada</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">1608: ساموئل دو شامپلن شهر کبک را تأسیس کرد</span>
+                            <div class="summary-item-en">1608: Samuel de Champlain founded Quebec City</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">1763: معاهده پاریس - فرانسه جدید به بریتانیا واگذار شد</span>
+                            <div class="summary-item-en">1763: Treaty of Paris - New France ceded to Britain</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">1867: کنفدراسیون کانادا - 1 جولای (روز کانادا)</span>
+                            <div class="summary-item-en">1867: Canadian Confederation - July 1 (Canada Day)</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">1914-1918: جنگ جهانی اول</span>
+                            <div class="summary-item-en">1914-1918: World War I</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">1917: نبرد ویمی ریج</span>
+                            <div class="summary-item-en">1917: Battle of Vimy Ridge</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">1939-1945: جنگ جهانی دوم</span>
+                            <div class="summary-item-en">1939-1945: World War II</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">1965: پرچم کانادا با برگ افرا تصویب شد</span>
+                            <div class="summary-item-en">1965: Canada's maple leaf flag adopted</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">1982: قانون اساسی کانادا - استقلال کامل</span>
+                            <div class="summary-item-en">1982: Canada's Constitution - Full independence</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="summary-subsection">
+                    <div class="summary-subsection-title">اعداد و آمار مهم / Important Numbers and Statistics</div>
+                    <ul class="summary-list">
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">10 استان و 3 قلمرو</span>
+                            <div class="summary-item-en">10 provinces and 3 territories</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">338 عضو مجلس عوام (House of Commons)</span>
+                            <div class="summary-item-en">338 members in House of Commons</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">105 سناتور در سنا (Senate)</span>
+                            <div class="summary-item-en">105 senators in Senate</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">18 سال: حداقل سن برای رای دادن</span>
+                            <div class="summary-item-en">18 years: Minimum age to vote</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">حداقل هر 5 سال یکبار: انتخابات فدرال باید برگزار شود</span>
+                            <div class="summary-item-en">At least every 5 years: Federal elections must be held</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">2 زبان رسمی: انگلیسی و فرانسوی</span>
+                            <div class="summary-item-en">2 official languages: English and French</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">2 ورزش ملی: هاکی (زمستان)، لاکراس (تابستان)</span>
+                            <div class="summary-item-en">2 national sports: Hockey (winter), Lacrosse (summer)</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">4 استان اولیه کنفدراسیون: انتاریو، کبک، نوا اسکوشیا، نیوبرانزویک</span>
+                            <div class="summary-item-en">4 original Confederation provinces: Ontario, Quebec, Nova Scotia, New Brunswick</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">5 دریاچه بزرگ: Superior, Huron, Michigan, Erie, Ontario</span>
+                            <div class="summary-item-en">5 Great Lakes: Superior, Huron, Michigan, Erie, Ontario</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Section 13: Important Concepts and Terms -->
+            <div class="summary-section">
+                <div class="summary-section-title">مفاهیم و اصطلاحات مهم / Important Concepts and Terms</div>
+                
+                <div class="summary-subsection">
+                    <div class="summary-subsection-title">مفاهیم سیاسی / Political Concepts</div>
+                    <ul class="summary-list">
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">دموکراسی پارلمانی: سیستم حکومتی که پارلمان مرجع اصلی قانونگذاری است</span>
+                            <div class="summary-item-en">Parliamentary Democracy: System of government where Parliament is the primary legislative body</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">سلطنت مشروطه: پادشاه/ملکه رئیس دولت است اما قدرت محدود است</span>
+                            <div class="summary-item-en">Constitutional Monarchy: King/Queen is head of state but power is limited</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">فدرالیسم: تقسیم قدرت بین دولت فدرال و دولت‌های استانی</span>
+                            <div class="summary-item-en">Federalism: Division of power between federal and provincial governments</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">دولت مسئول: دولت باید به پارلمان پاسخگو باشد</span>
+                            <div class="summary-item-en">Responsible Government: Government must be accountable to Parliament</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">حقوق جمعی: حقوق گروه‌ها مانند مردم بومی</span>
+                            <div class="summary-item-en">Collective Rights: Rights of groups such as Aboriginal peoples</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">حقوق فردی: حقوق هر شخص به عنوان یک فرد</span>
+                            <div class="summary-item-en">Individual Rights: Rights of each person as an individual</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="summary-subsection">
+                    <div class="summary-subsection-title">اصطلاحات قانونی / Legal Terms</div>
+                    <ul class="summary-list">
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">Common Law: سیستم قانونی مبتنی بر رویه‌های قضایی (در تمام استان‌ها به جز کبک)</span>
+                            <div class="summary-item-en">Common Law: Legal system based on judicial precedent (in all provinces except Quebec)</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">Civil Law: سیستم قانونی مبتنی بر قوانین نوشته شده (در کبک)</span>
+                            <div class="summary-item-en">Civil Law: Legal system based on written laws (in Quebec)</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">هیئت منصفه: گروهی از شهروندان که در دادگاه تصمیم‌گیری می‌کنند</span>
+                            <div class="summary-item-en">Jury: Group of citizens who make decisions in court</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">خدمت در هیئت منصفه: یک وظیفه قانونی شهروندی است</span>
+                            <div class="summary-item-en">Jury Duty: A legal duty of citizenship</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="summary-subsection">
+                    <div class="summary-subsection-title">مفاهیم فرهنگی و اجتماعی / Cultural and Social Concepts</div>
+                    <ul class="summary-list">
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">چندفرهنگی: به رسمیت شناختن و احترام به فرهنگ‌های مختلف</span>
+                            <div class="summary-item-en">Multiculturalism: Recognition and respect for different cultures</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">دوزبانگی: استفاده از دو زبان (انگلیسی و فرانسوی)</span>
+                            <div class="summary-item-en">Bilingualism: Use of two languages (English and French)</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">تنوع فرهنگی: وجود فرهنگ‌ها و قومیت‌های مختلف در یک جامعه</span>
+                            <div class="summary-item-en">Cultural Diversity: Existence of different cultures and ethnicities in a society</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">برابری: همه افراد از حقوق و فرصت‌های برابر برخوردارند</span>
+                            <div class="summary-item-en">Equality: All individuals have equal rights and opportunities</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Section 14: Study Tips and Exam Information -->
+            <div class="summary-section">
+                <div class="summary-section-title">نکات مطالعاتی و اطلاعات آزمون / Study Tips and Exam Information</div>
+                
+                <div class="summary-subsection">
+                    <div class="summary-subsection-title">اطلاعات آزمون شهروندی / Citizenship Test Information</div>
+                    <ul class="summary-list">
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">آزمون شامل 20 سوال است</span>
+                            <div class="summary-item-en">The test consists of 20 questions</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">برای قبولی باید حداقل 15 سوال را درست پاسخ دهید (75%)</span>
+                            <div class="summary-item-en">To pass, you must answer at least 15 questions correctly (75%)</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">زمان آزمون: 30 دقیقه</span>
+                            <div class="summary-item-en">Test duration: 30 minutes</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">سوالات بر اساس کتاب "Discover Canada" است</span>
+                            <div class="summary-item-en">Questions are based on the "Discover Canada" book</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">آزمون به زبان انگلیسی یا فرانسوی برگزار می‌شود</span>
+                            <div class="summary-item-en">The test is conducted in English or French</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">افراد بالای 54 سال و زیر 18 سال از آزمون معاف هستند</span>
+                            <div class="summary-item-en">People over 54 and under 18 are exempt from the test</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="summary-subsection">
+                    <div class="summary-subsection-title">نکات مطالعاتی / Study Tips</div>
+                    <ul class="summary-list">
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">کتاب "Discover Canada" را کامل بخوانید - این منبع اصلی است</span>
+                            <div class="summary-item-en">Read the complete "Discover Canada" book - this is the primary source</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">روی تاریخ‌ها، نام‌ها و مکان‌ها تمرکز کنید</span>
+                            <div class="summary-item-en">Focus on dates, names, and locations</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">پایتخت‌های استان‌ها و قلمروها را به خاطر بسپارید</span>
+                            <div class="summary-item-en">Memorize provincial and territorial capitals</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">نام‌های مهم تاریخی و سیاسی را یاد بگیرید</span>
+                            <div class="summary-item-en">Learn important historical and political names</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">حقوق و مسئولیت‌های شهروندی را خوب درک کنید</span>
+                            <div class="summary-item-en">Understand citizenship rights and responsibilities well</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">تمرین با تست‌های تمرینی مفید است</span>
+                            <div class="summary-item-en">Practice with practice tests is helpful</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">اطلاعات را در گروه‌های موضوعی سازماندهی کنید</span>
+                            <div class="summary-item-en">Organize information into topic groups</div>
+                        </li>
+                        <li class="summary-list-item">
+                            <span class="summary-item-fa">به صورت منظم و پیوسته مطالعه کنید</span>
+                            <div class="summary-item-en">Study regularly and consistently</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="highlight-box">
+                    <strong>نصیحت نهایی / Final Advice:</strong><br>
+                    <span style="direction: rtl;">این خلاصه برای مرور سریع نکات کلیدی طراحی شده است. برای موفقیت در آزمون، حتماً کتاب کامل "Discover Canada" را مطالعه کنید و تست‌های تمرینی زیادی انجام دهید. موفق باشید!</span><br>
+                    <span style="direction: ltr; margin-top: 8px; display: block;">This summary is designed for quick review of key points. For success in the test, be sure to read the complete "Discover Canada" book and do many practice tests. Good luck!</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
