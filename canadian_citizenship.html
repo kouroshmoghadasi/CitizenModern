@@ -130,6 +130,70 @@
             direction: rtl;
         }
         
+        .ad-registration-section {
+            margin-top: 24px;
+            direction: rtl;
+        }
+        
+        .ad-registration-toggle {
+            padding: 18px 22px;
+            background: linear-gradient(135deg, #1e3c72 0%, #2c5282 100%);
+            border: 2.5px solid #f1c40f;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 
+                0 4px 15px rgba(30, 60, 114, 0.3),
+                0 2px 8px rgba(30, 60, 114, 0.2);
+            text-align: center;
+        }
+        
+        .ad-registration-toggle:hover {
+            background: linear-gradient(135deg, #2c5282 0%, #1e3c72 100%);
+            box-shadow: 
+                0 6px 20px rgba(30, 60, 114, 0.4),
+                0 3px 12px rgba(30, 60, 114, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        .ad-registration-toggle h3 {
+            color: white;
+            margin: 0;
+            font-size: 1em;
+            font-weight: 700;
+            line-height: 1.4;
+        }
+        
+        .ad-registration-toggle span {
+            color: #ff1493;
+            filter: drop-shadow(0 2px 4px rgba(255, 20, 147, 0.3));
+        }
+        
+        .ad-registration-phone {
+            margin-top: 8px;
+            text-align: center;
+        }
+        
+        .ad-registration-phone a {
+            font-size: 1.2em;
+            font-weight: 700;
+            color: white;
+            text-decoration: underline;
+            text-decoration-color: white;
+            text-underline-offset: 4px;
+            transition: opacity 0.3s;
+            direction: ltr;
+            display: inline-block;
+        }
+        
+        .ad-registration-phone a:hover {
+            opacity: 0.8;
+        }
+        
         .book-summary-link {
             text-decoration: none;
             display: block;
@@ -184,18 +248,180 @@
             direction: rtl;
         }
         
-        .ad-container {
+        /* Ads Grid System - Scalable for future growth */
+        .ads-section {
             width: 100%;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
+            margin: 40px 0;
+            padding: 0 15px;
         }
         
-        .ad-container {
+        .ads-section-title {
+            font-size: 2em;
+            font-weight: 700;
+            color: #1e3c72;
+            text-align: center;
+            margin-bottom: 30px;
+            direction: rtl;
+        }
+        
+        .ads-section-title-en {
+            font-size: 1.2em;
+            color: #7f8c8d;
+            font-weight: 500;
+            margin-top: 5px;
+            direction: ltr;
+            text-align: center;
+        }
+        
+        .ads-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 25px;
             width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .ad-tile {
+            background: white;
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 2px solid #e8ecf0;
+            direction: rtl;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .ad-tile::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, #1e3c72 0%, #2c5282 100%);
+        }
+        
+        .ad-tile:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(30, 60, 114, 0.2);
+            border-color: #1e3c72;
+        }
+        
+        .ad-tile-header {
             display: flex;
-            flex-direction: column;
-            gap: 20px;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 15px;
+        }
+        
+        .ad-tile-icon {
+            font-size: 2.5em;
+            filter: drop-shadow(0 2px 4px rgba(30, 60, 114, 0.2));
+        }
+        
+        .ad-tile-category {
+            flex: 1;
+        }
+        
+        .ad-tile-category-title {
+            font-size: 1.4em;
+            color: #1e3c72;
+            font-weight: 700;
+            margin-bottom: 6px;
+            text-align: center;
+            letter-spacing: 0.5px;
+        }
+        
+        .ad-tile-business-name {
+            font-size: 1.4em;
+            font-weight: 700;
+            color: #1e3c72;
+            line-height: 1.3;
+        }
+        
+        .ad-tile-body {
+            margin-top: 15px;
+        }
+        
+        .ad-tile-info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            margin-bottom: 10px;
+            font-size: 0.9em;
+            color: #34495e;
+        }
+        
+        .ad-tile-info-icon {
+            font-size: 1.2em;
+            min-width: 20px;
+        }
+        
+        .ad-tile-info-text {
+            flex: 1;
+            line-height: 1.6;
+        }
+        
+        .ad-tile-info-text a {
+            color: #1e3c72;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+        
+        .ad-tile-info-text a:hover {
+            color: #2c5282;
+            text-decoration: underline;
+        }
+        
+        .ad-tile-phone {
+            direction: ltr;
+            text-align: right;
+        }
+        
+        .ad-tile-address {
+            direction: ltr;
+            text-align: right;
+        }
+        
+        .ad-tile-hours {
+            background: linear-gradient(135deg, rgba(241, 196, 15, 0.1) 0%, rgba(241, 196, 15, 0.05) 100%);
+            padding: 12px;
+            border-radius: 8px;
+            margin-top: 12px;
+            border-right: 3px solid #f1c40f;
+        }
+        
+        .ad-tile-hours-title {
+            font-weight: 700;
+            color: #1e3c72;
+            margin-bottom: 6px;
+            font-size: 0.95em;
+        }
+        
+        .ad-tile-hours-content {
+            font-size: 0.85em;
+            line-height: 1.6;
+        }
+        
+        .ad-tile-description {
+            margin-top: 12px;
+            padding: 10px;
+            background: linear-gradient(135deg, rgba(30, 60, 114, 0.05) 0%, rgba(30, 60, 114, 0.02) 100%);
+            border-radius: 8px;
+            font-size: 0.85em;
+            color: #2c5282;
+            font-weight: 600;
+            line-height: 1.6;
+        }
+        
+        .ad-tile-description-en {
+            direction: ltr;
+            margin-top: 4px;
+            font-size: 0.9em;
         }
         
         .ad-space {
@@ -444,19 +670,239 @@
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(243, 156, 18, 0.6);
         }
+        
+        .contact-info {
+            margin-top: 25px;
+        }
+        
+        .contact-info h4 {
+            color: #1e3c72;
+            font-size: 1em;
+            margin-bottom: 15px;
+            text-align: center;
+            font-weight: 700;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #f1c40f;
+        }
+        
+        .contact-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .contact-item {
+            background: #ffffff;
+            border: 2px solid #e8ecf0;
+            border-radius: 10px;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-item:hover {
+            border-color: #f1c40f;
+            background: #fff9e6;
+            box-shadow: 0 3px 10px rgba(241, 196, 15, 0.2);
+        }
+        
+        .contact-content {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        
+        .contact-label {
+            font-size: 0.75em;
+            color: #7f8c8d;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            text-align: center;
+        }
+        
+        .contact-location {
+            font-size: 0.75em;
+            color: #95a5a6;
+            font-weight: 500;
+            direction: ltr;
+            text-align: center;
+            margin-top: 4px;
+        }
+        
+        .contact-value {
+            font-size: 1.2em;
+            color: #1e3c72;
+            font-weight: 700;
+            direction: ltr;
+            text-align: center;
+            word-break: break-word;
+            line-height: 1.5;
+        }
+        
+        .contact-value a {
+            color: #1e3c72;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .contact-value a:hover {
+            color: #2c5282;
+            text-decoration: underline;
+        }
+        
+        .copy-btn {
+            width: 100%;
+            padding: 10px;
+            background: #1e3c72;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.9em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .copy-btn:hover {
+            background: #2c5282;
+        }
+        
+        .copy-btn.copied {
+            background: #27ae60;
+        }
+        
+        .payment-methods {
+            margin-top: 20px;
+            padding: 18px;
+            background: linear-gradient(135deg, #e8f4f8 0%, #f0f8fb 100%);
+            border-radius: 10px;
+            border-right: 4px solid #1e3c72;
+            box-shadow: 0 2px 8px rgba(30, 60, 114, 0.1);
+        }
+        
+        .payment-methods p {
+            color: #1e3c72;
+            font-size: 0.9em;
+            margin: 8px 0;
+            line-height: 1.7;
+        }
+        
+        .payment-methods strong {
+            color: #1e3c72;
+            font-weight: 700;
+        }
+        
 
         .header {
             background: linear-gradient(135deg, #1e3c72 0%, #2c5282 50%, #1e3c72 100%);
             background-size: 200% 200%;
             animation: gradientShift 8s ease infinite;
             color: white;
-            padding: 20px 30px;
+            padding: 0;
             text-align: center;
             box-shadow: 
                 0 8px 30px rgba(30, 60, 114, 0.3),
                 inset 0 -4px 0 0 #f1c40f;
             position: relative;
             overflow: hidden;
+        }
+        
+        .header-carousel {
+            position: relative;
+            width: 100%;
+            min-height: 80px;
+            padding: 20px 30px;
+            z-index: 2;
+        }
+        
+        .header-slide {
+            display: none;
+            text-align: center;
+            color: white;
+            position: relative;
+            z-index: 3;
+        }
+        
+        .header-slide.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .header-slide h1 {
+            font-size: 1.8em;
+            font-weight: 700;
+            margin-bottom: 8px;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            color: white;
+        }
+        
+        .header-slide p {
+            font-size: 1.1em;
+            opacity: 0.95;
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+            color: white;
+            margin: 5px 0;
+        }
+        
+        .header-slide-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .header-slide-content h2 {
+            font-size: 1.5em;
+            font-weight: 700;
+            margin-bottom: 12px;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            color: white;
+        }
+        
+        .header-slide-content p {
+            font-size: 1em;
+            line-height: 1.6;
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+            color: white;
+            margin: 8px 0;
+        }
+        
+        .header-carousel-indicators {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+        
+        .header-indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.4);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.6);
+        }
+        
+        .header-indicator.active {
+            background: #f1c40f;
+            width: 30px;
+            border-radius: 5px;
+            border-color: #f1c40f;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
         }
         
         .header::before {
@@ -468,6 +914,8 @@
             height: 100%;
             background: linear-gradient(90deg, transparent, rgba(241, 196, 15, 0.1), transparent);
             animation: shine 3s infinite;
+            z-index: 1;
+            pointer-events: none;
         }
         
         @keyframes gradientShift {
@@ -528,6 +976,248 @@
         .help-btn:hover {
             transform: scale(1.1);
             box-shadow: 0 6px 20px rgba(220, 53, 69, 0.6);
+        }
+        
+        .help-menu {
+            position: fixed;
+            bottom: 80px;
+            left: 20px;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-radius: 20px;
+            box-shadow: 
+                0 15px 50px rgba(0, 0, 0, 0.3),
+                0 5px 20px rgba(0, 0, 0, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.9);
+            min-width: 240px;
+            z-index: 998;
+            display: none;
+            overflow: hidden;
+            direction: rtl;
+            border: 2px solid #e8ecf0;
+            animation: slideUp 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            backdrop-filter: blur(10px);
+        }
+        
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        
+        .help-menu.active {
+            display: block;
+        }
+        
+        .help-menu-item {
+            padding: 18px 24px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border-bottom: 1px solid rgba(232, 236, 240, 0.5);
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            color: #1e3c72;
+            font-weight: 700;
+            font-size: 1em;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .help-menu-item::before {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            width: 0;
+            background: linear-gradient(90deg, transparent, rgba(241, 196, 15, 0.2));
+            transition: width 0.3s ease;
+        }
+        
+        .help-menu-item:hover::before {
+            width: 100%;
+        }
+        
+        .help-menu-item:last-child {
+            border-bottom: none;
+        }
+        
+        .help-menu-item:hover {
+            background: linear-gradient(135deg, #fff9e6 0%, #fffef5 100%);
+            color: #1e3c72;
+            padding-right: 28px;
+            transform: translateX(-3px);
+        }
+        
+        .help-menu-item-icon {
+            font-size: 1.6em;
+            width: 28px;
+            text-align: center;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+        }
+        
+        .suggestions-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 10001;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(5px);
+            animation: fadeIn 0.3s ease;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        .suggestions-modal.active {
+            display: flex;
+        }
+        
+        .suggestions-modal-content {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.4);
+            position: relative;
+            direction: rtl;
+            text-align: center;
+            animation: modalSlideIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8) translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+        
+        .suggestions-modal-close {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: #dc3545;
+            color: white;
+            border: none;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 20px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .suggestions-modal-close:hover {
+            background: #c82333;
+            transform: scale(1.1) rotate(90deg);
+        }
+        
+        .suggestions-modal-content h3 {
+            color: #1e3c72;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .suggestions-modal-content p {
+            color: #555;
+            font-size: 1.05em;
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+        
+        .suggestions-email-box {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border: 2px solid #e8ecf0;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 25px 0;
+            text-align: center;
+        }
+        
+        .suggestions-email-label {
+            font-size: 0.9em;
+            color: #7f8c8d;
+            font-weight: 600;
+            margin-bottom: 12px;
+            display: block;
+        }
+        
+        .suggestions-email-value {
+            font-size: 1.3em;
+            color: #1e3c72;
+            font-weight: 700;
+            direction: ltr;
+            text-align: center;
+            word-break: break-word;
+            margin-bottom: 15px;
+            padding: 10px;
+            background: white;
+            border-radius: 8px;
+            border: 1px solid #e8ecf0;
+        }
+        
+        .suggestions-email-value a {
+            color: #1e3c72;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .suggestions-email-value a:hover {
+            color: #2c5282;
+            text-decoration: underline;
+        }
+        
+        .suggestions-modal-copy-btn {
+            display: inline-block;
+            padding: 12px 28px;
+            background: linear-gradient(135deg, #1e3c72 0%, #2c5282 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1em;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(30, 60, 114, 0.3);
+            width: 100%;
+            max-width: 250px;
+        }
+        
+        .suggestions-modal-copy-btn:hover {
+            background: linear-gradient(135deg, #2c5282 0%, #1e3c72 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(30, 60, 114, 0.4);
+        }
+        
+        .suggestions-modal-copy-btn.copied {
+            background: #27ae60;
+            box-shadow: 0 4px 12px rgba(39, 174, 96, 0.3);
         }
         
         .help-modal {
@@ -1620,9 +2310,52 @@
             color: #dc3545;
         }
 
+        /* Responsive Design for Ads Grid */
+        @media (max-width: 1200px) {
+            .ads-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+                gap: 20px;
+            }
+        }
+        
         @media (max-width: 968px) {
+            .ads-section {
+                padding: 0 10px;
+                margin: 30px 0;
+            }
+            
+            .ads-section-title {
+                font-size: 1.7em;
+                margin-bottom: 20px;
+            }
+            
+            .ads-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+                gap: 18px;
+            }
+            
+            .ad-tile {
+                padding: 18px;
+            }
+            
+            .ad-tile-icon {
+                font-size: 2.2em;
+            }
+            
+            .ad-tile-business-name {
+                font-size: 1.2em;
+            }
             .container {
                 flex-direction: column;
+            }
+            
+            .right-sidebar {
+                width: 100%;
+                min-width: 100%;
+                position: relative;
+                border-right: none;
+                border-top: 5px solid #1e3c72;
+                order: -1;
             }
             
             .test-selector {
@@ -1659,12 +2392,213 @@
         }
         
         @media (max-width: 768px) {
-            .header h1 {
-                font-size: 1.8em;
+            .header-slide {
+                padding: 20px 20px;
+                min-height: 100px;
+            }
+            
+            .header-slide h1 {
+                font-size: 1.5em;
+            }
+            
+            .header-slide p {
+                font-size: 1em;
+            }
+            
+            .header-slide-content h2 {
+                font-size: 1.4em;
+            }
+            
+            .header-slide-content p {
+                font-size: 0.95em;
             }
 
             .question-text {
                 font-size: 1em;
+            }
+            
+            .help-btn {
+                width: 45px;
+                height: 45px;
+                font-size: 20px;
+                bottom: 15px;
+                left: 15px;
+            }
+            
+            .help-menu {
+                bottom: 70px;
+                left: 15px;
+                min-width: 200px;
+            }
+            
+            .contact-item {
+                padding: 14px;
+            }
+            
+            .donation-section {
+                margin-bottom: 15px;
+            }
+            
+            .suggestions-modal-content {
+                padding: 30px 25px;
+                max-width: 90%;
+            }
+            
+            .suggestions-modal-content h3 {
+                font-size: 1.5em;
+            }
+            
+            .ads-section {
+                padding: 0 10px;
+                margin: 25px 0;
+            }
+            
+            .ads-section-title {
+                font-size: 1.5em;
+                margin-bottom: 15px;
+            }
+            
+            .ads-grid {
+                grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+                gap: 15px;
+            }
+            
+            .ad-tile {
+                padding: 15px;
+            }
+            
+            .ad-tile-icon {
+                font-size: 2em;
+            }
+            
+            .ad-tile-business-name {
+                font-size: 1.1em;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .header-slide {
+                padding: 14px 12px;
+                min-height: 60px;
+            }
+            
+            .header-slide h1 {
+                font-size: 1.2em;
+                margin-bottom: 4px;
+            }
+            
+            .header-slide p {
+                font-size: 0.85em;
+            }
+            
+            .header-slide-content h2 {
+                font-size: 1.1em;
+                margin-bottom: 6px;
+            }
+            
+            .header-slide-content p {
+                font-size: 0.8em;
+                line-height: 1.4;
+            }
+            
+            .header-carousel-indicators {
+                bottom: 10px;
+                gap: 8px;
+            }
+            
+            .header-indicator {
+                width: 8px;
+                height: 8px;
+            }
+            
+            .header-indicator.active {
+                width: 24px;
+            }
+            
+            .help-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 18px;
+                bottom: 10px;
+                left: 10px;
+            }
+            
+            .help-menu {
+                bottom: 60px;
+                left: 10px;
+                min-width: 180px;
+            }
+            
+            .help-menu-item {
+                padding: 14px 18px;
+                font-size: 0.9em;
+            }
+            
+            .contact-value {
+                font-size: 1.05em;
+            }
+            
+            .suggestions-modal-content {
+                padding: 25px 20px;
+                border-radius: 16px;
+            }
+            
+            .suggestions-modal-content h3 {
+                font-size: 1.3em;
+            }
+            
+            .suggestions-modal-content p {
+                font-size: 0.95em;
+            }
+            
+            .suggestions-modal-copy-btn {
+                padding: 10px 20px;
+                font-size: 0.95em;
+                max-width: 100%;
+            }
+            
+            .suggestions-email-value {
+                font-size: 1.1em;
+            }
+            
+            .ads-section {
+                padding: 0 8px;
+                margin: 20px 0;
+            }
+            
+            .ads-section-title {
+                font-size: 1.3em;
+                margin-bottom: 12px;
+            }
+            
+            .ads-section-title-en {
+                font-size: 1em;
+            }
+            
+            .ads-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .ad-tile {
+                padding: 15px;
+            }
+            
+            .ad-tile-header {
+                gap: 10px;
+                margin-bottom: 12px;
+            }
+            
+            .ad-tile-icon {
+                font-size: 1.8em;
+            }
+            
+            .ad-tile-business-name {
+                font-size: 1.05em;
+            }
+            
+            .ad-tile-info-item {
+                font-size: 0.85em;
             }
         }
     </style>
@@ -1711,8 +2645,28 @@
 
         <div class="main-content">
             <div class="header">
-                <h1>🇨🇦 آزمون تمرینی شهروندی کانادا</h1>
-                <p>Canadian Citizenship Practice Test</p>
+                <div class="header-carousel">
+                    <!-- Slide 1: Test Title -->
+                    <div class="header-slide active" id="slide0">
+                        <h1>🇨🇦 آزمون تمرینی شهروندی کانادا</h1>
+                        <p>Canadian Citizenship Practice Test</p>
+                    </div>
+                    
+                    <!-- Slide 2: Advertisement Opportunity -->
+                    <div class="header-slide" id="slide1">
+                        <div class="header-slide-content">
+                            <h2>📢 تبلیغ کسب و کار خود را اینجا قرار دهید</h2>
+                            <p style="direction: rtl;">
+                                تبلیغ کسب و کار خود را در اینجا در معرض دید هزاران نفر از جامعه ایرانی قرار دهید و به هموطنان خود در سراسر کانادا بهترین خدمات را ارائه بدهید
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="header-carousel-indicators">
+                        <div class="header-indicator active" onclick="goToSlide(0)"></div>
+                        <div class="header-indicator" onclick="goToSlide(1)"></div>
+                    </div>
+                </div>
             </div>
 
 
@@ -1743,6 +2697,155 @@
                 <div id="answersTable"></div>
             </div>
             
+            <!-- تبلیغات شرکت‌ها / Business Advertisements -->
+            <div class="ads-section">
+                <h2 class="ads-section-title">💼 تبلیغات شرکت‌ها</h2>
+                <div class="ads-section-title-en">Business Advertisements</div>
+                <div class="ads-grid">
+                    <!-- Ad 1: Garage Cristal -->
+                    <div class="ad-tile">
+                        <div class="ad-tile-header">
+                            <div class="ad-tile-icon">🔧</div>
+                            <div class="ad-tile-category">
+                                <div class="ad-tile-category-title">مکانیکی / Auto Repair</div>
+                                <div class="ad-tile-business-name">Garage Cristal</div>
+                            </div>
+                        </div>
+                        <div class="ad-tile-body">
+                            <div class="ad-tile-info-item">
+                                <span class="ad-tile-info-icon">📍</span>
+                                <div class="ad-tile-info-text ad-tile-address">
+                                    <a href="https://www.google.com/maps/search/?api=1&query=7355+Avenue+Mountain+Sights,+Montreal,+QC+H4P+2A7" target="_blank" title="View on Google Maps">
+                                        7355 Avenue Mountain Sights<br>
+                                        Montreal, QC H4P 2A7
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="ad-tile-info-item">
+                                <span class="ad-tile-info-icon">📞</span>
+                                <div class="ad-tile-info-text ad-tile-phone">
+                                    <a href="tel:+15141234567" title="Call Garage Cristal">(514) 123-4567</a>
+                                </div>
+                            </div>
+                            <div class="ad-tile-hours">
+                                <div class="ad-tile-hours-title">🕐 ساعات کاری / Business Hours</div>
+                                <div class="ad-tile-hours-content">
+                                    هر روز: 7:00 صبح - 9:00 شب<br>
+                                    <strong style="color: #1e3c72;">یکشنبه‌ها: تعطیل</strong>
+                                </div>
+                                <div class="ad-tile-hours-content" style="direction: ltr; margin-top: 6px;">
+                                    Daily: 7:00 AM - 9:00 PM<br>
+                                    <strong style="color: #1e3c72;">Sundays: Closed</strong>
+                                </div>
+                            </div>
+                            <div class="ad-tile-description">
+                                ⚙️ خدمات مکانیکی حرفه‌ای در مونترال
+                                <div class="ad-tile-description-en">🔧 Professional Auto Repair Services in Montreal</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Ad 2: Auto Parts Technique -->
+                    <div class="ad-tile">
+                        <div class="ad-tile-header">
+                            <div class="ad-tile-icon">🔩</div>
+                            <div class="ad-tile-category">
+                                <div class="ad-tile-category-title">قطعات خودرو / Auto Parts</div>
+                                <div class="ad-tile-business-name">Auto Parts Technique</div>
+                            </div>
+                        </div>
+                        <div class="ad-tile-body">
+                            <div class="ad-tile-info-item">
+                                <span class="ad-tile-info-icon">📍</span>
+                                <div class="ad-tile-info-text ad-tile-address">
+                                    <a href="https://www.google.com/maps/search/?api=1&query=7355+Ave.+Mountain+Sights,+Montreal,+Quebec+H4P+2A7" target="_blank" title="View on Google Maps">
+                                        7355 Ave. Mountain Sights<br>
+                                        Montreal, Quebec H4P 2A7
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="ad-tile-info-item">
+                                <span class="ad-tile-info-icon">📞</span>
+                                <div class="ad-tile-info-text ad-tile-phone">
+                                    <a href="tel:+15147336335" title="Call Auto Parts Technique">(514) 733-6335</a>
+                                </div>
+                            </div>
+                            <div class="ad-tile-hours">
+                                <div class="ad-tile-hours-title">🕐 ساعات کاری / Business Hours</div>
+                                <div class="ad-tile-hours-content">
+                                    دوشنبه تا شنبه: 7:00 صبح - 8:00 شب<br>
+                                    <strong style="color: #1e3c72;">یکشنبه: تعطیل</strong>
+                                </div>
+                                <div class="ad-tile-hours-content" style="direction: ltr; margin-top: 6px;">
+                                    Monday - Saturday: 7:00 AM - 8:00 PM<br>
+                                    <strong style="color: #1e3c72;">Sunday: Closed</strong>
+                                </div>
+                            </div>
+                            <div class="ad-tile-description">
+                                ⭐ 3.9/5 Google Reviews - بهترین قیمت و کیفیت قطعات خودرو<br>
+                                <div class="ad-tile-description-en" style="margin-top: 4px;">
+                                    ⭐ 3.9/5 Google Reviews - Best prices & quality auto parts
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Ad 3: Software Development Services -->
+                <div class="ad-tile" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border: 3px solid #5a67d8;">
+                    <div class="ad-tile-header">
+                        <div class="ad-tile-icon" style="font-size: 3em;">💻</div>
+                        <div class="ad-tile-category">
+                            <div class="ad-tile-category-title" style="color: white; font-size: 1.5em; text-shadow: 0 2px 4px rgba(0,0,0,0.2);">تولید نرم‌افزار و توسعه وب</div>
+                            <div class="ad-tile-business-name" style="color: white; font-size: 1.6em; text-shadow: 0 2px 4px rgba(0,0,0,0.2); margin-top: 8px;">Software Development & Web Services</div>
+                        </div>
+                    </div>
+                    <div class="ad-tile-body">
+                        <div class="ad-tile-description" style="background: rgba(255,255,255,0.95); color: #1e3c72; padding: 15px; border-radius: 10px; margin-top: 15px;">
+                            <div style="font-weight: 700; font-size: 1.1em; margin-bottom: 12px; text-align: center; color: #5a67d8;">
+                                🚀 خدمات حرفه‌ای نرم‌افزاری
+                            </div>
+                            <div style="line-height: 1.8; font-size: 0.95em; direction: rtl; text-align: right;">
+                                ✅ تولید انواع نرم‌افزارهای کسب و کار<br>
+                                ✅ طراحی و توسعه وب‌سایت<br>
+                                ✅ ساخت داشبورد و سیستم‌های مدیریتی<br>
+                                ✅ کار با دیتا و تحلیل داده‌ها<br>
+                                ✅ پروژه‌های سفارشی و تخصصی
+                            </div>
+                            <div style="line-height: 1.8; font-size: 0.9em; direction: ltr; text-align: left; margin-top: 12px; padding-top: 12px; border-top: 2px solid #e8ecf0;">
+                                ✅ Business Software Development<br>
+                                ✅ Website Design & Development<br>
+                                ✅ Dashboard & Management Systems<br>
+                                ✅ Data Processing & Analytics<br>
+                                ✅ Custom & Specialized Projects
+                            </div>
+                        </div>
+                        <div class="ad-tile-info-item" style="background: rgba(255,255,255,0.95); padding: 12px; border-radius: 8px; margin-top: 12px; direction: rtl;">
+                            <span class="ad-tile-info-icon">📧</span>
+                            <div class="ad-tile-info-text" style="direction: ltr; text-align: center;">
+                                <a href="mailto:koroush.mog@gmail.com" style="color: #5a67d8; font-weight: 700; font-size: 1.05em;">koroush.mog@gmail.com</a>
+                            </div>
+                        </div>
+                        <div class="ad-tile-info-item" style="background: rgba(255,255,255,0.95); padding: 12px; border-radius: 8px; margin-top: 8px; direction: ltr;">
+                            <span class="ad-tile-info-icon">📞</span>
+                            <div class="ad-tile-info-text" style="direction: ltr; text-align: center;">
+                                <a href="tel:5144767079" style="color: #5a67d8; font-weight: 700; font-size: 1.05em;">514-476-7079</a>
+                            </div>
+                        </div>
+                        <div style="text-align: center; margin-top: 15px; padding: 10px; background: rgba(255,255,255,0.2); border-radius: 8px;">
+                            <div style="color: white; font-weight: 700; font-size: 1em; direction: rtl;">
+                                💼 برای مشاوره و همکاری تماس بگیرید
+                            </div>
+                            <div style="color: rgba(255,255,255,0.95); font-size: 0.9em; margin-top: 5px; direction: ltr;">
+                                Contact for consultation and collaboration
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- More ads can be added here easily -->
+            </div>
+        </div>
+            
             <div class="app-footer">
                 <p>
                     <strong>این اپلیکیشن</strong> محتوای کامل آزمون شهروندی کانادا را پوشش می‌دهد و تا زمانی که این سایت در دسترس باشد، تمام اطلاعات و تست‌ها در دسترس شما قرار خواهد داشت.
@@ -1757,7 +2860,7 @@
         <div class="right-sidebar">
             <!-- Book Summary Link -->
             <div class="book-summary-section">
-                <a href="book-summary.html" class="book-summary-link" target="_blank">
+                <a href="book_summary.html" class="book-summary-link" target="_blank">
                     <div class="book-summary-toggle">
                         <h3>📖 خلاصه کامل کتاب Discover Canada</h3>
                         <h3 style="font-size: 0.9em; margin-top: 5px; opacity: 0.9;">Complete Book Summary</h3>
@@ -1778,59 +2881,55 @@
                 <p style="margin-top: 8px; direction: ltr; text-align: center;">
                     To keep this site alive and continue providing free services, please consider supporting us with a small donation. Every contribution helps maintain this valuable resource.
                 </p>
-                <a href="#" class="donation-btn" onclick="alert('لطفاً اطلاعات پرداخت خود را برای کمک به سایت آماده کنید. / Please prepare your payment information to support the site.'); return false;">
-                    💰 کمک مالی / Donate
-                </a>
-            </div>
-        </div>
-        
-        <div class="ad-container">
-            <!-- Ad 1: Garage Cristal -->
-            <div class="ad-space">
-                <div class="ad-content">
-                    <div class="ad-icon">🔧</div>
-                    <div class="ad-title">مکانیکی / Auto Repair</div>
-                    <div class="ad-business-name">Garage Cristal</div>
-                    <div class="ad-address">
-                        <a href="https://www.google.com/maps/search/?api=1&query=7355+Avenue+Mountain+Sights,+Montreal,+QC+H4P+2A7" target="_blank" title="View on Google Maps">
-                            7355 Avenue Mountain Sights<br>
-                            Montreal, QC H4P 2A7
-                        </a>
-                    </div>
-                    <div class="ad-phone">
-                        <a href="tel:+15141234567" title="Call Garage Cristal">📞 (514) 123-4567</a>
-                    </div>
-                    <div class="ad-hours">
-                        <div class="ad-hours-title">
-                            🕐 ساعات کاری / Business Hours
+                
+                <div class="contact-info">
+                    <h4>📧 اطلاعات تماس برای حمایت مالی / Contact Information for Donation</h4>
+                    
+                    <div class="contact-list">
+                        <div class="contact-item">
+                            <div class="contact-content">
+                                <span class="contact-label">ایمیل / Email</span>
+                                <span class="contact-value">
+                                    <a href="mailto:koroush.mog@gmail.com">koroush.mog@gmail.com</a>
+                                </span>
+                            </div>
+                            <button class="copy-btn" onclick="copyToClipboard('koroush.mog@gmail.com', this)">کپی / Copy</button>
                         </div>
-                        <div class="ad-hours-content">
-                            هر روز: 7:00 صبح - 9:00 شب<br>
-                            <strong style="color: #1e3c72;">یکشنبه‌ها: تعطیل</strong>
+                        
+                        <div class="contact-item">
+                            <div class="contact-content">
+                                <span class="contact-label">موبایل / Mobile</span>
+                                <span class="contact-value">
+                                    <a href="tel:5144767079">514-476-7079</a>
+                                </span>
+                            </div>
+                            <button class="copy-btn" onclick="copyToClipboard('514-476-7079', this)">کپی / Copy</button>
                         </div>
-                        <div class="ad-hours-content-en">
-                            Daily: 7:00 AM - 9:00 PM<br>
-                            <strong style="color: #1e3c72;">Sundays: Closed</strong>
-                        </div>
-                    </div>
-                    <div style="margin-top: 12px; font-size: 0.9em; color: #2c5282; direction: rtl; font-weight: 600; padding: 10px; background: linear-gradient(135deg, rgba(241, 196, 15, 0.1) 0%, rgba(241, 196, 15, 0.05) 100%); border-radius: 8px; border-right: 3px solid #f1c40f;">
-                        ⚙️ خدمات مکانیکی حرفه‌ای در مونترال
-                        <br>
-                        <span style="direction: ltr; font-size: 0.9em;">🔧 Professional Auto Repair Services in Montreal</span>
                     </div>
                 </div>
+                
+                <div class="payment-methods">
+                    <p>
+                        <strong>💡 روش‌های پرداخت / Payment Methods:</strong>
+                    </p>
+                    <p style="direction: rtl; margin-top: 8px;">
+                        برای ساکنین کانادا: Interac e-Transfer به ایمیل یا شماره موبایل بالا<br>
+                        For Canadians: Interac e-Transfer to the email or mobile number above
+                    </p>
+                    <p style="direction: ltr; margin-top: 8px;">
+                        Other methods: Contact via email for other payment options
+                    </p>
+                </div>
             </div>
+        </div>
             
-            <!-- Ad 2: Placeholder for second ad -->
-            <div class="ad-space">
-                <div class="ad-content">
-                    <div class="ad-icon">📢</div>
-                    <div class="ad-title">فضای تبلیغاتی / Ad Space</div>
-                    <div class="ad-business-name">Available</div>
-                    <div style="margin-top: 15px; font-size: 0.9em; color: #6c757d; direction: rtl; text-align: center;">
-                        این فضا برای تبلیغات شما در دسترس است
-                        <br>
-                        <span style="direction: ltr; font-size: 0.85em;">This space is available for your advertisement</span>
+            <!-- بخش ثبت تبلیغ -->
+            <div class="ad-registration-section">
+                <div class="ad-registration-toggle">
+                    <span style="font-size: 1.5em;">📞</span>
+                    <h3>برای ثبت تبلیغ تماس بگیرید</h3>
+                    <div class="ad-registration-phone">
+                        <a href="tel:5144767079">514-476-7079</a>
                     </div>
                 </div>
             </div>
@@ -1838,6 +2937,62 @@
     </div>
 
     <script>
+        // Header Carousel Functionality - Simple Version
+        let currentSlide = 0;
+        const totalSlides = 2;
+        let carouselInterval;
+        
+        function goToSlide(slideIndex) {
+            currentSlide = slideIndex;
+            
+            // Hide all slides
+            const slides = document.querySelectorAll('.header-slide');
+            slides.forEach((slide, index) => {
+                if (index === currentSlide) {
+                    slide.classList.add('active');
+                } else {
+                    slide.classList.remove('active');
+                }
+            });
+            
+            // Update indicators
+            const indicators = document.querySelectorAll('.header-indicator');
+            indicators.forEach((indicator, index) => {
+                if (index === currentSlide) {
+                    indicator.classList.add('active');
+                } else {
+                    indicator.classList.remove('active');
+                }
+            });
+        }
+        
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            goToSlide(currentSlide);
+        }
+        
+        function startCarousel() {
+            carouselInterval = setInterval(nextSlide, 5000); // Change slide every 5 seconds
+        }
+        
+        function stopCarousel() {
+            if (carouselInterval) {
+                clearInterval(carouselInterval);
+            }
+        }
+        
+        // Initialize carousel when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            startCarousel();
+            
+            // Pause on hover
+            const headerCarousel = document.querySelector('.header-carousel');
+            if (headerCarousel) {
+                headerCarousel.addEventListener('mouseenter', stopCarousel);
+                headerCarousel.addEventListener('mouseleave', startCarousel);
+            }
+        });
+        
         // تمام سوالات و پاسخ‌های آزمون
         const allTests = [
             // Test 1: Rights and Freedoms
@@ -5938,10 +7093,10 @@
                         q: "What is the citizenship test duration?",
                         q_fa: "مدت زمان آزمون شهروندی چقدر است؟",
                         options: ["20 minutes", "30 minutes", "45 minutes", "60 minutes"],
-                        correct: 1,
+                        correct: 2,
                         page: 16,
                         section: "Rights and Responsibilities of Citizenship",
-                        book_text: "The citizenship test duration is 30 minutes."
+                        book_text: "The citizenship test duration is 45 minutes."
                     },
                     {
                         q: "How many questions are in the citizenship test?",
@@ -6964,7 +8119,19 @@
     </script>
     
     <!-- دکمه راهنما -->
-    <button class="help-btn" onclick="toggleHelpModal()" title="راهنمای استفاده">?</button>
+    <div style="position: fixed; bottom: 20px; left: 20px; z-index: 999;">
+        <button class="help-btn" onclick="toggleHelpMenu()" title="منو / Menu">⚙️</button>
+        <div class="help-menu" id="helpMenu">
+            <div class="help-menu-item" onclick="openHelpModal()">
+                <span class="help-menu-item-icon">📖</span>
+                <span>راهنما / Help</span>
+            </div>
+            <div class="help-menu-item" onclick="openSuggestions()">
+                <span class="help-menu-item-icon">💬</span>
+                <span>پیشنهادات / Suggestions</span>
+            </div>
+        </div>
+    </div>
     
     <!-- Modal راهنما -->
     <div class="help-modal" id="helpModal" onclick="closeHelpModal(event)">
@@ -6977,16 +8144,74 @@
         </div>
     </div>
     
+    <!-- Modal پیشنهادات -->
+    <div class="suggestions-modal" id="suggestionsModal" onclick="closeSuggestionsModal(event)">
+        <div class="suggestions-modal-content" onclick="event.stopPropagation()">
+            <button class="suggestions-modal-close" onclick="closeSuggestionsModal()">×</button>
+            <h3>💬 پیشنهادات و نظرات</h3>
+            <h3 style="font-size: 1.2em; margin-top: 5px; color: #7f8c8d; font-weight: 500;">Suggestions & Feedback</h3>
+            <p>
+                به این آدرس پیشنهاد خودتون رو ارسال کنید
+            </p>
+            <p style="direction: ltr; text-align: center; margin-top: 8px; color: #555;">
+                Send your suggestions to this email address
+            </p>
+            <div class="suggestions-email-box">
+                <span class="suggestions-email-label">ایمیل / Email</span>
+                <div class="suggestions-email-value">
+                    <a href="mailto:koroush.mog@gmail.com">koroush.mog@gmail.com</a>
+                </div>
+                <button class="suggestions-modal-copy-btn" onclick="copyToClipboard('koroush.mog@gmail.com', this)">
+                    کپی / Copy
+                </button>
+            </div>
+        </div>
+    </div>
+    
     <script>
-        function toggleHelpModal() {
+        function toggleHelpMenu() {
+            const menu = document.getElementById('helpMenu');
+            menu.classList.toggle('active');
+        }
+        
+        function openHelpModal() {
+            const menu = document.getElementById('helpMenu');
+            menu.classList.remove('active');
             const modal = document.getElementById('helpModal');
-            modal.classList.toggle('active');
+            modal.classList.add('active');
         }
         
         function closeHelpModal(event) {
             const modal = document.getElementById('helpModal');
             modal.classList.remove('active');
         }
+        
+        function openSuggestions() {
+            const menu = document.getElementById('helpMenu');
+            menu.classList.remove('active');
+            const modal = document.getElementById('suggestionsModal');
+            if (modal) {
+                modal.classList.add('active');
+            }
+        }
+        
+        function closeSuggestionsModal(event) {
+            const modal = document.getElementById('suggestionsModal');
+            if (modal) {
+                modal.classList.remove('active');
+            }
+        }
+        
+        // بستن منو با کلیک خارج از آن
+        document.addEventListener('click', function(event) {
+            const helpBtn = document.querySelector('.help-btn');
+            const helpMenu = document.getElementById('helpMenu');
+            if (helpMenu && helpMenu.classList.contains('active')) {
+                if (!helpBtn.contains(event.target) && !helpMenu.contains(event.target)) {
+                    helpMenu.classList.remove('active');
+                }
+            }
+        });
         
         function toggleBookSummary() {
             const content = document.getElementById('bookSummaryContent');
@@ -7002,6 +8227,51 @@
             const toggle = document.querySelector('.donation-toggle');
             content.classList.toggle('show');
             toggle.classList.toggle('expanded');
+        }
+        
+        function copyToClipboard(text, button) {
+            // حذف خط تیره از شماره تلفن برای کپی
+            const textToCopy = text.replace(/-/g, '');
+            
+            // استفاده از Clipboard API
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(textToCopy).then(function() {
+                    showCopySuccess(button);
+                }).catch(function(err) {
+                    fallbackCopyTextToClipboard(textToCopy, button);
+                });
+            } else {
+                fallbackCopyTextToClipboard(textToCopy, button);
+            }
+        }
+        
+        function fallbackCopyTextToClipboard(text, button) {
+            const textArea = document.createElement("textarea");
+            textArea.value = text;
+            textArea.style.position = "fixed";
+            textArea.style.left = "-999999px";
+            textArea.style.top = "-999999px";
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                showCopySuccess(button);
+            } catch (err) {
+                alert('خطا در کپی کردن / Copy failed');
+            }
+            document.body.removeChild(textArea);
+        }
+        
+        function showCopySuccess(button) {
+            const originalText = button.textContent;
+            button.textContent = '✓ کپی شد! / Copied!';
+            button.classList.add('copied');
+            
+            setTimeout(function() {
+                button.textContent = originalText;
+                button.classList.remove('copied');
+            }, 2000);
         }
         
     </script>
