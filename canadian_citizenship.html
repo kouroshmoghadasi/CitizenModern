@@ -90,6 +90,56 @@
             color: #1e3c72;
         }
         
+        .visitor-counter {
+            position: absolute;
+            top: 15px;
+            left: 20px;
+            padding: 8px 16px;
+            background: rgba(30, 60, 114, 0.9);
+            border: 2px solid #f1c40f;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            z-index: 10;
+        }
+        
+        .visitor-counter-text {
+            color: #f1c40f;
+            font-weight: 700;
+            font-size: 0.9em;
+            direction: rtl;
+            white-space: nowrap;
+        }
+        
+        .visitor-counter-number {
+            color: white;
+            font-weight: 700;
+            font-size: 1.1em;
+            direction: ltr;
+            min-width: 50px;
+            text-align: center;
+        }
+        
+        @media (max-width: 768px) {
+            .visitor-counter {
+                position: relative;
+                top: auto;
+                left: auto;
+                margin: 10px auto;
+                width: fit-content;
+            }
+            
+            .visitor-counter-text {
+                font-size: 0.85em;
+            }
+            
+            .visitor-counter-number {
+                font-size: 1em;
+            }
+        }
+        
         .right-sidebar {
             padding: 25px;
             background: linear-gradient(180deg, #ffffff 0%, #f8f9fa 100%);
@@ -2645,6 +2695,12 @@
 
         <div class="main-content">
             <div class="header">
+                <!-- Visitor Counter -->
+                <div class="visitor-counter">
+                    <span class="visitor-counter-text">👁️ بازدید / Visitors:</span>
+                    <span class="visitor-counter-number" id="visitorCount">100</span>
+                </div>
+                
                 <div class="header-carousel">
                     <!-- Slide 1: Test Title -->
                     <div class="header-slide active" id="slide0">
@@ -2937,6 +2993,101 @@
     </div>
 
     <script>
+        // Visitor Counter - Uses IndexedDB + localStorage (dual storage for maximum persistence)
+        // IndexedDB is more persistent than localStorage and survives cache clearing better
+        const DB_NAME = 'CitizenAppDB';
+        const DB_VERSION = 1;
+        const STORE_NAME = 'visitorCount';
+        
+        function openDB() {
+            return new Promise((resolve, reject) => {
+                const request = indexedDB.open(DB_NAME, DB_VERSION);
+                
+                request.onerror = () => reject(request.error);
+                request.onsuccess = () => resolve(request.result);
+                
+                request.onupgradeneeded = (event) => {
+                    const db = event.target.result;
+                    if (!db.objectStoreNames.contains(STORE_NAME)) {
+                        db.createObjectStore(STORE_NAME);
+                    }
+                };
+            });
+        }
+        
+        function getCountFromDB() {
+            return openDB().then(db => {
+                return new Promise((resolve, reject) => {
+                    const transaction = db.transaction([STORE_NAME], 'readonly');
+                    const store = transaction.objectStore(STORE_NAME);
+                    const request = store.get('count');
+                    
+                    request.onerror = () => reject(request.error);
+                    request.onsuccess = () => resolve(request.result);
+                });
+            });
+        }
+        
+        function saveCountToDB(count) {
+            return openDB().then(db => {
+                return new Promise((resolve, reject) => {
+                    const transaction = db.transaction([STORE_NAME], 'readwrite');
+                    const store = transaction.objectStore(STORE_NAME);
+                    const request = store.put(count, 'count');
+                    
+                    request.onerror = () => reject(request.error);
+                    request.onsuccess = () => resolve();
+                });
+            });
+        }
+        
+        async function updateVisitorCount() {
+            const storageKey = 'citizenAppVisitorCount';
+            const counterElement = document.getElementById('visitorCount');
+            let visitCount = null;
+            
+            // Try IndexedDB first (more persistent)
+            try {
+                const dbCount = await getCountFromDB();
+                if (dbCount !== undefined && dbCount !== null) {
+                    visitCount = parseInt(dbCount) + 1;
+                }
+            } catch (e) {
+                console.log('IndexedDB not available, trying localStorage');
+            }
+            
+            // Fallback to localStorage if IndexedDB failed
+            if (visitCount === null) {
+                const localCount = localStorage.getItem(storageKey);
+                if (localCount !== null && localCount !== '') {
+                    visitCount = parseInt(localCount) + 1;
+                } else {
+                    visitCount = 100; // Initial value
+                }
+            }
+            
+            // Save to both IndexedDB and localStorage (dual storage)
+            try {
+                await saveCountToDB(visitCount);
+                localStorage.setItem(storageKey, visitCount);
+            } catch (e) {
+                // If IndexedDB fails, at least save to localStorage
+                localStorage.setItem(storageKey, visitCount);
+            }
+            
+            // Update display
+            if (counterElement) {
+                counterElement.textContent = visitCount.toLocaleString('en-US');
+            }
+            
+            return visitCount;
+        }
+        
+        // Initialize visitor counter when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            updateVisitorCount();
+        });
+        
         // Header Carousel Functionality - Simple Version
         let currentSlide = 0;
         const totalSlides = 1; // Only showing slide 1 (ad slide is hidden)
