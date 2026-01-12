@@ -2317,7 +2317,7 @@
                 gap: 20px;
             }
         }
-        
+
         @media (max-width: 968px) {
             .ads-section {
                 padding: 0 10px;
@@ -2648,12 +2648,12 @@
                 <div class="header-carousel">
                     <!-- Slide 1: Test Title -->
                     <div class="header-slide active" id="slide0">
-                        <h1>🇨🇦 آزمون تمرینی شهروندی کانادا</h1>
-                        <p>Canadian Citizenship Practice Test</p>
+                <h1>🇨🇦 آزمون تمرینی شهروندی کانادا</h1>
+                <p>Canadian Citizenship Practice Test</p>
                     </div>
                     
-                    <!-- Slide 2: Advertisement Opportunity -->
-                    <div class="header-slide" id="slide1">
+                    <!-- Slide 2: Advertisement Opportunity (Temporarily hidden) -->
+                    <div class="header-slide" id="slide1" style="display: none;">
                         <div class="header-slide-content">
                             <h2>📢 تبلیغ کسب و کار خود را اینجا قرار دهید</h2>
                             <p style="direction: rtl;">
@@ -2662,7 +2662,7 @@
                         </div>
                     </div>
                     
-                    <div class="header-carousel-indicators">
+                    <div class="header-carousel-indicators" style="display: none;">
                         <div class="header-indicator active" onclick="goToSlide(0)"></div>
                         <div class="header-indicator" onclick="goToSlide(1)"></div>
                     </div>
@@ -2844,7 +2844,7 @@
                 
                 <!-- More ads can be added here easily -->
             </div>
-        </div>
+            </div>
             
             <div class="app-footer">
                 <p>
@@ -2892,21 +2892,21 @@
                                 <span class="contact-value">
                                     <a href="mailto:koroush.mog@gmail.com">koroush.mog@gmail.com</a>
                                 </span>
-                            </div>
+            </div>
                             <button class="copy-btn" onclick="copyToClipboard('koroush.mog@gmail.com', this)">کپی / Copy</button>
-                        </div>
-                        
+        </div>
+        
                         <div class="contact-item">
                             <div class="contact-content">
                                 <span class="contact-label">موبایل / Mobile</span>
                                 <span class="contact-value">
                                     <a href="tel:5144767079">514-476-7079</a>
                                 </span>
-                            </div>
-                            <button class="copy-btn" onclick="copyToClipboard('514-476-7079', this)">کپی / Copy</button>
-                        </div>
                     </div>
-                </div>
+                            <button class="copy-btn" onclick="copyToClipboard('514-476-7079', this)">کپی / Copy</button>
+                    </div>
+                        </div>
+                        </div>
                 
                 <div class="payment-methods">
                     <p>
@@ -2919,9 +2919,9 @@
                     <p style="direction: ltr; margin-top: 8px;">
                         Other methods: Contact via email for other payment options
                     </p>
+                    </div>
                 </div>
             </div>
-        </div>
             
             <!-- بخش ثبت تبلیغ -->
             <div class="ad-registration-section">
@@ -2939,7 +2939,7 @@
     <script>
         // Header Carousel Functionality - Simple Version
         let currentSlide = 0;
-        const totalSlides = 2;
+        const totalSlides = 1; // Only showing slide 1 (ad slide is hidden)
         let carouselInterval;
         
         function goToSlide(slideIndex) {
