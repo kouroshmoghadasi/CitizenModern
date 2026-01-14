@@ -92,23 +92,24 @@
         
         .visitor-counter {
             position: absolute;
-            top: 15px;
+            top: 10px;
             left: 20px;
-            padding: 8px 16px;
+            padding: 6px 12px;
             background: rgba(30, 60, 114, 0.9);
             border: 2px solid #f1c40f;
-            border-radius: 8px;
+            border-radius: 6px;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
             z-index: 10;
+            transition: all 0.3s ease;
         }
         
         .visitor-counter-text {
             color: #f1c40f;
             font-weight: 700;
-            font-size: 0.9em;
+            font-size: 0.85em;
             direction: rtl;
             white-space: nowrap;
         }
@@ -116,19 +117,19 @@
         .visitor-counter-number {
             color: white;
             font-weight: 700;
-            font-size: 1.1em;
+            font-size: 1em;
             direction: ltr;
-            min-width: 50px;
+            min-width: 45px;
             text-align: center;
         }
         
-        @media (max-width: 768px) {
+        /* Tablet Styles (768px - 1200px) */
+        @media (max-width: 1200px) and (min-width: 769px) {
             .visitor-counter {
-                position: relative;
-                top: auto;
-                left: auto;
-                margin: 10px auto;
-                width: fit-content;
+                top: 12px;
+                left: 15px;
+                padding: 7px 14px;
+                gap: 6px;
             }
             
             .visitor-counter-text {
@@ -137,6 +138,83 @@
             
             .visitor-counter-number {
                 font-size: 1em;
+                min-width: 45px;
+            }
+        }
+        
+        /* Mobile Large (600px - 768px) */
+        @media (max-width: 768px) {
+            .header-carousel {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .visitor-counter {
+                position: relative;
+                top: auto;
+                left: auto;
+                margin: 0 auto 10px auto;
+                width: fit-content;
+                padding: 8px 14px;
+                gap: 6px;
+                order: -1;
+            }
+            
+            .visitor-counter-text {
+                font-size: 0.8em;
+            }
+            
+            .visitor-counter-number {
+                font-size: 0.95em;
+                min-width: 40px;
+            }
+            
+            .header-slide {
+                width: 100%;
+            }
+        }
+        
+        /* Mobile Small (up to 600px) */
+        @media (max-width: 600px) {
+            .visitor-counter {
+                position: relative;
+                top: auto;
+                left: auto;
+                margin: 8px auto;
+                padding: 6px 12px;
+                gap: 5px;
+                border-width: 1.5px;
+            }
+            
+            .visitor-counter-text {
+                font-size: 0.85em;
+                font-weight: 700;
+            }
+            
+            .visitor-counter-number {
+                font-size: 1em;
+                min-width: 40px;
+                font-weight: 700;
+            }
+        }
+        
+        /* Very Small Mobile (up to 400px) */
+        @media (max-width: 400px) {
+            .visitor-counter {
+                padding: 4px 8px;
+                gap: 3px;
+                margin: 5px auto;
+            }
+            
+            .visitor-counter-text {
+                font-size: 0.8em;
+                font-weight: 700;
+            }
+            
+            .visitor-counter-number {
+                font-size: 0.95em;
+                min-width: 35px;
+                font-weight: 700;
             }
         }
         
@@ -183,6 +261,20 @@
         .ad-registration-section {
             margin-top: 24px;
             direction: rtl;
+        }
+        
+        .ad-registration-section.mobile-version {
+            display: none;
+        }
+        
+        .mobile-sidebar-sections {
+            display: none;
+        }
+        
+        .book-link-section.mobile-version,
+        .book-summary-section.mobile-version,
+        .donation-section.mobile-version {
+            display: none;
         }
         
         .ad-registration-toggle {
@@ -863,9 +955,13 @@
         .header-carousel {
             position: relative;
             width: 100%;
-            min-height: 80px;
-            padding: 20px 30px;
+            min-height: 60px;
+            padding: 12px 30px;
             z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
         
         .header-slide {
@@ -874,6 +970,7 @@
             color: white;
             position: relative;
             z-index: 3;
+            width: 100%;
         }
         
         .header-slide.active {
@@ -882,19 +979,21 @@
         }
         
         .header-slide h1 {
-            font-size: 1.8em;
+            font-size: 1.5em;
             font-weight: 700;
-            margin-bottom: 8px;
-            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            margin-bottom: 4px;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
             color: white;
+            line-height: 1.2;
         }
         
         .header-slide p {
-            font-size: 1.1em;
-            opacity: 0.95;
-            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+            font-size: 0.95em;
+            font-weight: 500;
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
             color: white;
-            margin: 5px 0;
+            margin: 2px 0 0 0;
+            line-height: 1.3;
         }
         
         .header-slide-content {
@@ -1395,6 +1494,28 @@
         }
         
         @media (max-width: 768px) {
+            .header-carousel {
+                min-height: 65px;
+                padding: 12px 15px;
+            }
+            
+            .header-slide h1 {
+                font-size: 1.3em;
+                margin-bottom: 5px;
+            }
+            
+            .header-slide p {
+                font-size: 0.9em;
+            }
+            
+            .header-slide-content h2 {
+                font-size: 1.1em;
+            }
+            
+            .header-slide-content p {
+                font-size: 0.85em;
+            }
+            
             .question-nav-bar {
                 flex-wrap: wrap;
                 gap: 10px;
@@ -1424,6 +1545,14 @@
             flex-direction: column;
             align-items: stretch;
             gap: 15px;
+        }
+        
+        .test-navigator-mobile {
+            display: none;
+        }
+        
+        .stats-mobile {
+            display: none;
         }
 
         .test-nav-btn {
@@ -2362,6 +2491,27 @@
 
         /* Responsive Design for Ads Grid */
         @media (max-width: 1200px) {
+            .header-carousel {
+                min-height: 75px;
+                padding: 18px 25px;
+            }
+            
+            .header-slide h1 {
+                font-size: 1.6em;
+            }
+            
+            .header-slide p {
+                font-size: 1.05em;
+            }
+            
+            .header-slide-content h2 {
+                font-size: 1.4em;
+            }
+            
+            .header-slide-content p {
+                font-size: 0.95em;
+            }
+            
             .ads-grid {
                 grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
                 gap: 20px;
@@ -2369,8 +2519,52 @@
         }
 
         @media (max-width: 968px) {
+            .container {
+                flex-direction: column;
+                border-radius: 0;
+                margin: 0;
+                min-height: 100vh;
+                box-shadow: none;
+            }
+            
+            .main-content {
+                width: 100%;
+                padding: 0;
+            }
+            
+            .right-sidebar {
+                display: none;
+            }
+            
+            .test-selector {
+                display: none;
+            }
+            
+            .test-navigator {
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 10px;
+            }
+            
+            .test-nav-btn {
+                flex: 1;
+                min-width: 120px;
+                padding: 10px 15px;
+            }
+            
+            .test-input-container {
+                flex-direction: row;
+                width: auto;
+                flex: 1;
+            }
+            
+            .test-input-row {
+                flex: 1;
+            }
+            
             .ads-section {
-                padding: 0 10px;
+                padding: 0 15px;
                 margin: 30px 0;
             }
             
@@ -2395,126 +2589,582 @@
             .ad-tile-business-name {
                 font-size: 1.2em;
             }
-            .container {
-                flex-direction: column;
-            }
-            
-            .right-sidebar {
-                width: 100%;
-                min-width: 100%;
-                position: relative;
-                border-right: none;
-                border-top: 5px solid #1e3c72;
-                order: -1;
-            }
-            
-            .test-selector {
-                width: 100%;
-                min-width: 100%;
-                height: auto;
-                position: sticky;
-                top: 0;
-                border-left: none;
-                border-top: 3px solid #1e3c72;
-                border-radius: 0;
-            }
-            
-            .test-navigator {
-                flex-direction: row;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            
-            .test-nav-btn {
-                flex: 1;
-                min-width: 120px;
-            }
-            
-            .test-input-container {
-                flex-direction: row;
-                width: auto;
-                flex: 1;
-            }
-            
-            .test-input-row {
-                flex: 1;
-            }
         }
         
         @media (max-width: 768px) {
+            .container {
+                border-radius: 0;
+                margin: 0;
+            }
+            
+            .main-content {
+                padding: 0;
+            }
+            
+            .header {
+                padding: 0;
+                position: relative;
+                margin-bottom: 0;
+            }
+            
+            .visitor-counter {
+                position: absolute;
+                top: 10px;
+                left: 50%;
+                transform: translateX(-50%);
+                margin: 0;
+                width: fit-content;
+                padding: 6px 12px;
+                gap: 5px;
+                display: flex;
+                z-index: 15;
+            }
+            
+            .header-carousel {
+                min-height: 65px;
+                padding: 12px 15px;
+                padding-top: 50px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            
             .header-slide {
-                padding: 20px 20px;
-                min-height: 100px;
+                padding: 0;
+                min-height: auto;
+                width: 100%;
             }
             
             .header-slide h1 {
-                font-size: 1.5em;
+                font-size: 1.3em;
+                margin-bottom: 4px;
+                font-weight: 700;
+                text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
             }
             
             .header-slide p {
-                font-size: 1em;
+                font-size: 0.9em;
+                font-weight: 500;
+                text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
             }
             
             .header-slide-content h2 {
-                font-size: 1.4em;
+                font-size: 1.3em;
+                margin-bottom: 10px;
+                font-weight: 700;
             }
             
             .header-slide-content p {
-                font-size: 0.95em;
+                font-size: 0.9em;
+                line-height: 1.6;
+            }
+            
+            #testContainer {
+                padding: 10px;
+            }
+            
+            .question-nav-bar {
+                flex-direction: row;
+                flex-wrap: nowrap;
+                gap: 2px;
+                padding: 3px 4px;
+                margin-bottom: 4px;
+                border-radius: 4px;
+            }
+            
+            .question-nav-bar > div:first-child {
+                width: auto;
+                display: flex;
+                justify-content: flex-start;
+                order: 1;
+                gap: 2px;
+                flex: 0 0 auto;
+            }
+            
+            .question-nav-bar > div:last-child {
+                width: auto;
+                display: flex;
+                justify-content: flex-end;
+                order: 3;
+                gap: 2px;
+                flex: 0 0 auto;
+            }
+            
+            .question-nav-bar > div:nth-child(2) {
+                flex: 1;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                order: 2;
+                margin: 0;
+                gap: 3px;
+            }
+            
+            .question-nav-bar button {
+                flex: 0 0 auto;
+                min-width: 48px;
+                padding: 4px 8px;
+                font-size: 0.8em;
+                font-weight: 700;
+                border-radius: 3px;
+                min-height: 30px;
+                white-space: nowrap;
+            }
+            
+            .question-nav-bar > div:nth-child(2) > div:first-child {
+                font-size: 0.85em;
+                white-space: nowrap;
+                font-weight: 600;
+            }
+            
+            .question-nav-bar #questionNumberDisplay {
+                font-size: 0.85em;
+                padding: 2px 8px;
+                white-space: nowrap;
+                font-weight: 700;
+            }
+            
+            #questionCard {
+                padding: 14px;
+                margin-bottom: 12px;
+                border-radius: 10px;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
             }
 
             .question-text {
-                font-size: 1em;
+                font-size: 1.15em;
+                line-height: 1.7;
+                margin-bottom: 18px;
+                color: #1e3c72;
+                font-weight: 700;
+            }
+            
+            .option {
+                padding: 14px 16px;
+                margin-bottom: 12px;
+                font-size: 1.05em;
+                border-radius: 8px;
+                min-height: 50px;
+                display: flex;
+                align-items: center;
+                cursor: pointer;
+                transition: all 0.2s ease;
+            }
+            
+            .option:hover {
+                transform: translateY(-1px);
+                box-shadow: 0 4px 12px rgba(30, 60, 114, 0.15);
+            }
+            
+            .option.selected {
+                border-width: 2.5px;
             }
             
             .help-btn {
-                width: 45px;
-                height: 45px;
-                font-size: 20px;
-                bottom: 15px;
-                left: 15px;
+                width: 50px;
+                height: 50px;
+                font-size: 22px;
+                bottom: 20px;
+                left: 20px;
+                border-radius: 50%;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
             }
             
             .help-menu {
-                bottom: 70px;
-                left: 15px;
-                min-width: 200px;
+                bottom: 80px;
+                left: 20px;
+                min-width: 220px;
+                border-radius: 12px;
+            }
+            
+            .help-menu-item {
+                padding: 14px 18px;
+                font-size: 0.95em;
             }
             
             .contact-item {
-                padding: 14px;
+                padding: 16px;
             }
             
             .donation-section {
                 margin-bottom: 15px;
+                padding: 18px;
             }
             
             .suggestions-modal-content {
-                padding: 30px 25px;
-                max-width: 90%;
+                padding: 25px 20px;
+                max-width: 95%;
+                margin: 10px;
+                border-radius: 16px;
             }
             
             .suggestions-modal-content h3 {
                 font-size: 1.5em;
+                margin-bottom: 15px;
+            }
+            
+            .right-sidebar .book-summary-section,
+            .right-sidebar .donation-section,
+            .right-sidebar .ad-registration-section {
+                display: none;
+            }
+            
+            .test-selector .book-link {
+                display: none;
+            }
+            
+            .test-navigator-mobile {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+                gap: 4px;
+                margin: 6px 8px;
+                padding: 4px 6px;
+                background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+                border-radius: 6px;
+                box-shadow: 0 2px 4px rgba(30, 60, 114, 0.12);
+                border: 2px solid #1e3c72;
+            }
+            
+            .test-nav-btn-mobile {
+                padding: 4px 10px;
+                font-size: 0.8em;
+                font-weight: 700;
+                border-radius: 5px;
+                min-width: 36px;
+                min-height: 28px;
+                border: none;
+                cursor: pointer;
+                transition: all 0.2s ease;
+                flex-shrink: 0;
+                box-shadow: 0 1px 3px rgba(30, 60, 114, 0.2);
+            }
+            
+            .test-nav-btn-mobile.prev {
+                background: linear-gradient(135deg, #34495e 0%, #2c3e50 100%);
+                color: white;
+            }
+            
+            .test-nav-btn-mobile.next {
+                background: linear-gradient(135deg, #1e3c72 0%, #2c5282 100%);
+                color: white;
+            }
+            
+            .test-nav-btn-mobile:active:not(:disabled) {
+                transform: scale(0.95);
+            }
+            
+            .test-nav-btn-mobile:disabled {
+                opacity: 0.5;
+                cursor: not-allowed;
+            }
+            
+            .test-input-row-mobile {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 3px;
+                flex: 1;
+            }
+            
+            .test-label-mobile {
+                color: #1e3c72;
+                font-weight: 700;
+                font-size: 0.85em;
+                margin: 0;
+                line-height: 1.2;
+                white-space: nowrap;
+                letter-spacing: 0.3px;
+            }
+            
+            .test-number-input-mobile {
+                width: 38px;
+                padding: 4px 5px;
+                border: 2px solid #1e3c72;
+                border-radius: 4px;
+                font-size: 0.8em;
+                font-weight: 700;
+                text-align: center;
+                color: #1e3c72;
+                background: white;
+            }
+            
+            .test-total-mobile {
+                font-size: 0.75em;
+                color: #7f8c8d;
+                font-weight: 600;
+            }
+            
+            .stats-mobile {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-around;
+                gap: 8px;
+                margin: 6px 8px;
+                padding: 5px 8px;
+                background: linear-gradient(135deg, rgba(30, 60, 114, 0.1) 0%, rgba(30, 60, 114, 0.05) 100%);
+                border-radius: 6px;
+                box-shadow: 0 2px 6px rgba(30, 60, 114, 0.15);
+                border: 1.5px solid rgba(30, 60, 114, 0.25);
+            }
+            
+            .stats-mobile-item {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 4px;
+                flex: 1;
+            }
+            
+            .stats-mobile-icon {
+                font-size: 0.8em;
+                filter: drop-shadow(0 1px 2px rgba(30, 60, 114, 0.2));
+            }
+            
+            .stats-mobile-label {
+                font-size: 0.75em;
+                font-weight: 700;
+            }
+            
+            .stats-mobile .timer {
+                font-size: 0.75em;
+                font-weight: 700;
+                color: #1e3c72;
+                direction: ltr;
+                white-space: nowrap;
+            }
+            
+            .stats-mobile .counter-value {
+                font-size: 0.75em;
+                font-weight: 700;
+                color: #1e3c72;
+                min-width: 18px;
+                text-align: center;
+            }
+            
+            .stats-mobile .timer.warning {
+                color: #ffc107;
+            }
+            
+            .stats-mobile .timer.danger {
+                color: #dc3545;
+            }
+            
+            .mobile-sidebar-sections {
+                display: block;
+                margin: 12px 8px;
+            }
+            
+            .book-link-section.mobile-version,
+            .book-summary-section.mobile-version,
+            .donation-section.mobile-version,
+            .ad-registration-section.mobile-version {
+                display: block;
+                margin-bottom: 4px;
+                direction: rtl;
+            }
+            
+            .donation-section.mobile-version {
+                margin-bottom: 8px !important;
+            }
+            
+            .book-link {
+                padding: 12px 14px;
+                font-size: 0.95em;
+                border-radius: 8px;
+                box-shadow: 0 2px 8px rgba(30, 60, 114, 0.2);
+                transition: all 0.2s ease;
+                font-weight: 600;
+                min-height: 48px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .book-link:active {
+                transform: scale(0.98);
+            }
+            
+            .book-summary-toggle {
+                padding: 12px 14px;
+                border-radius: 8px;
+                border-width: 2px;
+                gap: 10px;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                transition: all 0.2s ease;
+                box-shadow: 0 2px 8px rgba(30, 60, 114, 0.25);
+                min-height: 48px;
+            }
+            
+            .book-summary-toggle:active {
+                transform: scale(0.97);
+                box-shadow: 0 1px 5px rgba(30, 60, 114, 0.3);
+            }
+            
+            .book-summary-toggle h3 {
+                font-size: 0.95em;
+                margin: 0;
+                line-height: 1.5;
+                text-align: right;
+                flex: 1;
+                color: white;
+                font-weight: 700;
+                letter-spacing: 0.3px;
+            }
+            
+            .book-summary-toggle h3:first-child {
+                margin-bottom: 4px;
+                font-size: 1em;
+            }
+            
+            .book-summary-toggle h3:last-child {
+                font-size: 0.85em;
+                opacity: 0.95;
+                margin-top: 3px;
+                font-weight: 600;
+            }
+            
+            .book-summary-link-icon {
+                font-size: 1.5em;
+                margin: 0;
+                flex-shrink: 0;
+                color: #f1c40f;
+                filter: drop-shadow(0 1px 3px rgba(241, 196, 15, 0.4));
+            }
+            
+            .donation-toggle {
+                padding: 12px 14px;
+                border-radius: 8px;
+                transition: all 0.2s ease;
+                min-height: 48px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+            
+            .donation-toggle:active {
+                transform: scale(0.98);
+            }
+            
+            .donation-toggle h3 {
+                font-size: 0.95em;
+                margin: 0;
+                font-weight: 700;
+            }
+            
+            .donation-content {
+                padding: 12px;
+                font-size: 0.9em;
+                border-radius: 6px;
+                margin-top: 10px;
+            }
+            
+            .donation-content p {
+                margin: 8px 0;
+                line-height: 1.6;
+                font-weight: 500;
+            }
+            
+            .contact-item {
+                padding: 8px;
+                margin-bottom: 8px;
+                border-radius: 6px;
+            }
+            
+            .contact-label {
+                font-size: 0.75em;
+            }
+            
+            .contact-value {
+                font-size: 0.8em;
+            }
+            
+            .copy-btn {
+                padding: 6px 12px;
+                font-size: 0.75em;
+                border-radius: 5px;
+            }
+            
+            .payment-methods {
+                padding: 10px;
+                margin-top: 10px;
+                font-size: 0.8em;
+                border-radius: 6px;
+            }
+            
+            .payment-methods p {
+                margin: 4px 0;
+                line-height: 1.4;
+            }
+            
+            .ad-registration-toggle {
+                padding: 12px 14px;
+                border-radius: 8px;
+                gap: 8px;
+                border-width: 2px;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                transition: all 0.2s ease;
+                box-shadow: 0 2px 6px rgba(30, 60, 114, 0.2);
+                min-height: 48px;
+            }
+            
+            .ad-registration-toggle:active {
+                transform: scale(0.97);
+                box-shadow: 0 1px 4px rgba(30, 60, 114, 0.3);
+            }
+            
+            .ad-registration-toggle > span:first-child {
+                font-size: 1.2em;
+                flex-shrink: 0;
+                order: 3;
+            }
+            
+            .ad-registration-toggle h3 {
+                font-size: 0.95em;
+                margin: 0;
+                line-height: 1.4;
+                text-align: right;
+                flex: 1;
+                order: 1;
+                font-weight: 700;
+            }
+            
+            .ad-registration-toggle .ad-registration-phone {
+                margin-top: 0;
+                order: 2;
+                flex: 0 0 auto;
+            }
+            
+            .ad-registration-phone a {
+                font-size: 1em;
+                font-weight: 700;
             }
             
             .ads-section {
                 padding: 0 10px;
-                margin: 25px 0;
+                margin: 18px 0;
             }
             
             .ads-section-title {
                 font-size: 1.5em;
-                margin-bottom: 15px;
+                margin-bottom: 14px;
+                font-weight: 700;
             }
             
             .ads-grid {
-                grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-                gap: 15px;
+                grid-template-columns: 1fr;
+                gap: 14px;
             }
             
             .ad-tile {
-                padding: 15px;
+                padding: 16px;
+                border-radius: 10px;
             }
             
             .ad-tile-icon {
@@ -2522,47 +3172,212 @@
             }
             
             .ad-tile-business-name {
-                font-size: 1.1em;
+                font-size: 1.15em;
+                font-weight: 700;
+            }
+            
+            .ad-tile-category {
+                font-size: 1.05em;
+                font-weight: 600;
+            }
+            
+            .ad-tile-body {
+                font-size: 0.95em;
+                line-height: 1.6;
+            }
+            
+            .ad-tile-info-item {
+                font-size: 0.9em;
+            }
+            
+            .app-footer {
+                padding: 15px 12px;
+                font-size: 0.95em;
+                line-height: 1.7;
+                font-weight: 500;
+            }
+            
+            .results {
+                padding: 20px 16px;
+                margin: 14px 12px;
+                border-radius: 10px;
+            }
+            
+            .results h2 {
+                font-size: 1.6em;
+                margin-bottom: 18px;
+                font-weight: 700;
+            }
+            
+            .score {
+                font-size: 2.8em;
+                margin: 18px 0;
+                font-weight: 700;
+            }
+            
+            .submit-btn {
+                padding: 12px 24px;
+                font-size: 1em;
+                min-height: 50px;
+                border-radius: 8px;
+                font-weight: 700;
             }
         }
         
         @media (max-width: 600px) {
-            .header-slide {
-                padding: 14px 12px;
+            .container {
+                border-radius: 0;
+            }
+            
+            .test-selector {
+                padding: 15px 12px;
+            }
+            
+            .test-selector h3 {
+                font-size: 1.1em;
+                margin-bottom: 15px;
+            }
+            
+            .right-sidebar {
+                padding: 15px 12px;
+            }
+            
+            .visitor-counter {
+                position: absolute;
+                top: 8px;
+                left: 50%;
+                transform: translateX(-50%);
+                margin: 0;
+                padding: 6px 12px;
+                gap: 5px;
+                z-index: 15;
+            }
+            
+            .visitor-counter-text {
+                font-size: 0.8em;
+                font-weight: 700;
+            }
+            
+            .visitor-counter-number {
+                font-size: 0.95em;
+                font-weight: 700;
+            }
+            
+            .header-carousel {
                 min-height: 60px;
+                padding: 10px 12px;
+                padding-top: 45px;
+            }
+            
+            .header-slide {
+                padding: 0;
+                min-height: auto;
             }
             
             .header-slide h1 {
-                font-size: 1.2em;
-                margin-bottom: 4px;
+                font-size: 1.4em;
+                margin-bottom: 5px;
+                font-weight: 700;
+                text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
             }
             
             .header-slide p {
-                font-size: 0.85em;
+                font-size: 1em;
+                font-weight: 600;
+                text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
             }
             
             .header-slide-content h2 {
-                font-size: 1.1em;
-                margin-bottom: 6px;
+                font-size: 1.3em;
+                margin-bottom: 10px;
+                font-weight: 700;
             }
             
             .header-slide-content p {
-                font-size: 0.8em;
-                line-height: 1.4;
+                font-size: 0.95em;
+                line-height: 1.6;
+                font-weight: 500;
             }
             
             .header-carousel-indicators {
-                bottom: 10px;
-                gap: 8px;
+                bottom: 8px;
+                gap: 6px;
             }
             
             .header-indicator {
-                width: 8px;
-                height: 8px;
+                width: 7px;
+                height: 7px;
             }
             
             .header-indicator.active {
-                width: 24px;
+                width: 20px;
+            }
+            
+            #testContainer {
+                padding: 8px;
+            }
+            
+            .question-nav-bar {
+                flex-wrap: nowrap;
+                padding: 2px 3px;
+                gap: 2px;
+                margin-bottom: 4px;
+            }
+            
+            .question-nav-bar > div:first-child {
+                flex: 0 0 auto;
+                gap: 2px;
+            }
+            
+            .question-nav-bar > div:last-child {
+                flex: 0 0 auto;
+                gap: 2px;
+            }
+            
+            .question-nav-bar > div:nth-child(2) {
+                flex: 1;
+                margin: 0;
+                gap: 2px;
+            }
+            
+            .question-nav-bar button {
+                padding: 3px 6px;
+                font-size: 0.75em;
+                min-height: 28px;
+                min-width: 45px;
+                font-weight: 700;
+            }
+            
+            .question-nav-bar > div:nth-child(2) > div:first-child {
+                font-size: 0.8em;
+                font-weight: 600;
+            }
+            
+            .question-nav-bar #questionNumberDisplay {
+                font-size: 0.8em;
+                padding: 2px 6px;
+                font-weight: 700;
+            }
+            
+            #questionCard {
+                padding: 12px;
+                border-radius: 10px;
+            }
+            
+            .question-text {
+                font-size: 1.1em;
+                margin-bottom: 15px;
+                line-height: 1.7;
+                font-weight: 700;
+            }
+            
+            .option {
+                padding: 12px 14px;
+                margin-bottom: 10px;
+                font-size: 1em;
+                min-height: 48px;
+                border-radius: 8px;
+                font-weight: 500;
             }
             
             .help-btn {
@@ -2580,63 +3395,244 @@
             }
             
             .help-menu-item {
-                padding: 14px 18px;
-                font-size: 0.9em;
+                padding: 12px 15px;
+                font-size: 0.85em;
+            }
+            
+            .contact-item {
+                padding: 12px;
             }
             
             .contact-value {
-                font-size: 1.05em;
+                font-size: 1em;
+            }
+            
+            .donation-section {
+                padding: 12px;
             }
             
             .suggestions-modal-content {
-                padding: 25px 20px;
-                border-radius: 16px;
+                padding: 20px 15px;
+                border-radius: 12px;
+                max-width: 98%;
             }
             
             .suggestions-modal-content h3 {
-                font-size: 1.3em;
+                font-size: 1.2em;
             }
             
             .suggestions-modal-content p {
-                font-size: 0.95em;
+                font-size: 0.9em;
             }
             
             .suggestions-modal-copy-btn {
-                padding: 10px 20px;
-                font-size: 0.95em;
-                max-width: 100%;
+                padding: 10px 18px;
+                font-size: 0.9em;
             }
             
             .suggestions-email-value {
-                font-size: 1.1em;
+                font-size: 1em;
+            }
+            
+            .right-sidebar .book-summary-section,
+            .right-sidebar .donation-section,
+            .right-sidebar .ad-registration-section {
+                display: none;
+            }
+            
+            .test-selector .book-link {
+                display: none;
+            }
+            
+            .mobile-sidebar-sections {
+                display: block;
+                margin: 10px 6px;
+            }
+            
+            .book-link-section.mobile-version,
+            .book-summary-section.mobile-version,
+            .donation-section.mobile-version,
+            .ad-registration-section.mobile-version {
+                display: block;
+                margin-bottom: 4px;
+                direction: rtl;
+            }
+            
+            .donation-section.mobile-version {
+                margin-bottom: 8px !important;
+            }
+            
+            .book-link {
+                padding: 10px 12px;
+                font-size: 0.9em;
+                border-radius: 7px;
+                min-height: 44px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .book-summary-toggle {
+                padding: 10px 12px;
+                border-radius: 7px;
+                border-width: 2px;
+                gap: 8px;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                min-height: 44px;
+            }
+            
+            .book-summary-toggle h3 {
+                font-size: 0.9em;
+                margin: 0;
+                line-height: 1.4;
+                text-align: right;
+                flex: 1;
+                color: white;
+                font-weight: 700;
+            }
+            
+            .book-summary-toggle h3:first-child {
+                margin-bottom: 3px;
+                font-size: 0.95em;
+            }
+            
+            .book-summary-toggle h3:last-child {
+                font-size: 0.8em;
+                opacity: 0.95;
+                margin-top: 3px;
+                font-weight: 600;
+            }
+            
+            .book-summary-link-icon {
+                font-size: 1.4em;
+                margin: 0;
+                flex-shrink: 0;
+                color: #f1c40f;
+            }
+            
+            .donation-toggle {
+                padding: 10px 12px;
+                border-radius: 7px;
+                min-height: 44px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+            
+            .donation-toggle h3 {
+                font-size: 0.9em;
+                margin: 0;
+                font-weight: 700;
+            }
+            
+            .donation-content {
+                padding: 10px;
+                font-size: 0.85em;
+                border-radius: 5px;
+            }
+            
+            .donation-content p {
+                margin: 7px 0;
+                line-height: 1.5;
+                font-weight: 500;
+            }
+            
+            .contact-item {
+                padding: 6px;
+                margin-bottom: 6px;
+            }
+            
+            .contact-label {
+                font-size: 0.7em;
+            }
+            
+            .contact-value {
+                font-size: 0.75em;
+            }
+            
+            .copy-btn {
+                padding: 5px 10px;
+                font-size: 0.7em;
+            }
+            
+            .payment-methods {
+                padding: 8px;
+                margin-top: 8px;
+                font-size: 0.75em;
+            }
+            
+            .payment-methods p {
+                margin: 3px 0;
+                line-height: 1.3;
+            }
+            
+            .ad-registration-toggle {
+                padding: 10px 12px;
+                border-radius: 7px;
+                gap: 8px;
+                border-width: 2px;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                min-height: 44px;
+            }
+            
+            .ad-registration-toggle > span:first-child {
+                font-size: 1.2em;
+                flex-shrink: 0;
+                order: 3;
+            }
+            
+            .ad-registration-toggle h3 {
+                font-size: 0.9em;
+                margin: 0;
+                line-height: 1.4;
+                text-align: right;
+                flex: 1;
+                order: 1;
+                font-weight: 700;
+            }
+            
+            .ad-registration-toggle .ad-registration-phone {
+                margin-top: 0;
+                order: 2;
+                flex: 0 0 auto;
+            }
+            
+            .ad-registration-phone a {
+                font-size: 0.95em;
+                font-weight: 700;
             }
             
             .ads-section {
-                padding: 0 8px;
-                margin: 20px 0;
+                padding: 0 12px;
+                margin: 15px 0;
             }
             
             .ads-section-title {
-                font-size: 1.3em;
-                margin-bottom: 12px;
+                font-size: 1.4em;
+                margin-bottom: 14px;
+                font-weight: 700;
             }
             
             .ads-section-title-en {
-                font-size: 1em;
+                font-size: 0.9em;
             }
             
             .ads-grid {
                 grid-template-columns: 1fr;
-                gap: 15px;
+                gap: 12px;
             }
             
             .ad-tile {
-                padding: 15px;
+                padding: 12px;
             }
             
             .ad-tile-header {
-                gap: 10px;
-                margin-bottom: 12px;
+                gap: 8px;
+                margin-bottom: 10px;
             }
             
             .ad-tile-icon {
@@ -2644,11 +3640,319 @@
             }
             
             .ad-tile-business-name {
-                font-size: 1.05em;
+                font-size: 1em;
+            }
+            
+            .ad-tile-body {
+                font-size: 0.85em;
             }
             
             .ad-tile-info-item {
                 font-size: 0.85em;
+            }
+            
+            .app-footer {
+                padding: 15px 12px;
+                font-size: 0.8em;
+            }
+            
+            .results {
+                padding: 15px 12px;
+                margin: 12px;
+            }
+            
+            .results h2 {
+                font-size: 1.3em;
+            }
+            
+            .score {
+                font-size: 2em;
+            }
+            
+            .submit-btn {
+                padding: 10px 20px;
+                font-size: 0.9em;
+            }
+        }
+        
+        /* Very Small Mobile (up to 400px) */
+        @media (max-width: 400px) {
+            .test-selector {
+                padding: 12px 10px;
+            }
+            
+            .right-sidebar {
+                padding: 12px 10px;
+            }
+            
+            .right-sidebar .book-summary-section,
+            .right-sidebar .donation-section,
+            .right-sidebar .ad-registration-section {
+                display: none;
+            }
+            
+            .test-selector .book-link {
+                display: none;
+            }
+            
+            .mobile-sidebar-sections {
+                display: block;
+                margin: 8px 4px;
+            }
+            
+            .book-link-section.mobile-version,
+            .book-summary-section.mobile-version,
+            .donation-section.mobile-version,
+            .ad-registration-section.mobile-version {
+                display: block;
+                margin-bottom: 3px;
+                direction: rtl;
+            }
+            
+            .donation-section.mobile-version {
+                margin-bottom: 8px !important;
+            }
+            
+            .book-link {
+                padding: 9px 11px;
+                font-size: 0.85em;
+                border-radius: 6px;
+                min-height: 42px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .book-summary-toggle {
+                padding: 9px 11px;
+                border-radius: 6px;
+                border-width: 2px;
+                gap: 7px;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                min-height: 42px;
+            }
+            
+            .book-summary-toggle h3 {
+                font-size: 0.85em;
+                margin: 0;
+                line-height: 1.4;
+                text-align: right;
+                flex: 1;
+                color: white;
+                font-weight: 700;
+            }
+            
+            .book-summary-toggle h3:first-child {
+                margin-bottom: 2px;
+                font-size: 0.9em;
+            }
+            
+            .book-summary-toggle h3:last-child {
+                font-size: 0.75em;
+                opacity: 0.95;
+                margin-top: 2px;
+                font-weight: 600;
+            }
+            
+            .book-summary-link-icon {
+                font-size: 1.3em;
+                margin: 0;
+                flex-shrink: 0;
+                color: #f1c40f;
+            }
+            
+            .donation-toggle {
+                padding: 9px 11px;
+                border-radius: 6px;
+                min-height: 42px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+            
+            .donation-toggle h3 {
+                font-size: 0.85em;
+                margin: 0;
+                font-weight: 700;
+            }
+            
+            .donation-content {
+                padding: 6px;
+                font-size: 0.7em;
+                border-radius: 5px;
+            }
+            
+            .donation-content p {
+                margin: 4px 0;
+                line-height: 1.3;
+            }
+            
+            .contact-item {
+                padding: 5px;
+                margin-bottom: 5px;
+            }
+            
+            .contact-label {
+                font-size: 0.65em;
+            }
+            
+            .contact-value {
+                font-size: 0.7em;
+            }
+            
+            .copy-btn {
+                padding: 4px 8px;
+                font-size: 0.65em;
+            }
+            
+            .payment-methods {
+                padding: 6px;
+                margin-top: 6px;
+                font-size: 0.7em;
+            }
+            
+            .payment-methods p {
+                margin: 2px 0;
+                line-height: 1.2;
+            }
+            
+            .ad-registration-toggle {
+                padding: 9px 11px;
+                border-radius: 6px;
+                gap: 7px;
+                border-width: 2px;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                min-height: 42px;
+            }
+            
+            .ad-registration-toggle > span:first-child {
+                font-size: 1.1em;
+                flex-shrink: 0;
+                order: 3;
+            }
+            
+            .ad-registration-toggle h3 {
+                font-size: 0.85em;
+                margin: 0;
+                line-height: 1.4;
+                text-align: right;
+                flex: 1;
+                order: 1;
+                font-weight: 700;
+            }
+            
+            .ad-registration-toggle .ad-registration-phone {
+                margin-top: 0;
+                order: 2;
+                flex: 0 0 auto;
+            }
+            
+            .ad-registration-phone a {
+                font-size: 0.9em;
+                font-weight: 700;
+            }
+            
+            .visitor-counter {
+                position: absolute;
+                top: 6px;
+                left: 50%;
+                transform: translateX(-50%);
+                margin: 0;
+                padding: 4px 8px;
+                gap: 3px;
+                z-index: 15;
+            }
+            
+            .header-carousel {
+                min-height: 55px;
+                padding: 8px 10px;
+                padding-top: 40px;
+            }
+            
+            .header-slide h1 {
+                font-size: 1.1em;
+                margin-bottom: 2px;
+                font-weight: 700;
+            }
+            
+            .header-slide p {
+                font-size: 0.8em;
+                font-weight: 500;
+            }
+            
+            #testContainer {
+                padding: 6px;
+            }
+            
+            .question-nav-bar {
+                flex-wrap: nowrap;
+                padding: 2px;
+                gap: 2px;
+                margin-bottom: 4px;
+            }
+            
+            .question-nav-bar > div:first-child {
+                flex: 0 0 auto;
+                gap: 2px;
+            }
+            
+            .question-nav-bar > div:last-child {
+                flex: 0 0 auto;
+                gap: 2px;
+            }
+            
+            .question-nav-bar > div:nth-child(2) {
+                flex: 1;
+                margin: 0;
+                gap: 2px;
+            }
+            
+            .question-nav-bar button {
+                padding: 3px 5px;
+                font-size: 0.6em;
+                min-height: 28px;
+                min-width: 40px;
+            }
+            
+            .question-nav-bar > div:nth-child(2) > div:first-child {
+                font-size: 0.65em;
+            }
+            
+            .question-nav-bar #questionNumberDisplay {
+                font-size: 0.7em;
+                padding: 1px 5px;
+            }
+            
+            #questionCard {
+                padding: 10px;
+                border-radius: 8px;
+            }
+            
+            .question-text {
+                font-size: 0.85em;
+                margin-bottom: 10px;
+            }
+            
+            .option {
+                padding: 8px 10px;
+                font-size: 0.8em;
+                min-height: 38px;
+            }
+            
+            .ads-section {
+                padding: 0 10px;
+            }
+            
+            .ads-section-title {
+                font-size: 1.1em;
+            }
+            
+            .ad-tile {
+                padding: 10px;
             }
         }
     </style>
@@ -2695,19 +3999,19 @@
 
         <div class="main-content">
             <div class="header">
-                <!-- Visitor Counter -->
-                <div class="visitor-counter">
-                    <span class="visitor-counter-text">👁️ بازدید / Visitors:</span>
-                    <span class="visitor-counter-number" id="visitorCount">100</span>
-                </div>
-                
                 <div class="header-carousel">
+                    <!-- Visitor Counter (Mobile: shown above, Desktop: absolute positioned) -->
+                    <div class="visitor-counter">
+                        <span class="visitor-counter-text">Visitors</span>
+                        <span class="visitor-counter-number" id="visitorCount">100</span>
+                    </div>
+                    
                     <!-- Slide 1: Test Title -->
                     <div class="header-slide active" id="slide0">
                 <h1>🇨🇦 آزمون تمرینی شهروندی کانادا</h1>
                 <p>Canadian Citizenship Practice Test</p>
-                    </div>
-                    
+            </div>
+
                     <!-- Slide 2: Advertisement Opportunity (Temporarily hidden) -->
                     <div class="header-slide" id="slide1" style="display: none;">
                         <div class="header-slide-content">
@@ -2725,6 +4029,32 @@
                 </div>
             </div>
 
+            <!-- Test Navigator (Mobile Version) -->
+            <div class="test-navigator-mobile">
+                <button class="test-nav-btn-mobile prev" onclick="navigateTest(-1)" id="testPrevBtnMobile">«</button>
+                <div class="test-input-row-mobile">
+                    <label id="testLabelMobile" class="test-label-mobile">Test</label>
+                    <input type="number" id="testNumberInputMobile" class="test-number-input-mobile" min="1" value="1" onkeypress="handleTestInputKeypressMobile(event)">
+                    <span class="test-total-mobile">/ 100</span>
+                </div>
+                <button class="test-nav-btn-mobile next" onclick="navigateTest(1)" id="testNextBtnMobile">»</button>
+            </div>
+
+            <!-- Stats (Mobile Version - Minimal) -->
+            <div class="stats-mobile">
+                <div class="stats-mobile-item">
+                    <span class="stats-mobile-icon">⏱️</span>
+                    <span class="timer" id="timerMobile">45:00</span>
+                </div>
+                <div class="stats-mobile-item">
+                    <span class="stats-mobile-label">✓</span>
+                    <span class="counter-value" id="correctCounterMobile">0</span>
+                </div>
+                <div class="stats-mobile-item">
+                    <span class="stats-mobile-label">✗</span>
+                    <span class="counter-value" id="incorrectCounterMobile">0</span>
+                </div>
+            </div>
 
             <div id="testContainer">
                 <div class="question-nav-bar" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; padding: 8px 15px; background: linear-gradient(135deg, #1e3c72 0%, #2c5282 100%); border-radius: 8px; box-shadow: 0 2px 8px rgba(30,60,114,0.2);">
@@ -2740,6 +4070,90 @@
                 </div>
                 <div id="questionCard" style="background: white; padding: 20px 25px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); margin-bottom: 20px;">
                     <!-- Question will be inserted here -->
+                </div>
+            </div>
+            
+            <!-- Mobile Sidebar Sections (shown only on mobile, after questions, before ads) -->
+            <div class="mobile-sidebar-sections">
+                <!-- Book Download Link (Mobile) -->
+                <div class="book-link-section mobile-version" style="text-align: center; margin-bottom: 15px;">
+                    <a href="discover.pdf" target="_blank" class="book-link">📚 دانلود/مطالعه کتاب Discover Canada</a>
+                </div>
+                
+                <!-- Book Summary Link (Mobile) -->
+                <div class="book-summary-section mobile-version">
+                    <a href="book_summary.html" class="book-summary-link" target="_blank">
+                        <div class="book-summary-toggle">
+                            <h3>📖 خلاصه کامل کتاب Discover Canada</h3>
+                            <span class="book-summary-link-icon">🔗</span>
+                        </div>
+                    </a>
+                </div>
+                
+                <!-- Donation Section (Mobile) -->
+                <div class="donation-section mobile-version">
+                    <div class="donation-toggle" onclick="toggleDonation()">
+                        <h3>💝 حمایت از سایت / Support This Site</h3>
+                        <span class="donation-toggle-icon">▼</span>
+                    </div>
+                    <div class="donation-content" id="donationContentMobile">
+                        <p>
+                            برای ادامه فعالیت این سایت و ارائه خدمات رایگان، لطفاً با کمک مالی کوچک خود از ما حمایت کنید. هر مقدار کمک شما برای زنده نگه داشتن این سایت ارزشمند است.
+                        </p>
+                        <p style="margin-top: 8px; direction: ltr; text-align: center;">
+                            To keep this site alive and continue providing free services, please consider supporting us with a small donation. Every contribution helps maintain this valuable resource.
+                        </p>
+                        
+                        <div class="contact-info">
+                            <h4>📧 اطلاعات تماس برای حمایت مالی / Contact Information for Donation</h4>
+                            
+                            <div class="contact-list">
+                                <div class="contact-item">
+                                    <div class="contact-content">
+                                        <span class="contact-label">ایمیل / Email</span>
+                                        <span class="contact-value">
+                                            <a href="mailto:koroush.mog@gmail.com">koroush.mog@gmail.com</a>
+                                        </span>
+                                    </div>
+                                    <button class="copy-btn" onclick="copyToClipboard('koroush.mog@gmail.com', this)">کپی / Copy</button>
+                                </div>
+                                
+                                <div class="contact-item">
+                                    <div class="contact-content">
+                                        <span class="contact-label">موبایل / Mobile</span>
+                                        <span class="contact-value">
+                                            <a href="tel:5144767079">514-476-7079</a>
+                                        </span>
+                                    </div>
+                                    <button class="copy-btn" onclick="copyToClipboard('514-476-7079', this)">کپی / Copy</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="payment-methods">
+                            <p>
+                                <strong>💡 روش‌های پرداخت / Payment Methods:</strong>
+                            </p>
+                            <p style="direction: rtl; margin-top: 8px;">
+                                برای ساکنین کانادا: Interac e-Transfer به ایمیل یا شماره موبایل بالا<br>
+                                For Canadians: Interac e-Transfer to the email or mobile number above
+                            </p>
+                            <p style="direction: ltr; margin-top: 8px;">
+                                Other methods: Contact via email for other payment options
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Mobile Ad Registration Section (shown only on mobile, after questions) -->
+                <div class="ad-registration-section mobile-version">
+                    <div class="ad-registration-toggle">
+                        <span style="font-size: 1.5em;">📞</span>
+                        <h3>برای ثبت تبلیغ تماس بگیرید</h3>
+                        <div class="ad-registration-phone">
+                            <a href="tel:5144767079">514-476-7079</a>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="results" id="results" style="display: none; margin-top: 30px; padding: 25px; background: white; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); direction: rtl; text-align: right;">
@@ -2848,11 +4262,11 @@
                     
                     <!-- Ad 3: Software Development Services -->
                 <div class="ad-tile" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border: 3px solid #5a67d8;">
-                    <div class="ad-tile-header">
-                        <div class="ad-tile-icon" style="font-size: 3em;">💻</div>
-                        <div class="ad-tile-category">
-                            <div class="ad-tile-category-title" style="color: white; font-size: 1.5em; text-shadow: 0 2px 4px rgba(0,0,0,0.2);">تولید نرم‌افزار و توسعه وب</div>
-                            <div class="ad-tile-business-name" style="color: white; font-size: 1.6em; text-shadow: 0 2px 4px rgba(0,0,0,0.2); margin-top: 8px;">Software Development & Web Services</div>
+                    <div class="ad-tile-header" style="flex-direction: column; align-items: center; justify-content: center; text-align: center; width: 100%;">
+                        <div class="ad-tile-icon" style="font-size: 3em; margin-bottom: 10px;">💻</div>
+                        <div class="ad-tile-category" style="text-align: center; width: 100%; display: flex; flex-direction: column; align-items: center;">
+                            <div class="ad-tile-category-title" style="color: white; font-size: 1.5em; text-shadow: 0 2px 4px rgba(0,0,0,0.2); text-align: center; width: 100%;">تولید نرم‌افزار و توسعه وب</div>
+                            <div class="ad-tile-business-name" style="color: white; font-size: 1.6em; text-shadow: 0 2px 4px rgba(0,0,0,0.2); margin-top: 8px; text-align: center; width: 100%;">Software Development & Web Services</div>
                         </div>
                     </div>
                     <div class="ad-tile-body">
@@ -2893,6 +4307,60 @@
                             </div>
                             <div style="color: rgba(255,255,255,0.95); font-size: 0.9em; margin-top: 5px; direction: ltr;">
                                 Contact for consultation and collaboration
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Ad 4: Elmira Peighami - French Language Teacher -->
+                <div class="ad-tile" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); border: 3px solid #2c8ef0;">
+                    <div class="ad-tile-header" style="flex-direction: column; align-items: center; justify-content: center; text-align: center; width: 100%;">
+                        <div class="ad-tile-icon" style="font-size: 3em; margin-bottom: 10px;">📚</div>
+                        <div class="ad-tile-category" style="text-align: center; width: 100%; display: flex; flex-direction: column; align-items: center;">
+                            <div class="ad-tile-category-title" style="color: white; font-size: 1.5em; text-shadow: 0 2px 4px rgba(0,0,0,0.2); text-align: center; width: 100%;">مدرس زبان فرانسه</div>
+                            <div class="ad-tile-business-name" style="color: white; font-size: 1.6em; text-shadow: 0 2px 4px rgba(0,0,0,0.2); margin-top: 8px; text-align: center; width: 100%;">الیمیرا پیغامی / Elmira Peighami</div>
+                            <div style="color: rgba(255,255,255,0.95); font-size: 1em; margin-top: 6px; font-weight: 600; text-align: center; width: 100%;">معلم رسمی مدارس کبک / Certified Quebec School Teacher</div>
+                        </div>
+                    </div>
+                    <div class="ad-tile-body">
+                        <div class="ad-tile-description" style="background: rgba(255,255,255,0.95); color: #1e3c72; padding: 15px; border-radius: 10px; margin-top: 15px;">
+                            <div style="font-weight: 700; font-size: 1.1em; margin-bottom: 12px; text-align: center; color: #2c8ef0;">
+                                🎓 کلاس‌های آموزشی
+                            </div>
+                            <div style="line-height: 1.8; font-size: 0.95em; direction: rtl; text-align: right;">
+                                ☑️ کلاس‌های آمادگی امتحانات TCF, TEF, OQLF<br>
+                                ☑️ کلاس‌های ترمیک و مکالمه<br>
+                                ☑️ کلاس‌های تقویتی دانش‌آموزان<br>
+                                🔘 با بیش از ۱۵ سال سابقه تدریس
+                            </div>
+                            <div style="line-height: 1.8; font-size: 0.9em; direction: ltr; text-align: left; margin-top: 12px; padding-top: 12px; border-top: 2px solid #e8ecf0;">
+                                ☑️ Test Preparation (TCF, TEF, OQLF)<br>
+                                ☑️ Regular & Conversation Classes<br>
+                                ☑️ Tutoring for Students<br>
+                                🔘 Over 15 Years of Teaching Experience
+                            </div>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.95); color: #1e3c72; padding: 12px; border-radius: 8px; margin-top: 12px; direction: rtl; text-align: right; font-size: 0.9em; line-height: 1.6;">
+                            🔘 👇 در این صفحه کلی اصطلاحات محاوره‌ای زبان کبکی می‌آموزیم و همچنین به مشکلات یادگیری دانش‌آموزان ابتدایی می‌پردازیم.
+                        </div>
+                        <div class="ad-tile-info-item" style="background: rgba(255,255,255,0.95); padding: 12px; border-radius: 8px; margin-top: 12px; direction: ltr;">
+                            <span class="ad-tile-info-icon">📱</span>
+                            <div class="ad-tile-info-text" style="direction: ltr; text-align: center;">
+                                <a href="http://instagram.com/Elmira.enseignante" target="_blank" style="color: #2c8ef0; font-weight: 700; font-size: 1.05em;">@Elmira.enseignante</a>
+                            </div>
+                        </div>
+                        <div class="ad-tile-info-item" style="background: rgba(255,255,255,0.95); padding: 12px; border-radius: 8px; margin-top: 8px; direction: ltr;">
+                            <span class="ad-tile-info-icon">📞</span>
+                            <div class="ad-tile-info-text" style="direction: ltr; text-align: center;">
+                                <a href="tel:5146928300" style="color: #2c8ef0; font-weight: 700; font-size: 1.05em;">(514) 692-8300</a>
+                            </div>
+                        </div>
+                        <div style="text-align: center; margin-top: 15px; padding: 10px; background: rgba(255,255,255,0.2); border-radius: 8px;">
+                            <div style="color: white; font-weight: 700; font-size: 1em; direction: rtl;">
+                                💥 برای اطلاعات بیشتر تماس بگیرید
+                            </div>
+                            <div style="color: rgba(255,255,255,0.95); font-size: 0.9em; margin-top: 5px; direction: ltr;">
+                                Contact for more information
                             </div>
                         </div>
                     </div>
@@ -7483,6 +8951,26 @@
                 goToTest();
             }
         }
+        
+        // توابع برای نسخه موبایل
+        function goToTestMobile() {
+            const input = document.getElementById('testNumberInputMobile');
+            const testNumber = parseInt(input.value);
+            const totalTests = generatedTests.length;
+            
+            if (testNumber >= 1 && testNumber <= totalTests) {
+                selectTest(testNumber - 1);
+            } else {
+                input.value = currentTest + 1;
+                alert(`Please enter a number between 1 and ${totalTests}`);
+            }
+        }
+        
+        function handleTestInputKeypressMobile(event) {
+            if (event.key === 'Enter') {
+                goToTestMobile();
+            }
+        }
 
         // انتخاب تست
         function selectTest(testIndex) {
@@ -7495,6 +8983,7 @@
             timeRemaining = 45 * 60;
             if (testTimer) {
                 clearInterval(testTimer);
+                testTimer = null;
             }
             
             // بروزرسانی input number
@@ -7503,22 +8992,37 @@
                 input.value = testIndex + 1;
             }
             
+            // بروزرسانی input number موبایل
+            const inputMobile = document.getElementById('testNumberInputMobile');
+            if (inputMobile) {
+                inputMobile.value = testIndex + 1;
+            }
+            
             // بروزرسانی label
             const testLabel = document.getElementById('testLabel');
             if (testLabel) {
                 testLabel.textContent = `Test${testIndex + 1}`;
             }
             
+            // بروزرسانی label موبایل
             // بروزرسانی دکمه‌های navigation بین تست‌ها
             const totalTests = generatedTests.length;
             const testPrevBtn = document.getElementById('testPrevBtn');
             const testNextBtn = document.getElementById('testNextBtn');
+            const testPrevBtnMobile = document.getElementById('testPrevBtnMobile');
+            const testNextBtnMobile = document.getElementById('testNextBtnMobile');
             
             if (testPrevBtn) {
                 testPrevBtn.disabled = (testIndex === 0);
             }
             if (testNextBtn) {
                 testNextBtn.disabled = (testIndex === totalTests - 1);
+            }
+            if (testPrevBtnMobile) {
+                testPrevBtnMobile.disabled = (testIndex === 0);
+            }
+            if (testNextBtnMobile) {
+                testNextBtnMobile.disabled = (testIndex === totalTests - 1);
             }
 
             // نمایش تست
@@ -7530,13 +9034,25 @@
         
         // شروع تایمر
         function startTimer() {
+            // توقف تایمر قبلی اگر وجود دارد
+            if (testTimer) {
+                clearInterval(testTimer);
+                testTimer = null;
+            }
+            
+            // به‌روزرسانی اولیه نمایش
             updateTimerDisplay();
-            testTimer = setInterval(() => {
+            
+            // شروع تایمر جدید - استفاده از function به جای arrow function برای اطمینان از scope صحیح
+            testTimer = setInterval(function timerTick() {
+                if (timeRemaining > 0) {
                 timeRemaining--;
                 updateTimerDisplay();
-                
-                if (timeRemaining <= 0) {
+                } else {
+                    if (testTimer) {
                     clearInterval(testTimer);
+                        testTimer = null;
+                    }
                     alert('زمان به پایان رسید! تست به صورت خودکار ارسال می‌شود.');
                     submitTest();
                 }
@@ -7545,11 +9061,13 @@
         
         // بروزرسانی نمایش تایمر
         function updateTimerDisplay() {
-            const timerElement = document.getElementById('timer');
-            if (timerElement) {
                 const minutes = Math.floor(timeRemaining / 60);
                 const seconds = timeRemaining % 60;
                 const timeString = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            
+            // بروزرسانی تایمر دسکتاپ
+            const timerElement = document.getElementById('timer');
+            if (timerElement) {
                 timerElement.textContent = timeString;
                 
                 // تغییر رنگ در 5 دقیقه آخر
@@ -7558,6 +9076,20 @@
                     timerElement.classList.add('warning');
                 } else if (timeRemaining <= 60) {
                     timerElement.classList.add('danger');
+                }
+            }
+            
+            // بروزرسانی تایمر موبایل
+            const timerMobileElement = document.getElementById('timerMobile');
+            if (timerMobileElement) {
+                timerMobileElement.textContent = timeString;
+                
+                // تغییر رنگ در 5 دقیقه آخر
+                timerMobileElement.classList.remove('warning', 'danger');
+                if (timeRemaining <= 300 && timeRemaining > 60) {
+                    timerMobileElement.classList.add('warning');
+                } else if (timeRemaining <= 60) {
+                    timerMobileElement.classList.add('danger');
                 }
             }
         }
@@ -7572,6 +9104,17 @@
             }
             if (incorrectCounter) {
                 incorrectCounter.textContent = incorrectCount;
+            }
+            
+            // بروزرسانی شمارنده موبایل
+            const correctCounterMobile = document.getElementById('correctCounterMobile');
+            const incorrectCounterMobile = document.getElementById('incorrectCounterMobile');
+            
+            if (correctCounterMobile) {
+                correctCounterMobile.textContent = correctCount;
+            }
+            if (incorrectCounterMobile) {
+                incorrectCounterMobile.textContent = incorrectCount;
             }
         }
 
@@ -7777,9 +9320,10 @@
         function displayTest(testIndex) {
             currentTest = testIndex;
             currentQuestion = 0;
+            // فقط در صورت نیاز userAnswers را ریست کن (نه همیشه)
+            if (userAnswers.length === 0 || userAnswers.length !== generatedTests[testIndex].questions.length) {
             userAnswers = [];
-            correctCount = 0;
-            incorrectCount = 0;
+            }
             displayQuestion();
             
             // Old code removed - not needed anymore
@@ -8254,7 +9798,20 @@
         
         // راه‌اندازی اولیه
         initTests();
+        
+        // اطمینان از اینکه timer در ابتدا به‌روزرسانی می‌شود
+        function initializeApp() {
         selectTest(0);
+            // به‌روزرسانی اولیه timer
+            updateTimerDisplay();
+        }
+        
+        // اگر DOM آماده است، بلافاصله اجرا کن
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initializeApp);
+        } else {
+            initializeApp();
+        }
         
         // اطمینان از اینکه توابع در window scope هستند
         window.selectOption = selectOption;
@@ -8375,9 +9932,18 @@
         
         function toggleDonation() {
             const content = document.getElementById('donationContent');
-            const toggle = document.querySelector('.donation-toggle');
+            const contentMobile = document.getElementById('donationContentMobile');
+            const toggles = document.querySelectorAll('.donation-toggle');
+            
+            if (content) {
             content.classList.toggle('show');
+            }
+            if (contentMobile) {
+                contentMobile.classList.toggle('show');
+            }
+            toggles.forEach(toggle => {
             toggle.classList.toggle('expanded');
+            });
         }
         
         function copyToClipboard(text, button) {
