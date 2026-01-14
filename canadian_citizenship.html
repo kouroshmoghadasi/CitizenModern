@@ -12,12 +12,17 @@
         }
 
         body {
-            font-family: 'Segoe UI', 'Roboto', 'Open Sans', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: Tahoma, 'Segoe UI', 'Roboto', 'Open Sans', Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #ffffff 0%, #f5f7fa 50%, #e8ecf1 100%);
             min-height: 100vh;
             padding: 20px;
             line-height: 1.8;
             position: relative;
+        }
+        
+        /* اطمینان از استفاده Tahoma برای متن فارسی */
+        * {
+            font-family: Tahoma, 'Segoe UI', 'Roboto', 'Open Sans', Geneva, Verdana, sans-serif;
         }
         
         body::before {
@@ -1542,9 +1547,15 @@
 
         .test-navigator {
             display: flex;
-            flex-direction: column;
-            align-items: stretch;
-            gap: 15px;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            padding: 16px 20px;
+            border-radius: 12px;
+            border: 2px solid #e0e0e0;
+            box-shadow: 0 2px 8px rgba(30, 60, 114, 0.1);
         }
         
         .test-navigator-mobile {
@@ -1556,131 +1567,110 @@
         }
 
         .test-nav-btn {
-            padding: 14px 22px;
-            background: linear-gradient(135deg, #1e3c72 0%, #2c5282 100%);
+            padding: 12px 20px;
             color: white;
             border: none;
-            border-radius: 10px;
+            border-radius: 8px;
             cursor: pointer;
-            font-size: 0.95em;
+            font-size: 1.1em;
             font-weight: 700;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 
-                0 4px 12px rgba(30, 60, 114, 0.3),
-                0 2px 6px rgba(30, 60, 114, 0.2);
-            min-width: 80px;
-            letter-spacing: 0.3px;
+            transition: all 0.3s ease;
+            min-width: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
         }
         
         .test-nav-btn:hover:not(:disabled) {
             transform: translateY(-2px);
-            box-shadow: 
-                0 6px 20px rgba(30, 60, 114, 0.4),
-                0 3px 10px rgba(30, 60, 114, 0.3);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
         }
         
         .test-nav-btn:active:not(:disabled) {
             transform: translateY(0);
         }
 
-        .test-nav-btn:hover:not(:disabled) {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.6);
-        }
-
         .test-nav-btn:disabled {
-            opacity: 0.5;
+            opacity: 0.4;
             cursor: not-allowed;
         }
 
         .test-nav-btn.prev {
-            background: linear-gradient(135deg, #34495e 0%, #2c3e50 100%);
+            background: linear-gradient(135deg, #1e3c72 0%, #2c5282 100%);
+        }
+        
+        .test-nav-btn.prev:hover:not(:disabled) {
+            background: linear-gradient(135deg, #2c5282 0%, #1e3c72 100%);
         }
 
         .test-nav-btn.next {
-            background: linear-gradient(135deg, #1e3c72 0%, #2c5282 100%);
+            background: #6c757d;
+        }
+        
+        .test-nav-btn.next:hover:not(:disabled) {
+            background: #5a6268;
         }
 
-        .test-input-container {
+        .test-select-wrapper {
             display: flex;
-            flex-direction: column;
-            align-items: stretch;
-            gap: 14px;
-            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-            padding: 24px;
-            border-radius: 16px;
-            box-shadow: 
-                0 6px 20px rgba(30, 60, 114, 0.12),
-                0 3px 10px rgba(30, 60, 114, 0.08),
-                0 1px 4px rgba(30, 60, 114, 0.06),
-                inset 0 0 0 3px #1e3c72,
-                inset 0 1px 0 rgba(255, 255, 255, 0.9);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .test-input-container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, #1e3c72 0%, #f1c40f 50%, #1e3c72 100%);
-            background-size: 200% 100%;
-            animation: gradientFlow 3s ease infinite;
-        }
-        
-        .test-input-container label {
-            color: #1e3c72;
-            font-weight: 600;
-            font-size: 0.95em;
-            text-align: center;
-        }
-        
-        .test-input-row {
-            display: flex;
-            align-items: center;
+            flex: 1;
             justify-content: center;
-            gap: 8px;
+            align-items: center;
+            position: relative;
+            margin: 0 12px;
+            min-width: 0;
         }
-
-        .test-number-input {
-            width: 65px;
-            padding: 10px 12px;
-            border: 3px solid #1e3c72;
-            border-radius: 10px;
-            text-align: center;
+        
+        .test-number-select {
+            width: 100%;
+            max-width: 200px;
+            min-width: 160px;
+            padding: 12px 38px 12px 16px;
+            border: 2px solid #9c27b0;
+            border-radius: 8px;
             font-size: 1.05em;
             font-weight: 700;
             color: #1e3c72;
             background: #ffffff;
             outline: none;
-            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-            box-shadow: 
-                0 2px 8px rgba(30, 60, 114, 0.1),
-                inset 0 1px 0 rgba(255, 255, 255, 0.9);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 16 16'%3E%3Cpath fill='%231e3c72' d='M8 11L3 6h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            background-size: 14px 14px;
+            box-shadow: 0 2px 6px rgba(156, 39, 176, 0.15);
+            font-family: Tahoma, 'Segoe UI', 'Roboto', 'Open Sans', Geneva, Verdana, sans-serif;
+            text-align: left;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
-        .test-number-input:focus {
-            border-color: #f1c40f;
-            box-shadow: 
-                0 0 0 4px rgba(241, 196, 15, 0.25),
-                0 4px 12px rgba(241, 196, 15, 0.2),
-                inset 0 1px 0 rgba(255, 255, 255, 0.9);
-            background: #ffffff;
-            transform: scale(1.05);
+        .test-number-select:focus {
+            border-color: #7b1fa2;
+            box-shadow: 0 0 0 3px rgba(156, 39, 176, 0.25), 0 3px 10px rgba(156, 39, 176, 0.2);
+            outline: none;
         }
         
-        .test-number-input::placeholder {
-            color: #adb5bd;
+        .test-number-select:hover {
+            border-color: #7b1fa2;
+            box-shadow: 0 3px 10px rgba(156, 39, 176, 0.25);
         }
-
-        .test-total {
-            color: #6c757d;
-            font-size: 0.9em;
-            margin: 0 5px;
-            font-weight: 500;
+        
+        .test-number-select option {
+            padding: 10px;
+            font-weight: 600;
+            color: #1e3c72;
+            background: #ffffff;
+        }
+        
+        .test-number-select option:checked {
+            background: #f3e5f5;
+            color: #7b1fa2;
+            font-weight: 700;
         }
 
         .test-go-btn {
@@ -2553,10 +2543,18 @@
                 padding: 10px 15px;
             }
             
-            .test-input-container {
-                flex-direction: row;
-                width: auto;
+            .test-select-wrapper {
                 flex: 1;
+                max-width: 200px;
+                margin: 0 10px;
+                min-width: 0;
+            }
+            
+            .test-number-select {
+                max-width: 200px;
+                min-width: 150px;
+                font-size: 1em;
+                padding: 11px 36px 11px 15px;
             }
             
             .test-input-row {
@@ -2860,40 +2858,59 @@
                 cursor: not-allowed;
             }
             
-            .test-input-row-mobile {
+            .test-select-wrapper-mobile {
                 display: flex;
-                align-items: center;
-                justify-content: center;
-                gap: 3px;
                 flex: 1;
+                justify-content: center;
+                align-items: center;
+                position: relative;
             }
             
-            .test-label-mobile {
-                color: #1e3c72;
-                font-weight: 700;
-                font-size: 0.85em;
-                margin: 0;
-                line-height: 1.2;
-                white-space: nowrap;
-                letter-spacing: 0.3px;
-            }
-            
-            .test-number-input-mobile {
-                width: 38px;
-                padding: 4px 5px;
-                border: 2px solid #1e3c72;
-                border-radius: 4px;
+            .test-number-select-mobile {
+                width: 100%;
+                max-width: 200px;
+                min-width: 120px;
+                padding: 6px 30px 6px 10px;
+                border: 2px solid #9c27b0;
+                border-radius: 6px;
                 font-size: 0.8em;
                 font-weight: 700;
-                text-align: center;
                 color: #1e3c72;
-                background: white;
+                background: #ffffff;
+                outline: none;
+                transition: all 0.3s ease;
+                cursor: pointer;
+                appearance: none;
+                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 16 16'%3E%3Cpath fill='%231e3c72' d='M8 11L3 6h10z'/%3E%3C/svg%3E");
+                background-repeat: no-repeat;
+                background-position: right 8px center;
+                background-size: 12px 12px;
+                box-shadow: 0 2px 4px rgba(156, 39, 176, 0.15);
+                font-family: Tahoma, 'Segoe UI', 'Roboto', 'Open Sans', Geneva, Verdana, sans-serif;
+            }
+
+            .test-number-select-mobile:focus {
+                border-color: #7b1fa2;
+                box-shadow: 0 0 0 3px rgba(156, 39, 176, 0.25), 0 2px 6px rgba(156, 39, 176, 0.2);
+                transform: scale(1.02);
             }
             
-            .test-total-mobile {
-                font-size: 0.75em;
-                color: #7f8c8d;
+            .test-number-select-mobile:hover {
+                border-color: #7b1fa2;
+                box-shadow: 0 2px 6px rgba(156, 39, 176, 0.25);
+            }
+            
+            .test-number-select-mobile option {
+                padding: 6px;
                 font-weight: 600;
+                color: #1e3c72;
+                background: #ffffff;
+            }
+            
+            .test-number-select-mobile option:checked {
+                background: #f3e5f5;
+                color: #7b1fa2;
+                font-weight: 700;
             }
             
             .stats-mobile {
@@ -3675,6 +3692,67 @@
             }
         }
         
+        /* Mobile Styles for Test Navigator */
+        @media (max-width: 768px) {
+            .test-navigator {
+                padding: 12px 16px;
+                gap: 10px;
+            }
+            
+            .test-nav-btn {
+                padding: 10px 16px;
+                font-size: 1em;
+                min-width: 45px;
+            }
+            
+            .test-select-wrapper {
+                flex: 1;
+                max-width: 100%;
+            }
+            
+            .test-number-select {
+                max-width: 100%;
+                font-size: 0.95em;
+                padding: 10px 36px 10px 14px;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .test-navigator {
+                padding: 10px 12px;
+                gap: 8px;
+            }
+            
+            .test-nav-btn {
+                padding: 8px 14px;
+                font-size: 0.95em;
+                min-width: 40px;
+            }
+            
+            .test-number-select {
+                font-size: 0.9em;
+                padding: 8px 32px 8px 12px;
+            }
+        }
+        
+        @media (max-width: 400px) {
+            .test-navigator {
+                padding: 8px 10px;
+                gap: 6px;
+            }
+            
+            .test-nav-btn {
+                padding: 6px 12px;
+                font-size: 0.9em;
+                min-width: 35px;
+            }
+            
+            .test-number-select {
+                font-size: 0.85em;
+                padding: 6px 28px 6px 10px;
+            }
+        }
+        
         /* Very Small Mobile (up to 400px) */
         @media (max-width: 400px) {
             .test-selector {
@@ -3965,16 +4043,13 @@
             </div>
             
             <div class="test-navigator">
-                <button class="test-nav-btn prev" onclick="navigateTest(-1)" id="testPrevBtn">« Previous</button>
-                <div class="test-input-container">
-                    <label id="testLabel">Test1</label>
-                    <div class="test-input-row">
-                        <input type="number" id="testNumberInput" class="test-number-input" min="1" value="1" onkeypress="handleTestInputKeypress(event)">
-                        <span class="test-total">/ 100</span>
-                        <button class="test-go-btn" onclick="goToTest()">Go</button>
+                <button class="test-nav-btn prev" onclick="navigateTest(-1)" id="testPrevBtn" title="تست قبلی">«</button>
+                <div class="test-select-wrapper">
+                    <select id="testNumberSelect" class="test-number-select" onchange="selectTestFromDropdown()" title="انتخاب تست">
+                        <!-- Options will be populated by JavaScript: Test1, Test2, ..., Test100 -->
+                    </select>
                     </div>
-                </div>
-                <button class="test-nav-btn next" onclick="navigateTest(1)" id="testNextBtn">Next »</button>
+                <button class="test-nav-btn next" onclick="navigateTest(1)" id="testNextBtn" title="تست بعدی">»</button>
             </div>
             
             <div class="sidebar-stats">
@@ -4031,13 +4106,13 @@
 
             <!-- Test Navigator (Mobile Version) -->
             <div class="test-navigator-mobile">
-                <button class="test-nav-btn-mobile prev" onclick="navigateTest(-1)" id="testPrevBtnMobile">«</button>
-                <div class="test-input-row-mobile">
-                    <label id="testLabelMobile" class="test-label-mobile">Test</label>
-                    <input type="number" id="testNumberInputMobile" class="test-number-input-mobile" min="1" value="1" onkeypress="handleTestInputKeypressMobile(event)">
-                    <span class="test-total-mobile">/ 100</span>
+                <button class="test-nav-btn-mobile prev" onclick="navigateTest(-1)" id="testPrevBtnMobile" title="تست قبلی">«</button>
+                <div class="test-select-wrapper-mobile">
+                    <select id="testNumberSelectMobile" class="test-number-select-mobile" onchange="selectTestFromDropdownMobile()" title="انتخاب تست">
+                        <!-- Options will be populated by JavaScript: Test1, Test2, ..., Test100 -->
+                    </select>
                 </div>
-                <button class="test-nav-btn-mobile next" onclick="navigateTest(1)" id="testNextBtnMobile">»</button>
+                <button class="test-nav-btn-mobile next" onclick="navigateTest(1)" id="testNextBtnMobile" title="تست بعدی">»</button>
             </div>
 
             <!-- Stats (Mobile Version - Minimal) -->
@@ -4312,13 +4387,13 @@
                     </div>
                 </div>
                 
-                <!-- Ad 4: Elmira Peighami - French Language Teacher -->
+                <!-- Ad 4: Elmira Peyghami - French Language Teacher -->
                 <div class="ad-tile" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); border: 3px solid #2c8ef0;">
                     <div class="ad-tile-header" style="flex-direction: column; align-items: center; justify-content: center; text-align: center; width: 100%;">
                         <div class="ad-tile-icon" style="font-size: 3em; margin-bottom: 10px;">📚</div>
                         <div class="ad-tile-category" style="text-align: center; width: 100%; display: flex; flex-direction: column; align-items: center;">
                             <div class="ad-tile-category-title" style="color: white; font-size: 1.5em; text-shadow: 0 2px 4px rgba(0,0,0,0.2); text-align: center; width: 100%;">مدرس زبان فرانسه</div>
-                            <div class="ad-tile-business-name" style="color: white; font-size: 1.6em; text-shadow: 0 2px 4px rgba(0,0,0,0.2); margin-top: 8px; text-align: center; width: 100%;">الیمیرا پیغامی / Elmira Peighami</div>
+                            <div class="ad-tile-business-name" style="color: white; font-size: 1.6em; text-shadow: 0 2px 4px rgba(0,0,0,0.2); margin-top: 8px; text-align: center; width: 100%;">المیرا پیغامی / Elmira Peyghami</div>
                             <div style="color: rgba(255,255,255,0.95); font-size: 1em; margin-top: 6px; font-weight: 600; text-align: center; width: 100%;">معلم رسمی مدارس کبک / Certified Quebec School Teacher</div>
                         </div>
                     </div>
@@ -8760,8 +8835,9 @@
         let currentTest = 0;
         let currentQuestion = 0;
         let userAnswers = [];
-        let testTimer = null;
-        let timeRemaining = 45 * 60; // 45 minutes in seconds
+        // تایمر - متغیرهای جدید
+        let timerInterval = null;
+        let timerSeconds = 45 * 60; // 45 دقیقه به ثانیه
         let correctCount = 0;
         let incorrectCount = 0;
 
@@ -8920,6 +8996,9 @@
             generatedTests.forEach(test => {
                 completeQuestions(test.questions);
             });
+            
+            // Populate combobox
+            populateTestSelect();
         }
 
         // ناوبری بین تست‌ها
@@ -8980,28 +9059,29 @@
             incorrectCount = 0;
             
             // ریست تایمر
-            timeRemaining = 45 * 60;
-            if (testTimer) {
-                clearInterval(testTimer);
-                testTimer = null;
+            stopTimer();
+            timerSeconds = 45 * 60;
+            
+            // بروزرسانی combobox
+            const select = document.getElementById('testNumberSelect');
+            if (select) {
+                // اطمینان از اینکه combobox populate شده است
+                if (select.options.length === 0 && generatedTests && generatedTests.length > 0) {
+                    populateTestSelect();
+                }
+                // تنظیم مقدار به Test1, Test2, etc.
+                select.value = testIndex + 1;
             }
             
-            // بروزرسانی input number
-            const input = document.getElementById('testNumberInput');
-            if (input) {
-                input.value = testIndex + 1;
-            }
-            
-            // بروزرسانی input number موبایل
-            const inputMobile = document.getElementById('testNumberInputMobile');
-            if (inputMobile) {
-                inputMobile.value = testIndex + 1;
-            }
-            
-            // بروزرسانی label
-            const testLabel = document.getElementById('testLabel');
-            if (testLabel) {
-                testLabel.textContent = `Test${testIndex + 1}`;
+            // بروزرسانی combobox موبایل
+            const selectMobile = document.getElementById('testNumberSelectMobile');
+            if (selectMobile) {
+                // اطمینان از اینکه combobox populate شده است
+                if (selectMobile.options.length === 0 && generatedTests && generatedTests.length > 0) {
+                    populateTestSelectMobile();
+                }
+                // تنظیم مقدار به Test1, Test2, etc.
+                selectMobile.value = testIndex + 1;
             }
             
             // بروزرسانی label موبایل
@@ -9028,69 +9108,136 @@
             // نمایش تست
             displayTest(testIndex);
             
-            // شروع تایمر
-            startTimer();
+            // شروع تایمر - با تاخیر کوتاه برای اطمینان از آماده بودن DOM
+            setTimeout(function() {
+                startTimer();
+            }, 100);
         }
         
-        // شروع تایمر
-        function startTimer() {
-            // توقف تایمر قبلی اگر وجود دارد
-            if (testTimer) {
-                clearInterval(testTimer);
-                testTimer = null;
+        // تابع برای انتخاب تست از combobox
+        function selectTestFromDropdown() {
+            const select = document.getElementById('testNumberSelect');
+            if (select) {
+                const testNumber = parseInt(select.value);
+                if (testNumber >= 1 && testNumber <= generatedTests.length) {
+                    selectTest(testNumber - 1);
+                }
             }
+        }
+        
+        // تابع برای populate کردن combobox
+        function populateTestSelect() {
+            const select = document.getElementById('testNumberSelect');
+            if (select && generatedTests && generatedTests.length > 0) {
+                select.innerHTML = '';
+                for (let i = 1; i <= generatedTests.length; i++) {
+                    const option = document.createElement('option');
+                    option.value = i;
+                    option.textContent = `Test${i}`;
+                    select.appendChild(option);
+                }
+                // تنظیم مقدار پیش‌فرض به Test1
+                select.value = 1;
+            }
+        }
+        
+        // تابع برای populate کردن combobox موبایل
+        function populateTestSelectMobile() {
+            const select = document.getElementById('testNumberSelectMobile');
+            if (select && generatedTests && generatedTests.length > 0) {
+                select.innerHTML = '';
+                for (let i = 1; i <= generatedTests.length; i++) {
+                    const option = document.createElement('option');
+                    option.value = i;
+                    option.textContent = `Test${i}`;
+                    select.appendChild(option);
+                }
+                // تنظیم مقدار پیش‌فرض به Test1
+                select.value = 1;
+            }
+        }
+        
+        // تابع برای انتخاب تست از combobox موبایل
+        function selectTestFromDropdownMobile() {
+            const select = document.getElementById('testNumberSelectMobile');
+            if (select) {
+                const testNumber = parseInt(select.value);
+                if (testNumber >= 1 && testNumber <= generatedTests.length) {
+                    selectTest(testNumber - 1);
+                }
+            }
+        }
+        
+        // تابع شروع تایمر - نسخه جدید و ساده
+        function startTimer() {
+            console.log('startTimer called, timerSeconds:', timerSeconds);
             
-            // به‌روزرسانی اولیه نمایش
-            updateTimerDisplay();
+            // توقف تایمر قبلی
+            stopTimer();
             
-            // شروع تایمر جدید - استفاده از function به جای arrow function برای اطمینان از scope صحیح
-            testTimer = setInterval(function timerTick() {
-                if (timeRemaining > 0) {
-                timeRemaining--;
-                updateTimerDisplay();
+            // ریست به 45 دقیقه
+            timerSeconds = 45 * 60;
+            
+            // نمایش اولیه
+            updateTimer();
+            
+            // شروع تایمر
+            timerInterval = setInterval(function() {
+                if (timerSeconds > 0) {
+                    timerSeconds--;
+                    updateTimer();
                 } else {
-                    if (testTimer) {
-                    clearInterval(testTimer);
-                        testTimer = null;
-                    }
+                    stopTimer();
                     alert('زمان به پایان رسید! تست به صورت خودکار ارسال می‌شود.');
-                    submitTest();
+                    if (typeof submitTest === 'function') {
+                        submitTest();
+                    }
                 }
             }, 1000);
+            
+            console.log('Timer started, interval:', timerInterval);
         }
         
-        // بروزرسانی نمایش تایمر
-        function updateTimerDisplay() {
-                const minutes = Math.floor(timeRemaining / 60);
-                const seconds = timeRemaining % 60;
-                const timeString = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        // تابع توقف تایمر
+        function stopTimer() {
+            if (timerInterval) {
+                clearInterval(timerInterval);
+                timerInterval = null;
+            }
+        }
+        
+        // تابع به‌روزرسانی نمایش تایمر
+        function updateTimer() {
+            const minutes = Math.floor(timerSeconds / 60);
+            const seconds = timerSeconds % 60;
+            const timeStr = String(minutes).padStart(2, '0') + ':' + String(seconds).padStart(2, '0');
             
-            // بروزرسانی تایمر دسکتاپ
-            const timerElement = document.getElementById('timer');
-            if (timerElement) {
-                timerElement.textContent = timeString;
-                
-                // تغییر رنگ در 5 دقیقه آخر
-                timerElement.classList.remove('warning', 'danger');
-                if (timeRemaining <= 300 && timeRemaining > 60) {
-                    timerElement.classList.add('warning');
-                } else if (timeRemaining <= 60) {
-                    timerElement.classList.add('danger');
+            // به‌روزرسانی دسکتاپ
+            const timerEl = document.getElementById('timer');
+            if (timerEl) {
+                timerEl.textContent = timeStr;
+                timerEl.classList.remove('warning', 'danger');
+                if (timerSeconds <= 300 && timerSeconds > 60) {
+                    timerEl.classList.add('warning');
+                } else if (timerSeconds <= 60) {
+                    timerEl.classList.add('danger');
                 }
+            } else {
+                console.warn('Timer element not found (desktop)');
             }
             
-            // بروزرسانی تایمر موبایل
-            const timerMobileElement = document.getElementById('timerMobile');
-            if (timerMobileElement) {
-                timerMobileElement.textContent = timeString;
-                
-                // تغییر رنگ در 5 دقیقه آخر
-                timerMobileElement.classList.remove('warning', 'danger');
-                if (timeRemaining <= 300 && timeRemaining > 60) {
-                    timerMobileElement.classList.add('warning');
-                } else if (timeRemaining <= 60) {
-                    timerMobileElement.classList.add('danger');
+            // به‌روزرسانی موبایل
+            const timerMobileEl = document.getElementById('timerMobile');
+            if (timerMobileEl) {
+                timerMobileEl.textContent = timeStr;
+                timerMobileEl.classList.remove('warning', 'danger');
+                if (timerSeconds <= 300 && timerSeconds > 60) {
+                    timerMobileEl.classList.add('warning');
+                } else if (timerSeconds <= 60) {
+                    timerMobileEl.classList.add('danger');
                 }
+            } else {
+                console.warn('Timer element not found (mobile)');
             }
         }
         
@@ -9322,160 +9469,9 @@
             currentQuestion = 0;
             // فقط در صورت نیاز userAnswers را ریست کن (نه همیشه)
             if (userAnswers.length === 0 || userAnswers.length !== generatedTests[testIndex].questions.length) {
-            userAnswers = [];
+                userAnswers = [];
             }
             displayQuestion();
-            
-            // Old code removed - not needed anymore
-            const container = document.getElementById('testContainer');
-            const test = generatedTests[testIndex];
-            
-            if (!test) return;
-            
-            test.questions.forEach((question, qIndex) => {
-                // اطمینان از وجود q_fa با استفاده از تابع completeQuestions
-                if (!question.q_fa || question.q_fa === question.q || (question.q_fa && question.q_fa.trim() === '')) {
-                    // استفاده از منطق ترجمه مشابه completeQuestions
-                    let translated = question.q;
-                    
-                    if (translated.startsWith('True or False:')) {
-                        translated = translated.replace(/^True or False:\s*/i, 'درست یا غلط: ');
-                    } else if (translated.startsWith('What is ')) {
-                        translated = translated.replace(/^What is /i, ' چیست ');
-                    } else if (translated.startsWith('What are ')) {
-                        translated = translated.replace(/^What are /i, ' چه هستند ');
-                    } else if (translated.startsWith('What does ')) {
-                        translated = translated.replace(/^What does /i, ' به چه معناست ');
-                    } else if (translated.startsWith('What do ')) {
-                        translated = translated.replace(/^What do /i, ' چه کاری انجام می‌دهید ');
-                    } else if (translated.startsWith('What did ')) {
-                        translated = translated.replace(/^What did /i, ' چه کاری انجام داد ');
-                    } else if (translated.startsWith('What was ')) {
-                        translated = translated.replace(/^What was /i, ' چه بود ');
-                    } else if (translated.startsWith('What were ')) {
-                        translated = translated.replace(/^What were /i, ' چه بودند ');
-                    } else if (translated.startsWith('What ')) {
-                        translated = translated.replace(/^What /i, 'چه ');
-                    } else if (translated.startsWith('Who is ')) {
-                        translated = translated.replace(/^Who is /i, ' کیست ');
-                    } else if (translated.startsWith('Who are ')) {
-                        translated = translated.replace(/^Who are /i, ' چه کسانی هستند ');
-                    } else if (translated.startsWith('Who was ')) {
-                        translated = translated.replace(/^Who was /i, ' چه کسی بود ');
-                    } else if (translated.startsWith('Who were ')) {
-                        translated = translated.replace(/^Who were /i, ' چه کسانی بودند ');
-                    } else if (translated.startsWith('Who ')) {
-                        translated = translated.replace(/^Who /i, 'چه کسی ');
-                    } else if (translated.startsWith('When ')) {
-                        translated = translated.replace(/^When /i, 'چه زمانی ');
-                    } else if (translated.startsWith('Where ')) {
-                        translated = translated.replace(/^Where /i, 'کجا ');
-                    } else if (translated.startsWith('Why ')) {
-                        translated = translated.replace(/^Why /i, 'چرا ');
-                    } else if (translated.startsWith('How ')) {
-                        translated = translated.replace(/^How /i, 'چگونه ');
-                    } else if (translated.startsWith('Name one ')) {
-                        translated = translated.replace(/^Name one /i, 'یکی را نام ببرید ');
-                    } else if (translated.startsWith('Name 3 ') || translated.startsWith('Name three ')) {
-                        translated = translated.replace(/^Name (3|three) /i, '3 تا را نام ببرید ');
-                    } else if (translated.startsWith('Name two ')) {
-                        translated = translated.replace(/^Name two /i, 'دو تا را نام ببرید ');
-                    } else if (translated.startsWith('Name four ')) {
-                        translated = translated.replace(/^Name four /i, 'چهار تا را نام ببرید ');
-                    } else if (translated.startsWith('Name ')) {
-                        translated = translated.replace(/^Name /i, 'نام ببرید ');
-                    } else if (translated.startsWith('Identify ')) {
-                        translated = translated.replace(/^Identify /i, 'شناسایی کنید ');
-                    } else if (translated.startsWith('Which ')) {
-                        translated = translated.replace(/^Which /i, 'کدام ');
-                    }
-                    
-                    if (translated.endsWith('?')) {
-                        translated = translated.replace(/\?$/, '؟');
-                    }
-                    
-                    question.q_fa = translated || question.q;
-                }
-                
-                // اطمینان از وجود page
-                if (!question.page) {
-                    question.page = 10;
-                }
-                // اطمینان از وجود section
-                if (!question.section) {
-                    question.section = "Discover Canada";
-                }
-                // اطمینان از وجود book_text
-                if (!question.book_text) {
-                    question.book_text = `This question is based on the content from page ${question.page} of the Discover Canada study guide.`;
-                }
-                
-                html += `
-                    <div class="question-card">
-                        <div class="question-header">
-                            <div class="question-number">سوال ${qIndex + 1}</div>
-                        </div>
-                        <div class="question-text-fa">
-                            ${question.q_fa || question.q}
-                        </div>
-                        <div class="question-text" style="display: flex; align-items: center; gap: 10px;">
-                            <span class="copy-icon" onclick="copyQuestion(${qIndex}, event)" title="کپی سوال" style="cursor: pointer;"></span>
-                            ${question.q}
-                        </div>
-                        ${question.page || question.book_text ? `
-                        <div class="question-source-toggle" onclick="toggleSource(${qIndex}, event)">
-                            <div class="question-source-header" id="source-header-${qIndex}">
-                                <div>
-                                    <span class="book-icon">📖</span>
-                                    ${question.page ? `منبع: کتاب Discover Canada${question.section ? ` - بخش: ${question.section}` : ''} - صفحه ${question.page}` : 'متن مربوط از کتاب'}
-                                    ${question.book_text && question.page ? ' | 📚 متن کتاب' : ''}
-                                </div>
-                                <span class="toggle-icon">▼</span>
-                            </div>
-                            <div class="question-source-content" id="source-content-${qIndex}">
-                                ${question.page ? `<div style="margin-bottom: ${question.book_text ? '15px' : '0'}; direction: rtl; text-align: right;">
-                                    <a href="discover.pdf#page=${question.page}" target="_blank" style="color: #17a2b8; font-weight: bold;">📖 مشاهده صفحه ${question.page} در کتاب</a>
-                                </div>` : ''}
-                                ${question.book_text ? `<div style="margin-top: ${question.page ? '10px' : '0'}; padding-top: ${question.page ? '15px' : '0'}; border-top: ${question.page ? '1px solid #dee2e6' : 'none'};">
-                                    <strong style="direction: rtl; text-align: right; display: block; margin-bottom: 10px;">📚 متن مربوط از کتاب:</strong>
-                                    ${question.book_text}
-                                </div>` : ''}
-                            </div>
-                        </div>` : ''}
-                        <div class="options">
-                `;
-                
-                question.options.forEach((option, oIndex) => {
-                    const letter = String.fromCharCode(65 + oIndex); // A, B, C, D
-                    html += `
-                        <div class="option" onclick="selectOption(${qIndex}, ${oIndex})" data-q="${qIndex}" data-o="${oIndex}" style="display: flex; align-items: center; gap: 10px; direction: ltr; cursor: pointer;">
-                            <span class="copy-icon" onclick="event.stopPropagation(); copySingleOption(${qIndex}, ${oIndex}, event);" data-copy-q="${qIndex}" data-copy-o="${oIndex}" title="کپی ${letter}" style="cursor: pointer;"></span>
-                            <span>${option}</span>
-                        </div>
-                    `;
-                });
-
-                html += `
-                        </div>
-                    </div>
-                `;
-            });
-
-            html += `
-                <div class="submit-section">
-                    <button class="submit-btn" onclick="submitTest()">ارسال پاسخ‌ها و مشاهده نتایج</button>
-                </div>
-                <div class="results" id="results">
-                    <h2>نتایج آزمون</h2>
-                    <div class="score" id="score"></div>
-                    <div class="score-text" id="scoreText"></div>
-                    <button class="submit-btn" onclick="showAnswers()" style="margin-top: 20px;">مشاهده جدول پاسخ‌ها</button>
-                    <div id="answersTable"></div>
-                </div>
-            `;
-
-            // Old code - not used anymore, but kept for reference
-            // container.innerHTML = html;
         }
 
         // تابع برای باز و بسته کردن بخش منبع
@@ -9636,10 +9632,7 @@
         // ارسال تست
         function submitTest() {
             // توقف تایمر
-            if (testTimer) {
-                clearInterval(testTimer);
-                testTimer = null;
-            }
+            stopTimer();
             
             const test = generatedTests[currentTest];
             if (!test) {
@@ -9799,11 +9792,39 @@
         // راه‌اندازی اولیه
         initTests();
         
-        // اطمینان از اینکه timer در ابتدا به‌روزرسانی می‌شود
+        // راه‌اندازی اولیه برنامه
         function initializeApp() {
-        selectTest(0);
-            // به‌روزرسانی اولیه timer
-            updateTimerDisplay();
+            // توقف هر تایمر قبلی
+            stopTimer();
+            
+            // مقدار اولیه تایمر
+            timerSeconds = 45 * 60;
+            
+            // Populate combobox
+            populateTestSelect();
+            populateTestSelectMobile();
+            
+            // نمایش اولیه تایمر
+            updateTimer();
+            
+            // انتخاب Test1 (این خودش startTimer را فراخوانی می‌کند)
+            console.log('Initializing app, calling selectTest(0)');
+            
+            // با تاخیر کوتاه برای اطمینان از آماده بودن DOM
+            setTimeout(function() {
+                selectTest(0);
+                console.log('selectTest(0) called');
+                
+                // اطمینان از شروع تایمر - اگر تایمر شروع نشد، دستی شروع کن
+                setTimeout(function() {
+                    if (!timerInterval) {
+                        console.warn('Timer did not start automatically, starting manually...');
+                        startTimer();
+                    } else {
+                        console.log('Timer is running, interval:', timerInterval);
+                    }
+                }, 300);
+            }, 200);
         }
         
         // اگر DOM آماده است، بلافاصله اجرا کن
@@ -9824,6 +9845,8 @@
         window.showAnswers = showAnswers;
         window.goToNextTest = goToNextTest;
         window.navigateTest = navigateTest;
+        window.selectTestFromDropdown = selectTestFromDropdown;
+        window.selectTestFromDropdownMobile = selectTestFromDropdownMobile;
     </script>
     
     <!-- دکمه راهنما -->
