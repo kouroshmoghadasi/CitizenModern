@@ -398,32 +398,32 @@
         /* Ads Grid System - Scalable for future growth */
         .ads-section {
             width: 100%;
-            margin: 40px 0;
+            margin: 30px 0;
             padding: 0 15px;
         }
-        
+
         .ads-section-title {
-            font-size: 2em;
+            font-size: 1.5em;
             font-weight: 700;
             color: #1e3c72;
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             direction: rtl;
         }
-        
+
         .ads-section-title-en {
-            font-size: 1.2em;
+            font-size: 1em;
             color: #7f8c8d;
             font-weight: 500;
-            margin-top: 5px;
+            margin-top: 4px;
             direction: ltr;
             text-align: center;
         }
         
         .ads-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 18px;
             width: 100%;
             max-width: 1400px;
             margin: 0 auto;
@@ -431,14 +431,15 @@
         
         .ad-tile {
             background: white;
-            border-radius: 16px;
-            padding: 20px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            padding: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
             transition: all 0.3s ease;
             border: 2px solid #e8ecf0;
             direction: rtl;
             position: relative;
             overflow: hidden;
+            max-width: 100%;
         }
         
         .ad-tile::before {
@@ -446,27 +447,28 @@
             position: absolute;
             top: 0;
             right: 0;
-            width: 4px;
+            width: 3px;
             height: 100%;
             background: linear-gradient(180deg, #1e3c72 0%, #2c5282 100%);
         }
         
         .ad-tile:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(30, 60, 114, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(30, 60, 114, 0.12);
             border-color: #1e3c72;
         }
         
         .ad-tile-header {
             display: flex;
             align-items: center;
-            gap: 12px;
-            margin-bottom: 15px;
+            gap: 8px;
+            margin-bottom: 8px;
         }
         
         .ad-tile-icon {
-            font-size: 2.5em;
+            font-size: 1.5em;
             filter: drop-shadow(0 2px 4px rgba(30, 60, 114, 0.2));
+            flex-shrink: 0;
         }
         
         .ad-tile-category {
@@ -474,42 +476,46 @@
         }
         
         .ad-tile-category-title {
-            font-size: 1.4em;
+            font-size: 0.95em;
             color: #1e3c72;
             font-weight: 700;
-            margin-bottom: 6px;
+            margin-bottom: 3px;
             text-align: center;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.2px;
+            line-height: 1.2;
         }
         
         .ad-tile-business-name {
-            font-size: 1.4em;
+            font-size: 0.95em;
             font-weight: 700;
             color: #1e3c72;
-            line-height: 1.3;
+            line-height: 1.2;
+            text-align: center;
         }
         
         .ad-tile-body {
-            margin-top: 15px;
+            margin-top: 8px;
         }
         
         .ad-tile-info-item {
             display: flex;
             align-items: flex-start;
-            gap: 8px;
-            margin-bottom: 10px;
-            font-size: 0.9em;
+            gap: 5px;
+            margin-bottom: 5px;
+            font-size: 0.8em;
             color: #34495e;
+            line-height: 1.4;
         }
         
         .ad-tile-info-icon {
-            font-size: 1.2em;
-            min-width: 20px;
+            font-size: 0.9em;
+            min-width: 16px;
+            flex-shrink: 0;
         }
         
         .ad-tile-info-text {
             flex: 1;
-            line-height: 1.6;
+            line-height: 1.4;
         }
         
         .ad-tile-info-text a {
@@ -536,60 +542,61 @@
         
         .ad-tile-hours {
             background: linear-gradient(135deg, rgba(241, 196, 15, 0.1) 0%, rgba(241, 196, 15, 0.05) 100%);
-            padding: 12px;
-            border-radius: 8px;
-            margin-top: 12px;
-            border-right: 3px solid #f1c40f;
+            padding: 6px;
+            border-radius: 5px;
+            margin-top: 6px;
+            border-right: 2px solid #f1c40f;
         }
         
         .ad-tile-hours-title {
             font-weight: 700;
             color: #1e3c72;
-            margin-bottom: 6px;
-            font-size: 0.95em;
+            margin-bottom: 3px;
+            font-size: 0.85em;
+            line-height: 1.3;
         }
         
         .ad-tile-hours-content {
-            font-size: 0.85em;
-            line-height: 1.6;
+            font-size: 0.75em;
+            line-height: 1.4;
         }
         
         .ad-tile-description {
-            margin-top: 12px;
-            padding: 10px;
+            margin-top: 6px;
+            padding: 6px;
             background: linear-gradient(135deg, rgba(30, 60, 114, 0.05) 0%, rgba(30, 60, 114, 0.02) 100%);
-            border-radius: 8px;
-            font-size: 0.85em;
+            border-radius: 5px;
+            font-size: 0.75em;
             color: #2c5282;
             font-weight: 600;
-            line-height: 1.6;
+            line-height: 1.4;
         }
         
         .ad-tile-description-en {
             direction: ltr;
-            margin-top: 4px;
-            font-size: 0.9em;
+            margin-top: 3px;
+            font-size: 0.8em;
         }
         
         .ad-space {
             width: 100%;
-            min-height: 280px;
+            min-height: 150px;
             background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 50%, #e8ecf1 100%);
-            border: 3px solid #1e3c72;
-            border-radius: 16px;
+            border: 2px solid #1e3c72;
+            border-radius: 10px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             color: #1e3c72;
-            font-size: 0.95em;
+            font-size: 0.85em;
             text-align: center;
-            padding: 20px;
+            padding: 10px;
             box-sizing: border-box;
             box-shadow: 
-                0 8px 25px rgba(30, 60, 114, 0.15),
-                0 4px 15px rgba(241, 196, 15, 0.2),
-                0 2px 8px rgba(30, 60, 114, 0.1);
+                0 4px 15px rgba(30, 60, 114, 0.1),
+                0 2px 8px rgba(241, 196, 15, 0.12),
+                0 1px 4px rgba(30, 60, 114, 0.06);
             font-weight: 500;
             direction: rtl;
             position: relative;
@@ -599,65 +606,68 @@
             width: 100%;
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 6px;
             position: relative;
             z-index: 1;
         }
         
         .ad-title {
-            font-size: 1.3em;
+            font-size: 0.95em;
             font-weight: 700;
             color: #1e3c72;
-            margin-bottom: 8px;
+            margin-bottom: 4px;
             text-align: center;
+            line-height: 1.2;
         }
         
         .ad-business-name {
-            font-size: 1.2em;
+            font-size: 0.9em;
             font-weight: 700;
             background: linear-gradient(135deg, #1e3c72 0%, #2c5282 100%);
-            padding: 12px 16px;
-            border-radius: 12px;
+            padding: 8px 12px;
+            border-radius: 8px;
             color: white;
-            margin: 8px 0;
+            margin: 4px 0;
             box-shadow: 
-                0 4px 15px rgba(30, 60, 114, 0.3),
-                0 2px 8px rgba(241, 196, 15, 0.2);
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+                0 2px 10px rgba(30, 60, 114, 0.2),
+                0 1px 4px rgba(241, 196, 15, 0.12);
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
             border: 2px solid rgba(241, 196, 15, 0.3);
+            line-height: 1.2;
         }
         
         .ad-address {
-            font-size: 0.95em;
+            font-size: 0.8em;
             color: #34495e;
-            line-height: 1.8;
+            line-height: 1.4;
             direction: ltr;
             text-align: center;
-            padding: 10px;
+            padding: 6px;
             background: linear-gradient(135deg, #fff9e6 0%, #fffef5 100%);
-            border-radius: 10px;
+            border-radius: 6px;
             border: 2px solid rgba(241, 196, 15, 0.3);
         }
         
         .ad-icon {
-            font-size: 3em;
-            margin-bottom: 8px;
-            filter: drop-shadow(0 4px 8px rgba(30, 60, 114, 0.2));
+            font-size: 1.8em;
+            margin-bottom: 4px;
+            filter: drop-shadow(0 2px 5px rgba(30, 60, 114, 0.2));
         }
         
         .ad-phone {
-            font-size: 1.1em;
+            font-size: 0.9em;
             color: #1e3c72;
             font-weight: 700;
-            margin-top: 8px;
+            margin-top: 4px;
             direction: ltr;
             text-align: center;
-            padding: 10px 15px;
+            padding: 6px 10px;
             background: linear-gradient(135deg, #f1c40f 0%, #f39c12 100%);
-            border-radius: 25px;
+            border-radius: 18px;
             box-shadow: 
-                0 4px 15px rgba(241, 196, 15, 0.4),
-                0 2px 8px rgba(241, 196, 15, 0.2);
+                0 2px 10px rgba(241, 196, 15, 0.3),
+                0 1px 4px rgba(241, 196, 15, 0.12);
+            line-height: 1.2;
         }
         
         .ad-address a {
@@ -683,44 +693,46 @@
         }
         
         .ad-hours {
-            font-size: 0.9em;
+            font-size: 0.75em;
             color: #1e3c72;
             font-weight: 600;
-            margin-top: 10px;
+            margin-top: 6px;
             direction: rtl;
             text-align: center;
-            padding: 12px;
+            padding: 6px;
             background: linear-gradient(135deg, rgba(30, 60, 114, 0.1) 0%, rgba(30, 60, 114, 0.05) 100%);
-            border-radius: 10px;
+            border-radius: 5px;
             border: 2px solid rgba(30, 60, 114, 0.2);
-            border-right: 4px solid #1e3c72;
+            border-right: 2px solid #1e3c72;
         }
         
         .ad-hours-title {
-            font-size: 1em;
+            font-size: 0.8em;
             font-weight: 700;
             color: #1e3c72;
-            margin-bottom: 6px;
+            margin-bottom: 3px;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 6px;
+            gap: 5px;
+            line-height: 1.2;
         }
         
         .ad-hours-content {
-            font-size: 0.9em;
+            font-size: 0.75em;
             color: #2c5282;
-            line-height: 1.6;
+            line-height: 1.3;
         }
         
         .ad-hours-content-en {
             direction: ltr;
             text-align: center;
-            margin-top: 6px;
-            font-size: 0.85em;
+            margin-top: 4px;
+            font-size: 0.75em;
             color: #34495e;
             border-top: 1px dashed rgba(30, 60, 114, 0.2);
-            padding-top: 6px;
+            padding-top: 4px;
+            line-height: 1.3;
         }
         
         .donation-toggle {
@@ -2563,29 +2575,29 @@
             
             .ads-section {
                 padding: 0 15px;
-                margin: 30px 0;
+                margin: 25px 0;
             }
             
             .ads-section-title {
-                font-size: 1.7em;
+                font-size: 1.5em;
                 margin-bottom: 20px;
             }
-            
+
             .ads-grid {
-                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-                gap: 18px;
+                grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+                gap: 16px;
             }
             
             .ad-tile {
-                padding: 18px;
+                padding: 10px;
             }
             
             .ad-tile-icon {
-                font-size: 2.2em;
+                font-size: 1.5em;
             }
             
             .ad-tile-business-name {
-                font-size: 1.2em;
+                font-size: 0.95em;
             }
         }
         
@@ -3167,44 +3179,44 @@
                 padding: 0 10px;
                 margin: 18px 0;
             }
-            
+
             .ads-section-title {
-                font-size: 1.5em;
+                font-size: 1.3em;
                 margin-bottom: 14px;
                 font-weight: 700;
             }
-            
+
             .ads-grid {
                 grid-template-columns: 1fr;
                 gap: 14px;
             }
             
             .ad-tile {
-                padding: 16px;
+                padding: 10px;
                 border-radius: 10px;
             }
             
             .ad-tile-icon {
-                font-size: 2em;
+                font-size: 1.5em;
             }
             
             .ad-tile-business-name {
-                font-size: 1.15em;
+                font-size: 0.95em;
                 font-weight: 700;
             }
             
             .ad-tile-category {
-                font-size: 1.05em;
+                font-size: 0.95em;
                 font-weight: 600;
             }
             
             .ad-tile-body {
-                font-size: 0.95em;
-                line-height: 1.6;
+                font-size: 0.8em;
+                line-height: 1.4;
             }
             
             .ad-tile-info-item {
-                font-size: 0.9em;
+                font-size: 0.8em;
             }
             
             .app-footer {
@@ -3629,13 +3641,13 @@
             }
             
             .ads-section-title {
-                font-size: 1.4em;
+                font-size: 1.2em;
                 margin-bottom: 14px;
                 font-weight: 700;
             }
-            
+
             .ads-section-title-en {
-                font-size: 0.9em;
+                font-size: 0.85em;
             }
             
             .ads-grid {
@@ -3653,7 +3665,7 @@
             }
             
             .ad-tile-icon {
-                font-size: 1.8em;
+                font-size: 1.6em;
             }
             
             .ad-tile-business-name {
@@ -3661,11 +3673,11 @@
             }
             
             .ad-tile-body {
-                font-size: 0.85em;
+                font-size: 0.8em;
             }
             
             .ad-tile-info-item {
-                font-size: 0.85em;
+                font-size: 0.8em;
             }
             
             .app-footer {
@@ -4336,27 +4348,27 @@
                     </div>
                     
                     <!-- Ad 3: Software Development Services -->
-                <div class="ad-tile" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border: 3px solid #5a67d8;">
+                <div class="ad-tile" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border: 2px solid #5a67d8;">
                     <div class="ad-tile-header" style="flex-direction: column; align-items: center; justify-content: center; text-align: center; width: 100%;">
-                        <div class="ad-tile-icon" style="font-size: 3em; margin-bottom: 10px;">💻</div>
+                        <div class="ad-tile-icon" style="font-size: 1.5em; margin-bottom: 6px;">💻</div>
                         <div class="ad-tile-category" style="text-align: center; width: 100%; display: flex; flex-direction: column; align-items: center;">
-                            <div class="ad-tile-category-title" style="color: white; font-size: 1.5em; text-shadow: 0 2px 4px rgba(0,0,0,0.2); text-align: center; width: 100%;">تولید نرم‌افزار و توسعه وب</div>
-                            <div class="ad-tile-business-name" style="color: white; font-size: 1.6em; text-shadow: 0 2px 4px rgba(0,0,0,0.2); margin-top: 8px; text-align: center; width: 100%;">Software Development & Web Services</div>
+                            <div class="ad-tile-category-title" style="color: white; font-size: 0.95em; text-shadow: 0 2px 4px rgba(0,0,0,0.2); text-align: center; width: 100%;">تولید نرم‌افزار و توسعه وب</div>
+                            <div class="ad-tile-business-name" style="color: white; font-size: 0.95em; text-shadow: 0 2px 4px rgba(0,0,0,0.2); margin-top: 4px; text-align: center; width: 100%;">Software Development & Web Services</div>
                         </div>
                     </div>
                     <div class="ad-tile-body">
-                        <div class="ad-tile-description" style="background: rgba(255,255,255,0.95); color: #1e3c72; padding: 15px; border-radius: 10px; margin-top: 15px;">
-                            <div style="font-weight: 700; font-size: 1.1em; margin-bottom: 12px; text-align: center; color: #5a67d8;">
+                        <div class="ad-tile-description" style="background: rgba(255,255,255,0.95); color: #1e3c72; padding: 8px; border-radius: 8px; margin-top: 8px;">
+                            <div style="font-weight: 700; font-size: 0.85em; margin-bottom: 6px; text-align: center; color: #5a67d8;">
                                 🚀 خدمات حرفه‌ای نرم‌افزاری
                             </div>
-                            <div style="line-height: 1.8; font-size: 0.95em; direction: rtl; text-align: right;">
+                            <div style="line-height: 1.5; font-size: 0.8em; direction: rtl; text-align: right;">
                                 ✅ تولید انواع نرم‌افزارهای کسب و کار<br>
                                 ✅ طراحی و توسعه وب‌سایت<br>
                                 ✅ ساخت داشبورد و سیستم‌های مدیریتی<br>
                                 ✅ کار با دیتا و تحلیل داده‌ها<br>
                                 ✅ پروژه‌های سفارشی و تخصصی
                             </div>
-                            <div style="line-height: 1.8; font-size: 0.9em; direction: ltr; text-align: left; margin-top: 12px; padding-top: 12px; border-top: 2px solid #e8ecf0;">
+                            <div style="line-height: 1.5; font-size: 0.75em; direction: ltr; text-align: left; margin-top: 6px; padding-top: 6px; border-top: 2px solid #e8ecf0;">
                                 ✅ Business Software Development<br>
                                 ✅ Website Design & Development<br>
                                 ✅ Dashboard & Management Systems<br>
@@ -4364,23 +4376,23 @@
                                 ✅ Custom & Specialized Projects
                             </div>
                         </div>
-                        <div class="ad-tile-info-item" style="background: rgba(255,255,255,0.95); padding: 12px; border-radius: 8px; margin-top: 12px; direction: rtl;">
+                        <div class="ad-tile-info-item" style="background: rgba(255,255,255,0.95); padding: 8px; border-radius: 6px; margin-top: 6px; direction: rtl;">
                             <span class="ad-tile-info-icon">📧</span>
                             <div class="ad-tile-info-text" style="direction: ltr; text-align: center;">
-                                <a href="mailto:koroush.mog@gmail.com" style="color: #5a67d8; font-weight: 700; font-size: 1.05em;">koroush.mog@gmail.com</a>
+                                <a href="mailto:koroush.mog@gmail.com" style="color: #5a67d8; font-weight: 700; font-size: 0.9em;">koroush.mog@gmail.com</a>
                             </div>
                         </div>
-                        <div class="ad-tile-info-item" style="background: rgba(255,255,255,0.95); padding: 12px; border-radius: 8px; margin-top: 8px; direction: ltr;">
+                        <div class="ad-tile-info-item" style="background: rgba(255,255,255,0.95); padding: 8px; border-radius: 6px; margin-top: 6px; direction: ltr;">
                             <span class="ad-tile-info-icon">📞</span>
                             <div class="ad-tile-info-text" style="direction: ltr; text-align: center;">
-                                <a href="tel:5144767079" style="color: #5a67d8; font-weight: 700; font-size: 1.05em;">514-476-7079</a>
+                                <a href="tel:5144767079" style="color: #5a67d8; font-weight: 700; font-size: 0.9em;">514-476-7079</a>
                             </div>
                         </div>
-                        <div style="text-align: center; margin-top: 15px; padding: 10px; background: rgba(255,255,255,0.2); border-radius: 8px;">
-                            <div style="color: white; font-weight: 700; font-size: 1em; direction: rtl;">
+                        <div style="text-align: center; margin-top: 8px; padding: 6px; background: rgba(255,255,255,0.2); border-radius: 6px;">
+                            <div style="color: white; font-weight: 700; font-size: 0.85em; direction: rtl;">
                                 💼 برای مشاوره و همکاری تماس بگیرید
                             </div>
-                            <div style="color: rgba(255,255,255,0.95); font-size: 0.9em; margin-top: 5px; direction: ltr;">
+                            <div style="color: rgba(255,255,255,0.95); font-size: 0.8em; margin-top: 3px; direction: ltr;">
                                 Contact for consultation and collaboration
                             </div>
                         </div>
@@ -4388,53 +4400,53 @@
                 </div>
                 
                 <!-- Ad 4: Elmira Peyghami - French Language Teacher -->
-                <div class="ad-tile" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); border: 3px solid #2c8ef0;">
+                <div class="ad-tile" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); border: 2px solid #2c8ef0;">
                     <div class="ad-tile-header" style="flex-direction: column; align-items: center; justify-content: center; text-align: center; width: 100%;">
-                        <div class="ad-tile-icon" style="font-size: 3em; margin-bottom: 10px;">📚</div>
+                        <div class="ad-tile-icon" style="font-size: 1.5em; margin-bottom: 6px;">📚</div>
                         <div class="ad-tile-category" style="text-align: center; width: 100%; display: flex; flex-direction: column; align-items: center;">
-                            <div class="ad-tile-category-title" style="color: white; font-size: 1.5em; text-shadow: 0 2px 4px rgba(0,0,0,0.2); text-align: center; width: 100%;">مدرس زبان فرانسه</div>
-                            <div class="ad-tile-business-name" style="color: white; font-size: 1.6em; text-shadow: 0 2px 4px rgba(0,0,0,0.2); margin-top: 8px; text-align: center; width: 100%;">المیرا پیغامی / Elmira Peyghami</div>
-                            <div style="color: rgba(255,255,255,0.95); font-size: 1em; margin-top: 6px; font-weight: 600; text-align: center; width: 100%;">معلم رسمی مدارس کبک / Certified Quebec School Teacher</div>
+                            <div class="ad-tile-category-title" style="color: white; font-size: 0.95em; text-shadow: 0 2px 4px rgba(0,0,0,0.2); text-align: center; width: 100%;">مدرس زبان فرانسه</div>
+                            <div class="ad-tile-business-name" style="color: white; font-size: 0.95em; text-shadow: 0 2px 4px rgba(0,0,0,0.2); margin-top: 4px; text-align: center; width: 100%;">المیرا پیغامی / Elmira Peyghami</div>
+                            <div style="color: rgba(255,255,255,0.95); font-size: 0.85em; margin-top: 4px; font-weight: 600; text-align: center; width: 100%;">معلم رسمی مدارس کبک / Certified Quebec School Teacher</div>
                         </div>
                     </div>
                     <div class="ad-tile-body">
-                        <div class="ad-tile-description" style="background: rgba(255,255,255,0.95); color: #1e3c72; padding: 15px; border-radius: 10px; margin-top: 15px;">
-                            <div style="font-weight: 700; font-size: 1.1em; margin-bottom: 12px; text-align: center; color: #2c8ef0;">
+                        <div class="ad-tile-description" style="background: rgba(255,255,255,0.95); color: #1e3c72; padding: 8px; border-radius: 8px; margin-top: 8px;">
+                            <div style="font-weight: 700; font-size: 0.85em; margin-bottom: 6px; text-align: center; color: #2c8ef0;">
                                 🎓 کلاس‌های آموزشی
                             </div>
-                            <div style="line-height: 1.8; font-size: 0.95em; direction: rtl; text-align: right;">
+                            <div style="line-height: 1.5; font-size: 0.8em; direction: rtl; text-align: right;">
                                 ☑️ کلاس‌های آمادگی امتحانات TCF, TEF, OQLF<br>
                                 ☑️ کلاس‌های ترمیک و مکالمه<br>
                                 ☑️ کلاس‌های تقویتی دانش‌آموزان<br>
                                 🔘 با بیش از ۱۵ سال سابقه تدریس
                             </div>
-                            <div style="line-height: 1.8; font-size: 0.9em; direction: ltr; text-align: left; margin-top: 12px; padding-top: 12px; border-top: 2px solid #e8ecf0;">
+                            <div style="line-height: 1.5; font-size: 0.75em; direction: ltr; text-align: left; margin-top: 6px; padding-top: 6px; border-top: 2px solid #e8ecf0;">
                                 ☑️ Test Preparation (TCF, TEF, OQLF)<br>
                                 ☑️ Regular & Conversation Classes<br>
                                 ☑️ Tutoring for Students<br>
                                 🔘 Over 15 Years of Teaching Experience
                             </div>
                         </div>
-                        <div style="background: rgba(255,255,255,0.95); color: #1e3c72; padding: 12px; border-radius: 8px; margin-top: 12px; direction: rtl; text-align: right; font-size: 0.9em; line-height: 1.6;">
+                        <div style="background: rgba(255,255,255,0.95); color: #1e3c72; padding: 8px; border-radius: 6px; margin-top: 6px; direction: rtl; text-align: right; font-size: 0.8em; line-height: 1.4;">
                             🔘 👇 در این صفحه کلی اصطلاحات محاوره‌ای زبان کبکی می‌آموزیم و همچنین به مشکلات یادگیری دانش‌آموزان ابتدایی می‌پردازیم.
                         </div>
-                        <div class="ad-tile-info-item" style="background: rgba(255,255,255,0.95); padding: 12px; border-radius: 8px; margin-top: 12px; direction: ltr;">
+                        <div class="ad-tile-info-item" style="background: rgba(255,255,255,0.95); padding: 8px; border-radius: 6px; margin-top: 6px; direction: ltr;">
                             <span class="ad-tile-info-icon">📱</span>
                             <div class="ad-tile-info-text" style="direction: ltr; text-align: center;">
-                                <a href="http://instagram.com/Elmira.enseignante" target="_blank" style="color: #2c8ef0; font-weight: 700; font-size: 1.05em;">@Elmira.enseignante</a>
+                                <a href="http://instagram.com/Elmira.enseignante" target="_blank" style="color: #2c8ef0; font-weight: 700; font-size: 0.9em;">@Elmira.enseignante</a>
                             </div>
                         </div>
-                        <div class="ad-tile-info-item" style="background: rgba(255,255,255,0.95); padding: 12px; border-radius: 8px; margin-top: 8px; direction: ltr;">
+                        <div class="ad-tile-info-item" style="background: rgba(255,255,255,0.95); padding: 8px; border-radius: 6px; margin-top: 6px; direction: ltr;">
                             <span class="ad-tile-info-icon">📞</span>
                             <div class="ad-tile-info-text" style="direction: ltr; text-align: center;">
-                                <a href="tel:5146928300" style="color: #2c8ef0; font-weight: 700; font-size: 1.05em;">(514) 692-8300</a>
+                                <a href="tel:5146928300" style="color: #2c8ef0; font-weight: 700; font-size: 0.9em;">(514) 692-8300</a>
                             </div>
                         </div>
-                        <div style="text-align: center; margin-top: 15px; padding: 10px; background: rgba(255,255,255,0.2); border-radius: 8px;">
-                            <div style="color: white; font-weight: 700; font-size: 1em; direction: rtl;">
+                        <div style="text-align: center; margin-top: 8px; padding: 6px; background: rgba(255,255,255,0.2); border-radius: 6px;">
+                            <div style="color: white; font-weight: 700; font-size: 0.85em; direction: rtl;">
                                 💥 برای اطلاعات بیشتر تماس بگیرید
                             </div>
-                            <div style="color: rgba(255,255,255,0.95); font-size: 0.9em; margin-top: 5px; direction: ltr;">
+                            <div style="color: rgba(255,255,255,0.95); font-size: 0.8em; margin-top: 3px; direction: ltr;">
                                 Contact for more information
                             </div>
                         </div>
@@ -4536,94 +4548,123 @@
     </div>
 
     <script>
-        // Visitor Counter - Uses IndexedDB + localStorage (dual storage for maximum persistence)
-        // IndexedDB is more persistent than localStorage and survives cache clearing better
-        const DB_NAME = 'CitizenAppDB';
-        const DB_VERSION = 1;
-        const STORE_NAME = 'visitorCount';
+        // Visitor Counter - Flask API Integration with AWS DynamoDB
+        // Connects to Flask backend API to get and increment visitor count from AWS DynamoDB
+        const API_BASE_URL = window.location.origin; // Use same origin as the page
+        const INCREMENT_ENDPOINT = `${API_BASE_URL}/api/visitor-count/increment`;
+        const GET_ENDPOINT = `${API_BASE_URL}/api/visitor-count`;
         
-        function openDB() {
-            return new Promise((resolve, reject) => {
-                const request = indexedDB.open(DB_NAME, DB_VERSION);
-                
-                request.onerror = () => reject(request.error);
-                request.onsuccess = () => resolve(request.result);
-                
-                request.onupgradeneeded = (event) => {
-                    const db = event.target.result;
-                    if (!db.objectStoreNames.contains(STORE_NAME)) {
-                        db.createObjectStore(STORE_NAME);
+        /**
+         * Get current visitor count from Flask API
+         */
+        async function getVisitorCount() {
+            try {
+                const response = await fetch(GET_ENDPOINT, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json'
                     }
-                };
-            });
-        }
-        
-        function getCountFromDB() {
-            return openDB().then(db => {
-                return new Promise((resolve, reject) => {
-                    const transaction = db.transaction([STORE_NAME], 'readonly');
-                    const store = transaction.objectStore(STORE_NAME);
-                    const request = store.get('count');
-                    
-                    request.onerror = () => reject(request.error);
-                    request.onsuccess = () => resolve(request.result);
                 });
-            });
-        }
-        
-        function saveCountToDB(count) {
-            return openDB().then(db => {
-                return new Promise((resolve, reject) => {
-                    const transaction = db.transaction([STORE_NAME], 'readwrite');
-                    const store = transaction.objectStore(STORE_NAME);
-                    const request = store.put(count, 'count');
-                    
-                    request.onerror = () => reject(request.error);
-                    request.onsuccess = () => resolve();
-                });
-            });
-        }
-        
-        async function updateVisitorCount() {
-            const storageKey = 'citizenAppVisitorCount';
-            const counterElement = document.getElementById('visitorCount');
-            let visitCount = null;
-            
-            // Try IndexedDB first (more persistent)
-            try {
-                const dbCount = await getCountFromDB();
-                if (dbCount !== undefined && dbCount !== null) {
-                    visitCount = parseInt(dbCount) + 1;
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
                 }
-            } catch (e) {
-                console.log('IndexedDB not available, trying localStorage');
-            }
-            
-            // Fallback to localStorage if IndexedDB failed
-            if (visitCount === null) {
+                
+                const data = await response.json();
+                return data.count || 0;
+            } catch (error) {
+                console.error('Error getting visitor count:', error);
+                // Fallback to localStorage if API fails
+                const storageKey = 'citizenAppVisitorCount';
                 const localCount = localStorage.getItem(storageKey);
-                if (localCount !== null && localCount !== '') {
-                    visitCount = parseInt(localCount) + 1;
-                } else {
-                    visitCount = 100; // Initial value
+                return localCount ? parseInt(localCount) : 100;
+            }
+        }
+        
+        /**
+         * Increment visitor count on server (Flask API + DynamoDB) and return new count
+         */
+        async function incrementVisitorCount() {
+            try {
+                const response = await fetch(INCREMENT_ENDPOINT, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                const data = await response.json();
+                
+                if (data.warning) {
+                    console.warn('API Warning:', data.warning);
+                }
+                
+                // Cache in localStorage as backup
+                const storageKey = 'citizenAppVisitorCount';
+                localStorage.setItem(storageKey, data.count);
+                
+                return data.count || 0;
+            } catch (error) {
+                console.error('Error incrementing visitor count:', error);
+                // Fallback: try to get current count
+                try {
+                    const currentCount = await getVisitorCount();
+                    const newCount = currentCount + 1;
+                    // Save to localStorage as fallback
+                    const storageKey = 'citizenAppVisitorCount';
+                    localStorage.setItem(storageKey, newCount);
+                    return newCount;
+                } catch (fallbackError) {
+                    console.error('Fallback also failed:', fallbackError);
+                    // Last resort: use localStorage
+                    const storageKey = 'citizenAppVisitorCount';
+                    const localCount = localStorage.getItem(storageKey);
+                    const newCount = localCount ? parseInt(localCount) + 1 : 101;
+                    localStorage.setItem(storageKey, newCount);
+                    return newCount;
                 }
             }
-            
-            // Save to both IndexedDB and localStorage (dual storage)
-            try {
-                await saveCountToDB(visitCount);
-                localStorage.setItem(storageKey, visitCount);
-            } catch (e) {
-                // If IndexedDB fails, at least save to localStorage
-                localStorage.setItem(storageKey, visitCount);
-            }
-            
-            // Update display
+        }
+        
+        /**
+         * Update visitor counter display
+         */
+        function updateCounterDisplay(count) {
+            const counterElement = document.getElementById('visitorCount');
             if (counterElement) {
-                counterElement.textContent = visitCount.toLocaleString('en-US');
+                counterElement.textContent = count.toLocaleString('en-US');
             }
-            
-            return visitCount;
+        }
+        
+        /**
+         * Main function to update visitor count (called on page load)
+         */
+        async function updateVisitorCount() {
+            try {
+                // Increment and get new count from Flask API + DynamoDB
+                const newCount = await incrementVisitorCount();
+                updateCounterDisplay(newCount);
+                return newCount;
+            } catch (error) {
+                console.error('Error updating visitor count:', error);
+                // Fallback: try to just get current count
+                try {
+                    const currentCount = await getVisitorCount();
+                    updateCounterDisplay(currentCount);
+                    return currentCount;
+                } catch (fallbackError) {
+                    console.error('Fallback also failed:', fallbackError);
+                    // Last resort: show cached value
+                    const storageKey = 'citizenAppVisitorCount';
+                    const cachedCount = localStorage.getItem(storageKey) || 100;
+                    updateCounterDisplay(parseInt(cachedCount));
+                    return parseInt(cachedCount);
+                }
+            }
         }
         
         // Initialize visitor counter when page loads
@@ -4739,6 +4780,7 @@
                     },
                     {
                         q: "When was the Constitution of Canada amended to include the Charter of Rights and Freedoms?",
+                        q_fa: "قانون اساسی کانادا چه زمانی اصلاح شد تا منشور حقوق و آزادی‌ها را شامل شود؟",
                         options: ["1867", "1967", "1982", "2000"],
                         correct: 2,
                         page: 12,
@@ -5062,21 +5104,25 @@
                 questions: [
                     {
                         q: "What does it mean to say that Canada is a constitutional monarchy?",
+                        q_fa: "این که بگوییم کانادا یک سلطنت مشروطه است به چه معناست؟",
                         options: ["Canada has a king or queen", "The monarch is the head of state", "The monarch's powers are limited by the Constitution", "All of the above"],
                         correct: 3
                     },
                     {
                         q: "What are the three branches of government?",
+                        q_fa: "سه شاخه دولت چه هستند؟",
                         options: ["Executive, Legislative, Judicial", "Federal, Provincial, Municipal", "House of Commons, Senate, Courts", "Prime Minister, Governor General, Supreme Court"],
                         correct: 0
                     },
                     {
                         q: "What is the difference between the role of the Queen and that of the Prime Minister?",
+                        q_fa: "تفاوت بین نقش ملکه و نخست‌وزیر چیست؟",
                         options: ["Queen is head of state, PM is head of government", "Queen makes laws, PM enforces them", "No difference", "Queen is elected, PM is appointed"],
                         correct: 0
                     },
                     {
                         q: "What is the highest honour that Canadians can receive?",
+                        q_fa: "بالاترین افتخاری که کانادایی‌ها می‌توانند دریافت کنند چیست؟",
                         options: ["Order of Canada", "Victoria Cross", "Medal of Honour", "Prime Minister's Award"],
                         correct: 0
                     },
@@ -5600,51 +5646,61 @@
                 questions: [
                     {
                         q: "Name four (4) fundamental freedoms that Canadians enjoy.",
+                        q_fa: "چهار آزادی بنیادی که کانادایی‌ها از آن برخوردارند را نام ببرید.",
                         options: ["Freedom of conscience and religion, Freedom of thought, belief, opinion and expression, Freedom of peaceful assembly, Freedom of association", "Freedom to work, Freedom to travel, Freedom to vote, Freedom to own property", "Freedom from taxes, Freedom from military service, Freedom from jury duty", "None of the above"],
                         correct: 0
                     },
                     {
                         q: "What is meant by the equality of women and men?",
+                        q_fa: "برابری زنان و مردان به چه معناست؟",
                         options: ["Men and women are equal under the law", "Same opportunities and responsibilities", "Equal pay for equal work", "All of the above"],
                         correct: 3
                     },
                     {
                         q: "What are some examples of taking responsibility for yourself and your family?",
+                        q_fa: "چند نمونه از مسئولیت‌پذیری برای خود و خانواده‌تان چیست؟",
                         options: ["Getting a job, Taking care of one's family, Working hard", "Paying taxes, Voting, Serving on jury", "Obeying laws, Respecting others", "All of the above"],
                         correct: 0
                     },
                     {
                         q: "True or False: No treaty or other rights or freedoms of Aboriginal peoples will be negatively affected by the rights granted by the Canadian Charter.",
+                        q_fa: "درست یا غلط: هیچ معاهده یا حقوق یا آزادی‌های دیگر بومیان تحت تأثیر منفی حقوق اعطا شده توسط منشور کانادا قرار نخواهد گرفت.",
                         options: ["True", "False"],
                         correct: 0
                     },
                     {
                         q: "Which of the following responsibilities comes with becoming a Canadian citizen?",
+                        q_fa: "کدام یک از مسئولیت‌های زیر با تبدیل شدن به شهروند کانادایی همراه است؟",
                         options: ["Voting in elections", "Obeying the law", "Taking responsibility for oneself and family", "All of the above"],
                         correct: 3
                     },
                     {
                         q: "What is a great way to make acquaintances, create contacts, and learn useful skills?",
+                        q_fa: "راه عالی برای آشنایی، ایجاد ارتباط و یادگیری مهارت‌های مفید چیست؟",
                         options: ["Working", "Volunteering", "Studying", "Traveling"],
                         correct: 1
                     },
                     {
                         q: "What is Canada's most recognized and respected symbol?",
+                        q_fa: "شناخته‌شده‌ترین و محترم‌ترین نماد کانادا چیست؟",
                         options: ["The beaver", "The maple leaf", "The moose", "The flag"],
                         correct: 1
                     },
                     {
                         q: "Name two Canadian symbols.",
+                        q_fa: "دو نماد کانادایی را نام ببرید.",
                         options: ["Maple leaf, Beaver", "Flag, Anthem", "Maple leaf, Flag", "All of the above"],
                         correct: 3
                     },
                     {
                         q: "What are the first two lines of Canada's national anthem?",
+                        q_fa: "دو خط اول سرود ملی کانادا چیست؟",
                         options: ["O Canada! Our home and native land! True patriot love in all of us command", "O Canada, land of the free, home of the brave", "God save the Queen, long live the King", "None of the above"],
                         correct: 0
                     },
                     {
                         q: "Which legal documents protect the rights of Canadians regarding official languages?",
+                        q_fa: "کدام اسناد قانونی حقوق کانادایی‌ها را در مورد زبان‌های رسمی محافظت می‌کنند؟",
                         options: ["Charter of Rights and Freedoms", "Official Languages Act", "Both Charter and Official Languages Act", "Constitution only"],
                         correct: 2
                     },
@@ -5745,26 +5801,31 @@
                 questions: [
                     {
                         q: "Which three industries are important to Quebec's economy today?",
+                        q_fa: "کدام سه صنعت برای اقتصاد کبک امروز مهم هستند؟",
                         options: ["Forestry, energy, pulp and paper", "Mining, manufacturing, technology", "Aerospace, information technology, biotechnology", "All of the above"],
                         correct: 3
                     },
                     {
                         q: "Which political party is in power in Quebec?",
+                        q_fa: "کدام حزب سیاسی در کبک در قدرت است؟",
                         options: ["This changes with elections", "Always Liberal", "Always Parti Québécois", "Always Conservative"],
                         correct: 0
                     },
                     {
                         q: "What is 'La Francophonie'?",
+                        q_fa: "'La Francophonie' چیست؟",
                         options: ["Quebec language law", "International organization of French-speaking nations", "French community in Canada only", "A French colony"],
                         correct: 1
                     },
                     {
                         q: "When did the House of Commons recognize that the Quebecois form a nation within a united Canada?",
+                        q_fa: "مجلس عوام چه زمانی به رسمیت شناخت که کبکی‌ها یک ملت در یک کانادای متحد تشکیل می‌دهند؟",
                         options: ["1982", "1995", "2006", "2010"],
                         correct: 2
                     },
                     {
                         q: "True or False: French and English do not have equal status in Parliament and throughout the government.",
+                        q_fa: "درست یا غلط: فرانسوی و انگلیسی در پارلمان و سراسر دولت وضعیت برابر ندارند.",
                         options: ["True", "False"],
                         correct: 1
                     },
@@ -5779,71 +5840,85 @@
                     },
                     {
                         q: "Who renamed the colony 'Province of Quebec'?",
+                        q_fa: "چه کسی مستعمره را 'استان کبک' نامگذاری مجدد کرد؟",
                         options: ["British in 1763", "French", "Canadians", "Americans"],
                         correct: 0
                     },
                     {
                         q: "What happened at the Battle of the Plains of Abraham?",
+                        q_fa: "در نبرد دشت‌های آبراهام چه اتفاقی افتاد؟",
                         options: ["British defeated French forces", "French won", "It was a draw", "Americans invaded"],
                         correct: 0
                     },
                     {
                         q: "Who passed the Quebec Act of 1774?",
+                        q_fa: "چه کسی قانون کبک 1774 را تصویب کرد؟",
                         options: ["French Parliament", "British Parliament", "Quebec Assembly", "None of the above"],
                         correct: 1
                     },
                     {
                         q: "Which Act granted, for the first time in Canada, legislative assemblies elected by the people?",
+                        q_fa: "کدام قانون برای اولین بار در کانادا، مجامع قانونگذاری منتخب مردم را اعطا کرد؟",
                         options: ["Quebec Act of 1774", "Constitutional Act of 1791", "British North America Act", "Charter of Rights"],
                         correct: 1
                     },
                     {
                         q: "Who was Sir Louis-Hippolyte La Fontaine?",
+                        q_fa: "سر لوئی-هیپولیت لافونتن چه کسی بود؟",
                         options: ["First Prime Minister", "A leader of responsible government in Canada", "A war hero", "First Governor General"],
                         correct: 1
                     },
                     {
                         q: "Who recommended merging Upper and Lower Canada and giving them responsible government?",
+                        q_fa: "چه کسی ادغام کانادای علیا و سفلی و اعطای دولت مسئول به آن‌ها را توصیه کرد؟",
                         options: ["Lord Durham", "Lord Elgin", "Governor Simcoe", "Prime Minister"],
                         correct: 0
                     },
                     {
                         q: "What does 'responsible government' mean?",
+                        q_fa: "'دولت مسئول' به چه معناست؟",
                         options: ["Government responsible to the people through Parliament", "Government that makes good decisions", "Government with many responsibilities", "Elected government"],
                         correct: 0
                     },
                     {
                         q: "When did English settlement begin in Canada?",
+                        q_fa: "استعمار انگلیسی در کانادا چه زمانی آغاز شد؟",
                         options: ["1497 with John Cabot", "1608 with Champlain", "1763", "1867"],
                         correct: 0
                     },
                     {
                         q: "Who established the first European settlements?",
+                        q_fa: "چه کسی اولین سکونتگاه‌های اروپایی را تأسیس کرد؟",
                         options: ["John Cabot, Jacques Cartier, Samuel de Champlain", "Only French", "Only British", "Americans"],
                         correct: 0
                     },
                     {
                         q: "What is a fundamental characteristic of the Canadian heritage and identity?",
+                        q_fa: "ویژگی اساسی میراث و هویت کانادایی چیست؟",
                         options: ["Multiculturalism", "Bilingualism", "Both multiculturalism and bilingualism", "Monarchy"],
                         correct: 2
                     },
                     {
                         q: "Canadians work hard to respect:",
+                        q_fa: "کانادایی‌ها برای احترام به چه چیزهایی تلاش می‌کنند؟",
                         options: ["Individual rights", "Collective rights", "Both individual and collective rights", "Only federal rights"],
                         correct: 2
                     },
                     {
                         q: "Which legal documents protect the rights of Canadians regarding official languages?",
+                        q_fa: "کدام اسناد قانونی حقوق کانادایی‌ها را در مورد زبان‌های رسمی محافظت می‌کنند؟",
                         options: ["Charter of Rights and Freedoms", "Official Languages Act", "Both", "Constitution only"],
                         correct: 2
                     },
                     {
                         q: "What are the three main groups of Aboriginal peoples?",
+                        q_fa: "سه گروه اصلی بومیان چه کسانی هستند؟",
                         options: ["First Nations, Métis, Inuit", "Indians, Métis, Eskimos", "Tribes, Nations, Communities", "None of the above"],
                         correct: 0
                     },
                     {
                         q: "Where do the majority of Métis people live in Canada?",
+                        q_fa: "اکثریت مردم متی در کانادا کجا زندگی می‌کنند؟",
                         options: ["Ontario", "Quebec", "Prairie Provinces", "BC"],
                         correct: 2
                     }
@@ -5953,46 +6028,55 @@
                     },
                     {
                         q: "What is a noble way to contribute to Canada and an excellent career choice?",
+                        q_fa: "راه نجیبانه برای کمک به کانادا و انتخاب عالی شغلی چیست؟",
                         options: ["Working in government", "Military service", "Teaching", "Business"],
                         correct: 1
                     },
                     {
                         q: "What are the responsibilities of the federal government?",
+                        q_fa: "مسئولیت‌های دولت فدرال چیست؟",
                         options: ["National defence, foreign policy, citizenship", "Education, health care", "Police, fire services", "All of the above"],
                         correct: 0
                     },
                     {
                         q: "Which of the following are the responsibilities of the provincial government?",
+                        q_fa: "کدام یک از موارد زیر مسئولیت‌های دولت استانی است؟",
                         options: ["National defence, citizenship", "Education, health care, natural resources", "Police, fire services", "Postal service"],
                         correct: 1
                     },
                     {
                         q: "What is a minority government?",
+                        q_fa: "دولت اقلیت چیست؟",
                         options: ["Government with less than 50% of seats", "Government with majority of seats", "Coalition government", "Temporary government"],
                         correct: 0
                     },
                     {
                         q: "After an election, which party forms the government?",
+                        q_fa: "پس از انتخابات، کدام حزب دولت را تشکیل می‌دهد؟",
                         options: ["The party with the most votes", "The party with the most seats in the House of Commons", "The largest party", "The party chosen by the Governor General"],
                         correct: 1
                     },
                     {
                         q: "What is the role of the courts in Canada?",
+                        q_fa: "نقش دادگاه‌ها در کانادا چیست؟",
                         options: ["Make laws", "Enforce laws", "Interpret and apply laws", "Elect representatives"],
                         correct: 2
                     },
                     {
                         q: "Who appoints the judges of the Supreme Court of Canada?",
+                        q_fa: "چه کسی قضات دادگاه عالی کانادا را منصوب می‌کند؟",
                         options: ["Prime Minister", "Governor General", "Chief Justice", "Parliament"],
                         correct: 1
                     },
                     {
                         q: "What do you call a law before it is passed?",
+                        q_fa: "قبل از تصویب، قانون را چه می‌نامند؟",
                         options: ["Legislation", "Bill", "Act", "Statute"],
                         correct: 1
                     },
                     {
                         q: "What is the final step before a bill becomes a law?",
+                        q_fa: "آخرین مرحله قبل از تبدیل شدن یک لایحه به قانون چیست؟",
                         options: ["Royal Assent", "Third reading", "Committee review", "First reading"],
                         correct: 0
                     }
@@ -6003,101 +6087,121 @@
                 questions: [
                     {
                         q: "What is Canada's most recognized and respected symbol?",
+                        q_fa: "شناخته‌شده‌ترین و محترم‌ترین نماد کانادا چیست؟",
                         options: ["The beaver", "The maple leaf", "The moose", "The flag"],
                         correct: 1
                     },
                     {
                         q: "Name two Canadian symbols.",
+                        q_fa: "دو نماد کانادایی را نام ببرید.",
                         options: ["Maple leaf, Beaver", "Flag, Anthem", "Maple leaf, Flag", "All of the above"],
                         correct: 3
                     },
                     {
                         q: "What are the first two lines of Canada's national anthem?",
+                        q_fa: "دو خط اول سرود ملی کانادا چیست؟",
                         options: ["O Canada! Our home and native land! True patriot love in all of us command", "O Canada, land of the free", "God save the Queen", "None of the above"],
                         correct: 0
                     },
                     {
                         q: "Who were the 'Group of Seven' in Canadian history?",
+                        q_fa: "'گروه هفت' در تاریخ کانادا چه کسانی بودند؟",
                         options: ["Seven Fathers of Confederation", "Famous Canadian artists", "Seven provinces", "Seven territories"],
                         correct: 1
                     },
                     {
                         q: "Marshall McLuhan and Harold Innis were:",
+                        q_fa: "مارشال مکلوهان و هارولد اینیس بودند:",
                         options: ["Politicians", "Famous Canadian thinkers and scholars", "Artists", "Explorers"],
                         correct: 1
                     },
                     {
                         q: "Why is Terry Fox a Canadian national hero?",
+                        q_fa: "چرا تری فاکس یک قهرمان ملی کانادایی است؟",
                         options: ["He won Olympic gold", "He ran across Canada to raise money for cancer research", "He was a war hero", "He was a politician"],
                         correct: 1
                     },
                     {
                         q: "Who circled the globe in a wheelchair to raise funds for spinal cord research?",
+                        q_fa: "چه کسی با ویلچر دور دنیا را گشت تا برای تحقیقات آسیب نخاعی کمک مالی جمع کند؟",
                         options: ["Terry Fox", "Rick Hansen", "Wayne Gretzky", "None of the above"],
                         correct: 1
                     },
                     {
                         q: "What is a fundamental characteristic of the Canadian heritage and identity?",
+                        q_fa: "ویژگی اساسی میراث و هویت کانادایی چیست؟",
                         options: ["Multiculturalism", "Bilingualism", "Both multiculturalism and bilingualism", "Monarchy"],
                         correct: 2
                     },
                     {
                         q: "Canadians work hard to respect:",
+                        q_fa: "کانادایی‌ها برای احترام به چه چیزهایی تلاش می‌کنند؟",
                         options: ["Individual rights", "Collective rights", "Both individual and collective rights", "Only federal rights"],
                         correct: 2
                     },
                     {
                         q: "What is 'La Francophonie'?",
+                        q_fa: "'La Francophonie' چیست؟",
                         options: ["Quebec language law", "International organization of French-speaking nations", "French community in Canada only", "A French colony"],
                         correct: 1
                     },
                     {
                         q: "When did the House of Commons recognize that the Quebecois form a nation within a united Canada?",
+                        q_fa: "مجلس عوام چه زمانی به رسمیت شناخت که کبکی‌ها یک ملت در یک کانادای متحد تشکیل می‌دهند؟",
                         options: ["1982", "1995", "2006", "2010"],
                         correct: 2
                     },
                     {
                         q: "Who is Marjorie Turner-Bailey?",
+                        q_fa: "مارجوری ترنر-بیلی کیست؟",
                         options: ["First woman Prime Minister", "First Black woman elected to the Nova Scotia legislature", "First Governor General", "A famous athlete"],
                         correct: 1
                     },
                     {
                         q: "Who was John Buchan?",
+                        q_fa: "جان بوکان چه کسی بود؟",
                         options: ["First Prime Minister", "15th Governor General of Canada", "A war hero", "A famous writer"],
                         correct: 1
                     },
                     {
                         q: "What is the highest honour that Canadians can receive?",
+                        q_fa: "بالاترین افتخاری که کانادایی‌ها می‌توانند دریافت کنند چیست؟",
                         options: ["Order of Canada", "Victoria Cross", "Medal of Honour", "Prime Minister's Award"],
                         correct: 0
                     },
                     {
                         q: "What is a great way to make acquaintances, create contacts, and learn useful skills?",
+                        q_fa: "راه عالی برای آشنایی، ایجاد ارتباط و یادگیری مهارت‌های مفید چیست؟",
                         options: ["Working", "Volunteering", "Studying", "Traveling"],
                         correct: 1
                     },
                     {
                         q: "What is a noble way to contribute to Canada and an excellent career choice?",
+                        q_fa: "راه نجیبانه برای کمک به کانادا و انتخاب عالی شغلی چیست؟",
                         options: ["Working in government", "Military service", "Teaching", "Business"],
                         correct: 1
                     },
                     {
                         q: "What is the significance of the discovery of insulin by Sir Frederick Banting and Charles Best?",
+                        q_fa: "اهمیت کشف انسولین توسط سر فردریک بانتیگ و چارلز بست چیست؟",
                         options: ["Cured diabetes", "Saved millions of lives worldwide", "Won Nobel Prize", "All of the above"],
                         correct: 3
                     },
                     {
                         q: "Who was General Sir Arthur Currie?",
+                        q_fa: "ژنرال سر آرتور کری چه کسی بود؟",
                         options: ["First Prime Minister", "Canada's greatest soldier", "First Governor General", "A famous explorer"],
                         correct: 1
                     },
                     {
                         q: "When is Remembrance Day celebrated?",
+                        q_fa: "روز یادبود چه زمانی جشن گرفته می‌شود؟",
                         options: ["November 11", "November 1", "December 11", "January 11"],
                         correct: 0
                     },
                     {
                         q: "Approximately how many Canadians served in the First World War?",
+                        q_fa: "تقریباً چند کانادایی در جنگ جهانی اول خدمت کردند؟",
                         options: ["100,000", "500,000", "More than 600,000", "1 million"],
                         correct: 2
                     }
@@ -6116,46 +6220,55 @@
                     },
                     {
                         q: "When is Canada Day?",
+                        q_fa: "روز کانادا چه زمانی است؟",
                         options: ["June 1", "July 1", "August 1", "September 1"],
                         correct: 1
                     },
                     {
                         q: "What are the three main groups of Aboriginal peoples?",
+                        q_fa: "سه گروه اصلی بومیان چه کسانی هستند؟",
                         options: ["First Nations, Métis, Inuit", "Indians, Métis, Eskimos", "Tribes, Nations, Communities", "None"],
                         correct: 0
                     },
                     {
                         q: "Name 3 fathers of Confederation.",
+                        q_fa: "3 پدر کنفدراسیون را نام ببرید.",
                         options: ["Sir John A. Macdonald, George-Étienne Cartier, George Brown", "Trudeau, Pearson, King", "Cabot, Cartier, Champlain", "None"],
                         correct: 0
                     },
                     {
                         q: "What does it mean to say that Canada is a constitutional monarchy?",
+                        q_fa: "این که بگوییم کانادا یک سلطنت مشروطه است به چه معناست؟",
                         options: ["Canada has a king or queen", "The monarch is the head of state", "The monarch's powers are limited by the Constitution", "All of the above"],
                         correct: 3
                     },
                     {
                         q: "What are the three branches of government?",
+                        q_fa: "سه شاخه دولت چه هستند؟",
                         options: ["Executive, Legislative, Judicial", "Federal, Provincial, Municipal", "House, Senate, Courts", "None"],
                         correct: 0
                     },
                     {
                         q: "What are the three levels of government?",
+                        q_fa: "سه سطح دولت چه هستند؟",
                         options: ["Executive, Legislative, Judicial", "Federal, Provincial, Municipal", "House, Senate, Courts", "None"],
                         correct: 1
                     },
                     {
                         q: "Name the five regions of Canada.",
+                        q_fa: "پنج منطقه کانادا را نام ببرید.",
                         options: ["Atlantic, Central, Prairie, West Coast, North", "East, West, North, South, Central", "Maritime, Ontario, Quebec, Prairies, BC", "None"],
                         correct: 0
                     },
                     {
                         q: "What is the capital of Canada?",
+                        q_fa: "پایتخت کانادا چیست؟",
                         options: ["Toronto", "Montreal", "Ottawa", "Vancouver"],
                         correct: 2
                     },
                     {
                         q: "When was the Constitution of Canada amended to include the Charter of Rights and Freedoms?",
+                        q_fa: "قانون اساسی کانادا چه زمانی اصلاح شد تا منشور حقوق و آزادی‌ها را شامل شود؟",
                         options: ["1867", "1967", "1982", "2000"],
                         correct: 2,
                         page: 12,
@@ -6163,51 +6276,61 @@
                     },
                     {
                         q: "Name two key documents that contain our rights and freedoms.",
+                        q_fa: "دو سند کلیدی که شامل حقوق و آزادی‌های ماست را نام ببرید.",
                         options: ["Magna Carta and Charter of Rights", "Constitution and Charter of Rights", "Magna Carta and Constitution", "Bill and Charter"],
                         correct: 1
                     },
                     {
                         q: "Name four (4) fundamental freedoms that Canadians enjoy.",
+                        q_fa: "چهار آزادی بنیادی که کانادایی‌ها از آن برخوردارند را نام ببرید.",
                         options: ["Freedom of conscience and religion, Freedom of thought, belief, opinion and expression, Freedom of peaceful assembly, Freedom of association", "Work, Travel, Vote, Property", "From taxes, From military, From jury, From work", "None"],
                         correct: 0
                     },
                     {
                         q: "What are three responsibilities of Canadian citizenship?",
+                        q_fa: "سه مسئولیت شهروندی کانادا چیست؟",
                         options: ["Obey the law, Take responsibility for oneself and family, Serve on a jury", "Pay taxes, Vote, Serve in military", "Learn English, Work, Pay taxes", "None"],
                         correct: 0
                     },
                     {
                         q: "Who is entitled to vote in Canadian federal elections?",
+                        q_fa: "چه کسانی حق رأی در انتخابات فدرال کانادا را دارند؟",
                         options: ["All residents", "Canadian citizens 18 years or older", "Permanent residents", "Anyone with SIN"],
                         correct: 1
                     },
                     {
                         q: "When you go to vote on election day, what do you do?",
+                        q_fa: "وقتی در روز انتخابات برای رأی دادن می‌روید، چه کاری انجام می‌دهید؟",
                         options: ["Mark an X next to your chosen candidate", "Write the candidate's name", "Raise your hand", "Press a button"],
                         correct: 0
                     },
                     {
                         q: "What do you call a law before it is passed?",
+                        q_fa: "قبل از تصویب، قانون را چه می‌نامند؟",
                         options: ["Legislation", "Bill", "Act", "Statute"],
                         correct: 1
                     },
                     {
                         q: "What is the final step before a bill becomes a law?",
+                        q_fa: "آخرین مرحله قبل از تبدیل شدن یک لایحه به قانون چیست؟",
                         options: ["Royal Assent", "Third reading", "Committee review", "First reading"],
                         correct: 0
                     },
                     {
                         q: "What is Canada's most recognized and respected symbol?",
+                        q_fa: "شناخته‌شده‌ترین و محترم‌ترین نماد کانادا چیست؟",
                         options: ["The beaver", "The maple leaf", "The moose", "The flag"],
                         correct: 1
                     },
                     {
                         q: "What are the first two lines of Canada's national anthem?",
+                        q_fa: "دو خط اول سرود ملی کانادا چیست؟",
                         options: ["O Canada! Our home and native land! True patriot love in all of us command", "O Canada, land of the free", "God save the Queen", "None"],
                         correct: 0
                     },
                     {
                         q: "What is the highest honour that Canadians can receive?",
+                        q_fa: "بالاترین افتخاری که کانادایی‌ها می‌توانند دریافت کنند چیست؟",
                         options: ["Order of Canada", "Victoria Cross", "Medal of Honour", "Prime Minister's Award"],
                         correct: 0
                     }
