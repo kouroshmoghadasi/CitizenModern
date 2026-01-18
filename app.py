@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request, render_template
+from flask import Flask, jsonify, request, render_template, send_from_directory
 from flask_cors import CORS
 import psycopg2
 from psycopg2.extras import RealDictCursor
@@ -92,6 +92,16 @@ in_memory_counter = 100  # Starting value
 def index():
     """Serve the main HTML page"""
     return render_template('canadian_citizenship.html')
+
+@app.route('/book_summary.html')
+def book_summary():
+    """Serve the book summary page"""
+    return render_template('book_summary.html')
+
+@app.route('/discover.pdf')
+def discover_pdf():
+    """Serve the Discover Canada PDF file"""
+    return send_from_directory(os.path.dirname(os.path.abspath(__file__)), 'discover.pdf')
 
 @app.route('/api/visitor-count', methods=['GET'])
 def get_visitor_count():

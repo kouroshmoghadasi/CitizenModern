@@ -297,6 +297,8 @@
                 0 4px 15px rgba(30, 60, 114, 0.3),
                 0 2px 8px rgba(30, 60, 114, 0.2);
             text-align: center;
+            cursor: pointer;
+            user-select: none;
         }
         
         .ad-registration-toggle:hover {
@@ -305,6 +307,127 @@
                 0 6px 20px rgba(30, 60, 114, 0.4),
                 0 3px 12px rgba(30, 60, 114, 0.3);
             transform: translateY(-2px);
+        }
+        
+        /* Modal/Popup Styles */
+        .ad-registration-modal {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .ad-registration-modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        .ad-registration-modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            position: relative;
+            direction: rtl;
+            text-align: right;
+            animation: slideIn 0.3s ease;
+        }
+        
+        @keyframes slideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        .ad-registration-modal-close {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            font-size: 28px;
+            font-weight: bold;
+            color: #999;
+            cursor: pointer;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.2s;
+        }
+        
+        .ad-registration-modal-close:hover {
+            background: #f0f0f0;
+            color: #333;
+        }
+        
+        .ad-registration-modal-title {
+            font-size: 1.3em;
+            font-weight: 700;
+            color: #1e3c72;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .ad-registration-modal-text {
+            line-height: 1.8;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 0.95em;
+        }
+        
+        .ad-registration-modal-text p {
+            margin-bottom: 12px;
+        }
+        
+        .ad-registration-modal-phone {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 2px solid #e8ecf0;
+        }
+        
+        .ad-registration-modal-phone a {
+            font-size: 1.2em;
+            font-weight: 700;
+            color: #e74c3c;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            border-radius: 8px;
+            background: rgba(231, 76, 60, 0.1);
+            transition: all 0.3s;
+        }
+        
+        .ad-registration-modal-phone a:hover {
+            background: rgba(231, 76, 60, 0.2);
+            transform: scale(1.05);
         }
         
         .ad-registration-toggle h3 {
@@ -4169,7 +4292,7 @@
                 
                 <!-- Book Summary Link (Mobile) -->
                 <div class="book-summary-section mobile-version">
-                    <a href="book_summary.html" class="book-summary-link" target="_blank">
+                    <a href="/book_summary.html" class="book-summary-link" target="_blank">
                         <div class="book-summary-toggle">
                             <h3>📖 خلاصه کامل کتاب Discover Canada</h3>
                             <span class="book-summary-link-icon">🔗</span>
@@ -4235,13 +4358,10 @@
                 
                 <!-- Mobile Ad Registration Section (shown only on mobile, after questions) -->
                 <div class="ad-registration-section mobile-version">
-                    <div class="ad-registration-toggle">
+                    <div class="ad-registration-toggle" onclick="openAdRegistrationModal()">
                         <span style="font-size: 1.5em;">📞</span>
-                        <h3>برای ثبت تبلیغ تماس بگیرید</h3>
-                        <div class="ad-registration-phone">
-                            <span style="color: #e74c3c; font-size: 1em; margin-right: 8px;">📞</span>
-                            <a href="tel:5144767079" style="letter-spacing: 0.3px;">514-476-7079</a>
-                        </div>
+                        <h3 style="color: white; margin: 0; font-size: 1em; font-weight: 700;">برای ثبت تبلیغ تماس بگیرید</h3>
+                        <div style="color: rgba(255,255,255,0.9); font-size: 0.85em;">کلیک کنید</div>
                     </div>
                 </div>
             </div>
@@ -4735,7 +4855,7 @@
                     
                     <!-- Ad 9: BISTI Exchange -->
                     <div class="ad-tile" style="background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%); border: 2px solid #e67e22; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 12px; color: white; box-shadow: 0 4px 15px rgba(230, 126, 34, 0.2);">
-                        <div style="width: 100%; text-align: center; margin-bottom: 12px; background: linear-gradient(135deg, #e67e22 0%, #d35400 100%); margin: -12px -12px 12px -12px; padding: 14px; border-radius: 8px 8px 0 0; position: relative;">
+                        <div style="width: 100%; text-align: center; margin-bottom: 12px; background: linear-gradient(135deg, #e67e22 0%, #d35400 100%); margin: -12px -12px 12px -12px; padding: 14px; border-radius: 8px 8px 0 0;">
                             <div style="font-size: 1.2em; font-weight: 700; color: white; margin-bottom: 6px; letter-spacing: 1px; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">صرافی بیستی</div>
                             <div style="font-size: 1.05em; font-weight: 700; color: white; margin-bottom: 4px; direction: ltr; letter-spacing: 2px;">BISTI Exchange</div>
                             <div style="position: absolute; top: 8px; right: 8px; width: 35px; height: 35px; background: rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2em; font-weight: 700; color: white;">BB</div>
@@ -5496,7 +5616,7 @@
         <div class="right-sidebar">
             <!-- Book Summary Link -->
             <div class="book-summary-section">
-                <a href="book_summary.html" class="book-summary-link" target="_blank">
+                <a href="/book_summary.html" class="book-summary-link" target="_blank">
                     <div class="book-summary-toggle">
                         <h3>📖 خلاصه کامل کتاب Discover Canada</h3>
                         <h3 style="font-size: 0.9em; margin-top: 5px; opacity: 0.9;">Complete Book Summary</h3>
@@ -5561,11 +5681,27 @@
             
             <!-- بخش ثبت تبلیغ -->
             <div class="ad-registration-section">
-                <div class="ad-registration-toggle">
+                <div class="ad-registration-toggle" onclick="openAdRegistrationModal()">
                     <span style="font-size: 1.5em;">📞</span>
-                    <h3>برای ثبت تبلیغ تماس بگیرید</h3>
-                    <div class="ad-registration-phone">
-                        <a href="tel:5144767079">514-476-7079</a>
+                    <h3 style="color: white; margin: 0; font-size: 1em; font-weight: 700;">برای ثبت تبلیغ تماس بگیرید</h3>
+                    <div style="color: rgba(255,255,255,0.9); font-size: 0.85em;">کلیک کنید</div>
+                </div>
+            </div>
+            
+            <!-- Ad Registration Modal/Popup -->
+            <div id="adRegistrationModal" class="ad-registration-modal" onclick="closeAdRegistrationModal(event)">
+                <div class="ad-registration-modal-content" onclick="event.stopPropagation()">
+                    <span class="ad-registration-modal-close" onclick="closeAdRegistrationModal(event)">&times;</span>
+                    <div class="ad-registration-modal-title">📞 ثبت تبلیغ در CitizenTest</div>
+                    <div class="ad-registration-modal-text">
+                        <p>ما در سایت CitizenTest تلاش می‌کنیم منابع و خدمات مفید برای فارسی‌زبانان کانادا را معرفی کنیم.</p>
+                        <p>اگر تمایل دارید کسب‌وکار شما به‌صورت معرفی ماهانه در سایت قرار بگیرد، این امکان با هزینه‌ای مقرون‌به‌صرفه و بدون قرارداد بلندمدت فراهم است.</p>
+                    </div>
+                    <div class="ad-registration-modal-phone">
+                        <a href="tel:5144767079">
+                            <span>📞</span>
+                            <span>514-476-7079</span>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -11161,6 +11297,34 @@
                 button.classList.remove('copied');
             }, 2000);
         }
+        
+        // تابع برای باز کردن modal ثبت تبلیغ
+        function openAdRegistrationModal() {
+            const modal = document.getElementById('adRegistrationModal');
+            if (modal) {
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden'; // جلوگیری از اسکرول صفحه
+            }
+        }
+        
+        // تابع برای بستن modal ثبت تبلیغ
+        function closeAdRegistrationModal(event) {
+            if (event) {
+                event.stopPropagation();
+            }
+            const modal = document.getElementById('adRegistrationModal');
+            if (modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = ''; // برگرداندن اسکرول صفحه
+            }
+        }
+        
+        // بستن modal با کلید ESC
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeAdRegistrationModal();
+            }
+        });
         
     </script>
 </body>
