@@ -24,7 +24,7 @@ except ImportError:
     FLASK_CONFIG = {
         'host': os.getenv('FLASK_HOST', '0.0.0.0'),
         'port': int(os.getenv('FLASK_PORT', '5011')),
-        'debug': os.getenv('FLASK_DEBUG', 'True').lower() == 'true'
+        'debug': os.getenv('FLASK_DEBUG', 'false').lower() == 'true'
     }
 
 # Database connection pool (simple connection per request)
