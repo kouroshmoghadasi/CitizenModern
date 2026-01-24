@@ -1,0 +1,212 @@
+<body>
+    <div class="container">
+        <div class="test-selector">
+            <div style="text-align: center; margin-bottom: 20px;">
+                <a href="discover.pdf" target="_blank" class="book-link">📚 دانلود/مطالعه کتاب Discover Canada</a>
+            </div>
+            
+            <!-- Test Selector -->
+            <div style="text-align: center; margin-bottom: 15px;">
+                <select id="testNumberSelect" class="test-number-select" onchange="selectTestFromDropdown()" title="انتخاب تست">
+                    <!-- Options will be populated by JavaScript: Test1, Test2, ..., Test100 -->
+                </select>
+            </div>
+            
+            <!-- Navigator - دکمه‌ها برای جابجایی بین سوالات -->
+            <div class="test-navigator">
+                <button class="test-nav-btn prev" onclick="navigateQuestion(-1)" id="testPrevBtn" title="سوال قبلی">قبلی</button>
+                <div class="test-select-wrapper">
+                    <div class="question-display-container">
+                        <span class="question-label">سوال</span>
+                        <div id="testQuestionNumberDisplay" class="question-number-display">1 / 20</div>
+                    </div>
+                </div>
+                <button class="test-nav-btn next" onclick="navigateQuestion(1)" id="testNextBtn" title="سوال بعدی">بعدی</button>
+            </div>
+            
+            <div class="sidebar-stats">
+                <div class="sidebar-stats-content">
+                    <div class="timer-container">
+                        <span class="timer-icon">⏱️</span>
+                        <span class="timer" id="timer">45:00</span>
+                    </div>
+                    <div class="score-counter">
+                        <div class="counter-item">
+                            <span class="counter-label">✓ Correct:</span>
+                            <span class="counter-value" id="correctCounter">0</span>
+                        </div>
+                        <div class="counter-item">
+                            <span class="counter-label">✗ Incorrect:</span>
+                            <span class="counter-value" id="incorrectCounter">0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="header">
+                <div class="header-carousel">
+                    <!-- Visitor Counter -->
+                    <div class="visitor-counter">
+                        <span class="visitor-counter-text">Visitors</span>
+                        <span class="visitor-counter-number" id="visitorCount">100</span>
+                    </div>
+                    
+                    <!-- Slide 1: Test Title -->
+                    <div class="header-slide active" id="slide0">
+                <h1>🇨🇦 آزمون تمرینی شهروندی کانادا</h1>
+                <p>Canadian Citizenship Practice Test</p>
+            </div>
+
+                    <!-- Slide 2: Advertisement Opportunity (Temporarily hidden) -->
+                    <div class="header-slide" id="slide1" style="display: none;">
+                        <div class="header-slide-content">
+                            <h2>📢 تبلیغ کسب و کار خود را اینجا قرار دهید</h2>
+                            <p style="direction: rtl;">
+                                تبلیغ کسب و کار خود را در اینجا در معرض دید هزاران نفر از جامعه ایرانی قرار دهید و به هموطنان خود در سراسر کانادا بهترین خدمات را ارائه بدهید
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="header-carousel-indicators" style="display: none;">
+                        <div class="header-indicator active" onclick="goToSlide(0)"></div>
+                        <div class="header-indicator" onclick="goToSlide(1)"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Test Navigator (Mobile Version) - دکمه‌ها برای جابجایی بین سوالات -->
+            <div class="test-navigator-mobile">
+                <button class="test-nav-btn-mobile prev" onclick="navigateQuestion(-1)" id="testPrevBtnMobile" title="سوال قبلی">قبلی</button>
+                <div class="test-select-wrapper-mobile">
+                    <select id="testNumberSelectMobile" class="test-number-select-mobile" onchange="selectTestFromDropdownMobile()" title="انتخاب تست">
+                        <!-- Options will be populated by JavaScript: Test1, Test2, ..., Test100 -->
+                    </select>
+                </div>
+                <button class="test-nav-btn-mobile next" onclick="navigateQuestion(1)" id="testNextBtnMobile" title="سوال بعدی">بعدی</button>
+            </div>
+
+            <!-- Stats (Mobile Version - Minimal) -->
+            <div class="stats-mobile">
+                <div class="stats-mobile-item">
+                    <span class="stats-mobile-icon">⏱️</span>
+                    <span class="timer" id="timerMobile">45:00</span>
+                </div>
+                <div class="stats-mobile-item">
+                    <span class="stats-mobile-label">✓</span>
+                    <span class="counter-value" id="correctCounterMobile">0</span>
+                </div>
+                <div class="stats-mobile-item">
+                    <span class="stats-mobile-label">✗</span>
+                    <span class="counter-value" id="incorrectCounterMobile">0</span>
+                </div>
+            </div>
+
+            <div id="testContainer">
+                <div id="questionCard" style="background: white; padding: 20px 25px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); margin-bottom: 20px;">
+                    <!-- Question will be inserted here -->
+                </div>
+            </div>
+            
+            <!-- Mobile Sidebar Sections (shown only on mobile, after questions, before ads) -->
+            <div class="mobile-sidebar-sections">
+                <!-- Book Download Link (Mobile) -->
+                <div class="book-link-section mobile-version" style="text-align: center; margin-bottom: 15px;">
+                    <a href="discover.pdf" target="_blank" class="book-link">📚 دانلود/مطالعه کتاب Discover Canada</a>
+                </div>
+                
+                <!-- Book Summary Link (Mobile) -->
+                <div class="book-summary-section mobile-version">
+                    <a href="/book_summary.html" class="book-summary-link" target="_blank">
+                        <div class="book-summary-toggle">
+                            <h3>📖  خلاصه کتاب Discover Canada</h3>
+                        </div>
+                    </a>
+                </div>
+                
+                <!-- Donation Section (Mobile) -->
+                <div class="donation-section mobile-version">
+                    <div class="donation-toggle" onclick="toggleDonation()">
+                        <h3>💝 حمایت مالی از سایت / Support This Site</h3>
+                        <span class="donation-toggle-icon">▼</span>
+                    </div>
+                    <div class="donation-content" id="donationContentMobile">
+                        <p>
+                            برای ادامه فعالیت این سایت و ارائه خدمات رایگان، لطفاً با کمک مالی کوچک خود از ما حمایت کنید. هر مقدار کمک شما برای زنده نگه داشتن این سایت ارزشمند است.
+                        </p>
+                        <p style="margin-top: 8px; direction: ltr; text-align: center;">
+                            To keep this site alive and continue providing free services, please consider supporting us with a small donation. Every contribution helps maintain this valuable resource.
+                        </p>
+                        
+                        <div class="contact-info">
+                            <h4>📧 اطلاعات تماس برای حمایت مالی / Contact Information for Donation</h4>
+                            
+                            <div class="contact-list">
+                                <div class="contact-item">
+                                    <div class="contact-content">
+                                        <span class="contact-label">ایمیل / Email</span>
+                                        <span class="contact-value">
+                                            <a href="mailto:koroush.mog@gmail.com">koroush.mog@gmail.com</a>
+                                        </span>
+                                    </div>
+                                    <button class="copy-btn" onclick="copyToClipboard('koroush.mog@gmail.com', this)">کپی / Copy</button>
+                                </div>
+                                
+                                <div class="contact-item">
+                                    <div class="contact-content">
+                                        <span class="contact-label">موبایل / Mobile</span>
+                                        <span class="contact-value">
+                                            <span style="color: #e74c3c; font-size: 0.9em;">📱</span>
+                                            <span style="margin-left: 6px;">514-476-7079</span>
+                                        </span>
+                                    </div>
+                                    <button class="copy-btn" onclick="copyToClipboard('514-476-7079', this)">کپی / Copy</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="payment-methods">
+                            <strong>💡 روش‌های پرداخت / Payment Methods</strong>
+                            <div class="payment-item" style="direction: rtl; text-align: right;">
+                                <div style="font-weight: 600; color: #2c3e50; margin-bottom: 4px;">🇨🇦 برای ساکنین کانادا:</div>
+                                <div style="font-size: 0.9em; color: #34495e;">Interac e-Transfer به ایمیل یا شماره موبایل بالا</div>
+                                <div style="font-size: 0.85em; color: #7f8c8d; margin-top: 4px; direction: ltr; text-align: left;">For Canadians: Interac e-Transfer to the email or mobile number above</div>
+                            </div>
+                            <div class="payment-item" style="direction: ltr; text-align: left;">
+                                <div style="font-weight: 600; color: #2c3e50; margin-bottom: 4px;">🌍 Other methods:</div>
+                                <div style="font-size: 0.9em; color: #34495e;">Contact via email for other payment options</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Mobile Ad Registration Section (shown only on mobile, after questions) -->
+                <div class="ad-registration-section mobile-version">
+                    <div class="ad-registration-toggle" onclick="openAdRegistrationModal()">
+                        <span style="font-size: 1.5em;">📞</span>
+                        <h3 style="color: white; margin: 0; font-size: 1em; font-weight: 700;">برای ثبت تبلیغ تماس بگیرید</h3>
+                        <div style="color: rgba(255,255,255,0.9); font-size: 0.85em; margin-top: 4px;">کلیک کنید</div>
+                        <div style="color: rgba(255,255,255,0.95); font-size: 0.9em; font-weight: 600; margin-top: 6px; direction: ltr;">📱 514-476-7079</div>
+                    </div>
+                </div>
+            </div>
+            <div class="results" id="results" style="display: none; margin-top: 30px; padding: 25px; background: white; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); direction: rtl; text-align: right;">
+                <h2 style="color: #1e3c72; margin-bottom: 20px; font-size: 1.8em; text-align: center;">نتایج آزمون</h2>
+                <div class="score" id="score" style="font-size: 3em; font-weight: bold; color: #1e3c72; text-align: center; margin: 20px 0;"></div>
+                <div class="score-text" id="scoreText" style="font-size: 1.2em; color: #555; text-align: center; margin-bottom: 20px;"></div>
+                <div style="display: flex; gap: 15px; justify-content: center; margin-bottom: 20px; flex-wrap: wrap;">
+                    <button class="submit-btn" onclick="showAnswers()" style="padding: 12px 30px; background: linear-gradient(135deg, #1e3c72 0%, #2c5282 100%); color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 1em; font-weight: bold; transition: all 0.3s;">مشاهده جدول پاسخ‌ها</button>
+                    <button class="submit-btn" id="nextTestBtn" onclick="goToNextTest()" style="padding: 12px 30px; background: linear-gradient(135deg, #f1c40f 0%, #f39c12 100%); color: #1e3c72; border: none; border-radius: 8px; cursor: pointer; font-size: 1em; font-weight: bold; transition: all 0.3s;">آزمون بعدی →</button>
+                </div>
+                <div id="answersTable"></div>
+            </div>
+        </div>
+        
+        <!-- Right Sidebar: Donation + Ad Space -->
+        {% include 'sidebar.html' %}
+    </div>
+    
+    <div class="ads-section">
+        <!-- تبلیغات شرکت‌ها / Business Advertisements -->
+        {% include 'ads_section.html' %}

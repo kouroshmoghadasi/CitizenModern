@@ -1,0 +1,140 @@
+{% include 'head_meta.html' %}
+</head>
+<body>
+    <div class="container">
+        <div class="main-content" style="max-width: 900px; margin: 0 auto; padding: 20px;">
+            <div style="background: white; border-radius: 10px; padding: 30px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06); direction: rtl;">
+                <h1 style="color: #1e3c72; font-size: 2em; margin-bottom: 10px; text-align: center;">
+                    {{ ad.title }}
+                </h1>
+                <div style="text-align: center; color: #7f8c8d; font-size: 1.1em; margin-bottom: 30px;">
+                    {{ ad.category }}
+                </div>
+                
+                {% if ad.address %}
+                <div style="background: linear-gradient(135deg, rgba(30, 60, 114, 0.05) 0%, rgba(30, 60, 114, 0.02) 100%); padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+                    <h2 style="color: #1e3c72; font-size: 1.3em; margin-bottom: 15px; text-align: center;">
+                        📍 آدرس / Address
+                    </h2>
+                    <p style="color: #2c3e50; font-size: 1em; line-height: 1.8; text-align: center; direction: ltr;">
+                        <a href="{{ ad.address_link if ad.address_link else '#' }}" target="_blank" style="text-decoration: none; color: #1e3c72; font-weight: 600;">
+                            {{ ad.address }}
+                        </a>
+                    </p>
+                </div>
+                {% endif %}
+                
+                {% if ad.phone %}
+                <div style="background: linear-gradient(135deg, rgba(30, 60, 114, 0.05) 0%, rgba(30, 60, 114, 0.02) 100%); padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+                    <h2 style="color: #1e3c72; font-size: 1.3em; margin-bottom: 15px; text-align: center;">
+                        📞 تلفن / Phone
+                    </h2>
+                    <p style="color: #2c3e50; font-size: 1.2em; line-height: 1.8; text-align: center; direction: ltr;">
+                        <a href="{{ ad.phone_link if ad.phone_link else '#' }}" style="text-decoration: none; color: #1e3c72; font-weight: 700;">
+                            {{ ad.phone }}
+                        </a>
+                    </p>
+                </div>
+                {% endif %}
+                
+                {% if ad.hours_fa or ad.hours_en %}
+                <div style="background: linear-gradient(135deg, rgba(241, 196, 15, 0.1) 0%, rgba(241, 196, 15, 0.05) 100%); padding: 20px; border-radius: 8px; margin-bottom: 20px; border-right: 3px solid #f1c40f;">
+                    <h2 style="color: #1e3c72; font-size: 1.3em; margin-bottom: 15px; text-align: center;">
+                        🕐 ساعات کاری / Business Hours
+                    </h2>
+                    {% if ad.hours_fa %}
+                    <p style="color: #2c3e50; font-size: 1em; line-height: 1.8; text-align: right; direction: rtl; margin-bottom: 10px;">
+                        {{ ad.hours_fa | safe }}
+                    </p>
+                    {% endif %}
+                    {% if ad.hours_en %}
+                    <p style="color: #34495e; font-size: 0.95em; line-height: 1.7; text-align: left; direction: ltr; margin-top: 10px;">
+                        {{ ad.hours_en | safe }}
+                    </p>
+                    {% endif %}
+                </div>
+                {% endif %}
+                
+                {% if ad.services_fa or ad.services_en %}
+                <div style="background: linear-gradient(135deg, rgba(30, 60, 114, 0.1) 0%, rgba(30, 60, 114, 0.05) 100%); padding: 20px; border-radius: 8px; margin-bottom: 20px; border-right: 3px solid #1e3c72;">
+                    <h2 style="color: #1e3c72; font-size: 1.3em; margin-bottom: 15px; text-align: center;">
+                        ⚙️ خدمات / Services
+                    </h2>
+                    {% if ad.services_fa %}
+                    <p style="color: #2c3e50; font-size: 1em; line-height: 2; text-align: right; direction: rtl; margin-bottom: 10px;">
+                        {{ ad.services_fa | safe }}
+                    </p>
+                    {% endif %}
+                    {% if ad.services_en %}
+                    <p style="color: #34495e; font-size: 0.95em; line-height: 2; text-align: left; direction: ltr; margin-top: 10px;">
+                        {{ ad.services_en | safe }}
+                    </p>
+                    {% endif %}
+                </div>
+                {% endif %}
+                
+                {% if ad.rating %}
+                <div style="background: linear-gradient(135deg, rgba(241, 196, 15, 0.15) 0%, rgba(241, 196, 15, 0.08) 100%); padding: 20px; border-radius: 8px; margin-bottom: 20px; text-align: center;">
+                    <p style="color: #f39c12; font-size: 1.2em; font-weight: 700; margin: 0;">
+                        {{ ad.rating }}
+                    </p>
+                </div>
+                {% endif %}
+                
+                {% if ad.description_fa or ad.description_en %}
+                <div style="background: linear-gradient(135deg, rgba(30, 60, 114, 0.05) 0%, rgba(30, 60, 114, 0.02) 100%); padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+                    <h2 style="color: #1e3c72; font-size: 1.3em; margin-bottom: 15px; text-align: center;">
+                        📋 درباره / About
+                    </h2>
+                    {% if ad.description_fa %}
+                    <p style="color: #2c3e50; font-size: 1em; line-height: 1.8; text-align: right; direction: rtl; margin-bottom: 10px;">
+                        {{ ad.description_fa | safe }}
+                    </p>
+                    {% endif %}
+                    {% if ad.description_en %}
+                    <p style="color: #34495e; font-size: 0.95em; line-height: 1.7; text-align: left; direction: ltr; margin-top: 10px;">
+                        {{ ad.description_en | safe }}
+                    </p>
+                    {% endif %}
+                </div>
+                {% endif %}
+                
+                {% if ad.email %}
+                <div style="background: linear-gradient(135deg, rgba(30, 60, 114, 0.05) 0%, rgba(30, 60, 114, 0.02) 100%); padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+                    <h2 style="color: #1e3c72; font-size: 1.3em; margin-bottom: 15px; text-align: center;">
+                        📧 ایمیل / Email
+                    </h2>
+                    <p style="color: #2c3e50; font-size: 1em; line-height: 1.8; text-align: center; direction: ltr;">
+                        <a href="mailto:{{ ad.email }}" style="text-decoration: none; color: #1e3c72; font-weight: 600;">
+                            {{ ad.email }}
+                        </a>
+                    </p>
+                </div>
+                {% endif %}
+                
+                {% if ad.website %}
+                <div style="background: linear-gradient(135deg, rgba(30, 60, 114, 0.05) 0%, rgba(30, 60, 114, 0.02) 100%); padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+                    <h2 style="color: #1e3c72; font-size: 1.3em; margin-bottom: 15px; text-align: center;">
+                        🌐 وب‌سایت / Website
+                    </h2>
+                    <p style="color: #2c3e50; font-size: 1em; line-height: 1.8; text-align: center; direction: ltr;">
+                        <a href="{{ ad.website }}" target="_blank" style="text-decoration: none; color: #1e3c72; font-weight: 600;">
+                            {{ ad.website }}
+                        </a>
+                    </p>
+                </div>
+                {% endif %}
+                
+                <div style="text-align: center; margin-top: 30px;">
+                    <a href="/" style="display: inline-block; padding: 12px 24px; background: linear-gradient(135deg, #1e3c72 0%, #2c5282 100%); color: white; text-decoration: none; border-radius: 8px; font-weight: 700; transition: all 0.3s ease;">
+                        ← Back to Home
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    {% include 'footer.html' %}
+    {% include 'scripts.html' %}
+</body>
+</html>
