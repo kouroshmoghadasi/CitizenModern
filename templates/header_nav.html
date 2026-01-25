@@ -47,14 +47,9 @@
         <div class="main-content">
             <div class="header">
                 <div class="header-carousel">
-                    <!-- Visitor Counter -->
-                    <div class="visitor-counter">
-                        <span class="visitor-counter-text">Visitors</span>
-                        <span class="visitor-counter-number" id="visitorCount">100</span>
-                    </div>
-                    
                     <!-- Slide 1: فقط عنوان — اسلاید مستقل -->
                     <div class="header-slide header-slide-title-only active" id="slide0">
+                        <div class="slide-visitor-text">Visitors : <span class="visitor-count-value">100</span></div>
                         <div class="header-title-standalone">
                             <span class="header-title-line1" dir="rtl">آزمون تمرینی شهروندی</span>
                             <span class="header-title-line2" dir="rtl">کانادا</span>
@@ -64,6 +59,7 @@
                     </div>
                     <!-- Slide 2: فقط بنر تیم شکور — اسلاید مستقل -->
                     <div class="header-slide header-slide-ad" id="slide1">
+                        <div class="slide-visitor-text">Visitors : <span class="visitor-count-value">100</span></div>
                         <a href="#ads-section" class="header-slide-ad-link" title="تیم شکور · Équipe Shakour · مشاوره املاک">
                             <img src="{{ url_for('static', filename='images/equipe-shakour-banner.png') }}" alt="تیم شکور · Équipe Shakour · مشاوره تخصصی املاک · 514-730-3909" class="header-slide-ad-img">
                         </a>

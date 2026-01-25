@@ -85,10 +85,8 @@
          * Update visitor counter display
          */
         function updateCounterDisplay(count) {
-            const counterElement = document.getElementById('visitorCount');
-            if (counterElement) {
-                counterElement.textContent = count.toLocaleString('en-US');
-            }
+            const els = document.querySelectorAll('.visitor-count-value');
+            els.forEach(function(el) { el.textContent = count.toLocaleString('en-US'); });
         }
         
         /**
@@ -5463,11 +5461,13 @@
         window.filterAds = filterAds;
     </script>
     
+    <!-- دکمه بازگردانی آگهی — وقتی بنر با × بسته شد، ظاهر می‌شود -->
+    <button class="ad-sticky-restore" id="adStickyRestore" onclick="restoreStickyBanner()" type="button" aria-label="بازگردانی آگهی" title="نمایش دوباره نوار تبلیغات">📢 تبلیغات</button>
+
     <!-- Bottom Sticky Banner Ad — تیکر متحرک، تبلیغات یکی‌یکی از راست به چپ -->
     <div class="ad-sticky-banner" id="adStickyBanner">
         <button class="ad-sticky-dismiss" onclick="dismissStickyBanner()" type="button" aria-label="بستن">×</button>
         <a href="#ads-section" class="ad-sticky-link">
-            <span class="ad-sticky-prefix">📢 تبلیغات شرکت‌ها</span>
             <div class="ad-sticky-ticker-wrap">
                 <div class="ad-sticky-ticker" aria-hidden="true">
                     <span class="ad-sticky-item">🏠 مشاورین املاک · Real Estate Consultants · خرید و فروش و اجاره ملک</span>
@@ -5483,7 +5483,6 @@
                     <span class="ad-sticky-item">🔧 New York Garage · صافکاری · نقاشی · مکانیکی · تعمیرگاه خودرو</span>
                 </div>
             </div>
-            <span class="ad-sticky-suffix">مشاهده همه آگهی‌ها ↓</span>
         </a>
     </div>
 
@@ -5575,17 +5574,28 @@
         
         function dismissStickyBanner() {
             const banner = document.getElementById('adStickyBanner');
+            const restore = document.getElementById('adStickyRestore');
             if (banner) {
                 banner.classList.add('ad-sticky-banner-dismissed');
                 try { sessionStorage.setItem('adStickyBannerDismissed', '1'); } catch (e) {}
             }
+            if (restore) restore.classList.add('ad-sticky-restore-visible');
+        }
+        function restoreStickyBanner() {
+            const banner = document.getElementById('adStickyBanner');
+            const restore = document.getElementById('adStickyRestore');
+            if (banner) banner.classList.remove('ad-sticky-banner-dismissed');
+            if (restore) restore.classList.remove('ad-sticky-restore-visible');
+            try { sessionStorage.removeItem('adStickyBannerDismissed'); } catch (e) {}
         }
         
         document.addEventListener('DOMContentLoaded', function() {
             try {
                 if (sessionStorage.getItem('adStickyBannerDismissed') === '1') {
                     const banner = document.getElementById('adStickyBanner');
+                    const restore = document.getElementById('adStickyRestore');
                     if (banner) banner.classList.add('ad-sticky-banner-dismissed');
+                    if (restore) restore.classList.add('ad-sticky-restore-visible');
                 }
             } catch (e) {}
         });

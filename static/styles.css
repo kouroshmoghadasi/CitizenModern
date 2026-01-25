@@ -96,148 +96,30 @@
             color: #1e3c72;
         }
         
-        .visitor-counter {
+        .slide-visitor-text {
             position: absolute;
-            top: 10px;
-            left: 20px;
-            padding: 10px 18px;
-            background: linear-gradient(135deg, #1e3c72 0%, #2c5282 100%);
-            border: 2.5px solid #f1c40f;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            box-shadow: 
-                0 4px 12px rgba(30, 60, 114, 0.3),
-                0 2px 6px rgba(241, 196, 15, 0.2);
-            z-index: 10;
-            transition: all 0.3s ease;
-            min-width: 120px;
-        }
-        
-        .visitor-counter:hover {
-            transform: translateY(-2px);
-            box-shadow: 
-                0 6px 16px rgba(30, 60, 114, 0.4),
-                0 3px 8px rgba(241, 196, 15, 0.3);
-        }
-        
-        .visitor-counter-text {
-            color: #f1c40f;
+            top: 2px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1em;
             font-weight: 700;
-            font-size: 0.9em;
+            color: #ffffff;
             direction: ltr;
             white-space: nowrap;
+            z-index: 5;
+            text-shadow: 
+                0 2px 8px rgba(0, 0, 0, 0.5),
+                0 0 12px rgba(241, 196, 15, 0.3);
             letter-spacing: 0.5px;
         }
-        
-        .visitor-counter-number {
-            color: white;
+        .slide-visitor-text .visitor-count-value {
+            color: #f1c40f;
             font-weight: 800;
-            font-size: 1.15em;
-            direction: ltr;
-            min-width: 50px;
-            text-align: center;
-            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-        }
-        
-        /* Tablet Styles (768px - 1200px) */
-        @media (max-width: 1200px) and (min-width: 769px) {
-            .visitor-counter {
-                top: 12px;
-                left: 15px;
-                padding: 9px 16px;
-                gap: 7px;
-            }
-            
-            .visitor-counter-text {
-                font-size: 0.88em;
-            }
-            
-            .visitor-counter-number {
-                font-size: 1.1em;
-                min-width: 48px;
-            }
-        }
-        
-        /* Mobile Large (600px - 768px) */
-        @media (max-width: 768px) {
-            .header-carousel {
-                flex-direction: column;
-                gap: 10px;
-            }
-            
-            .visitor-counter {
-                position: relative;
-                top: auto;
-                left: auto;
-                margin: 0 auto 10px auto;
-                padding: 8px 16px;
-                gap: 6px;
-                min-width: 110px;
-            }
-            
-            .visitor-counter-text {
-                font-size: 0.85em;
-            }
-            
-            .visitor-counter-number {
-                font-size: 1.05em;
-                min-width: 45px;
-            }
-            
-            .header-slide {
-                width: 100%;
-            }
-        }
-        
-        /* Mobile Small (up to 600px) */
-        @media (max-width: 600px) {
-            .visitor-counter {
-                position: relative;
-                top: auto;
-                left: auto;
-                margin: 8px auto;
-                padding: 7px 14px;
-                gap: 5px;
-                border-width: 2px;
-                min-width: 100px;
-            }
-            
-            .visitor-counter-text {
-                font-size: 0.8em;
-                font-weight: 700;
-            }
-            
-            .visitor-counter-number {
-                font-size: 1em;
-                min-width: 42px;
-                font-weight: 800;
-            }
-        }
-        
-        /* Very Small Mobile (up to 400px) */
-        @media (max-width: 400px) {
-            .visitor-counter {
-                position: relative;
-                top: auto;
-                left: auto;
-                margin: 5px auto;
-                padding: 6px 12px;
-                gap: 4px;
-                min-width: 90px;
-            }
-            
-            .visitor-counter-text {
-                font-size: 0.75em;
-                font-weight: 700;
-            }
-            
-            .visitor-counter-number {
-                font-size: 0.95em;
-                min-width: 38px;
-                font-weight: 800;
-            }
+            font-size: 1.1em;
+            text-shadow: 
+                0 2px 10px rgba(241, 196, 15, 0.6),
+                0 0 16px rgba(241, 196, 15, 0.4);
+            margin-left: 4px;
         }
         
         .right-sidebar {
@@ -2020,6 +1902,35 @@
             opacity: 0;
             pointer-events: none;
         }
+        .ad-sticky-restore {
+            position: fixed;
+            bottom: 12px;
+            left: 12px;
+            z-index: 996;
+            padding: 8px 14px;
+            border: none;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #1e3c72 0%, #2c5282 100%);
+            color: #f1c40f;
+            font-size: 0.9em;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 2px 12px rgba(30, 60, 114, 0.5);
+            border: 1px solid rgba(241, 196, 15, 0.4);
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: opacity 0.25s ease, visibility 0.25s ease, transform 0.2s ease;
+        }
+        .ad-sticky-restore:hover {
+            transform: scale(1.03);
+            color: #fff;
+        }
+        .ad-sticky-restore-visible {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+        }
         .ad-sticky-dismiss {
             position: absolute;
             top: 50%;
@@ -2046,7 +1957,6 @@
             flex: 1;
             display: flex;
             align-items: center;
-            gap: 12px;
             min-width: 0;
             overflow: hidden;
             text-decoration: none;
@@ -2056,11 +1966,6 @@
         }
         .ad-sticky-link:hover {
             color: #f1c40f;
-        }
-        .ad-sticky-prefix,
-        .ad-sticky-suffix {
-            flex-shrink: 0;
-            white-space: nowrap;
         }
         .ad-sticky-ticker-wrap {
             flex: 1;
@@ -3597,17 +3502,7 @@
                 margin-bottom: 0;
             }
             
-            .visitor-counter {
-                position: absolute;
-                top: 10px;
-                left: 50%;
-                transform: translateX(-50%);
-                margin: 0;
-                padding: 7px 14px;
-                gap: 5px;
-                z-index: 15;
-            }
-            
+            .slide-visitor-text { top: 2px; font-size: 0.9em; }
             .header-carousel {
                 min-height: 160px;
                 height: 160px;
@@ -3662,16 +3557,17 @@
                 animation-duration: 35s;
             }
             
+            .ad-sticky-restore {
+                bottom: 8px;
+                left: 8px;
+                padding: 6px 12px;
+                font-size: 0.85em;
+            }
             .ad-sticky-banner {
                 padding: 8px 12px 8px 44px;
             }
             .ad-sticky-link {
                 font-size: 0.85em;
-                gap: 8px;
-            }
-            .ad-sticky-prefix,
-            .ad-sticky-suffix {
-                font-size: 0.9em;
             }
             .ad-sticky-ticker {
                 gap: 14px;
@@ -4477,26 +4373,8 @@
                 padding: 15px 12px;
             }
             
-            .visitor-counter {
-                position: absolute;
-                top: 8px;
-                left: 50%;
-                transform: translateX(-50%);
-                margin: 0;
-                padding: 6px 12px;
-                gap: 4px;
-            }
-            
-            .visitor-counter-text {
-                font-size: 0.8em;
-                font-weight: 700;
-            }
-            
-            .visitor-counter-number {
-                font-size: 0.95em;
-                font-weight: 700;
-            }
-            
+            .slide-visitor-text { top: 1px; font-size: 0.85em; }
+            .slide-visitor-text .visitor-count-value { font-size: 1em; }
             .header-carousel {
                 min-height: 150px;
                 height: 150px;
@@ -5375,17 +5253,8 @@
                 display: block;
             }
             
-            .visitor-counter {
-                position: absolute;
-                top: 6px;
-                left: 50%;
-                transform: translateX(-50%);
-                margin: 0;
-                padding: 5px 10px;
-                gap: 3px;
-                z-index: 15;
-            }
-            
+            .slide-visitor-text { top: 0; font-size: 0.8em; }
+            .slide-visitor-text .visitor-count-value { font-size: 0.95em; }
             .header-carousel {
                 min-height: 140px;
                 height: 140px;
