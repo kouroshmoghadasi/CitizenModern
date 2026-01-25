@@ -155,6 +155,11 @@ def discover_pdf():
     """Serve the Discover Canada PDF file"""
     return send_from_directory(os.path.dirname(os.path.abspath(__file__)), 'discover.pdf')
 
+@app.route('/googlee38c49b065f08d79.html')
+def google_verification():
+    """Serve Google Search Console verification file"""
+    return send_from_directory(os.path.dirname(os.path.abspath(__file__)), 'googlee38c49b065f08d79.html')
+
 @app.route('/api/visitor-count', methods=['GET'])
 def get_visitor_count():
     """Get current visitor count without incrementing"""
