@@ -125,7 +125,7 @@
         
         // Header Carousel Functionality - Simple Version
         let currentSlide = 0;
-        const totalSlides = 1; // Only showing slide 1 (ad slide is hidden)
+        const totalSlides = 2; // اسلاید ۰: عنوان · اسلاید ۱: تیم شکور — هر کدام جدا
         let carouselInterval;
         
         function goToSlide(slideIndex) {
@@ -167,11 +167,9 @@
             }
         }
         
-        // Initialize carousel when page loads
         document.addEventListener('DOMContentLoaded', function() {
+            goToSlide(0);
             startCarousel();
-            
-            // Pause on hover
             const headerCarousel = document.querySelector('.header-carousel');
             if (headerCarousel) {
                 headerCarousel.addEventListener('mouseenter', stopCarousel);
@@ -5465,6 +5463,30 @@
         window.filterAds = filterAds;
     </script>
     
+    <!-- Bottom Sticky Banner Ad — تیکر متحرک، تبلیغات یکی‌یکی از راست به چپ -->
+    <div class="ad-sticky-banner" id="adStickyBanner">
+        <button class="ad-sticky-dismiss" onclick="dismissStickyBanner()" type="button" aria-label="بستن">×</button>
+        <a href="#ads-section" class="ad-sticky-link">
+            <span class="ad-sticky-prefix">📢 تبلیغات شرکت‌ها</span>
+            <div class="ad-sticky-ticker-wrap">
+                <div class="ad-sticky-ticker" aria-hidden="true">
+                    <span class="ad-sticky-item">🏠 مشاورین املاک · Real Estate Consultants · خرید و فروش و اجاره ملک</span>
+                    <span class="ad-sticky-sep">◆</span>
+                    <span class="ad-sticky-item">متین تیره دست · مشاور املاک · خرید و فروش مسکن</span>
+                    <span class="ad-sticky-sep">◆</span>
+                    <span class="ad-sticky-item">🔧 New York Garage · صافکاری · نقاشی · مکانیکی · تعمیرگاه خودرو</span>
+                    <span class="ad-sticky-sep">◆</span>
+                    <span class="ad-sticky-item">🏠 مشاورین املاک · Real Estate Consultants · خرید و فروش و اجاره ملک</span>
+                    <span class="ad-sticky-sep">◆</span>
+                    <span class="ad-sticky-item">متین تیره دست · مشاور املاک · خرید و فروش مسکن</span>
+                    <span class="ad-sticky-sep">◆</span>
+                    <span class="ad-sticky-item">🔧 New York Garage · صافکاری · نقاشی · مکانیکی · تعمیرگاه خودرو</span>
+                </div>
+            </div>
+            <span class="ad-sticky-suffix">مشاهده همه آگهی‌ها ↓</span>
+        </a>
+    </div>
+
     <!-- دکمه راهنما -->
     <div class="help-btn-wrapper">
         <button class="help-btn" onclick="toggleHelpMenu()" title="منو / Menu" aria-label="منو">
@@ -5550,6 +5572,23 @@
                 modal.classList.remove('active');
             }
         }
+        
+        function dismissStickyBanner() {
+            const banner = document.getElementById('adStickyBanner');
+            if (banner) {
+                banner.classList.add('ad-sticky-banner-dismissed');
+                try { sessionStorage.setItem('adStickyBannerDismissed', '1'); } catch (e) {}
+            }
+        }
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            try {
+                if (sessionStorage.getItem('adStickyBannerDismissed') === '1') {
+                    const banner = document.getElementById('adStickyBanner');
+                    if (banner) banner.classList.add('ad-sticky-banner-dismissed');
+                }
+            } catch (e) {}
+        });
         
         // بستن منو با کلیک خارج از آن
         document.addEventListener('click', function(event) {

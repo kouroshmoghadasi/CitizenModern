@@ -53,25 +53,24 @@
                         <span class="visitor-counter-number" id="visitorCount">100</span>
                     </div>
                     
-                    <!-- Slide 1: Test Title -->
-                    <div class="header-slide active" id="slide0">
-                <h1>🇨🇦 آزمون تمرینی شهروندی کانادا</h1>
-                <p>Canadian Citizenship Practice Test</p>
-            </div>
-
-                    <!-- Slide 2: Advertisement Opportunity (Temporarily hidden) -->
-                    <div class="header-slide" id="slide1" style="display: none;">
-                        <div class="header-slide-content">
-                            <h2>📢 تبلیغ کسب و کار خود را اینجا قرار دهید</h2>
-                            <p style="direction: rtl;">
-                                تبلیغ کسب و کار خود را در اینجا در معرض دید هزاران نفر از جامعه ایرانی قرار دهید و به هموطنان خود در سراسر کانادا بهترین خدمات را ارائه بدهید
-                            </p>
+                    <!-- Slide 1: فقط عنوان — اسلاید مستقل -->
+                    <div class="header-slide header-slide-title-only active" id="slide0">
+                        <div class="header-title-standalone">
+                            <span class="header-title-line1" dir="rtl">آزمون تمرینی شهروندی</span>
+                            <span class="header-title-line2" dir="rtl">کانادا</span>
+                            <span class="header-title-flag" aria-hidden="true">🇨🇦</span>
+                            <p class="header-title-en">Canadian Citizenship Practice Test</p>
                         </div>
                     </div>
-                    
-                    <div class="header-carousel-indicators" style="display: none;">
-                        <div class="header-indicator active" onclick="goToSlide(0)"></div>
-                        <div class="header-indicator" onclick="goToSlide(1)"></div>
+                    <!-- Slide 2: فقط بنر تیم شکور — اسلاید مستقل -->
+                    <div class="header-slide header-slide-ad" id="slide1">
+                        <a href="#ads-section" class="header-slide-ad-link" title="تیم شکور · Équipe Shakour · مشاوره املاک">
+                            <img src="{{ url_for('static', filename='images/equipe-shakour-banner.png') }}" alt="تیم شکور · Équipe Shakour · مشاوره تخصصی املاک · 514-730-3909" class="header-slide-ad-img">
+                        </a>
+                    </div>
+                    <div class="header-carousel-indicators">
+                        <div class="header-indicator active" onclick="goToSlide(0)" aria-label="اسلاید ۱"></div>
+                        <div class="header-indicator" onclick="goToSlide(1)" aria-label="اسلاید ۲"></div>
                     </div>
                 </div>
             </div>

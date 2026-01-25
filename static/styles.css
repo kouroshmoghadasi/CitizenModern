@@ -1678,25 +1678,31 @@
             position: relative;
             width: 100%;
             min-height: 180px;
+            height: 180px;
             padding: 12px 30px;
             z-index: 2;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+            overflow: hidden;
         }
         
         .header-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
             display: none;
+            align-items: center;
+            justify-content: center;
             text-align: center;
             color: white;
-            position: relative;
             z-index: 3;
-            width: 100%;
+            padding: 12px 20px;
         }
-        
+        .header-slide:not(.active) {
+            display: none !important;
+        }
         .header-slide.active {
-            display: block;
+            display: flex !important;
             animation: fadeIn 0.5s ease;
         }
         
@@ -1716,6 +1722,65 @@
             color: white;
             margin: 2px 0 0 0;
             line-height: 1.3;
+        }
+        
+        /* اسلاید ۱: فقط متن عنوان — همیشه قابل مشاهده وقتی اسلاید ۱ فعال است */
+        .header-slide-title-only .header-title-standalone {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            visibility: visible;
+            opacity: 1;
+        }
+        .header-title-line1 {
+            font-size: 1.4em;
+            font-weight: 700;
+            color: white;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+            line-height: 1.2;
+        }
+        .header-title-line2 {
+            font-size: 1.25em;
+            font-weight: 600;
+            color: white;
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+            line-height: 1.2;
+        }
+        .header-title-flag {
+            font-size: 1.5em;
+            line-height: 1;
+            margin: 2px 0;
+        }
+        .header-title-en {
+            font-size: 0.95em;
+            font-weight: 500;
+            color: white;
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+            margin: 4px 0 0 0;
+            line-height: 1.3;
+        }
+        
+        .header-slide-ad {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+        .header-slide-ad-link {
+            display: block;
+            max-width: 100%;
+            line-height: 0;
+        }
+        .header-slide-ad-img {
+            max-width: 100%;
+            max-height: 145px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
         }
         
         .header-slide-content {
@@ -1892,6 +1957,136 @@
         
         .help-menu.active {
             display: block;
+        }
+        
+        /* Scrolling Ticker Ad — از راست می‌آید، از چپ خارج می‌شود */
+        .ad-ticker-wrap {
+            width: 100%;
+            overflow: hidden;
+            background: linear-gradient(135deg, #1e3c72 0%, #2c5282 100%);
+            border-top: 2px solid rgba(241, 196, 15, 0.5);
+            border-bottom: 2px solid rgba(241, 196, 15, 0.5);
+            padding: 8px 0;
+            direction: rtl;
+        }
+        .ad-ticker {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            animation: adTickerScroll 40s linear infinite;
+            width: max-content;
+        }
+        .ad-ticker-item {
+            flex-shrink: 0;
+            font-size: 0.9em;
+            font-weight: 600;
+            color: #e2e8f0;
+            white-space: nowrap;
+        }
+        .ad-ticker-item a {
+            color: #f1c40f;
+            text-decoration: none;
+        }
+        .ad-ticker-item a:hover {
+            text-decoration: underline;
+        }
+        .ad-ticker-sep {
+            flex-shrink: 0;
+            color: rgba(241, 196, 15, 0.6);
+            font-size: 0.6em;
+        }
+        @keyframes adTickerScroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        
+        /* Bottom Sticky Banner Ad */
+        .ad-sticky-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 997;
+            background: linear-gradient(135deg, #1e3c72 0%, #2c5282 100%);
+            border-top: 3px solid #f1c40f;
+            padding: 10px 16px 10px 50px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 -4px 20px rgba(30, 60, 114, 0.4);
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+        .ad-sticky-banner-dismissed {
+            transform: translateY(100%);
+            opacity: 0;
+            pointer-events: none;
+        }
+        .ad-sticky-dismiss {
+            position: absolute;
+            top: 50%;
+            left: 12px;
+            transform: translateY(-50%);
+            width: 28px;
+            height: 28px;
+            border: none;
+            background: rgba(255,255,255,0.2);
+            color: #fff;
+            font-size: 1.2em;
+            line-height: 1;
+            cursor: pointer;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+        .ad-sticky-dismiss:hover {
+            background: rgba(255,255,255,0.35);
+        }
+        .ad-sticky-link {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            min-width: 0;
+            overflow: hidden;
+            text-decoration: none;
+            color: #e2e8f0;
+            font-weight: 600;
+            font-size: 0.95em;
+        }
+        .ad-sticky-link:hover {
+            color: #f1c40f;
+        }
+        .ad-sticky-prefix,
+        .ad-sticky-suffix {
+            flex-shrink: 0;
+            white-space: nowrap;
+        }
+        .ad-sticky-ticker-wrap {
+            flex: 1;
+            min-width: 0;
+            overflow: hidden;
+            direction: rtl;
+        }
+        .ad-sticky-ticker {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            width: max-content;
+            animation: adStickyTickerScroll 35s linear infinite;
+        }
+        .ad-sticky-item {
+            flex-shrink: 0;
+            white-space: nowrap;
+        }
+        .ad-sticky-sep {
+            flex-shrink: 0;
+            color: rgba(241, 196, 15, 0.6);
+            font-size: 0.6em;
+        }
+        @keyframes adStickyTickerScroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
         }
         
         .help-menu-item {
@@ -2231,6 +2426,7 @@
         @media (max-width: 768px) {
             .header-carousel {
                 min-height: 160px;
+                height: 160px;
                 padding: 12px 15px;
             }
             
@@ -3244,6 +3440,7 @@
         @media (max-width: 1200px) {
             .header-carousel {
                 min-height: 200px;
+                height: 200px;
                 padding: 18px 25px;
             }
             
@@ -3413,15 +3610,14 @@
             
             .header-carousel {
                 min-height: 160px;
+                height: 160px;
                 padding: 12px 15px;
                 padding-top: 50px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
+                display: block;
             }
             
             .header-slide {
-                padding: 0;
+                padding: 12px 15px;
                 min-height: auto;
                 width: 100%;
             }
@@ -3432,6 +3628,11 @@
                 font-weight: 700;
                 text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
             }
+            .header-title-line1 { font-size: 1.25em; }
+            .header-title-line2 { font-size: 1.1em; }
+            .header-title-flag { font-size: 1.35em; }
+            .header-title-en { font-size: 0.9em; }
+            .header-slide-ad-img { max-height: 125px; }
             
             .header-slide p {
                 font-size: 0.9em;
@@ -3448,6 +3649,42 @@
             .header-slide-content p {
                 font-size: 0.9em;
                 line-height: 1.6;
+            }
+            
+            .ad-ticker-wrap {
+                padding: 6px 0;
+            }
+            .ad-ticker-item {
+                font-size: 0.8em;
+            }
+            .ad-ticker {
+                gap: 16px;
+                animation-duration: 35s;
+            }
+            
+            .ad-sticky-banner {
+                padding: 8px 12px 8px 44px;
+            }
+            .ad-sticky-link {
+                font-size: 0.85em;
+                gap: 8px;
+            }
+            .ad-sticky-prefix,
+            .ad-sticky-suffix {
+                font-size: 0.9em;
+            }
+            .ad-sticky-ticker {
+                gap: 14px;
+                animation-duration: 28s;
+            }
+            .ad-sticky-item {
+                font-size: 0.95em;
+            }
+            .ad-sticky-dismiss {
+                width: 24px;
+                height: 24px;
+                font-size: 1em;
+                left: 8px;
             }
             
             #testContainer {
@@ -4262,13 +4499,13 @@
             
             .header-carousel {
                 min-height: 150px;
+                height: 150px;
                 padding: 10px 12px;
                 padding-top: 45px;
             }
             
             .header-slide {
-                padding: 0;
-                min-height: auto;
+                padding: 10px 12px;
             }
             
             .header-slide h1 {
@@ -5151,6 +5388,7 @@
             
             .header-carousel {
                 min-height: 140px;
+                height: 140px;
                 padding: 8px 10px;
                 padding-top: 40px;
             }
@@ -5160,6 +5398,11 @@
                 margin-bottom: 2px;
                 font-weight: 700;
             }
+            .header-title-line1 { font-size: 1.15em; }
+            .header-title-line2 { font-size: 1.05em; }
+            .header-title-flag { font-size: 1.2em; }
+            .header-title-en { font-size: 0.8em; }
+            .header-slide-ad-img { max-height: 100px; }
             
             .header-slide p {
                 font-size: 0.8em;
