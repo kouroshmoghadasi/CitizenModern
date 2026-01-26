@@ -160,6 +160,11 @@ def google_verification():
     """Serve Google Search Console verification file"""
     return send_from_directory(os.path.dirname(os.path.abspath(__file__)), 'googlee38c49b065f08d79.html')
 
+@app.route('/robots.txt')
+def robots_txt():
+    """Serve robots.txt file for search engines"""
+    return send_from_directory(os.path.dirname(os.path.abspath(__file__)), 'robots.txt'), 200, {'Content-Type': 'text/plain'}
+
 @app.route('/api/visitor-count', methods=['GET'])
 def get_visitor_count():
     """Get current visitor count without incrementing"""

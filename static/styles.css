@@ -456,6 +456,10 @@
             display: none;
         }
         
+        .classifieds-promo-section.mobile-version {
+            display: none;
+        }
+        
         .mobile-sidebar-sections {
             display: none;
         }
@@ -495,6 +499,88 @@
                 0 6px 20px rgba(30, 60, 114, 0.4),
                 0 3px 12px rgba(30, 60, 114, 0.3);
             transform: translateY(-2px);
+        }
+        
+        /* تبلیغ نیازمندی‌های کانادا - آمریکا */
+        .classifieds-promo-section {
+            margin-top: 12px;
+            margin-bottom: 0;
+            direction: rtl;
+            display: block !important;
+            visibility: visible !important;
+        }
+        
+        .classifieds-promo-link {
+            text-decoration: none;
+            display: block;
+            width: 100%;
+        }
+        
+        .classifieds-promo-box {
+            padding: 16px 20px;
+            background: linear-gradient(145deg, #ffffff 0%, #f8fafc 50%, #f1f5f9 100%);
+            border: 2.5px solid #6366f1;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 
+                0 4px 15px rgba(99, 102, 241, 0.25),
+                0 2px 8px rgba(99, 102, 241, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
+            text-align: center;
+            cursor: pointer;
+            user-select: none;
+            width: calc(100% + 40px);
+            margin-left: -20px;
+            margin-right: -20px;
+            box-sizing: border-box;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .classifieds-promo-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.08) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .classifieds-promo-box:hover {
+            background: linear-gradient(145deg, #f8fafc 0%, #ffffff 50%, #f8fafc 100%);
+            box-shadow: 
+                0 6px 25px rgba(99, 102, 241, 0.35),
+                0 3px 12px rgba(99, 102, 241, 0.25),
+                inset 0 1px 0 rgba(255, 255, 255, 0.9);
+            transform: translateY(-2px);
+            border-color: #8b5cf6;
+        }
+        
+        .classifieds-promo-box:hover::before {
+            opacity: 1;
+        }
+        
+        .classifieds-promo-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            width: 100%;
+        }
+        
+        .classifieds-promo-content {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
         
         /* Modal/Popup Styles */
@@ -3884,10 +3970,16 @@
             .book-link-section.mobile-version,
             .book-summary-section.mobile-version,
             .donation-section.mobile-version,
-            .ad-registration-section.mobile-version {
+            .ad-registration-section.mobile-version,
+            .classifieds-promo-section.mobile-version {
                 display: block;
                 margin-bottom: 4px;
                 direction: rtl;
+            }
+            
+            .classifieds-promo-section.mobile-version {
+                margin-top: 10px;
+                margin-bottom: 4px;
             }
             
             .donation-section.mobile-version {
@@ -4092,6 +4184,73 @@
                 font-weight: 700;
                 text-align: center;
                 display: block;
+            }
+            
+            .classifieds-promo-section {
+                margin-top: 10px;
+                display: block !important;
+                visibility: visible !important;
+            }
+            
+            .classifieds-promo-box {
+                padding: 14px 16px;
+                border-radius: 8px;
+                gap: 8px;
+                border-width: 2px;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: all 0.2s ease;
+                box-shadow: 0 2px 8px rgba(99, 102, 241, 0.2);
+                min-height: auto;
+                text-align: center;
+            }
+            
+            .classifieds-promo-box:active {
+                transform: scale(0.98);
+                box-shadow: 0 1px 5px rgba(99, 102, 241, 0.3);
+            }
+            
+            .classifieds-promo-section.mobile-version {
+                margin-top: 10px;
+                margin-bottom: 4px;
+                display: block !important;
+                visibility: visible !important;
+            }
+            
+            .classifieds-promo-section.mobile-version .classifieds-promo-box {
+                width: calc(100% + 40px);
+                margin-left: -20px;
+                margin-right: -20px;
+            }
+            
+            .classifieds-promo-header {
+                gap: 4px;
+            }
+            
+            .classifieds-promo-header h3 {
+                font-size: 0.95em;
+                margin: 0;
+                line-height: 1.4;
+                text-align: center;
+                width: 100%;
+            }
+            
+            .classifieds-promo-content {
+                font-size: 0.85em;
+            }
+            
+            .classifieds-business-line {
+                background: linear-gradient(135deg, rgba(99, 102, 241, 0.15) 0%, rgba(139, 92, 246, 0.15) 100%);
+                color: #6366f1 !important;
+                font-weight: 700 !important;
+                padding: 8px 12px;
+                border-radius: 8px;
+                border: 1.5px solid rgba(99, 102, 241, 0.3);
+                text-shadow: 0 1px 3px rgba(99, 102, 241, 0.2);
+                box-shadow: 0 2px 8px rgba(99, 102, 241, 0.15);
+                margin-top: 8px !important;
+                margin-bottom: 4px;
             }
             
             .ads-section {
@@ -4572,10 +4731,16 @@
             .book-link-section.mobile-version,
             .book-summary-section.mobile-version,
             .donation-section.mobile-version,
-            .ad-registration-section.mobile-version {
+            .ad-registration-section.mobile-version,
+            .classifieds-promo-section.mobile-version {
                 display: block;
                 margin-bottom: 4px;
                 direction: rtl;
+            }
+            
+            .classifieds-promo-section.mobile-version {
+                margin-top: 10px;
+                margin-bottom: 4px;
             }
             
             .donation-section.mobile-version {
@@ -4737,6 +4902,41 @@
                 font-weight: 700;
                 text-align: center;
                 display: block;
+            }
+            
+            .classifieds-promo-section {
+                margin-top: 8px;
+                display: block !important;
+                visibility: visible !important;
+            }
+            
+            .classifieds-promo-box {
+                padding: 12px 14px;
+                border-radius: 7px;
+                gap: 6px;
+                border-width: 2px;
+                min-height: auto;
+            }
+            
+            .classifieds-promo-header h3 {
+                font-size: 0.9em;
+            }
+            
+            .classifieds-promo-content {
+                font-size: 0.8em;
+            }
+            
+            .classifieds-business-line {
+                background: linear-gradient(135deg, rgba(99, 102, 241, 0.15) 0%, rgba(139, 92, 246, 0.15) 100%);
+                color: #6366f1 !important;
+                font-weight: 700 !important;
+                padding: 7px 10px;
+                border-radius: 7px;
+                border: 1.5px solid rgba(99, 102, 241, 0.3);
+                text-shadow: 0 1px 3px rgba(99, 102, 241, 0.2);
+                box-shadow: 0 2px 8px rgba(99, 102, 241, 0.15);
+                margin-top: 8px !important;
+                margin-bottom: 4px;
             }
             
             .ads-section {
@@ -5084,7 +5284,8 @@
             .book-link-section.mobile-version,
             .book-summary-section.mobile-version,
             .donation-section.mobile-version,
-            .ad-registration-section.mobile-version {
+            .ad-registration-section.mobile-version,
+            .classifieds-promo-section.mobile-version {
                 display: block;
                 margin-bottom: 3px;
                 direction: rtl;
@@ -5092,6 +5293,11 @@
             
             .donation-section.mobile-version {
                 margin-bottom: 8px !important;
+            }
+            
+            .classifieds-promo-section.mobile-version {
+                margin-top: 8px;
+                margin-bottom: 3px;
             }
             
             .book-link {
@@ -5251,6 +5457,41 @@
                 font-weight: 700;
                 text-align: center;
                 display: block;
+            }
+            
+            .classifieds-promo-section {
+                margin-top: 6px;
+                display: block !important;
+                visibility: visible !important;
+            }
+            
+            .classifieds-promo-box {
+                padding: 10px 12px;
+                border-radius: 6px;
+                gap: 5px;
+                border-width: 2px;
+                min-height: auto;
+            }
+            
+            .classifieds-promo-header h3 {
+                font-size: 0.85em;
+            }
+            
+            .classifieds-promo-content {
+                font-size: 0.75em;
+            }
+            
+            .classifieds-business-line {
+                background: linear-gradient(135deg, rgba(99, 102, 241, 0.15) 0%, rgba(139, 92, 246, 0.15) 100%);
+                color: #6366f1 !important;
+                font-weight: 700 !important;
+                padding: 6px 8px;
+                border-radius: 6px;
+                border: 1.5px solid rgba(99, 102, 241, 0.3);
+                text-shadow: 0 1px 3px rgba(99, 102, 241, 0.2);
+                box-shadow: 0 2px 8px rgba(99, 102, 241, 0.15);
+                margin-top: 6px !important;
+                margin-bottom: 3px;
             }
             
             .slide-visitor-text { top: 0; font-size: 0.8em; }
