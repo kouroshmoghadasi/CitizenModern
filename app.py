@@ -11,7 +11,7 @@ CORS(app)  # Enable CORS for frontend requests
 
 # Import database configuration
 try:
-    from config import DB_CONFIG, FLASK_CONFIG
+    from config import DB_CONFIG
 except ImportError:
     # Fallback configuration if config.py doesn't exist
     DB_CONFIG = {
@@ -20,11 +20,6 @@ except ImportError:
         'dbname': os.getenv('DB_NAME', 'citizentest'),
         'user': os.getenv('DB_USER', 'postgres'),
         'password': os.getenv('DB_PASSWORD', '1X8HcEa%iP%yT_lqz1)S~#b&QoV8x{U1')
-    }
-    FLASK_CONFIG = {
-        'host': os.getenv('FLASK_HOST', '0.0.0.0'),
-        'port': int(os.getenv('FLASK_PORT', '5011')),
-        'debug': os.getenv('FLASK_DEBUG', 'true').lower() == 'true'
     }
 
 # Database connection pool (simple connection per request)
@@ -427,13 +422,8 @@ def health_check():
         'in_memory_counter': in_memory_counter
     })
 
-if __name__ == '__main__':
-    # Create templates directory if it doesn't exist
-    os.makedirs('templates', exist_ok=True)
-    
-    # Run Flask app with configuration
-    app.run(
-        debug=FLASK_CONFIG['debug'],
-        host=FLASK_CONFIG['host'],
-        port=FLASK_CONFIG['port']
-    )
+if __name__ == "__main__":
+    import os
+    port = int(os.environ.get("PORT", 5011 ))
+    debug = os.environ.get("FLASK_DEBUG", "False").lower() == "true"
+    app.run(host="0.0.0.0", port=port, debug=debug)
