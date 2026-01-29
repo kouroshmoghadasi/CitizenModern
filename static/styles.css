@@ -1272,17 +1272,37 @@
         }
         .ad-tile-shakour-card .shakour-card-phone {
             margin-bottom: 14px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: #fef9c3;
+            padding: 12px 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(234,179,8,0.2);
+        }
+        .ad-tile-shakour-card .shakour-phone-icon {
+            font-size: 1.2em;
+            line-height: 1;
+            filter: none;
+        }
+        .ad-tile-shakour-card .shakour-card-phone,
+        .ad-tile-shakour-card .shakour-card-phone a {
+            direction: ltr !important;
+            unicode-bidi: isolate !important;
+            text-align: left;
         }
         .ad-tile-shakour-card .shakour-card-phone a {
             font-size: 1.35em;
             font-weight: 800;
-            color: #facc15;
+            color: #0f0f0f;
             text-decoration: none;
-            letter-spacing: 2px;
-            text-shadow: 0 2px 10px rgba(250,204,21,0.4);
+            letter-spacing: 1px;
+            font-family: inherit;
+            white-space: nowrap;
         }
         .ad-tile-shakour-card .shakour-card-phone a:hover {
-            color: #fde047;
+            color: #1a1a1a;
         }
         .ad-tile-shakour-card .shakour-card-contact {
             width: 100%;
