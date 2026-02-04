@@ -42,6 +42,13 @@
                     </div>
                 </div>
             </div>
+            <!-- دکمه ۳۰ دوره آزمون ۲۰ سوالی — زیر تایمر و امتیاز -->
+            <div class="btn-30-tests-wrap">
+                <button type="button" class="btn-30-tests" id="btnOpen30Tests" onclick="open30TestsModal()" title="۳۰ دوره آزمون ۲۰ سوالی · بانک ۵۷۱ سوال شهروندی کانادا">
+                    <span class="btn-30-tests-icon" aria-hidden="true">📋</span>
+                    <span class="btn-30-tests-inner" dir="rtl">۳۰ دوره آزمون ۲۰ سوالی<br><span class="btn-30-tests-sub">بانک ۵۷۱ سوال</span></span>
+                </button>
+            </div>
         </div>
 
         <div class="main-content">
@@ -61,7 +68,7 @@
                     <div class="header-slide header-slide-ad" id="slide1">
                         <div class="slide-visitor-text">Visitors : <span class="visitor-count-value">100</span></div>
                         <a href="#ads-section" class="header-slide-ad-link" title="تیم شکور · Équipe Shakour · مشاوره املاک">
-                            <img src="{{ url_for('static', filename='images/equipe-shakour-banner.png') }}" alt="تیم شکور · Équipe Shakour · مشاوره تخصصی املاک · 514-730-3909" class="header-slide-ad-img">
+                            <img src="{{ url_for('static', filename='images/shakour-hero.png') }}" alt="تیم شکور · Équipe Shakour · مشاوره تخصصی املاک · 514-730-3909" class="header-slide-ad-img">
                         </a>
                     </div>
                     <div class="header-carousel-indicators">
@@ -221,6 +228,37 @@
         
         <!-- Right Sidebar: Donation + Ad Space -->
         {% include 'sidebar.html' %}
+    </div>
+    
+    <!-- مودال ۳۰ دوره آزمون ۲۰ سوالی (بانک ۵۷۱ سوال) -->
+    <div class="modal-30-tests-overlay" id="modal30TestsOverlay" aria-hidden="true" onclick="if(event.target===this) close30TestsModal()">
+        <div class="modal-30-tests" role="dialog" aria-labelledby="modal30TestsTitle" onclick="event.stopPropagation()">
+            <div class="modal-30-tests-header">
+                <h2 id="modal30TestsTitle" class="modal-30-tests-title" dir="rtl">۳۰ دوره آزمون ۲۰ سوالی</h2>
+                <p class="modal-30-tests-subtitle" dir="rtl">بر اساس بانک سوالات شهروندی کانادا · Canadian Citizenship</p>
+                <button type="button" class="modal-30-tests-close" onclick="close30TestsModal()" aria-label="بستن">×</button>
+            </div>
+            <div class="modal-30-tests-body">
+                <div class="modal-30-tests-grid" id="modal30TestsGrid">
+                    <!-- 30 کارت آزمون با JS پر می‌شوند -->
+                </div>
+                <div class="modal-30-tests-quiz" id="modal30TestsQuiz" style="display: none;">
+                    <div class="modal-30-quiz-header">
+                        <span class="modal-30-quiz-progress" id="modal30QuizProgress" dir="rtl">سوال 1 از 20</span>
+                        <span class="modal-30-quiz-score" id="modal30QuizScore">✓ 0 &nbsp; ✗ 0</span>
+                    </div>
+                    <div class="modal-30-quiz-question" id="modal30QuizQuestion"></div>
+                    <div class="modal-30-quiz-options" id="modal30QuizOptions"></div>
+                    <button type="button" class="modal-30-quiz-next" id="modal30QuizNext" style="display: none;" onclick="modal30NextQuestion()">بعدی</button>
+                </div>
+                <div class="modal-30-tests-result" id="modal30TestsResult" style="display: none;">
+                    <h3 class="modal-30-result-title" dir="rtl">نتیجه آزمون</h3>
+                    <div class="modal-30-result-score" id="modal30ResultScore"></div>
+                    <div class="modal-30-result-text" id="modal30ResultText"></div>
+                    <button type="button" class="modal-30-result-back" onclick="modal30BackToList()">بازگشت به لیست آزمون‌ها</button>
+                </div>
+            </div>
+        </div>
     </div>
     
     <div class="ads-section">
