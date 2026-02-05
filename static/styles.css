@@ -3595,6 +3595,20 @@
         }
         .btn-30-tests-sub { font-size: 0.9em; opacity: 0.95; font-weight: 600; display: block; margin-top: 4px; }
 
+        /* دکمه ۳۰ دوره آزمون در موبایل — زیر باکس حمایت مالی */
+        .mobile-sidebar-sections .btn-30-tests-mobile-wrap {
+            display: block;
+            margin: 14px 0 16px;
+            width: 100%;
+        }
+        .mobile-sidebar-sections .btn-30-tests-mobile-wrap .btn-30-tests {
+            width: 100%;
+            padding: 16px 14px;
+            font-size: 0.95em;
+            border-radius: 12px;
+            box-sizing: border-box;
+        }
+
         .modal-30-tests-overlay {
             position: fixed;
             inset: 0;
