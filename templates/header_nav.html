@@ -64,11 +64,14 @@
                             <p class="header-title-en">Canadian Citizenship Practice Test</p>
                         </div>
                     </div>
-                    <!-- Slide 2: فقط بنر تیم شکور — اسلاید مستقل -->
+                    <!-- Slide 2: فقط بنر تیم شکور — اسلاید مستقل (دسکتاپ و موبایل تصاویر جدا) -->
                     <div class="header-slide header-slide-ad" id="slide1">
                         <div class="slide-visitor-text">Visitors : <span class="visitor-count-value">100</span></div>
                         <a href="#ads-section" class="header-slide-ad-link" title="تیم شکور · Équipe Shakour · مشاوره املاک">
-                            <img src="{{ url_for('static', filename='images/shakour-hero.png') }}" alt="تیم شکور · Équipe Shakour · مشاوره تخصصی املاک · 514-730-3909" class="header-slide-ad-img">
+                            <picture>
+                                <source media="(max-width: 768px)" srcset="{{ url_for('static', filename='images/shakour-hero-mobile.png') }}">
+                                <img src="{{ url_for('static', filename='images/shakour-hero-desktop.png') }}" alt="تیم شکور · Équipe Shakour · مشاوره تخصصی املاک · 514-730-3909" class="header-slide-ad-img">
+                            </picture>
                         </a>
                     </div>
                     <div class="header-carousel-indicators">

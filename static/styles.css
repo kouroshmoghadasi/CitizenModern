@@ -1829,9 +1829,9 @@
         .header-carousel {
             position: relative;
             width: 100%;
-            min-height: 180px;
-            height: 180px;
-            padding: 12px 30px;
+            min-height: 192px;
+            height: 192px;
+            padding: 0 8px;
             z-index: 2;
             overflow: hidden;
         }
@@ -1848,7 +1848,7 @@
             text-align: center;
             color: white;
             z-index: 3;
-            padding: 12px 20px;
+            padding: 0 8px;
         }
         .header-slide:not(.active) {
             display: none !important;
@@ -1927,7 +1927,7 @@
         }
         .header-slide-ad-img {
             max-width: 100%;
-            max-height: 145px;
+            max-height: 172px;
             width: auto;
             height: auto;
             object-fit: contain;
@@ -2601,9 +2601,9 @@
         
         @media (max-width: 768px) {
             .header-carousel {
-                min-height: 160px;
-                height: 160px;
-                padding: 12px 15px;
+                min-height: 168px;
+                height: 168px;
+                padding: 0 6px;
             }
             
             .header-slide h1 {
@@ -3849,7 +3849,7 @@
             .header-carousel {
                 min-height: 200px;
                 height: 200px;
-                padding: 18px 25px;
+                padding: 0 10px;
             }
             
             .header-slide h1 {
@@ -4007,15 +4007,15 @@
             
             .slide-visitor-text { top: 2px; font-size: 0.9em; }
             .header-carousel {
-                min-height: 160px;
-                height: 160px;
-                padding: 12px 15px;
-                padding-top: 50px;
+                min-height: 168px;
+                height: 168px;
+                padding: 0 6px;
+                padding-top: 18px;
                 display: block;
             }
             
             .header-slide {
-                padding: 12px 15px;
+                padding: 0 6px;
                 min-height: auto;
                 width: 100%;
             }
@@ -4030,7 +4030,7 @@
             .header-title-line2 { font-size: 1.1em; }
             .header-title-flag { font-size: 1.35em; }
             .header-title-en { font-size: 0.9em; }
-            .header-slide-ad-img { max-height: 125px; }
+            .header-slide-ad-img { max-height: 148px; }
             
             .header-slide p {
                 font-size: 0.9em;
@@ -4952,14 +4952,14 @@
             .slide-visitor-text { top: 1px; font-size: 0.85em; }
             .slide-visitor-text .visitor-count-value { font-size: 1em; }
             .header-carousel {
-                min-height: 150px;
-                height: 150px;
-                padding: 10px 12px;
-                padding-top: 45px;
+                min-height: 158px;
+                height: 158px;
+                padding: 0 6px;
+                padding-top: 16px;
             }
             
             .header-slide {
-                padding: 10px 12px;
+                padding: 0 6px;
             }
             
             .header-slide h1 {
@@ -5914,10 +5914,10 @@
             .slide-visitor-text { top: 0; font-size: 0.8em; }
             .slide-visitor-text .visitor-count-value { font-size: 0.95em; }
             .header-carousel {
-                min-height: 140px;
-                height: 140px;
-                padding: 8px 10px;
-                padding-top: 40px;
+                min-height: 148px;
+                height: 148px;
+                padding: 0 6px;
+                padding-top: 14px;
             }
             
             .header-slide h1 {
@@ -5929,7 +5929,7 @@
             .header-title-line2 { font-size: 1.05em; }
             .header-title-flag { font-size: 1.2em; }
             .header-title-en { font-size: 0.8em; }
-            .header-slide-ad-img { max-height: 100px; }
+            .header-slide-ad-img { max-height: 120px; }
             
             .header-slide p {
                 font-size: 0.8em;
