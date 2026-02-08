@@ -443,6 +443,13 @@
             display: block !important;
             visibility: visible !important;
         }
+        /* فاصله خیلی کم بین دو دکمه خلاصه کتاب و ۴۴۱ سوال در سایدبار */
+        .right-sidebar .book-summary-section + .book-summary-section {
+            margin-top: 0 !important;
+        }
+        .right-sidebar .book-summary-section:has(+ .book-summary-section) {
+            margin-bottom: 4px !important;
+        }
         
         .ad-registration-section {
             margin-top: -5px; /* Negative margin to move box higher */
@@ -471,7 +478,7 @@
         }
         
         .ad-registration-toggle {
-            padding: 18px 22px;
+            padding: 12px 22px;
             background: linear-gradient(135deg, #1e3c72 0%, #2c5282 100%);
             border: 2.5px solid #f1c40f;
             border-radius: 12px;
@@ -479,7 +486,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 12px;
+            gap: 6px;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             box-shadow: 
                 0 4px 15px rgba(30, 60, 114, 0.3),

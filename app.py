@@ -145,6 +145,12 @@ def book_summary():
     log_visitor('/book_summary.html')
     return render_template('book_summary.html')
 
+@app.route('/citizenship-441')
+def citizenship_441():
+    """Serve the 441 citizenship questions educational page (bilingual FA/EN, RTL)"""
+    log_visitor('/citizenship-441')
+    return render_template('citizenship_441.html')
+
 @app.route('/discover.pdf')
 def discover_pdf():
     """Serve the Discover Canada PDF file"""
