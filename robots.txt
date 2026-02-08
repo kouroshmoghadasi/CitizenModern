@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
 
-# Sitemap (if you create one later, uncomment and add the URL)
-# Sitemap: https://citizentest.invoisky.com/sitemap.xml
+Sitemap: https://citizentest.invoisky.com/sitemap.xml

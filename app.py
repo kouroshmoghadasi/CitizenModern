@@ -163,8 +163,37 @@ def google_verification():
 
 @app.route('/robots.txt')
 def robots_txt():
-    """Serve robots.txt file for search engines"""
-    return send_from_directory(os.path.dirname(os.path.abspath(__file__)), 'robots.txt'), 200, {'Content-Type': 'text/plain'}
+    """Serve robots.txt for search engines with dynamic sitemap URL"""
+    base = request.host_url.rstrip('/')
+    body = f'''User-agent: *
+Allow: /
+
+Sitemap: {base}/sitemap.xml
+'''
+    return body, 200, {'Content-Type': 'text/plain; charset=utf-8'}
+
+
+@app.route('/sitemap.xml')
+def sitemap():
+    """Serve sitemap.xml for SEO"""
+    base = request.host_url.rstrip('/')
+    pages = [
+        ('/', 'daily', '1.0'),
+        ('/book_summary.html', 'weekly', '0.9'),
+        ('/citizenship-441', 'weekly', '0.9'),
+    ]
+    xml = '''<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+'''
+    for path, changefreq, priority in pages:
+        xml += f'''  <url>
+    <loc>{base}{path}</loc>
+    <changefreq>{changefreq}</changefreq>
+    <priority>{priority}</priority>
+  </url>
+'''
+    xml += '</urlset>'
+    return xml, 200, {'Content-Type': 'application/xml; charset=utf-8'}
 
 @app.route('/api/visitor-count', methods=['GET'])
 def get_visitor_count():
