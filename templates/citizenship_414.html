@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{{ url_for('static', filename='images/logo.png') }}" type="image/png">
+    <link rel="apple-touch-icon" href="{{ url_for('static', filename='images/logo.png') }}">
+    <meta property="og:image" content="{{ request.url_root.rstrip('/') }}{{ url_for('static', filename='images/logo.png') }}">
+    <meta name="twitter:image" content="{{ request.url_root.rstrip('/') }}{{ url_for('static', filename='images/logo.png') }}">
+    <title>۴۱۴ سوال شهروندی کانادا - انگلیسی/فرانسه + فارسی | Citizenship 414 Questions</title>
+    <meta name="description" content="۴۱۴ سوال آزمون شهروندی کانادا — انگلیسی+فارسی یا فرانسه+فارسی. Discover Canada.">
+    <meta name="keywords" content="۴۱۴ سوال شهروندی, citizenship 414 questions, انگلیسی فارسی, فرانسه فارسی, Discover Canada">
+    <link rel="canonical" href="{{ request.host_url.rstrip('/') }}/citizenship-414">
+    <meta property="og:title" content="۴۱۴ سوال شهروندی کانادا - انگلیسی/فرانسه + فارسی">
+    <meta property="og:description" content="۴۱۴ سوال با انتخاب انگلیسی+فارسی یا فرانسه+فارسی.">
+    <meta property="og:url" content="{{ request.host_url.rstrip('/') }}/citizenship-414">
+    <meta property="og:type" content="article">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="۴۱۴ سوال شهروندی – EN/FR + فارسی">
+<style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+            --bg: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            --card-bg: #fff;
+            --text: #1a1a1a;
+            --text-muted: #444;
+            --header-bg: linear-gradient(135deg, #1e3c72 0%, #2c5282 100%);
+            --header-text: #fff;
+            --accent: #1e3c72;
+            --accent-light: #2c5282;
+            --border: rgba(30,60,114,0.08);
+            --option-bg: #f8f9fa;
+            --option-border: #e9ecef;
+            --expl-bg: #f0f4f8;
+            --expl-bg2: #f8f9fa;
+            --section-border: #f1c40f;
+        }
+        body.theme-dark {
+            --bg: linear-gradient(135deg, #1a1d24 0%, #0f1115 100%);
+            --card-bg: #252830;
+            --text: #e8eaed;
+            --text-muted: #b0b4b8;
+            --header-bg: linear-gradient(135deg, #2d3748 0%, #1e3c72 100%);
+            --header-text: #fff;
+            --accent: #7cb3f5;
+            --accent-light: #90c5f7;
+            --border: rgba(255,255,255,0.1);
+            --option-bg: #2d323c;
+            --option-border: rgba(255,255,255,0.12);
+            --expl-bg: #2d323c;
+            --expl-bg2: #353a45;
+            --section-border: #f1c40f;
+        }
+body {
+            font-family: Tahoma, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+  min-height: 100vh;
+            padding: 20px;
+            line-height: 1.7;
+            color: var(--text);
+        }
+        .wrap { max-width: 900px; margin: 0 auto; }
+        .tool-bar {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            margin-bottom: 20px;
+            padding: 14px 18px;
+            background: var(--card-bg);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+        }
+        body.theme-dark .tool-bar { box-shadow: 0 2px 10px rgba(0,0,0,0.3); }
+        .tool-bar .group { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+        .theme-toggle-wrap { display: flex; align-items: center; gap: 6px; }
+        .theme-label { font-weight: 600; color: var(--text); font-size: 0.95em; }
+        .theme-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            border: 2px solid var(--border);
+            background: var(--card-bg);
+            font-size: 1.35em;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+        }
+        .theme-btn:hover { transform: scale(1.08); box-shadow: 0 4px 12px rgba(0,0,0,0.12); }
+        .theme-btn[aria-pressed="true"] {
+            border-color: #1e3c72;
+            box-shadow: 0 0 0 2px rgba(30,60,114,0.35);
+            background: linear-gradient(135deg, #e8eef5 0%, #dce4ed 100%);
+        }
+        body.theme-dark .theme-btn[aria-pressed="true"] {
+            border-color: #7cb3f5;
+            box-shadow: 0 0 0 2px rgba(124,179,245,0.4);
+            background: linear-gradient(135deg, #3d4a5c 0%, #2d3748 100%);
+        }
+        .page-header {
+            background: var(--header-bg);
+            color: var(--header-text);
+            padding: 28px 24px;
+            border-radius: 16px;
+            margin-bottom: 24px;
+  text-align: center;
+            box-shadow: 0 8px 24px rgba(30,60,114,0.25);
+        }
+        .page-header h1 { font-size: 1.6em; margin-bottom: 8px; }
+        .page-header p { font-size: 0.95em; opacity: 0.95; }
+        .back-bar { margin-bottom: 20px; text-align: right; }
+        .back-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: var(--accent);
+  color: #fff;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 600;
+        }
+        .back-btn:hover { background: var(--accent-light); }
+        .section-title { font-size: 1.1em; font-weight: 700; color: var(--accent); margin: 24px 0 12px 0; padding-bottom: 6px; border-bottom: 2px solid var(--section-border); }
+        .q-card-441 {
+            background: #f0f0f0;
+            border-radius: 12px;
+            padding: 24px 28px;
+            margin-bottom: 24px;
+            border: 1px solid rgba(0,0,0,0.08);
+        }
+        body.theme-dark .q-card-441 { background: #2d323c; border-color: rgba(255,255,255,0.1); }
+        .q-head-441 { margin-bottom: 14px; text-align: left; direction: ltr; }
+        .q-num-441 { font-weight: 800; font-size: 1.25em; color: #c0392b; margin-right: 8px; }
+        body.theme-dark .q-num-441 { color: #e74c3c; }
+        .q-text-441 { font-weight: 700; color: #1a1a1a; font-size: 1.05em; }
+        body.theme-dark .q-text-441 { color: #e8eaed; }
+        .q-answer-441 { font-weight: 600; font-size: 1.05em; color: #c0392b; margin: 12px 0 14px 0; text-align: left; direction: ltr; }
+        body.theme-dark .q-answer-441 { color: #e74c3c; }
+        .q-source-441 { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; font-size: 1em; color: #1e3c72; font-weight: 600; }
+        body.theme-dark .q-source-441 { color: #7cb3f5; }
+        .q-source-icon { font-size: 1.2em; }
+        .q-expl-441 { font-style: italic; font-size: 0.98em; color: #444; line-height: 1.65; text-align: left; direction: ltr; padding-top: 4px; }
+        body.theme-dark .q-expl-441 { color: #b0b4b8; }
+        .block-en { direction: ltr; text-align: left; margin-bottom: 10px; padding: 10px 12px; background: rgba(30,60,114,0.06); border-radius: 10px; border-left: 3px solid var(--accent); }
+        body.theme-dark .block-en { background: rgba(124,179,245,0.1); border-left-color: #7cb3f5; }
+        .block-fa { direction: rtl; text-align: right; margin-bottom: 10px; padding: 10px 12px; background: rgba(241,196,15,0.12); border-radius: 10px; border-right: 3px solid #f1c40f; }
+        body.theme-dark .block-fa { background: rgba(241,196,15,0.15); }
+        .block-fr { direction: ltr; text-align: left; margin-bottom: 10px; padding: 10px 12px; background: rgba(0,82,147,0.08); border-radius: 10px; border-left: 3px solid #005293; }
+        body.theme-dark .block-fr { background: rgba(0,82,147,0.18); border-left-color: #4a9fd4; }
+        .lang-mode-btn { padding: 10px 18px; border-radius: 10px; border: 2px solid var(--border); background: var(--card-bg); color: var(--text); font-weight: 600; font-size: 0.95em; cursor: pointer; transition: all 0.2s; }
+        .lang-mode-btn:hover { border-color: var(--accent); }
+        .lang-mode-btn[aria-pressed="true"] { border-color: var(--accent); background: linear-gradient(135deg, #e8eef5 0%, #dce4ed 100%); box-shadow: 0 0 0 2px rgba(30,60,114,0.25); }
+        body.theme-dark .lang-mode-btn[aria-pressed="true"] { background: linear-gradient(135deg, #3d4a5c 0%, #2d3748 100%); border-color: #7cb3f5; }
+        .q-num-badge {
+            display: inline-flex; align-items: center; justify-content: center;
+            min-width: 2rem; height: 1.75rem; padding: 0 0.5rem;
+            background: linear-gradient(135deg, #1e3c72 0%, #2c5282 100%);
+            color: #fff; border-radius: 8px; font-weight: 700; font-size: 0.9em;
+            margin-right: 0.6rem; flex-shrink: 0;
+        }
+        body.theme-dark .q-num-badge { background: linear-gradient(135deg, #2d3748 0%, #1e3c72 100%); color: #e8eaed; }
+        .block-fa .q-num-badge { margin-right: 0; margin-left: 0.6rem; }
+    </style>
+</head>
+<body>
+    <script>try{var t=localStorage.getItem('citizenship414_theme');if(t==='dark')document.body.classList.add('theme-dark');}catch(e){}</script>
+    <div class="wrap">
+        <div class="back-bar">
+            <a href="/" class="back-btn">← بازگشت به صفحه اصلی / Back to Home</a>
+  </div>
+        <div class="tool-bar">
+            <div class="group theme-toggle-wrap">
+                <button type="button" class="lang-mode-btn" id="langModeEn" aria-pressed="true">English + فارسی</button>
+                <button type="button" class="lang-mode-btn" id="langModeFr" aria-pressed="false">Français + فارسی</button>
+            </div>
+            <div class="group theme-toggle-wrap">
+                <span class="theme-label">Theme:</span>
+                <button type="button" class="theme-btn theme-light" id="themeLight" title="روشن / Light" aria-pressed="true">☀️</button>
+                <button type="button" class="theme-btn theme-dark" id="themeDark" title="تاریک / Dark" aria-pressed="false">🌙</button>
+            </div>
+        </div>
+        <div class="page-header">
+            <h1>۴۱۴ سوال شهروندی کانادا</h1>
+            <p>Citizenship 414 Questions – انتخاب نمایش: انگلیسی+فارسی یا فرانسه+فارسی</p>
+        </div>
+        {% for q in questions %}
+        <div class="q-card q-card-441" id="q{{ q.num }}">
+            <div class="q-text-441">
+                <div class="block-en lang-block-en"><span class="q-num-badge">{{ q.num }}</span> {{ q.q_en[3:] if q.q_en[:3] == 'Q: ' else q.q_en }}</div>
+                <div class="block-fr lang-block-fr" style="display: none;"><span class="q-num-badge">{{ q.num }}</span> {{ (q.q_fr or '')[4:] if (q.q_fr or '')[:4] == 'Q : ' else ((q.q_fr or '')[3:] if (q.q_fr or '')[:3] == 'Q: ' else (q.q_fr or '')) }}</div>
+                <div class="block-fa"><span class="q-num-badge">{{ q.num }}</span> {{ q.q_fa[3:] if q.q_fa[:3] == 'س: ' else q.q_fa }}</div>
+            </div>
+            <div style="margin-top: 12px;">
+                <span class="q-source-441 lang-block-en" style="margin-bottom: 6px; display: inline-block;">پاسخ صحیح / Correct answer:</span>
+                <span class="q-source-441 lang-block-fr" style="margin-bottom: 6px; display: none;">پاسخ صحیح / Réponse correcte:</span>
+            </div>
+            <div class="q-answer-441" style="margin-top: 6px;">
+                <div class="block-en lang-block-en">{{ (q.a_en or '')[3:] if (q.a_en or '')[:3] == 'A: ' else (q.a_en or '') }}</div>
+                <div class="block-fr lang-block-fr" style="display: none;">{% set afr = q.a_fr or '' %}{{ afr[4:] if afr[:4] == 'A : ' else (afr[4:] if afr[:4] == 'R : ' else afr) }}</div>
+                <div class="block-fa">{{ q.a_fa }}</div>
+            </div>
+            <div class="q-source-441" style="margin-top: 14px;"><span class="q-source-icon" aria-hidden="true">📖</span> <span class="q-source-text">Discover Canada / Découvrir le Canada / منبع</span></div>
+            <div class="q-expl-441" style="margin-top: 10px;">
+                <div class="block-en lang-block-en">{{ q.expl_en }}</div>
+                <div class="block-fr lang-block-fr" style="display: none;">{{ q.expl_fr or '' }}</div>
+                <div class="block-fa">{{ q.expl_fa }}</div>
+            </div>
+        </div>
+        {% endfor %}
+
+        <div class="page-header" style="margin-top: 32px;">
+            <p>منبع: Citizenship 414 question.pdf</p>
+  </div>
+        <div class="back-bar">
+            <a href="/" class="back-btn">← بازگشت به صفحه اصلی / Back to Home</a>
+  </div>
+</div>
+    <script>
+        (function() {
+            var themeKey = 'citizenship414_theme';
+            var langModeKey = 'citizenship414_lang_mode';
+            var themeLight = document.getElementById('themeLight');
+            var themeDark = document.getElementById('themeDark');
+            var langModeEn = document.getElementById('langModeEn');
+            var langModeFr = document.getElementById('langModeFr');
+
+            function applyTheme(val) {
+                if (val === 'dark') {
+                    document.body.classList.add('theme-dark');
+                    if (themeLight) themeLight.setAttribute('aria-pressed', 'false');
+                    if (themeDark) themeDark.setAttribute('aria-pressed', 'true');
+                } else {
+                    document.body.classList.remove('theme-dark');
+                    if (themeLight) themeLight.setAttribute('aria-pressed', 'true');
+                    if (themeDark) themeDark.setAttribute('aria-pressed', 'false');
+                }
+            }
+            function applyLangMode(mode) {
+                var showEn = (mode === 'en');
+                document.querySelectorAll('.lang-block-en').forEach(function(el) { el.style.display = showEn ? '' : 'none'; });
+                document.querySelectorAll('.lang-block-fr').forEach(function(el) { el.style.display = showEn ? 'none' : ''; });
+                if (langModeEn) langModeEn.setAttribute('aria-pressed', showEn ? 'true' : 'false');
+                if (langModeFr) langModeFr.setAttribute('aria-pressed', showEn ? 'false' : 'true');
+            }
+            var savedTheme = localStorage.getItem(themeKey) || 'light';
+            var savedMode = localStorage.getItem(langModeKey) || 'en';
+            applyTheme(savedTheme);
+            applyLangMode(savedMode);
+            if (themeLight) themeLight.addEventListener('click', function() { localStorage.setItem(themeKey, 'light'); applyTheme('light'); });
+            if (themeDark) themeDark.addEventListener('click', function() { localStorage.setItem(themeKey, 'dark'); applyTheme('dark'); });
+            if (langModeEn) langModeEn.addEventListener('click', function() { localStorage.setItem(langModeKey, 'en'); applyLangMode('en'); });
+            if (langModeFr) langModeFr.addEventListener('click', function() { localStorage.setItem(langModeKey, 'fr'); applyLangMode('fr'); });
+        })();
+    </script>
+</body>
+</html>

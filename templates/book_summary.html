@@ -3,6 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{{ url_for('static', filename='images/logo.png') }}" type="image/png">
+    <link rel="apple-touch-icon" href="{{ url_for('static', filename='images/logo.png') }}">
+    <meta property="og:image" content="{{ request.url_root.rstrip('/') }}{{ url_for('static', filename='images/logo.png') }}">
+    <meta name="twitter:image" content="{{ request.url_root.rstrip('/') }}{{ url_for('static', filename='images/logo.png') }}">
     <title>خلاصه کامل کتاب Discover Canada - فارسی و انگلیسی و فرانسه</title>
     <meta name="description" content="خلاصه کامل کتاب Discover Canada برای آزمون شهروندی کانادا به سه زبان فارسی، انگلیسی و فرانسه. مرور سریع نکات کلیدی برای قبولی در آزمون.">
     <meta name="keywords" content="Discover Canada, خلاصه کتاب شهروندی, آزمون شهروندی کانادا, کتاب Discover Canada, Découvrir le Canada">
@@ -11,8 +15,12 @@
     <meta property="og:description" content="خلاصه کامل کتاب Discover Canada برای آزمون شهروندی کانادا به سه زبان.">
     <meta property="og:url" content="{{ request.host_url.rstrip('/') }}/book_summary.html">
     <meta property="og:type" content="article">
-    <meta name="twitter:card" content="summary">
+    <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="خلاصه کامل کتاب Discover Canada">
+    <meta name="twitter:description" content="خلاصه کامل Discover Canada برای آزمون شهروندی کانادا به سه زبان.">
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"Article","name":"خلاصه کامل کتاب Discover Canada - فارسی، انگلیسی، فرانسه","description":"خلاصه کامل کتاب Discover Canada برای آزمون شهروندی کانادا به سه زبان. مرور سریع نکات کلیدی.","url":"{{ request.host_url.rstrip('/') }}/book_summary.html","inLanguage":["fa","en","fr"],"publisher":{"@type":"Organization","name":"CitizenTest"}}
+    </script>
     <style>
         * {
             margin: 0;

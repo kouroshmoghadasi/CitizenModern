@@ -42,12 +42,12 @@
                     </div>
                 </div>
             </div>
-            <!-- دکمه ۳۰ دوره آزمون ۲۰ سوالی — زیر تایمر و امتیاز -->
+            <!-- لینک به یک سند ۵۷۱ سوالی (به ترتیب PDF) — دیگر مودال ۳۰ آزمون نیست -->
             <div class="btn-30-tests-wrap">
-                <button type="button" class="btn-30-tests" id="btnOpen30Tests" onclick="open30TestsModal()" title="۳۰ دوره آزمون ۲۰ سوالی · بانک ۵۷۱ سوال شهروندی کانادا">
+                <a href="/citizenship-571" class="btn-30-tests" id="btnBank571" title="۵۷۱ سوال شهروندی در یک فایل، به ترتیب PDF">
                     <span class="btn-30-tests-icon" aria-hidden="true">📋</span>
-                    <span class="btn-30-tests-inner" dir="rtl">۳۰ دوره آزمون ۲۰ سوالی<br><span class="btn-30-tests-sub">بانک ۵۷۱ سوال</span></span>
-                </button>
+                    <span class="btn-30-tests-inner" dir="rtl">۵۷۱ سوال در یک سند<br><span class="btn-30-tests-sub">به ترتیب فایل PDF</span></span>
+                </a>
             </div>
         </div>
 
@@ -58,9 +58,11 @@
                     <div class="header-slide header-slide-title-only active" id="slide0">
                         <div class="slide-visitor-text">Visitors : <span class="visitor-count-value">100</span></div>
                         <div class="header-title-standalone">
-                            <span class="header-title-line1" dir="rtl">آزمون تمرینی شهروندی</span>
-                            <span class="header-title-line2" dir="rtl">کانادا</span>
-                            <span class="header-title-flag" aria-hidden="true">🇨🇦</span>
+                            <h1 class="header-h1">
+                                <span class="header-title-line1" dir="rtl">آزمون تمرینی شهروندی</span>
+                                <span class="header-title-line2" dir="rtl">کانادا</span>
+                                <span class="header-title-flag" aria-hidden="true">🇨🇦</span>
+                            </h1>
                             <p class="header-title-en">Canadian Citizenship Practice Test</p>
                         </div>
                     </div>
@@ -130,15 +132,14 @@
                     </a>
                 </div>
                 
-                <!-- 441 Questions Link (Mobile) — زیر خلاصه کتاب -->
+                <!-- 414 & 571 Questions (Mobile) — زیر خلاصه کتاب -->
                 <div class="book-summary-section mobile-version" style="margin-top: 4px;">
-                    <a href="/citizenship-441" class="book-summary-link" target="_blank">
+                    <a href="/citizenship-414" class="book-summary-link" target="_blank">
                         <div class="book-summary-toggle">
-                            <h3>📋 ۴۴۱ سوال شهروندی (فارسی/انگلیسی)</h3>
+                            <h3>📋 ۴۱۴ سوال شهروندی (انگلیسی/فرانسه + فارسی)</h3>
                         </div>
                     </a>
                 </div>
-                
                 <!-- Donation Section (Mobile) -->
                 <div class="donation-section mobile-version">
                     <div class="donation-toggle" onclick="toggleDonation()">
@@ -195,12 +196,12 @@
                     </div>
                 </div>
                 
-                <!-- دکمه ۳۰ دوره آزمون (فقط موبایل — زیر حمایت مالی) -->
+                <!-- لینک ۵۷۱ سوال در یک سند (موبایل) -->
                 <div class="btn-30-tests-mobile-wrap">
-                    <button type="button" class="btn-30-tests btn-30-tests-mobile" onclick="open30TestsModal()" title="۳۰ دوره آزمون ۲۰ سوالی · بانک ۵۷۱ سوال شهروندی کانادا">
+                    <a href="/citizenship-571" class="btn-30-tests btn-30-tests-mobile" title="۵۷۱ سوال در یک فایل، به ترتیب PDF">
                         <span class="btn-30-tests-icon" aria-hidden="true">📋</span>
-                        <span class="btn-30-tests-inner" dir="rtl">۳۰ دوره آزمون ۲۰ سوالی<br><span class="btn-30-tests-sub">بانک ۵۷۱ سوال</span></span>
-                    </button>
+                        <span class="btn-30-tests-inner" dir="rtl">۵۷۱ سوال در یک سند<br><span class="btn-30-tests-sub">به ترتیب فایل PDF</span></span>
+                    </a>
                 </div>
                 
                 <!-- Mobile Ad Registration Section (shown only on mobile, after questions) -->
@@ -247,37 +248,6 @@
         
         <!-- Right Sidebar: Donation + Ad Space -->
         {% include 'sidebar.html' %}
-    </div>
-    
-    <!-- مودال ۳۰ دوره آزمون ۲۰ سوالی (بانک ۵۷۱ سوال) -->
-    <div class="modal-30-tests-overlay" id="modal30TestsOverlay" aria-hidden="true" onclick="if(event.target===this) close30TestsModal()">
-        <div class="modal-30-tests" role="dialog" aria-labelledby="modal30TestsTitle" onclick="event.stopPropagation()">
-            <div class="modal-30-tests-header">
-                <h2 id="modal30TestsTitle" class="modal-30-tests-title" dir="rtl">۳۰ دوره آزمون ۲۰ سوالی</h2>
-                <p class="modal-30-tests-subtitle" dir="rtl">بر اساس بانک سوالات شهروندی کانادا · Canadian Citizenship</p>
-                <button type="button" class="modal-30-tests-close" onclick="close30TestsModal()" aria-label="بستن">×</button>
-            </div>
-            <div class="modal-30-tests-body">
-                <div class="modal-30-tests-grid" id="modal30TestsGrid">
-                    <!-- 30 کارت آزمون با JS پر می‌شوند -->
-                </div>
-                <div class="modal-30-tests-quiz" id="modal30TestsQuiz" style="display: none;">
-                    <div class="modal-30-quiz-header">
-                        <span class="modal-30-quiz-progress" id="modal30QuizProgress" dir="rtl">سوال 1 از 20</span>
-                        <span class="modal-30-quiz-score" id="modal30QuizScore">✓ 0 &nbsp; ✗ 0</span>
-                    </div>
-                    <div class="modal-30-quiz-question" id="modal30QuizQuestion"></div>
-                    <div class="modal-30-quiz-options" id="modal30QuizOptions"></div>
-                    <button type="button" class="modal-30-quiz-next" id="modal30QuizNext" style="display: none;" onclick="modal30NextQuestion()">بعدی</button>
-                </div>
-                <div class="modal-30-tests-result" id="modal30TestsResult" style="display: none;">
-                    <h3 class="modal-30-result-title" dir="rtl">نتیجه آزمون</h3>
-                    <div class="modal-30-result-score" id="modal30ResultScore"></div>
-                    <div class="modal-30-result-text" id="modal30ResultText"></div>
-                    <button type="button" class="modal-30-result-back" onclick="modal30BackToList()">بازگشت به لیست آزمون‌ها</button>
-                </div>
-            </div>
-        </div>
     </div>
     
     <div class="ads-section">

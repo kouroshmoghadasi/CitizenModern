@@ -2020,10 +2020,10 @@
                         q: "How often are federal elections held in Canada?",
                         q_fa: "انتخابات فدرال در کانادا هر چند وقت یکبار برگزار می‌شود؟",
                         options: ["Every 3 years", "Every 4 years", "Every 5 years", "At least every 5 years"],
-                        correct: 3,
+                        correct: 1,
                         page: 44,
                         section: "Federal Elections",
-                        book_text: "Federal elections must be held at least every 5 years, but can be called earlier."
+                        book_text: "Under legislation passed by Parliament, federal elections must be held on the third Monday in October every four years following the most recent general election."
                     },
                     {
                         q: "What is the name of Canada's national anthem?",
@@ -3545,10 +3545,10 @@
                         q: "How often must federal elections be held in Canada?",
                         q_fa: "انتخابات فدرال در کانادا باید هر چند وقت یکبار برگزار شود؟",
                         options: ["Every 3 years", "Every 4 years", "Every 5 years", "At least every 5 years"],
-                        correct: 3,
+                        correct: 1,
                         page: 44,
                         section: "Federal Elections",
-                        book_text: "Federal elections must be held at least every 5 years, but can be called earlier."
+                        book_text: "Under legislation passed by Parliament, federal elections must be held on the third Monday in October every four years following the most recent general election."
                     },
                     {
                         q: "How many official languages does Canada have?",
@@ -5568,197 +5568,6 @@
             
             // Populate combobox
             populateTestSelect();
-            // آماده‌سازی ۳۰ دوره آزمون (از همان استخر سوالات — بعداً با بانک ۵۷۱ سوال جایگزین می‌شود)
-            init30TestsFromPool();
-        }
-
-        // ——— ۳۰ دوره آزمون ۲۰ سوالی (بر اساس استخر سوالات / بانک ۵۷۱) ———
-        const TESTS_30_COUNT = 30;
-        const QUESTIONS_PER_TEST_30 = 20;
-        let tests30 = [];
-        let modal30CurrentTestIndex = -1;
-        let modal30CurrentQuestionIndex = 0;
-        let modal30UserAnswers = [];
-        let modal30CorrectCount = 0;
-        let modal30IncorrectCount = 0;
-
-        function shuffleArray(arr) {
-            const a = arr.slice();
-            for (let i = a.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [a[i], a[j]] = [a[j], a[i]];
-            }
-            return a;
-        }
-
-        function getPoolFor30Tests() {
-            var pool = getAllQuestions();
-            completeQuestions(pool);
-            return pool;
-        }
-
-        function generate30TestsFromPool() {
-            var pool = getPoolFor30Tests();
-            var needed = TESTS_30_COUNT * QUESTIONS_PER_TEST_30;
-            var extended = [];
-            while (extended.length < needed) {
-                var shuffled = shuffleArray(pool);
-                shuffled.forEach(function(q) {
-                    extended.push({
-                        q: q.q,
-                        q_fa: q.q_fa || q.q,
-                        options: (q.options && q.options.slice()) || [],
-                        options_fa: (q.options_fa && q.options_fa.slice()) ? q.options_fa.slice() : (q.options && q.options.slice()) || [],
-                        correct: q.correct
-                    });
-                });
-            }
-            extended.length = needed;
-            var tests = [];
-            for (var i = 0; i < TESTS_30_COUNT; i++) {
-                tests.push({
-                    questions: extended.slice(i * QUESTIONS_PER_TEST_30, (i + 1) * QUESTIONS_PER_TEST_30)
-                });
-            }
-            return tests;
-        }
-
-        function init30TestsFromPool() {
-            tests30 = generate30TestsFromPool();
-        }
-
-        function open30TestsModal() {
-            var overlay = document.getElementById('modal30TestsOverlay');
-            if (!overlay) return;
-            overlay.classList.add('is-open');
-            overlay.setAttribute('aria-hidden', 'false');
-            var grid = document.getElementById('modal30TestsGrid');
-            var quiz = document.getElementById('modal30TestsQuiz');
-            var result = document.getElementById('modal30TestsResult');
-            if (grid) {
-                grid.style.display = '';
-                grid.innerHTML = '';
-                for (var i = 0; i < TESTS_30_COUNT; i++) {
-                    var card = document.createElement('div');
-                    card.className = 'modal-30-tests-card';
-                    card.setAttribute('role', 'button');
-                    card.tabIndex = 0;
-                    card.innerHTML = '<span>آزمون ' + (i + 1) + '</span><span>۲۰ سوال</span>';
-                    (function(idx) {
-                        card.onclick = function() { modal30StartTest(idx); };
-                        card.onkeydown = function(e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); modal30StartTest(idx); } };
-                    })(i);
-                    grid.appendChild(card);
-                }
-            }
-            if (quiz) quiz.style.display = 'none';
-            if (result) result.style.display = 'none';
-        }
-
-        function close30TestsModal() {
-            var overlay = document.getElementById('modal30TestsOverlay');
-            if (overlay) {
-                overlay.classList.remove('is-open');
-                overlay.setAttribute('aria-hidden', 'true');
-            }
-        }
-
-        function modal30StartTest(testIndex) {
-            modal30CurrentTestIndex = testIndex;
-            modal30CurrentQuestionIndex = 0;
-            modal30UserAnswers = [];
-            modal30CorrectCount = 0;
-            modal30IncorrectCount = 0;
-            document.getElementById('modal30TestsGrid').style.display = 'none';
-            document.getElementById('modal30TestsQuiz').style.display = 'block';
-            document.getElementById('modal30TestsResult').style.display = 'none';
-            modal30RenderQuestion();
-        }
-
-        function modal30RenderQuestion() {
-            var test = tests30[modal30CurrentTestIndex];
-            var q = test.questions[modal30CurrentQuestionIndex];
-            var progress = document.getElementById('modal30QuizProgress');
-            var scoreEl = document.getElementById('modal30QuizScore');
-            var questionEl = document.getElementById('modal30QuizQuestion');
-            var optionsEl = document.getElementById('modal30QuizOptions');
-            var nextBtn = document.getElementById('modal30QuizNext');
-
-            if (progress) progress.textContent = 'سوال ' + (modal30CurrentQuestionIndex + 1) + ' از ' + QUESTIONS_PER_TEST_30;
-            if (scoreEl) scoreEl.innerHTML = '✓ ' + modal30CorrectCount + ' &nbsp; ✗ ' + modal30IncorrectCount;
-
-            var answered = modal30UserAnswers[modal30CurrentQuestionIndex] !== undefined;
-            if (questionEl) {
-                questionEl.innerHTML = '<span class="q-fa">' + (q.q_fa || q.q) + '</span><span class="q-en">' + q.q + '</span>';
-            }
-            if (optionsEl) {
-                optionsEl.innerHTML = '';
-                var opts = q.options || [];
-                for (var i = 0; i < opts.length; i++) {
-                    var opt = document.createElement('div');
-                    opt.className = 'modal-30-quiz-option';
-                    opt.setAttribute('data-index', i);
-                    var enText = opts[i] || '';
-                    var textFa = (function() {
-                        if (!enText) return enText;
-                        var fa = OPTIONS_FA_MAP[enText] || OPTIONS_FA_MAP[enText.trim()];
-                        if (fa) return fa;
-                        for (var k in OPTIONS_FA_MAP) { if (k.indexOf(enText) === 0 || enText.indexOf(k) === 0) return OPTIONS_FA_MAP[k]; }
-                        return (q.options_fa && q.options_fa[i]) ? q.options_fa[i] : enText;
-                    })();
-                    var textEn = enText;
-                    opt.innerHTML = '<span class="opt-fa" dir="rtl">' + textFa + '</span><span class="opt-en" dir="ltr">' + textEn + '</span>';
-                    if (answered) {
-                        opt.classList.add('disabled');
-                        if (i === q.correct) opt.classList.add('option-correct');
-                        else if (modal30UserAnswers[modal30CurrentQuestionIndex] === i) opt.classList.add('option-incorrect');
-                    } else {
-                        (function(idx) {
-                            opt.onclick = function() { modal30OnAnswer(idx); };
-                        })(i);
-                    }
-                    optionsEl.appendChild(opt);
-                }
-            }
-            if (nextBtn) {
-                nextBtn.style.display = answered ? 'inline-block' : 'none';
-                nextBtn.onclick = modal30NextQuestion;
-            }
-        }
-
-        function modal30OnAnswer(optionIndex) {
-            var test = tests30[modal30CurrentTestIndex];
-            var q = test.questions[modal30CurrentQuestionIndex];
-            modal30UserAnswers[modal30CurrentQuestionIndex] = optionIndex;
-            if (optionIndex === q.correct) {
-                modal30CorrectCount++;
-            } else {
-                modal30IncorrectCount++;
-            }
-            modal30RenderQuestion();
-        }
-
-        function modal30NextQuestion() {
-            modal30CurrentQuestionIndex++;
-            var test = tests30[modal30CurrentTestIndex];
-            if (modal30CurrentQuestionIndex >= test.questions.length) {
-                document.getElementById('modal30TestsQuiz').style.display = 'none';
-                var resultDiv = document.getElementById('modal30TestsResult');
-                resultDiv.style.display = 'block';
-                var total = test.questions.length;
-                var pct = Math.round((modal30CorrectCount / total) * 100);
-                document.getElementById('modal30ResultScore').textContent = modal30CorrectCount + ' / ' + total;
-                document.getElementById('modal30ResultText').innerHTML = 'شما ' + modal30CorrectCount + ' از ' + total + ' سوال را درست پاسخ دادید. (' + pct + '%)';
-                return;
-            }
-            modal30RenderQuestion();
-        }
-
-        function modal30BackToList() {
-            document.getElementById('modal30TestsResult').style.display = 'none';
-            document.getElementById('modal30TestsQuiz').style.display = 'none';
-            document.getElementById('modal30TestsGrid').style.display = '';
-            modal30CurrentTestIndex = -1;
         }
 
         // ناوبری بین تست‌ها

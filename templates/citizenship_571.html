@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{{ url_for('static', filename='images/logo.png') }}" type="image/png">
+    <link rel="apple-touch-icon" href="{{ url_for('static', filename='images/logo.png') }}">
+    <meta property="og:image" content="{{ request.url_root.rstrip('/') }}{{ url_for('static', filename='images/logo.png') }}">
+    <meta name="twitter:image" content="{{ request.url_root.rstrip('/') }}{{ url_for('static', filename='images/logo.png') }}">
+    <title>۵۷۱ سوال شهروندی کانادا – انگلیسی/فرانسه + فارسی | 571 Citizenship Questions</title>
+    <meta name="description" content="۵۷۱ سوال آزمون شهروندی کانادا — انتخاب نمایش: انگلیسی+فارسی یا فرانسه+فارسی. به ترتیب PDF، تم روشن/تاریک.">
+    <meta name="keywords" content="۵۷۱ سوال شهروندی, citizenship 571 questions, انگلیسی فارسی, فرانسه فارسی, آزمون شهروندی کانادا, 571 Question For Citizenship Test">
+    <link rel="canonical" href="{{ request.host_url.rstrip('/') }}/citizenship-571">
+    <meta property="og:title" content="۵۷۱ سوال شهروندی کانادا – انگلیسی/فرانسه + فارسی">
+    <meta property="og:description" content="۵۷۱ سوال با انتخاب انگلیسی+فارسی یا فرانسه+فارسی.">
+    <meta property="og:url" content="{{ request.host_url.rstrip('/') }}/citizenship-571">
+    <meta property="og:type" content="article">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="۵۷۱ سوال شهروندی کانادا – EN/FR + فارسی">
+    <meta name="twitter:description" content="۵۷۱ سوال با انتخاب انگلیسی+فارسی یا فرانسه+فارسی.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            --card-bg: #fff;
+            --text: #1a1a1a;
+            --text-muted: #444;
+            --header-bg: linear-gradient(135deg, #1e3c72 0%, #2c5282 100%);
+            --header-text: #fff;
+            --accent: #1e3c72;
+            --accent-light: #2c5282;
+            --border: rgba(30,60,114,0.08);
+            --option-bg: #f8f9fa;
+            --option-border: #e9ecef;
+            --expl-bg: #f0f4f8;
+            --expl-bg2: #f8f9fa;
+            --section-border: #f1c40f;
+        }
+        body.theme-dark {
+            --bg: linear-gradient(135deg, #1a1d24 0%, #0f1115 100%);
+            --card-bg: #252830;
+            --text: #e8eaed;
+            --text-muted: #b0b4b8;
+            --header-bg: linear-gradient(135deg, #2d3748 0%, #1e3c72 100%);
+            --header-text: #fff;
+            --accent: #7cb3f5;
+            --accent-light: #90c5f7;
+            --border: rgba(255,255,255,0.1);
+            --option-bg: #2d323c;
+            --option-border: rgba(255,255,255,0.12);
+            --expl-bg: #2d323c;
+            --expl-bg2: #353a45;
+            --section-border: #f1c40f;
+        }
+        body {
+            font-family: Tahoma, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.7;
+            color: var(--text);
+        }
+        .wrap { max-width: 900px; margin: 0 auto; }
+        .tool-bar {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            margin-bottom: 20px;
+            padding: 14px 18px;
+            background: var(--card-bg);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+        }
+        body.theme-dark .tool-bar { box-shadow: 0 2px 10px rgba(0,0,0,0.3); }
+        .tool-bar .group { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+        .theme-toggle-wrap { display: flex; align-items: center; gap: 6px; }
+        .theme-label { font-weight: 600; color: var(--text); font-size: 0.95em; }
+        .theme-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            border: 2px solid var(--border);
+            background: var(--card-bg);
+            font-size: 1.35em;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+        }
+        .theme-btn:hover { transform: scale(1.08); box-shadow: 0 4px 12px rgba(0,0,0,0.12); }
+        .theme-btn[aria-pressed="true"] {
+            border-color: #1e3c72;
+            box-shadow: 0 0 0 2px rgba(30,60,114,0.35);
+            background: linear-gradient(135deg, #e8eef5 0%, #dce4ed 100%);
+        }
+        body.theme-dark .theme-btn[aria-pressed="true"] {
+            border-color: #7cb3f5;
+            box-shadow: 0 0 0 2px rgba(124,179,245,0.4);
+            background: linear-gradient(135deg, #3d4a5c 0%, #2d3748 100%);
+        }
+        .page-header {
+            background: var(--header-bg);
+            color: var(--header-text);
+            padding: 28px 24px;
+            border-radius: 16px;
+            margin-bottom: 24px;
+            text-align: center;
+            box-shadow: 0 8px 24px rgba(30,60,114,0.25);
+        }
+        .page-header h1 { font-size: 1.6em; margin-bottom: 8px; }
+        .page-header p { font-size: 0.95em; opacity: 0.95; }
+        .back-bar { margin-bottom: 20px; text-align: right; }
+        .back-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: var(--accent);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 600;
+        }
+        .back-btn:hover { background: var(--accent-light); }
+        .q-card {
+            background: var(--card-bg);
+            border-radius: 14px;
+            padding: 22px 24px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+            border: 1px solid var(--border);
+        }
+        body.theme-dark .q-card { box-shadow: 0 4px 16px rgba(0,0,0,0.25); }
+        .q-num { font-weight: 800; color: var(--accent); font-size: 1em; margin-bottom: 12px; }
+        .q-text-fa { font-size: 1.15em; font-weight: 700; color: var(--accent); margin-bottom: 10px; text-align: right; direction: rtl; }
+        .q-text-src { font-size: 1em; color: var(--text-muted); margin-bottom: 14px; text-align: left; direction: ltr; border-left: 3px solid #f1c40f; padding-left: 12px; }
+        .q-options { list-style: none; margin: 12px 0; }
+        .q-options li { padding: 10px 14px; margin: 6px 0; background: var(--option-bg); border-radius: 10px; border: 1px solid var(--option-border); direction: ltr; text-align: left; }
+        .q-options li.correct { background: #1e4620; border-color: #28a745; font-weight: 600; color: #d4edda; }
+        body.theme-dark .q-options li.correct { background: #1a3d1c; color: #b8e0ba; }
+        .block-en { direction: ltr; text-align: left; margin-bottom: 10px; padding: 10px 12px; background: rgba(30,60,114,0.06); border-radius: 10px; border-left: 3px solid var(--accent); }
+        body.theme-dark .block-en { background: rgba(124,179,245,0.1); border-left-color: #7cb3f5; }
+        .block-fa { direction: rtl; text-align: right; margin-bottom: 10px; padding: 10px 12px; background: rgba(241,196,15,0.12); border-radius: 10px; border-right: 3px solid #f1c40f; }
+        body.theme-dark .block-fa { background: rgba(241,196,15,0.15); }
+        .block-fr { direction: ltr; text-align: left; margin-bottom: 10px; padding: 10px 12px; background: rgba(0,82,147,0.08); border-radius: 10px; border-left: 3px solid #005293; }
+        body.theme-dark .block-fr { background: rgba(0,82,147,0.18); border-left-color: #4a9fd4; }
+        .lang-mode-btn { padding: 10px 18px; border-radius: 10px; border: 2px solid var(--border); background: var(--card-bg); color: var(--text); font-weight: 600; font-size: 0.95em; cursor: pointer; transition: all 0.2s; }
+        .lang-mode-btn:hover { border-color: var(--accent); }
+        .lang-mode-btn[aria-pressed="true"] { border-color: var(--accent); background: linear-gradient(135deg, #e8eef5 0%, #dce4ed 100%); box-shadow: 0 0 0 2px rgba(30,60,114,0.25); }
+        body.theme-dark .lang-mode-btn[aria-pressed="true"] { background: linear-gradient(135deg, #3d4a5c 0%, #2d3748 100%); border-color: #7cb3f5; }
+        .q-num-badge { display: inline-flex; align-items: center; justify-content: center; min-width: 2rem; height: 1.75rem; padding: 0 0.5rem; background: linear-gradient(135deg, #1e3c72 0%, #2c5282 100%); color: #fff; border-radius: 8px; font-weight: 700; font-size: 0.9em; margin-right: 0.6rem; flex-shrink: 0; }
+        body.theme-dark .q-num-badge { background: linear-gradient(135deg, #2d3748 0%, #1e3c72 100%); color: #e8eaed; }
+        .block-fa .q-num-badge { margin-right: 0; margin-left: 0.6rem; }
+        .ans-label {
+            font-weight: 700;
+            color: #0d3d21;
+            margin-top: 14px;
+            margin-bottom: 8px;
+            font-size: 1em;
+            padding: 12px 18px;
+            background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 50%, #b1dfbb 100%);
+            border-radius: 10px;
+            border: 2px solid #28a745;
+            box-shadow: 0 2px 8px rgba(40, 167, 69, 0.25);
+            display: inline-block;
+        }
+        .expl-src { margin-top: 10px; padding: 14px; background: var(--expl-bg2); border-radius: 10px; text-align: left; direction: ltr; font-size: 0.95em; color: var(--text-muted); border-left: 3px solid var(--accent); }
+        .section-title { font-size: 1.1em; font-weight: 700; color: var(--accent); margin: 24px 0 12px 0; padding-bottom: 6px; border-bottom: 2px solid var(--section-border); }
+    </style>
+</head>
+<body>
+    <script>try{var t=localStorage.getItem('citizenship571_theme');if(t==='dark')document.body.classList.add('theme-dark');}catch(e){}</script>
+    <div class="wrap">
+        <div class="back-bar">
+            <a href="/" class="back-btn">← بازگشت به صفحه اصلی / Back to Home</a>
+        </div>
+        <div class="tool-bar">
+            <div class="group theme-toggle-wrap">
+                <button type="button" class="lang-mode-btn" id="langModeEn" aria-pressed="true">English + فارسی</button>
+                <button type="button" class="lang-mode-btn" id="langModeFr" aria-pressed="false">Français + فارسی</button>
+            </div>
+            <div class="group theme-toggle-wrap">
+                <span class="theme-label">Theme:</span>
+                <button type="button" class="theme-btn theme-light" id="themeLight" title="روشن / Light" aria-pressed="true">☀️</button>
+                <button type="button" class="theme-btn theme-dark" id="themeDark" title="تاریک / Dark" aria-pressed="false">🌙</button>
+            </div>
+        </div>
+        <div class="page-header">
+            <h1>۵۷۱ سوال شهروندی کانادا</h1>
+            <p>571 Question For Citizenship Test – انتخاب نمایش: انگلیسی+فارسی یا فرانسه+فارسی</p>
+            <p style="margin-top: 10px; font-size: 0.85em; opacity: 0.9;">{{ questions|length }} سوال در یک سند · تم روشن/تاریک</p>
+        </div>
+        <div class="section-title">همه ۵۷۱ سوال به ترتیب فایل PDF / All 571 questions in PDF order</div>
+
+        {% for q in questions %}
+        <div class="q-card" id="q{{ loop.index }}">
+            <div class="q-num">سوال {{ loop.index }} / Question {{ loop.index }}</div>
+            <div class="q-text-fa" style="margin-bottom: 10px;">
+                <div class="block-en lang-block-en"><span class="q-num-badge">{{ loop.index }}</span> {{ q.q|e }}</div>
+                <div class="block-fr lang-block-fr" style="display: none;"><span class="q-num-badge">{{ loop.index }}</span> {{ (q.q_fr or q.q)|e }}</div>
+                <div class="block-fa"><span class="q-num-badge">{{ loop.index }}</span> {{ (q.q_fa or '')|e }}</div>
+            </div>
+            <div class="lang-block-en">
+                <ul class="q-options">
+                    {% for opt in q.options %}
+                    <li{% if loop.index0 == q.correct %} class="correct"{% endif %}>{{ opt|e }}{% if loop.index0 == q.correct %} ✓{% endif %}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="lang-block-fr" style="display: none;">
+                <ul class="q-options">
+                    {% for opt in (q.options_fr or q.options) %}
+                    <li{% if loop.index0 == q.correct %} class="correct"{% endif %}>{{ opt|e }}{% if loop.index0 == q.correct %} ✓{% endif %}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="ans-label lang-block-en">پاسخ صحیح / Correct answer:</div>
+            <div class="ans-label lang-block-fr" style="display: none;">پاسخ صحیح / Réponse correcte:</div>
+            <div class="lang-block-en">{% if q.options and q.correct >= 0 and q.correct < q.options|length %}{{ q.options[q.correct]|e }}{% endif %}</div>
+            <div class="lang-block-fr" style="display: none;">{% if q.options_fr and q.correct >= 0 and q.correct < q.options_fr|length %}{{ q.options_fr[q.correct]|e }}{% elif q.options and q.correct >= 0 and q.correct < q.options|length %}{{ q.options[q.correct]|e }}{% endif %}</div>
+            {% if q.book_text or q.expl_fr %}
+            <div class="expl-src" style="margin-top: 10px;">
+                <div class="block-en lang-block-en">{% if q.book_text %}{{ q.book_text|e }}{% endif %}</div>
+                <div class="block-fr lang-block-fr" style="display: none;">{{ (q.expl_fr or q.book_text or '')|e }}</div>
+            </div>
+            {% endif %}
+        </div>
+        {% endfor %}
+
+        <div class="back-bar" style="margin-top: 24px;">
+            <a href="/" class="back-btn">← بازگشت به صفحه اصلی / Back to Home</a>
+        </div>
+    </div>
+    <script>
+        (function() {
+            var themeKey = 'citizenship571_theme';
+            var langModeKey = 'citizenship571_lang_mode';
+            var themeLight = document.getElementById('themeLight');
+            var themeDark = document.getElementById('themeDark');
+            var langModeEn = document.getElementById('langModeEn');
+            var langModeFr = document.getElementById('langModeFr');
+            function applyTheme(val) {
+                if (val === 'dark') {
+                    document.body.classList.add('theme-dark');
+                    if (themeLight) themeLight.setAttribute('aria-pressed', 'false');
+                    if (themeDark) themeDark.setAttribute('aria-pressed', 'true');
+                } else {
+                    document.body.classList.remove('theme-dark');
+                    if (themeLight) themeLight.setAttribute('aria-pressed', 'true');
+                    if (themeDark) themeDark.setAttribute('aria-pressed', 'false');
+                }
+            }
+            function applyLangMode(mode) {
+                var showEn = (mode === 'en');
+                document.querySelectorAll('.lang-block-en').forEach(function(el) { el.style.display = showEn ? '' : 'none'; });
+                document.querySelectorAll('.lang-block-fr').forEach(function(el) { el.style.display = showEn ? 'none' : ''; });
+                if (langModeEn) langModeEn.setAttribute('aria-pressed', showEn ? 'true' : 'false');
+                if (langModeFr) langModeFr.setAttribute('aria-pressed', showEn ? 'false' : 'true');
+            }
+            var savedTheme = localStorage.getItem(themeKey) || 'light';
+            var savedMode = localStorage.getItem(langModeKey) || 'en';
+            applyTheme(savedTheme);
+            applyLangMode(savedMode);
+            if (themeLight) themeLight.addEventListener('click', function() { localStorage.setItem(themeKey, 'light'); applyTheme('light'); });
+            if (themeDark) themeDark.addEventListener('click', function() { localStorage.setItem(themeKey, 'dark'); applyTheme('dark'); });
+            if (langModeEn) langModeEn.addEventListener('click', function() { localStorage.setItem(langModeKey, 'en'); applyLangMode('en'); });
+            if (langModeFr) langModeFr.addEventListener('click', function() { localStorage.setItem(langModeKey, 'fr'); applyLangMode('fr'); });
+        })();
+    </script>
+</body>
+</html>

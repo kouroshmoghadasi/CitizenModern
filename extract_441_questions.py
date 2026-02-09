@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 """
-Extract all unique questions from scripts.html and generate citizenship_441.html with 441 questions.
+Generate citizenship_441.html with 441 questions.
+فقط از فایل 2021-11-15_Citizenship 441 question.pdf استفاده می‌شود؛ هیچ استفاده‌ای از ۵۷۱ یا scripts نیست.
+داده از static/citizenship_441_questions.json (خروجی extract_441_from_pdf.py) خوانده می‌شود.
 Run: python extract_441_questions.py
 """
 import re
@@ -18,74 +20,54 @@ try:
     from citizenship_441_questions_fr import QUESTIONS_EN_FR
 except ImportError:
     QUESTIONS_EN_FR = {}
-SCRIPTS_PATH = os.path.join(SCRIPT_DIR, 'templates', 'scripts.html')
 OUTPUT_PATH = os.path.join(SCRIPT_DIR, 'templates', 'citizenship_441.html')
-
-def extract_questions():
-    with open(SCRIPTS_PATH, 'r', encoding='utf-8') as f:
-        content = f.read()
-    
-    # Find the allTests array: from "const allTests = [" to matching "];"
-    start = content.find('const allTests = [')
-    if start == -1:
-        return []
-    start += len('const allTests = [')
-    depth = 1
-    i = start
-    while i < len(content) and depth > 0:
-        if content[i:i+1] == '[':
-            depth += 1
-        elif content[i:i+1] == ']':
-            depth -= 1
-        i += 1
-    arr_content = content[start:i-1]
-    
-    # Extract each "questions: [" ... "]" block
-    questions = []
-    pattern = r'questions:\s*\[(.*?)\]\s*}\s*(?:,|$)'
-    blocks = re.findall(pattern, arr_content, re.DOTALL)
-    
-    for block in blocks:
-        # Extract each { q: "...", q_fa: "...", options: [...], correct: N, ... }
-        q_pattern = r'\{\s*q:\s*"((?:[^"\\]|\\.)*)"\s*,\s*q_fa:\s*"((?:[^"\\]|\\.)*)"\s*,\s*options:\s*\[(.*?)\]\s*,\s*correct:\s*(\d+)(?:\s*,\s*page:\s*(\d+))?(?:\s*,\s*section:\s*"([^"]*)")?(?:\s*,\s*book_text:\s*"((?:[^"\\]|\\.)*)")?\s*\}'
-        for m in re.finditer(q_pattern, block, re.DOTALL):
-            q_en = m.group(1).replace('\\"', '"')
-            q_fa = m.group(2).replace('\\"', '"')
-            opts_str = m.group(3)
-            correct = int(m.group(4))
-            page = m.group(5) or ''
-            section = m.group(6) or ''
-            book_text = (m.group(7) or '').replace('\\"', '"')
-            # Parse options array
-            opts = re.findall(r'"((?:[^"\\]|\\.)*)"', opts_str)
-            questions.append({
-                'q': q_en,
-                'q_fa': q_fa,
-                'options': opts,
-                'correct': correct,
-                'page': page,
-                'section': section,
-                'book_text': book_text
-            })
-    
-    # Also catch questions without q_fa (simplified pattern)
-    alt_pattern = r'\{\s*q:\s*"((?:[^"\\]|\\.)*)"\s*,\s*q_fa:\s*"((?:[^"\\]|\\.)*)"\s*,\s*options:\s*\[(.*?)\]\s*,\s*correct:\s*(\d+).*?book_text:\s*"((?:[^"\\]|\\.)*)"\s*\}'
-    
-    # Deduplicate by q (English text), preserve order
-    seen = set()
-    unique = []
-    for q in questions:
-        key = q['q'].strip()
-        if key not in seen:
-            seen.add(key)
-            unique.append(q)
-    
-    return unique
+PDF_ORDER_JSON = os.path.join(SCRIPT_DIR, 'static', 'citizenship_441_questions.json')
 
 def escape_html(s):
     if not s:
         return ''
     return (s.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;').replace('"', '&quot;'))
+
+
+def load_pdf_order():
+    """اگر فایل ترتیب PDF وجود دارد، لیست ۴۴۱ آیتم {num, q, answer} برمی‌گرداند؛ وگرنه None."""
+    if not os.path.isfile(PDF_ORDER_JSON):
+        return None
+    try:
+        with open(PDF_ORDER_JSON, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        if not data or len(data) < 441:
+            return None
+        return data[:441]
+    except Exception:
+        return None
+
+
+def questions_from_pdf_only(pdf_order):
+    """فقط از دادهٔ PDF (همان JSON خروجی extract_441_from_pdf.py) لیست ۴۴۱ سوال را می‌سازد.
+    هیچ منبع دیگری (۵۷۱ یا scripts) استفاده نمی‌شود."""
+    result = []
+    for i, item in enumerate(pdf_order):
+        if item.get("options") and isinstance(item.get("options"), list) and len(item["options"]) >= 1:
+            result.append({
+                "q": item.get("q") or "",
+                "q_fa": item.get("q_fa") or item.get("q") or "",
+                "options": item["options"],
+                "correct": item.get("correct", 0),
+                "book_text": item.get("book_text") or "",
+            })
+            continue
+        n = i + 1
+        q = item.get("q") or item.get("question") or ("Question %d (from PDF)" % n)
+        answer = item.get("answer") or ""
+        result.append({
+            "q": q,
+            "q_fa": q,
+            "options": [answer or "See 2021-11-15_Citizenship 441 question.pdf"],
+            "correct": 0,
+            "book_text": item.get("book_text") or "Content from 2021-11-15_Citizenship 441 question.pdf",
+        })
+    return result
 
 # Common EN -> FR for options and phrases (citizenship test)
 OPTIONS_EN_FR = {
@@ -318,24 +300,19 @@ def make_html(questions):
         opts_en_json = json.dumps(opts_en, ensure_ascii=False)
         opts_fr_json = json.dumps(opts_fr, ensure_ascii=False)
 
-        # Initial visible content = English
-        opts_html = []
-        for j, opt in enumerate(opts_en):
-            cls = ' class="correct"' if j == correct_idx else ''
-            opt_esc = escape_html(opt)
-            if j == correct_idx:
-                opt_esc += ' ✓'
-            opts_html.append('<li%s>%s</li>' % (cls, opt_esc))
+        # Answer line: "B. Within 4 years..." (letter + option text)
+        letter = chr(65 + correct_idx) if 0 <= correct_idx < 26 else ''
+        answer_display = ('%s. ' % letter + correct_opt_en) if letter else correct_opt_en
 
-        cards.append('''        <div class="q-card" id="q%d" data-en-q="%s" data-fr-q="%s" data-en-options="%s" data-fr-options="%s" data-en-answer="%s" data-fr-answer="%s" data-en-expl="%s" data-fr-expl="%s" data-en-note="%s" data-fr-note="%s" data-correct="%d">
-            <div class="q-num">سوال %d / Question %d</div>
-            <div class="q-text-fa">%s</div>
-            <div class="q-text-src">%s</div>
-            <ul class="q-options">%s</ul>
-            <div class="ans-label">پاسخ صحیح / Correct answer:</div>
-            <div class="answer-src">%s</div>
-            <div class="expl-note-src">%s</div>
-            <div class="expl-src">%s</div>
+        # Structure per reference: 1. Number (orange) 2. Question (bold) 3. Answer (orange) 4. Discover Canada (blue + icon) 5. Explanation (italic)
+        cards.append('''        <div class="q-card q-card-441" id="q%d" data-en-q="%s" data-fr-q="%s" data-en-options="%s" data-fr-options="%s" data-en-answer="%s" data-fr-answer="%s" data-en-expl="%s" data-fr-expl="%s" data-en-note="%s" data-fr-note="%s" data-correct="%d">
+            <div class="q-head-441">
+                <span class="q-num-441">%d.</span>
+                <span class="q-text-441">%s</span>
+            </div>
+            <div class="q-answer-441">%s</div>
+            <div class="q-source-441"><span class="q-source-icon" aria-hidden="true">📖</span> <span class="q-source-text">Discover Canada</span></div>
+            <div class="q-expl-441">%s</div>
         </div>''' % (
             i,
             escape_html(q_en).replace('"', '&quot;'),
@@ -349,44 +326,57 @@ def make_html(questions):
             escape_html(note_en).replace('"', '&quot;'),
             escape_html(note_fr).replace('"', '&quot;'),
             correct_idx,
-            i, i,
-            escape_html(q['q_fa']),
+            i,
             escape_html(q_en),
-            ''.join(opts_html),
-            escape_html(correct_opt_en),
-            escape_html(note_en),
+            escape_html(answer_display),
             escape_html(expl_en)
         ))
 
     return '\n'.join(cards)
 
 
-def replace_cards_in_file(html_content, new_cards):
+def replace_cards_in_file(html_content, new_cards, second_header_start=None):
     """Replace only the q-cards section in the existing HTML; keep head, toolbar, footer."""
-    start_marker = '        <div class="q-card" id="q1"'
-    start_idx = html_content.find(start_marker)
+    section_pos = html_content.find('section-title')
+    if section_pos == -1:
+        return None
+    start_idx = html_content.find('        <div class="q-card"', section_pos)
     if start_idx == -1:
         return None
     q441_pos = html_content.find('id="q441"', start_idx)
     if q441_pos == -1:
         return None
-    end_marker = '        </div>\n        <div class="page-header"'
-    end_idx = html_content.find(end_marker, q441_pos)
-    if end_idx == -1:
+    if second_header_start is not None and second_header_start > q441_pos:
+        ph_abs = second_header_start
+    else:
+        ph_abs = html_content.find('        <div class="page-header" style=', q441_pos + 1)
+        if ph_abs == -1:
+            ph_abs = html_content.find('        <div class="page-header"', q441_pos + 1)
+    if ph_abs == -1:
         return None
-    end_block = end_idx + len('        </div>')
-    return html_content[:start_idx] + new_cards + html_content[end_block:]
+    return html_content[:start_idx] + new_cards + '\n' + html_content[ph_abs:]
 
 
 if __name__ == '__main__':
-    questions = extract_questions()
-    print('Extracted %d unique questions' % len(questions))
+    pdf_order = load_pdf_order()
+    if pdf_order:
+        questions = questions_from_pdf_only(pdf_order)
+        print('441 section: using only 2021-11-15_Citizenship 441 question.pdf (%d questions)' % len(questions))
+    else:
+        placeholder = [{"num": n, "q": "Question %d (from PDF)" % n, "answer": ""} for n in range(1, 442)]
+        questions = questions_from_pdf_only(placeholder)
+        print('No PDF JSON; using placeholders. Run: python extract_441_from_pdf.py (then this script again)')
     new_cards = make_html(questions)
+    abspath = os.path.abspath(OUTPUT_PATH)
     with open(OUTPUT_PATH, 'r', encoding='utf-8') as f:
         current = f.read()
-    updated = replace_cards_in_file(current, new_cards)
+    ph_after = current.find('        <div class="page-header" style=', current.find('id="q441"') + 1)
+    updated = replace_cards_in_file(current, new_cards, second_header_start=ph_after if ph_after != -1 else None)
     if updated is None:
-        print('Could not find cards block; writing full file not supported in this script.')
+        q1 = current.find('id="q1"')
+        q441 = current.find('id="q441"')
+        ph = current.find('        <div class="page-header"')
+        print('Could not find cards block. len=%s q1=%s q441=%s ph=%s ph_after=%s path=%s' % (len(current), q1, q441, ph, ph_after, abspath))
         raise SystemExit(1)
     with open(OUTPUT_PATH, 'w', encoding='utf-8') as f:
         f.write(updated)
