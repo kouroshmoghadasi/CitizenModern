@@ -160,7 +160,13 @@ body {
         }
         body.theme-dark .q-num-badge { background: linear-gradient(135deg, #2d3748 0%, #1e3c72 100%); color: #e8eaed; }
         .block-fa .q-num-badge { margin-right: 0; margin-left: 0.6rem; }
-    </style>
+        .q-options-list { list-style: none; margin: 12px 0; padding: 0; }
+        .q-options-list li { padding: 10px 14px; margin: 6px 0; background: var(--option-bg); border-radius: 10px; border: 1px solid var(--option-border); direction: ltr; text-align: left; }
+        .q-options-list li.option-correct { background: #d4edda; border-color: #28a745; font-weight: 600; color: #155724; }
+        body.theme-dark .q-options-list li { background: var(--option-bg); }
+        body.theme-dark .q-options-list li.option-correct { background: #1a3d1c; border-color: #28a745; color: #b8e0ba; }
+        .q-option-letter { font-weight: 700; margin-right: 8px; color: var(--accent); }
+</style>
 </head>
 <body>
     <script>try{var t=localStorage.getItem('citizenship414_theme');if(t==='dark')document.body.classList.add('theme-dark');}catch(e){}</script>
@@ -172,40 +178,66 @@ body {
             <div class="group theme-toggle-wrap">
                 <button type="button" class="lang-mode-btn" id="langModeEn" aria-pressed="true">English + فارسی</button>
                 <button type="button" class="lang-mode-btn" id="langModeFr" aria-pressed="false">Français + فارسی</button>
-            </div>
+  </div>
             <div class="group theme-toggle-wrap">
                 <span class="theme-label">Theme:</span>
                 <button type="button" class="theme-btn theme-light" id="themeLight" title="روشن / Light" aria-pressed="true">☀️</button>
                 <button type="button" class="theme-btn theme-dark" id="themeDark" title="تاریک / Dark" aria-pressed="false">🌙</button>
-            </div>
-        </div>
+</div>
+  </div>
         <div class="page-header">
             <h1>۴۱۴ سوال شهروندی کانادا</h1>
             <p>Citizenship 414 Questions – انتخاب نمایش: انگلیسی+فارسی یا فرانسه+فارسی</p>
-        </div>
+  </div>
         {% for q in questions %}
         <div class="q-card q-card-441" id="q{{ q.num }}">
             <div class="q-text-441">
                 <div class="block-en lang-block-en"><span class="q-num-badge">{{ q.num }}</span> {{ q.q_en[3:] if q.q_en[:3] == 'Q: ' else q.q_en }}</div>
                 <div class="block-fr lang-block-fr" style="display: none;"><span class="q-num-badge">{{ q.num }}</span> {{ (q.q_fr or '')[4:] if (q.q_fr or '')[:4] == 'Q : ' else ((q.q_fr or '')[3:] if (q.q_fr or '')[:3] == 'Q: ' else (q.q_fr or '')) }}</div>
                 <div class="block-fa"><span class="q-num-badge">{{ q.num }}</span> {{ q.q_fa[3:] if q.q_fa[:3] == 'س: ' else q.q_fa }}</div>
-            </div>
+</div>
+            {% if q.options_en is defined and q.options_en|length > 0 %}
+            <div class="q-options-list" style="margin-top: 14px;">
+                <div class="lang-block-en">
+                    <ul class="q-options-list">
+                        {% for opt in q.options_en %}
+                        <li{% if q.correct is defined and loop.index0 == q.correct %} class="option-correct"{% endif %}><span class="q-option-letter">{{ ['A','B','C','D'][loop.index0] }}.</span> {{ opt|e }}</li>
+                        {% endfor %}
+                    </ul>
+  </div>
+                <div class="lang-block-fr" style="display: none;">
+                    <ul class="q-options-list">
+                        {% for opt in (q.options_fr or q.options_en) %}
+                        <li{% if q.correct is defined and loop.index0 == q.correct %} class="option-correct"{% endif %}><span class="q-option-letter">{{ ['A','B','C','D'][loop.index0] }}.</span> {{ opt|e }}</li>
+                        {% endfor %}
+                    </ul>
+  </div>
+                <div class="block-fa">
+                    <ul class="q-options-list" style="direction: rtl; text-align: right;">
+                        {% for opt in (q.options_fa or q.options_en) %}
+                        <li{% if q.correct is defined and loop.index0 == q.correct %} class="option-correct"{% endif %} style="direction: rtl; text-align: right;"><span class="q-option-letter">{{ ['الف','ب','ج','د'][loop.index0] }}.</span> {{ opt|e }}</li>
+                        {% endfor %}
+                    </ul>
+</div>
+  </div>
+            {% else %}
             <div style="margin-top: 12px;">
                 <span class="q-source-441 lang-block-en" style="margin-bottom: 6px; display: inline-block;">پاسخ صحیح / Correct answer:</span>
                 <span class="q-source-441 lang-block-fr" style="margin-bottom: 6px; display: none;">پاسخ صحیح / Réponse correcte:</span>
-            </div>
+  </div>
             <div class="q-answer-441" style="margin-top: 6px;">
                 <div class="block-en lang-block-en">{{ (q.a_en or '')[3:] if (q.a_en or '')[:3] == 'A: ' else (q.a_en or '') }}</div>
                 <div class="block-fr lang-block-fr" style="display: none;">{% set afr = q.a_fr or '' %}{{ afr[4:] if afr[:4] == 'A : ' else (afr[4:] if afr[:4] == 'R : ' else afr) }}</div>
                 <div class="block-fa">{{ q.a_fa }}</div>
-            </div>
-            <div class="q-source-441" style="margin-top: 14px;"><span class="q-source-icon" aria-hidden="true">📖</span> <span class="q-source-text">Discover Canada / Découvrir le Canada / منبع</span></div>
+</div>
+            {% endif %}
+            <div class="q-source-441" style="margin-top: 14px;"><span class="q-source-icon" aria-hidden="true">📖</span> <span class="q-source-text"><span class="lang-block-en">Discover Canada</span><span class="lang-block-fr" style="display: none;">Découvrir le Canada</span> / منبع</span></div>
             <div class="q-expl-441" style="margin-top: 10px;">
                 <div class="block-en lang-block-en">{{ q.expl_en }}</div>
                 <div class="block-fr lang-block-fr" style="display: none;">{{ q.expl_fr or '' }}</div>
                 <div class="block-fa">{{ q.expl_fa }}</div>
-            </div>
-        </div>
+  </div>
+  </div>
         {% endfor %}
 
         <div class="page-header" style="margin-top: 32px;">
