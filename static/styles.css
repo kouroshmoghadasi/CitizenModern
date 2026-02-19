@@ -443,7 +443,7 @@
             display: block !important;
             visibility: visible !important;
         }
-        /* فاصله خیلی کم بین دو دکمه خلاصه کتاب و ۴۴۱ سوال در سایدبار */
+        /* فاصله بین دو دکمه خلاصه کتاب و ۴۱۴ سوال در سایدبار */
         .right-sidebar .book-summary-section + .book-summary-section {
             margin-top: 0 !important;
         }

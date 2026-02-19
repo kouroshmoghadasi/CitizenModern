@@ -4,7 +4,7 @@ import psycopg2
 from psycopg2.extras import RealDictCursor
 import os
 import json
-from datetime import datetime
+from datetime import datetime, timezone
 
 app = Flask(__name__)
 CORS(app)  # Enable CORS for frontend requests
@@ -145,39 +145,50 @@ def book_summary():
     log_visitor('/book_summary.html')
     return render_template('book_summary.html')
 
-@app.route('/citizenship-441')
-def citizenship_441():
-    """Serve the 441 citizenship questions educational page (bilingual FA/EN, RTL)"""
-    log_visitor('/citizenship-441')
-    return render_template('citizenship_441.html')
+# Cache for 414/571 questions (loaded once per process, no disk read per request)
+_cache_414 = None
+_cache_571 = None
 
 
 def _load_414_questions():
-    """Load 414 questions from static/citizenship_414_questions.json (from 414_Question1_Display.html)."""
+    """Load 414 questions once and cache in memory."""
+    global _cache_414
+    if _cache_414 is not None:
+        return _cache_414
     path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static', 'citizenship_414_questions.json')
     try:
         if os.path.isfile(path):
             with open(path, 'r', encoding='utf-8') as f:
-                return json.load(f)
+                data = json.load(f)
+            for q in data:
+                q.setdefault('q_fr', q.get('q_en'))
+                q.setdefault('a_fr', q.get('a_en'))
+                q.setdefault('expl_fr', q.get('expl_en'))
+            _cache_414 = data
+            return _cache_414
     except Exception:
         pass
-    return []
+    _cache_414 = []
+    return _cache_414
 
 
 @app.route('/citizenship-414')
 def citizenship_414():
-    """۴۱۴ سوال شهروندی — انگلیسی+فارسی یا فرانسه+فارسی"""
+    """۴۱۴ سوال شهروندی — انگلیسی+فارسی یا فرانسه+فارسی (بدون صفحه‌بندی)."""
     log_visitor('/citizenship-414')
     questions = _load_414_questions()
-    for q in questions:
-        q.setdefault('q_fr', q.get('q_en'))
-        q.setdefault('a_fr', q.get('a_en'))
-        q.setdefault('expl_fr', q.get('expl_en'))
-    return render_template('citizenship_414.html', questions=questions)
+    resp = app.make_response(render_template('citizenship_414.html', questions=questions))
+    resp.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
+    resp.headers['Pragma'] = 'no-cache'
+    resp.headers['Expires'] = '0'
+    return resp
 
 
 def _load_571_questions():
-    """Load 571 questions in PDF order from static/citizenship_571_questions.json. EN+FA / FR+FA with q_fr, options_fr, expl_fr."""
+    """Load 571 questions once and cache in memory."""
+    global _cache_571
+    if _cache_571 is not None:
+        return _cache_571
     base = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static')
     for name in ('citizenship_571_questions.json', 'question_bank.json'):
         path = os.path.join(base, name)
@@ -191,18 +202,24 @@ def _load_571_questions():
                     q.setdefault('q_fr', q.get('q', ''))
                     q.setdefault('options_fr', q.get('options', []))
                     q.setdefault('expl_fr', q.get('book_text', ''))
-                return data
+                _cache_571 = data
+                return _cache_571
         except Exception:
             continue
-    return []
+    _cache_571 = []
+    return _cache_571
 
 
 @app.route('/citizenship-571')
 def citizenship_571():
-    """همه ۵۷۱ سوال به ترتیب PDF در یک سند (مثل ۴۴۱)."""
+    """همه ۵۷۱ سوال به ترتیب PDF در یک سند (بدون صفحه‌بندی)."""
     log_visitor('/citizenship-571')
     questions = _load_571_questions()
-    return render_template('citizenship_571.html', questions=questions)
+    resp = app.make_response(render_template('citizenship_571.html', questions=questions))
+    resp.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
+    resp.headers['Pragma'] = 'no-cache'
+    resp.headers['Expires'] = '0'
+    return resp
 
 
 @app.route('/discover.pdf')
@@ -231,11 +248,10 @@ Sitemap: {base}/sitemap.xml
 def sitemap():
     """Serve sitemap.xml for SEO with lastmod for crawlers"""
     base = request.host_url.rstrip('/')
-    lastmod = datetime.utcnow().strftime('%Y-%m-%d')
+    lastmod = datetime.now(timezone.utc).strftime('%Y-%m-%d')
     pages = [
         ('/', 'daily', '1.0'),
         ('/book_summary.html', 'weekly', '0.9'),
-        ('/citizenship-441', 'weekly', '0.9'),
         ('/citizenship-414', 'weekly', '0.9'),
         ('/citizenship-571', 'weekly', '0.9'),
     ]
@@ -286,14 +302,14 @@ def get_visitor_count():
                     return jsonify({
                         'success': True,
                         'count': in_memory_counter,
-                        'last_updated': datetime.utcnow().isoformat()
+                        'last_updated': datetime.now(timezone.utc).isoformat()
                     })
         else:
             # Fallback to in-memory counter
             return jsonify({
                 'success': True,
                 'count': in_memory_counter,
-                'last_updated': datetime.utcnow().isoformat(),
+                'last_updated': datetime.now(timezone.utc).isoformat(),
                 'warning': 'Using in-memory counter (Database not available)'
             })
     except Exception as e:
@@ -352,7 +368,7 @@ def increment_visitor_count():
                 return jsonify({
                     'success': True,
                     'count': in_memory_counter,
-                    'last_updated': datetime.utcnow().isoformat(),
+                    'last_updated': datetime.now(timezone.utc).isoformat(),
                     'warning': 'Update returned no rows, using in-memory counter'
                 })
         else:
@@ -361,7 +377,7 @@ def increment_visitor_count():
             return jsonify({
                 'success': True,
                 'count': in_memory_counter,
-                'last_updated': datetime.utcnow().isoformat(),
+                'last_updated': datetime.now(timezone.utc).isoformat(),
                 'warning': 'Using in-memory counter (Database not available)'
             })
     except Exception as e:
@@ -371,7 +387,7 @@ def increment_visitor_count():
         return jsonify({
             'success': True,
             'count': in_memory_counter,
-            'last_updated': datetime.utcnow().isoformat(),
+            'last_updated': datetime.now(timezone.utc).isoformat(),
             'warning': f'Database error: {str(e)}, using in-memory counter'
         }), 200
 

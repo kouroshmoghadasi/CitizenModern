@@ -128,24 +128,43 @@
             font-weight: 400;
         }
 
-        .back-link {
-            position: absolute;
-            top: 20px;
-            right: 20px;
+        .back-bar { margin-bottom: 12px; text-align: right; }
+        .back-btn {
+            display: inline-block;
             padding: 10px 20px;
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
+            background: var(--bs-accent);
+            color: #fff;
             text-decoration: none;
-            border-radius: 25px;
+            border-radius: 10px;
             font-weight: 600;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
+            transition: background 0.2s, transform 0.2s;
         }
-
-        .back-link:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: translateY(-2px);
+        .back-btn:hover { background: var(--bs-accent2); transform: translateY(-1px); }
+        .sub-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px 16px;
+            margin-bottom: 20px;
+            padding: 12px 16px;
+            background: var(--bs-container-bg);
+            border-radius: 12px;
+            border: 1px solid var(--bs-border);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         }
+        body.theme-dark .sub-nav { box-shadow: 0 2px 8px rgba(0,0,0,0.2); }
+        .sub-nav a {
+            color: var(--bs-accent);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95em;
+            padding: 6px 12px;
+            border-radius: 8px;
+            transition: background 0.2s, color 0.2s;
+        }
+        .sub-nav a:hover { background: rgba(30,60,114,0.1); }
+        body.theme-dark .sub-nav a:hover { background: rgba(124,179,245,0.15); }
+        .sub-nav a[href="{{ request.path }}"] { background: rgba(30,60,114,0.15); }
+        body.theme-dark .sub-nav a[href="{{ request.path }}"] { background: rgba(124,179,245,0.2); }
 
         .content {
             padding: 50px 40px;
@@ -382,9 +401,7 @@
                 font-size: 1.05em;
             }
             
-            .back-link {
-                top: 15px;
-                right: 15px;
+            .back-btn {
                 padding: 8px 16px;
                 font-size: 0.9em;
             }
@@ -440,12 +457,11 @@
                 line-height: 1.4;
             }
             
-            .back-link {
-                position: relative;
-                top: 0;
-                right: 0;
-                display: inline-block;
+            .back-bar {
                 margin-bottom: 15px;
+            }
+            
+            .back-btn {
                 padding: 8px 16px;
                 font-size: 0.85em;
             }
@@ -529,7 +545,7 @@
                 font-size: 0.9em;
             }
             
-            .back-link {
+            .back-btn {
                 padding: 7px 14px;
                 font-size: 0.8em;
             }
@@ -602,9 +618,12 @@
                 font-size: 0.85em;
             }
             
-            .back-link {
+            .back-btn {
                 padding: 6px 12px;
                 font-size: 0.75em;
+            }
+            
+            .back-bar {
                 margin-bottom: 12px;
             }
             
@@ -662,10 +681,13 @@
     <script>try{var t=localStorage.getItem('book_summary_theme');if(t==='dark')document.body.classList.add('theme-dark');var L=localStorage.getItem('book_summary_lang');if(L==='en')L='en-fa';if(L==='fr')L='fr-fa';if(L==='fa')L='en-fa';if(L==='en-fa'||L==='fr-fa')document.body.setAttribute('data-lang',L);}catch(e){}</script>
     <div class="container">
         <div class="header">
-            <a href="/" class="back-link">← بازگشت / Back</a>
             <h1><span class="lang-fa">📖 خلاصه کامل کتاب Discover Canada</span></h1>
             <p><span class="lang-fa">خلاصه کامل کتاب Discover Canada به دو زبان</span></p>
         </div>
+        <div class="back-bar">
+            <a href="/" class="back-btn">← بازگشت به صفحه اصلی / Back to Home</a>
+        </div>
+        {% include 'sub_nav.html' %}
         <div class="tool-bar">
             <div class="group theme-toggle-wrap">
                 <span class="theme-label">Language:</span>

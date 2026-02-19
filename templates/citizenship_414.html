@@ -7,16 +7,24 @@
     <link rel="apple-touch-icon" href="{{ url_for('static', filename='images/logo.png') }}">
     <meta property="og:image" content="{{ request.url_root.rstrip('/') }}{{ url_for('static', filename='images/logo.png') }}">
     <meta name="twitter:image" content="{{ request.url_root.rstrip('/') }}{{ url_for('static', filename='images/logo.png') }}">
-    <title>۴۱۴ سوال شهروندی کانادا - انگلیسی/فرانسه + فارسی | Citizenship 414 Questions</title>
-    <meta name="description" content="۴۱۴ سوال آزمون شهروندی کانادا — انگلیسی+فارسی یا فرانسه+فارسی. Discover Canada.">
-    <meta name="keywords" content="۴۱۴ سوال شهروندی, citizenship 414 questions, انگلیسی فارسی, فرانسه فارسی, Discover Canada">
+    <title>۴۱۴ سوال آزمون شهروندی کانادا | سوالات شهروندی انگلیسی و فرانسه + فارسی</title>
+    <meta name="description" content="همه ۴۱۴ سوال آزمون شهروندی کانادا به انگلیسی و فرانسه با ترجمه فارسی. بر اساس Discover Canada. تمرین رایگان برای قبولی در آزمون.">
+    <meta name="keywords" content="۴۱۴ سوال شهروندی, سوالات آزمون شهروندی کانادا, citizenship 414 questions, انگلیسی فارسی, فرانسه فارسی, Discover Canada, تست شهروندی">
+    <meta name="robots" content="index, follow">
     <link rel="canonical" href="{{ request.host_url.rstrip('/') }}/citizenship-414">
     <meta property="og:title" content="۴۱۴ سوال شهروندی کانادا - انگلیسی/فرانسه + فارسی">
     <meta property="og:description" content="۴۱۴ سوال با انتخاب انگلیسی+فارسی یا فرانسه+فارسی.">
     <meta property="og:url" content="{{ request.host_url.rstrip('/') }}/citizenship-414">
     <meta property="og:type" content="article">
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="۴۱۴ سوال شهروندی – EN/FR + فارسی">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="۴۱۴ سوال آزمون شهروندی کانادا | انگلیسی و فرانسه + فارسی">
+    <meta name="twitter:description" content="۴۱۴ سوال آزمون شهروندی کانادا با ترجمه فارسی. بر اساس Discover Canada.">
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"LearningResource","name":"۴۱۴ سوال شهروندی کانادا","description":"۴۱۴ سوال آزمون شهروندی کانادا به انگلیسی و فرانسه با ترجمه فارسی. بر اساس کتاب Discover Canada.","url":"{{ request.host_url.rstrip('/') }}/citizenship-414","inLanguage":["fa","en","fr"],"learningResourceType":"Practice Questions","educationalLevel":"Adult Education"}
+    </script>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"خانه","item":"{{ request.host_url.rstrip('/') }}"},{"@type":"ListItem","position":2,"name":"۴۱۴ سوال شهروندی","item":"{{ request.host_url.rstrip('/') }}/citizenship-414"}]}
+    </script>
 <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 :root {
@@ -109,17 +117,42 @@ body {
         }
         .page-header h1 { font-size: 1.6em; margin-bottom: 8px; }
         .page-header p { font-size: 0.95em; opacity: 0.95; }
-        .back-bar { margin-bottom: 20px; text-align: right; }
+        .back-bar { margin-bottom: 12px; text-align: right; }
         .back-btn {
             display: inline-block;
             padding: 10px 20px;
             background: var(--accent);
-  color: #fff;
+            color: #fff;
             text-decoration: none;
             border-radius: 10px;
             font-weight: 600;
         }
         .back-btn:hover { background: var(--accent-light); }
+        .sub-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px 16px;
+            margin-bottom: 20px;
+            padding: 12px 16px;
+            background: var(--card-bg);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        body.theme-dark .sub-nav { box-shadow: 0 2px 8px rgba(0,0,0,0.2); }
+        .sub-nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95em;
+            padding: 6px 12px;
+            border-radius: 8px;
+            transition: background 0.2s, color 0.2s;
+        }
+        .sub-nav a:hover { background: rgba(30,60,114,0.1); }
+        body.theme-dark .sub-nav a:hover { background: rgba(124,179,245,0.15); }
+        .sub-nav a[href="{{ request.path }}"] { background: rgba(30,60,114,0.15); }
+        body.theme-dark .sub-nav a[href="{{ request.path }}"] { background: rgba(124,179,245,0.2); }
         .section-title { font-size: 1.1em; font-weight: 700; color: var(--accent); margin: 24px 0 12px 0; padding-bottom: 6px; border-bottom: 2px solid var(--section-border); }
         .q-card-441 {
             background: #f0f0f0;
@@ -163,9 +196,22 @@ body {
         .q-options-list { list-style: none; margin: 12px 0; padding: 0; }
         .q-options-list li { padding: 10px 14px; margin: 6px 0; background: var(--option-bg); border-radius: 10px; border: 1px solid var(--option-border); direction: ltr; text-align: left; }
         .q-options-list li.option-correct { background: #d4edda; border-color: #28a745; font-weight: 600; color: #155724; }
+        .q-options-list li.option-wrong { background: #f8d7da; border-color: #dc3545; font-weight: 600; color: #721c24; }
         body.theme-dark .q-options-list li { background: var(--option-bg); }
         body.theme-dark .q-options-list li.option-correct { background: #1a3d1c; border-color: #28a745; color: #b8e0ba; }
+        body.theme-dark .q-options-list li.option-wrong { background: #3d1a1a; border-color: #dc3545; color: #f8b4b8; }
+        .q-options-list li.q-option-clickable { cursor: pointer; transition: background 0.2s, border-color 0.2s; }
+        .q-options-list li.q-option-clickable:hover { filter: brightness(0.97); }
+        .q-options-list li.q-option-answered { cursor: default; }
         .q-option-letter { font-weight: 700; margin-right: 8px; color: var(--accent); }
+        .q-answer-reveal-wrap { margin-top: 12px; }
+        .q-answer-reveal-wrap.hidden-answer { display: none; }
+        .q-answer-reveal-wrap .revealed-answer { background: #d4edda; border: 1px solid #28a745; border-radius: 10px; padding: 12px 14px; font-weight: 600; color: #155724; }
+        body.theme-dark .q-answer-reveal-wrap .revealed-answer { background: #1a3d1c; border-color: #28a745; color: #b8e0ba; }
+        .btn-show-answer { margin-top: 10px; padding: 10px 18px; border-radius: 10px; border: 2px solid var(--accent); background: var(--card-bg); color: var(--accent); font-weight: 600; cursor: pointer; transition: all 0.2s; }
+        .btn-show-answer:hover { background: rgba(30,60,114,0.1); }
+        body.theme-dark .btn-show-answer { border-color: #7cb3f5; color: #7cb3f5; }
+        body.theme-dark .btn-show-answer:hover { background: rgba(124,179,245,0.15); }
 </style>
 </head>
 <body>
@@ -173,7 +219,8 @@ body {
     <div class="wrap">
         <div class="back-bar">
             <a href="/" class="back-btn">← بازگشت به صفحه اصلی / Back to Home</a>
-  </div>
+        </div>
+        {% include 'sub_nav.html' %}
         <div class="tool-bar">
             <div class="group theme-toggle-wrap">
                 <button type="button" class="lang-mode-btn" id="langModeEn" aria-pressed="true">English + فارسی</button>
@@ -188,7 +235,7 @@ body {
         <div class="page-header">
             <h1>۴۱۴ سوال شهروندی کانادا</h1>
             <p>Citizenship 414 Questions – انتخاب نمایش: انگلیسی+فارسی یا فرانسه+فارسی</p>
-  </div>
+        </div>
         {% for q in questions %}
         <div class="q-card q-card-441" id="q{{ q.num }}">
             <div class="q-text-441">
@@ -197,39 +244,42 @@ body {
                 <div class="block-fa"><span class="q-num-badge">{{ q.num }}</span> {{ q.q_fa[3:] if q.q_fa[:3] == 'س: ' else q.q_fa }}</div>
 </div>
             {% if q.options_en is defined and q.options_en|length > 0 %}
-            <div class="q-options-list" style="margin-top: 14px;">
+            <div class="q-options-list q-options-mcq" style="margin-top: 14px;" data-correct="{{ q.correct if q.correct is defined else -1 }}">
                 <div class="lang-block-en">
                     <ul class="q-options-list">
                         {% for opt in q.options_en %}
-                        <li{% if q.correct is defined and loop.index0 == q.correct %} class="option-correct"{% endif %}><span class="q-option-letter">{{ ['A','B','C','D'][loop.index0] }}.</span> {{ opt|e }}</li>
+                        <li class="q-option-clickable" data-option-index="{{ loop.index0 }}" role="button" tabindex="0"><span class="q-option-letter">{{ ['A','B','C','D'][loop.index0] }}.</span> {{ opt|e }}</li>
                         {% endfor %}
                     </ul>
-  </div>
+                </div>
                 <div class="lang-block-fr" style="display: none;">
                     <ul class="q-options-list">
                         {% for opt in (q.options_fr or q.options_en) %}
-                        <li{% if q.correct is defined and loop.index0 == q.correct %} class="option-correct"{% endif %}><span class="q-option-letter">{{ ['A','B','C','D'][loop.index0] }}.</span> {{ opt|e }}</li>
+                        <li class="q-option-clickable" data-option-index="{{ loop.index0 }}" role="button" tabindex="0"><span class="q-option-letter">{{ ['A','B','C','D'][loop.index0] }}.</span> {{ opt|e }}</li>
                         {% endfor %}
                     </ul>
-  </div>
+                </div>
                 <div class="block-fa">
                     <ul class="q-options-list" style="direction: rtl; text-align: right;">
                         {% for opt in (q.options_fa or q.options_en) %}
-                        <li{% if q.correct is defined and loop.index0 == q.correct %} class="option-correct"{% endif %} style="direction: rtl; text-align: right;"><span class="q-option-letter">{{ ['الف','ب','ج','د'][loop.index0] }}.</span> {{ opt|e }}</li>
+                        <li class="q-option-clickable" data-option-index="{{ loop.index0 }}" style="direction: rtl; text-align: right;" role="button" tabindex="0"><span class="q-option-letter">{{ ['الف','ب','ج','د'][loop.index0] }}.</span> {{ opt|e }}</li>
                         {% endfor %}
                     </ul>
-</div>
-  </div>
+                </div>
+            </div>
             {% else %}
-            <div style="margin-top: 12px;">
-                <span class="q-source-441 lang-block-en" style="margin-bottom: 6px; display: inline-block;">پاسخ صحیح / Correct answer:</span>
-                <span class="q-source-441 lang-block-fr" style="margin-bottom: 6px; display: none;">پاسخ صحیح / Réponse correcte:</span>
-  </div>
-            <div class="q-answer-441" style="margin-top: 6px;">
-                <div class="block-en lang-block-en">{{ (q.a_en or '')[3:] if (q.a_en or '')[:3] == 'A: ' else (q.a_en or '') }}</div>
-                <div class="block-fr lang-block-fr" style="display: none;">{% set afr = q.a_fr or '' %}{{ afr[4:] if afr[:4] == 'A : ' else (afr[4:] if afr[:4] == 'R : ' else afr) }}</div>
-                <div class="block-fa">{{ q.a_fa }}</div>
-</div>
+            <div class="q-answer-reveal-wrap hidden-answer" id="answerWrap{{ q.num }}">
+                <div style="margin-bottom: 6px;">
+                    <span class="q-source-441 lang-block-en">پاسخ صحیح / Correct answer:</span>
+                    <span class="q-source-441 lang-block-fr" style="display: none;">پاسخ صحیح / Réponse correcte:</span>
+                </div>
+                <div class="revealed-answer" style="margin-top: 6px;">
+                    <div class="block-en lang-block-en">{{ (q.a_en or '')[3:] if (q.a_en or '')[:3] == 'A: ' else (q.a_en or '') }}</div>
+                    <div class="block-fr lang-block-fr" style="display: none;">{% set afr = q.a_fr or '' %}{{ afr[4:] if afr[:4] == 'A : ' else (afr[4:] if afr[:4] == 'R : ' else afr) }}</div>
+                    <div class="block-fa">{{ q.a_fa }}</div>
+                </div>
+            </div>
+            <button type="button" class="btn-show-answer" data-question-num="{{ q.num }}" aria-controls="answerWrap{{ q.num }}">نمایش پاسخ صحیح / Show correct answer</button>
             {% endif %}
             <div class="q-source-441" style="margin-top: 14px;"><span class="q-source-icon" aria-hidden="true">📖</span> <span class="q-source-text"><span class="lang-block-en">Discover Canada</span><span class="lang-block-fr" style="display: none;">Découvrir le Canada</span> / منبع</span></div>
             <div class="q-expl-441" style="margin-top: 10px;">
@@ -242,7 +292,7 @@ body {
 
         <div class="page-header" style="margin-top: 32px;">
             <p>منبع: Citizenship 414 question.pdf</p>
-  </div>
+        </div>
         <div class="back-bar">
             <a href="/" class="back-btn">← بازگشت به صفحه اصلی / Back to Home</a>
   </div>
@@ -282,6 +332,63 @@ body {
             if (themeDark) themeDark.addEventListener('click', function() { localStorage.setItem(themeKey, 'dark'); applyTheme('dark'); });
             if (langModeEn) langModeEn.addEventListener('click', function() { localStorage.setItem(langModeKey, 'en'); applyLangMode('en'); });
             if (langModeFr) langModeFr.addEventListener('click', function() { localStorage.setItem(langModeKey, 'fr'); applyLangMode('fr'); });
+        })();
+
+        // 414: پاسخ‌دهی به سوالات — ابتدا کاربر انتخاب می‌کند، سپس صحیح سبز و غلط قرمز + پاسخ صحیح سبز
+        (function() {
+            document.querySelectorAll('.q-options-mcq').forEach(function(container) {
+                var correctIdx = parseInt(container.getAttribute('data-correct'), 10);
+                if (correctIdx < 0) return;
+                var allLists = container.querySelectorAll('.q-options-list ul');
+                function markAnswered() {
+                    allLists.forEach(function(ul) {
+                        ul.querySelectorAll('li').forEach(function(li) {
+                            li.classList.remove('q-option-clickable');
+                            li.classList.add('q-option-answered');
+                            li.removeAttribute('tabindex');
+                            li.removeAttribute('role');
+                        });
+                    });
+                }
+                function handleSelect(clickedIndex) {
+                    if (container.classList.contains('q-answered')) return;
+                    container.classList.add('q-answered');
+                    markAnswered();
+                    allLists.forEach(function(ul) {
+                        var lis = ul.querySelectorAll('li');
+                        for (var i = 0; i < lis.length; i++) {
+                            lis[i].classList.remove('option-correct', 'option-wrong');
+                            if (i === clickedIndex) {
+                                lis[i].classList.add(i === correctIdx ? 'option-correct' : 'option-wrong');
+                            } else if (i === correctIdx) {
+                                lis[i].classList.add('option-correct');
+                            }
+                        }
+                    });
+                }
+                allLists.forEach(function(ul) {
+                    [].slice.call(ul.querySelectorAll('li')).forEach(function(li) {
+                        li.addEventListener('click', function() { handleSelect(parseInt(li.getAttribute('data-option-index'), 10)); });
+                        li.addEventListener('keydown', function(e) {
+                            if (e.key === 'Enter' || e.key === ' ') {
+                                e.preventDefault();
+                                handleSelect(parseInt(li.getAttribute('data-option-index'), 10));
+                            }
+                        });
+                    });
+                });
+            });
+
+            document.querySelectorAll('.btn-show-answer').forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    var id = btn.getAttribute('aria-controls');
+                    var wrap = id ? document.getElementById(id) : null;
+                    if (wrap) {
+                        wrap.classList.remove('hidden-answer');
+                        btn.style.display = 'none';
+                    }
+                });
+            });
         })();
     </script>
 </body>

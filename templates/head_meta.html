@@ -6,38 +6,57 @@
     <link rel="icon" href="{{ url_for('static', filename='images/logo.png') }}" type="image/png">
     <link rel="apple-touch-icon" href="{{ url_for('static', filename='images/logo.png') }}">
     <meta name="google-site-verification" content="hqLG8HLBFHKKrCTskT2ZDjTesa4dW3dy5lnxNbT9TvQ" />
-    <title>آزمون تمرینی شهروندی کانادا - Canadian Citizenship Practice Test</title>
-    <meta name="description" content="آزمون تمرینی رایگان شهروندی کانادا به فارسی و انگلیسی. ۲۰ سوال تصادفی، ۴۱۴ و ۴۴۱ و ۵۷۱ سوال آموزشی، خلاصه Discover Canada — آماده‌سازی برای آزمون شهروندی.">
-    <meta name="keywords" content="آزمون شهروندی کانادا, Canadian citizenship test, تمرین شهروندی رایگان, Discover Canada, آزمون تمرینی, citizenship practice test, ۴۱۴ سوال, ۴۴۱ سوال, ۵۷۱ سوال, Découvrir le Canada">
+    <title>آزمون شهروندی کانادا رایگان | تمرین تست شهروندی به فارسی و انگلیسی</title>
+    <meta name="description" content="آزمون تمرینی رایگان شهروندی کانادا به فارسی و انگلیسی. ۱۰۰ تست ۲۰ سوالی، ۴۱۴ و ۵۷۱ سوال آموزشی، خلاصه کتاب Discover Canada. آماده شوید برای قبولی در آزمون شهروندی.">
+    <meta name="keywords" content="آزمون شهروندی کانادا, Canadian citizenship test, تست شهروندی رایگان, تمرین آزمون شهروندی, Discover Canada, سوالات شهروندی, ۴۱۴ سوال, ۵۷۱ سوال, citizenship practice test, آزمون شهروندی به فارسی">
     <link rel="canonical" href="{{ request.base_url }}">
+    <meta name="robots" content="index, follow">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="آزمون تمرینی شهروندی کانادا - Canadian Citizenship Practice Test">
-    <meta property="og:description" content="آزمون تمرینی رایگان شهروندی کانادا به فارسی و انگلیسی. ۴۱۴، ۴۴۱ و ۵۷۱ سوال آموزشی و خلاصه Discover Canada.">
+    <meta property="og:title" content="آزمون شهروندی کانادا رایگان | تمرین تست به فارسی و انگلیسی">
+    <meta property="og:description" content="آزمون تمرینی رایگان شهروندی کانادا. ۱۰۰ تست، ۴۱۴ و ۵۷۱ سوال، خلاصه Discover Canada. آماده‌سازی برای آزمون شهروندی.">
     <meta property="og:url" content="{{ request.base_url }}">
     <meta property="og:image" content="{{ request.url_root.rstrip('/') }}{{ url_for('static', filename='images/logo.png') }}">
     <meta property="og:locale" content="fa_IR">
-    <meta property="og:site_name" content="CitizenTest">
+    <meta property="og:site_name" content="CitizenTest - آزمون شهروندی کانادا">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content="{{ request.url_root.rstrip('/') }}{{ url_for('static', filename='images/logo.png') }}">
-    <meta name="twitter:title" content="آزمون تمرینی شهروندی کانادا - Canadian Citizenship Practice Test">
-    <meta name="twitter:description" content="آزمون تمرینی رایگان شهروندی کانادا به فارسی و انگلیسی.">
+    <meta name="twitter:title" content="آزمون شهروندی کانادا رایگان | تمرین به فارسی و انگلیسی">
+    <meta name="twitter:description" content="آزمون تمرینی رایگان شهروندی کانادا. ۱۰۰ تست، سوالات ۴۱۴ و ۵۷۱، خلاصه Discover Canada.">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "WebSite",
       "name": "CitizenTest - آزمون تمرینی شهروندی کانادا",
-      "alternateName": "Canadian Citizenship Practice Test",
+      "alternateName": ["Canadian Citizenship Practice Test", "آزمون شهروندی کانادا رایگان"],
       "url": "{{ request.url_root.rstrip('/') }}",
-      "description": "آزمون تمرینی رایگان شهروندی کانادا به فارسی و انگلیسی. سوالات ۴۱۴، ۴۴۱ و ۵۷۱، خلاصه کتاب Discover Canada.",
+      "description": "آزمون تمرینی رایگان شهروندی کانادا به فارسی و انگلیسی. ۱۰۰ تست ۲۰ سوالی، ۴۱۴ و ۵۷۱ سوال آموزشی، خلاصه کتاب Discover Canada برای قبولی در آزمون.",
       "inLanguage": ["fa", "en"],
       "publisher": {
         "@type": "Organization",
         "name": "CitizenTest",
+        "url": "{{ request.url_root.rstrip('/') }}",
         "logo": {
           "@type": "ImageObject",
           "url": "{{ request.url_root.rstrip('/') }}{{ url_for('static', filename='images/logo.png') }}"
         }
+      },
+      "potentialAction": {
+        "@type": "ReadAction",
+        "target": "{{ request.url_root.rstrip('/') }}/citizenship-414"
       }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LearningResource",
+      "name": "آزمون تمرینی شهروندی کانادا",
+      "description": "تمرین رایگان برای آزمون شهروندی کانادا با سوالات فارسی و انگلیسی بر اساس کتاب Discover Canada.",
+      "url": "{{ request.url_root.rstrip('/') }}",
+      "inLanguage": ["fa", "en"],
+      "learningResourceType": "Practice Test",
+      "educationalLevel": "Adult Education",
+      "teaches": "Canadian citizenship test preparation"
     }
     </script>

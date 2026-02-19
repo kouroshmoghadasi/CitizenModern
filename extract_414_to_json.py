@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """Extract 414 questions from 414_Question1_Display.html to static/citizenship_414_questions.json
-   for use with the citizenship_414 template (same structure as 441).
+   for use with the citizenship_414 template.
 """
 import os
 import re
