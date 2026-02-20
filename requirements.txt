@@ -1,5 +1,6 @@
 Flask==3.0.0
 flask-cors==4.0.0
+flask-compress==1.14
 psycopg2-binary==2.9.9
 pypdf>=3.0.0
 pymupdf>=1.23.0

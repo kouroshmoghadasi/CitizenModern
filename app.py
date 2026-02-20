@@ -8,6 +8,11 @@ from datetime import datetime, timezone
 
 app = Flask(__name__)
 CORS(app)  # Enable CORS for frontend requests
+try:
+    from flask_compress import Compress  # type: ignore[import-untyped]
+    Compress(app)  # Gzip compression for faster responses
+except ImportError:
+    pass  # Run without gzip if flask-compress not installed
 
 # Import database configuration
 try:
@@ -134,6 +139,22 @@ init_database()
 # Fallback: use in-memory counter if database is not available
 in_memory_counter = 100  # Starting value
 
+
+@app.after_request
+def add_cache_headers(response):
+    """Set Cache-Control for static assets and public files to improve speed."""
+    if response.status_code != 200:
+        return response
+    path = request.path
+    if path.startswith('/static/'):
+        # Static files (images, CSS, JS): cache 1 year (use versioned filenames if you change them)
+        response.headers['Cache-Control'] = 'public, max-age=31536000, immutable'
+    elif path in ('/discover.pdf', '/robots.txt', '/sitemap.xml'):
+        # PDF and SEO files: cache 1 day
+        response.headers['Cache-Control'] = 'public, max-age=86400'
+    return response
+
+
 @app.route('/')
 def index():
     """Serve the main HTML page"""
@@ -224,7 +245,7 @@ def citizenship_571():
 
 @app.route('/discover.pdf')
 def discover_pdf():
-    """Serve the Discover Canada PDF file"""
+    """Serve the Discover Canada PDF file (cache set in after_request)."""
     return send_from_directory(os.path.dirname(os.path.abspath(__file__)), 'discover.pdf')
 
 @app.route('/googlee38c49b065f08d79.html')
@@ -232,10 +253,45 @@ def google_verification():
     """Serve Google Search Console verification file"""
     return send_from_directory(os.path.dirname(os.path.abspath(__file__)), 'googlee38c49b065f08d79.html')
 
+
+@app.route('/manifest.webmanifest')
+def webapp_manifest():
+    """Web App Manifest for PWA (Add to Home Screen)."""
+    base = request.url_root.rstrip('/')
+    if request.headers.get('X-Forwarded-Proto') == 'https' and base.startswith('http://'):
+        base = 'https://' + base[7:]
+    manifest = {
+        'name': 'آزمون شهروندی کانادا | CitizenTest',
+        'short_name': 'CitizenTest',
+        'description': 'آزمون تمرینی رایگان شهروندی کانادا به فارسی، انگلیسی و فرانسه. ۴۱۴ و ۵۷۱ سوال، Discover Canada.',
+        'start_url': base + '/',
+        'scope': base + '/',
+        'display': 'standalone',
+        'orientation': 'any',
+        'theme_color': '#0f172a',
+        'background_color': '#ffffff',
+        'lang': 'fa',
+        'dir': 'rtl',
+        'icons': [
+            {'src': base + '/static/images/logo.png', 'sizes': '192x192', 'type': 'image/png', 'purpose': 'any'},
+            {'src': base + '/static/images/logo.png', 'sizes': '512x512', 'type': 'image/png', 'purpose': 'any'},
+        ],
+    }
+    return jsonify(manifest), 200, {'Content-Type': 'application/manifest+json; charset=utf-8'}
+
+
+def _seo_base_url():
+    """Base URL for SEO (robots, sitemap). Prefer HTTPS when behind proxy."""
+    url = request.host_url.rstrip('/')
+    if request.headers.get('X-Forwarded-Proto') == 'https' and url.startswith('http://'):
+        url = 'https://' + url[7:]
+    return url
+
+
 @app.route('/robots.txt')
 def robots_txt():
     """Serve robots.txt for search engines with dynamic sitemap URL"""
-    base = request.host_url.rstrip('/')
+    base = _seo_base_url()
     body = f'''User-agent: *
 Allow: /
 
@@ -247,7 +303,7 @@ Sitemap: {base}/sitemap.xml
 @app.route('/sitemap.xml')
 def sitemap():
     """Serve sitemap.xml for SEO with lastmod for crawlers"""
-    base = request.host_url.rstrip('/')
+    base = _seo_base_url()
     lastmod = datetime.now(timezone.utc).strftime('%Y-%m-%d')
     pages = [
         ('/', 'daily', '1.0'),
