@@ -4,12 +4,15 @@
             <div style="text-align: center; margin-bottom: 20px;">
                 <a href="discover.pdf" target="_blank" class="book-link">📚 دانلود/مطالعه کتاب Discover Canada</a>
             </div>
-            
-            <!-- Test Selector -->
-            <div style="text-align: center; margin-bottom: 15px;">
-                <select id="testNumberSelect" class="test-number-select" onchange="selectTestFromDropdown()" title="انتخاب تست">
+            <!-- Test Selector + En/Fr in one row -->
+            <div class="test-lang-row" style="margin-bottom: 15px;">
+                <select id="testNumberSelect" class="test-number-select test-number-select-inrow" onchange="selectTestFromDropdown()" title="انتخاب تست">
                     <!-- Options will be populated by JavaScript: Test1, Test2, ..., Test100 -->
                 </select>
+                <div class="main-lang-mode-wrap main-lang-mode-inrow">
+                    <button type="button" class="lang-mode-btn-mini" id="mainLangModeEn" aria-pressed="true" title="انگلیسی + فارسی">En</button>
+                    <button type="button" class="lang-mode-btn-mini" id="mainLangModeFr" aria-pressed="false" title="فرانسه + فارسی">Fr</button>
+                </div>
             </div>
             
             <!-- Navigator - دکمه‌ها برای جابجایی بین سوالات -->
@@ -94,7 +97,7 @@
                 <button class="test-nav-btn test-nav-btn-mobile next" onclick="navigateQuestion(1)" id="testNextBtnMobile" title="سوال بعدی">بعدی</button>
             </div>
 
-            <!-- Stats (Mobile Version - Minimal) -->
+            <!-- Stats (Mobile Version - Minimal) + En/Fr inside same box -->
             <div class="stats-mobile">
                 <div class="stats-mobile-item">
                     <span class="stats-mobile-icon">⏱️</span>
@@ -107,6 +110,10 @@
                 <div class="stats-mobile-item">
                     <span class="stats-mobile-label">✗</span>
                     <span class="counter-value" id="incorrectCounterMobile">0</span>
+                </div>
+                <div class="stats-mobile-item stats-mobile-lang">
+                    <button type="button" class="lang-mode-btn-mini lang-mode-btn-in-stats" id="mainLangModeEnMobile" aria-pressed="true" title="انگلیسی + فارسی">En</button>
+                    <button type="button" class="lang-mode-btn-mini lang-mode-btn-in-stats" id="mainLangModeFrMobile" aria-pressed="false" title="فرانسه + فارسی">Fr</button>
                 </div>
             </div>
 

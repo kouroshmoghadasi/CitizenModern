@@ -179,17 +179,44 @@
                 width: 100% !important;
             }
             
-            /* Desktop: Simple test selector styling */
-            .test-selector > div:has(.test-number-select) {
-                margin-bottom: 15px;
+            /* Desktop: Test + En/Fr in one row, same height */
+            .test-lang-row {
+                display: flex;
+                align-items: stretch;
+                gap: 8px;
+                flex-wrap: nowrap;
+                min-height: 38px;
             }
-            
-            .test-selector .test-number-select {
-                width: 100%;
-                max-width: 100%;
-                margin: 0 auto;
+            .test-lang-row .test-number-select-inrow {
+                flex: 1;
+                min-width: 0;
+                max-width: 65%;
+                width: auto;
+                margin: 0;
                 display: block;
                 transition: all 0.2s ease;
+                height: 100%;
+                min-height: 38px;
+                box-sizing: border-box;
+                padding: 6px 10px;
+                line-height: 1.3;
+            }
+            .test-lang-row .main-lang-mode-inrow {
+                flex-shrink: 0;
+                display: flex;
+                align-items: stretch;
+                gap: 4px;
+                margin: 0;
+            }
+            .test-lang-row .main-lang-mode-inrow .lang-mode-btn-mini {
+                margin: 0;
+                height: 100%;
+                min-height: 38px;
+                box-sizing: border-box;
+                padding: 6px 14px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
             }
             
             .test-selector .test-number-select:hover {
@@ -297,6 +324,37 @@
             .test-navigator .test-nav-btn:disabled:hover {
                 background: linear-gradient(145deg, #e67e22 0%, #f39c12 50%, #f1c40f 100%) !important;
                 transform: none;
+            }
+
+            /* دکمه‌های زبان: En / Fr — خوانا و با رنگ */
+            .main-lang-mode-wrap .lang-mode-btn-mini {
+                padding: 6px 14px;
+                margin: 0 4px;
+                border-radius: 8px;
+                border: 2px solid #cbd5e1;
+                background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
+                color: #1e3c72;
+                font-weight: 700;
+                font-size: 0.85em;
+                letter-spacing: 0.02em;
+                cursor: pointer;
+                transition: all 0.2s;
+                min-width: 36px;
+                box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+            }
+            .main-lang-mode-wrap .lang-mode-btn-mini:hover {
+                border-color: #1e3c72;
+                background: linear-gradient(180deg, #e8eef5 0%, #d4dce8 100%);
+                box-shadow: 0 2px 6px rgba(30,60,114,0.15);
+            }
+            .main-lang-mode-wrap .lang-mode-btn-mini[aria-pressed="true"] {
+                border-color: #1e3c72;
+                background: linear-gradient(180deg, #1e3c72 0%, #2c5282 100%);
+                color: #fff;
+                box-shadow: 0 2px 6px rgba(30,60,114,0.35);
+            }
+            .main-lang-mode-wrap .lang-mode-btn-mini[aria-pressed="true"]:hover {
+                background: linear-gradient(180deg, #2c5282 0%, #1e3c72 100%);
             }
 
             /* Desktop fix: prevent "floating/empty" space inside ad tiles */
@@ -4392,6 +4450,34 @@
             
             .stats-mobile .timer.danger {
                 color: #dc3545;
+            }
+            
+            .stats-mobile-lang {
+                flex: 0 0 auto;
+                gap: 6px;
+            }
+            .stats-mobile .lang-mode-btn-in-stats {
+                padding: 4px 10px;
+                font-size: 0.75em;
+                min-width: 32px;
+                border-radius: 6px;
+                border: 1.5px solid rgba(30, 60, 114, 0.35);
+                background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
+                color: #1e3c72;
+                font-weight: 700;
+                box-shadow: 0 1px 2px rgba(30, 60, 114, 0.1);
+            }
+            .stats-mobile .lang-mode-btn-in-stats:hover {
+                border-color: #1e3c72;
+                background: linear-gradient(180deg, #e8eef5 0%, #d4dce8 100%);
+            }
+            .stats-mobile .lang-mode-btn-in-stats[aria-pressed="true"] {
+                border-color: #1e3c72;
+                background: linear-gradient(180deg, #1e3c72 0%, #2c5282 100%);
+                color: #fff;
+            }
+            .stats-mobile .lang-mode-btn-in-stats[aria-pressed="true"]:hover {
+                background: linear-gradient(180deg, #2c5282 0%, #1e3c72 100%);
             }
             
             .mobile-sidebar-sections {
