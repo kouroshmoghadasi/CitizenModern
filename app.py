@@ -1,12 +1,16 @@
-from flask import Flask, jsonify, request, render_template, send_from_directory, redirect
+from flask import Flask, jsonify, request, render_template, send_from_directory, redirect, session
 from flask_cors import CORS
 import psycopg2
 from psycopg2.extras import RealDictCursor
 import os
 import json
-from datetime import datetime, timezone
+import random
+import string
+from datetime import datetime, timezone, date, timedelta
+from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
+app.secret_key = os.getenv('FLASK_SECRET_KEY', 'change-this-secret-in-production-citizen-subscription')
 CORS(app)  # Enable CORS for frontend requests
 try:
     from flask_compress import Compress  # type: ignore[import-untyped]
@@ -26,6 +30,11 @@ except ImportError:
         'user': os.getenv('DB_USER', 'postgres'),
         'password': os.getenv('DB_PASSWORD', '1X8HcEa%iP%yT_lqz1)S~#b&QoV8x{U1')
     }
+
+# IPهایی که در لاگ و داشبورد حضور شمرده نشوند (خودمون / ادمین). از env: EXCLUDED_VISITOR_IPS با کاما
+_excluded_visitor_ips = frozenset(
+    x.strip() for x in os.getenv('EXCLUDED_VISITOR_IPS', '').split(',') if x.strip()
+)
 
 # Database connection pool (simple connection per request)
 db_connected = False
@@ -49,6 +58,23 @@ def get_client_ip():
     else:
         ip = request.remote_addr
     return ip
+
+
+def _device_from_user_agent(ua):
+    """بر اساس User-Agent برچسب دستگاه (موبایل، دسکتاپ، تبلت، ربات) برمی‌گرداند."""
+    if not ua or not isinstance(ua, str):
+        return '—'
+    u = ua.lower()
+    if 'bot' in u or 'crawler' in u or 'spider' in u or 'headless' in u:
+        return 'ربات'
+    if 'mobile' in u and 'tablet' not in u and 'ipad' not in u:
+        return 'موبایل'
+    if 'tablet' in u or 'ipad' in u:
+        return 'تبلت'
+    if 'android' in u and 'mobile' not in u:
+        return 'تبلت'
+    return 'دسکتاپ'
+
 
 def init_database():
     """Initialize database tables if they don't exist"""
@@ -87,6 +113,80 @@ def init_database():
                 CREATE INDEX IF NOT EXISTS idx_visitor_log_time ON visitor_log(access_time)
             """)
             
+            # --- Subscription: users (subscribers)
+            cur.execute("""
+                CREATE TABLE IF NOT EXISTS subscription_users (
+                    id SERIAL PRIMARY KEY,
+                    mobile VARCHAR(20) UNIQUE NOT NULL,
+                    password_hash TEXT NOT NULL,
+                    notes TEXT,
+                    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                    updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+                )
+            """)
+            # --- Subscription: current status per section (one row per user per section)
+            cur.execute("""
+                CREATE TABLE IF NOT EXISTS subscription_subscriptions (
+                    id SERIAL PRIMARY KEY,
+                    user_id INTEGER NOT NULL REFERENCES subscription_users(id) ON DELETE CASCADE,
+                    section VARCHAR(20) NOT NULL CHECK (section IN ('tests', 'questions_414')),
+                    expiry_date DATE NOT NULL,
+                    status VARCHAR(20) NOT NULL DEFAULT 'active',
+                    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                    updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                    UNIQUE(user_id, section)
+                )
+            """)
+            cur.execute("CREATE INDEX IF NOT EXISTS idx_sub_expiry ON subscription_subscriptions(expiry_date)")
+            cur.execute("CREATE INDEX IF NOT EXISTS idx_sub_user_section ON subscription_subscriptions(user_id, section)")
+            # --- Subscription: payment history
+            cur.execute("""
+                CREATE TABLE IF NOT EXISTS subscription_payments (
+                    id SERIAL PRIMARY KEY,
+                    user_id INTEGER NOT NULL REFERENCES subscription_users(id) ON DELETE CASCADE,
+                    amount INTEGER NOT NULL CHECK (amount IN (10, 15, 20)),
+                    sections_purchased VARCHAR(20) NOT NULL CHECK (sections_purchased IN ('tests', 'questions_414', 'both')),
+                    payment_date DATE NOT NULL,
+                    payment_reference VARCHAR(100),
+                    notes TEXT,
+                    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+                )
+            """)
+            cur.execute("CREATE INDEX IF NOT EXISTS idx_payments_user ON subscription_payments(user_id)")
+            # Allow amount 15 (migration for existing DBs)
+            try:
+                cur.execute("ALTER TABLE subscription_payments DROP CONSTRAINT IF EXISTS subscription_payments_amount_check")
+                cur.execute("ALTER TABLE subscription_payments ADD CONSTRAINT subscription_payments_amount_check CHECK (amount IN (10, 15, 20))")
+            except Exception:
+                pass
+            # --- درخواست‌های دسترسی (وقتی کاربر «خیر» می‌زند و موبایل می‌دهد تا کد کاربر ساخته شود)
+            cur.execute("""
+                CREATE TABLE IF NOT EXISTS subscription_pending_requests (
+                    id SERIAL PRIMARY KEY,
+                    mobile VARCHAR(30) NOT NULL,
+                    section VARCHAR(20) NOT NULL CHECK (section IN ('tests', 'questions_414', 'both')),
+                    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+                )
+            """)
+            cur.execute("CREATE INDEX IF NOT EXISTS idx_pending_requests_created ON subscription_pending_requests(created_at DESC)")
+            # --- Admin users (for /admin panel)
+            cur.execute("""
+                CREATE TABLE IF NOT EXISTS admin_users (
+                    id SERIAL PRIMARY KEY,
+                    username VARCHAR(50) UNIQUE NOT NULL,
+                    password_hash TEXT NOT NULL,
+                    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+                )
+            """)
+            # Ensure at least one admin exists (default: admin / admin123 - change after first login)
+            cur.execute("SELECT id FROM admin_users WHERE username = %s", ('admin',))
+            if cur.fetchone() is None:
+                cur.execute("""
+                    INSERT INTO admin_users (username, password_hash)
+                    VALUES (%s, %s)
+                """, ('admin', generate_password_hash(os.getenv('ADMIN_INITIAL_PASSWORD', 'admin123'))))
+            conn.commit()
+            
             # Check if main counter exists
             cur.execute("SELECT count FROM visitor_counter WHERE counter_id = 'main'")
             result = cur.fetchone()
@@ -114,15 +214,16 @@ def init_database():
         print(f"Error initializing database: {e}")
 
 def log_visitor(page_visited='/'):
-    """Log visitor IP address and access time"""
+    """Log visitor IP address and access time. خودمون (IPهای EXCLUDED_VISITOR_IPS) لاگ نمی‌شوند."""
     try:
+        ip = get_client_ip()
+        if ip in _excluded_visitor_ips:
+            return
         conn = get_db_connection()
         if conn:
             cur = conn.cursor()
-            ip = get_client_ip()
             user_agent = request.headers.get('User-Agent', '')
             referer = request.headers.get('Referer', '')
-            
             cur.execute("""
                 INSERT INTO visitor_log (ip_address, access_time, page_visited, user_agent, referer)
                 VALUES (%s, CURRENT_TIMESTAMP, %s, %s, %s)
@@ -195,10 +296,31 @@ def _load_414_questions():
 
 @app.route('/citizenship-414')
 def citizenship_414():
-    """۴۱۴ سوال شهروندی — انگلیسی+فارسی یا فرانسه+فارسی (بدون صفحه‌بندی)."""
+    """۴۱۴ سوال شهروندی — سوالات ۱–۲۴ رایگان؛ از ۲۵ به بعد با اشتراک."""
     log_visitor('/citizenship-414')
-    questions = _load_414_questions()
-    resp = app.make_response(render_template('citizenship_414.html', questions=questions))
+    all_questions = _load_414_questions()
+    today = _today()
+    has_414 = False
+    if session.get('sub_414_expiry'):
+        try:
+            exp = session['sub_414_expiry']
+            if isinstance(exp, str):
+                exp = date.fromisoformat(exp)
+            if exp >= today:
+                has_414 = True
+        except Exception:
+            pass
+    if has_414:
+        questions = all_questions
+        show_paywall = False
+    else:
+        questions = all_questions[:24] if len(all_questions) >= 24 else all_questions
+        show_paywall = True
+    resp = app.make_response(render_template(
+        'citizenship_414.html',
+        questions=questions,
+        show_paywall=show_paywall,
+    ))
     resp.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
     resp.headers['Pragma'] = 'no-cache'
     resp.headers['Expires'] = '0'
@@ -256,11 +378,12 @@ def google_verification():
 
 @app.route('/manifest.webmanifest')
 def webapp_manifest():
-    """Web App Manifest for PWA (Add to Home Screen)."""
+    """Web App Manifest for PWA (Add to Home Screen / نصب اپ)."""
     base = request.url_root.rstrip('/')
     if request.headers.get('X-Forwarded-Proto') == 'https' and base.startswith('http://'):
         base = 'https://' + base[7:]
     manifest = {
+        'id': base + '/',
         'name': 'آزمون شهروندی کانادا | CitizenTest',
         'short_name': 'CitizenTest',
         'description': 'آزمون تمرینی رایگان شهروندی کانادا به فارسی، انگلیسی و فرانسه. ۴۱۴ و ۵۷۱ سوال، Discover Canada.',
@@ -272,9 +395,11 @@ def webapp_manifest():
         'background_color': '#ffffff',
         'lang': 'fa',
         'dir': 'rtl',
+        'categories': ['education', 'reference'],
         'icons': [
             {'src': base + '/static/images/logo.png', 'sizes': '192x192', 'type': 'image/png', 'purpose': 'any'},
             {'src': base + '/static/images/logo.png', 'sizes': '512x512', 'type': 'image/png', 'purpose': 'any'},
+            {'src': base + '/static/images/logo.png', 'sizes': '512x512', 'type': 'image/png', 'purpose': 'maskable'},
         ],
     }
     return jsonify(manifest), 200, {'Content-Type': 'application/manifest+json; charset=utf-8'}
@@ -586,6 +711,684 @@ def health_check():
         'database': db_status,
         'in_memory_counter': in_memory_counter
     })
+
+
+# ---------- Subscription (اشتراک تست‌ها و سوالات ۴۱۴) ----------
+def _today():
+    return date.today()
+
+@app.route('/api/subscription/status', methods=['GET'])
+def api_subscription_status():
+    """Return current session subscription status for both sections."""
+    today = _today()
+    out = {
+        'tests': False,
+        'tests_expiry': None,
+        'questions_414': False,
+        'questions_414_expiry': None,
+    }
+    if session.get('sub_tests_expiry'):
+        try:
+            exp = session['sub_tests_expiry']
+            if isinstance(exp, str):
+                exp = date.fromisoformat(exp)
+            if exp >= today:
+                out['tests'] = True
+                out['tests_expiry'] = exp.isoformat() if hasattr(exp, 'isoformat') else str(exp)
+        except Exception:
+            pass
+    if session.get('sub_414_expiry'):
+        try:
+            exp = session['sub_414_expiry']
+            if isinstance(exp, str):
+                exp = date.fromisoformat(exp)
+            if exp >= today:
+                out['questions_414'] = True
+                out['questions_414_expiry'] = exp.isoformat() if hasattr(exp, 'isoformat') else str(exp)
+        except Exception:
+            pass
+    return jsonify(out)
+
+@app.route('/api/subscription/login', methods=['POST'])
+def api_subscription_login():
+    """Validate mobile + password and ensure subscription for the requested section; set session and return success."""
+    data = request.get_json() or {}
+    mobile = (data.get('mobile') or '').strip()
+    password = (data.get('password') or '').strip()
+    section = (data.get('section') or '').strip()  # 'tests' or 'questions_414'
+    if not mobile or not password:
+        return jsonify({'success': False, 'error': 'کد کاربری و کلمه عبور الزامی است.'}), 200
+    if section not in ('tests', 'questions_414'):
+        return jsonify({'success': False, 'error': 'ورودی نامعتبر.'}), 200
+    try:
+        conn = get_db_connection()
+        if not conn:
+            return jsonify({'success': False, 'error': 'خطای اتصال به پایگاه داده.'}), 200
+        cur = conn.cursor(cursor_factory=RealDictCursor)
+        cur.execute("SELECT id, password_hash FROM subscription_users WHERE mobile = %s", (mobile,))
+        row = cur.fetchone()
+        cur.close()
+        conn.close()
+        if not row or not check_password_hash(row['password_hash'], password):
+            return jsonify({'success': False, 'error': 'کد کاربری یا کلمه عبور اشتباه است.'}), 200
+        user_id = row['id']
+        conn = get_db_connection()
+        if not conn:
+            return jsonify({'success': False, 'error': 'خطای اتصال.'}), 200
+        cur = conn.cursor(cursor_factory=RealDictCursor)
+        cur.execute("""
+            SELECT section, expiry_date FROM subscription_subscriptions
+            WHERE user_id = %s AND status = 'active' AND expiry_date >= %s
+        """, (user_id, _today()))
+        subs = cur.fetchall()
+        cur.close()
+        conn.close()
+        expiry_by_section = {r['section']: r['expiry_date'] for r in subs}
+        exp = expiry_by_section.get(section)
+        if not exp:
+            return jsonify({'success': False, 'error': 'اشتراک منقضی شده یا خریداری نشده است.'}), 200
+        if isinstance(exp, datetime):
+            exp = exp.date()
+        session['sub_user_id'] = user_id
+        session['sub_mobile'] = mobile
+        if section == 'tests':
+            session['sub_tests_expiry'] = exp.isoformat()
+        else:
+            session['sub_414_expiry'] = exp.isoformat()
+        # If they have the other section too, set it so we don't ask again
+        for s, e in expiry_by_section.items():
+            if isinstance(e, datetime):
+                e = e.date()
+            if s == 'tests' and e >= _today():
+                session['sub_tests_expiry'] = e.isoformat()
+            elif s == 'questions_414' and e >= _today():
+                session['sub_414_expiry'] = e.isoformat()
+        return jsonify({'success': True, 'message': 'ورود موفق.'}), 200
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)}), 200
+
+
+@app.route('/api/subscription/request-access', methods=['POST'])
+def api_subscription_request_access():
+    """ثبت درخواست دسترسی (موبایل) وقتی کاربر «خیر» می‌زند — کد کاربر همان موبایل خواهد بود."""
+    data = request.get_json() or request.form or {}
+    mobile = (data.get('mobile') or '').strip()
+    section = (data.get('section') or 'tests').strip()
+    if section not in ('tests', 'questions_414', 'both'):
+        section = 'tests'
+    if not mobile or len(mobile) < 5:
+        return jsonify({'success': False, 'error': 'شماره موبایل معتبر وارد کنید.'}), 200
+    try:
+        conn = get_db_connection()
+        if not conn:
+            return jsonify({'success': False, 'error': 'خطای اتصال.'}), 200
+        cur = conn.cursor()
+        cur.execute(
+            "INSERT INTO subscription_pending_requests (mobile, section) VALUES (%s, %s)",
+            (mobile, section)
+        )
+        conn.commit()
+        cur.close()
+        conn.close()
+        return jsonify({'success': True, 'message': 'درخواست ثبت شد. پس از واریز، کد کاربری شما همین شماره خواهد بود و رمز عبور برای شما ارسال می‌شود.'}), 200
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)}), 200
+
+
+# ---------- Admin panel ----------
+def _admin_required(f):
+    from functools import wraps
+    @wraps(f)
+    def inner(*args, **kwargs):
+        if not session.get('admin_logged_in'):
+            return redirect('/admin')
+        return f(*args, **kwargs)
+    return inner
+
+@app.route('/admin')
+def admin_index():
+    if session.get('admin_logged_in'):
+        return redirect('/admin/dashboard')
+    return render_template('admin_login.html')
+
+@app.route('/admin/login', methods=['POST'])
+def admin_login():
+    data = request.form or request.get_json() or {}
+    username = (data.get('username') or '').strip()
+    password = (data.get('password') or '').strip()
+    if not username or not password:
+        return redirect('/admin?error=empty')
+    try:
+        conn = get_db_connection()
+        if not conn:
+            return redirect('/admin?error=db')
+        cur = conn.cursor(cursor_factory=RealDictCursor)
+        cur.execute("SELECT id, password_hash FROM admin_users WHERE username = %s", (username,))
+        row = cur.fetchone()
+        cur.close()
+        conn.close()
+        if not row or not check_password_hash(row['password_hash'], password):
+            return redirect('/admin?error=invalid')
+        session['admin_logged_in'] = True
+        session['admin_username'] = username
+        return redirect('/admin/dashboard')
+    except Exception:
+        return redirect('/admin?error=error')
+
+@app.route('/admin/logout')
+def admin_logout():
+    session.pop('admin_logged_in', None)
+    session.pop('admin_username', None)
+    return redirect('/admin')
+
+@app.route('/admin/dashboard')
+@_admin_required
+def admin_dashboard():
+    return render_template('admin_dashboard.html')
+
+
+@app.route('/admin/api/change-password', methods=['POST'])
+@_admin_required
+def admin_api_change_password():
+    """تغییر رمز عبور ادمین (ورود با رمز فعلی لازم است)."""
+    username = session.get('admin_username')
+    if not username:
+        return jsonify({'success': False, 'error': 'ورود کنید.'}), 200
+    data = request.get_json() or request.form or {}
+    current = (data.get('current_password') or '').strip()
+    new_pass = (data.get('new_password') or '').strip()
+    if not current or not new_pass:
+        return jsonify({'success': False, 'error': 'رمز فعلی و رمز جدید الزامی است.'}), 200
+    if len(new_pass) < 6:
+        return jsonify({'success': False, 'error': 'رمز جدید حداقل ۶ کاراکتر باشد.'}), 200
+    try:
+        conn = get_db_connection()
+        if not conn:
+            return jsonify({'success': False, 'error': 'خطای DB'}), 500
+        cur = conn.cursor(cursor_factory=RealDictCursor)
+        cur.execute("SELECT id, password_hash FROM admin_users WHERE username = %s", (username,))
+        row = cur.fetchone()
+        if not row or not check_password_hash(row['password_hash'], current):
+            cur.close()
+            conn.close()
+            return jsonify({'success': False, 'error': 'رمز فعلی اشتباه است.'}), 200
+        cur.execute("UPDATE admin_users SET password_hash = %s WHERE id = %s",
+                    (generate_password_hash(new_pass), row['id']))
+        conn.commit()
+        cur.close()
+        conn.close()
+        return jsonify({'success': True, 'message': 'رمز با موفقیت عوض شد.'}), 200
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)}), 200
+
+
+@app.route('/admin/api/pending-requests', methods=['GET'])
+@_admin_required
+def admin_api_pending_requests():
+    """لیست درخواست‌های دسترسی (موبایل افرادی که «خیر» زدند و موبایل دادند)."""
+    try:
+        conn = get_db_connection()
+        if not conn:
+            return jsonify({'success': False, 'error': 'DB'}), 500
+        cur = conn.cursor(cursor_factory=RealDictCursor)
+        cur.execute("""
+            SELECT id, mobile, section, created_at
+            FROM subscription_pending_requests
+            ORDER BY created_at DESC
+            LIMIT 200
+        """)
+        rows = cur.fetchall()
+        cur.close()
+        conn.close()
+        for r in rows:
+            if r.get('created_at') and hasattr(r['created_at'], 'isoformat'):
+                r['created_at'] = r['created_at'].isoformat()
+        return jsonify({'success': True, 'pending': rows}), 200
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)}), 500
+
+
+def _visitor_exclude_sql():
+    """برای داشبورد حضور: شرط حذف IPهای خودمون از آمار."""
+    if not _excluded_visitor_ips:
+        return "", ()
+    placeholders = ",".join(["%s"] * len(_excluded_visitor_ips))
+    return " AND ip_address NOT IN (" + placeholders + ")", tuple(_excluded_visitor_ips)
+
+
+@app.route('/admin/api/visitor-dashboard', methods=['GET'])
+@_admin_required
+def admin_api_visitor_dashboard():
+    """داشبورد حضور: بازدید به تفکیک روز، IPهای پرتعداد، و جزئیات هر IP. خودمون (EXCLUDED_VISITOR_IPS) در آمار نمی‌آیند."""
+    ip_filter = request.args.get('ip', '').strip() or None
+    try:
+        conn = get_db_connection()
+        if not conn:
+            return jsonify({'success': False, 'error': 'DB'}), 500
+        cur = conn.cursor(cursor_factory=RealDictCursor)
+        exclude_sql, exclude_params = _visitor_exclude_sql()
+
+        if ip_filter:
+            # جزئیات یک IP: در چه روزهایی، اولین/آخرین بازدید هر روز، تعداد درخواست، تخمین مدت (دقیقه)
+            cur.execute("""
+                SELECT DATE(access_time) AS day,
+                       MIN(access_time) AS first_time,
+                       MAX(access_time) AS last_time,
+                       COUNT(*) AS visit_count
+                FROM visitor_log
+                WHERE ip_address = %s
+                GROUP BY DATE(access_time)
+                ORDER BY day DESC
+                LIMIT 90
+            """, (ip_filter,))
+            days = cur.fetchall()
+            out = []
+            for row in days:
+                first = row['first_time']
+                last = row['last_time']
+                duration_min = 0
+                if first and last and hasattr(first, 'timestamp') and hasattr(last, 'timestamp'):
+                    duration_min = max(0, int((last.timestamp() - first.timestamp()) / 60))
+                out.append({
+                    'date': row['day'].isoformat() if hasattr(row['day'], 'isoformat') else str(row['day']),
+                    'first_time': first.isoformat() if first and hasattr(first, 'isoformat') else str(first),
+                    'last_time': last.isoformat() if last and hasattr(last, 'isoformat') else str(last),
+                    'visit_count': row['visit_count'],
+                    'duration_minutes': duration_min,
+                })
+            cur.close()
+            conn.close()
+            return jsonify({'success': True, 'ip': ip_filter, 'days': out}), 200
+
+        # خلاصه داشبورد: ۳۰ روز اخیر، IPهای پرتعداد، آخرین لاگ‌ها (بدون IPهای خودمون)
+        cur.execute("""
+            SELECT DATE(access_time) AS day,
+                   COUNT(*) AS total_visits,
+                   COUNT(DISTINCT ip_address) AS unique_ips
+            FROM visitor_log
+            WHERE access_time >= CURRENT_DATE - INTERVAL '30 days'
+            """ + exclude_sql + """
+            GROUP BY DATE(access_time)
+            ORDER BY day DESC
+            LIMIT 30
+        """, exclude_params)
+        visits_per_day = cur.fetchall()
+        for row in visits_per_day:
+            if hasattr(row.get('day'), 'isoformat'):
+                row['day'] = row['day'].isoformat()
+
+        cur.execute("""
+            SELECT ip_address,
+                   COUNT(*) AS total_visits,
+                   MIN(access_time) AS first_seen,
+                   MAX(access_time) AS last_seen,
+                   COUNT(DISTINCT DATE(access_time)) AS days_active
+            FROM visitor_log
+            WHERE 1=1
+            """ + exclude_sql + """
+            GROUP BY ip_address
+            ORDER BY total_visits DESC
+            LIMIT 100
+        """, exclude_params)
+        top_ips = cur.fetchall()
+        for row in top_ips:
+            for k in ('first_seen', 'last_seen'):
+                if row.get(k) and hasattr(row[k], 'isoformat'):
+                    row[k] = row[k].isoformat()
+
+        # پرکاربردترین user_agent (دیوایس) به ازای هر IP
+        cur.execute("""
+            SELECT ip_address, user_agent, COUNT(*) AS cnt
+            FROM visitor_log
+            WHERE 1=1
+            """ + exclude_sql + """
+            GROUP BY ip_address, user_agent
+        """, exclude_params)
+        ua_by_ip = {}
+        for r in cur.fetchall():
+            ip_key = r['ip_address']
+            if ip_key not in ua_by_ip:
+                ua_by_ip[ip_key] = []
+            ua_by_ip[ip_key].append((r['user_agent'] or '', r['cnt']))
+        for row in top_ips:
+            uas = ua_by_ip.get(row['ip_address'], [])
+            row['device'] = _device_from_user_agent(max(uas, key=lambda x: x[1])[0]) if uas else '—'
+
+        cur.execute("""
+            SELECT log_id, ip_address, access_time, page_visited, user_agent
+            FROM visitor_log
+            WHERE 1=1
+            """ + exclude_sql + """
+            ORDER BY access_time DESC
+            LIMIT 100
+        """, exclude_params)
+        recent = cur.fetchall()
+        for row in recent:
+            if row.get('access_time') and hasattr(row['access_time'], 'isoformat'):
+                row['access_time'] = row['access_time'].isoformat()
+            row['device'] = _device_from_user_agent(row.get('user_agent') or '')
+
+        cur.close()
+        conn.close()
+        return jsonify({
+            'success': True,
+            'visits_per_day': visits_per_day,
+            'top_ips': top_ips,
+            'recent_logs': recent,
+        }), 200
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)}), 500
+
+
+@app.route('/admin/api/users', methods=['GET'])
+@_admin_required
+def admin_api_users():
+    try:
+        conn = get_db_connection()
+        if not conn:
+            return jsonify({'success': False, 'error': 'DB'}), 500
+        cur = conn.cursor(cursor_factory=RealDictCursor)
+        cur.execute("""
+            SELECT u.id, u.mobile, u.notes, u.created_at,
+                   (SELECT expiry_date FROM subscription_subscriptions WHERE user_id = u.id AND section = 'tests' AND status = 'active' ORDER BY expiry_date DESC LIMIT 1) AS tests_expiry,
+                   (SELECT expiry_date FROM subscription_subscriptions WHERE user_id = u.id AND section = 'questions_414' AND status = 'active' ORDER BY expiry_date DESC LIMIT 1) AS questions_414_expiry
+            FROM subscription_users u
+            ORDER BY u.id DESC
+        """)
+        users = cur.fetchall()
+        cur.close()
+        conn.close()
+        for u in users:
+            for k in list(u.keys()):
+                if hasattr(u[k], 'isoformat'):
+                    u[k] = u[k].isoformat()
+        return jsonify({'success': True, 'users': users}), 200
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)}), 500
+
+
+@app.route('/admin/api/users/change-password', methods=['POST'])
+@_admin_required
+def admin_api_users_change_password():
+    """تغییر رمز عبور یک کاربر اشتراک (با user_id و رمز جدید)."""
+    data = request.get_json() or request.form or {}
+    try:
+        user_id = int(data.get('user_id') or 0)
+    except Exception:
+        user_id = 0
+    new_password = (data.get('new_password') or '').strip()
+    if not user_id or not new_password:
+        return jsonify({'success': False, 'error': 'user_id و رمز جدید الزامی است.'}), 200
+    if len(new_password) < 4:
+        return jsonify({'success': False, 'error': 'رمز جدید حداقل ۴ کاراکتر باشد.'}), 200
+    try:
+        conn = get_db_connection()
+        if not conn:
+            return jsonify({'success': False, 'error': 'DB'}), 500
+        cur = conn.cursor()
+        cur.execute(
+            "UPDATE subscription_users SET password_hash = %s, updated_at = CURRENT_TIMESTAMP WHERE id = %s",
+            (generate_password_hash(new_password), user_id)
+        )
+        if cur.rowcount == 0:
+            conn.rollback()
+            cur.close()
+            conn.close()
+            return jsonify({'success': False, 'error': 'کاربر یافت نشد.'}), 200
+        conn.commit()
+        cur.close()
+        conn.close()
+        return jsonify({'success': True, 'message': 'رمز کاربر با موفقیت عوض شد.'}), 200
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)}), 200
+
+
+@app.route('/admin/api/users/reset-password', methods=['POST'])
+@_admin_required
+def admin_api_users_reset_password():
+    """بازنشانی رمز کاربر به یک رمز موقت تصادفی؛ رمز جدید در پاسخ برمی‌گردد تا ادمین به کاربر بگوید."""
+    data = request.get_json() or request.form or {}
+    try:
+        user_id = int(data.get('user_id') or 0)
+    except Exception:
+        user_id = 0
+    if not user_id:
+        return jsonify({'success': False, 'error': 'کاربر را انتخاب کنید.'}), 200
+    # حداکثر ۸ حرف، حتماً شامل عدد
+    chars = list(string.ascii_letters + string.digits)
+    new_password = random.choice(string.digits) + ''.join(random.choices(chars, k=7))
+    new_password = ''.join(random.sample(new_password, len(new_password)))
+    try:
+        conn = get_db_connection()
+        if not conn:
+            return jsonify({'success': False, 'error': 'DB'}), 500
+        cur = conn.cursor()
+        cur.execute(
+            "UPDATE subscription_users SET password_hash = %s, updated_at = CURRENT_TIMESTAMP WHERE id = %s",
+            (generate_password_hash(new_password), user_id)
+        )
+        if cur.rowcount == 0:
+            conn.rollback()
+            cur.close()
+            conn.close()
+            return jsonify({'success': False, 'error': 'کاربر یافت نشد.'}), 200
+        conn.commit()
+        cur.close()
+        conn.close()
+        return jsonify({'success': True, 'message': 'رمز بازنشانی شد. این رمز را به کاربر بدهید.', 'password': new_password}), 200
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)}), 200
+
+
+@app.route('/admin/api/users/add', methods=['POST'])
+@_admin_required
+def admin_api_users_add():
+    data = request.get_json() or request.form or {}
+    mobile = (data.get('mobile') or '').strip()
+    password = (data.get('password') or '').strip()
+    free_access = data.get('free_access') in (True, 'true', '1', 1)
+    if not mobile or not password:
+        return jsonify({'success': False, 'error': 'موبایل و رمز عبور الزامی است.'}), 200
+    try:
+        conn = get_db_connection()
+        if not conn:
+            return jsonify({'success': False, 'error': 'DB'}), 500
+        cur = conn.cursor()
+        cur.execute("INSERT INTO subscription_users (mobile, password_hash) VALUES (%s, %s) RETURNING id", (mobile, generate_password_hash(password)))
+        row = cur.fetchone()
+        user_id = row[0]
+        if free_access:
+            exp = _today() + timedelta(days=365)
+            for sec in ('tests', 'questions_414'):
+                cur.execute("""
+                    INSERT INTO subscription_subscriptions (user_id, section, expiry_date, status)
+                    VALUES (%s, %s, %s, 'active')
+                    ON CONFLICT (user_id, section) DO UPDATE SET
+                    expiry_date = EXCLUDED.expiry_date, updated_at = CURRENT_TIMESTAMP
+                """, (user_id, sec, exp))
+        conn.commit()
+        cur.close()
+        conn.close()
+        msg = 'کاربر اضافه شد.' + (' دسترسی رایگان یک‌ساله برای کل بسته فعال شد.' if free_access else '')
+        return jsonify({'success': True, 'id': user_id, 'message': msg}), 200
+    except psycopg2.IntegrityError:
+        return jsonify({'success': False, 'error': 'این شماره موبایل قبلاً ثبت شده است.'}), 200
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)}), 200
+
+@app.route('/admin/api/payments', methods=['GET'])
+@_admin_required
+def admin_api_payments():
+    user_id = request.args.get('user_id', type=int)
+    try:
+        conn = get_db_connection()
+        if not conn:
+            return jsonify({'success': False, 'error': 'DB'}), 500
+        cur = conn.cursor(cursor_factory=RealDictCursor)
+        if user_id:
+            cur.execute("""
+                SELECT p.id, p.user_id, p.amount, p.sections_purchased, p.payment_date, p.payment_reference, p.notes, p.created_at
+                FROM subscription_payments p WHERE p.user_id = %s ORDER BY p.id DESC
+            """, (user_id,))
+        else:
+            cur.execute("""
+                SELECT p.id, p.user_id, u.mobile, p.amount, p.sections_purchased, p.payment_date, p.payment_reference, p.notes, p.created_at
+                FROM subscription_payments p JOIN subscription_users u ON u.id = p.user_id ORDER BY p.id DESC LIMIT 200
+            """)
+        payments = cur.fetchall()
+        cur.close()
+        conn.close()
+        for p in payments:
+            for k in list(p.keys()):
+                v = p[k]
+                if v is not None and hasattr(v, 'isoformat'):
+                    p[k] = v.isoformat()
+        return jsonify({'success': True, 'payments': payments}), 200
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)}), 500
+
+@app.route('/admin/api/payments/add', methods=['POST'])
+@_admin_required
+def admin_api_payments_add():
+    data = request.get_json() or request.form or {}
+    user_id = data.get('user_id')
+    if user_id is not None:
+        try:
+            user_id = int(user_id)
+        except Exception:
+            user_id = None
+    amount = data.get('amount')
+    if amount is not None:
+        try:
+            amount = int(amount)
+        except Exception:
+            amount = None
+    sections_purchased = (data.get('sections_purchased') or '').strip()
+    payment_date_s = (data.get('payment_date') or '').strip()
+    payment_reference = (data.get('payment_reference') or '').strip()[:100]
+    notes = (data.get('notes') or '').strip()
+    # فقط کل بسته با ۱۵ دلار
+    if not user_id or amount != 15 or sections_purchased != 'both':
+        return jsonify({'success': False, 'error': 'ورودی نامعتبر. فقط ثبت پرداخت ۱۵ دلار (کل بسته) امکان‌پذیر است.'}), 200
+    try:
+        pay_date = date.fromisoformat(payment_date_s) if payment_date_s else _today()
+    except Exception:
+        pay_date = _today()
+    expiry = pay_date + timedelta(days=30)
+    try:
+        conn = get_db_connection()
+        if not conn:
+            return jsonify({'success': False, 'error': 'DB'}), 500
+        cur = conn.cursor()
+        cur.execute("INSERT INTO subscription_payments (user_id, amount, sections_purchased, payment_date, payment_reference, notes) VALUES (%s, %s, %s, %s, %s, %s)",
+                    (user_id, amount, sections_purchased, pay_date, payment_reference or None, notes or None))
+        sections_to_update = ['tests', 'questions_414']  # کل بسته
+        for sec in sections_to_update:
+            cur.execute("""
+                INSERT INTO subscription_subscriptions (user_id, section, expiry_date, status)
+                VALUES (%s, %s, %s, 'active')
+                ON CONFLICT (user_id, section) DO UPDATE SET
+                expiry_date = GREATEST(subscription_subscriptions.expiry_date, EXCLUDED.expiry_date),
+                updated_at = CURRENT_TIMESTAMP
+            """, (user_id, sec, expiry))
+        conn.commit()
+        cur.close()
+        conn.close()
+        return jsonify({'success': True, 'message': 'پرداخت ثبت شد و اشتراک به‌روز شد.'}), 200
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)}), 200
+
+
+@app.route('/admin/api/payments/<int:pay_id>', methods=['DELETE'])
+@_admin_required
+def admin_api_payments_delete(pay_id):
+    """حذف یک پرداخت (برای اصلاح اشتباه). اشتراک خودکار برگشت داده نمی‌شود؛ در صورت نیاز از «تنظیم انقضا» استفاده کنید."""
+    try:
+        conn = get_db_connection()
+        if not conn:
+            return jsonify({'success': False, 'error': 'DB'}), 500
+        cur = conn.cursor()
+        cur.execute("DELETE FROM subscription_payments WHERE id = %s", (pay_id,))
+        if cur.rowcount == 0:
+            conn.rollback()
+            cur.close()
+            conn.close()
+            return jsonify({'success': False, 'error': 'پرداخت یافت نشد.'}), 200
+        conn.commit()
+        cur.close()
+        conn.close()
+        return jsonify({'success': True, 'message': 'پرداخت حذف شد. در صورت نیاز انقضای کاربر را دستی تنظیم کنید.'}), 200
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)}), 200
+
+
+@app.route('/admin/api/subscription/set', methods=['POST'])
+@_admin_required
+def admin_api_subscription_set():
+    """تنظیم دستی تاریخ انقضا برای یک کاربر — هر دو (تست و ۴۱۴) به همین تاریخ تنظیم می‌شوند."""
+    data = request.get_json() or request.form or {}
+    try:
+        user_id = int(data.get('user_id') or 0)
+    except Exception:
+        user_id = 0
+    expiry_s = (data.get('expiry_date') or '').strip()
+    if not user_id:
+        return jsonify({'success': False, 'error': 'کاربر الزامی است.'}), 200
+    try:
+        exp = date.fromisoformat(expiry_s) if expiry_s else _today()
+    except Exception:
+        exp = _today()
+    try:
+        conn = get_db_connection()
+        if not conn:
+            return jsonify({'success': False, 'error': 'DB'}), 500
+        cur = conn.cursor()
+        for section in ('tests', 'questions_414'):
+            cur.execute("""
+                INSERT INTO subscription_subscriptions (user_id, section, expiry_date, status)
+                VALUES (%s, %s, %s, 'active')
+                ON CONFLICT (user_id, section) DO UPDATE SET
+                expiry_date = EXCLUDED.expiry_date, updated_at = CURRENT_TIMESTAMP
+            """, (user_id, section, exp))
+        conn.commit()
+        cur.close()
+        conn.close()
+        return jsonify({'success': True, 'message': 'انقضا به‌روز شد.'}), 200
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)}), 200
+
+
+@app.route('/admin/api/subscription/grant-free', methods=['POST'])
+@_admin_required
+def admin_api_subscription_grant_free():
+    """اعطای دسترسی رایگان یک‌ساله به کل بسته (لطف — بدون ثبت پرداخت)."""
+    data = request.get_json() or request.form or {}
+    try:
+        user_id = int(data.get('user_id') or 0)
+    except Exception:
+        user_id = 0
+    if not user_id:
+        return jsonify({'success': False, 'error': 'user_id الزامی است.'}), 200
+    exp = _today() + timedelta(days=365)
+    try:
+        conn = get_db_connection()
+        if not conn:
+            return jsonify({'success': False, 'error': 'DB'}), 500
+        cur = conn.cursor()
+        for sec in ('tests', 'questions_414'):
+            cur.execute("""
+                INSERT INTO subscription_subscriptions (user_id, section, expiry_date, status)
+                VALUES (%s, %s, %s, 'active')
+                ON CONFLICT (user_id, section) DO UPDATE SET
+                expiry_date = EXCLUDED.expiry_date, updated_at = CURRENT_TIMESTAMP
+            """, (user_id, sec, exp))
+        conn.commit()
+        cur.close()
+        conn.close()
+        return jsonify({'success': True, 'message': 'دسترسی رایگان یک‌ساله برای کل بسته اعطا شد.'}), 200
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)}), 200
+
 
 if __name__ == "__main__":
     import os

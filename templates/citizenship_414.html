@@ -213,6 +213,19 @@ body {
         .btn-show-answer:hover { background: rgba(30,60,114,0.1); }
         body.theme-dark .btn-show-answer { border-color: #7cb3f5; color: #7cb3f5; }
         body.theme-dark .btn-show-answer:hover { background: rgba(124,179,245,0.15); }
+        .paywall-414-email-block {
+            display: flex; align-items: center; flex-wrap: wrap; gap: 14px;
+            margin: 16px 0; padding: 18px 20px;
+            background: var(--expl-bg); border-radius: 12px; border: 1px solid var(--border);
+        }
+        .paywall-414-email-label { font-size: 1.15rem; font-weight: 700; color: var(--text); }
+        .paywall-414-email-value { font-size: 1.55rem; font-weight: 700; color: var(--accent); letter-spacing: 0.02em; }
+        .paywall-414-btn-copy {
+            padding: 12px 20px; background: var(--accent); color: #fff; border: none;
+            border-radius: 10px; font-weight: 700; cursor: pointer; font-size: 1.05rem;
+        }
+        .paywall-414-btn-copy:hover { opacity: 0.9; }
+        .paywall-414-btn-copy.copied { background: #28a745; }
 </style>
 </head>
 <body>
@@ -290,6 +303,96 @@ body {
   </div>
   </div>
         {% endfor %}
+
+        {% if show_paywall %}
+        <div class="paywall-414" style="margin-top: 28px; padding: 24px; background: var(--card-bg); border: 2px solid var(--accent); border-radius: 16px; max-width: 520px;">
+            <h2 style="margin-bottom: 12px; color: var(--accent);">دسترسی به سوالات ۲۵ تا ۴۱۴</h2>
+            <p style="margin-bottom: 16px;">برای مشاهده همه ۴۱۴ سوال و دسترسی به تست‌ها، اشتراک یک‌ماهه <strong>۱۵ دلار</strong> (کل بسته) لازم است. واریز به آدرس ایمیل زیر و ارسال کد واریز به همان ایمیل؛ پس از تأیید، کد کاربری و رمز برای شما ارسال می‌شود.</p>
+            <div class="paywall-414-email-block">
+                <span class="paywall-414-email-label">ایمیل:</span>
+                <span class="paywall-414-email-value" id="paywall414EmailValue">Koroush.Mog@gmail.com</span>
+                <button type="button" class="paywall-414-btn-copy" id="paywall414EmailCopy" title="کپی">کپی</button>
+            </div>
+            <p style="margin-bottom: 14px;"><strong>ورود (در صورت داشتن کد و رمز):</strong></p>
+            <input type="text" id="paywall414Mobile" placeholder="کد کاربری (شماره موبایل)" style="width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid var(--border); border-radius: 10px;">
+            <input type="password" id="paywall414Password" placeholder="کلمه عبور" style="width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid var(--border); border-radius: 10px;">
+            <p id="paywall414Error" class="subscription-error" style="display: none; color: #c00; margin-bottom: 8px;"></p>
+            <button type="button" id="paywall414LoginBtn" style="padding: 12px 24px; background: var(--accent); color: #fff; border: none; border-radius: 10px; cursor: pointer; font-weight: 600;">ورود و مشاهده همه سوالات</button>
+        </div>
+        <script>
+        (function() {
+            var copyBtn = document.getElementById('paywall414EmailCopy');
+            var emailEl = document.getElementById('paywall414EmailValue');
+            if (copyBtn && emailEl) {
+                copyBtn.addEventListener('click', function() {
+                    var text = emailEl.textContent || '';
+                    if (!text) return;
+                    if (navigator.clipboard && navigator.clipboard.writeText) {
+                        navigator.clipboard.writeText(text).then(function() {
+                            copyBtn.textContent = 'کپی شد!';
+                            copyBtn.classList.add('copied');
+                            setTimeout(function() { copyBtn.textContent = 'کپی'; copyBtn.classList.remove('copied'); }, 2000);
+                        }).catch(function() {
+                            try {
+                                var r = document.createRange();
+                                r.selectNodeContents(emailEl);
+                                window.getSelection().removeAllRanges();
+                                window.getSelection().addRange(r);
+                                document.execCommand('copy');
+                                window.getSelection().removeAllRanges();
+                                copyBtn.textContent = 'کپی شد!';
+                                copyBtn.classList.add('copied');
+                                setTimeout(function() { copyBtn.textContent = 'کپی'; copyBtn.classList.remove('copied'); }, 2000);
+                            } catch (e) {}
+                        });
+                    } else {
+                        try {
+                            var r = document.createRange();
+                            r.selectNodeContents(emailEl);
+                            window.getSelection().removeAllRanges();
+                            window.getSelection().addRange(r);
+                            document.execCommand('copy');
+                            window.getSelection().removeAllRanges();
+                            copyBtn.textContent = 'کپی شد!';
+                            copyBtn.classList.add('copied');
+                            setTimeout(function() { copyBtn.textContent = 'کپی'; copyBtn.classList.remove('copied'); }, 2000);
+                        } catch (e) {}
+                    }
+                });
+            }
+            var btn = document.getElementById('paywall414LoginBtn');
+            if (!btn) return;
+            btn.addEventListener('click', function() {
+                var mobile = (document.getElementById('paywall414Mobile').value || '').trim();
+                var password = document.getElementById('paywall414Password').value || '';
+                var errEl = document.getElementById('paywall414Error');
+                errEl.style.display = 'none';
+                errEl.textContent = '';
+                if (!mobile || !password) {
+                    errEl.textContent = 'کد کاربری و کلمه عبور الزامی است.';
+                    errEl.style.display = 'block';
+                    return;
+                }
+                fetch(window.location.origin + '/api/subscription/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    credentials: 'include',
+                    body: JSON.stringify({ mobile: mobile, password: password, section: 'questions_414' })
+                }).then(function(r) { return r.json(); }).then(function(data) {
+                    if (data && data.success) {
+                        window.location.reload();
+                    } else {
+                        errEl.textContent = (data && data.error) ? data.error : 'خطا در ورود.';
+                        errEl.style.display = 'block';
+                    }
+                }).catch(function() {
+                    errEl.textContent = 'خطای اتصال.';
+                    errEl.style.display = 'block';
+                });
+            });
+        })();
+        </script>
+        {% endif %}
 
         <div class="page-header" style="margin-top: 32px;">
             <p>منبع: Citizenship 414 question.pdf</p>

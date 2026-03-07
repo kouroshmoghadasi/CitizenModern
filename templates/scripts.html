@@ -3118,6 +3118,7 @@
 
         // تولید تست‌ها (بعد از تعریف allTests)
         let generatedTests = [];
+        let pendingTestIndex = null; // برای مودال اشتراک (Test3+)
         function initTests() {
             // تکمیل سوالات اصلی
             allTests.forEach(test => {
@@ -3220,47 +3221,86 @@
             }
         }
 
-        // انتخاب تست
-        function selectTest(testIndex) {
+        // انتخاب تست (از Test3 به بعد نیاز به اشتراک دارد؛ در صورت نداشتن اشتراک مودال نمایش داده می‌شود)
+        function doSelectTest(testIndex) {
             currentTest = testIndex;
             userAnswers = [];
             correctCount = 0;
             incorrectCount = 0;
             
-            // ریست تایمر
             stopTimer();
             timerSeconds = 45 * 60;
             
-            // بروزرسانی combobox
             const select = document.getElementById('testNumberSelect');
             if (select) {
-                // اطمینان از اینکه combobox populate شده است
                 if (select.options.length === 0 && generatedTests && generatedTests.length > 0) {
                     populateTestSelect();
                 }
-                // تنظیم مقدار به Test1, Test2, etc.
                 select.value = testIndex + 1;
             }
             
-            // بروزرسانی combobox موبایل
             const selectMobile = document.getElementById('testNumberSelectMobile');
             if (selectMobile) {
-                // اطمینان از اینکه combobox populate شده است
                 if (selectMobile.options.length === 0 && generatedTests && generatedTests.length > 0) {
                     populateTestSelectMobile();
                 }
-                // تنظیم مقدار به Test1, Test2, etc.
                 selectMobile.value = testIndex + 1;
             }
             
-            // بروزرسانی label موبایل
-            // نمایش تست (دکمه‌های navigation در displayQuestion به‌روزرسانی می‌شوند)
             displayTest(testIndex);
             
-            // شروع تایمر - با تاخیر کوتاه برای اطمینان از آماده بودن DOM
             setTimeout(function() {
                 startTimer();
             }, 100);
+        }
+        
+        function revertTestDropdowns() {
+            const select = document.getElementById('testNumberSelect');
+            if (select && typeof currentTest !== 'undefined') select.value = currentTest + 1;
+            const selectMobile = document.getElementById('testNumberSelectMobile');
+            if (selectMobile && typeof currentTest !== 'undefined') selectMobile.value = currentTest + 1;
+        }
+        
+        function showSubscriptionModal() {
+            const el = document.getElementById('subscriptionModal');
+            if (el) {
+                el.style.display = 'flex';
+                document.getElementById('subscriptionStep1').style.display = 'block';
+                document.getElementById('subscriptionStepLogin').style.display = 'none';
+                document.getElementById('subscriptionStepPayment').style.display = 'none';
+                var err = document.getElementById('subModalLoginError');
+                if (err) { err.style.display = 'none'; err.textContent = ''; }
+                var reqMsg = document.getElementById('subModalRequestMsg');
+                if (reqMsg) { reqMsg.style.display = 'none'; reqMsg.textContent = ''; }
+                var reqMobile = document.getElementById('subModalRequestMobile');
+                if (reqMobile) reqMobile.value = '';
+            }
+        }
+        
+        function hideSubscriptionModal() {
+            const el = document.getElementById('subscriptionModal');
+            if (el) el.style.display = 'none';
+        }
+        
+        function selectTest(testIndex, skipSubscriptionCheck) {
+            if (testIndex >= 2 && skipSubscriptionCheck !== true) {
+                fetch(API_BASE_URL + '/api/subscription/status', { credentials: 'include' })
+                    .then(function(r) { return r.json(); })
+                    .then(function(data) {
+                        if (data && data.tests === true) {
+                            doSelectTest(testIndex);
+                        } else {
+                            pendingTestIndex = testIndex;
+                            revertTestDropdowns();
+                            showSubscriptionModal();
+                        }
+                    })
+                    .catch(function() {
+                        revertTestDropdowns();
+                    });
+                return;
+            }
+            doSelectTest(testIndex);
         }
         
         // تابع برای انتخاب تست از combobox
@@ -4016,6 +4056,128 @@
             if (btnFrM) btnFrM.addEventListener('click', goFr);
         }
         document.addEventListener('DOMContentLoaded', setupMainPageLangButtons);
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var modal = document.getElementById('subscriptionModal');
+            if (!modal) return;
+            document.getElementById('subModalYes').addEventListener('click', function() {
+                document.getElementById('subscriptionStep1').style.display = 'none';
+                document.getElementById('subscriptionStepLogin').style.display = 'block';
+                document.getElementById('subscriptionStepPayment').style.display = 'none';
+            });
+            document.getElementById('subModalNo').addEventListener('click', function() {
+                document.getElementById('subscriptionStep1').style.display = 'none';
+                document.getElementById('subscriptionStepLogin').style.display = 'none';
+                document.getElementById('subscriptionStepPayment').style.display = 'block';
+                var msgEl = document.getElementById('subModalRequestMsg');
+                if (msgEl) { msgEl.style.display = 'none'; msgEl.textContent = ''; }
+            });
+            var requestSubmitBtn = document.getElementById('subModalRequestSubmit');
+            if (requestSubmitBtn) {
+                requestSubmitBtn.addEventListener('click', function() {
+                    var mobile = (document.getElementById('subModalRequestMobile').value || '').trim();
+                    var msgEl = document.getElementById('subModalRequestMsg');
+                    if (!msgEl) return;
+                    msgEl.style.display = 'none';
+                    msgEl.textContent = '';
+                    if (!mobile || mobile.length < 5) {
+                        msgEl.textContent = 'شماره موبایل معتبر وارد کنید.';
+                        msgEl.style.display = 'block';
+                        msgEl.className = 'subscription-request-msg subscription-error';
+                        return;
+                    }
+                    fetch(API_BASE_URL + '/api/subscription/request-access', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        credentials: 'include',
+                        body: JSON.stringify({ mobile: mobile, section: 'tests' })
+                    }).then(function(r) { return r.json(); }).then(function(data) {
+                        msgEl.style.display = 'block';
+                        if (data.success) {
+                            msgEl.textContent = data.message || 'درخواست ثبت شد.';
+                            msgEl.className = 'subscription-request-msg subscription-request-success';
+                            document.getElementById('subModalRequestMobile').value = '';
+                        } else {
+                            msgEl.textContent = data.error || 'خطا';
+                            msgEl.className = 'subscription-request-msg subscription-error';
+                        }
+                    }).catch(function() {
+                        msgEl.textContent = 'خطای اتصال.';
+                        msgEl.className = 'subscription-request-msg subscription-error';
+                        msgEl.style.display = 'block';
+                    });
+                });
+            }
+            document.getElementById('subModalClose').addEventListener('click', hideSubscriptionModal);
+            var backdrop = modal.querySelector('.subscription-modal-backdrop');
+            if (backdrop) backdrop.addEventListener('click', hideSubscriptionModal);
+            var payBackBtn = document.getElementById('subModalPaymentBack');
+            if (payBackBtn) payBackBtn.addEventListener('click', hideSubscriptionModal);
+            var emailCopyBtn = document.getElementById('subModalEmailCopy');
+            var emailValueEl = document.getElementById('subModalEmailValue');
+            if (emailCopyBtn && emailValueEl) {
+                emailCopyBtn.addEventListener('click', function() {
+                    var text = emailValueEl.textContent || '';
+                    if (!text) return;
+                    if (navigator.clipboard && navigator.clipboard.writeText) {
+                        navigator.clipboard.writeText(text).then(function() {
+                            emailCopyBtn.textContent = 'کپی شد!';
+                            emailCopyBtn.classList.add('copied');
+                            setTimeout(function() { emailCopyBtn.textContent = 'کپی'; emailCopyBtn.classList.remove('copied'); }, 2000);
+                        }).catch(function() { copyFallback(emailValueEl, emailCopyBtn); });
+                    } else {
+                        copyFallback(emailValueEl, emailCopyBtn);
+                    }
+                });
+            }
+            function copyFallback(el, btn) {
+                var r = document.createRange();
+                r.selectNodeContents(el);
+                var sel = window.getSelection();
+                sel.removeAllRanges();
+                sel.addRange(r);
+                try {
+                    document.execCommand('copy');
+                    btn.textContent = 'کپی شد!';
+                    btn.classList.add('copied');
+                    setTimeout(function() { btn.textContent = 'کپی'; btn.classList.remove('copied'); }, 2000);
+                } catch (e) {}
+                sel.removeAllRanges();
+            }
+            document.getElementById('subModalLoginBtn').addEventListener('click', function() {
+                var mobile = (document.getElementById('subModalMobile').value || '').trim();
+                var password = document.getElementById('subModalPassword').value || '';
+                var errEl = document.getElementById('subModalLoginError');
+                errEl.style.display = 'none';
+                errEl.textContent = '';
+                if (!mobile || !password) {
+                    errEl.textContent = 'کد کاربری و کلمه عبور الزامی است.';
+                    errEl.style.display = 'block';
+                    return;
+                }
+                fetch(API_BASE_URL + '/api/subscription/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    credentials: 'include',
+                    body: JSON.stringify({ mobile: mobile, password: password, section: 'tests' })
+                }).then(function(r) { return r.json(); }).then(function(data) {
+                    if (data && data.success) {
+                        hideSubscriptionModal();
+                        if (typeof pendingTestIndex === 'number') {
+                            var idx = pendingTestIndex;
+                            pendingTestIndex = null;
+                            selectTest(idx, true);
+                        }
+                    } else {
+                        errEl.textContent = (data && data.error) ? data.error : 'خطا در ورود.';
+                        errEl.style.display = 'block';
+                    }
+                }).catch(function() {
+                    errEl.textContent = 'خطای اتصال.';
+                    errEl.style.display = 'block';
+                });
+            });
+        });
 
         // اطمینان از اینکه توابع در window scope هستند
         window.selectOption = selectOption;

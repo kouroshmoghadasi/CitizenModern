@@ -2,7 +2,7 @@
  * CitizenTest PWA Service Worker
  * Caches main pages and static assets for offline / Add to Home Screen.
  */
-const CACHE_NAME = 'citizentest-v1';
+const CACHE_NAME = 'citizentest-v2';
 const URLS = [
   '/',
   '/book_summary.html',

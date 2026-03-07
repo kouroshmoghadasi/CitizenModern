@@ -1,0 +1,39 @@
+<!-- مودال اشتراک برای تست‌های پولی (Test3 به بعد) -->
+<div id="subscriptionModal" class="subscription-modal" role="dialog" aria-modal="true" aria-labelledby="subscriptionModalTitle" style="display: none;">
+    <div class="subscription-modal-backdrop"></div>
+    <div class="subscription-modal-box">
+        <h2 id="subscriptionModalTitle" class="subscription-modal-title">دسترسی به کل بسته</h2>
+        <p class="subscription-modal-intro"><span class="subscription-intro-price">مبلغ: ۱۵ دلار</span> — دسترسی یک‌ماهه به کل بسته (تست‌ها از Test3 به بعد + همه ۴۱۴ سوال)</p>
+        <div id="subscriptionStep1" class="subscription-step">
+            <p class="subscription-question">آیا اشتراک یک‌ماهه خریداری شده است؟</p>
+            <div class="subscription-buttons">
+                <button type="button" class="subscription-btn subscription-btn-yes" id="subModalYes">بله</button>
+                <button type="button" class="subscription-btn subscription-btn-no" id="subModalNo">خیر</button>
+            </div>
+        </div>
+        <div id="subscriptionStepLogin" class="subscription-step" style="display: none;">
+            <p class="subscription-label">کد کاربری (شماره موبایل) و کلمه عبور را وارد کنید:</p>
+            <input type="text" id="subModalMobile" placeholder="کد کاربری (شماره موبایل)" class="subscription-input" autocomplete="username">
+            <input type="password" id="subModalPassword" placeholder="کلمه عبور" class="subscription-input" autocomplete="current-password">
+            <p id="subModalLoginError" class="subscription-error" style="display: none;"></p>
+            <button type="button" class="subscription-btn subscription-btn-submit" id="subModalLoginBtn">ورود</button>
+        </div>
+        <div id="subscriptionStepPayment" class="subscription-step subscription-payment-info" style="display: none;">
+            <p>برای دسترسی، مبلغ را به آدرس ایمیل زیر واریز کنید و کد واریز را برای ما ایمیل کنید. پس از تأیید، کد کاربری و کلمه عبور برای شما ارسال می‌شود.</p>
+            <p class="subscription-mobile-intro"><strong>شماره موبایل شما همان «کد کاربری» خواهد بود.</strong> لطفاً وارد کنید تا پس از واریز، حساب شما با همین شماره ساخته شود:</p>
+            <div class="subscription-mobile-block">
+                <label for="subModalRequestMobile" class="subscription-mobile-label">شماره موبایل (کد کاربری):</label>
+                <input type="text" id="subModalRequestMobile" placeholder="09xxxxxxxxx" class="subscription-input" autocomplete="tel">
+                <button type="button" class="subscription-btn subscription-btn-request" id="subModalRequestSubmit">ثبت درخواست دسترسی</button>
+            </div>
+            <p id="subModalRequestMsg" class="subscription-request-msg" style="display: none;"></p>
+            <div class="subscription-email-block">
+                <span class="subscription-email-label">ایمیل:</span>
+                <span class="subscription-email-value" id="subModalEmailValue">Koroush.Mog@gmail.com</span>
+                <button type="button" class="subscription-btn-copy" id="subModalEmailCopy" title="کپی">کپی</button>
+            </div>
+            <button type="button" class="subscription-btn subscription-btn-back" id="subModalPaymentBack">متوجه شدم، بازگشت</button>
+        </div>
+        <button type="button" class="subscription-modal-close" id="subModalClose" aria-label="بستن">×</button>
+    </div>
+</div>

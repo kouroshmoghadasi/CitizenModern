@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>پنل مدیر | اشتراک‌ها</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Tahoma, sans-serif; background: #f0f4f8; min-height: 100vh; padding: 20px; }
+        .header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 24px; padding: 16px 20px; background: #fff; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.06); }
+        .header h1 { font-size: 1.25rem; color: #1e3c72; }
+        .header a { padding: 10px 18px; background: #1e3c72; color: #fff; text-decoration: none; border-radius: 8px; font-weight: 600; }
+        .header a:hover { background: #2c5282; }
+        .card { background: #fff; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.06); margin-bottom: 24px; overflow: hidden; }
+        .card h2 { padding: 16px 20px; font-size: 1.1rem; color: #1e3c72; border-bottom: 1px solid #eee; }
+        .card-body { padding: 20px; }
+        table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+        th, td { padding: 12px 14px; text-align: right; border-bottom: 1px solid #eee; }
+        th { background: #f8f9fa; font-weight: 600; color: #333; }
+        tr:hover { background: #f8fafc; }
+        .form-inline { display: flex; flex-wrap: wrap; gap: 12px; align-items: flex-end; margin-bottom: 16px; }
+        .form-inline .f { display: flex; flex-direction: column; gap: 4px; }
+        .form-inline label { font-size: 0.85rem; font-weight: 600; color: #555; }
+        .form-inline input, .form-inline select { padding: 10px 12px; border: 1px solid #ccc; border-radius: 8px; min-width: 120px; }
+        .btn { padding: 10px 18px; background: #1e3c72; color: #fff; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 0.9rem; }
+        .btn:hover { background: #2c5282; }
+        .btn-sm { padding: 6px 12px; font-size: 0.85rem; }
+        .msg { padding: 12px 16px; border-radius: 8px; margin-bottom: 16px; }
+        .msg.success { background: #d4edda; color: #155724; }
+        .msg.error { background: #f8d7da; color: #721c24; }
+        .badge { display: inline-block; padding: 4px 10px; border-radius: 6px; font-size: 0.8rem; font-weight: 600; }
+        .badge.active { background: #d4edda; color: #155724; }
+        .badge.expired { background: #f8d7da; color: #721c24; }
+        .badge.none { background: #e2e8f0; color: #64748b; }
+        .btn-outline { background: #fff; color: #1e3c72; border: 2px solid #1e3c72; }
+        .btn-outline:hover { background: #f0f4f8; }
+        .btn-danger { background: #dc3545; color: #fff; }
+        .btn-danger:hover { background: #c82333; }
+        .btn-free { background: #28a745; color: #fff; }
+        .btn-free:hover { background: #218838; }
+        .pay-fixed-amount { font-weight: 700; color: #1e3c72; }
+        .reset-password-result { padding: 12px; background: #f0f9ff; border: 1px solid #0ea5e9; border-radius: 8px; }
+        .reset-password-result label { display: block; margin-bottom: 6px; font-weight: 600; color: #333; }
+        .reset-password-display { padding: 10px 12px; font-family: monospace; font-size: 1.1rem; width: 220px; margin-left: 8px; border-radius: 6px; border: 1px solid #ccc; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>پنل مدیر — اشتراک‌ها</h1>
+        <a href="{{ url_for('admin_logout') }}">خروج</a>
+    </div>
+
+    <div class="card">
+        <h2>تغییر رمز ادمین</h2>
+        <div class="card-body">
+            <div id="changePasswordMsg"></div>
+            <div class="form-inline">
+                <div class="f">
+                    <label>رمز فعلی</label>
+                    <input type="password" id="changePasswordCurrent" placeholder="رمز فعلی" autocomplete="off">
+                </div>
+                <div class="f">
+                    <label>رمز جدید</label>
+                    <input type="password" id="changePasswordNew" placeholder="رمز جدید" autocomplete="new-password">
+                </div>
+                <div class="f">
+                    <label>تکرار رمز جدید</label>
+                    <input type="password" id="changePasswordConfirm" placeholder="تکرار رمز جدید" autocomplete="new-password">
+                </div>
+                <button type="button" class="btn" id="btnChangePassword">تغییر رمز</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>افزودن کاربر</h2>
+        <div class="card-body">
+            <div id="addUserMsg"></div>
+            <div class="form-inline">
+                <div class="f">
+                    <label>شماره موبایل (کد کاربری)</label>
+                    <input type="text" id="addMobile" placeholder="09xxxxxxxxx">
+                </div>
+                <div class="f">
+                    <label>رمز عبور</label>
+                    <input type="password" id="addPassword" placeholder="رمز عبور">
+                </div>
+                <div class="f" style="align-items: center;">
+                    <label>&nbsp;</label>
+                    <label style="display: flex; align-items: center; gap: 6px; font-weight: normal;"><input type="checkbox" id="addUserFreeAccess"> دسترسی رایگان (لطف) — یک سال کل بسته</label>
+                </div>
+                <button type="button" class="btn" id="btnAddUser">افزودن کاربر</button>
+                <button type="button" class="btn btn-outline" id="btnClearUser">پاک کردن فرم</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>ثبت پرداخت و اشتراک</h2>
+        <div class="card-body">
+            <div id="addPayMsg"></div>
+            <div class="form-inline">
+                <div class="f">
+                    <label>کاربر</label>
+                    <select id="payUserId">
+                        <option value="">-- انتخاب کاربر --</option>
+                    </select>
+                </div>
+                <div class="f">
+                    <label>مبلغ</label>
+                    <span class="pay-fixed-amount">۱۵ دلار — کل بسته (تست‌ها + ۴۱۴)</span>
+                </div>
+                <div class="f">
+                    <label>تاریخ پرداخت</label>
+                    <input type="date" id="payDate">
+                </div>
+                <div class="f">
+                    <label>کد واریز</label>
+                    <input type="text" id="payRef" placeholder="اختیاری">
+                </div>
+                <div class="f">
+                    <label>یادداشت</label>
+                    <input type="text" id="payNotes" placeholder="اختیاری">
+                </div>
+                <button type="button" class="btn" id="btnAddPay">ثبت پرداخت</button>
+                <button type="button" class="btn btn-outline" id="btnClearPay">پاک کردن فرم</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>تنظیم انقضا (اصلاح اشتباه)</h2>
+        <div class="card-body">
+            <div id="setExpiryMsg"></div>
+            <div class="form-inline">
+                <div class="f">
+                    <label>کاربر</label>
+                    <select id="setExpiryUserId">
+                        <option value="">-- انتخاب کاربر --</option>
+                    </select>
+                </div>
+                <div class="f">
+                    <label>تاریخ انقضا</label>
+                    <input type="date" id="setExpiryDate">
+                </div>
+                <button type="button" class="btn" id="btnSetExpiry">به‌روز کردن انقضا</button>
+            </div>
+            <p style="font-size: 0.85rem; color: #666; margin-top: 8px;">اگر پرداختی را حذف کردید و می‌خواهید انقضا را کم کنید، اینجا تاریخ جدید را بگذارید و به‌روز کنید.</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>تغییر رمز کاربر (اشتراک)</h2>
+        <div class="card-body">
+            <div id="changeUserPasswordMsg"></div>
+            <div class="form-inline">
+                <div class="f">
+                    <label>کاربر</label>
+                    <select id="changeUserPasswordUserId">
+                        <option value="">-- انتخاب کاربر --</option>
+                    </select>
+                </div>
+                <div class="f">
+                    <label>رمز جدید</label>
+                    <input type="password" id="changeUserPasswordNew" placeholder="رمز جدید" autocomplete="new-password">
+                </div>
+                <div class="f">
+                    <label>تکرار رمز جدید</label>
+                    <input type="password" id="changeUserPasswordConfirm" placeholder="تکرار" autocomplete="new-password">
+                </div>
+                <button type="button" class="btn" id="btnChangeUserPassword">تغییر رمز کاربر</button>
+                <button type="button" class="btn btn-free" id="btnResetUserPassword" title="رمز موقت تصادفی ساخته و کپی می‌شود">بازنشانی رمز و کپی</button>
+            </div>
+            <div id="resetPasswordResult" class="reset-password-result" style="display: none; margin-top: 12px;">
+                <label>رمز جدید (به کاربر بدهید):</label>
+                <input type="text" id="resetPasswordDisplay" readonly class="reset-password-display">
+                <button type="button" class="btn btn-sm" id="btnCopyResetPassword">کپی</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>درخواست‌های دسترسی (موبایل افرادی که «خیر» زدند)</h2>
+        <div class="card-body">
+            <p style="font-size: 0.85rem; color: #666; margin-bottom: 12px;">این افراد شماره موبایل خود را ثبت کرده‌اند؛ کد کاربری آن‌ها همان شماره است. پس از واریز، کاربر را با همین موبایل اضافه و ۱۵ دلار (کل بسته) ثبت کنید.</p>
+            <table id="pendingTable">
+                <thead>
+                    <tr>
+                        <th>موبایل (کد کاربری)</th>
+                        <th>تاریخ درخواست</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>لیست کاربران و وضعیت اشتراک</h2>
+        <div class="card-body">
+            <div id="usersMsg"></div>
+            <table id="usersTable">
+                <thead>
+                    <tr>
+                        <th>شناسه</th>
+                        <th>موبایل</th>
+                        <th>انقضا</th>
+                        <th>یادداشت</th>
+                        <th>عملیات</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>آخرین پرداخت‌ها</h2>
+        <div class="card-body">
+            <table id="paymentsTable">
+                <thead>
+                    <tr>
+                        <th>کاربر</th>
+                        <th>مبلغ</th>
+                        <th>تاریخ پرداخت</th>
+                        <th>کد واریز</th>
+                        <th>حذف</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>حضور و فعالیت بازدیدکنندگان</h2>
+        <div class="card-body">
+            <p style="font-size: 0.85rem; color: #666; margin-bottom: 12px;">بر اساس لاگ IP و زمان ورود. روی «جزئیات» هر IP بزنید تا روزهای استفاده و ساعات کارکرد تقریبی را ببینید.</p>
+            <div id="visitorDashboardMsg"></div>
+            <h3 style="font-size: 1rem; margin: 16px 0 8px; color: #1e3c72;">بازدید به تفکیک روز (۳۰ روز اخیر)</h3>
+            <table id="visitorDaysTable">
+                <thead><tr><th>تاریخ</th><th>تعداد بازدید</th><th>IP یکتا</th></tr></thead>
+                <tbody></tbody>
+            </table>
+            <h3 style="font-size: 1rem; margin: 20px 0 8px; color: #1e3c72;">IPهای پرتعداد</h3>
+            <table id="visitorIpsTable">
+                <thead><tr><th>IP</th><th>دستگاه</th><th>تعداد بازدید</th><th>اولین بازدید</th><th>آخرین بازدید</th><th>روزهای فعال</th><th>جزئیات</th></tr></thead>
+                <tbody></tbody>
+            </table>
+            <div id="visitorIpDetail" style="display: none; margin-top: 16px; padding: 12px; background: #f8f9fa; border-radius: 8px;">
+                <h4 style="margin-bottom: 8px;">جزئیات IP: <span id="visitorIpDetailTitle"></span> <button type="button" class="btn btn-sm btn-outline" id="visitorIpDetailClose">بستن</button></h4>
+                <table id="visitorIpDaysTable">
+                    <thead><tr><th>تاریخ</th><th>اولین بازدید</th><th>آخرین بازدید</th><th>تعداد</th><th>مدت (دقیقه)</th></tr></thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+            <h3 style="font-size: 1rem; margin: 20px 0 8px; color: #1e3c72;">آخرین بازدیدها</h3>
+            <table id="visitorRecentTable">
+                <thead><tr><th>IP</th><th>دستگاه</th><th>زمان</th><th>صفحه</th></tr></thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            var today = new Date().toISOString().slice(0, 10);
+            var payDateEl = document.getElementById('payDate');
+            if (payDateEl) payDateEl.value = today;
+
+            function showMsg(containerId, text, isError) {
+                var c = document.getElementById(containerId);
+                if (!c) return;
+                c.innerHTML = '<div class="msg ' + (isError ? 'error' : 'success') + '">' + (text || '').replace(/</g, '&lt;') + '</div>';
+            }
+
+            function loadUsers() {
+                fetch('/admin/api/users').then(function(r) { return r.json(); }).then(function(data) {
+                    if (!data.success) {
+                        showMsg('usersMsg', data.error || 'خطا', true);
+                        return;
+                    }
+                    var tbody = document.querySelector('#usersTable tbody');
+                    var sel = document.getElementById('payUserId');
+                    if (!tbody || !sel) return;
+                    tbody.innerHTML = '';
+                    sel.innerHTML = '<option value="">-- انتخاب کاربر --</option>';
+                    var setExpirySel = document.getElementById('setExpiryUserId');
+                    if (setExpirySel) setExpirySel.innerHTML = '<option value="">-- انتخاب کاربر --</option>';
+                    data.users.forEach(function(u) {
+                        var exp = u.tests_expiry || u.questions_414_expiry || '—';
+                        var expBadge = exp !== '—' ? (new Date(exp) >= new Date() ? '<span class="badge active">' + exp + '</span>' : '<span class="badge expired">' + exp + '</span>') : '<span class="badge none">ندارد</span>';
+                        var tr = document.createElement('tr');
+                        tr.innerHTML = '<td>' + u.id + '</td><td>' + (u.mobile || '').replace(/</g, '&lt;') + '</td><td>' + expBadge + '</td><td>' + (u.notes || '—').replace(/</g, '&lt;') + '</td><td>' +
+                            '<button type="button" class="btn btn-sm" data-user-id="' + u.id + '">ثبت پرداخت</button> ' +
+                            '<button type="button" class="btn btn-sm btn-free" data-user-id="' + u.id + '" title="دسترسی رایگان یک‌ساله">لطف</button> ' +
+                            '<button type="button" class="btn btn-sm btn-outline change-user-pw-btn" data-user-id="' + u.id + '" title="تغییر رمز این کاربر">تغییر رمز</button>' +
+                            '</td>';
+                        tbody.appendChild(tr);
+                        var opt = document.createElement('option');
+                        opt.value = u.id;
+                        opt.textContent = u.mobile + ' (#' + u.id + ')';
+                        sel.appendChild(opt);
+                        if (setExpirySel) {
+                            var opt2 = document.createElement('option');
+                            opt2.value = u.id;
+                            opt2.textContent = u.mobile + ' (#' + u.id + ')';
+                            setExpirySel.appendChild(opt2);
+                        }
+                        var changePwSel = document.getElementById('changeUserPasswordUserId');
+                        if (changePwSel) {
+                            var opt3 = document.createElement('option');
+                            opt3.value = u.id;
+                            opt3.textContent = u.mobile + ' (#' + u.id + ')';
+                            changePwSel.appendChild(opt3);
+                        }
+                    });
+                    tbody.querySelectorAll('.change-user-pw-btn').forEach(function(btn) {
+                        btn.addEventListener('click', function() {
+                            var id = this.getAttribute('data-user-id');
+                            var sel = document.getElementById('changeUserPasswordUserId');
+                            if (sel) sel.value = id;
+                            document.getElementById('changeUserPasswordNew').value = '';
+                            document.getElementById('changeUserPasswordConfirm').value = '';
+                            showMsg('changeUserPasswordMsg', '', false);
+                        });
+                    });
+                    tbody.querySelectorAll('button[data-user-id]').forEach(function(btn) {
+                        if (btn.classList.contains('btn-free')) {
+                            btn.addEventListener('click', function() {
+                                var id = this.getAttribute('data-user-id');
+                                if (!confirm('دسترسی رایگان یک‌ساله (کل بسته) برای این کاربر اعطا شود؟')) return;
+                                fetch('/admin/api/subscription/grant-free', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ user_id: parseInt(id, 10) }) })
+                                    .then(function(r) { return r.json(); }).then(function(data) {
+                                        showMsg('usersMsg', data.success ? data.message : (data.error || 'خطا'), !data.success);
+                                        if (data.success) loadUsers();
+                                    }).catch(function() { showMsg('usersMsg', 'خطا در ارتباط', true); });
+                            });
+                        } else {
+                            btn.addEventListener('click', function() {
+                                document.getElementById('payUserId').value = this.getAttribute('data-user-id');
+                            });
+                        }
+                    });
+                }).catch(function() { showMsg('usersMsg', 'خطا در بارگذاری', true); });
+            }
+
+            document.getElementById('btnAddUser').addEventListener('click', function() {
+                var mobile = document.getElementById('addMobile').value.trim();
+                var password = document.getElementById('addPassword').value;
+                if (!mobile || !password) {
+                    showMsg('addUserMsg', 'موبایل و رمز عبور الزامی است.', true);
+                    return;
+                }
+                var freeAccess = document.getElementById('addUserFreeAccess').checked;
+                fetch('/admin/api/users/add', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ mobile: mobile, password: password, free_access: freeAccess })
+                }).then(function(r) { return r.json(); }).then(function(data) {
+                    showMsg('addUserMsg', data.success ? (data.message || 'کاربر اضافه شد.') : (data.error || 'خطا'), !data.success);
+                    if (data.success) {
+                        document.getElementById('addMobile').value = '';
+                        document.getElementById('addPassword').value = '';
+                        document.getElementById('addUserFreeAccess').checked = false;
+                        loadUsers();
+                    }
+                }).catch(function() { showMsg('addUserMsg', 'خطا در ارتباط', true); });
+            });
+            document.getElementById('btnClearUser').addEventListener('click', function() {
+                document.getElementById('addMobile').value = '';
+                document.getElementById('addPassword').value = '';
+                document.getElementById('addUserFreeAccess').checked = false;
+                showMsg('addUserMsg', '', false);
+            });
+
+            document.getElementById('btnChangePassword').addEventListener('click', function() {
+                var current = document.getElementById('changePasswordCurrent').value;
+                var newPass = document.getElementById('changePasswordNew').value;
+                var confirmPass = document.getElementById('changePasswordConfirm').value;
+                showMsg('changePasswordMsg', '', false);
+                if (!current || !newPass) {
+                    showMsg('changePasswordMsg', 'رمز فعلی و رمز جدید الزامی است.', true);
+                    return;
+                }
+                if (newPass !== confirmPass) {
+                    showMsg('changePasswordMsg', 'رمز جدید و تکرار آن یکسان نیستند.', true);
+                    return;
+                }
+                fetch('/admin/api/change-password', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ current_password: current, new_password: newPass })
+                }).then(function(r) { return r.json(); }).then(function(data) {
+                    showMsg('changePasswordMsg', data.success ? data.message : (data.error || 'خطا'), !data.success);
+                    if (data.success) {
+                        document.getElementById('changePasswordCurrent').value = '';
+                        document.getElementById('changePasswordNew').value = '';
+                        document.getElementById('changePasswordConfirm').value = '';
+                    }
+                }).catch(function() { showMsg('changePasswordMsg', 'خطا در ارتباط', true); });
+            });
+
+            document.getElementById('btnAddPay').addEventListener('click', function() {
+                var userId = document.getElementById('payUserId').value;
+                var paymentDate = document.getElementById('payDate').value;
+                var ref = document.getElementById('payRef').value.trim();
+                var notes = document.getElementById('payNotes').value.trim();
+                if (!userId) {
+                    showMsg('addPayMsg', 'کاربر را انتخاب کنید.', true);
+                    return;
+                }
+                fetch('/admin/api/payments/add', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        user_id: parseInt(userId, 10),
+                        amount: 15,
+                        sections_purchased: 'both',
+                        payment_date: paymentDate,
+                        payment_reference: ref || null,
+                        notes: notes || null
+                    })
+                }).then(function(r) { return r.json(); }).then(function(data) {
+                    showMsg('addPayMsg', data.success ? 'پرداخت ثبت شد.' : (data.error || 'خطا'), !data.success);
+                    if (data.success) {
+                        document.getElementById('payRef').value = '';
+                        document.getElementById('payNotes').value = '';
+                        loadUsers();
+                        loadPayments();
+                    }
+                }).catch(function() { showMsg('addPayMsg', 'خطا در ارتباط', true); });
+            });
+            document.getElementById('btnClearPay').addEventListener('click', function() {
+                document.getElementById('payUserId').value = '';
+                document.getElementById('payRef').value = '';
+                document.getElementById('payNotes').value = '';
+                if (payDateEl) payDateEl.value = today;
+                showMsg('addPayMsg', '', false);
+            });
+
+            document.getElementById('btnChangeUserPassword').addEventListener('click', function() {
+                var userId = document.getElementById('changeUserPasswordUserId').value;
+                var newPass = document.getElementById('changeUserPasswordNew').value;
+                var confirmPass = document.getElementById('changeUserPasswordConfirm').value;
+                if (!userId) {
+                    showMsg('changeUserPasswordMsg', 'کاربر را انتخاب کنید.', true);
+                    return;
+                }
+                if (!newPass || newPass.length < 4) {
+                    showMsg('changeUserPasswordMsg', 'رمز جدید حداقل ۴ کاراکتر باشد.', true);
+                    return;
+                }
+                if (newPass !== confirmPass) {
+                    showMsg('changeUserPasswordMsg', 'رمز جدید و تکرار آن یکسان نیستند.', true);
+                    return;
+                }
+                fetch('/admin/api/users/change-password', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ user_id: parseInt(userId, 10), new_password: newPass })
+                }).then(function(r) { return r.json(); }).then(function(data) {
+                    showMsg('changeUserPasswordMsg', data.success ? data.message : (data.error || 'خطا'), !data.success);
+                    if (data.success) {
+                        document.getElementById('changeUserPasswordNew').value = '';
+                        document.getElementById('changeUserPasswordConfirm').value = '';
+                    }
+                }).catch(function() { showMsg('changeUserPasswordMsg', 'خطا در ارتباط', true); });
+            });
+
+            document.getElementById('btnResetUserPassword').addEventListener('click', function() {
+                var userId = document.getElementById('changeUserPasswordUserId').value;
+                var resultEl = document.getElementById('resetPasswordResult');
+                var displayEl = document.getElementById('resetPasswordDisplay');
+                var msgEl = document.getElementById('changeUserPasswordMsg');
+                if (!userId) {
+                    showMsg('changeUserPasswordMsg', 'کاربر را انتخاب کنید.', true);
+                    resultEl.style.display = 'none';
+                    return;
+                }
+                showMsg('changeUserPasswordMsg', '', false);
+                resultEl.style.display = 'none';
+                fetch('/admin/api/users/reset-password', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ user_id: parseInt(userId, 10) })
+                }).then(function(r) { return r.json(); }).then(function(data) {
+                    if (data.success && data.password) {
+                        displayEl.value = data.password;
+                        resultEl.style.display = 'block';
+                        showMsg('changeUserPasswordMsg', data.message || 'رمز بازنشانی شد. در کادر زیر کپی کنید و به کاربر بدهید.', false);
+                        if (navigator.clipboard && navigator.clipboard.writeText) {
+                            navigator.clipboard.writeText(data.password).then(function() {
+                                var copyBtn = document.getElementById('btnCopyResetPassword');
+                                if (copyBtn) copyBtn.textContent = 'کپی شد!';
+                            });
+                        }
+                    } else {
+                        showMsg('changeUserPasswordMsg', data.error || 'خطا', true);
+                    }
+                }).catch(function() { showMsg('changeUserPasswordMsg', 'خطا در ارتباط', true); });
+            });
+            document.getElementById('btnCopyResetPassword').addEventListener('click', function() {
+                var displayEl = document.getElementById('resetPasswordDisplay');
+                var p = displayEl.value;
+                if (!p) return;
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    navigator.clipboard.writeText(p).then(function() {
+                        this.textContent = 'کپی شد!';
+                        var btn = this;
+                        setTimeout(function() { btn.textContent = 'کپی'; }, 2000);
+                    }.bind(this));
+                } else {
+                    displayEl.select();
+                    document.execCommand('copy');
+                    this.textContent = 'کپی شد!';
+                    var btn = this;
+                    setTimeout(function() { btn.textContent = 'کپی'; }, 2000);
+                }
+            });
+
+            document.getElementById('btnSetExpiry').addEventListener('click', function() {
+                var userId = document.getElementById('setExpiryUserId').value;
+                var expiryDate = document.getElementById('setExpiryDate').value;
+                if (!userId || !expiryDate) {
+                    showMsg('setExpiryMsg', 'کاربر و تاریخ انقضا را انتخاب کنید.', true);
+                    return;
+                }
+                fetch('/admin/api/subscription/set', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ user_id: parseInt(userId, 10), expiry_date: expiryDate })
+                }).then(function(r) { return r.json(); }).then(function(data) {
+                    showMsg('setExpiryMsg', data.success ? data.message : (data.error || 'خطا'), !data.success);
+                    if (data.success) loadUsers();
+                }).catch(function() { showMsg('setExpiryMsg', 'خطا در ارتباط', true); });
+            });
+            var setExpiryDateEl = document.getElementById('setExpiryDate');
+            if (setExpiryDateEl) setExpiryDateEl.value = today;
+
+            function loadPayments() {
+                fetch('/admin/api/payments').then(function(r) { return r.json(); }).then(function(data) {
+                    if (!data.success) return;
+                    var tbody = document.querySelector('#paymentsTable tbody');
+                    if (!tbody) return;
+                    tbody.innerHTML = '';
+                    data.payments.forEach(function(p) {
+                        var tr = document.createElement('tr');
+                        tr.innerHTML = '<td>' + (p.mobile || '#' + p.user_id) + '</td><td>' + p.amount + ' $</td><td>' + (p.payment_date || '') + '</td><td>' + (p.payment_reference || '—').replace(/</g, '&lt;') + '</td>' +
+                            '<td><button type="button" class="btn btn-sm btn-danger" data-pay-id="' + p.id + '">حذف</button></td>';
+                        tbody.appendChild(tr);
+                    });
+                    tbody.querySelectorAll('button[data-pay-id]').forEach(function(btn) {
+                        btn.addEventListener('click', function() {
+                            var id = this.getAttribute('data-pay-id');
+                            if (!confirm('این پرداخت حذف شود؟ (اشتراک خودکار برگشت داده نمی‌شود؛ در صورت نیاز از «تنظیم انقضا» استفاده کنید.)')) return;
+                            fetch('/admin/api/payments/' + id, { method: 'DELETE' })
+                                .then(function(r) { return r.json(); }).then(function(data) {
+                                    if (data.success) { loadPayments(); loadUsers(); }
+                                    else alert(data.error || 'خطا');
+                                }).catch(function() { alert('خطا در ارتباط'); });
+                        });
+                    });
+                });
+            }
+
+            function loadPendingRequests() {
+                fetch('/admin/api/pending-requests').then(function(r) { return r.json(); }).then(function(data) {
+                    if (!data.success) return;
+                    var tbody = document.querySelector('#pendingTable tbody');
+                    if (!tbody) return;
+                    tbody.innerHTML = '';
+                    data.pending.forEach(function(row) {
+                        var tr = document.createElement('tr');
+                        tr.innerHTML = '<td>' + (row.mobile || '').replace(/</g, '&lt;') + '</td><td>' + (row.created_at || '—').replace(/</g, '&lt;') + '</td>';
+                        tbody.appendChild(tr);
+                    });
+                });
+            }
+
+            function loadVisitorDashboard(ip) {
+                var url = '/admin/api/visitor-dashboard' + (ip ? '?ip=' + encodeURIComponent(ip) : '');
+                showMsg('visitorDashboardMsg', '', false);
+                fetch(url).then(function(r) { return r.json(); }).then(function(data) {
+                    if (!data.success) {
+                        showMsg('visitorDashboardMsg', data.error || 'خطا', true);
+                        return;
+                    }
+                    if (ip) {
+                        var detailTitle = document.getElementById('visitorIpDetailTitle');
+                        var detailBlock = document.getElementById('visitorIpDetail');
+                        var daysTbody = document.querySelector('#visitorIpDaysTable tbody');
+                        if (detailTitle) detailTitle.textContent = ip;
+                        if (detailBlock) {
+                            detailBlock.style.display = 'block';
+                            detailBlock.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                        }
+                        if (daysTbody) {
+                            daysTbody.innerHTML = '';
+                            (data.days || []).forEach(function(d) {
+                                var tr = document.createElement('tr');
+                                tr.innerHTML = '<td>' + (d.date || '').replace(/</g, '&lt;') + '</td><td>' + (d.first_time || '—').replace(/</g, '&lt;') + '</td><td>' + (d.last_time || '—').replace(/</g, '&lt;') + '</td><td>' + (d.visit_count || 0) + '</td><td>' + (d.duration_minutes || 0) + '</td>';
+                                daysTbody.appendChild(tr);
+                            });
+                        }
+                        return;
+                    }
+                    var daysTbody = document.querySelector('#visitorDaysTable tbody');
+                    if (daysTbody) {
+                        daysTbody.innerHTML = '';
+                        (data.visits_per_day || []).forEach(function(row) {
+                            var tr = document.createElement('tr');
+                            tr.innerHTML = '<td>' + (row.day || '').replace(/</g, '&lt;') + '</td><td>' + (row.total_visits || 0) + '</td><td>' + (row.unique_ips || 0) + '</td>';
+                            daysTbody.appendChild(tr);
+                        });
+                    }
+                    var ipsTbody = document.querySelector('#visitorIpsTable tbody');
+                    if (ipsTbody) {
+                        ipsTbody.innerHTML = '';
+                        (data.top_ips || []).forEach(function(row) {
+                            var tr = document.createElement('tr');
+                            tr.innerHTML = '<td>' + (row.ip_address || '').replace(/</g, '&lt;') + '</td><td>' + (row.device || '—').replace(/</g, '&lt;') + '</td><td>' + (row.total_visits || 0) + '</td><td>' + (row.first_seen || '—').replace(/</g, '&lt;') + '</td><td>' + (row.last_seen || '—').replace(/</g, '&lt;') + '</td><td>' + (row.days_active || 0) + '</td><td><button type="button" class="btn btn-sm visitor-ip-detail" data-ip="' + (row.ip_address || '').replace(/"/g, '&quot;') + '">جزئیات</button></td>';
+                            ipsTbody.appendChild(tr);
+                        });
+                    }
+                    var recentTbody = document.querySelector('#visitorRecentTable tbody');
+                    if (recentTbody) {
+                        recentTbody.innerHTML = '';
+                        (data.recent_logs || []).forEach(function(row) {
+                            var tr = document.createElement('tr');
+                            tr.innerHTML = '<td>' + (row.ip_address || '').replace(/</g, '&lt;') + '</td><td>' + (row.device || '—').replace(/</g, '&lt;') + '</td><td>' + (row.access_time || '—').replace(/</g, '&lt;') + '</td><td>' + (row.page_visited || '—').replace(/</g, '&lt;') + '</td>';
+                            recentTbody.appendChild(tr);
+                        });
+                    }
+                }).catch(function() { showMsg('visitorDashboardMsg', 'خطا در بارگذاری', true); });
+            }
+            var closeBtn = document.getElementById('visitorIpDetailClose');
+            if (closeBtn) closeBtn.addEventListener('click', function() {
+                var b = document.getElementById('visitorIpDetail');
+                if (b) b.style.display = 'none';
+            });
+            document.body.addEventListener('click', function(e) {
+                var btn = e.target.closest('.visitor-ip-detail');
+                if (!btn) return;
+                var ip = btn.getAttribute('data-ip');
+                if (ip) loadVisitorDashboard(ip);
+            });
+
+            loadUsers();
+            loadPayments();
+            loadPendingRequests();
+            loadVisitorDashboard();
+        })();
+    </script>
+</body>
+</html>

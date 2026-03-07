@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ورود مدیر | پنل اشتراک</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Tahoma, sans-serif; background: #f0f4f8; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px; }
+        .box { background: #fff; padding: 32px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); max-width: 380px; width: 100%; }
+        h1 { font-size: 1.25rem; margin-bottom: 24px; color: #1e3c72; text-align: center; }
+        .form-group { margin-bottom: 18px; }
+        .form-group label { display: block; margin-bottom: 6px; font-weight: 600; color: #333; }
+        .form-group input { width: 100%; padding: 12px 14px; border: 1px solid #ccc; border-radius: 8px; font-size: 1rem; }
+        .form-group input:focus { outline: none; border-color: #1e3c72; box-shadow: 0 0 0 2px rgba(30,60,114,0.2); }
+        .btn { width: 100%; padding: 14px; background: #1e3c72; color: #fff; border: none; border-radius: 8px; font-size: 1rem; font-weight: 600; cursor: pointer; }
+        .btn:hover { background: #2c5282; }
+        .error { background: #fee; color: #c00; padding: 10px 14px; border-radius: 8px; margin-bottom: 16px; font-size: 0.9rem; }
+        .back { display: block; text-align: center; margin-top: 16px; color: #1e3c72; }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h1>ورود به پنل مدیر</h1>
+        {% if request.args.get('error') == 'empty' %}
+        <p class="error">نام کاربری و رمز عبور را وارد کنید.</p>
+        {% elif request.args.get('error') == 'invalid' %}
+        <p class="error">نام کاربری یا رمز عبور اشتباه است.</p>
+        {% elif request.args.get('error') == 'db' %}
+        <p class="error">خطای اتصال به پایگاه داده.</p>
+        {% elif request.args.get('error') == 'error' %}
+        <p class="error">خطایی رخ داد. دوباره تلاش کنید.</p>
+        {% endif %}
+        <form method="post" action="{{ url_for('admin_login') }}">
+            <div class="form-group">
+                <label for="username">نام کاربری</label>
+                <input type="text" id="username" name="username" required autocomplete="username">
+            </div>
+            <div class="form-group">
+                <label for="password">رمز عبور</label>
+                <input type="password" id="password" name="password" required autocomplete="current-password">
+            </div>
+            <button type="submit" class="btn">ورود</button>
+        </form>
+        <a href="/" class="back">بازگشت به سایت</a>
+    </div>
+</body>
+</html>

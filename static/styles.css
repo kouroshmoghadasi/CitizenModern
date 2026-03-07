@@ -95,6 +95,39 @@
         .app-footer strong {
             color: #1e3c72;
         }
+
+        .pwa-install-bar {
+            padding: 12px 20px;
+            margin: 0;
+            background: linear-gradient(135deg, #0f172a 0%, #1e3c72 100%);
+            color: #fff;
+            text-align: center;
+            border-radius: 8px;
+            margin-bottom: 12px;
+        }
+        .pwa-install-bar .pwa-install-text {
+            display: inline-block;
+            margin-left: 8px;
+            font-size: 0.95rem;
+        }
+        .pwa-install-bar .pwa-install-btn {
+            background: #f1c40f;
+            color: #0f172a;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+        .pwa-install-bar .pwa-install-btn:hover {
+            background: #f4d03f;
+        }
+        .pwa-install-bar .pwa-install-hint {
+            margin: 8px 0 0;
+            font-size: 0.8rem;
+            opacity: 0.9;
+        }
         
         .slide-visitor-text {
             position: absolute;
@@ -6314,4 +6347,193 @@
             .ad-tile > div:last-child {
                 margin-top: 0 !important;
             }
+        }
+
+        /* Subscription modal (اشتراک — Test3+ و ۴۱۴ از سوال ۲۵) */
+        .subscription-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            direction: rtl;
+        }
+        .subscription-modal-backdrop {
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+        }
+        .subscription-modal-box {
+            position: relative;
+            background: #fff;
+            border-radius: 16px;
+            padding: 28px 36px;
+            max-width: 560px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+        }
+        .subscription-modal-title {
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+            color: #1e3c72;
+        }
+        .subscription-modal-intro,
+        .subscription-question,
+        .subscription-label {
+            margin-bottom: 16px;
+            color: #333;
+        }
+        .subscription-intro-price {
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: #1e3c72;
+        }
+        .subscription-step {
+            margin-top: 12px;
+        }
+        .subscription-buttons {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .subscription-btn {
+            padding: 12px 24px;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            border: 2px solid #1e3c72;
+            background: #fff;
+            color: #1e3c72;
+        }
+        .subscription-btn:hover {
+            background: #1e3c72;
+            color: #fff;
+        }
+        .subscription-btn-yes { }
+        .subscription-btn-no { border-color: #64748b; color: #64748b; }
+        .subscription-btn-no:hover { background: #64748b; color: #fff; }
+        .subscription-btn-submit {
+            margin-top: 12px;
+            width: 100%;
+        }
+        .subscription-input {
+            width: 100%;
+            padding: 12px 14px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            font-size: 1rem;
+        }
+        .subscription-error {
+            color: #c00;
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+        }
+        .subscription-payment-info p {
+            margin-bottom: 10px;
+            color: #444;
+        }
+        .subscription-payment-info a {
+            color: #1e3c72;
+        }
+        .subscription-single-price {
+            font-size: 1.2em;
+            font-weight: 700;
+            color: #1e3c72;
+        }
+        .subscription-btn-back {
+            margin-top: 12px;
+            width: 100%;
+        }
+        .subscription-email-block {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin: 16px 0;
+            padding: 18px 20px;
+            background: #f0f4f8;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+        }
+        .subscription-email-label {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #333;
+        }
+        .subscription-email-value {
+            font-size: 1.55rem;
+            font-weight: 700;
+            color: #1e3c72;
+            letter-spacing: 0.02em;
+        }
+        .subscription-btn-copy {
+            padding: 12px 20px;
+            background: #1e3c72;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            font-weight: 700;
+            cursor: pointer;
+            font-size: 1.05rem;
+        }
+        .subscription-btn-copy:hover {
+            background: #2c5282;
+        }
+        .subscription-btn-copy.copied {
+            background: #28a745;
+        }
+        .subscription-mobile-intro {
+            margin: 14px 0 10px;
+            color: #333;
+        }
+        .subscription-mobile-block {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 14px;
+        }
+        .subscription-mobile-label {
+            font-weight: 600;
+            color: #333;
+        }
+        .subscription-mobile-block .subscription-input {
+            flex: 1;
+            min-width: 160px;
+        }
+        .subscription-btn-request {
+            flex-shrink: 0;
+        }
+        .subscription-request-msg {
+            margin-bottom: 12px;
+            padding: 10px 14px;
+            border-radius: 8px;
+            font-size: 0.95rem;
+        }
+        .subscription-request-msg.subscription-error {
+            background: #fee;
+            color: #c00;
+        }
+        .subscription-request-msg.subscription-request-success {
+            background: #d4edda;
+            color: #155724;
+        }
+        .subscription-modal-close {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            width: 36px;
+            height: 36px;
+            border: none;
+            background: #f0f0f0;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            line-height: 1;
+            cursor: pointer;
+        }
+        .subscription-modal-close:hover {
+            background: #e0e0e0;
         }
