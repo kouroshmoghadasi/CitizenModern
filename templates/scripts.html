@@ -3281,6 +3281,30 @@
             const el = document.getElementById('subscriptionModal');
             if (el) el.style.display = 'none';
         }
+
+        function showTestAreaSubscriptionBlock() {
+            var block = document.getElementById('testAreaSubscriptionBlock');
+            var card = document.getElementById('questionCard');
+            if (block && card) {
+                block.style.display = 'block';
+                card.style.display = 'none';
+                document.getElementById('testAreaSubStep1').style.display = 'block';
+                document.getElementById('testAreaSubStepLogin').style.display = 'none';
+                document.getElementById('testAreaSubStepPayment').style.display = 'none';
+                var err = document.getElementById('testAreaSubLoginError');
+                if (err) { err.style.display = 'none'; err.textContent = ''; }
+                var reqMsg = document.getElementById('testAreaSubRequestMsg');
+                if (reqMsg) { reqMsg.style.display = 'none'; reqMsg.textContent = ''; }
+                var reqMobile = document.getElementById('testAreaSubRequestMobile');
+                if (reqMobile) reqMobile.value = '';
+            }
+        }
+        function hideTestAreaSubscriptionBlock() {
+            var block = document.getElementById('testAreaSubscriptionBlock');
+            var card = document.getElementById('questionCard');
+            if (block) block.style.display = 'none';
+            if (card) card.style.display = 'block';
+        }
         
         function selectTest(testIndex, skipSubscriptionCheck) {
             if (testIndex >= 2 && skipSubscriptionCheck !== true) {
@@ -3292,11 +3316,13 @@
                         } else {
                             pendingTestIndex = testIndex;
                             revertTestDropdowns();
-                            showSubscriptionModal();
+                            showTestAreaSubscriptionBlock();
                         }
                     })
                     .catch(function() {
+                        pendingTestIndex = testIndex;
                         revertTestDropdowns();
+                        showTestAreaSubscriptionBlock();
                     });
                 return;
             }
@@ -4177,6 +4203,112 @@
                     errEl.style.display = 'block';
                 });
             });
+            var block = document.getElementById('testAreaSubscriptionBlock');
+            if (block) {
+                var yesBtn = document.getElementById('testAreaSubYes');
+                var noBtn = document.getElementById('testAreaSubNo');
+                if (yesBtn) yesBtn.addEventListener('click', function() {
+                    document.getElementById('testAreaSubStep1').style.display = 'none';
+                    document.getElementById('testAreaSubStepLogin').style.display = 'block';
+                    document.getElementById('testAreaSubStepPayment').style.display = 'none';
+                });
+                if (noBtn) noBtn.addEventListener('click', function() {
+                    document.getElementById('testAreaSubStep1').style.display = 'none';
+                    document.getElementById('testAreaSubStepLogin').style.display = 'none';
+                    document.getElementById('testAreaSubStepPayment').style.display = 'block';
+                    var msgEl = document.getElementById('testAreaSubRequestMsg');
+                    if (msgEl) { msgEl.style.display = 'none'; msgEl.textContent = ''; }
+                });
+                var backBtn = document.getElementById('testAreaSubPaymentBack');
+                if (backBtn) backBtn.addEventListener('click', function() {
+                    document.getElementById('testAreaSubStep1').style.display = 'block';
+                    document.getElementById('testAreaSubStepLogin').style.display = 'none';
+                    document.getElementById('testAreaSubStepPayment').style.display = 'none';
+                });
+                var loginBtn = document.getElementById('testAreaSubLoginBtn');
+                if (loginBtn) loginBtn.addEventListener('click', function() {
+                    var mobile = (document.getElementById('testAreaSubMobile').value || '').trim();
+                    var password = document.getElementById('testAreaSubPassword').value || '';
+                    var errEl = document.getElementById('testAreaSubLoginError');
+                    errEl.style.display = 'none';
+                    errEl.textContent = '';
+                    if (!mobile || !password) {
+                        errEl.textContent = 'کد کاربری و کلمه عبور الزامی است.';
+                        errEl.style.display = 'block';
+                        return;
+                    }
+                    fetch(API_BASE_URL + '/api/subscription/login', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        credentials: 'include',
+                        body: JSON.stringify({ mobile: mobile, password: password, section: 'tests' })
+                    }).then(function(r) { return r.json(); }).then(function(data) {
+                        if (data && data.success) {
+                            hideTestAreaSubscriptionBlock();
+                            if (typeof pendingTestIndex === 'number') {
+                                var idx = pendingTestIndex;
+                                pendingTestIndex = null;
+                                selectTest(idx, true);
+                            }
+                        } else {
+                            errEl.textContent = (data && data.error) ? data.error : 'خطا در ورود.';
+                            errEl.style.display = 'block';
+                        }
+                    }).catch(function() {
+                        errEl.textContent = 'خطای اتصال.';
+                        errEl.style.display = 'block';
+                    });
+                });
+                var reqBtn = document.getElementById('testAreaSubRequestSubmit');
+                if (reqBtn) reqBtn.addEventListener('click', function() {
+                    var mobile = (document.getElementById('testAreaSubRequestMobile').value || '').trim();
+                    var msgEl = document.getElementById('testAreaSubRequestMsg');
+                    if (!msgEl) return;
+                    msgEl.style.display = 'none';
+                    msgEl.textContent = '';
+                    if (!mobile || mobile.length < 5) {
+                        msgEl.textContent = 'شماره موبایل معتبر وارد کنید.';
+                        msgEl.style.display = 'block';
+                        msgEl.className = 'subscription-request-msg subscription-error';
+                        return;
+                    }
+                    fetch(API_BASE_URL + '/api/subscription/request-access', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        credentials: 'include',
+                        body: JSON.stringify({ mobile: mobile, section: 'tests' })
+                    }).then(function(r) { return r.json(); }).then(function(data) {
+                        msgEl.style.display = 'block';
+                        if (data.success) {
+                            msgEl.textContent = data.message || 'درخواست ثبت شد.';
+                            msgEl.className = 'subscription-request-msg subscription-request-success';
+                            document.getElementById('testAreaSubRequestMobile').value = '';
+                        } else {
+                            msgEl.textContent = data.error || 'خطا';
+                            msgEl.className = 'subscription-request-msg subscription-error';
+                        }
+                    }).catch(function() {
+                        msgEl.textContent = 'خطای اتصال.';
+                        msgEl.className = 'subscription-request-msg subscription-error';
+                        msgEl.style.display = 'block';
+                    });
+                });
+                var emailVal = document.getElementById('testAreaSubEmailValue');
+                var emailCopy = document.getElementById('testAreaSubEmailCopy');
+                if (emailCopy && emailVal) {
+                    emailCopy.addEventListener('click', function() {
+                        var text = emailVal.textContent || '';
+                        if (!text) return;
+                        if (navigator.clipboard && navigator.clipboard.writeText) {
+                            navigator.clipboard.writeText(text).then(function() {
+                                emailCopy.textContent = 'کپی شد!';
+                                emailCopy.classList.add('copied');
+                                setTimeout(function() { emailCopy.textContent = 'کپی'; emailCopy.classList.remove('copied'); }, 2000);
+                            }).catch(function() {});
+                        }
+                    });
+                }
+            }
         });
 
         // اطمینان از اینکه توابع در window scope هستند
@@ -4192,7 +4324,8 @@
         window.navigateTest = navigateTest;
         window.selectTestFromDropdown = selectTestFromDropdown;
         window.selectTestFromDropdownMobile = selectTestFromDropdownMobile;
-        
+        window.showSubscriptionModal = showSubscriptionModal;
+
         // Ads Category Filter Function
         function filterAds(category) {
             const ads = document.querySelectorAll('.ad-tile');

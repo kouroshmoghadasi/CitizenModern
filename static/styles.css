@@ -6521,6 +6521,35 @@
             background: #d4edda;
             color: #155724;
         }
+        .test-area-subscription-block {
+            background: #fff;
+            padding: 24px 20px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+            border: 2px solid #1e3c72;
+            margin-bottom: 20px;
+        }
+        .test-area-subscription-block .test-area-sub-title {
+            margin: 0 0 12px;
+            font-size: 1.25rem;
+            color: #1e3c72;
+        }
+        .test-area-subscription-block .test-area-sub-intro {
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+            color: #444;
+        }
+        .test-area-subscription-block .test-area-sub-step {
+            margin-top: 12px;
+        }
+        .test-area-subscription-block .subscription-input {
+            width: 100%;
+            padding: 12px 14px;
+            margin-bottom: 10px;
+            border: 1px solid #e9ecef;
+            border-radius: 10px;
+            font-size: 1rem;
+        }
         .subscription-modal-close {
             position: absolute;
             top: 12px;
