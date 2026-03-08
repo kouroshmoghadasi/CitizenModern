@@ -15,13 +15,19 @@
     var ua = navigator.userAgent || '';
     return ua.indexOf('Windows') !== -1 || (navigator.platform || '').indexOf('Win') !== -1;
   }
+  function isAndroid() {
+    var ua = navigator.userAgent || '';
+    return /Android/i.test(ua);
+  }
   window.addEventListener('beforeinstallprompt', function(e) {
     e.preventDefault();
     pwaInstallPrompt = e;
     var fallback = document.getElementById('pwa-install-fallback');
     var hintWin = document.getElementById('pwa-install-hint-windows');
+    var hintAndroid = document.getElementById('pwa-install-hint-android');
     if (fallback) fallback.style.display = 'none';
     if (hintWin) hintWin.style.display = 'none';
+    if (hintAndroid) hintAndroid.style.display = 'none';
   });
   window.addEventListener('appinstalled', function() {
     pwaInstallPrompt = null;
@@ -34,8 +40,11 @@
       if (isWindows()) {
         var msg = 'برای نصب مجدد در ویندوز:\n\n۱) در نوار آدرس مرورگر بنویسید: chrome://apps\n۲) روی اپ CitizenTest راست\u200cکلیک کنید و «Remove from Chrome» را بزنید.\n۳) این صفحه را رفرش کنید و دوباره روی «نصب APP» کلیک کنید.\n\nیا از منوی مرورگر (⋮) > اپلیکیشن\u200cها > نصب اپلیکیشن CitizenTest استفاده کنید.';
         alert(msg);
+      } else if (isAndroid()) {
+        var msg = 'برای نصب روی گوشی اندروید:\n\n۱) منوی مرورگر Chrome را باز کنید (آیکون سه\u200cنقطه ⋮ بالا).\n۲) گزینه «افزودن به صفحه اصلی» یا «نصب اپلیکیشن» یا «Add to Home screen» را بزنید.\n۳) در پنجره تأیید «نصب» یا «اضافه کردن» را بزنید.\n\nاگر گزینه را نمی\u200cبینید، یک بار صفحه را رفرش کنید و دوباره امتحان کنید.';
+        alert(msg);
       }
-      var hint = isWindows() ? document.getElementById('pwa-install-hint-windows') : document.querySelector('.pwa-install-hint:not(.pwa-install-hint-windows)');
+      var hint = isWindows() ? document.getElementById('pwa-install-hint-windows') : (isAndroid() ? document.getElementById('pwa-install-hint-android') : document.querySelector('.pwa-install-hint:not(.pwa-install-hint-windows):not(.pwa-install-hint-android)'));
       if (hint) {
         hint.style.display = 'block';
         hint.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
@@ -54,16 +63,24 @@
     var fallback = document.getElementById('pwa-install-fallback');
     var hintWin = document.getElementById('pwa-install-hint-windows');
     if (btn) btn.style.display = 'inline-block';
+    var hintAndroid = document.getElementById('pwa-install-hint-android');
     if (pwaInstallPrompt) {
       if (fallback) fallback.style.display = 'none';
       if (hintWin) hintWin.style.display = 'none';
+      if (hintAndroid) hintAndroid.style.display = 'none';
     } else {
       if (isWindows()) {
         if (fallback) fallback.style.display = 'none';
         if (hintWin) hintWin.style.display = 'block';
+        if (hintAndroid) hintAndroid.style.display = 'none';
+      } else if (isAndroid() && hintAndroid) {
+        if (fallback) fallback.style.display = 'none';
+        if (hintWin) hintWin.style.display = 'none';
+        hintAndroid.style.display = 'block';
       } else {
         if (fallback) fallback.style.display = 'inline';
         if (hintWin) hintWin.style.display = 'none';
+        if (hintAndroid) hintAndroid.style.display = 'none';
       }
     }
   }

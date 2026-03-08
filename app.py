@@ -11,6 +11,8 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
 app.secret_key = os.getenv('FLASK_SECRET_KEY', 'change-this-secret-in-production-citizen-subscription')
+# تا وقتی کش پاک نشده، ورود اشتراک حفظ شود (به‌جای از بین رفتن با بستن مرورگر)
+app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(days=90)
 CORS(app)  # Enable CORS for frontend requests
 try:
     from flask_compress import Compress  # type: ignore[import-untyped]
@@ -977,6 +979,7 @@ def api_subscription_login():
             return jsonify({'success': False, 'error': 'اشتراک منقضی شده یا خریداری نشده است.'}), 200
         if isinstance(exp, datetime):
             exp = exp.date()
+        session.permanent = True  # کوکی ورود تا ۹۰ روز (یا تا پاک کردن کش) حفظ شود
         session['sub_user_id'] = user_id
         session['sub_mobile'] = mobile
         if section == 'tests':

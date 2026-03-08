@@ -107,6 +107,45 @@
             box-shadow: 0 0 0 2px rgba(124,179,245,0.4);
             background: linear-gradient(135deg, #3d4a5c 0%, #2d3748 100%);
         }
+        .go-to-q-wrap {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .go-to-q-wrap .go-to-q-icon { font-size: 1.15rem; opacity: 0.85; }
+        .go-to-q-wrap input[type="number"] {
+            width: 72px;
+            padding: 8px 10px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 0.95rem;
+            background: var(--card-bg);
+            color: var(--text);
+        }
+        .go-to-q-wrap input[type="number"]:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 2px rgba(30,60,114,0.2);
+        }
+        body.theme-dark .go-to-q-wrap input[type="number"]:focus { box-shadow: 0 0 0 2px rgba(124,179,245,0.25); }
+        .go-to-q-wrap .go-to-q-btn {
+            padding: 8px 14px;
+            border-radius: 8px;
+            border: 1px solid var(--accent);
+            background: var(--accent);
+            color: #fff;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+        .go-to-q-wrap .go-to-q-btn:hover { opacity: 0.92; }
+        .q-card.scroll-highlight { animation: qScrollHighlight 1.8s ease; }
+        @keyframes qScrollHighlight {
+            0% { box-shadow: 0 0 0 3px rgba(241, 196, 15, 0.8); }
+            100% { box-shadow: none; }
+        }
         .page-header {
             background: var(--header-bg);
             color: var(--header-text);
@@ -228,6 +267,12 @@
                 <button type="button" class="lang-mode-btn" id="langModeEn" aria-pressed="true">English + فارسی</button>
                 <button type="button" class="lang-mode-btn" id="langModeFr" aria-pressed="false">Français + فارسی</button>
             </div>
+            <div class="group go-to-q-wrap">
+                <span class="go-to-q-icon" title="Go to question number / برو به سوال" aria-hidden="true">🔍</span>
+                <label for="goToQuestion571" class="theme-label" style="margin: 0;">سوال</label>
+                <input type="number" id="goToQuestion571" min="1" max="571" placeholder="مثلاً 250" aria-label="Question number (1–571)">
+                <button type="button" class="go-to-q-btn" id="goToQuestionBtn571">برو</button>
+            </div>
             <div class="group theme-toggle-wrap">
                 <span class="theme-label">Theme:</span>
                 <button type="button" class="theme-btn theme-light" id="themeLight" title="روشن / Light" aria-pressed="true">☀️</button>
@@ -238,6 +283,7 @@
             <h1>۵۷۱ سوال شهروندی کانادا</h1>
             <p>571 Question For Citizenship Test – انتخاب نمایش: انگلیسی+فارسی یا فرانسه+فارسی</p>
             <p style="margin-top: 10px; font-size: 0.85em; opacity: 0.9;">{{ questions|length }} سوال در یک سند · تم روشن/تاریک</p>
+            <p class="go-to-q-hint" style="margin-top: 8px; font-size: 0.9em; opacity: 0.95;">برو به سوال: با جعبه 🔍 بالا شماره سوال (۱ تا ۵۷۱) را وارد کنید و «برو» بزنید. / Go to question: enter a number (1–571) above and click Go.</p>
         </div>
         <div class="section-title">همه ۵۷۱ سوال به ترتیب فایل PDF / All 571 questions in PDF order</div>
 
@@ -387,6 +433,27 @@
             if (themeDark) themeDark.addEventListener('click', function() { localStorage.setItem(themeKey, 'dark'); applyTheme('dark'); });
             if (langModeEn) langModeEn.addEventListener('click', function() { localStorage.setItem(langModeKey, 'en'); applyLangMode('en'); });
             if (langModeFr) langModeFr.addEventListener('click', function() { localStorage.setItem(langModeKey, 'fr'); applyLangMode('fr'); });
+
+            var goInput = document.getElementById('goToQuestion571');
+            var goBtn = document.getElementById('goToQuestionBtn571');
+            function goToQuestion571() {
+                var val = goInput && parseInt(goInput.value, 10);
+                if (!val || val < 1) val = 1;
+                if (val > 571) val = 571;
+                var el = document.getElementById('q' + val);
+                if (el) {
+                    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    el.classList.remove('scroll-highlight');
+                    el.offsetHeight;
+                    el.classList.add('scroll-highlight');
+                    setTimeout(function() { el.classList.remove('scroll-highlight'); }, 1800);
+                }
+                if (goInput) goInput.value = val;
+            }
+            if (goBtn) goBtn.addEventListener('click', goToQuestion571);
+            if (goInput) {
+                goInput.addEventListener('keydown', function(e) { if (e.key === 'Enter') { e.preventDefault(); goToQuestion571(); } });
+            }
         })();
         // ۵۷۱: انتخاب گزینه توسط کاربر — مثل ۴۱۴ (صحیح سبز، غلط قرمز)
         (function() {
