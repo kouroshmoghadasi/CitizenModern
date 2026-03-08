@@ -327,6 +327,108 @@ def citizenship_414():
     return resp
 
 
+def _build_en_to_fa_option_map():
+    """نگاشت متن انگلیسی گزینه → فارسی: اول از فایل ۵۷۱، بعد از دادهٔ ۴۱۴."""
+    en_to_fa = {}
+    try:
+        q414 = _load_414_questions()
+        for q in q414:
+            en_list = q.get('options_en') or []
+            fa_list = q.get('options_fa') or []
+            for j, en in enumerate(en_list):
+                if j < len(fa_list) and en and fa_list[j]:
+                    en_to_fa[en.strip()] = fa_list[j].strip()
+    except Exception:
+        pass
+    for name in ('571_options_fa.json', '571_options_fa_extra.json', '571_options_fa_complete.json'):
+        path_571_fa = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static', name)
+        try:
+            if os.path.isfile(path_571_fa):
+                with open(path_571_fa, 'r', encoding='utf-8') as f:
+                    extra = json.load(f)
+                if isinstance(extra, dict):
+                    for k, v in extra.items():
+                        if k and isinstance(k, str) and not k.strip().startswith('_') and v:
+                            en_to_fa[k.strip()] = v.strip()
+        except Exception:
+            pass
+    # تطبیق نرمال‌شده: کلید lowercase و نرمال آپوستروف هم اضافه شود
+    def _norm(t):
+        if not t:
+            return t
+        t = t.strip()
+        t = t.replace('\u2019', "'")  # آپوستروف یونیکد → ASCII
+        return t
+    for k in list(en_to_fa.keys()):
+        low = k.lower()
+        if low not in en_to_fa:
+            en_to_fa[low] = en_to_fa[k]
+        kn = _norm(k)
+        if kn and kn not in en_to_fa:
+            en_to_fa[kn] = en_to_fa[k]
+    return en_to_fa
+
+
+def _fa_lookup(en_to_fa, text):
+    """ترجمهٔ فارسی برای متن گزینه؛ با تطبیق نرمال (حروف کوچک و آپوستروف)."""
+    t = text.strip() if text else ''
+    if not t:
+        return t
+    if t in en_to_fa:
+        return en_to_fa[t]
+    low = t.lower()
+    if low in en_to_fa:
+        return en_to_fa[low]
+    t_norm = t.replace('\u2019', "'")
+    if t_norm in en_to_fa:
+        return en_to_fa[t_norm]
+    return text
+
+
+def _expand_571_to_four_options(questions):
+    """برای هر سوال ۵۷۱ که کمتر از ۴ گزینه دارد، با اضافه کردن گزینه‌های غلط از سایر سوالات، دقیقاً ۴ گزینه می‌سازیم. ردیف اول انگلیسی، ردیف دوم فارسی (از ۴۱۴ یا fallback به انگلیسی)."""
+    if not questions:
+        return questions
+    en_to_fa = _build_en_to_fa_option_map()
+    pool_pairs = []
+    for q in questions:
+        opts = q.get('options') or []
+        opts_fr = q.get('options_fr') or opts
+        c = q.get('correct', 0)
+        en = opts[c] if opts and 0 <= c < len(opts) else ''
+        fr = opts_fr[c] if opts_fr and 0 <= c < len(opts_fr) else en
+        pool_pairs.append((en, fr))
+    for i, q in enumerate(questions):
+        opts = q.get('options') or []
+        opts_fr = q.get('options_fr') or opts
+        c = q.get('correct', 0)
+        correct_en = opts[c] if opts and 0 <= c < len(opts) else ''
+        correct_fr = opts_fr[c] if opts_fr and 0 <= c < len(opts_fr) else correct_en
+        if len(opts) >= 4 and len(opts_fr) >= 4:
+            q['options_en'] = opts[:4]
+            q['options_fr'] = opts_fr[:4]
+            q['options_fa'] = [_fa_lookup(en_to_fa, e) for e in opts[:4]]
+            q['correct'] = min(c, 3)
+            continue
+        rng = random.Random(i)
+        correct_pair = (correct_en, correct_fr)
+        wrong_pairs = [p for p in pool_pairs if p != correct_pair]
+        if len(wrong_pairs) < 3:
+            wrong_pairs = wrong_pairs + [correct_pair] * (3 - len(wrong_pairs))
+        rng.shuffle(wrong_pairs)
+        four_pairs = [correct_pair] + wrong_pairs[:3]
+        rng.shuffle(four_pairs)
+        new_correct = next(idx for idx, p in enumerate(four_pairs) if p == correct_pair)
+        four_en = [p[0] for p in four_pairs]
+        four_fr = [p[1] for p in four_pairs]
+        four_fa = [_fa_lookup(en_to_fa, e) for e in four_en]
+        q['options_en'] = four_en
+        q['options_fr'] = four_fr
+        q['options_fa'] = four_fa
+        q['correct'] = new_correct
+    return questions
+
+
 def _load_571_questions():
     """Load 571 questions once and cache in memory."""
     global _cache_571
@@ -345,6 +447,7 @@ def _load_571_questions():
                     q.setdefault('q_fr', q.get('q', ''))
                     q.setdefault('options_fr', q.get('options', []))
                     q.setdefault('expl_fr', q.get('book_text', ''))
+                data = _expand_571_to_four_options(data)
                 _cache_571 = data
                 return _cache_571
         except Exception:

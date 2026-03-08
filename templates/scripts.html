@@ -123,7 +123,7 @@
         
         // Header Carousel Functionality - Simple Version
         let currentSlide = 0;
-        const totalSlides = 2; // اسلاید ۰: عنوان · اسلاید ۱: تیم شکور — هر کدام جدا
+        const totalSlides = 3; // اسلاید ۰: عنوان · اسلاید ۱: تیم شکور · اسلاید ۲: ثبت تبلیغ
         let carouselInterval;
         
         function goToSlide(slideIndex) {
@@ -3118,7 +3118,7 @@
 
         // تولید تست‌ها (بعد از تعریف allTests)
         let generatedTests = [];
-        let pendingTestIndex = null; // برای مودال اشتراک (Test3+)
+        let pendingTestIndex = null; // برای مودال اشتراک (از Test11 به بعد)
         function initTests() {
             // تکمیل سوالات اصلی
             allTests.forEach(test => {
@@ -3221,7 +3221,7 @@
             }
         }
 
-        // انتخاب تست (از Test3 به بعد نیاز به اشتراک دارد؛ در صورت نداشتن اشتراک مودال نمایش داده می‌شود)
+        // انتخاب تست (Test1–Test10 رایگان؛ از Test11 به بعد نیاز به اشتراک دارد)
         function doSelectTest(testIndex) {
             currentTest = testIndex;
             userAnswers = [];
@@ -3307,7 +3307,7 @@
         }
         
         function selectTest(testIndex, skipSubscriptionCheck) {
-            if (testIndex >= 2 && skipSubscriptionCheck !== true) {
+            if (testIndex >= 10 && skipSubscriptionCheck !== true) {
                 fetch(API_BASE_URL + '/api/subscription/status', { credentials: 'include' })
                     .then(function(r) { return r.json(); })
                     .then(function(data) {
@@ -4403,13 +4403,54 @@
             <svg class="help-btn-icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="currentColor" d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z"/></svg>
         </button>
         <div class="help-menu" id="helpMenu">
+            <a href="https://niazmandiha.invoisky.com/" target="_blank" rel="noopener" class="help-menu-item help-menu-item-link" onclick="toggleHelpMenu()">
+                <span class="help-menu-item-icon">📋</span>
+                <span>نیازمندی‌های کانادا - آمریکا — کسب‌کارهای فارسی‌زبان</span>
+            </a>
             <div class="help-menu-item" onclick="openHelpModal()">
                 <span class="help-menu-item-icon">📖</span>
                 <span>راهنما / Help</span>
             </div>
+            <div class="help-menu-item" onclick="openDonationModal()">
+                <span class="help-menu-item-icon">💝</span>
+                <span>حمایت مالی از سایت / Support This Site</span>
+            </div>
             <div class="help-menu-item" onclick="openSuggestions()">
                 <span class="help-menu-item-icon">💬</span>
                 <span>پیشنهادات / Suggestions</span>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal حمایت مالی -->
+    <div class="donation-modal" id="donationModal" onclick="closeDonationModal(event)">
+        <div class="donation-modal-content" onclick="event.stopPropagation()">
+            <button class="donation-modal-close" onclick="closeDonationModal()">×</button>
+            <h3>💝 حمایت مالی از سایت</h3>
+            <p class="donation-modal-en">Support This Site</p>
+            <p>
+                برای ادامه فعالیت این سایت و ارائه خدمات رایگان، لطفاً با کمک مالی کوچک خود از ما حمایت کنید. هر مقدار کمک شما برای زنده نگه داشتن این سایت ارزشمند است.
+            </p>
+            <p style="margin-top: 8px; direction: ltr; text-align: center; color: #555; font-size: 0.95em;">
+                To keep this site alive and continue providing free services, please consider supporting us with a small donation.
+            </p>
+            <h4 style="margin-top: 20px;">📧 اطلاعات تماس / Contact</h4>
+            <div class="donation-modal-contact">
+                <div class="donation-modal-row">
+                    <span class="donation-modal-label">ایمیل / Email</span>
+                    <a href="mailto:koroush.mog@gmail.com">koroush.mog@gmail.com</a>
+                    <button type="button" class="donation-modal-copy" onclick="copyToClipboard('koroush.mog@gmail.com', this)">کپی</button>
+                </div>
+                <div class="donation-modal-row">
+                    <span class="donation-modal-label">موبایل / Mobile</span>
+                    <span style="direction: ltr;">514-476-7079</span>
+                    <button type="button" class="donation-modal-copy" onclick="copyToClipboard('514-476-7079', this)">کپی</button>
+                </div>
+            </div>
+            <div class="donation-modal-payment">
+                <strong>💡 روش‌های پرداخت / Payment</strong>
+                <p style="margin-top: 8px;">🇨🇦 Interac e-Transfer به ایمیل یا موبایل بالا</p>
+                <p style="font-size: 0.9em; color: #666;">Contact via email for other options</p>
             </div>
         </div>
     </div>
@@ -4467,6 +4508,18 @@
             modal.classList.remove('active');
         }
         
+        function openDonationModal() {
+            const menu = document.getElementById('helpMenu');
+            if (menu) menu.classList.remove('active');
+            const modal = document.getElementById('donationModal');
+            if (modal) modal.classList.add('active');
+        }
+        
+        function closeDonationModal(event) {
+            const modal = document.getElementById('donationModal');
+            if (modal) modal.classList.remove('active');
+        }
+        
         function openSuggestions() {
             const menu = document.getElementById('helpMenu');
             menu.classList.remove('active');
@@ -4510,7 +4563,23 @@
                 }
             } catch (e) {}
         });
-        
+
+        // بعد از ۱۵ دقیقه عدم فعالیت، ریلود تا همه جریان فعلی (چک اشتراک و غیره) را ببینند
+        (function() {
+            var INACTIVITY_MS = 15 * 60 * 1000;
+            var lastActivity = Date.now();
+            function onActivity() { lastActivity = Date.now(); }
+            var events = ['mousedown', 'keydown', 'scroll', 'touchstart', 'click'];
+            events.forEach(function(ev) {
+                document.addEventListener(ev, onActivity, { passive: true });
+            });
+            setInterval(function() {
+                if (Date.now() - lastActivity >= INACTIVITY_MS) {
+                    window.location.reload();
+                }
+            }, 60000);
+        })();
+
         // بستن منو با کلیک خارج از آن
         document.addEventListener('click', function(event) {
             const helpBtn = document.querySelector('.help-btn');

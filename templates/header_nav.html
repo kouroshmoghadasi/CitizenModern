@@ -45,13 +45,6 @@
                     </div>
                 </div>
             </div>
-            <!-- لینک به یک سند ۵۷۱ سوالی (به ترتیب PDF) — دیگر مودال ۳۰ آزمون نیست -->
-            <div class="btn-30-tests-wrap">
-                <a href="/citizenship-571" class="btn-30-tests" id="btnBank571" title="۵۷۱ سوال شهروندی در یک فایل، به ترتیب PDF">
-                    <span class="btn-30-tests-icon" aria-hidden="true">📋</span>
-                    <span class="btn-30-tests-inner" dir="rtl">۵۷۱ سوال در یک سند<br><span class="btn-30-tests-sub">به ترتیب فایل PDF</span></span>
-                </a>
-            </div>
         </div>
 
         <div class="main-content">
@@ -79,9 +72,23 @@
                             </picture>
                         </a>
                     </div>
+                    <!-- Slide 3: ثبت تبلیغ — طراحی مدرن با آیکون صورتی و کارت شیشه‌ای -->
+                    <div class="header-slide header-slide-ad-registration" id="slide2">
+                        <div class="slide-visitor-text">Visitors : <span class="visitor-count-value">100</span></div>
+                        <div class="header-slide-ad-registration-box" onclick="openAdRegistrationModal()" role="button" tabindex="0" title="برای ثبت تبلیغ کلیک کنید">
+                            <h3 class="header-slide-ad-registration-title">برای ثبت تبلیغ تماس بگیرید</h3>
+                            <div class="header-slide-ad-registration-phone-wrap">
+                                <span class="header-slide-ad-registration-icon" aria-hidden="true">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                                </span>
+                                <span class="header-slide-ad-registration-phone">514-476-7079</span>
+                            </div>
+                        </div>
+                    </div>
                     <div class="header-carousel-indicators">
                         <div class="header-indicator active" onclick="goToSlide(0)" aria-label="اسلاید ۱"></div>
                         <div class="header-indicator" onclick="goToSlide(1)" aria-label="اسلاید ۲"></div>
+                        <div class="header-indicator" onclick="goToSlide(2)" aria-label="اسلاید ۳"></div>
                     </div>
                 </div>
             </div>
@@ -118,10 +125,10 @@
             </div>
 
             <div id="testContainer">
-                <!-- بلوک اشتراک داخل محیط تست (مثل ۴۱۴) — وقتی Test3+ بدون دسترسی انتخاب شود -->
+                <!-- بلوک اشتراک داخل محیط تست (مثل ۴۱۴) — وقتی Test11+ بدون دسترسی انتخاب شود -->
                 <div id="testAreaSubscriptionBlock" class="test-area-subscription-block" style="display: none;">
                     <h2 class="test-area-sub-title">دسترسی به کل بسته</h2>
-                    <p class="test-area-sub-intro"><span class="subscription-intro-price">مبلغ: ۱۵ دلار</span> — دسترسی یک‌ماهه به کل بسته (تست‌ها از Test3 به بعد + همه ۴۱۴ سوال)</p>
+                    <p class="test-area-sub-intro"><span class="subscription-intro-price">مبلغ: ۱۵ دلار</span> — دسترسی یک‌ماهه به کل بسته (تست‌ها از Test11 به بعد + همه ۴۱۴ سوال). Test1 تا Test10 رایگان است.</p>
                     <div id="testAreaSubStep1" class="test-area-sub-step">
                         <p class="subscription-question">آیا اشتراک یک‌ماهه خریداری شده است؟</p>
                         <div class="subscription-buttons">
@@ -182,67 +189,12 @@
                         </div>
                     </a>
                 </div>
-                <!-- Donation Section (Mobile) -->
-                <div class="donation-section mobile-version">
-                    <div class="donation-toggle" onclick="toggleDonation()">
-                        <h3>💝 حمایت مالی از سایت / Support This Site</h3>
-                        <span class="donation-toggle-icon">▼</span>
-                    </div>
-                    <div class="donation-content" id="donationContentMobile">
-                        <p>
-                            برای ادامه فعالیت این سایت و ارائه خدمات رایگان، لطفاً با کمک مالی کوچک خود از ما حمایت کنید. هر مقدار کمک شما برای زنده نگه داشتن این سایت ارزشمند است.
-                        </p>
-                        <p style="margin-top: 8px; direction: ltr; text-align: center;">
-                            To keep this site alive and continue providing free services, please consider supporting us with a small donation. Every contribution helps maintain this valuable resource.
-                        </p>
-                        
-                        <div class="contact-info">
-                            <h4>📧 اطلاعات تماس برای حمایت مالی / Contact Information for Donation</h4>
-                            
-                            <div class="contact-list">
-                                <div class="contact-item">
-                                    <div class="contact-content">
-                                        <span class="contact-label">ایمیل / Email</span>
-                                        <span class="contact-value">
-                                            <a href="mailto:koroush.mog@gmail.com">koroush.mog@gmail.com</a>
-                                        </span>
-                                    </div>
-                                    <button class="copy-btn" onclick="copyToClipboard('koroush.mog@gmail.com', this)">کپی / Copy</button>
-                                </div>
-                                
-                                <div class="contact-item">
-                                    <div class="contact-content">
-                                        <span class="contact-label">موبایل / Mobile</span>
-                                        <span class="contact-value">
-                                            <span style="color: #e74c3c; font-size: 0.9em;">📱</span>
-                                            <span style="margin-left: 6px;">514-476-7079</span>
-                                        </span>
-                                    </div>
-                                    <button class="copy-btn" onclick="copyToClipboard('514-476-7079', this)">کپی / Copy</button>
-                                </div>
-                            </div>
+                <!-- ۵۷۱ سوال — هم‌شکل با ۴۱۴ -->
+                <div class="book-summary-section mobile-version" style="margin-top: 4px;">
+                    <a href="/citizenship-571" class="book-summary-link" target="_blank" title="۵۷۱ سوال در یک فایل، به ترتیب PDF">
+                        <div class="book-summary-toggle">
+                            <h3>📋 ۵۷۱ سوال شهروندی در یک سند (به ترتیب فایل PDF)</h3>
                         </div>
-                        
-                        <div class="payment-methods">
-                            <strong>💡 روش‌های پرداخت / Payment Methods</strong>
-                            <div class="payment-item" style="direction: rtl; text-align: right;">
-                                <div style="font-weight: 600; color: #2c3e50; margin-bottom: 4px;">🇨🇦 برای ساکنین کانادا:</div>
-                                <div style="font-size: 0.9em; color: #34495e;">Interac e-Transfer به ایمیل یا شماره موبایل بالا</div>
-                                <div style="font-size: 0.85em; color: #7f8c8d; margin-top: 4px; direction: ltr; text-align: left;">For Canadians: Interac e-Transfer to the email or mobile number above</div>
-                            </div>
-                            <div class="payment-item" style="direction: ltr; text-align: left;">
-                                <div style="font-weight: 600; color: #2c3e50; margin-bottom: 4px;">🌍 Other methods:</div>
-                                <div style="font-size: 0.9em; color: #34495e;">Contact via email for other payment options</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- لینک ۵۷۱ سوال در یک سند (موبایل) -->
-                <div class="btn-30-tests-mobile-wrap">
-                    <a href="/citizenship-571" class="btn-30-tests btn-30-tests-mobile" title="۵۷۱ سوال در یک فایل، به ترتیب PDF">
-                        <span class="btn-30-tests-icon" aria-hidden="true">📋</span>
-                        <span class="btn-30-tests-inner" dir="rtl">۵۷۱ سوال در یک سند<br><span class="btn-30-tests-sub">به ترتیب فایل PDF</span></span>
                     </a>
                 </div>
                 
@@ -255,27 +207,8 @@
                     </div>
                 </div>
                 
-                <!-- Mobile Classifieds Promo Section (shown only on mobile, after ad registration) -->
-                <div class="classifieds-promo-section mobile-version">
-                    <a href="https://niazmandiha.invoisky.com/" target="_blank" rel="noopener" class="classifieds-promo-link">
-                        <div class="classifieds-promo-box">
-                            <div class="classifieds-promo-header">
-                                <span style="font-size: 1.3em;">📋</span>
-                                <h3 style="color: #1e293b; margin: 0; font-size: 1em; font-weight: 800; direction: rtl;">نیازمندی‌های کانادا - آمریکا</h3>
+                <!-- نیازمندی‌های کانادا - آمریکا به منوی دکمهٔ قرمز دایره‌ای منتقل شده -->
                             </div>
-                            <div class="classifieds-promo-content">
-                                <div class="classifieds-business-line" style="color: #475569; font-size: 0.85em; margin-top: 6px; direction: rtl; line-height: 1.5;">
-                                    کسب‌کارهای فارسی‌زبان در کانادا و آمریکا
-                                </div>
-                                <div style="display: flex; align-items: center; justify-content: center; gap: 6px; margin-top: 10px; padding-top: 10px; border-top: 1px solid rgba(99, 102, 241, 0.2);">
-                                    <span style="color: #6366f1; font-size: 0.9em; font-weight: 700;">مشاهده سایت</span>
-                                    <span style="color: #6366f1; font-size: 0.9em;">→</span>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
             <div class="results" id="results" style="display: none; margin-top: 30px; padding: 25px; background: white; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); direction: rtl; text-align: right;">
                 <h2 style="color: #1e3c72; margin-bottom: 20px; font-size: 1.8em; text-align: center;">نتایج آزمون</h2>
                 <div class="score" id="score" style="font-size: 3em; font-weight: bold; color: #1e3c72; text-align: center; margin: 20px 0;"></div>

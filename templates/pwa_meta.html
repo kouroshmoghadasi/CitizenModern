@@ -1,4 +1,4 @@
-{# PWA / Web App meta and manifest — include in <head> #}
+{# PWA: نوار نصب روی موبایل همیشه نشان داده می‌شود. دکمه «نصب اپ» فقط وقتی مرورگر (مثلاً Chrome) رویداد beforeinstallprompt را بفرستد نمایش داده می‌شود؛ در غیر این صورت راهنمای متنی «منو > افزودن به صفحه اصلی» نمایش داده می‌شود. #}
 <link rel="manifest" href="{{ url_for('webapp_manifest') }}">
 <meta name="theme-color" content="#0f172a">
 <meta name="mobile-web-app-capable" content="yes">
@@ -14,10 +14,8 @@
   window.addEventListener('beforeinstallprompt', function(e) {
     e.preventDefault();
     pwaInstallPrompt = e;
-    var bar = document.getElementById('pwa-install-bar');
-    var btn = document.getElementById('pwa-install-btn');
-    if (bar) bar.style.display = 'block';
-    if (btn) btn.style.display = 'inline-block';
+    var fallback = document.getElementById('pwa-install-fallback');
+    if (fallback) fallback.style.display = 'none';
   });
   window.addEventListener('appinstalled', function() {
     pwaInstallPrompt = null;
@@ -28,20 +26,34 @@
     if (pwaInstallPrompt) {
       pwaInstallPrompt.prompt();
       pwaInstallPrompt.userChoice.then(function() { pwaInstallPrompt = null; });
+    } else {
+      var hint = document.querySelector('.pwa-install-hint');
+      if (hint) {
+        hint.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        hint.style.background = 'rgba(241, 196, 15, 0.25)';
+        hint.style.padding = '6px 10px';
+        hint.style.borderRadius = '6px';
+        setTimeout(function() { hint.style.background = ''; hint.style.padding = ''; hint.style.borderRadius = ''; }, 3000);
+      }
     }
   };
-  function showPwaBarForIOS() {
+  function isMobileOrTablet() {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  }
+  function showPwaBar() {
     var bar = document.getElementById('pwa-install-bar');
     if (!bar) return;
-    var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-    if (isIOS && !pwaInstallPrompt) {
-      bar.style.display = 'block';
-    }
+    if (!isMobileOrTablet()) return;
+    bar.style.display = 'block';
+    var btn = document.getElementById('pwa-install-btn');
+    var fallback = document.getElementById('pwa-install-fallback');
+    if (btn) btn.style.display = 'inline-block';
+    if (fallback) fallback.style.display = pwaInstallPrompt ? 'none' : 'inline';
   }
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', showPwaBarForIOS);
+    document.addEventListener('DOMContentLoaded', showPwaBar);
   } else {
-    setTimeout(showPwaBarForIOS, 100);
+    setTimeout(showPwaBar, 100);
   }
 })();
 </script>

@@ -170,6 +170,16 @@
         .q-options li { padding: 10px 14px; margin: 6px 0; background: var(--option-bg); border-radius: 10px; border: 1px solid var(--option-border); direction: ltr; text-align: left; }
         .q-options li.correct { background: #1e4620; border-color: #28a745; font-weight: 600; color: #d4edda; }
         body.theme-dark .q-options li.correct { background: #1a3d1c; color: #b8e0ba; }
+        .q-options-list { list-style: none; margin: 12px 0; }
+        .q-options-list li { padding: 10px 14px; margin: 6px 0; background: var(--option-bg); border-radius: 10px; border: 1px solid var(--option-border); direction: ltr; text-align: left; }
+        .q-options-list li.option-correct { background: #d4edda; border-color: #28a745; font-weight: 600; color: #155724; }
+        .q-options-list li.option-wrong { background: #f8d7da; border-color: #dc3545; font-weight: 600; color: #721c24; }
+        body.theme-dark .q-options-list li.option-correct { background: #1a3d1c; border-color: #28a745; color: #b8e0ba; }
+        body.theme-dark .q-options-list li.option-wrong { background: #3d1a1a; border-color: #dc3545; color: #f8b4b8; }
+        .q-options-list li.q-option-clickable { cursor: pointer; transition: background 0.2s, border-color 0.2s; }
+        .q-options-list li.q-option-clickable:hover { filter: brightness(0.97); }
+        .q-options-list li.q-option-answered { cursor: default; }
+        .q-option-letter { font-weight: 700; margin-right: 8px; color: var(--accent); }
         .block-en { direction: ltr; text-align: left; margin-bottom: 10px; padding: 10px 12px; background: rgba(30,60,114,0.06); border-radius: 10px; border-left: 3px solid var(--accent); }
         body.theme-dark .block-en { background: rgba(124,179,245,0.1); border-left-color: #7cb3f5; }
         .block-fa { direction: rtl; text-align: right; margin-bottom: 10px; padding: 10px 12px; background: rgba(241,196,15,0.12); border-radius: 10px; border-right: 3px solid #f1c40f; }
@@ -233,16 +243,42 @@
                 <div class="block-fr lang-block-fr" style="display: none;"><span class="q-num-badge">{{ loop.index }}</span> {{ (q.q_fr or q.q)|e }}</div>
                 <div class="block-fa"><span class="q-num-badge">{{ loop.index }}</span> {{ (q.q_fa or '')|e }}</div>
             </div>
+            {% if q.options_en is defined and q.options_en|length >= 4 %}
+            <div class="q-options-list q-options-mcq" style="margin-top: 14px;" data-correct="{{ q.correct if q.correct is defined else -1 }}">
+                <div class="lang-block-en">
+                    <ul class="q-options-list">
+                        {% for opt in q.options_en %}
+                        <li class="q-option-clickable" data-option-index="{{ loop.index0 }}" role="button" tabindex="0"><span class="q-option-letter">{{ ['A','B','C','D'][loop.index0] }}.</span> {{ opt|e }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="lang-block-fr" style="display: none;">
+                    <ul class="q-options-list">
+                        {% for opt in (q.options_fr or q.options_en) %}
+                        <li class="q-option-clickable" data-option-index="{{ loop.index0 }}" role="button" tabindex="0"><span class="q-option-letter">{{ ['A','B','C','D'][loop.index0] }}.</span> {{ opt|e }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="block-fa">
+                    <p class="q-options-fa-label" style="font-size: 0.9em; font-weight: 600; color: var(--accent); margin-bottom: 8px;">گزینه‌ها به فارسی</p>
+                    <ul class="q-options-list" style="direction: rtl; text-align: right;">
+                        {% for opt in (q.options_fa or q.options_en) %}
+                        <li class="q-option-clickable" data-option-index="{{ loop.index0 }}" style="direction: rtl; text-align: right;" role="button" tabindex="0"><span class="q-option-letter">{{ ['الف','ب','ج','د'][loop.index0] }}.</span> {{ opt|e }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            {% else %}
             <div class="lang-block-en">
                 <ul class="q-options">
-                    {% for opt in q.options %}
+                    {% for opt in (q.options or []) %}
                     <li{% if loop.index0 == q.correct %} class="correct"{% endif %}>{{ opt|e }}{% if loop.index0 == q.correct %} ✓{% endif %}</li>
                     {% endfor %}
                 </ul>
             </div>
             <div class="lang-block-fr" style="display: none;">
                 <ul class="q-options">
-                    {% for opt in (q.options_fr or q.options) %}
+                    {% for opt in (q.options_fr or q.options or []) %}
                     <li{% if loop.index0 == q.correct %} class="correct"{% endif %}>{{ opt|e }}{% if loop.index0 == q.correct %} ✓{% endif %}</li>
                     {% endfor %}
                 </ul>
@@ -251,6 +287,7 @@
             <div class="ans-label lang-block-fr" style="display: none;">پاسخ صحیح / Réponse correcte:</div>
             <div class="lang-block-en">{% if q.options and q.correct >= 0 and q.correct < q.options|length %}{{ q.options[q.correct]|e }}{% endif %}</div>
             <div class="lang-block-fr" style="display: none;">{% if q.options_fr and q.correct >= 0 and q.correct < q.options_fr|length %}{{ q.options_fr[q.correct]|e }}{% elif q.options and q.correct >= 0 and q.correct < q.options|length %}{{ q.options[q.correct]|e }}{% endif %}</div>
+            {% endif %}
             {% if q.book_text or q.expl_fr %}
             <div class="expl-src" style="margin-top: 10px;">
                 <div class="block-en lang-block-en">{% if q.book_text %}{{ q.book_text|e }}{% endif %}</div>
@@ -298,6 +335,51 @@
             if (themeDark) themeDark.addEventListener('click', function() { localStorage.setItem(themeKey, 'dark'); applyTheme('dark'); });
             if (langModeEn) langModeEn.addEventListener('click', function() { localStorage.setItem(langModeKey, 'en'); applyLangMode('en'); });
             if (langModeFr) langModeFr.addEventListener('click', function() { localStorage.setItem(langModeKey, 'fr'); applyLangMode('fr'); });
+        })();
+        // ۵۷۱: انتخاب گزینه توسط کاربر — مثل ۴۱۴ (صحیح سبز، غلط قرمز)
+        (function() {
+            document.querySelectorAll('.q-options-mcq').forEach(function(container) {
+                var correctIdx = parseInt(container.getAttribute('data-correct'), 10);
+                if (correctIdx < 0) return;
+                var allLists = container.querySelectorAll('.q-options-list ul');
+                function markAnswered() {
+                    allLists.forEach(function(ul) {
+                        ul.querySelectorAll('li').forEach(function(li) {
+                            li.classList.remove('q-option-clickable');
+                            li.classList.add('q-option-answered');
+                            li.removeAttribute('tabindex');
+                            li.removeAttribute('role');
+                        });
+                    });
+                }
+                function handleSelect(clickedIndex) {
+                    if (container.classList.contains('q-answered')) return;
+                    container.classList.add('q-answered');
+                    markAnswered();
+                    allLists.forEach(function(ul) {
+                        var lis = ul.querySelectorAll('li');
+                        for (var i = 0; i < lis.length; i++) {
+                            lis[i].classList.remove('option-correct', 'option-wrong');
+                            if (i === clickedIndex) {
+                                lis[i].classList.add(i === correctIdx ? 'option-correct' : 'option-wrong');
+                            } else if (i === correctIdx) {
+                                lis[i].classList.add('option-correct');
+                            }
+                        }
+                    });
+                }
+                allLists.forEach(function(ul) {
+                    [].slice.call(ul.querySelectorAll('li')).forEach(function(li) {
+                        li.addEventListener('click', function() { handleSelect(parseInt(li.getAttribute('data-option-index'), 10)); });
+                        li.addEventListener('keydown', function(e) {
+                            if (e.key === 'Enter' || e.key === ' ') {
+                                e.preventDefault();
+                                handleSelect(parseInt(li.getAttribute('data-option-index'), 10));
+                            }
+                        });
+                    });
+                });
+            });
         })();
     </script>
 </body>
