@@ -19,8 +19,6 @@
   });
   window.addEventListener('appinstalled', function() {
     pwaInstallPrompt = null;
-    var bar = document.getElementById('pwa-install-bar');
-    if (bar) bar.style.display = 'none';
   });
   window.pwaInstall = function() {
     if (pwaInstallPrompt) {
@@ -37,13 +35,9 @@
       }
     }
   };
-  function isMobileOrTablet() {
-    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-  }
   function showPwaBar() {
     var bar = document.getElementById('pwa-install-bar');
     if (!bar) return;
-    if (!isMobileOrTablet()) return;
     bar.style.display = 'block';
     var btn = document.getElementById('pwa-install-btn');
     var fallback = document.getElementById('pwa-install-fallback');

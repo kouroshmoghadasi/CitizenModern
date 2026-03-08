@@ -458,10 +458,31 @@ def _load_571_questions():
 
 @app.route('/citizenship-571')
 def citizenship_571():
-    """همه ۵۷۱ سوال به ترتیب PDF در یک سند (بدون صفحه‌بندی)."""
+    """۵۷۱ سوال — سوالات ۱–۷۱ رایگان؛ از ۷۲ به بعد با اشتراک (همان نام کاربری ۴۱۴)."""
     log_visitor('/citizenship-571')
-    questions = _load_571_questions()
-    resp = app.make_response(render_template('citizenship_571.html', questions=questions))
+    all_questions = _load_571_questions()
+    today = _today()
+    has_access = False
+    if session.get('sub_414_expiry'):
+        try:
+            exp = session['sub_414_expiry']
+            if isinstance(exp, str):
+                exp = date.fromisoformat(exp)
+            if exp >= today:
+                has_access = True
+        except Exception:
+            pass
+    if has_access:
+        questions = all_questions
+        show_paywall = False
+    else:
+        questions = all_questions[:71] if len(all_questions) >= 71 else all_questions
+        show_paywall = True
+    resp = app.make_response(render_template(
+        'citizenship_571.html',
+        questions=questions,
+        show_paywall=show_paywall,
+    ))
     resp.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
     resp.headers['Pragma'] = 'no-cache'
     resp.headers['Expires'] = '0'
