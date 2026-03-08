@@ -1,4 +1,4 @@
-{# PWA: نوار نصب روی موبایل همیشه نشان داده می‌شود. دکمه «نصب اپ» فقط وقتی مرورگر (مثلاً Chrome) رویداد beforeinstallprompt را بفرستد نمایش داده می‌شود؛ در غیر این صورت راهنمای متنی «منو > افزودن به صفحه اصلی» نمایش داده می‌شود. #}
+{# PWA: نوار نصب روی موبایل و دسکتاپ. دکمه «نصب اپ» همیشه نمایش داده می‌شود؛ اگر مرورگر prompt بفرستد با کلیک نصب می‌شود، وگرنه راهنمای نصب (ویندوز یا موبایل) نشان داده می‌شود. بعد از حذف اپ در ویندوز، مرورگر ممکن است prompt نفرستد — راهنما نحوه نصب مجدد را توضیح می‌دهد. #}
 <link rel="manifest" href="{{ url_for('webapp_manifest') }}">
 <meta name="theme-color" content="#0f172a">
 <meta name="mobile-web-app-capable" content="yes">
@@ -11,11 +11,17 @@
     navigator.serviceWorker.register('{{ url_for("static", filename="sw.js") }}', { scope: '/' }).then(function(){}, function(){});
   }
   var pwaInstallPrompt = null;
+  function isWindows() {
+    var ua = navigator.userAgent || '';
+    return ua.indexOf('Windows') !== -1 || (navigator.platform || '').indexOf('Win') !== -1;
+  }
   window.addEventListener('beforeinstallprompt', function(e) {
     e.preventDefault();
     pwaInstallPrompt = e;
     var fallback = document.getElementById('pwa-install-fallback');
+    var hintWin = document.getElementById('pwa-install-hint-windows');
     if (fallback) fallback.style.display = 'none';
+    if (hintWin) hintWin.style.display = 'none';
   });
   window.addEventListener('appinstalled', function() {
     pwaInstallPrompt = null;
@@ -25,13 +31,18 @@
       pwaInstallPrompt.prompt();
       pwaInstallPrompt.userChoice.then(function() { pwaInstallPrompt = null; });
     } else {
-      var hint = document.querySelector('.pwa-install-hint');
+      if (isWindows()) {
+        var msg = 'برای نصب مجدد در ویندوز:\n\n۱) در نوار آدرس مرورگر بنویسید: chrome://apps\n۲) روی اپ CitizenTest راست\u200cکلیک کنید و «Remove from Chrome» را بزنید.\n۳) این صفحه را رفرش کنید و دوباره روی «نصب APP» کلیک کنید.\n\nیا از منوی مرورگر (⋮) > اپلیکیشن\u200cها > نصب اپلیکیشن CitizenTest استفاده کنید.';
+        alert(msg);
+      }
+      var hint = isWindows() ? document.getElementById('pwa-install-hint-windows') : document.querySelector('.pwa-install-hint:not(.pwa-install-hint-windows)');
       if (hint) {
+        hint.style.display = 'block';
         hint.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         hint.style.background = 'rgba(241, 196, 15, 0.25)';
-        hint.style.padding = '6px 10px';
+        hint.style.padding = '8px 12px';
         hint.style.borderRadius = '6px';
-        setTimeout(function() { hint.style.background = ''; hint.style.padding = ''; hint.style.borderRadius = ''; }, 3000);
+        setTimeout(function() { hint.style.background = ''; hint.style.padding = ''; hint.style.borderRadius = ''; }, 5000);
       }
     }
   };
@@ -41,8 +52,20 @@
     bar.style.display = 'block';
     var btn = document.getElementById('pwa-install-btn');
     var fallback = document.getElementById('pwa-install-fallback');
+    var hintWin = document.getElementById('pwa-install-hint-windows');
     if (btn) btn.style.display = 'inline-block';
-    if (fallback) fallback.style.display = pwaInstallPrompt ? 'none' : 'inline';
+    if (pwaInstallPrompt) {
+      if (fallback) fallback.style.display = 'none';
+      if (hintWin) hintWin.style.display = 'none';
+    } else {
+      if (isWindows()) {
+        if (fallback) fallback.style.display = 'none';
+        if (hintWin) hintWin.style.display = 'block';
+      } else {
+        if (fallback) fallback.style.display = 'inline';
+        if (hintWin) hintWin.style.display = 'none';
+      }
+    }
   }
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', showPwaBar);
