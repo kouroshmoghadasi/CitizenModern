@@ -96,6 +96,21 @@
     </div>
 
     <div class="card">
+        <h2>مبلغ اشتراک (دلار)</h2>
+        <div class="card-body">
+            <div id="subscriptionPriceMsg"></div>
+            <div class="form-inline">
+                <div class="f">
+                    <label>مبلغ پیش‌فرض اشتراک (دلار)</label>
+                    <input type="number" id="subscriptionPriceAmount" min="5" max="10000" value="{{ subscription_price }}" style="min-width: 100px;">
+                </div>
+                <button type="button" class="btn" id="btnSaveSubscriptionPrice">ذخیره مبلغ</button>
+            </div>
+            <p style="font-size: 0.85rem; color: #666; margin-top: 8px;">این مبلغ در سایت و در فرم زیر به‌صورت پیش‌فرض نمایش داده می‌شود. در ثبت پرداخت می‌توانید مبلغ هر پرداخت را جداگانه اصلاح کنید.</p>
+        </div>
+    </div>
+
+    <div class="card">
         <h2>ثبت پرداخت و اشتراک</h2>
         <div class="card-body">
             <div id="addPayMsg"></div>
@@ -107,8 +122,8 @@
                     </select>
                 </div>
                 <div class="f">
-                    <label>مبلغ</label>
-                    <span class="pay-fixed-amount">۱۵ دلار — کل بسته (تست‌ها + ۴۱۴)</span>
+                    <label>مبلغ (دلار) — کل بسته</label>
+                    <input type="number" id="payAmount" min="5" max="10000" value="{{ subscription_price }}" style="min-width: 100px;" title="در صورت پرداخت متفاوت، مبلغ را اصلاح کنید">
                 </div>
                 <div class="f">
                     <label>تاریخ پرداخت</label>
@@ -182,7 +197,7 @@
     <div class="card">
         <h2>درخواست‌های دسترسی (موبایل افرادی که «خیر» زدند)</h2>
         <div class="card-body">
-            <p style="font-size: 0.85rem; color: #666; margin-bottom: 12px;">این افراد شماره موبایل خود را ثبت کرده‌اند؛ کد کاربری آن‌ها همان شماره است. پس از واریز، کاربر را با همین موبایل اضافه و ۱۵ دلار (کل بسته) ثبت کنید.</p>
+            <p style="font-size: 0.85rem; color: #666; margin-bottom: 12px;">این افراد شماره موبایل خود را ثبت کرده‌اند؛ کد کاربری آن‌ها همان شماره است. پس از واریز، کاربر را با همین موبایل اضافه و {{ subscription_price }} دلار (کل بسته) ثبت کنید.</p>
             <table id="pendingTable">
                 <thead>
                     <tr>
@@ -224,11 +239,41 @@
                         <th>مبلغ</th>
                         <th>تاریخ پرداخت</th>
                         <th>کد واریز</th>
+                        <th>ویرایش</th>
                         <th>حذف</th>
                     </tr>
                 </thead>
                 <tbody></tbody>
             </table>
+        </div>
+    </div>
+
+    <div id="editPaymentModal" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 100; justify-content: center; align-items: center;" class="modal-overlay">
+        <div style="background: #fff; border-radius: 12px; padding: 24px; max-width: 420px; width: 90%; box-shadow: 0 8px 32px rgba(0,0,0,0.2);">
+            <h3 style="margin-bottom: 16px; color: #1e3c72;">ویرایش پرداخت</h3>
+            <div id="editPaymentMsg"></div>
+            <div class="form-inline" style="flex-direction: column; align-items: stretch;">
+                <div class="f" style="margin-bottom: 12px;">
+                    <label>مبلغ (دلار)</label>
+                    <input type="number" id="editPayAmount" min="5" max="10000" style="min-width: 100px;">
+                </div>
+                <div class="f" style="margin-bottom: 12px;">
+                    <label>تاریخ پرداخت</label>
+                    <input type="date" id="editPayDate">
+                </div>
+                <div class="f" style="margin-bottom: 12px;">
+                    <label>کد واریز</label>
+                    <input type="text" id="editPayRef" placeholder="اختیاری">
+                </div>
+                <div class="f" style="margin-bottom: 16px;">
+                    <label>یادداشت</label>
+                    <input type="text" id="editPayNotes" placeholder="اختیاری">
+                </div>
+            </div>
+            <div style="display: flex; gap: 10px; justify-content: flex-end;">
+                <button type="button" class="btn btn-outline" id="editPaymentCancel">انصراف</button>
+                <button type="button" class="btn" id="editPaymentSave">ذخیره</button>
+            </div>
         </div>
     </div>
 
@@ -410,12 +455,18 @@
                     showMsg('addPayMsg', 'کاربر را انتخاب کنید.', true);
                     return;
                 }
+                var amountEl = document.getElementById('payAmount');
+                var amount = amountEl ? parseInt(amountEl.value, 10) : 15;
+                if (!amount || amount < 5 || amount > 10000) {
+                    showMsg('addPayMsg', 'مبلغ را بین ۵ تا ۱۰۰۰۰ وارد کنید.', true);
+                    return;
+                }
                 fetch('/admin/api/payments/add', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
                         user_id: parseInt(userId, 10),
-                        amount: 15,
+                        amount: amount,
                         sections_purchased: 'both',
                         payment_date: paymentDate,
                         payment_reference: ref || null,
@@ -433,10 +484,32 @@
             });
             document.getElementById('btnClearPay').addEventListener('click', function() {
                 document.getElementById('payUserId').value = '';
+                var subPriceEl = document.getElementById('subscriptionPriceAmount');
+                var payAmountEl = document.getElementById('payAmount');
+                if (payAmountEl && subPriceEl) payAmountEl.value = subPriceEl.value;
                 document.getElementById('payRef').value = '';
                 document.getElementById('payNotes').value = '';
                 if (payDateEl) payDateEl.value = today;
                 showMsg('addPayMsg', '', false);
+            });
+
+            document.getElementById('btnSaveSubscriptionPrice').addEventListener('click', function() {
+                var el = document.getElementById('subscriptionPriceAmount');
+                var amount = el ? parseInt(el.value, 10) : 0;
+                if (!amount || amount < 5 || amount > 10000) {
+                    showMsg('subscriptionPriceMsg', 'مبلغ را بین ۵ تا ۱۰۰۰۰ وارد کنید.', true);
+                    return;
+                }
+                fetch('/admin/api/settings/subscription-price', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ amount: amount })
+                }).then(function(r) { return r.json(); }).then(function(data) {
+                    showMsg('subscriptionPriceMsg', data.success ? (data.message || 'ذخیره شد.') : (data.error || 'خطا'), !data.success);
+                    if (data.success && document.getElementById('payAmount')) {
+                        document.getElementById('payAmount').value = amount;
+                    }
+                }).catch(function() { showMsg('subscriptionPriceMsg', 'خطا در ارتباط', true); });
             });
 
             document.getElementById('btnChangeUserPassword').addEventListener('click', function() {
@@ -547,10 +620,30 @@
                     data.payments.forEach(function(p) {
                         var tr = document.createElement('tr');
                         tr.innerHTML = '<td>' + (p.mobile || '#' + p.user_id) + '</td><td>' + p.amount + ' $</td><td>' + (p.payment_date || '') + '</td><td>' + (p.payment_reference || '—').replace(/</g, '&lt;') + '</td>' +
-                            '<td><button type="button" class="btn btn-sm btn-danger" data-pay-id="' + p.id + '">حذف</button></td>';
+                            '<td><button type="button" class="btn btn-sm btn-outline edit-pay-btn" data-pay-id="' + p.id + '">ویرایش</button></td>' +
+                            '<td><button type="button" class="btn btn-sm btn-danger delete-pay-btn" data-pay-id="' + p.id + '">حذف</button></td>';
                         tbody.appendChild(tr);
                     });
-                    tbody.querySelectorAll('button[data-pay-id]').forEach(function(btn) {
+                    tbody.querySelectorAll('.edit-pay-btn').forEach(function(btn) {
+                        btn.addEventListener('click', function() {
+                            var id = this.getAttribute('data-pay-id');
+                            fetch('/admin/api/payments/' + id)
+                                .then(function(r) { return r.json(); })
+                                .then(function(data) {
+                                    if (!data.success || !data.payment) { alert(data.error || 'خطا'); return; }
+                                    var pay = data.payment;
+                                    document.getElementById('editPayAmount').value = pay.amount || '';
+                                    document.getElementById('editPayDate').value = (pay.payment_date || '').slice(0, 10);
+                                    document.getElementById('editPayRef').value = pay.payment_reference || '';
+                                    document.getElementById('editPayNotes').value = pay.notes || '';
+                                    document.getElementById('editPaymentMsg').innerHTML = '';
+                                    var modal = document.getElementById('editPaymentModal');
+                                    modal.setAttribute('data-edit-pay-id', id);
+                                    modal.style.display = 'flex';
+                                }).catch(function() { alert('خطا در ارتباط'); });
+                        });
+                    });
+                    tbody.querySelectorAll('.delete-pay-btn').forEach(function(btn) {
                         btn.addEventListener('click', function() {
                             var id = this.getAttribute('data-pay-id');
                             if (!confirm('این پرداخت حذف شود؟ (اشتراک خودکار برگشت داده نمی‌شود؛ در صورت نیاز از «تنظیم انقضا» استفاده کنید.)')) return;
@@ -646,10 +739,58 @@
                 if (ip) loadVisitorDashboard(ip);
             });
 
+            function loadSubscriptionPrice() {
+                fetch('/admin/api/settings/subscription-price').then(function(r) { return r.json(); }).then(function(data) {
+                    if (data.success && data.amount != null) {
+                        var el1 = document.getElementById('subscriptionPriceAmount');
+                        var el2 = document.getElementById('payAmount');
+                        if (el1) el1.value = data.amount;
+                        if (el2) el2.value = data.amount;
+                    }
+                }).catch(function() {});
+            }
             loadUsers();
             loadPayments();
             loadPendingRequests();
             loadVisitorDashboard();
+            loadSubscriptionPrice();
+
+            var editPaymentModal = document.getElementById('editPaymentModal');
+            document.getElementById('editPaymentCancel').addEventListener('click', function() {
+                if (editPaymentModal) editPaymentModal.style.display = 'none';
+            });
+            editPaymentModal.addEventListener('click', function(e) {
+                if (e.target === editPaymentModal) editPaymentModal.style.display = 'none';
+            });
+            document.getElementById('editPaymentSave').addEventListener('click', function() {
+                var id = editPaymentModal.getAttribute('data-edit-pay-id');
+                if (!id) return;
+                var amount = parseInt(document.getElementById('editPayAmount').value, 10);
+                var paymentDate = document.getElementById('editPayDate').value;
+                var ref = document.getElementById('editPayRef').value.trim();
+                var notes = document.getElementById('editPayNotes').value.trim();
+                if (!amount || amount < 5 || amount > 10000) {
+                    showMsg('editPaymentMsg', 'مبلغ را بین ۵ تا ۱۰۰۰۰ وارد کنید.', true);
+                    return;
+                }
+                if (!paymentDate) {
+                    showMsg('editPaymentMsg', 'تاریخ پرداخت را وارد کنید.', true);
+                    return;
+                }
+                fetch('/admin/api/payments/' + id, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ amount: amount, payment_date: paymentDate, payment_reference: ref || null, notes: notes || null })
+                }).then(function(r) { return r.json(); }).then(function(data) {
+                    if (data.success) {
+                        editPaymentModal.style.display = 'none';
+                        loadPayments();
+                        showMsg('addPayMsg', 'پرداخت به‌روز شد.', false);
+                    } else {
+                        showMsg('editPaymentMsg', data.error || 'خطا', true);
+                    }
+                }).catch(function() { showMsg('editPaymentMsg', 'خطا در ارتباط', true); });
+            });
         })();
     </script>
 </body>

@@ -185,6 +185,23 @@ def init_database():
                     INSERT INTO admin_users (username, password_hash)
                     VALUES (%s, %s)
                 """, ('admin', generate_password_hash(os.getenv('ADMIN_INITIAL_PASSWORD', 'admin123'))))
+            # --- Site settings (e.g. subscription price)
+            cur.execute("""
+                CREATE TABLE IF NOT EXISTS site_settings (
+                    key VARCHAR(100) PRIMARY KEY,
+                    value TEXT NOT NULL
+                )
+            """)
+            cur.execute("SELECT value FROM site_settings WHERE key = %s", ('subscription_price_dollars',))
+            if cur.fetchone() is None:
+                cur.execute("INSERT INTO site_settings (key, value) VALUES ('subscription_price_dollars', '15')")
+            conn.commit()
+            # Allow any reasonable payment amount (was 10,15,20 only)
+            try:
+                cur.execute("ALTER TABLE subscription_payments DROP CONSTRAINT IF EXISTS subscription_payments_amount_check")
+                cur.execute("ALTER TABLE subscription_payments ADD CONSTRAINT subscription_payments_amount_check CHECK (amount >= 5 AND amount <= 10000)")
+            except Exception:
+                pass
             conn.commit()
             
             # Check if main counter exists
@@ -212,6 +229,53 @@ def init_database():
     except Exception as e:
         db_connected = False
         print(f"Error initializing database: {e}")
+
+
+def get_subscription_price():
+    """مبلغ اشتراک (دلار) از site_settings. پیش‌فرض ۱۵."""
+    try:
+        conn = get_db_connection()
+        if not conn:
+            return 15
+        cur = conn.cursor()
+        cur.execute("SELECT value FROM site_settings WHERE key = %s", ('subscription_price_dollars',))
+        row = cur.fetchone()
+        cur.close()
+        conn.close()
+        if row:
+            return int(row[0]) if str(row[0]).strip().isdigit() else 15
+    except Exception:
+        pass
+    return 15
+
+
+def set_subscription_price(amount):
+    """ذخیره مبلغ اشتراک (دلار). مقدار معتبر: ۵ تا ۱۰۰۰۰."""
+    try:
+        a = int(amount)
+        if a < 5 or a > 10000:
+            return False
+        conn = get_db_connection()
+        if not conn:
+            return False
+        cur = conn.cursor()
+        cur.execute("""
+            INSERT INTO site_settings (key, value) VALUES ('subscription_price_dollars', %s)
+            ON CONFLICT (key) DO UPDATE SET value = EXCLUDED.value
+        """, (str(a),))
+        conn.commit()
+        cur.close()
+        conn.close()
+        return True
+    except Exception:
+        return False
+
+
+@app.context_processor
+def inject_subscription_price():
+    """مبلغ اشتراک در همهٔ قالب‌ها به‌صورت subscription_price (عدد) در دسترس است."""
+    return {'subscription_price': get_subscription_price()}
+
 
 def log_visitor(page_visited='/'):
     """Log visitor IP address and access time. خودمون (IPهای EXCLUDED_VISITOR_IPS) لاگ نمی‌شوند."""
@@ -1371,6 +1435,30 @@ def admin_api_payments():
     except Exception as e:
         return jsonify({'success': False, 'error': str(e)}), 500
 
+
+@app.route('/admin/api/settings/subscription-price', methods=['GET'])
+@_admin_required
+def admin_api_settings_subscription_price_get():
+    """برگرداندن مبلغ فعلی اشتراک (دلار)."""
+    return jsonify({'success': True, 'amount': get_subscription_price()}), 200
+
+
+@app.route('/admin/api/settings/subscription-price', methods=['POST'])
+@_admin_required
+def admin_api_settings_subscription_price_post():
+    """ذخیره مبلغ اشتراک (دلار). بدنه: { \"amount\": 20 }"""
+    data = request.get_json() or request.form or {}
+    try:
+        amount = int(data.get('amount', 0))
+    except (TypeError, ValueError):
+        return jsonify({'success': False, 'error': 'مبلغ نامعتبر'}), 200
+    if amount < 5 or amount > 10000:
+        return jsonify({'success': False, 'error': 'مبلغ باید بین ۵ تا ۱۰۰۰۰ باشد'}), 200
+    if set_subscription_price(amount):
+        return jsonify({'success': True, 'amount': amount, 'message': 'مبلغ ذخیره شد.'}), 200
+    return jsonify({'success': False, 'error': 'خطا در ذخیره'}), 200
+
+
 @app.route('/admin/api/payments/add', methods=['POST'])
 @_admin_required
 def admin_api_payments_add():
@@ -1391,9 +1479,11 @@ def admin_api_payments_add():
     payment_date_s = (data.get('payment_date') or '').strip()
     payment_reference = (data.get('payment_reference') or '').strip()[:100]
     notes = (data.get('notes') or '').strip()
-    # فقط کل بسته با ۱۵ دلار
-    if not user_id or amount != 15 or sections_purchased != 'both':
-        return jsonify({'success': False, 'error': 'ورودی نامعتبر. فقط ثبت پرداخت ۱۵ دلار (کل بسته) امکان‌پذیر است.'}), 200
+    # کل بسته؛ مبلغ بین ۵ تا ۱۰۰۰۰ دلار
+    if not user_id or sections_purchased != 'both':
+        return jsonify({'success': False, 'error': 'ورودی نامعتبر. فقط ثبت پرداخت کل بسته امکان‌پذیر است.'}), 200
+    if amount is None or amount < 5 or amount > 10000:
+        return jsonify({'success': False, 'error': 'مبلغ نامعتبر. عدد بین ۵ تا ۱۰۰۰۰ وارد کنید.'}), 200
     try:
         pay_date = date.fromisoformat(payment_date_s) if payment_date_s else _today()
     except Exception:
@@ -1419,6 +1509,76 @@ def admin_api_payments_add():
         cur.close()
         conn.close()
         return jsonify({'success': True, 'message': 'پرداخت ثبت شد و اشتراک به‌روز شد.'}), 200
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)}), 200
+
+
+@app.route('/admin/api/payments/<int:pay_id>', methods=['GET'])
+@_admin_required
+def admin_api_payment_get(pay_id):
+    """برگرداندن یک پرداخت (برای فرم ویرایش)."""
+    try:
+        conn = get_db_connection()
+        if not conn:
+            return jsonify({'success': False, 'error': 'DB'}), 500
+        cur = conn.cursor(cursor_factory=RealDictCursor)
+        cur.execute("""
+            SELECT id, user_id, amount, sections_purchased, payment_date, payment_reference, notes
+            FROM subscription_payments WHERE id = %s
+        """, (pay_id,))
+        row = cur.fetchone()
+        cur.close()
+        conn.close()
+        if not row:
+            return jsonify({'success': False, 'error': 'پرداخت یافت نشد.'}), 200
+        for k in list(row.keys()):
+            v = row[k]
+            if v is not None and hasattr(v, 'isoformat'):
+                row[k] = v.isoformat()
+        return jsonify({'success': True, 'payment': dict(row)}), 200
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)}), 500
+
+
+@app.route('/admin/api/payments/<int:pay_id>', methods=['PUT'])
+@_admin_required
+def admin_api_payments_update(pay_id):
+    """ویرایش یک پرداخت: مبلغ، تاریخ پرداخت، کد واریز، یادداشت."""
+    data = request.get_json() or request.form or {}
+    try:
+        amount = int(data.get('amount'))
+    except (TypeError, ValueError):
+        amount = None
+    payment_date_s = (data.get('payment_date') or '').strip()
+    payment_reference = (data.get('payment_reference') or '').strip()[:100]
+    notes = (data.get('notes') or '').strip()
+    if amount is None or amount < 5 or amount > 10000:
+        return jsonify({'success': False, 'error': 'مبلغ نامعتبر (۵ تا ۱۰۰۰۰)'}), 200
+    try:
+        pay_date = date.fromisoformat(payment_date_s) if payment_date_s else None
+    except Exception:
+        pay_date = None
+    if not pay_date:
+        return jsonify({'success': False, 'error': 'تاریخ پرداخت نامعتبر'}), 200
+    try:
+        conn = get_db_connection()
+        if not conn:
+            return jsonify({'success': False, 'error': 'DB'}), 500
+        cur = conn.cursor()
+        cur.execute("""
+            UPDATE subscription_payments
+            SET amount = %s, payment_date = %s, payment_reference = %s, notes = %s
+            WHERE id = %s
+        """, (amount, pay_date, payment_reference or None, notes or None, pay_id))
+        if cur.rowcount == 0:
+            conn.rollback()
+            cur.close()
+            conn.close()
+            return jsonify({'success': False, 'error': 'پرداخت یافت نشد.'}), 200
+        conn.commit()
+        cur.close()
+        conn.close()
+        return jsonify({'success': True, 'message': 'پرداخت به‌روز شد.'}), 200
     except Exception as e:
         return jsonify({'success': False, 'error': str(e)}), 200
 
