@@ -3118,7 +3118,7 @@
 
         // تولید تست‌ها (بعد از تعریف allTests)
         let generatedTests = [];
-        let pendingTestIndex = null; // برای مودال اشتراک (از Test11 به بعد)
+        let pendingTestIndex = null; // برای مودال اشتراک (از Test6 به بعد)
         function initTests() {
             // تکمیل سوالات اصلی
             allTests.forEach(test => {
@@ -3221,7 +3221,7 @@
             }
         }
 
-        // انتخاب تست (Test1–Test10 رایگان؛ از Test11 به بعد نیاز به اشتراک دارد)
+        // انتخاب تست (Test1–Test5 رایگان؛ از Test6 به بعد نیاز به اشتراک دارد)
         function doSelectTest(testIndex) {
             currentTest = testIndex;
             userAnswers = [];
@@ -3307,7 +3307,7 @@
         }
         
         function selectTest(testIndex, skipSubscriptionCheck) {
-            if (testIndex >= 10 && skipSubscriptionCheck !== true) {
+            if (testIndex >= 5 && skipSubscriptionCheck !== true) {
                 fetch(API_BASE_URL + '/api/subscription/status', { credentials: 'include' })
                     .then(function(r) { return r.json(); })
                     .then(function(data) {
