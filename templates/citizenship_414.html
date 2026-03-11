@@ -268,10 +268,51 @@ body {
         }
         .paywall-414-btn-copy:hover { opacity: 0.9; }
         .paywall-414-btn-copy.copied { background: #28a745; }
+        /* یک سوال در هر لحظه — بقیه مخفی */
+        .questions-one-by-one .q-card-441 { display: none; }
+        .questions-one-by-one .q-card-441.current { display: block; }
+        .q-nav-bar-414 {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 14px;
+            margin-bottom: 20px;
+            padding: 14px 18px;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+        }
+        body.theme-dark .q-nav-bar-414 { box-shadow: 0 2px 10px rgba(0,0,0,0.2); }
+        .q-nav-bar-414 .q-nav-current { font-weight: 700; color: var(--accent); font-size: 1.05em; }
+        .q-nav-bar-414 .q-nav-btn {
+            padding: 10px 20px;
+            border-radius: 10px;
+            border: 2px solid var(--accent);
+            background: var(--accent);
+            color: #fff;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+        .q-nav-bar-414 .q-nav-btn:hover:not(:disabled) { opacity: 0.9; }
+        .q-nav-bar-414 .q-nav-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+        .q-nav-bar-414 .q-nav-btn.btn-prev { background: var(--card-bg); color: var(--accent); }
 </style>
 </head>
 <body>
     <script>try{var t=localStorage.getItem('citizenship414_theme');if(t==='dark')document.body.classList.add('theme-dark');}catch(e){}</script>
+    <script>
+    (function(){
+      function block(e){ if(e.ctrlKey||e.metaKey){ if(e.key==='a'||e.key==='A'||e.key==='p'||e.key==='P'){ e.preventDefault(); e.stopPropagation(); return false; } } }
+      document.addEventListener('keydown',block,true);
+      document.addEventListener('keypress',block,true);
+      window.addEventListener('keydown',block,true);
+      window.addEventListener('keypress',block,true);
+    })();
+    </script>
+    <style media="print">.wrap,.q-card,.q-nav-bar-414,.tool-bar,.page-header,.back-bar,.sub-nav{ display:none !important; } body::before{ content:"Printing not allowed."; display:block !important; padding:2em; text-align:center; font-size:18px; }</style>
     <div class="wrap">
         <div class="back-bar">
             <a href="/" class="back-btn">← بازگشت به صفحه اصلی / Back to Home</a>
@@ -285,7 +326,7 @@ body {
             <div class="group go-to-q-wrap">
                 <span class="go-to-q-icon" title="Go to question number / برو به سوال" aria-hidden="true">🔍</span>
                 <label for="goToQuestion414" class="theme-label" style="margin: 0;">سوال</label>
-                <input type="number" id="goToQuestion414" min="1" max="414" placeholder="مثلاً 120" aria-label="Question number (1–414)">
+                <input type="number" id="goToQuestion414" min="1" max="{{ max_question_414 }}" placeholder="مثلاً 120" aria-label="Question number (1–{{ max_question_414 }})">
                 <button type="button" class="go-to-q-btn" id="goToQuestionBtn414">برو</button>
             </div>
             <div class="group theme-toggle-wrap">
@@ -297,8 +338,14 @@ body {
         <div class="page-header">
             <h1>۴۱۴ سوال شهروندی کانادا</h1>
             <p>Citizenship 414 Questions – انتخاب نمایش: انگلیسی+فارسی یا فرانسه+فارسی</p>
-            <p class="go-to-q-hint" style="margin-top: 10px; font-size: 0.9em; opacity: 0.95;">برو به سوال: با جعبه 🔍 بالا شماره سوال (۱ تا ۴۱۴) را وارد کنید و «برو» بزنید. / Go to question: enter a number (1–414) above and click Go.</p>
+            <p class="go-to-q-hint" style="margin-top: 10px; font-size: 0.9em; opacity: 0.95;">برو به سوال: با جعبه 🔍 بالا شماره سوال (۱ تا ۴۱۴) را وارد کنید و «برو» بزنید. در هر لحظه فقط یک سوال نمایش داده می‌شود؛ بعد از پاسخ، «سوال بعدی» بزنید.</p>
         </div>
+        <div id="q-nav-bar-414" class="q-nav-bar-414" data-max-question="{{ max_question_414 }}">
+            <button type="button" class="q-nav-btn btn-prev" id="qPrev414" aria-label="سوال قبلی">← سوال قبلی</button>
+            <span class="q-nav-current">سوال <span id="currentQNum414">1</span> از ۴۱۴</span>
+            <button type="button" class="q-nav-btn" id="qNext414" aria-label="سوال بعدی">سوال بعدی →</button>
+        </div>
+        <div id="questions-container-414" class="questions-one-by-one">
         {% for q in questions %}
         <div class="q-card q-card-441" id="q{{ q.num }}">
             <div class="q-text-441">
@@ -352,22 +399,27 @@ body {
   </div>
   </div>
         {% endfor %}
+        {% if show_paywall %}
+        <div class="q-card q-card-441 paywall-as-q25" id="q25">
+            <div class="paywall-414" style="padding: 0; margin: 0; border: none; max-width: none;">
+                <h2 style="margin-bottom: 12px; color: var(--accent);">دسترسی به سوالات ۲۵ تا ۴۱۴</h2>
+                <p style="margin-bottom: 16px;">برای مشاهده همه ۴۱۴ سوال و دسترسی به تست‌ها، اشتراک یک‌ماهه <strong>{{ subscription_price }} دلار</strong> (کل بسته) لازم است. واریز به آدرس ایمیل زیر و ارسال کد واریز به همان ایمیل؛ پس از تأیید، کد کاربری و رمز برای شما ارسال می‌شود.</p>
+                <div class="paywall-414-email-block">
+                    <span class="paywall-414-email-label">ایمیل:</span>
+                    <span class="paywall-414-email-value" id="paywall414EmailValue">Koroush.Mog@gmail.com</span>
+                    <button type="button" class="paywall-414-btn-copy" id="paywall414EmailCopy" title="کپی">کپی</button>
+                </div>
+                <p style="margin-bottom: 14px;"><strong>ورود (در صورت داشتن کد و رمز):</strong></p>
+                <input type="text" id="paywall414Mobile" placeholder="کد کاربری (شماره موبایل)" style="width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid var(--border); border-radius: 10px;">
+                <input type="password" id="paywall414Password" placeholder="کلمه عبور" style="width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid var(--border); border-radius: 10px;">
+                <p id="paywall414Error" class="subscription-error" style="display: none; color: #c00; margin-bottom: 8px;"></p>
+                <button type="button" id="paywall414LoginBtn" style="padding: 12px 24px; background: var(--accent); color: #fff; border: none; border-radius: 10px; cursor: pointer; font-weight: 600;">ورود و مشاهده همه سوالات</button>
+            </div>
+        </div>
+        {% endif %}
+        </div>
 
         {% if show_paywall %}
-        <div class="paywall-414" style="margin-top: 28px; padding: 24px; background: var(--card-bg); border: 2px solid var(--accent); border-radius: 16px; max-width: 520px;">
-            <h2 style="margin-bottom: 12px; color: var(--accent);">دسترسی به سوالات ۲۵ تا ۴۱۴</h2>
-            <p style="margin-bottom: 16px;">برای مشاهده همه ۴۱۴ سوال و دسترسی به تست‌ها، اشتراک یک‌ماهه <strong>{{ subscription_price }} دلار</strong> (کل بسته) لازم است. واریز به آدرس ایمیل زیر و ارسال کد واریز به همان ایمیل؛ پس از تأیید، کد کاربری و رمز برای شما ارسال می‌شود.</p>
-            <div class="paywall-414-email-block">
-                <span class="paywall-414-email-label">ایمیل:</span>
-                <span class="paywall-414-email-value" id="paywall414EmailValue">Koroush.Mog@gmail.com</span>
-                <button type="button" class="paywall-414-btn-copy" id="paywall414EmailCopy" title="کپی">کپی</button>
-            </div>
-            <p style="margin-bottom: 14px;"><strong>ورود (در صورت داشتن کد و رمز):</strong></p>
-            <input type="text" id="paywall414Mobile" placeholder="کد کاربری (شماره موبایل)" style="width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid var(--border); border-radius: 10px;">
-            <input type="password" id="paywall414Password" placeholder="کلمه عبور" style="width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid var(--border); border-radius: 10px;">
-            <p id="paywall414Error" class="subscription-error" style="display: none; color: #c00; margin-bottom: 8px;"></p>
-            <button type="button" id="paywall414LoginBtn" style="padding: 12px 24px; background: var(--accent); color: #fff; border: none; border-radius: 10px; cursor: pointer; font-weight: 600;">ورود و مشاهده همه سوالات</button>
-        </div>
         <script>
         (function() {
             var copyBtn = document.getElementById('paywall414EmailCopy');
@@ -488,20 +540,42 @@ body {
 
             var goInput = document.getElementById('goToQuestion414');
             var goBtn = document.getElementById('goToQuestionBtn414');
+            var container414 = document.getElementById('questions-container-414');
+            var navBar414 = document.getElementById('q-nav-bar-414');
+            var currentQNumEl = document.getElementById('currentQNum414');
+            var qPrevBtn = document.getElementById('qPrev414');
+            var qNextBtn = document.getElementById('qNext414');
+            var current414 = 1;
+            var maxQuestion414 = 414;
+            if (navBar414 && navBar414.getAttribute('data-max-question')) {
+                maxQuestion414 = parseInt(navBar414.getAttribute('data-max-question'), 10) || 414;
+            }
+
+            function showQuestion414(n) {
+                if (n < 1) n = 1;
+                if (n > maxQuestion414) n = maxQuestion414;
+                current414 = n;
+                if (container414) {
+                    container414.querySelectorAll('.q-card-441').forEach(function(el) { el.classList.remove('current'); });
+                    var el = document.getElementById('q' + n);
+                    if (el) el.classList.add('current');
+                }
+                if (currentQNumEl) currentQNumEl.textContent = n;
+                if (qPrevBtn) qPrevBtn.disabled = n <= 1;
+                if (qNextBtn) qNextBtn.disabled = n >= maxQuestion414;
+                if (goInput) goInput.value = n;
+            }
+
             function goToQuestion414() {
                 var val = goInput && parseInt(goInput.value, 10);
                 if (!val || val < 1) val = 1;
-                if (val > 414) val = 414;
-                var el = document.getElementById('q' + val);
-                if (el) {
-                    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    el.classList.remove('scroll-highlight');
-                    el.offsetHeight;
-                    el.classList.add('scroll-highlight');
-                    setTimeout(function() { el.classList.remove('scroll-highlight'); }, 1800);
-                }
-                if (goInput) goInput.value = val;
+                if (val > maxQuestion414) val = maxQuestion414;
+                showQuestion414(val);
             }
+
+            if (container414) showQuestion414(1);
+            if (qPrevBtn) qPrevBtn.addEventListener('click', function() { showQuestion414(current414 - 1); });
+            if (qNextBtn) qNextBtn.addEventListener('click', function() { showQuestion414(current414 + 1); });
             if (goBtn) goBtn.addEventListener('click', goToQuestion414);
             if (goInput) {
                 goInput.addEventListener('keydown', function(e) { if (e.key === 'Enter') { e.preventDefault(); goToQuestion414(); } });

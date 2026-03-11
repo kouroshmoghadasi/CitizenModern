@@ -146,6 +146,19 @@
             0% { box-shadow: 0 0 0 3px rgba(241, 196, 15, 0.8); }
             100% { box-shadow: none; }
         }
+        .questions-one-by-one .q-card { display: none; }
+        .questions-one-by-one .q-card.current { display: block; }
+        .q-nav-bar-571 {
+            display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px;
+            margin-bottom: 20px; padding: 14px 18px; background: var(--card-bg); border: 1px solid var(--border);
+            border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+        }
+        body.theme-dark .q-nav-bar-571 { box-shadow: 0 2px 10px rgba(0,0,0,0.2); }
+        .q-nav-bar-571 .q-nav-current { font-weight: 700; color: var(--accent); font-size: 1.05em; }
+        .q-nav-bar-571 .q-nav-btn { padding: 10px 20px; border-radius: 10px; border: 2px solid var(--accent); background: var(--accent); color: #fff; font-weight: 600; cursor: pointer; transition: opacity 0.2s; }
+        .q-nav-bar-571 .q-nav-btn:hover:not(:disabled) { opacity: 0.9; }
+        .q-nav-bar-571 .q-nav-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+        .q-nav-bar-571 .q-nav-btn.btn-prev { background: var(--card-bg); color: var(--accent); }
         .page-header {
             background: var(--header-bg);
             color: var(--header-text);
@@ -257,6 +270,16 @@
 </head>
 <body>
     <script>try{var t=localStorage.getItem('citizenship571_theme');if(t==='dark')document.body.classList.add('theme-dark');}catch(e){}</script>
+    <script>
+    (function(){
+      function block(e){ if(e.ctrlKey||e.metaKey){ if(e.key==='a'||e.key==='A'||e.key==='p'||e.key==='P'){ e.preventDefault(); e.stopPropagation(); return false; } } }
+      document.addEventListener('keydown',block,true);
+      document.addEventListener('keypress',block,true);
+      window.addEventListener('keydown',block,true);
+      window.addEventListener('keypress',block,true);
+    })();
+    </script>
+    <style media="print">.wrap,.q-card,.q-nav-bar-571,.tool-bar,.page-header,.back-bar,.sub-nav,.section-title{ display:none !important; } body::before{ content:"Printing not allowed."; display:block !important; padding:2em; text-align:center; font-size:18px; }</style>
     <div class="wrap">
         <div class="back-bar">
             <a href="/" class="back-btn">← بازگشت به صفحه اصلی / Back to Home</a>
@@ -270,7 +293,7 @@
             <div class="group go-to-q-wrap">
                 <span class="go-to-q-icon" title="Go to question number / برو به سوال" aria-hidden="true">🔍</span>
                 <label for="goToQuestion571" class="theme-label" style="margin: 0;">سوال</label>
-                <input type="number" id="goToQuestion571" min="1" max="571" placeholder="مثلاً 250" aria-label="Question number (1–571)">
+                <input type="number" id="goToQuestion571" min="1" max="{{ max_question_571 }}" placeholder="مثلاً 250" aria-label="Question number (1–{{ max_question_571 }})">
                 <button type="button" class="go-to-q-btn" id="goToQuestionBtn571">برو</button>
             </div>
             <div class="group theme-toggle-wrap">
@@ -283,10 +306,15 @@
             <h1>۵۷۱ سوال شهروندی کانادا</h1>
             <p>571 Question For Citizenship Test – انتخاب نمایش: انگلیسی+فارسی یا فرانسه+فارسی</p>
             <p style="margin-top: 10px; font-size: 0.85em; opacity: 0.9;">{{ questions|length }} سوال در یک سند · تم روشن/تاریک</p>
-            <p class="go-to-q-hint" style="margin-top: 8px; font-size: 0.9em; opacity: 0.95;">برو به سوال: با جعبه 🔍 بالا شماره سوال (۱ تا ۵۷۱) را وارد کنید و «برو» بزنید. / Go to question: enter a number (1–571) above and click Go.</p>
+            <p class="go-to-q-hint" style="margin-top: 8px; font-size: 0.9em; opacity: 0.95;">برو به سوال: با جعبه 🔍 بالا شماره سوال (۱ تا ۵۷۱) را وارد کنید و «برو» بزنید. در هر لحظه فقط یک سوال نمایش داده می‌شود؛ بعد از پاسخ، «سوال بعدی» بزنید.</p>
+        </div>
+        <div id="q-nav-bar-571" class="q-nav-bar-571" data-max-question="{{ max_question_571 }}">
+            <button type="button" class="q-nav-btn btn-prev" id="qPrev571" aria-label="سوال قبلی">← سوال قبلی</button>
+            <span class="q-nav-current">سوال <span id="currentQNum571">1</span> از ۵۷۱</span>
+            <button type="button" class="q-nav-btn" id="qNext571" aria-label="سوال بعدی">سوال بعدی →</button>
         </div>
         <div class="section-title">همه ۵۷۱ سوال به ترتیب فایل PDF / All 571 questions in PDF order</div>
-
+        <div id="questions-container-571" class="questions-one-by-one">
         {% for q in questions %}
         <div class="q-card" id="q{{ loop.index }}">
             <div class="q-num">سوال {{ loop.index }} / Question {{ loop.index }}</div>
@@ -348,17 +376,22 @@
             {% endif %}
         </div>
         {% endfor %}
+        {% if show_paywall %}
+        <div class="q-card paywall-as-q22" id="q22">
+            <div class="paywall-571" style="padding: 0; margin: 0; border: none; max-width: none;">
+                <h2 style="margin-bottom: 12px; color: var(--accent);">دسترسی به سوالات ۲۲ تا ۵۷۱</h2>
+                <p style="margin-bottom: 16px;">برای مشاهده همه ۵۷۱ سوال، همان اشتراک (کد کاربری و رمز) مربوط به ۴۱۴ سوال کافی است. در صورت داشتن کد و رمز، وارد شوید.</p>
+                <p style="margin-bottom: 14px;"><strong>ورود (در صورت داشتن کد و رمز):</strong></p>
+                <input type="text" id="paywall571Mobile" placeholder="کد کاربری (شماره موبایل)" style="width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid var(--border); border-radius: 10px;">
+                <input type="password" id="paywall571Password" placeholder="کلمه عبور" style="width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid var(--border); border-radius: 10px;">
+                <p id="paywall571Error" class="subscription-error" style="display: none; color: #c00; margin-bottom: 8px;"></p>
+                <button type="button" id="paywall571LoginBtn" style="padding: 12px 24px; background: var(--accent); color: #fff; border: none; border-radius: 10px; cursor: pointer; font-weight: 600;">ورود و مشاهده همه سوالات</button>
+            </div>
+        </div>
+        {% endif %}
+        </div>
 
         {% if show_paywall %}
-        <div class="paywall-571" style="margin-top: 28px; padding: 24px; background: var(--card-bg); border: 2px solid var(--accent); border-radius: 16px; max-width: 520px;">
-            <h2 style="margin-bottom: 12px; color: var(--accent);">دسترسی به سوالات ۷۲ تا ۵۷۱</h2>
-            <p style="margin-bottom: 16px;">برای مشاهده همه ۵۷۱ سوال، همان اشتراک (کد کاربری و رمز) مربوط به ۴۱۴ سوال کافی است. در صورت داشتن کد و رمز، وارد شوید.</p>
-            <p style="margin-bottom: 14px;"><strong>ورود (در صورت داشتن کد و رمز):</strong></p>
-            <input type="text" id="paywall571Mobile" placeholder="کد کاربری (شماره موبایل)" style="width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid var(--border); border-radius: 10px;">
-            <input type="password" id="paywall571Password" placeholder="کلمه عبور" style="width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid var(--border); border-radius: 10px;">
-            <p id="paywall571Error" class="subscription-error" style="display: none; color: #c00; margin-bottom: 8px;"></p>
-            <button type="button" id="paywall571LoginBtn" style="padding: 12px 24px; background: var(--accent); color: #fff; border: none; border-radius: 10px; cursor: pointer; font-weight: 600;">ورود و مشاهده همه سوالات</button>
-        </div>
         <script>
         (function() {
             var btn = document.getElementById('paywall571LoginBtn');
@@ -436,20 +469,42 @@
 
             var goInput = document.getElementById('goToQuestion571');
             var goBtn = document.getElementById('goToQuestionBtn571');
+            var container571 = document.getElementById('questions-container-571');
+            var navBar571 = document.getElementById('q-nav-bar-571');
+            var currentQNumEl = document.getElementById('currentQNum571');
+            var qPrevBtn = document.getElementById('qPrev571');
+            var qNextBtn = document.getElementById('qNext571');
+            var current571 = 1;
+            var maxQuestion571 = 571;
+            if (navBar571 && navBar571.getAttribute('data-max-question')) {
+                maxQuestion571 = parseInt(navBar571.getAttribute('data-max-question'), 10) || 571;
+            }
+
+            function showQuestion571(n) {
+                if (n < 1) n = 1;
+                if (n > maxQuestion571) n = maxQuestion571;
+                current571 = n;
+                if (container571) {
+                    container571.querySelectorAll('.q-card').forEach(function(el) { el.classList.remove('current'); });
+                    var el = document.getElementById('q' + n);
+                    if (el) el.classList.add('current');
+                }
+                if (currentQNumEl) currentQNumEl.textContent = n;
+                if (qPrevBtn) qPrevBtn.disabled = n <= 1;
+                if (qNextBtn) qNextBtn.disabled = n >= maxQuestion571;
+                if (goInput) goInput.value = n;
+            }
+
             function goToQuestion571() {
                 var val = goInput && parseInt(goInput.value, 10);
                 if (!val || val < 1) val = 1;
-                if (val > 571) val = 571;
-                var el = document.getElementById('q' + val);
-                if (el) {
-                    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    el.classList.remove('scroll-highlight');
-                    el.offsetHeight;
-                    el.classList.add('scroll-highlight');
-                    setTimeout(function() { el.classList.remove('scroll-highlight'); }, 1800);
-                }
-                if (goInput) goInput.value = val;
+                if (val > maxQuestion571) val = maxQuestion571;
+                showQuestion571(val);
             }
+
+            if (container571) showQuestion571(1);
+            if (qPrevBtn) qPrevBtn.addEventListener('click', function() { showQuestion571(current571 - 1); });
+            if (qNextBtn) qNextBtn.addEventListener('click', function() { showQuestion571(current571 + 1); });
             if (goBtn) goBtn.addEventListener('click', goToQuestion571);
             if (goInput) {
                 goInput.addEventListener('keydown', function(e) { if (e.key === 'Enter') { e.preventDefault(); goToQuestion571(); } });

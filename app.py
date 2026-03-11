@@ -379,13 +379,16 @@ def citizenship_414():
     if has_414:
         questions = all_questions
         show_paywall = False
+        max_question_414 = 414
     else:
         questions = all_questions[:24] if len(all_questions) >= 24 else all_questions
         show_paywall = True
+        max_question_414 = 25
     resp = app.make_response(render_template(
         'citizenship_414.html',
         questions=questions,
         show_paywall=show_paywall,
+        max_question_414=max_question_414,
     ))
     resp.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
     resp.headers['Pragma'] = 'no-cache'
@@ -541,13 +544,16 @@ def citizenship_571():
     if has_access:
         questions = all_questions
         show_paywall = False
+        max_question_571 = 571
     else:
-        questions = all_questions[:71] if len(all_questions) >= 71 else all_questions
+        questions = all_questions[:21] if len(all_questions) >= 21 else all_questions
         show_paywall = True
+        max_question_571 = 22
     resp = app.make_response(render_template(
         'citizenship_571.html',
         questions=questions,
         show_paywall=show_paywall,
+        max_question_571=max_question_571,
     ))
     resp.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
     resp.headers['Pragma'] = 'no-cache'
