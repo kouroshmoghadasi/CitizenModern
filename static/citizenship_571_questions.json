@@ -3,17 +3,23 @@
     "q": "What is the name of the Royal Anthem of Canada?",
     "q_fa": "نام سرود سلطنتی کانادا چیست؟",
     "options": [
-      "God Save the Queen or King"
+      "Great Canada",
+      "O Canada",
+      "God Save the Queen (or King)",
+      "Oh Canada"
     ],
-    "correct": 0,
+    "correct": 2,
     "page": 0,
     "section": "571 Question For Citizenship Test",
-    "book_text": "",
+    "book_text": "The Royal Anthem of Canada is God Save the Queen (or King).",
     "q_fr": "Quel est le nom de l'hymne royal du Canada ?",
     "options_fr": [
-      "Dieu sauve la reine ou le roi"
+      "Grand Canada",
+      "Ô Canada",
+      "God Save the Queen (or King) / Que Dieu sauve la Reine (ou le Roi)",
+      "Oh Canada"
     ],
-    "expl_fr": ""
+    "expl_fr": "L'hymne royal du Canada est God Save the Queen (ou King)."
   },
   {
     "q": "What year was Confederation",
@@ -1858,20 +1864,26 @@
     "expl_fr": ""
   },
   {
-    "q": "What is the name of the Royal Anthem of Canada",
-    "q_fa": "نام سرود سلطنتی کانادا چیست",
+    "q": "What is the name of the Royal Anthem of Canada?",
+    "q_fa": "نام سرود سلطنتی کانادا چیست؟",
     "options": [
-      "God Save the Queen (King.)"
+      "Great Canada",
+      "O Canada",
+      "God Save the Queen (or King)",
+      "Oh Canada"
     ],
-    "correct": 0,
+    "correct": 2,
     "page": 0,
     "section": "571 Question For Citizenship Test",
-    "book_text": "",
-    "q_fr": "Quel est le nom de l'hymne royal du Canada",
+    "book_text": "The Royal Anthem of Canada is God Save the Queen (or King).",
+    "q_fr": "Quel est le nom de l'hymne royal du Canada ?",
     "options_fr": [
-      "Dieu sauve la reine (roi.)"
+      "Grand Canada",
+      "Ô Canada",
+      "God Save the Queen (or King) / Que Dieu sauve la Reine (ou le Roi)",
+      "Oh Canada"
     ],
-    "expl_fr": ""
+    "expl_fr": "L'hymne royal du Canada est God Save the Queen (ou King)."
   },
   {
     "q": "Which region of Canada is known for its fertile agricultural land and energy resources",

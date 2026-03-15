@@ -482,6 +482,12 @@ def _expand_571_to_four_options(questions):
         rng = random.Random(i)
         correct_pair = (correct_en, correct_fr)
         wrong_pairs = [p for p in pool_pairs if p != correct_pair]
+        # ترجیح گزینه‌های با طول مشابه تا گزینه‌های پرت و نامرتبط (مثل لیست استان‌ها) کنار پاسخ کوتاه قرار نگیرند
+        correct_len = len((correct_en or '').strip())
+        if correct_len > 0 and len(wrong_pairs) > 3:
+            similar = [p for p in wrong_pairs if p[0] and 0.25 * correct_len <= len(p[0].strip()) <= 4 * correct_len and ' e) ' not in (p[0] or '') and ' f) ' not in (p[0] or '')]
+            if len(similar) >= 3:
+                wrong_pairs = similar
         if len(wrong_pairs) < 3:
             wrong_pairs = wrong_pairs + [correct_pair] * (3 - len(wrong_pairs))
         rng.shuffle(wrong_pairs)
