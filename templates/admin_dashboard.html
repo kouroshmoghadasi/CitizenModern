@@ -82,6 +82,14 @@
                     <input type="text" id="addMobile" placeholder="09xxxxxxxxx">
                 </div>
                 <div class="f">
+                    <label>نام</label>
+                    <input type="text" id="addFirstName" placeholder="اختیاری">
+                </div>
+                <div class="f">
+                    <label>نام خانوادگی</label>
+                    <input type="text" id="addLastName" placeholder="اختیاری">
+                </div>
+                <div class="f">
                     <label>رمز عبور</label>
                     <input type="password" id="addPassword" placeholder="رمز عبور">
                 </div>
@@ -120,6 +128,14 @@
                     <select id="payUserId">
                         <option value="">-- انتخاب کاربر --</option>
                     </select>
+                </div>
+                <div class="f">
+                    <label>نام (پرداخت‌کننده)</label>
+                    <input type="text" id="payFirstName" placeholder="اختیاری — ذخیره روی کاربر">
+                </div>
+                <div class="f">
+                    <label>نام خانوادگی</label>
+                    <input type="text" id="payLastName" placeholder="اختیاری">
                 </div>
                 <div class="f">
                     <label>مبلغ (دلار) — کل بسته</label>
@@ -211,6 +227,18 @@
     </div>
 
     <div class="card">
+        <h2>ورود گروهی نام و نام خانوادگی (کاربران قبلی)</h2>
+        <div class="card-body">
+            <div id="bulkNamesMsg"></div>
+            <p style="font-size: 0.85rem; color: #666; margin-bottom: 10px;">در هر خط: <strong>موبایل، نام، نام خانوادگی</strong> (با کاما یا ویرگول جدا کنید). فقط کاربرانی که موبایلشان در جدول هست به‌روز می‌شوند.</p>
+            <textarea id="bulkNamesInput" rows="8" placeholder="09123456789، علی، احمدی&#10;09121111111، مریم، رضایی" style="width: 100%; max-width: 520px; padding: 12px; border: 1px solid #ccc; border-radius: 8px; font-family: inherit; font-size: 0.9rem;"></textarea>
+            <div style="margin-top: 10px;">
+                <button type="button" class="btn" id="btnBulkNames">اعمال نام‌ها</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
         <h2>لیست کاربران و وضعیت اشتراک</h2>
         <div class="card-body">
             <div id="usersMsg"></div>
@@ -219,6 +247,7 @@
                     <tr>
                         <th>شناسه</th>
                         <th>موبایل</th>
+                        <th>نام و نام خانوادگی</th>
                         <th>انقضا</th>
                         <th>یادداشت</th>
                         <th>عملیات</th>
@@ -235,7 +264,7 @@
             <table id="paymentsTable">
                 <thead>
                     <tr>
-                        <th>کاربر</th>
+                        <th>کاربر (نام / موبایل)</th>
                         <th>مبلغ</th>
                         <th>تاریخ پرداخت</th>
                         <th>کد واریز</th>
@@ -273,6 +302,28 @@
             <div style="display: flex; gap: 10px; justify-content: flex-end;">
                 <button type="button" class="btn btn-outline" id="editPaymentCancel">انصراف</button>
                 <button type="button" class="btn" id="editPaymentSave">ذخیره</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="editUserNameModal" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 100; justify-content: center; align-items: center;" class="modal-overlay">
+        <div style="background: #fff; border-radius: 12px; padding: 24px; max-width: 420px; width: 90%; box-shadow: 0 8px 32px rgba(0,0,0,0.2);">
+            <h3 style="margin-bottom: 16px; color: #1e3c72;">ویرایش نام و نام خانوادگی</h3>
+            <div id="editUserNameMsg"></div>
+            <input type="hidden" id="editUserNameUserId">
+            <div class="form-inline" style="flex-direction: column; align-items: stretch;">
+                <div class="f" style="margin-bottom: 12px;">
+                    <label>نام</label>
+                    <input type="text" id="editUserNameFirst" placeholder="نام">
+                </div>
+                <div class="f" style="margin-bottom: 16px;">
+                    <label>نام خانوادگی</label>
+                    <input type="text" id="editUserNameLast" placeholder="نام خانوادگی">
+                </div>
+            </div>
+            <div style="display: flex; gap: 10px; justify-content: flex-end;">
+                <button type="button" class="btn btn-outline" id="editUserNameCancel">انصراف</button>
+                <button type="button" class="btn" id="editUserNameSave">ذخیره</button>
             </div>
         </div>
     </div>
@@ -335,16 +386,20 @@
                     data.users.forEach(function(u) {
                         var exp = u.tests_expiry || u.questions_414_expiry || '—';
                         var expBadge = exp !== '—' ? (new Date(exp) >= new Date() ? '<span class="badge active">' + exp + '</span>' : '<span class="badge expired">' + exp + '</span>') : '<span class="badge none">ندارد</span>';
+                        var nameStr = [u.first_name, u.last_name].filter(Boolean).join(' ') || '—';
                         var tr = document.createElement('tr');
-                        tr.innerHTML = '<td>' + u.id + '</td><td>' + (u.mobile || '').replace(/</g, '&lt;') + '</td><td>' + expBadge + '</td><td>' + (u.notes || '—').replace(/</g, '&lt;') + '</td><td>' +
+                        tr.innerHTML = '<td>' + u.id + '</td><td>' + (u.mobile || '').replace(/</g, '&lt;') + '</td><td>' + (nameStr !== '—' ? nameStr.replace(/</g, '&lt;') : nameStr) + '</td><td>' + expBadge + '</td><td>' + (u.notes || '—').replace(/</g, '&lt;') + '</td><td>' +
                             '<button type="button" class="btn btn-sm" data-user-id="' + u.id + '">ثبت پرداخت</button> ' +
+                            '<button type="button" class="btn btn-sm btn-outline edit-name-btn" data-user-id="' + u.id + '" data-first-name="' + (u.first_name || '').replace(/"/g, '&quot;') + '" data-last-name="' + (u.last_name || '').replace(/"/g, '&quot;') + '" title="ویرایش نام و نام خانوادگی">ویرایش نام</button> ' +
                             '<button type="button" class="btn btn-sm btn-free" data-user-id="' + u.id + '" title="دسترسی رایگان یک‌ساله">لطف</button> ' +
                             '<button type="button" class="btn btn-sm btn-outline change-user-pw-btn" data-user-id="' + u.id + '" title="تغییر رمز این کاربر">تغییر رمز</button>' +
                             '</td>';
                         tbody.appendChild(tr);
                         var opt = document.createElement('option');
                         opt.value = u.id;
-                        opt.textContent = u.mobile + ' (#' + u.id + ')';
+                        opt.setAttribute('data-first-name', u.first_name || '');
+                        opt.setAttribute('data-last-name', u.last_name || '');
+                        opt.textContent = (u.first_name || u.last_name ? (nameStr + ' — ') : '') + u.mobile + ' (#' + u.id + ')';
                         sel.appendChild(opt);
                         if (setExpirySel) {
                             var opt2 = document.createElement('option');
@@ -360,6 +415,12 @@
                             changePwSel.appendChild(opt3);
                         }
                     });
+                    document.getElementById('payUserId').addEventListener('change', function() {
+                        var opt = this.options[this.selectedIndex];
+                        if (!opt || !opt.value) return;
+                        document.getElementById('payFirstName').value = opt.getAttribute('data-first-name') || '';
+                        document.getElementById('payLastName').value = opt.getAttribute('data-last-name') || '';
+                    });
                     tbody.querySelectorAll('.change-user-pw-btn').forEach(function(btn) {
                         btn.addEventListener('click', function() {
                             var id = this.getAttribute('data-user-id');
@@ -368,6 +429,16 @@
                             document.getElementById('changeUserPasswordNew').value = '';
                             document.getElementById('changeUserPasswordConfirm').value = '';
                             showMsg('changeUserPasswordMsg', '', false);
+                        });
+                    });
+                    tbody.querySelectorAll('.edit-name-btn').forEach(function(btn) {
+                        btn.addEventListener('click', function() {
+                            var id = this.getAttribute('data-user-id');
+                            document.getElementById('editUserNameUserId').value = id;
+                            document.getElementById('editUserNameFirst').value = this.getAttribute('data-first-name') || '';
+                            document.getElementById('editUserNameLast').value = this.getAttribute('data-last-name') || '';
+                            document.getElementById('editUserNameMsg').innerHTML = '';
+                            document.getElementById('editUserNameModal').style.display = 'flex';
                         });
                     });
                     tbody.querySelectorAll('button[data-user-id]').forEach(function(btn) {
@@ -383,7 +454,13 @@
                             });
                         } else {
                             btn.addEventListener('click', function() {
-                                document.getElementById('payUserId').value = this.getAttribute('data-user-id');
+                                var id = this.getAttribute('data-user-id');
+                                document.getElementById('payUserId').value = id;
+                                var opt = document.querySelector('#payUserId option[value="' + id + '"]');
+                                if (opt) {
+                                    document.getElementById('payFirstName').value = opt.getAttribute('data-first-name') || '';
+                                    document.getElementById('payLastName').value = opt.getAttribute('data-last-name') || '';
+                                }
                             });
                         }
                     });
@@ -398,14 +475,18 @@
                     return;
                 }
                 var freeAccess = document.getElementById('addUserFreeAccess').checked;
+                var firstName = document.getElementById('addFirstName').value.trim();
+                var lastName = document.getElementById('addLastName').value.trim();
                 fetch('/admin/api/users/add', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ mobile: mobile, password: password, free_access: freeAccess })
+                    body: JSON.stringify({ mobile: mobile, password: password, first_name: firstName, last_name: lastName, free_access: freeAccess })
                 }).then(function(r) { return r.json(); }).then(function(data) {
                     showMsg('addUserMsg', data.success ? (data.message || 'کاربر اضافه شد.') : (data.error || 'خطا'), !data.success);
                     if (data.success) {
                         document.getElementById('addMobile').value = '';
+                        document.getElementById('addFirstName').value = '';
+                        document.getElementById('addLastName').value = '';
                         document.getElementById('addPassword').value = '';
                         document.getElementById('addUserFreeAccess').checked = false;
                         loadUsers();
@@ -414,9 +495,41 @@
             });
             document.getElementById('btnClearUser').addEventListener('click', function() {
                 document.getElementById('addMobile').value = '';
+                document.getElementById('addFirstName').value = '';
+                document.getElementById('addLastName').value = '';
                 document.getElementById('addPassword').value = '';
                 document.getElementById('addUserFreeAccess').checked = false;
                 showMsg('addUserMsg', '', false);
+            });
+
+            document.getElementById('btnBulkNames').addEventListener('click', function() {
+                var raw = document.getElementById('bulkNamesInput').value.trim();
+                showMsg('bulkNamesMsg', '', false);
+                if (!raw) {
+                    showMsg('bulkNamesMsg', 'متنی وارد کنید. هر خط: موبایل، نام، نام خانوادگی', true);
+                    return;
+                }
+                var rows = [];
+                var lines = raw.split(/\r?\n/);
+                for (var i = 0; i < lines.length; i++) {
+                    var line = lines[i].replace(/\u060C/g, ',').split(',');
+                    var mobile = (line[0] || '').trim();
+                    var firstName = (line[1] || '').trim();
+                    var lastName = (line[2] || '').trim();
+                    if (mobile) rows.push({ mobile: mobile, first_name: firstName, last_name: lastName });
+                }
+                if (rows.length === 0) {
+                    showMsg('bulkNamesMsg', 'هیچ خط معتبری یافت نشد. در هر خط موبایل را حتماً وارد کنید.', true);
+                    return;
+                }
+                fetch('/admin/api/users/bulk-update-names', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ rows: rows })
+                }).then(function(r) { return r.json(); }).then(function(data) {
+                    showMsg('bulkNamesMsg', data.success ? (data.message || 'نام‌ها به‌روز شد.') : (data.error || 'خطا'), !data.success);
+                    if (data.success) { loadUsers(); document.getElementById('bulkNamesInput').value = ''; }
+                }).catch(function() { showMsg('bulkNamesMsg', 'خطا در ارتباط', true); });
             });
 
             document.getElementById('btnChangePassword').addEventListener('click', function() {
@@ -461,6 +574,8 @@
                     showMsg('addPayMsg', 'مبلغ را بین ۵ تا ۱۰۰۰۰ وارد کنید.', true);
                     return;
                 }
+                var payFirst = document.getElementById('payFirstName').value.trim();
+                var payLast = document.getElementById('payLastName').value.trim();
                 fetch('/admin/api/payments/add', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -470,7 +585,9 @@
                         sections_purchased: 'both',
                         payment_date: paymentDate,
                         payment_reference: ref || null,
-                        notes: notes || null
+                        notes: notes || null,
+                        first_name: payFirst || null,
+                        last_name: payLast || null
                     })
                 }).then(function(r) { return r.json(); }).then(function(data) {
                     showMsg('addPayMsg', data.success ? 'پرداخت ثبت شد.' : (data.error || 'خطا'), !data.success);
@@ -484,6 +601,8 @@
             });
             document.getElementById('btnClearPay').addEventListener('click', function() {
                 document.getElementById('payUserId').value = '';
+                document.getElementById('payFirstName').value = '';
+                document.getElementById('payLastName').value = '';
                 var subPriceEl = document.getElementById('subscriptionPriceAmount');
                 var payAmountEl = document.getElementById('payAmount');
                 if (payAmountEl && subPriceEl) payAmountEl.value = subPriceEl.value;
@@ -618,8 +737,10 @@
                     if (!tbody) return;
                     tbody.innerHTML = '';
                     data.payments.forEach(function(p) {
+                        var namePart = [p.first_name, p.last_name].filter(Boolean).join(' ');
+                        var userDisplay = namePart ? (namePart.replace(/</g, '&lt;') + ' (' + (p.mobile || '').replace(/</g, '&lt;') + ')') : (p.mobile || '#' + p.user_id).replace(/</g, '&lt;');
                         var tr = document.createElement('tr');
-                        tr.innerHTML = '<td>' + (p.mobile || '#' + p.user_id) + '</td><td>' + p.amount + ' $</td><td>' + (p.payment_date || '') + '</td><td>' + (p.payment_reference || '—').replace(/</g, '&lt;') + '</td>' +
+                        tr.innerHTML = '<td>' + userDisplay + '</td><td>' + p.amount + ' $</td><td>' + (p.payment_date || '') + '</td><td>' + (p.payment_reference || '—').replace(/</g, '&lt;') + '</td>' +
                             '<td><button type="button" class="btn btn-sm btn-outline edit-pay-btn" data-pay-id="' + p.id + '">ویرایش</button></td>' +
                             '<td><button type="button" class="btn btn-sm btn-danger delete-pay-btn" data-pay-id="' + p.id + '">حذف</button></td>';
                         tbody.appendChild(tr);
@@ -791,6 +912,35 @@
                     }
                 }).catch(function() { showMsg('editPaymentMsg', 'خطا در ارتباط', true); });
             });
+
+            var editUserNameModal = document.getElementById('editUserNameModal');
+            if (editUserNameModal) {
+                document.getElementById('editUserNameCancel').addEventListener('click', function() {
+                    editUserNameModal.style.display = 'none';
+                });
+                editUserNameModal.addEventListener('click', function(e) {
+                    if (e.target === editUserNameModal) editUserNameModal.style.display = 'none';
+                });
+                document.getElementById('editUserNameSave').addEventListener('click', function() {
+                    var userId = document.getElementById('editUserNameUserId').value;
+                    if (!userId) return;
+                    var firstName = document.getElementById('editUserNameFirst').value.trim();
+                    var lastName = document.getElementById('editUserNameLast').value.trim();
+                    fetch('/admin/api/users/' + userId, {
+                        method: 'PUT',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ first_name: firstName, last_name: lastName })
+                    }).then(function(r) { return r.json(); }).then(function(data) {
+                        if (data.success) {
+                            editUserNameModal.style.display = 'none';
+                            loadUsers();
+                            showMsg('usersMsg', data.message || 'نام به‌روز شد.', false);
+                        } else {
+                            showMsg('editUserNameMsg', data.error || 'خطا', true);
+                        }
+                    }).catch(function() { showMsg('editUserNameMsg', 'خطا در ارتباط', true); });
+                });
+            }
         })();
     </script>
 </body>

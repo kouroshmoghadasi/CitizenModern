@@ -204,6 +204,19 @@ def init_database():
                 cur.execute("ALTER TABLE subscription_payments ADD CONSTRAINT subscription_payments_amount_check CHECK (amount >= 5 AND amount <= 10000)")
             except Exception:
                 pass
+            # نام و نام خانوادگی کاربر اشتراک (برای نگهداری در بخش ادمین) — فقط در صورت نبود ستون اضافه می‌شود
+            for col in ('first_name', 'last_name'):
+                cur.execute("""
+                    DO $$
+                    BEGIN
+                        IF NOT EXISTS (
+                            SELECT 1 FROM information_schema.columns
+                            WHERE table_schema = 'public' AND table_name = 'subscription_users' AND column_name = %s
+                        ) THEN
+                            ALTER TABLE subscription_users ADD COLUMN """ + col + """ VARCHAR(100);
+                        END IF;
+                    END $$;
+                """, (col,))
             conn.commit()
             
             # Check if main counter exists
@@ -1292,7 +1305,7 @@ def admin_api_users():
             return jsonify({'success': False, 'error': 'DB'}), 500
         cur = conn.cursor(cursor_factory=RealDictCursor)
         cur.execute("""
-            SELECT u.id, u.mobile, u.notes, u.created_at,
+            SELECT u.id, u.mobile, u.first_name, u.last_name, u.notes, u.created_at,
                    (SELECT expiry_date FROM subscription_subscriptions WHERE user_id = u.id AND section = 'tests' AND status = 'active' ORDER BY expiry_date DESC LIMIT 1) AS tests_expiry,
                    (SELECT expiry_date FROM subscription_subscriptions WHERE user_id = u.id AND section = 'questions_414' AND status = 'active' ORDER BY expiry_date DESC LIMIT 1) AS questions_414_expiry
             FROM subscription_users u
@@ -1389,6 +1402,8 @@ def admin_api_users_add():
     data = request.get_json() or request.form or {}
     mobile = (data.get('mobile') or '').strip()
     password = (data.get('password') or '').strip()
+    first_name = (data.get('first_name') or '').strip()[:100]
+    last_name = (data.get('last_name') or '').strip()[:100]
     free_access = data.get('free_access') in (True, 'true', '1', 1)
     if not mobile or not password:
         return jsonify({'success': False, 'error': 'موبایل و رمز عبور الزامی است.'}), 200
@@ -1397,7 +1412,8 @@ def admin_api_users_add():
         if not conn:
             return jsonify({'success': False, 'error': 'DB'}), 500
         cur = conn.cursor()
-        cur.execute("INSERT INTO subscription_users (mobile, password_hash) VALUES (%s, %s) RETURNING id", (mobile, generate_password_hash(password)))
+        cur.execute("INSERT INTO subscription_users (mobile, password_hash, first_name, last_name) VALUES (%s, %s, %s, %s) RETURNING id",
+                    (mobile, generate_password_hash(password), first_name or None, last_name or None))
         row = cur.fetchone()
         user_id = row[0]
         if free_access:
@@ -1419,6 +1435,73 @@ def admin_api_users_add():
     except Exception as e:
         return jsonify({'success': False, 'error': str(e)}), 200
 
+
+@app.route('/admin/api/users/<int:user_id>', methods=['PUT'])
+@_admin_required
+def admin_api_users_update(user_id):
+    """به‌روزرسانی نام و نام خانوادگی کاربر اشتراک."""
+    data = request.get_json() or request.form or {}
+    first_name = (data.get('first_name') or '').strip()[:100]
+    last_name = (data.get('last_name') or '').strip()[:100]
+    try:
+        conn = get_db_connection()
+        if not conn:
+            return jsonify({'success': False, 'error': 'DB'}), 500
+        cur = conn.cursor()
+        cur.execute(
+            "UPDATE subscription_users SET first_name = NULLIF(%s, ''), last_name = NULLIF(%s, ''), updated_at = CURRENT_TIMESTAMP WHERE id = %s",
+            (first_name or None, last_name or None, user_id)
+        )
+        if cur.rowcount == 0:
+            conn.rollback()
+            cur.close()
+            conn.close()
+            return jsonify({'success': False, 'error': 'کاربر یافت نشد.'}), 200
+        conn.commit()
+        cur.close()
+        conn.close()
+        return jsonify({'success': True, 'message': 'نام و نام خانوادگی به‌روز شد.'}), 200
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)}), 200
+
+
+@app.route('/admin/api/users/bulk-update-names', methods=['POST'])
+@_admin_required
+def admin_api_users_bulk_update_names():
+    """ورود گروهی نام و نام خانوادگی. بدنه: { "rows": [ {"mobile": "09...", "first_name": "...", "last_name": "..."}, ... ] }"""
+    data = request.get_json() or {}
+    rows = data.get('rows') or []
+    if not isinstance(rows, list) or len(rows) > 500:
+        return jsonify({'success': False, 'error': 'حداکثر ۵۰۰ ردیف در هر بار ارسال مجاز است.'}), 200
+    updated = 0
+    errors = []
+    try:
+        conn = get_db_connection()
+        if not conn:
+            return jsonify({'success': False, 'error': 'DB'}), 500
+        cur = conn.cursor()
+        for i, row in enumerate(rows):
+            if not isinstance(row, dict):
+                continue
+            mobile = (row.get('mobile') or '').strip()
+            first_name = (row.get('first_name') or '').strip()[:100]
+            last_name = (row.get('last_name') or '').strip()[:100]
+            if not mobile:
+                continue
+            cur.execute(
+                "UPDATE subscription_users SET first_name = NULLIF(%s, ''), last_name = NULLIF(%s, ''), updated_at = CURRENT_TIMESTAMP WHERE mobile = %s",
+                (first_name or None, last_name or None, mobile)
+            )
+            if cur.rowcount:
+                updated += 1
+        conn.commit()
+        cur.close()
+        conn.close()
+        return jsonify({'success': True, 'message': 'نام‌ها به‌روز شد. تعداد به‌روزرسانی: ' + str(updated), 'updated': updated}), 200
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)}), 200
+
+
 @app.route('/admin/api/payments', methods=['GET'])
 @_admin_required
 def admin_api_payments():
@@ -1430,12 +1513,12 @@ def admin_api_payments():
         cur = conn.cursor(cursor_factory=RealDictCursor)
         if user_id:
             cur.execute("""
-                SELECT p.id, p.user_id, p.amount, p.sections_purchased, p.payment_date, p.payment_reference, p.notes, p.created_at
-                FROM subscription_payments p WHERE p.user_id = %s ORDER BY p.id DESC
+                SELECT p.id, p.user_id, u.mobile, u.first_name, u.last_name, p.amount, p.sections_purchased, p.payment_date, p.payment_reference, p.notes, p.created_at
+                FROM subscription_payments p JOIN subscription_users u ON u.id = p.user_id WHERE p.user_id = %s ORDER BY p.id DESC
             """, (user_id,))
         else:
             cur.execute("""
-                SELECT p.id, p.user_id, u.mobile, p.amount, p.sections_purchased, p.payment_date, p.payment_reference, p.notes, p.created_at
+                SELECT p.id, p.user_id, u.mobile, u.first_name, u.last_name, p.amount, p.sections_purchased, p.payment_date, p.payment_reference, p.notes, p.created_at
                 FROM subscription_payments p JOIN subscription_users u ON u.id = p.user_id ORDER BY p.id DESC LIMIT 200
             """)
         payments = cur.fetchall()
@@ -1509,6 +1592,11 @@ def admin_api_payments_add():
         if not conn:
             return jsonify({'success': False, 'error': 'DB'}), 500
         cur = conn.cursor()
+        first_name = (data.get('first_name') or '').strip()[:100]
+        last_name = (data.get('last_name') or '').strip()[:100]
+        if first_name or last_name:
+            cur.execute("UPDATE subscription_users SET first_name = NULLIF(%s, ''), last_name = NULLIF(%s, ''), updated_at = CURRENT_TIMESTAMP WHERE id = %s",
+                        (first_name or None, last_name or None, user_id))
         cur.execute("INSERT INTO subscription_payments (user_id, amount, sections_purchased, payment_date, payment_reference, notes) VALUES (%s, %s, %s, %s, %s, %s)",
                     (user_id, amount, sections_purchased, pay_date, payment_reference or None, notes or None))
         sections_to_update = ['tests', 'questions_414']  # کل بسته
