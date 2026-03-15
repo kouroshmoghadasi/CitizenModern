@@ -4660,7 +4660,7 @@
 
             .test-navigator-mobile {
                 display: flex;
-                align-items: center;
+                align-items: stretch;
                 justify-content: center;
                 gap: 8px;
                 padding: 8px 10px;
@@ -4671,10 +4671,45 @@
                 box-shadow: 0 3px 10px rgba(30, 60, 114, 0.2);
             }
 
+            .test-navigator-mobile .test-nav-btn {
+                padding: 6px 14px;
+                font-size: 0.85em;
+                min-width: 44px;
+                flex: 1;
+                max-width: 90px;
+            }
+
+            .test-navigator-mobile .question-display-container-mobile {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                min-width: 92px;
+                padding: 2px 12px;
+                background: rgba(255,255,255,0.15);
+                border-radius: 10px;
+                align-self: stretch;
+                box-sizing: border-box;
+            }
+            .test-navigator-mobile .question-display-container-mobile .question-label {
+                font-size: 0.7em;
+                color: rgba(255,255,255,0.95);
+                font-weight: 600;
+                line-height: 1.1;
+            }
+            .test-navigator-mobile .question-display-container-mobile .question-number-display {
+                font-size: 0.9em;
+                font-weight: 700;
+                color: #fff;
+                line-height: 1.1;
+            }
+
             .test-navigator-mobile .test-select-wrapper-mobile {
                 flex: 1;
                 display: flex;
                 justify-content: center;
+                align-items: stretch;
+                max-width: 160px;
             }
             
             .mobile-test-select-only {
@@ -4686,10 +4721,14 @@
                 margin: 0 auto;
             }
             
+            .test-navigator-mobile .test-number-select-mobile {
+                height: 100%;
+                min-height: 36px;
+            }
             .test-number-select-mobile {
                 width: 100%;
-                max-width: 200px;
-                min-width: 120px;
+                max-width: 155px;
+                min-width: 100px;
                 padding: 6px 30px 6px 10px;
                 border: 2px solid #9c27b0;
                 border-radius: 6px;
@@ -6107,6 +6146,13 @@
                 font-size: 0.95em;
                 min-width: 42px;
             }
+            .test-navigator-mobile .test-nav-btn {
+                padding: 6px 14px !important;
+                font-size: 0.84em !important;
+                min-width: 42px !important;
+                flex: 1 !important;
+                max-width: 88px !important;
+            }
             
             .test-select-wrapper {
                 flex: 1;
@@ -6136,6 +6182,13 @@
                 font-size: 0.9em;
                 min-width: 38px;
             }
+            .test-navigator-mobile .test-nav-btn {
+                padding: 5px 12px !important;
+                font-size: 0.82em !important;
+                min-width: 40px !important;
+                flex: 1 !important;
+                max-width: 85px !important;
+            }
             
             .test-select-wrapper {
                 margin: 0 6px;
@@ -6161,6 +6214,13 @@
                 padding: 4px 10px;
                 font-size: 0.85em;
                 min-width: 34px;
+            }
+            .test-navigator-mobile .test-nav-btn {
+                padding: 5px 10px !important;
+                font-size: 0.8em !important;
+                min-width: 38px !important;
+                flex: 1 !important;
+                max-width: 78px !important;
             }
             
             .test-select-wrapper {

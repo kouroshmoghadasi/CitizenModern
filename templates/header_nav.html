@@ -20,7 +20,7 @@
                 <button class="test-nav-btn prev" onclick="navigateQuestion(-1)" id="testPrevBtn" title="سوال قبلی">قبلی</button>
                 <div class="test-select-wrapper">
                     <div class="question-display-container">
-                        <span class="question-label">سوال</span>
+                        <span class="question-label">Q</span>
                         <div id="testQuestionNumberDisplay" class="question-number-display">1 / 20</div>
                     </div>
                 </div>
@@ -96,6 +96,10 @@
             <!-- Test Navigator (Mobile Version) - دکمه‌ها برای جابجایی بین سوالات -->
             <div class="test-navigator-mobile">
                 <button class="test-nav-btn test-nav-btn-mobile prev" onclick="navigateQuestion(-1)" id="testPrevBtnMobile" title="سوال قبلی">قبلی</button>
+                <div class="question-display-container question-display-container-mobile">
+                    <span class="question-label">Q</span>
+                    <div id="testQuestionNumberDisplayMobile" class="question-number-display">1 / 20</div>
+                </div>
                 <div class="test-select-wrapper-mobile">
                     <select id="testNumberSelectMobile" class="test-number-select-mobile" onchange="selectTestFromDropdownMobile()" title="انتخاب تست">
                         <!-- Options will be populated by JavaScript: Test1, Test2, ..., Test100 -->

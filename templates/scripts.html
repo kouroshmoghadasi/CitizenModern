@@ -3566,10 +3566,14 @@
                 questionNumberDisplay.textContent = `${currentQuestion + 1} / ${test.questions.length}`;
             }
             
-            // Update test navigator question display (sidebar)
+            // Update test navigator question display (sidebar + mobile)
             const testQuestionNumberDisplay = document.getElementById('testQuestionNumberDisplay');
             if (testQuestionNumberDisplay) {
                 testQuestionNumberDisplay.textContent = `${currentQuestion + 1} / ${test.questions.length}`;
+            }
+            const testQuestionNumberDisplayMobile = document.getElementById('testQuestionNumberDisplayMobile');
+            if (testQuestionNumberDisplayMobile) {
+                testQuestionNumberDisplayMobile.textContent = `${currentQuestion + 1} / ${test.questions.length}`;
             }
             
             const questionCard = document.getElementById('questionCard');
