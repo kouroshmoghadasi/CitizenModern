@@ -422,7 +422,7 @@ def _build_en_to_fa_option_map():
                     en_to_fa[en.strip()] = fa_list[j].strip()
     except Exception:
         pass
-    for name in ('571_options_fa.json', '571_options_fa_extra.json', '571_options_fa_complete.json'):
+    for name in ('571_options_fa.json', '571_options_fa_extra.json', '571_options_fa_complete.json', '571_options_fa_q9.json'):
         path_571_fa = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static', name)
         try:
             if os.path.isfile(path_571_fa):
@@ -491,6 +491,13 @@ def _expand_571_to_four_options(questions):
             q['options_fr'] = opts_fr[:4]
             q['options_fa'] = [_fa_lookup(en_to_fa, e) for e in opts[:4]]
             q['correct'] = min(c, 3)
+            continue
+        # سوالات دوگزینه‌ای (مثلاً True/False) را گسترش نده؛ همان دو گزینه بماند
+        if len(opts) == 2 and len(opts_fr) >= 2:
+            q['options_en'] = opts[:2]
+            q['options_fr'] = (opts_fr or opts)[:2]
+            q['options_fa'] = [_fa_lookup(en_to_fa, e) for e in opts[:2]]
+            q['correct'] = min(c, 1)
             continue
         rng = random.Random(i)
         correct_pair = (correct_en, correct_fr)

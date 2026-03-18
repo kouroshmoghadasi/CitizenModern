@@ -1983,7 +1983,7 @@
     "q": "What does the term “responsible government” mean? The ministers of the Crown must have the support of a majority of the elected",
     "q_fa": "اصطلاح \"دولت مسئول\" به چه معناست؟ وزرای ولیعهد باید از حمایت اکثریت منتخبان برخوردار باشند",
     "options": [
-      "The ministers must have the confidence of the elected representatives",
+      "The government must resign if it loses a confidence vote in the assembly",
       "The Queen rules directly",
       "The PM is elected by the people",
       "The Senate approves all laws"
@@ -1994,7 +1994,7 @@
     "book_text": "",
     "q_fr": "Que signifie le terme « gouvernement responsable » ? Les ministres de la Couronne doivent avoir le soutien de la majorité des élus.",
     "options_fr": [
-      "Les ministres doivent avoir la confiance des élus",
+      "Le gouvernement doit démissionner s'il perd un vote de confiance à l'assemblée",
       "La Reine gouverne directement",
       "Le PM est élu par le peuple",
       "Le Sénat approuve toutes les lois"
@@ -2274,7 +2274,7 @@
       "British Columbia",
       "Alberta"
     ],
-    "correct": 0,
+    "correct": 2,
     "page": 0,
     "section": "571 Question For Citizenship Test",
     "book_text": "",
@@ -3369,7 +3369,7 @@
     "q": "Who was the first leader of a responsible government in the Canadas in 1849",
     "q_fa": "چه کسی اولین رهبر یک دولت مسئول در کانادا در سال 1849 بود",
     "options": [
-      "The ministers must have the confidence of the elected representatives",
+      "The government must resign if it loses a confidence vote in the assembly",
       "The Queen rules directly",
       "The PM is elected by the people",
       "The Senate approves all laws"
@@ -3380,7 +3380,7 @@
     "book_text": "",
     "q_fr": "Qui fut le premier chef d'un gouvernement responsable au Canada en 1849",
     "options_fr": [
-      "Les ministres doivent avoir la confiance des élus",
+      "Le gouvernement doit démissionner s'il perd un vote de confiance à l'assemblée",
       "La Reine gouverne directement",
       "Le PM est élu par le peuple",
       "Le Sénat approuve toutes les lois"
@@ -3616,7 +3616,7 @@
       "Services",
       "Manufacturing"
     ],
-    "correct": 0,
+    "correct": 2,
     "page": 0,
     "section": "571 Question For Citizenship Test",
     "book_text": "",
@@ -4032,9 +4032,7 @@
     "q_fa": "نوناووت رکورد سردترین دمای ثبت شده در کانادا (63- درجه) را دارد.",
     "options": [
       "True",
-      "False",
-      "Yukon does",
-      "NWT does"
+      "False"
     ],
     "correct": 0,
     "page": 0,
@@ -4043,9 +4041,7 @@
     "q_fr": "Le Nunavut détient le record de la température la plus froide jamais enregistrée au Canada (-63°)",
     "options_fr": [
       "Vrai",
-      "Faux",
-      "C'est le Yukon",
-      "Ce sont les T.N.-O."
+      "Faux"
     ],
     "expl_fr": ""
   },
@@ -4053,21 +4049,17 @@
     "q": "Toronto is the capital city of Canada",
     "q_fa": "تورنتو پایتخت کشور کانادا است",
     "options": [
-      "False – Ottawa is the capital",
       "True",
-      "Montreal is",
-      "Quebec City is"
+      "False"
     ],
-    "correct": 0,
+    "correct": 1,
     "page": 0,
     "section": "571 Question For Citizenship Test",
     "book_text": "",
     "q_fr": "Toronto est la capitale du Canada",
     "options_fr": [
-      "Faux – Ottawa est la capitale",
       "Vrai",
-      "C'est Montréal",
-      "C'est Québec"
+      "Faux"
     ],
     "expl_fr": ""
   },
@@ -4075,21 +4067,17 @@
     "q": "Canada is divided in 10 regions",
     "q_fa": "کانادا به 10 منطقه تقسیم شده است",
     "options": [
-      "False",
       "True",
-      "5 regions",
-      "15 regions"
+      "False"
     ],
-    "correct": 0,
+    "correct": 1,
     "page": 0,
     "section": "571 Question For Citizenship Test",
     "book_text": "",
     "q_fr": "Le Canada est divisé en 10 régions",
     "options_fr": [
-      "Faux",
       "Vrai",
-      "5 régions",
-      "15 régions"
+      "Faux"
     ],
     "expl_fr": ""
   },
@@ -4124,7 +4112,7 @@
       "Services",
       "Manufacturing"
     ],
-    "correct": 0,
+    "correct": 2,
     "page": 0,
     "section": "571 Question For Citizenship Test",
     "book_text": "",
@@ -4540,9 +4528,7 @@
     "q_fa": "نوناووت رکورد سردترین دمای ثبت شده در کانادا (63- درجه) را دارد.",
     "options": [
       "True",
-      "False",
-      "Yukon does",
-      "NWT does"
+      "False"
     ],
     "correct": 0,
     "page": 0,
@@ -4551,9 +4537,7 @@
     "q_fr": "Le Nunavut détient le record de la température la plus froide jamais enregistrée au Canada (-63°)",
     "options_fr": [
       "Vrai",
-      "Faux",
-      "C'est le Yukon",
-      "Ce sont les T.N.-O."
+      "Faux"
     ],
     "expl_fr": ""
   },
@@ -4561,21 +4545,17 @@
     "q": "Toronto is the capital city of Canada",
     "q_fa": "تورنتو پایتخت کشور کانادا است",
     "options": [
-      "False – Ottawa is the capital",
       "True",
-      "Montreal is",
-      "Quebec City is"
+      "False"
     ],
-    "correct": 0,
+    "correct": 1,
     "page": 0,
     "section": "571 Question For Citizenship Test",
     "book_text": "",
     "q_fr": "Toronto est la capitale du Canada",
     "options_fr": [
-      "Faux – Ottawa est la capitale",
       "Vrai",
-      "C'est Montréal",
-      "C'est Québec"
+      "Faux"
     ],
     "expl_fr": ""
   },
@@ -4583,21 +4563,17 @@
     "q": ". Canada is divided in 10 regions",
     "q_fa": ". کانادا به 10 منطقه تقسیم شده است",
     "options": [
-      "False",
       "True",
-      "5 regions",
-      "15 regions"
+      "False"
     ],
-    "correct": 0,
+    "correct": 1,
     "page": 0,
     "section": "571 Question For Citizenship Test",
     "book_text": "",
     "q_fr": ". Le Canada est divisé en 10 régions",
     "options_fr": [
-      "Faux",
       "Vrai",
-      "5 régions",
-      "15 régions"
+      "Faux"
     ],
     "expl_fr": ""
   },
@@ -4698,7 +4674,7 @@
       "Service",
       "Manufacturing"
     ],
-    "correct": 0,
+    "correct": 2,
     "page": 0,
     "section": "571 Question For Citizenship Test",
     "book_text": "",
@@ -4803,7 +4779,7 @@
     "q": "Who was the first leader of a responsible government of Canada in 1849?",
     "q_fa": "اولین رهبر یک دولت مسئول کانادا در سال 1849 چه کسی بود؟",
     "options": [
-      "The ministers must have the confidence of the elected representatives",
+      "The government must resign if it loses a confidence vote in the assembly",
       "The Queen rules directly",
       "The PM is elected by the people",
       "The Senate approves all laws"
@@ -4814,7 +4790,7 @@
     "book_text": "",
     "q_fr": "Qui fut le premier chef d'un gouvernement responsable au Canada en 1849?",
     "options_fr": [
-      "Les ministres doivent avoir la confiance des élus",
+      "Le gouvernement doit démissionner s'il perd un vote de confiance à l'assemblée",
       "La Reine gouverne directement",
       "Le PM est élu par le peuple",
       "Le Sénat approuve toutes les lois"
@@ -5045,21 +5021,21 @@
     "q": "What is a “responsible government”? e) The government is responsible for everything in the country",
     "q_fa": "«دولت مسئول» چیست؟ ه) دولت مسئول همه چیز در کشور است",
     "options": [
-      "The ministers must have the confidence of the elected representatives",
-      "The Queen rules directly",
-      "The PM is elected by the people",
-      "The Senate approves all laws"
+      "The government is responsible for everything in the country",
+      "The government is responsible for making laws",
+      "The Crown must have the support of all of the elected representatives in order to govern",
+      "The government must resign if it loses a confidence vote in the assembly"
     ],
-    "correct": 0,
+    "correct": 3,
     "page": 0,
     "section": "571 Question For Citizenship Test",
     "book_text": "",
     "q_fr": "Qu’est-ce qu’un « gouvernement responsable » ? e) Le gouvernement est responsable de tout dans le pays",
     "options_fr": [
-      "Les ministres doivent avoir la confiance des élus",
-      "La Reine gouverne directement",
-      "Le PM est élu par le peuple",
-      "Le Sénat approuve toutes les lois"
+      "Le gouvernement est responsable de tout dans le pays",
+      "Le gouvernement est responsable de faire les lois",
+      "La Couronne doit avoir le soutien de tous les élus pour gouverner",
+      "Le gouvernement doit démissionner s'il perd un vote de confiance à l'assemblée"
     ],
     "expl_fr": ""
   },
@@ -5089,21 +5065,21 @@
     "q": "What does Confederation mean?",
     "q_fa": "کنفدراسیون یعنی چه؟",
     "options": [
-      "Joining of provinces to form a new country",
-      "The US and Canada united",
-      "A trade agreement",
-      "A military alliance"
+      "The United States Confederate soldiers came to Canada",
+      "Joining of communities to become a province",
+      "Joining of suburbs to form a large city",
+      "Joining of provinces to make a new country"
     ],
-    "correct": 0,
+    "correct": 3,
     "page": 0,
     "section": "571 Question For Citizenship Test",
     "book_text": "",
     "q_fr": "Que signifie Confédération ?",
     "options_fr": [
-      "L'union des provinces pour former un nouveau pays",
-      "Les É.-U. et le Canada unis",
-      "Un accord commercial",
-      "Une alliance militaire"
+      "Les soldats confédérés américains sont venus au Canada",
+      "Réunion de communautés pour former une province",
+      "Réunion de banlieues pour former une grande ville",
+      "Réunion des provinces pour former un nouveau pays"
     ],
     "expl_fr": ""
   },
@@ -5424,7 +5400,7 @@
       "Alberta",
       "New Brunswick"
     ],
-    "correct": 0,
+    "correct": 3,
     "page": 0,
     "section": "571 Question For Citizenship Test",
     "book_text": "",
@@ -5512,7 +5488,7 @@
       "Quebec",
       "Alberta"
     ],
-    "correct": 0,
+    "correct": 3,
     "page": 0,
     "section": "571 Question For Citizenship Test",
     "book_text": "",
@@ -5666,7 +5642,7 @@
       "Ontario",
       "Manitoba"
     ],
-    "correct": 0,
+    "correct": 3,
     "page": 0,
     "section": "571 Question For Citizenship Test",
     "book_text": "",
@@ -5688,7 +5664,7 @@
       "Pulp and paper",
       "Process Foods"
     ],
-    "correct": 0,
+    "correct": 2,
     "page": 0,
     "section": "571 Question For Citizenship Test",
     "book_text": "",
@@ -5710,7 +5686,7 @@
       "The Arctic Ocean to the north",
       "All answers correct"
     ],
-    "correct": 0,
+    "correct": 3,
     "page": 0,
     "section": "571 Question For Citizenship Test",
     "book_text": "",
@@ -5732,7 +5708,7 @@
       "Alberta",
       "Newfoundland and Labrador"
     ],
-    "correct": 0,
+    "correct": 1,
     "page": 0,
     "section": "571 Question For Citizenship Test",
     "book_text": "",
@@ -6032,28 +6008,6 @@
     "expl_fr": ""
   },
   {
-    "q": "Question #275 (missing in source HTML – see PDF).",
-    "q_fa": "سوال #275 (در منبع HTML موجود نیست – به PDF مراجعه کنید).",
-    "options": [
-      "See official study guide",
-      "Skip this question",
-      "Answer A",
-      "Answer B"
-    ],
-    "correct": 0,
-    "page": 0,
-    "section": "571 Question For Citizenship Test",
-    "book_text": "",
-    "q_fr": "Question #275 (manquante dans le HTML source – voir PDF).",
-    "options_fr": [
-      "Voir le guide officiel",
-      "Passer cette question",
-      "Réponse A",
-      "Réponse B"
-    ],
-    "expl_fr": ""
-  },
-  {
     "q": "What are the provinces of Central Canada and their capital cities?",
     "q_fa": "استان های مرکز کانادا و شهرهای پایتخت آن کدامند؟",
     "options": [
@@ -6278,9 +6232,7 @@
     "q_fa": "17. نوناووت رکورد سردترین دمای ثبت شده در کانادا را دارد (-",
     "options": [
       "True",
-      "False",
-      "Yukon does",
-      "NWT does"
+      "False"
     ],
     "correct": 0,
     "page": 0,
@@ -6289,9 +6241,7 @@
     "q_fr": "17. Le Nunavut détient le record de la température la plus froide jamais enregistrée au Canada (-",
     "options_fr": [
       "Vrai",
-      "Faux",
-      "C'est le Yukon",
-      "Ce sont les T.N.-O."
+      "Faux"
     ],
     "expl_fr": ""
   },
@@ -6299,21 +6249,17 @@
     "q": "18. Toronto is the capital city of Canada",
     "q_fa": "18. تورنتو پایتخت کانادا است",
     "options": [
-      "False – Ottawa is the capital",
       "True",
-      "Montreal is",
-      "Quebec City is"
+      "False"
     ],
-    "correct": 0,
+    "correct": 1,
     "page": 0,
     "section": "571 Question For Citizenship Test",
     "book_text": "",
     "q_fr": "18. Toronto est la capitale du Canada",
     "options_fr": [
-      "Faux – Ottawa est la capitale",
       "Vrai",
-      "C'est Montréal",
-      "C'est Québec"
+      "Faux"
     ],
     "expl_fr": ""
   },
@@ -6321,21 +6267,17 @@
     "q": "19. Canada is divided in 10 regions",
     "q_fa": "19. کانادا به 10 منطقه تقسیم شده است",
     "options": [
-      "False",
       "True",
-      "5 regions",
-      "15 regions"
+      "False"
     ],
-    "correct": 0,
+    "correct": 1,
     "page": 0,
     "section": "571 Question For Citizenship Test",
     "book_text": "",
     "q_fr": "19. Le Canada est divisé en 10 régions",
     "options_fr": [
-      "Faux",
       "Vrai",
-      "5 régions",
-      "15 régions"
+      "Faux"
     ],
     "expl_fr": ""
   },
@@ -6720,9 +6662,7 @@
     "q_fa": "17. نوناووت رکورد سردترین دمای ثبت شده در کانادا (63- درجه) را دارد.",
     "options": [
       "True",
-      "False",
-      "Yukon does",
-      "NWT does"
+      "False"
     ],
     "correct": 0,
     "page": 0,
@@ -6731,9 +6671,7 @@
     "q_fr": "17. Le Nunavut détient le record de la température la plus froide jamais enregistrée au Canada (-63°)",
     "options_fr": [
       "Vrai",
-      "Faux",
-      "C'est le Yukon",
-      "Ce sont les T.N.-O."
+      "Faux"
     ],
     "expl_fr": ""
   },
@@ -6741,21 +6679,17 @@
     "q": "18. Toronto is the capital city of Canada",
     "q_fa": "18. تورنتو پایتخت کانادا است",
     "options": [
-      "False – Ottawa is the capital",
       "True",
-      "Montreal is",
-      "Quebec City is"
+      "False"
     ],
-    "correct": 0,
+    "correct": 1,
     "page": 0,
     "section": "571 Question For Citizenship Test",
     "book_text": "",
     "q_fr": "18. Toronto est la capitale du Canada",
     "options_fr": [
-      "Faux – Ottawa est la capitale",
       "Vrai",
-      "C'est Montréal",
-      "C'est Québec"
+      "Faux"
     ],
     "expl_fr": ""
   },
@@ -6763,21 +6697,17 @@
     "q": "19. Canada is divided in 10 regions",
     "q_fa": "19. کانادا به 10 منطقه تقسیم شده است",
     "options": [
-      "False",
       "True",
-      "5 regions",
-      "15 regions"
+      "False"
     ],
-    "correct": 0,
+    "correct": 1,
     "page": 0,
     "section": "571 Question For Citizenship Test",
     "book_text": "",
     "q_fr": "19. Le Canada est divisé en 10 régions",
     "options_fr": [
-      "Faux",
       "Vrai",
-      "5 régions",
-      "15 régions"
+      "Faux"
     ],
     "expl_fr": ""
   },

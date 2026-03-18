@@ -1,0 +1,332 @@
+
+======================================================================
+571 QUESTIONS - Answer check (JSON vs HTML source)
+======================================================================
+Total questions in JSON: 571
+Total with answer in HTML: 570
+Question numbers missing in HTML (first 20): [275]
+
+DISCREPANCIES: questions where JSON 'correct' index != expected from HTML answer
+Total discrepancies: 53
+
+List:
+----------------------------------------------------------------------
+Q100 | JSON correct index: 0 | Expected index (from HTML): 1
+  Question: What was the significance of June 6, 1944 invasion of Normandy Ca...
+  HTML answer text: during the Second World War.
+  Current JSON answer: D-Day: Allied forces invaded Normandy
+  Expected option text: Canada declared war
+
+Q104 | JSON correct index: 0 | Expected index (from HTML): 2
+  Question: Which province is the main producer of pulp and paper?...
+  HTML answer text: British Columbia
+  Current JSON answer: Quebec
+  Expected option text: British Columbia
+
+Q135 | JSON correct index: 0 | Expected index (from HTML): 1
+  Question: What was the significance of June 6, 1944 invasion of Normandy? C...
+  HTML answer text: during the Second World War.
+  Current JSON answer: D-Day: Allied forces invaded Normandy
+  Expected option text: Canada declared war
+
+Q185 | JSON correct index: 0 | Expected index (from HTML): 1
+  Question: Toronto is the capital city of Canada...
+  HTML answer text: a) True
+  Current JSON answer: False – Ottawa is the capital
+  Expected option text: True
+
+Q186 | JSON correct index: 0 | Expected index (from HTML): 1
+  Question: Canada is divided in 10 regions...
+  HTML answer text: a) True
+  Current JSON answer: False
+  Expected option text: True
+
+Q208 | JSON correct index: 0 | Expected index (from HTML): 1
+  Question: Toronto is the capital city of Canada...
+  HTML answer text: a) True
+  Current JSON answer: False – Ottawa is the capital
+  Expected option text: True
+
+Q209 | JSON correct index: 0 | Expected index (from HTML): 1
+  Question: . Canada is divided in 10 regions...
+  HTML answer text: a) True
+  Current JSON answer: False
+  Expected option text: True
+
+Q214 | JSON correct index: 0 | Expected index (from HTML): 1
+  Question: In what industry do most Canadians work?...
+  HTML answer text: a. Natural resources                                      b. Informati
+  Current JSON answer: Natural resources
+  Expected option text: Information Technology
+
+Q217 | JSON correct index: 0 | Expected index (from HTML): 1
+  Question: Which country is Canada's largest trading partner?...
+  HTML answer text: a. India                      b. Japan                          c. Chi
+  Current JSON answer: The United States
+  Expected option text: China
+
+Q224 | JSON correct index: 0 | Expected index (from HTML): 1
+  Question: Which current provinces came out from the Constitutional Act?...
+  HTML answer text: e) Ontario and New Brunswick
+  Current JSON answer: Upper Canada (Ontario) and Lower Canada (Quebec)
+  Expected option text: Nova Scotia and New Brunswick
+
+Q230 | JSON correct index: 0 | Expected index (from HTML): 2
+  Question: What is a “responsible government”? e) The government is responsi...
+  HTML answer text: f) The government is responsible for making laws
+  Current JSON answer: The ministers must have the confidence of the elected representatives
+  Expected option text: The PM is elected by the people
+
+Q232 | JSON correct index: 0 | Expected index (from HTML): 1
+  Question: What does Confederation mean?...
+  HTML answer text: c) The United States Confederate soldiers came to Canada
+  Current JSON answer: Joining of provinces to form a new country
+  Expected option text: The US and Canada united
+
+Q247 | JSON correct index: 0 | Expected index (from HTML): 3
+  Question: Which one is the only officially bilingual province?...
+  HTML answer text: a. Quebec                     b. Ontario                     c. Albert
+  Current JSON answer: Quebec
+  Expected option text: New Brunswick
+
+Q251 | JSON correct index: 0 | Expected index (from HTML): 1
+  Question: Which province is the largest producer of oil and natural gas?...
+  HTML answer text: a. Ontario               b. Nova Scotia                      c. Quebec
+  Current JSON answer: Ontario
+  Expected option text: Nova Scotia
+
+Q255 | JSON correct index: 0 | Expected index (from HTML): 1
+  Question: Which is Canada's main financial centre and the largest city?...
+  HTML answer text: a. Toronto                 b. Vancouver                         c. Mon
+  Current JSON answer: Toronto
+  Expected option text: Vancouver
+
+Q258 | JSON correct index: 0 | Expected index (from HTML): 1
+  Question: Which province is known as the "Land of 100,000 Lakes"?...
+  HTML answer text: a. Nova Scotia                 b. British Columbia                    
+  Current JSON answer: Nova Scotia
+  Expected option text: British Columbia
+
+Q259 | JSON correct index: 0 | Expected index (from HTML): 1
+  Question: Quebec is Canada’s main producer of what?...
+  HTML answer text: a. Music                b. Literary works               c. Pulp and pa
+  Current JSON answer: Music
+  Expected option text: Literary works
+
+Q260 | JSON correct index: 0 | Expected index (from HTML): 1
+  Question: Which oceans lines Canada’s frontiers?...
+  HTML answer text: a. The Pacific Ocean in the west                           c. The Atla
+  Current JSON answer: The Pacific Ocean in the west
+  Expected option text: The Atlantic Ocean in the east
+
+Q261 | JSON correct index: 0 | Expected index (from HTML): 1
+  Question: Which province in Canada is the smallest in land size?...
+  HTML answer text: a. Ontario                 b. Prince Edward Island               c. Al
+  Current JSON answer: Ontario
+  Expected option text: Prince Edward Island
+
+Q262 | JSON correct index: 0 | Expected index (from HTML): 1
+  Question: Where out of the following do more half the people in Canada live...
+  HTML answer text: a. Central Canada                                          b. Northern
+  Current JSON answer: Central Canada
+  Expected option text: Northern Territories
+
+Q264 | JSON correct index: 0 | Expected index (from HTML): 1
+  Question: Which of the following is the industrial and manufacturing heartl...
+  HTML answer text: a. Central Canada             b. Northern Territories        c. West C
+  Current JSON answer: Central Canada
+  Expected option text: Northern Territories
+
+Q266 | JSON correct index: 0 | Expected index (from HTML): 3
+  Question: How many Great Lakes are located between Ontario and United State...
+  HTML answer text: a. Five                     b. Four                     c. Six        
+  Current JSON answer: Five
+  Expected option text: Seven
+
+Q270 | JSON correct index: 0 | Expected index (from HTML): 2
+  Question: Which part of the Canadian Forces brings security and sovereignty...
+  HTML answer text: a. Army       b. Air Force       c. The Canadian Rangers     d. Navy
+  Current JSON answer: Army
+  Expected option text: The Canadian Rangers
+
+Q273 | JSON correct index: 0 | Expected index (from HTML): 1
+  Question: Name the five regions of Canada....
+  HTML answer text: i) Midwest, North, South, East, Central
+  Current JSON answer: Atlantic, Central, Prairie, West Coast, North
+  Expected option text: East, West, North, South, Central
+
+Q287 | JSON correct index: 0 | Expected index (from HTML): 1
+  Question: 18. Toronto is the capital city of Canada...
+  HTML answer text: a. True
+  Current JSON answer: False – Ottawa is the capital
+  Expected option text: True
+
+Q288 | JSON correct index: 0 | Expected index (from HTML): 1
+  Question: 19. Canada is divided in 10 regions...
+  HTML answer text: a) True
+  Current JSON answer: False
+  Expected option text: True
+
+Q307 | JSON correct index: 0 | Expected index (from HTML): 1
+  Question: 18. Toronto is the capital city of Canada...
+  HTML answer text: a) True
+  Current JSON answer: False – Ottawa is the capital
+  Expected option text: True
+
+Q308 | JSON correct index: 0 | Expected index (from HTML): 1
+  Question: 19. Canada is divided in 10 regions...
+  HTML answer text: a) True
+  Current JSON answer: False
+  Expected option text: True
+
+Q313 | JSON correct index: 0 | Expected index (from HTML): 1
+  Question: What is the highest honor a Canadian can receive?...
+  HTML answer text: a. The Canadian Cross         b. The Canadian Crown         c The Vict
+  Current JSON answer: The Order of Canada
+  Expected option text: Victoria Cross
+
+Q317 | JSON correct index: 0 | Expected index (from HTML): 1
+  Question: When does Canada celebrate Thanksgiving?...
+  HTML answer text: a. The Second Monday of October                       b. The First Mon
+  Current JSON answer: The Second Monday of October
+  Expected option text: The First Monday of September
+
+Q319 | JSON correct index: 0 | Expected index (from HTML): 1
+  Question: What is the symbol of Canadian government?...
+  HTML answer text: a. The Crown           b. The National Flag            c. The Parliame
+  Current JSON answer: The Crown
+  Expected option text: The National Flag
+
+Q324 | JSON correct index: 0 | Expected index (from HTML): 1
+  Question: What is the color of Canadian Flag?...
+  HTML answer text: a. Red and white               b. Green and white            c. Red an
+  Current JSON answer: Red and white
+  Expected option text: Green and white
+
+Q325 | JSON correct index: 0 | Expected index (from HTML): 1
+  Question: The arms that can be seen on dollar bills contain symbols of what...
+  HTML answer text: a. All answers correct          b. Scotland and Ireland            c. 
+  Current JSON answer: All answers correct
+  Expected option text: Scotland and Ireland
+
+Q327 | JSON correct index: 0 | Expected index (from HTML): 2
+  Question: How many Canadians have been awarded the Victoria Cross?...
+  HTML answer text: a. 96                     b. 500                  c. 1222             
+  Current JSON answer: 96
+  Expected option text: 1222
+
+Q338 | JSON correct index: 0 | Expected index (from HTML): 2
+  Question: How is the Prime Minister chosen?...
+  HTML answer text: a) The Queen appoints the Prime Minister
+  Current JSON answer: The leader of the party with the most seats
+  Expected option text: Appointed by the Queen
+
+Q351 | JSON correct index: 0 | Expected index (from HTML): 1
+  Question: 22. A Permanent Resident of Canada has the right to vote....
+  HTML answer text: a) True
+  Current JSON answer: False – only citizens can vote in federal elections
+  Expected option text: True
+
+Q352 | JSON correct index: 0 | Expected index (from HTML): 1
+  Question: 23. You need to be 21 year old and older to be eligible to vote....
+  HTML answer text: a) True
+  Current JSON answer: False – 18 years old
+  Expected option text: True
+
+Q355 | JSON correct index: 0 | Expected index (from HTML): 1
+  Question: 26. The Federal government is responsible for Education...
+  HTML answer text: a) True
+  Current JSON answer: False – provincial responsibility
+  Expected option text: True
+
+Q357 | JSON correct index: 0 | Expected index (from HTML): 1
+  Question: Who was the first Prime Minister of Canada?...
+  HTML answer text: A. Sir John A. Macdonald
+  Current JSON answer: Sir John
+  Expected option text: Macdonald
+
+Q470 | JSON correct index: 0 | Expected index (from HTML): 2
+  Question: Who contributed to the invention of radio and also sent the world...
+  HTML answer text: a. Mathew Evans           b. Mike Lazaridis          c. Reginald Fesse
+  Current JSON answer: Mathew Evans
+  Expected option text: Reginald Fessenden
+
+Q471 | JSON correct index: 0 | Expected index (from HTML): 1
+  Question: Who invented snowmobile?...
+  HTML answer text: a. Emily Carr            b. Joseph-Armand Bombardier          c. Alexa
+  Current JSON answer: Emily Carr
+  Expected option text: Joseph-Armand Bombardier
+
+Q474 | JSON correct index: 0 | Expected index (from HTML): 2
+  Question: Who invented the Cardio Pacemaker?...
+  HTML answer text: a. Dr, John A.Hopps          b. Alexander Graham Bell         c. Gabri
+  Current JSON answer: Dr, John
+  Expected option text: Alexander Graham Bell
+
+Q477 | JSON correct index: 0 | Expected index (from HTML): 2
+  Question: Which of the following was invented by Alexander Graham Bell?...
+  HTML answer text: a. BlackBerry                      b. Internet                        
+  Current JSON answer: BlackBerry
+  Expected option text: Fax Machine
+
+Q482 | JSON correct index: 0 | Expected index (from HTML): 2
+  Question: Which is the most popular spectator sport of Canada?...
+  HTML answer text: a. Hockey                           b. Soccer                         
+  Current JSON answer: Hockey
+  Expected option text: Cricket
+
+Q483 | JSON correct index: 0 | Expected index (from HTML): 1
+  Question: Who started the Marathon of Hope?...
+  HTML answer text: a. Terry Fox                 b. James Naismith               c. Rick H
+  Current JSON answer: Terry Fox
+  Expected option text: James Naismith
+
+Q518 | JSON correct index: 0 | Expected index (from HTML): 1
+  Question: Canada is not the only constitutional monarchy in North America...
+  HTML answer text: e) True
+  Current JSON answer: False – Canada is not the only one
+  Expected option text: True
+
+Q523 | JSON correct index: 0 | Expected index (from HTML): 3
+  Question: The Canadian Charter of Rights and Freedom begins with which word...
+  HTML answer text: other rights or freedom of Aboriginal people
+  Current JSON answer: Whereas Canada is founded upon principles that recognize the supremacy
+  Expected option text: Freedom of speech
+
+Q562 | JSON correct index: 0 | Expected index (from HTML): 3
+  Question: Who out of the following is above law?...
+  HTML answer text: a. No one is                b. Police                 c. Judges       
+  Current JSON answer: No one is
+  Expected option text: Politicians
+
+Q565 | JSON correct index: 0 | Expected index (from HTML): 1
+  Question: What is a part of our heritage under the Canadian legal system?...
+  HTML answer text: a. Rule of law          b. Freedom under law           c. Democratic p
+  Current JSON answer: Rule of law
+  Expected option text: Freedom under law
+
+Q566 | JSON correct index: 0 | Expected index (from HTML): 2
+  Question: Which of the following is the highest court of Canada?...
+  HTML answer text: a. The Federal Court          b. A Provincial Court        c. The Smal
+  Current JSON answer: The Federal Court
+  Expected option text: The Small Claims Courts
+
+Q569 | JSON correct index: 0 | Expected index (from HTML): 1
+  Question: What is the other name for a trial court?...
+  HTML answer text: a. The Federal Court                                      b. The Court
+  Current JSON answer: The Federal Court
+  Expected option text: The Court of Queen’s Bench
+
+Q570 | JSON correct index: 0 | Expected index (from HTML): 1
+  Question: Who of the following can help you with legal problems?...
+  HTML answer text: a. The police        b. Members of Parliament          c. The politici
+  Current JSON answer: The police
+  Expected option text: Members of Parliament
+
+Q571 | JSON correct index: 0 | Expected index (from HTML): 2
+  Question: How many judges are serving in Supreme Court of Canada?...
+  HTML answer text: a. 9                                b. 7                              
+  Current JSON answer: 9
+  Expected option text: 10
+
+Question numbers to review/fix: [100, 104, 135, 185, 186, 208, 209, 214, 217, 224, 230, 232, 247, 251, 255, 258, 259, 260, 261, 262, 264, 266, 270, 273, 287, 288, 307, 308, 313, 317, 319, 324, 325, 327, 338, 351, 352, 355, 357, 470, 471, 474, 477, 482, 483, 518, 523, 562, 565, 566, 569, 570, 571]
