@@ -1,0 +1,2389 @@
+[
+  {
+    "q": "Why did the first European explorers call the native peoples \"Indians\"?",
+    "q_fa": "چرا نخستین کاشفان اروپایی مردم بومی را «سرخپوست» نامیدند؟",
+    "q_fr": "Pourquoi les premiers explorateurs européens ont-ils appelé les peuples autochtones « Indiens »?",
+    "options": [
+      "They thought they had reached the East Indies",
+      "They thought they had reached Indonesia",
+      "Because they named their first town \"Indianapolis\"",
+      "Because \"Indian\" means \"aboriginal\" in Irish"
+    ],
+    "options_fr": [
+      "Ils croyaient avoir atteint les Indes orientales",
+      "Ils croyaient avoir atteint l'Indonésie",
+      "Parce qu'ils ont nommé leur première ville Indianapolis",
+      "\"Indian\" signifie \"autochtone\" en irlandais"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "How did the native people live when the first Europeans arrived in Canada?",
+    "q_fa": "مردم بومی هنگام رسیدن نخستین اروپایی‌ها چگونه زندگی می‌کردند؟",
+    "q_fr": "Comment vivaient les Autochtones à l'arrivée des premiers Européens au Canada?",
+    "options": [
+      "Off the land, by hunting and gathering",
+      "Off the land, by raising crops",
+      "By trading fur with other natives in North America",
+      "Off the land, some by hunting and gathering, others by raising crops"
+    ],
+    "options_fr": [
+      "De la terre, par la chasse et la cueillette",
+      "De la terre, par la culture",
+      "En faisant le commerce de la fourrure",
+      "De la terre, certains par chasse et cueillette, d'autres par la culture"
+    ],
+    "correct": 3
+  },
+  {
+    "q": "Which natives were farmers and hunters?",
+    "q_fa": "کدام بومیان کشاورز و شکارچی بودند؟",
+    "q_fr": "Quels Autochtones étaient agriculteurs et chasseurs?",
+    "options": [
+      "The Cree and Dene of the Northwest",
+      "Huron-Wendat of the Great Lakes region and the Iroquois",
+      "The Sioux",
+      "The Inuit"
+    ],
+    "options_fr": [
+      "Les Cris et les Dénés du Nord-Ouest",
+      "Les Hurons-Wendat des Grands Lacs et les Iroquois",
+      "Les Sioux",
+      "Les Inuit"
+    ],
+    "correct": 1
+  },
+  {
+    "q": "Which natives were hunter-gatherers?",
+    "q_fa": "کدام بومیان شکارگر-گردآور بودند؟",
+    "q_fr": "Quels Autochtones étaient chasseurs-cueilleurs?",
+    "options": [
+      "The Cree and Dene of the Northwest",
+      "Huron-Wendat of the Great Lakes region and the Iroquois",
+      "The Sioux",
+      "The Inuit"
+    ],
+    "options_fr": [
+      "Les Cris et les Dénés du Nord-Ouest",
+      "Les Hurons-Wendat et les Iroquois",
+      "Les Sioux",
+      "Les Inuit"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "Which natives were nomadic, following the bison (buffalo) herds?",
+    "q_fa": "کدام بومیان کوچ‌نشین و پیرو گله‌های بایسون بودند؟",
+    "q_fr": "Quels Autochtones étaient nomades, suivant les troupeaux de bisons?",
+    "options": [
+      "The Cree and Dene of the Northwest",
+      "Huron-Wendat of the Great Lakes region and the Iroquois",
+      "The Sioux",
+      "The Inuit"
+    ],
+    "options_fr": [
+      "Les Cris et les Dénés du Nord-Ouest",
+      "Les Hurons-Wendat et les Iroquois",
+      "Les Sioux",
+      "Les Inuit"
+    ],
+    "correct": 2
+  },
+  {
+    "q": "Which natives lived off Arctic wildlife?",
+    "q_fa": "کدام بومیان از حیات‌وحش قطب شمال زندگی می‌کردند؟",
+    "q_fr": "Quels Autochtones vivaient de la faune de l'Arctique?",
+    "options": [
+      "The Cree and Dene of the Northwest",
+      "Huron-Wendat of the Great Lakes region and the Iroquois",
+      "The Sioux",
+      "The Inuit"
+    ],
+    "options_fr": [
+      "Les Cris et les Dénés du Nord-Ouest",
+      "Les Hurons-Wendat et les Iroquois",
+      "Les Sioux",
+      "Les Inuit"
+    ],
+    "correct": 3
+  },
+  {
+    "q": "Which natives preserved fish by drying and smoking?",
+    "q_fa": "کدام بومیان ماهی را با خشک و دود کردن نگهداری می‌کردند؟",
+    "q_fr": "Quels Autochtones conservaient le poisson par séchage et fumage?",
+    "options": [
+      "West Coast natives",
+      "East Coast Natives",
+      "Interior Natives",
+      "Northern Natives"
+    ],
+    "options_fr": [
+      "Autochtones de la côte Ouest",
+      "Autochtones de la côte Est",
+      "Autochtones de l'intérieur",
+      "Autochtones du Nord"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "What type of bond did Aboriginals and Europeans form in the first 200 years of coexistence?",
+    "q_fa": "در ۲۰۰ سال اول همزیستی چه نوع پیوندی بین بومیان و اروپایی‌ها شکل گرفت؟",
+    "q_fr": "Quel type de lien les Autochtones et les Européens ont-ils formé pendant les 200 premières années?",
+    "options": [
+      "Economic",
+      "Economic, religious and military",
+      "Religious",
+      "Economic and Military"
+    ],
+    "options_fr": [
+      "Économique",
+      "Économique, religieux et militaire",
+      "Religieux",
+      "Économique et militaire"
+    ],
+    "correct": 1
+  },
+  {
+    "q": "The arrival of Europeans in Canada changed the native way of life forever.",
+    "q_fa": "ورود اروپایی‌ها به کانادا شیوهٔ زندگی بومیان را برای همیشه تغییر داد.",
+    "q_fr": "L'arrivée des Européens au Canada a changé à jamais le mode de vie des Autochtones.",
+    "options": [
+      "True",
+      "False"
+    ],
+    "options_fr": [
+      "Vrai",
+      "Faux"
+    ],
+    "options_fa": ["درست", "نادرست"],
+    "correct": 0
+  },
+  {
+    "q": "Who was the first to map Canada's Atlantic shore?",
+    "q_fa": "اولین کسی که ساحل اقیانوس اطلس کانادا را نقشه برداری کرد که بود؟",
+    "q_fr": "Qui a été le premier à cartographier la côte atlantique du Canada?",
+    "options": [
+      "Jacques Cartier",
+      "Pierre de Monts",
+      "Samuel de Champlain",
+      "John Cabot"
+    ],
+    "options_fr": [
+      "Jacques Cartier",
+      "Pierre de Monts",
+      "Samuel de Champlain",
+      "John Cabot"
+    ],
+    "correct": 3
+  },
+  {
+    "q": "When did English settlement begin in Canada?",
+    "q_fa": "اسکان انگلیسی‌ها در کانادا از چه زمانی آغاز شد؟",
+    "q_fr": "Quand la colonisation anglaise a-t-elle commencé au Canada?",
+    "options": [
+      "1510",
+      "1497",
+      "1610",
+      "1720"
+    ],
+    "options_fr": [
+      "1510",
+      "1497",
+      "1610",
+      "1720"
+    ],
+    "correct": 2
+  },
+  {
+    "q": "Who were the first Europeans to reach Canada?",
+    "q_fa": "اولین اروپایی‌هایی که به کانادا رسیدند چه کسانی بودند؟",
+    "q_fr": "Qui ont été les premiers Européens à atteindre le Canada?",
+    "options": [
+      "English",
+      "French",
+      "Vikings",
+      "Irish"
+    ],
+    "options_fr": [
+      "Anglais",
+      "Français",
+      "Vikings",
+      "Irlandais"
+    ],
+    "correct": 2
+  },
+  {
+    "q": "When did European exploration begin in Canada?",
+    "q_fa": "کاوش اروپایی در کانادا از چه زمانی آغاز شد؟",
+    "q_fr": "Quand l'exploration européenne a-t-elle commencé au Canada?",
+    "options": [
+      "1497",
+      "1510",
+      "1610",
+      "1597"
+    ],
+    "options_fr": [
+      "1497",
+      "1510",
+      "1610",
+      "1597"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "With whose expedition did European exploration begin in Canada?",
+    "q_fa": "کاوش اروپایی در کانادا با سفر اکتشافی چه کسی آغاز شد؟",
+    "q_fr": "Avec l'expédition de qui l'exploration européenne a-t-elle commencé au Canada?",
+    "options": [
+      "Jacques Cartier",
+      "Pierre de Monts",
+      "Samuel de Champlain",
+      "John Cabot"
+    ],
+    "options_fr": [
+      "Jacques Cartier",
+      "Pierre de Monts",
+      "Samuel de Champlain",
+      "John Cabot"
+    ],
+    "correct": 3
+  },
+  {
+    "q": "Who claimed Canadian land for King Francis I of France between 1534 and 1542?",
+    "q_fa": "چه کسی بین ۱۵۳۴ و ۱۵۴۲ سرزمین کانادا را برای پادشاه فرانسیس اول فرانسه ادعا کرد؟",
+    "q_fr": "Qui a revendiqué des terres canadiennes pour le roi François Ier de France entre 1534 et 1542?",
+    "options": [
+      "Jacques Cartier",
+      "Pierre de Monts",
+      "Samuel de Champlain",
+      "John Cabot"
+    ],
+    "options_fr": [
+      "Jacques Cartier",
+      "Pierre de Monts",
+      "Samuel de Champlain",
+      "John Cabot"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "Who was the first European to see present-day Quebec City and Montreal?",
+    "q_fa": "اولین اروپایی که شهر کبک و مونترال امروزی را دید که بود؟",
+    "q_fr": "Qui a été le premier Européen à voir Québec et Montréal actuels?",
+    "options": [
+      "Pierre de Monts",
+      "Samuel de Champlain",
+      "Jean Talon",
+      "Jacques Cartier"
+    ],
+    "options_fr": [
+      "Pierre de Monts",
+      "Samuel de Champlain",
+      "Jean Talon",
+      "Jacques Cartier"
+    ],
+    "correct": 3
+  },
+  {
+    "q": "When did the name \"Canada\" begin appearing on maps?",
+    "q_fa": "نام «کانادا» از چه زمانی روی نقشه‌ها ظاهر شد؟",
+    "q_fr": "Quand le nom « Canada » a-t-il commencé à apparaître sur les cartes?",
+    "options": [
+      "By the 1650s",
+      "By the 1550s",
+      "By the 1580s",
+      "By the 1750s"
+    ],
+    "options_fr": [
+      "Dans les années 1650",
+      "Dans les années 1550",
+      "Dans les années 1580",
+      "Dans les années 1750"
+    ],
+    "correct": 1
+  },
+  {
+    "q": "Where does the name \"Canada\" come from?",
+    "q_fa": "نام «کانادا» از کجا آمده است؟",
+    "q_fr": "D'où vient le nom « Canada »?",
+    "options": [
+      "From the Iroquoian word \"kanata\", meaning \"village\"",
+      "From the Inuit word \"kanata\", meaning \"village\"",
+      "From the Iroquoian word \"kanata\", meaning \"land\"",
+      "From the Iroquoian word \"kanata\", meaning \"home\""
+    ],
+    "options_fr": [
+      "Du mot iroquoien « kanata », signifiant « village »",
+      "Du mot inuit « kanata », signifiant « village »",
+      "Du mot iroquoien « kanata », signifiant « terre »",
+      "Du mot iroquoien « kanata », signifiant « maison »"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "Who established the first European settlement north of Florida in 1604?",
+    "q_fa": "چه کسانی در ۱۶۰۴ اولین سکونتگاه اروپایی شمال فلوریدا را برپا کردند؟",
+    "q_fr": "Qui a établi le premier établissement européen au nord de la Floride en 1604?",
+    "options": [
+      "Jean Talon",
+      "Jacques Cartier",
+      "John Cabot",
+      "Pierre de Monts and Samuel de Champlain"
+    ],
+    "options_fr": [
+      "Jean Talon",
+      "Jacques Cartier",
+      "John Cabot",
+      "Pierre de Monts et Samuel de Champlain"
+    ],
+    "correct": 3
+  },
+  {
+    "q": "Who established the first European settlements?",
+    "q_fa": "اولین سکونتگاه‌های اروپایی را چه کسانی برپا کردند؟",
+    "q_fr": "Qui a établi les premiers établissements européens?",
+    "options": [
+      "The English",
+      "The Irish",
+      "The French",
+      "The Spanish"
+    ],
+    "options_fr": [
+      "Les Anglais",
+      "Les Irlandais",
+      "Les Français",
+      "Les Espagnols"
+    ],
+    "correct": 2
+  },
+  {
+    "q": "What is the current name of the fortress that Samuel de Champlain built in 1608?",
+    "q_fa": "نام امروزی دژی که ساموئل دو شامپلن در ۱۶۰۸ ساخت چیست؟",
+    "q_fr": "Quel est le nom actuel de la forteresse construite par Samuel de Champlain en 1608?",
+    "options": [
+      "Port Royal",
+      "Quebec City",
+      "Montreal",
+      "Ottawa"
+    ],
+    "options_fr": [
+      "Port-Royal",
+      "Québec (ville)",
+      "Montréal",
+      "Ottawa"
+    ],
+    "correct": 1
+  },
+  {
+    "q": "Who battled with the French settlements for a century?",
+    "q_fa": "چه کسانی یک قرن با سکونتگاه‌های فرانسوی جنگیدند؟",
+    "q_fr": "Qui a combattu les établissements français pendant un siècle?",
+    "options": [
+      "A confederation of five (later six) First Nations",
+      "A confederation of four (later five) First Nations",
+      "A confederation of three (later four) First Nations",
+      "The English"
+    ],
+    "options_fr": [
+      "Une confédération de cinq (puis six) Premières Nations",
+      "Une confédération de quatre (puis cinq) Premières Nations",
+      "Une confédération de trois (puis quatre) Premières Nations",
+      "Les Anglais"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "When did the French and the Iroquois make peace?",
+    "q_fa": "فرانسوی‌ها و ایروکوا چه زمانی صلح کردند؟",
+    "q_fr": "Quand les Français et les Iroquois ont-ils fait la paix?",
+    "options": [
+      "1601",
+      "1801",
+      "1701",
+      "1754"
+    ],
+    "options_fr": [
+      "1601",
+      "1801",
+      "1701",
+      "1754"
+    ],
+    "correct": 2
+  },
+  {
+    "q": "What was the main economy of the early European settlers?",
+    "q_fa": "اقتصاد اصلی مهاجران اولیهٔ اروپایی چه بود؟",
+    "q_fr": "Quelle était l'économie principale des premiers colons européens?",
+    "options": [
+      "Timber",
+      "Fur trade",
+      "Mining",
+      "Farming"
+    ],
+    "options_fr": [
+      "Bois",
+      "Commerce des fourrures",
+      "Exploitation minière",
+      "Agriculture"
+    ],
+    "correct": 1
+  },
+  {
+    "q": "Who granted the Hudson's Bay Company exclusive trading rights?",
+    "q_fa": "چه کسی به شرکت خلیج هادسون حقوق انحصاری تجارت اعطا کرد؟",
+    "q_fr": "Qui a accordé à la Compagnie de la Baie d'Hudson des droits exclusifs de traite?",
+    "options": [
+      "King George II",
+      "King Charles I of England",
+      "King James",
+      "King Charles II of England"
+    ],
+    "options_fr": [
+      "Le roi George II",
+      "Le roi Charles Ier d'Angleterre",
+      "Le roi James",
+      "Le roi Charles II d'Angleterre"
+    ],
+    "correct": 3
+  },
+  {
+    "q": "Who were the \"voyageurs\" and \"coureurs des bois\"?",
+    "q_fa": "«وویاژور»ها و «کورور دِ بوا» چه کسانی بودند؟",
+    "q_fr": "Qui étaient les « voyageurs » et les « coureurs des bois »?",
+    "options": [
+      "The skilled and courageous men who travelled by canoe and formed strong alliances with First Nations",
+      "The people who lived in the forest",
+      "The French settlers",
+      "The French who lived with the Natives"
+    ],
+    "options_fr": [
+      "Hommes habiles et courageux qui voyageaient en canot et formaient des alliances avec les Premières Nations",
+      "Les gens qui vivaient dans la forêt",
+      "Les colons français",
+      "Les Français qui vivaient avec les Autochtones"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "When did English colonies appear along the Atlantic seaboard?",
+    "q_fa": "مستعمرات انگلیسی در سواحل اقیانوس اطلس از چه زمانی پدید آمدند؟",
+    "q_fr": "Quand les colonies anglaises sont-elles apparues le long de la côte atlantique?",
+    "options": [
+      "The early 1600s",
+      "The mid 1600s",
+      "The late 1600s",
+      "The early 1700s"
+    ],
+    "options_fr": [
+      "Au début des années 1600",
+      "Au milieu des années 1600",
+      "À la fin des années 1600",
+      "Au début des années 1700"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "Who battled for control of North America in the 1700s?",
+    "q_fa": "در قرن ۱۸ چه کسانی برای کنترل آمریکای شمالی جنگیدند؟",
+    "q_fr": "Qui s'est battu pour le contrôle de l'Amérique du Nord au 18e siècle?",
+    "options": [
+      "France and the United States",
+      "Great Britain and the United States",
+      "France and Great Britain",
+      "France and Ireland"
+    ],
+    "options_fr": [
+      "La France et les États-Unis",
+      "La Grande-Bretagne et les États-Unis",
+      "La France et la Grande-Bretagne",
+      "La France et l'Irlande"
+    ],
+    "correct": 2
+  },
+  {
+    "q": "When did France and Great Britain battle for control of North America?",
+    "q_fa": "فرانسه و بریتانیا چه زمانی برای کنترل آمریکای شمالی جنگیدند؟",
+    "q_fr": "Quand la France et la Grande-Bretagne se sont-elles battues pour le contrôle de l'Amérique du Nord?",
+    "options": [
+      "In the 1600s",
+      "In the 1700s",
+      "In the 1800s",
+      "Never"
+    ],
+    "options_fr": [
+      "Au 17e siècle",
+      "Au 18e siècle",
+      "Au 19e siècle",
+      "Jamais"
+    ],
+    "correct": 1
+  },
+  {
+    "q": "Who gained control over North America in the 1700s?",
+    "q_fa": "در قرن ۱۸ چه کسی کنترل آمریکای شمالی را به دست آورد؟",
+    "q_fr": "Qui a pris le contrôle de l'Amérique du Nord au 18e siècle?",
+    "options": [
+      "The English",
+      "The Irish",
+      "The French",
+      "The Spanish"
+    ],
+    "options_fr": [
+      "Les Anglais",
+      "Les Irlandais",
+      "Les Français",
+      "Les Espagnols"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "What marked the end of France's empire in America in the 1700s?",
+    "q_fa": "چه چیزی پایان امپراتوری فرانسه در آمریکا را در قرن ۱۸ رقم زد؟",
+    "q_fr": "Qu'est-ce qui a marqué la fin de l'empire français en Amérique au 18e siècle?",
+    "options": [
+      "English colonies became more populated than French colonies",
+      "The French defeated the English in warfare",
+      "The British invaded Quebec City",
+      "The British defeated the French in the Battle of the Plains of Abraham at Quebec City"
+    ],
+    "options_fr": [
+      "Les colonies anglaises sont devenues plus peuplées",
+      "Les Français ont vaincu les Anglais",
+      "Les Britanniques ont envahi Québec",
+      "Les Britanniques ont vaincu les Français à la bataille des plaines d'Abraham à Québec"
+    ],
+    "correct": 3
+  },
+  {
+    "q": "What did Great Britain rename the French colony of the 1700s?",
+    "q_fa": "بریتانیا مستعمرهٔ فرانسوی را در قرن ۱۸ چه نامید؟",
+    "q_fr": "Comment la Grande-Bretagne a-t-elle renommé la colonie française au 18e siècle?",
+    "options": [
+      "Acadia",
+      "The \"Province of Quebec\"",
+      "Quebec City",
+      "Ontario"
+    ],
+    "options_fr": [
+      "Acadie",
+      "La « province de Québec »",
+      "Québec (ville)",
+      "Ontario"
+    ],
+    "correct": 1
+  },
+  {
+    "q": "Who were known as \"habitants\" or \"Canadiens\"?",
+    "q_fa": "به «آباژان» یا «کانادین» چه کسانی گفته می‌شد؟",
+    "q_fr": "Qui était connu sous le nom d'« habitants » ou « Canadiens »?",
+    "options": [
+      "The French-speaking Catholic people",
+      "The Acadians",
+      "The British settlers who spoke French",
+      "The Métis"
+    ],
+    "options_fr": [
+      "Les personnes catholiques francophones",
+      "Les Acadiens",
+      "Les colons britanniques francophones",
+      "Les Métis"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "Who passed the Quebec Act of 1774?",
+    "q_fa": "قانون کبک ۱۷۷۴ را چه کسی تصویب کرد؟",
+    "q_fr": "Qui a adopté l'Acte de Québec de 1774?",
+    "options": [
+      "The Canadian Parliament",
+      "The British Parliament",
+      "The Quebec Parliament",
+      "The French majority"
+    ],
+    "options_fr": [
+      "Le Parlement canadien",
+      "Le Parlement britannique",
+      "Le Parlement du Québec",
+      "La majorité française"
+    ],
+    "correct": 1
+  },
+  {
+    "q": "What is the significance of the Quebec Act of 1774?",
+    "q_fa": "اهمیت قانون کبک ۱۷۷۴ چیست؟",
+    "q_fr": "Quelle est l'importance de l'Acte de Québec de 1774?",
+    "options": [
+      "It united the Province of Quebec with the rest of Canada",
+      "It provided peace, order and good government",
+      "It allowed religious freedom for Catholics and permitted them to hold public office",
+      "It enacted the birth of Canada"
+    ],
+    "options_fr": [
+      "Il a uni la province de Québec au reste du Canada",
+      "Il a assuré la paix, l'ordre et le bon gouvernement",
+      "Il a permis la liberté religieuse aux catholiques et de occuper des charges publiques",
+      "Il a marqué la naissance du Canada"
+    ],
+    "correct": 2
+  },
+  {
+    "q": "How were the laws impacted by the Quebec Act of 1774?",
+    "q_fa": "قانون کبک ۱۷۷۴ چه تأثیری بر قوانین داشت؟",
+    "q_fr": "Comment l'Acte de Québec de 1774 a-t-il affecté les lois?",
+    "options": [
+      "The Act restored French civil law while maintaining British criminal law",
+      "The Act cancelled French civil law while maintaining British criminal law",
+      "The Act restored British civil law while maintaining French criminal law",
+      "The Act cancelled all British Laws in Quebec"
+    ],
+    "options_fr": [
+      "L'Acte a rétabli le droit civil français tout en maintenant le droit criminel britannique",
+      "L'Acte a annulé le droit civil français",
+      "L'Acte a rétabli le droit civil britannique",
+      "L'Acte a annulé toutes les lois britanniques au Québec"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "Who declared independence in 1776 and formed the United States?",
+    "q_fa": "چه کسانی در ۱۷۷۶ استقلال اعلام کردند و ایالات متحده را تشکیل دادند؟",
+    "q_fr": "Qui a déclaré l'indépendance en 1776 et a formé les États-Unis?",
+    "options": [
+      "All the French colonies",
+      "All British Colonies in Canada",
+      "The ten British colonies to the south of Quebec",
+      "The thirteen British colonies to the south of Quebec"
+    ],
+    "options_fr": [
+      "Toutes les colonies françaises",
+      "Toutes les colonies britanniques au Canada",
+      "Les dix colonies britanniques au sud du Québec",
+      "Les treize colonies britanniques au sud du Québec"
+    ],
+    "correct": 3
+  },
+  {
+    "q": "Who were the Loyalists?",
+    "q_fa": "لویالیست‌ها چه کسانی بودند؟",
+    "q_fr": "Qui étaient les Loyalistes?",
+    "options": [
+      "French settlers",
+      "French and British settlers",
+      "British settlers",
+      "Settlers from the United States who were loyal to the Crown"
+    ],
+    "options_fr": [
+      "Colons français",
+      "Colons français et britanniques",
+      "Colons britanniques",
+      "Colons des États-Unis restés fidèles à la Couronne"
+    ],
+    "correct": 3
+  },
+  {
+    "q": "Who led thousands of Loyalist Mohawk Indians into Canada in 1776?",
+    "q_fa": "چه کسی هزاران سرخپوست موهاک لویالیست را در ۱۷۷۶ به کانادا رهبری کرد؟",
+    "q_fr": "Qui a conduit des milliers de Mohawks loyalistes au Canada en 1776?",
+    "options": [
+      "Robert Baldwin",
+      "Joseph Brant",
+      "Joseph Howe",
+      "Sir John A. Macdonald"
+    ],
+    "options_fr": [
+      "Robert Baldwin",
+      "Joseph Brant",
+      "Joseph Howe",
+      "Sir John A. Macdonald"
+    ],
+    "correct": 1
+  },
+  {
+    "q": "Where was the new British colony for freed slaves?",
+    "q_fa": "مستعمرهٔ جدید بریتانیا برای بردگان آزادشده کجا بود؟",
+    "q_fr": "Où se trouvait la nouvelle colonie britannique pour les esclaves affranchis?",
+    "options": [
+      "Sierra Leone (West Africa)",
+      "Abidjan (West Africa)",
+      "Nairobi (East Africa)",
+      "Cape Town (South Africa)"
+    ],
+    "options_fr": [
+      "Sierra Leone (Afrique de l'Ouest)",
+      "Abidjan (Afrique de l'Ouest)",
+      "Nairobi (Afrique de l'Est)",
+      "Le Cap (Afrique du Sud)"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "When was the first representative assembly in Canada elected?",
+    "q_fa": "اولین مجمع نمایندگی در کانادا چه زمانی انتخاب شد؟",
+    "q_fr": "Quand la première assemblée représentative au Canada a-t-elle été élue?",
+    "options": [
+      "1758",
+      "1889",
+      "1609",
+      "1791"
+    ],
+    "options_fr": [
+      "1758",
+      "1889",
+      "1609",
+      "1791"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "Where was the first representative assembly elected?",
+    "q_fa": "اولین مجمع نمایندگی کجا انتخاب شد؟",
+    "q_fr": "Où la première assemblée représentative a-t-elle été élue?",
+    "options": [
+      "Nova Scotia (Halifax) – 1758",
+      "Quebec",
+      "Ontario",
+      "British Columbia"
+    ],
+    "options_fr": [
+      "Nouvelle-Écosse (Halifax) – 1758",
+      "Québec",
+      "Ontario",
+      "Colombie-Britannique"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "Which Act granted to the Canadas, for the first time, legislative assemblies elected by the people?",
+    "q_fa": "کدام قانون برای اولین بار به کاناداها مجامع قانون‌گذاری منتخب مردم اعطا کرد؟",
+    "q_fr": "Quel Acte a accordé aux Canadas, pour la première fois, des assemblées législatives élues par le peuple?",
+    "options": [
+      "The Freedom Act",
+      "The Constitutional Act",
+      "The Legislative Act",
+      "The Confederation Act"
+    ],
+    "options_fr": [
+      "L'Acte sur la liberté",
+      "L'Acte constitutionnel",
+      "L'Acte législatif",
+      "L'Acte de la Confédération"
+    ],
+    "correct": 1
+  },
+  {
+    "q": "When was the Constitutional Act passed?",
+    "q_fa": "قانون اساسی چه زمانی تصویب شد؟",
+    "q_fr": "Quand l'Acte constitutionnel a-t-il été adopté?",
+    "options": [
+      "1758",
+      "1889",
+      "1609",
+      "1791"
+    ],
+    "options_fr": [
+      "1758",
+      "1889",
+      "1609",
+      "1791"
+    ],
+    "correct": 3
+  },
+  {
+    "q": "Which current provinces came from the Constitutional Act?",
+    "q_fa": "کدام استان‌های فعلی از قانون اساسی (۱۷۹۱) به وجود آمدند؟",
+    "q_fr": "Quelles provinces actuelles sont issues de l'Acte constitutionnel?",
+    "options": [
+      "Ontario and New Brunswick",
+      "Prince Edward Island and Quebec",
+      "Ontario and Quebec",
+      "Ontario and Prince Edward Island"
+    ],
+    "options_fr": [
+      "Ontario et Nouveau-Brunswick",
+      "Île-du-Prince-Édouard et Québec",
+      "Ontario et Québec",
+      "Ontario et Île-du-Prince-Édouard"
+    ],
+    "correct": 2
+  },
+  {
+    "q": "When did the name \"Canada\" become official?",
+    "q_fa": "نام «کانادا» چه زمانی رسمی شد؟",
+    "q_fr": "Quand le nom « Canada » est-il devenu officiel?",
+    "options": [
+      "1758",
+      "1889",
+      "1609",
+      "1791"
+    ],
+    "options_fr": [
+      "1758",
+      "1889",
+      "1609",
+      "1791"
+    ],
+    "correct": 3
+  },
+  {
+    "q": "What was known as \"British North America\" in 1791?",
+    "q_fa": "در ۱۷۹۱ «آمریکای شمالی بریتانیا» به چه معروف بود؟",
+    "q_fr": "Qu'est-ce qui était connu sous le nom d'Amérique du Nord britannique en 1791?",
+    "options": [
+      "The Atlantic colonies and the two Canadas (upper and lower)",
+      "Ontario and upper Canada",
+      "Ontario and lower Canada",
+      "The two Canadas (upper and lower) only"
+    ],
+    "options_fr": [
+      "Les colonies de l'Atlantique et les deux Canadas (Haut et Bas)",
+      "Ontario et le Haut-Canada",
+      "Ontario et le Bas-Canada",
+      "Les deux Canadas seulement"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "What were the Atlantic colonies and the two Canadas known collectively as in 1791?",
+    "q_fa": "در ۱۷۹۱ مستعمرات آتلانتیک و دو کانادا با هم به چه نامی شناخته می‌شدند؟",
+    "q_fr": "Comment les colonies de l'Atlantique et les deux Canadas étaient-ils connus collectivement en 1791?",
+    "options": [
+      "Upper Canada",
+      "British North America",
+      "Lower Canada",
+      "Ontario"
+    ],
+    "options_fr": [
+      "Haut-Canada",
+      "Amérique du Nord britannique",
+      "Bas-Canada",
+      "Ontario"
+    ],
+    "correct": 1
+  },
+  {
+    "q": "Who was Lieutenant Colonel John Graves Simcoe?",
+    "q_fa": "سرهنگ دوم جان گریوز سیمکو که بود؟",
+    "q_fr": "Qui était le lieutenant-colonel John Graves Simcoe?",
+    "options": [
+      "Upper Canada's first Lieutenant Governor and founder of the City of Toronto",
+      "Lower Canada's first Lieutenant Governor and founder of the City of Toronto",
+      "Lower Canada's first Lieutenant Governor and founder of Ottawa",
+      "The leader of the loyalists"
+    ],
+    "options_fr": [
+      "Premier lieutenant-gouverneur du Haut-Canada et fondateur de Toronto",
+      "Premier lieutenant-gouverneur du Bas-Canada et fondateur de Toronto",
+      "Premier lieutenant-gouverneur du Bas-Canada et fondateur d'Ottawa",
+      "Le chef des loyalistes"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "Who made Upper Canada the first province in the British Empire to abolish slavery?",
+    "q_fa": "چه کسی Upper Canada را اولین استان در امپراتوری بریتانیا که برده‌داری را لغو کرد ساخت؟",
+    "q_fr": "Qui a fait du Haut-Canada la première province de l'Empire britannique à abolir l'esclavage?",
+    "options": [
+      "Joseph Brant",
+      "Joseph Howe",
+      "Lieutenant Colonel John Graves Simcoe",
+      "Sir John A. Macdonald"
+    ],
+    "options_fr": [
+      "Joseph Brant",
+      "Joseph Howe",
+      "Le lieutenant-colonel John Graves Simcoe",
+      "Sir John A. Macdonald"
+    ],
+    "correct": 2
+  },
+  {
+    "q": "Which British Empire province was the first to abolish slavery?",
+    "q_fa": "کدام استان امپراتوری بریتانیا اولین که برده‌داری را لغو کرد بود؟",
+    "q_fr": "Quelle province de l'Empire britannique a été la première à abolir l'esclavage?",
+    "options": [
+      "Upper Canada",
+      "Lower Canada",
+      "Quebec",
+      "Ontario"
+    ],
+    "options_fr": [
+      "Haut-Canada",
+      "Bas-Canada",
+      "Québec",
+      "Ontario"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "Who was Mary Ann (Shadd) Carey?",
+    "q_fa": "Mary Ann (Shadd) Carey که بود؟",
+    "q_fr": "Qui était Mary Ann (Shadd) Carey?",
+    "options": [
+      "The first woman fur trader",
+      "An anti-slavery activist and the first woman publisher in Canada",
+      "The founder of the women's suffrage movement",
+      "The founder of the Canadian feminist movement"
+    ],
+    "options_fr": [
+      "La première femme marchande de fourrures",
+      "Militante anti-esclavagiste et première femme éditeur au Canada",
+      "Fondatrice du mouvement pour le droit de vote des femmes",
+      "Fondatrice du mouvement féministe canadien"
+    ],
+    "correct": 1
+  },
+  {
+    "q": "When did the British Parliament abolish slavery throughout the Empire?",
+    "q_fa": "پارلمان بریتانیا چه زمانی برده‌داری را در سراسر امپراتوری لغو کرد؟",
+    "q_fr": "Quand le Parlement britannique a-t-il aboli l'esclavage dans tout l'Empire?",
+    "options": [
+      "1833",
+      "1807",
+      "1853",
+      "1793"
+    ],
+    "options_fr": [
+      "1833",
+      "1807",
+      "1853",
+      "1793"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "When were the first companies in Canada formed?",
+    "q_fa": "اولین شرکت‌ها در کانادا چه زمانی تشکیل شدند؟",
+    "q_fr": "Quand les premières entreprises au Canada ont-elles été formées?",
+    "options": [
+      "During the French regime",
+      "During the British regime",
+      "After the Second World War",
+      "During the French and British regimes"
+    ],
+    "options_fr": [
+      "Sous le régime français",
+      "Sous le régime britannique",
+      "Après la Deuxième Guerre mondiale",
+      "Sous les régimes français et britannique"
+    ],
+    "correct": 3
+  },
+  {
+    "q": "For what did the first companies in Canada compete?",
+    "q_fa": "اولین شرکت‌های کانادا برای چه چیزی رقابت می‌کردند؟",
+    "q_fr": "Pour quoi les premières entreprises au Canada ont-elles concurrence?",
+    "options": [
+      "Timber",
+      "Fur",
+      "Silver",
+      "Gold"
+    ],
+    "options_fr": [
+      "Bois",
+      "Fourrure",
+      "Argent",
+      "Or"
+    ],
+    "correct": 1
+  },
+  {
+    "q": "Who dominated the fur trade in the North West during the French and British regimes?",
+    "q_fa": "در شمال غرب در دورهٔ فرانسه و بریتانیا چه کسی تجارت خز را در انحصار داشت؟",
+    "q_fr": "Qui a dominé la traite des fourrures dans le Nord-Ouest sous les régimes français et britannique?",
+    "options": [
+      "The Hudson's Bay Company",
+      "The North Star company",
+      "The Sears company",
+      "The Trading Post company"
+    ],
+    "options_fr": [
+      "La Compagnie de la Baie d'Hudson",
+      "La compagnie North Star",
+      "La compagnie Sears",
+      "La compagnie Trading Post"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "When did the first financial institutions open in Canada?",
+    "q_fa": "اولین نهادهای مالی در کانادا چه زمانی گشایش یافتند؟",
+    "q_fr": "Quand les premières institutions financières ont-elles ouvert au Canada?",
+    "options": [
+      "Late 17th century",
+      "Early 18th century",
+      "Late 18th and early 19th centuries",
+      "Mid 19th century"
+    ],
+    "options_fr": [
+      "Fin du 17e siècle",
+      "Début du 18e siècle",
+      "Fin du 18e et début du 19e siècle",
+      "Milieu du 19e siècle"
+    ],
+    "correct": 2
+  },
+  {
+    "q": "For centuries, on what was Canada's economy based?",
+    "q_fa": "برای قرن‌ها اقتصاد کانادا بر چه چیزی استوار بود؟",
+    "q_fr": "Pendant des siècles, sur quoi l'économie du Canada était-elle basée?",
+    "options": [
+      "Farming",
+      "Farming and exporting natural resources (such as fur, fish and timber)",
+      "Exporting natural resources only",
+      "Trading with the First Nations"
+    ],
+    "options_fr": [
+      "Agriculture",
+      "Agriculture et exportation de ressources naturelles (fourrure, poisson, bois)",
+      "Exportation de ressources naturelles seulement",
+      "Commerce avec les Premières Nations"
+    ],
+    "correct": 1
+  },
+  {
+    "q": "What did the Battle of Trafalgar (1805) represent?",
+    "q_fa": "نبرد ترافالگار (۱۸۰۵) چه چیزی را نشان داد؟",
+    "q_fr": "Que représentait la bataille de Trafalgar (1805)?",
+    "options": [
+      "The defeat of the British fleet",
+      "The defeat of Napoleon Bonaparte's fleet",
+      "The defeat of the American fleet",
+      "The defeat of Major-General Sir Isaac Brock's fleet"
+    ],
+    "options_fr": [
+      "La défaite de la flotte britannique",
+      "La défaite de la flotte de Napoléon Bonaparte",
+      "La défaite de la flotte américaine",
+      "La défaite de la flotte du major-général Brock"
+    ],
+    "correct": 1
+  },
+  {
+    "q": "When did the United States launch an invasion on Canada?",
+    "q_fa": "ایالات متحده چه زمانی به کانادا حمله کرد؟",
+    "q_fr": "Quand les États-Unis ont-ils lancé une invasion du Canada?",
+    "options": [
+      "1812",
+      "1840",
+      "1867",
+      "1849"
+    ],
+    "options_fr": [
+      "1812",
+      "1840",
+      "1867",
+      "1849"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "Which countries fought in the War of 1812?",
+    "q_fa": "در جنگ ۱۸۱۲ کدام کشورها جنگیدند؟",
+    "q_fr": "Quels pays ont combattu dans la guerre de 1812?",
+    "options": [
+      "United Kingdom and United States of America",
+      "France and Canada",
+      "United States of America, France and United Kingdom",
+      "France and United Kingdom"
+    ],
+    "options_fr": [
+      "Royaume-Uni et États-Unis d'Amérique",
+      "France et Canada",
+      "États-Unis, France et Royaume-Uni",
+      "France et Royaume-Uni"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "Why was the War of 1812 important to Canada?",
+    "q_fa": "چرا جنگ ۱۸۱۲ برای کانادا مهم بود؟",
+    "q_fr": "Pourquoi la guerre de 1812 était-elle importante pour le Canada?",
+    "options": [
+      "More than half of the Acadians were deported from their homeland",
+      "Canada remained independent from the United States",
+      "Quebec became part of Canada",
+      "Canada became British"
+    ],
+    "options_fr": [
+      "Plus de la moitié des Acadiens ont été déportés",
+      "Le Canada est resté indépendant des États-Unis",
+      "Le Québec est devenu partie du Canada",
+      "Le Canada est devenu britannique"
+    ],
+    "correct": 1
+  },
+  {
+    "q": "In which year did the American attempt to conquer Canada fail?",
+    "q_fa": "در کدام سال تلاش آمریکا برای فتح کانادا شکست خورد؟",
+    "q_fr": "En quelle année la tentative américaine de conquérir le Canada a-t-elle échoué?",
+    "options": [
+      "1814",
+      "1840",
+      "1867",
+      "1849"
+    ],
+    "options_fr": [
+      "1814",
+      "1840",
+      "1867",
+      "1849"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "Who defeated Napoleon in 1815?",
+    "q_fa": "چه کسی ناپلئون را در ۱۸۱۵ شکست داد؟",
+    "q_fr": "Qui a vaincu Napoléon en 1815?",
+    "options": [
+      "Lieutenant Colonel John Graves Simcoe",
+      "Sir John A. Macdonald",
+      "The Duke of Wellington",
+      "Major-General Sir Isaac Brock"
+    ],
+    "options_fr": [
+      "Le lieutenant-colonel John Graves Simcoe",
+      "Sir John A. Macdonald",
+      "Le duc de Wellington",
+      "Le major-général Sir Isaac Brock"
+    ],
+    "correct": 2
+  },
+  {
+    "q": "For what is Laura Secord known?",
+    "q_fa": "Laura Secord به چه چیزی معروف است؟",
+    "q_fr": "Pour quoi Laura Secord est-elle connue?",
+    "options": [
+      "She was an anti-slavery activist and the first woman publisher in Canada",
+      "She made a dangerous thirty km journey on foot to warn of a planned American attack during the War of 1812",
+      "She was the founder of the women's suffrage movement",
+      "She was the founder of the Canadian feminist movement"
+    ],
+    "options_fr": [
+      "Militante anti-esclavagiste et première femme éditeur au Canada",
+      "Elle a fait un périlleux trajet de 30 km à pied pour avertir d'une attaque américaine pendant la guerre de 1812",
+      "Fondatrice du mouvement pour le droit de vote des femmes",
+      "Fondatrice du mouvement féministe canadien"
+    ],
+    "correct": 1
+  },
+  {
+    "q": "What is a \"responsible government\"?",
+    "q_fa": "«حکومت مسئول» چیست؟",
+    "q_fr": "Qu'est-ce qu'un « gouvernement responsable »?",
+    "options": [
+      "The government is responsible for everything in the country",
+      "The government is responsible for making laws",
+      "The ministers of the Crown must have the support of a majority of the elected representatives in order to govern",
+      "The government does not have to resign if it loses a confidence vote in the assembly"
+    ],
+    "options_fr": [
+      "Le gouvernement est responsable de tout dans le pays",
+      "Le gouvernement est responsable de faire les lois",
+      "Les ministres de la Couronne doivent avoir l'appui de la majorité des élus pour gouverner",
+      "Le gouvernement n'a pas à démissionner s'il perd un vote de confiance"
+    ],
+    "correct": 2
+  },
+  {
+    "q": "In what year did Canada become a country?",
+    "q_fa": "کانادا در چه سالی به یک کشور تبدیل شد؟",
+    "q_fr": "En quelle année le Canada est-il devenu un pays?",
+    "options": [
+      "1840",
+      "1982",
+      "1759",
+      "1867"
+    ],
+    "options_fr": [
+      "1840",
+      "1982",
+      "1759",
+      "1867"
+    ],
+    "correct": 3
+  },
+  {
+    "q": "What was the name of the new country formed by the Fathers of Confederation?",
+    "q_fa": "نام کشور جدیدی که پدران کنفدراسیون تشکیل دادند چه بود؟",
+    "q_fr": "Quel était le nom du nouveau pays formé par les Pères de la Confédération?",
+    "options": [
+      "Canada",
+      "Dominion of Canada",
+      "Confederation of Canada",
+      "British Canada"
+    ],
+    "options_fr": [
+      "Canada",
+      "Dominion du Canada",
+      "Confédération du Canada",
+      "Canada britannique"
+    ],
+    "correct": 1
+  },
+  {
+    "q": "Name 3 Fathers of Confederation.",
+    "q_fa": "سه نفر از پدران کنفدراسیون را نام ببرید.",
+    "q_fr": "Nommez trois Pères de la Confédération.",
+    "options": [
+      "Sir Étienne-Paschal Taché, Sir George-Étienne Cartier, and Sir John A. Macdonald",
+      "La Fontaine, Robert Baldwin, and Joseph Howe",
+      "Joseph Brant, Joseph Howe, and James Macdonald",
+      "Joseph Howe, Robert La Fontaine, and Sir Étienne-Paschal Taché"
+    ],
+    "options_fr": [
+      "Sir Étienne-Paschal Taché, Sir George-Étienne Cartier et Sir John A. Macdonald",
+      "La Fontaine, Robert Baldwin et Joseph Howe",
+      "Joseph Brant, Joseph Howe et James Macdonald",
+      "Joseph Howe, Robert La Fontaine et Sir Étienne-Paschal Taché"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "In what year were Upper and Lower Canada united?",
+    "q_fa": "Upper و Lower Canada در چه سالی متحد شدند؟",
+    "q_fr": "En quelle année le Haut-Canada et le Bas-Canada ont-ils été unis?",
+    "options": [
+      "1840",
+      "1882",
+      "1759",
+      "1867"
+    ],
+    "options_fr": [
+      "1840",
+      "1882",
+      "1759",
+      "1867"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "Which British North American colony was the first to attain full responsible government?",
+    "q_fa": "کدام مستعمرهٔ آمریکای شمالی بریتانیا اولین که به حکومت مسئول کامل دست یافت؟",
+    "q_fr": "Quelle colonie de l'Amérique du Nord britannique a été la première à obtenir un gouvernement responsable complet?",
+    "options": [
+      "Ontario",
+      "New Brunswick",
+      "Nova Scotia",
+      "Upper Canada"
+    ],
+    "options_fr": [
+      "Ontario",
+      "Nouveau-Brunswick",
+      "Nouvelle-Écosse",
+      "Haut-Canada"
+    ],
+    "correct": 2
+  },
+  {
+    "q": "Who became the first leader of a responsible government in the Canadas?",
+    "q_fa": "اولین رهبر حکومت مسئول در کاناداها چه کسی شد؟",
+    "q_fr": "Qui est devenu le premier chef d'un gouvernement responsable dans les Canadas?",
+    "options": [
+      "La Fontaine",
+      "Robert Baldwin",
+      "Joseph Howe",
+      "Sir John A. Macdonald"
+    ],
+    "options_fr": [
+      "La Fontaine",
+      "Robert Baldwin",
+      "Joseph Howe",
+      "Sir John A. Macdonald"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "What is the system \"if the government loses a confidence vote in the assembly it must resign\" called?",
+    "q_fa": "سیستمی که «اگر دولت در مجلس رأی اعتماد را ببازد باید استعفا دهد» چه نام دارد؟",
+    "q_fr": "Comment s'appelle le système où le gouvernement doit démissionner s'il perd un vote de confiance?",
+    "options": [
+      "A confident government",
+      "A responsible government",
+      "An assembly government",
+      "A vote-based government"
+    ],
+    "options_fr": [
+      "Un gouvernement de confiance",
+      "Un gouvernement responsable",
+      "Un gouvernement d'assemblée",
+      "Un gouvernement basé sur le vote"
+    ],
+    "correct": 1
+  },
+  {
+    "q": "What were the men who worked together to establish Canada called?",
+    "q_fa": "مردانی که با هم برای تأسیس کانادا کار کردند چه نامیده می‌شدند؟",
+    "q_fr": "Comment s'appelaient les hommes qui ont travaillé ensemble pour établir le Canada?",
+    "options": [
+      "The Fathers of Constitution",
+      "The Fathers of Confederation",
+      "The Fathers of Canada",
+      "The Fathers of Dominion of Canada"
+    ],
+    "options_fr": [
+      "Les Pères de la Constitution",
+      "Les Pères de la Confédération",
+      "Les Pères du Canada",
+      "Les Pères du Dominion du Canada"
+    ],
+    "correct": 1
+  },
+  {
+    "q": "Which four provinces formed the new country called the Dominion of Canada?",
+    "q_fa": "کدام چهار استان کشور جدید «Dominion of Canada» را تشکیل دادند؟",
+    "q_fr": "Quelles quatre provinces ont formé le nouveau pays appelé Dominion du Canada?",
+    "options": [
+      "Ontario, Quebec, Manitoba and Nova Scotia",
+      "Ontario, Quebec, New Brunswick and Nova Scotia",
+      "Manitoba, Quebec, New Brunswick and Nova Scotia",
+      "Ontario, Quebec, New Brunswick and British Columbia"
+    ],
+    "options_fr": [
+      "Ontario, Québec, Manitoba et Nouvelle-Écosse",
+      "Ontario, Québec, Nouveau-Brunswick et Nouvelle-Écosse",
+      "Manitoba, Québec, Nouveau-Brunswick et Nouvelle-Écosse",
+      "Ontario, Québec, Nouveau-Brunswick et Colombie-Britannique"
+    ],
+    "correct": 1
+  },
+  {
+    "q": "What does \"Confederation\" mean?",
+    "q_fa": "«کنفدراسیون» به چه معناست؟",
+    "q_fr": "Que signifie « Confédération »?",
+    "options": [
+      "The joining of several provinces to form a new country",
+      "The joining of several British colonies to form a new country",
+      "The joining of several cities to form a new province",
+      "The split between the South and the North"
+    ],
+    "options_fr": [
+      "L'union de plusieurs provinces pour former un nouveau pays",
+      "L'union de plusieurs colonies britanniques pour former un nouveau pays",
+      "L'union de plusieurs villes pour former une nouvelle province",
+      "La séparation entre le Sud et le Nord"
+    ],
+    "correct": 1
+  },
+  {
+    "q": "What level of government did the Fathers of Confederation create?",
+    "q_fa": "پدران کنفدراسیون چه سطحی از دولت را ایجاد کردند؟",
+    "q_fr": "Quel ordre de gouvernement les Pères de la Confédération ont-ils créé?",
+    "options": [
+      "Federal and provincial",
+      "Federal and municipal",
+      "Provincial and municipal",
+      "Provincial and territorial"
+    ],
+    "options_fr": [
+      "Fédéral et provincial",
+      "Fédéral et municipal",
+      "Provincial et municipal",
+      "Provincial et territorial"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "What is the \"Dominion of Canada\"?",
+    "q_fa": "«Dominion of Canada» چیست؟",
+    "q_fr": "Qu'est-ce que le « Dominion du Canada »?",
+    "options": [
+      "The French-speaking part of Canada",
+      "The name of the new country formed in 1867 known today as Canada",
+      "The English-speaking part of Canada",
+      "The Alliance formed between the English and the French"
+    ],
+    "options_fr": [
+      "La partie francophone du Canada",
+      "Le nom du nouveau pays formé en 1867, connu aujourd'hui comme le Canada",
+      "La partie anglophone du Canada",
+      "L'alliance entre les Anglais et les Français"
+    ],
+    "correct": 1
+  },
+  {
+    "q": "When did the British Parliament pass the British North America Act?",
+    "q_fa": "پارلمان بریتانیا چه زمانی قانون آمریکای شمالی بریتانیا را تصویب کرد؟",
+    "q_fr": "Quand le Parlement britannique a-t-il adopté l'Acte de l'Amérique du Nord britannique?",
+    "options": [
+      "1840",
+      "1982",
+      "1759",
+      "1867"
+    ],
+    "options_fr": [
+      "1840",
+      "1982",
+      "1759",
+      "1867"
+    ],
+    "correct": 3
+  },
+  {
+    "q": "Why is the British North America Act important in Canadian history?",
+    "q_fa": "چرا قانون آمریکای شمالی بریتانیا در تاریخ کانادا مهم است؟",
+    "q_fr": "Pourquoi l'Acte de l'Amérique du Nord britannique est-il important dans l'histoire du Canada?",
+    "options": [
+      "The Act granted Canada complete independence from England",
+      "The Act granted to the Canadas, for the first time, legislative assemblies",
+      "The Act officially made Canada a self-governing Dominion",
+      "The Act restored British criminal laws"
+    ],
+    "options_fr": [
+      "L'Acte a accordé au Canada l'indépendance complète de l'Angleterre",
+      "L'Acte a accordé aux Canadas des assemblées législatives pour la première fois",
+      "L'Acte a fait officiellement du Canada un Dominion autonome",
+      "L'Acte a rétabli les lois criminelles britanniques"
+    ],
+    "correct": 2
+  },
+  {
+    "q": "When is Canada Day?",
+    "q_fa": "روز کانادا چه زمانی است؟",
+    "q_fr": "Quand est la fête du Canada?",
+    "options": [
+      "First of July",
+      "First of November",
+      "11th of November",
+      "11th of September"
+    ],
+    "options_fr": [
+      "Premier juillet",
+      "Premier novembre",
+      "11 novembre",
+      "11 septembre"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "Who assigned Canada's national colours (white and red) in 1921?",
+    "q_fa": "چه کسی در ۱۹۲۱ رنگ‌های ملی کانادا (سفید و قرمز) را تعیین کرد؟",
+    "q_fr": "Qui a assigné les couleurs nationales du Canada (blanc et rouge) en 1921?",
+    "options": [
+      "King George V (Dominion of Canada $1 Bill)",
+      "King George II",
+      "King James",
+      "Queen Victoria"
+    ],
+    "options_fr": [
+      "Le roi George V",
+      "Le roi George II",
+      "Le roi James",
+      "La reine Victoria"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "Who suggested the term \"Dominion of Canada\" in 1864?",
+    "q_fa": "چه کسی در ۱۸۶۴ اصطلاح «Dominion of Canada» را پیشنهاد کرد؟",
+    "q_fr": "Qui a suggéré le terme « Dominion du Canada » en 1864?",
+    "options": [
+      "La Fontaine",
+      "Robert Baldwin",
+      "Joseph Howe",
+      "Sir Leonard Tilley"
+    ],
+    "options_fr": [
+      "La Fontaine",
+      "Robert Baldwin",
+      "Joseph Howe",
+      "Sir Leonard Tilley"
+    ],
+    "correct": 3
+  },
+  {
+    "q": "Which phrase embodied the vision for the Dominion of Canada?",
+    "q_fa": "کدام عبارت دیدگاه Dominion of Canada را بیان می‌کرد؟",
+    "q_fr": "Quelle phrase incarnait la vision du Dominion du Canada?",
+    "options": [
+      "Oh Canada, my home and native land",
+      "Dominion from sea to sea and from the river to the ends of the earth",
+      "Dominion from ocean to ocean",
+      "The land of the free and strong"
+    ],
+    "options_fr": [
+      "Ô Canada, terre de nos aïeux",
+      "Dominion d'un océan à l'autre et du fleuve aux extrémités de la terre",
+      "Dominion d'un océan à l'autre",
+      "Le pays du libre et du fort"
+    ],
+    "correct": 1
+  },
+  {
+    "q": "In which year was Canada's first Prime Minister elected?",
+    "q_fa": "اولین نخست‌وزیر کانادا در چه سالی انتخاب شد؟",
+    "q_fr": "En quelle année le premier premier ministre du Canada a-t-il été élu?",
+    "options": [
+      "1964",
+      "1764",
+      "1867",
+      "1869"
+    ],
+    "options_fr": [
+      "1964",
+      "1764",
+      "1867",
+      "1869"
+    ],
+    "correct": 2
+  },
+  {
+    "q": "Who was Canada's First Prime Minister?",
+    "q_fa": "اولین نخست‌وزیر کانادا که بود؟",
+    "q_fr": "Qui a été le premier premier ministre du Canada?",
+    "options": [
+      "Sir John Alexander Macdonald ($10 Bill)",
+      "Sir George-Étienne Cartier",
+      "Sir Louis-Hippolyte La Fontaine",
+      "Sir Étienne-Paschal Taché"
+    ],
+    "options_fr": [
+      "Sir John Alexander Macdonald (billet de 10 $)",
+      "Sir George-Étienne Cartier",
+      "Sir Louis-Hippolyte La Fontaine",
+      "Sir Étienne-Paschal Taché"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "Whose portrait is on the Canadian $10 bill?",
+    "q_fa": "تصویر چه کسی روی اسکناس ۱۰ دلاری کانادا است؟",
+    "q_fr": "Portrait de qui figure sur le billet de 10 $ canadien?",
+    "options": [
+      "Sir George-Étienne Cartier",
+      "Sir Louis-Hippolyte La Fontaine",
+      "Sir Étienne-Paschal Taché",
+      "Sir John Alexander Macdonald (Canada's First Prime Minister)"
+    ],
+    "options_fr": [
+      "Sir George-Étienne Cartier",
+      "Sir Louis-Hippolyte La Fontaine",
+      "Sir Étienne-Paschal Taché",
+      "Sir John Alexander Macdonald"
+    ],
+    "correct": 3
+  },
+  {
+    "q": "Who was the key architect of Confederation from Quebec?",
+    "q_fa": "معمار اصلی کنفدراسیون از کبک که بود؟",
+    "q_fr": "Qui était le principal architecte de la Confédération du Québec?",
+    "options": [
+      "Sir George-Étienne Cartier",
+      "Sir Louis-Hippolyte La Fontaine",
+      "Sir Étienne-Paschal Taché",
+      "Sir John Alexander Macdonald"
+    ],
+    "options_fr": [
+      "Sir George-Étienne Cartier",
+      "Sir Louis-Hippolyte La Fontaine",
+      "Sir Étienne-Paschal Taché",
+      "Sir John Alexander Macdonald"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "When did Canada take over the vast northwest region from the Hudson's Bay Company?",
+    "q_fa": "کانادا چه زمانی منطقهٔ وسیع شمال غرب را از شرکت خلیج هادسون گرفت؟",
+    "q_fr": "Quand le Canada a-t-il pris le vaste territoire du Nord-Ouest de la Compagnie de la Baie d'Hudson?",
+    "options": [
+      "1949",
+      "1869",
+      "1864",
+      "1905"
+    ],
+    "options_fr": [
+      "1949",
+      "1869",
+      "1864",
+      "1905"
+    ],
+    "correct": 1
+  },
+  {
+    "q": "When was the RCMP created?",
+    "q_fa": "RCMP چه زمانی ایجاد شد؟",
+    "q_fr": "Quand la GRC a-t-elle été créée?",
+    "options": [
+      "1864",
+      "1869",
+      "1873",
+      "1892"
+    ],
+    "options_fr": [
+      "1864",
+      "1869",
+      "1873",
+      "1892"
+    ],
+    "correct": 2
+  },
+  {
+    "q": "What does \"RCMP\" stand for?",
+    "q_fa": "«RCMP» مخفف چیست؟",
+    "q_fr": "Que signifie « GRC »?",
+    "options": [
+      "Royal Canadian Mounted Police",
+      "Royal Canadian Master Police",
+      "Registered Canadian Mounted Police",
+      "Registered Canadian Municipal Police"
+    ],
+    "options_fr": [
+      "Gendarmerie royale du Canada",
+      "Gendarmerie royale canadienne principale",
+      "Police montée canadienne enregistrée",
+      "Police municipale canadienne enregistrée"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "What is the Royal Canadian Mounted Police?",
+    "q_fa": "پلیس سوارهنظام سلطنتی کانادا چیست؟",
+    "q_fr": "Qu'est-ce que la Gendarmerie royale du Canada?",
+    "options": [
+      "A national police force",
+      "A municipal police force",
+      "Army police",
+      "A provincial police force"
+    ],
+    "options_fr": [
+      "Une force policière nationale",
+      "Une force policière municipale",
+      "Police de l'armée",
+      "Une force policière provinciale"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "The British territories in the Caribbean Sea are part of Canada:",
+    "q_fa": "قلمروهای بریتانیا در دریای کارائیب بخشی از کانادا هستند:",
+    "q_fr": "Les territoires britanniques dans la mer des Caraïbes font partie du Canada:",
+    "options": [
+      "True",
+      "False"
+    ],
+    "options_fr": [
+      "Vrai",
+      "Faux"
+    ],
+    "correct": 1
+  },
+  {
+    "q": "Who became the first French-Canadian prime minister since Confederation?",
+    "q_fa": "اولین نخست‌وزیر فرانسوی‌کانادایی پس از کنفدراسیون که بود؟",
+    "q_fr": "Qui est devenu le premier premier ministre canadien-français depuis la Confédération?",
+    "options": [
+      "Sir Wilfrid Laurier ($5 Bill)",
+      "Sir Étienne-Paschal Taché",
+      "Sir Louis-Hippolyte La Fontaine",
+      "Sir George-Étienne Cartier"
+    ],
+    "options_fr": [
+      "Sir Wilfrid Laurier (billet de 5 $)",
+      "Sir Étienne-Paschal Taché",
+      "Sir Louis-Hippolyte La Fontaine",
+      "Sir George-Étienne Cartier"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "Whose portrait is on the Canadian $5 bill?",
+    "q_fa": "تصویر چه کسی روی اسکناس ۵ دلاری کانادا است؟",
+    "q_fr": "Portrait de qui figure sur le billet de 5 $ canadien?",
+    "options": [
+      "Sir George-Étienne Cartier",
+      "Sir Wilfrid Laurier (First French-Canadian prime minister)",
+      "Sir Étienne-Paschal Taché",
+      "Sir Louis-Hippolyte La Fontaine"
+    ],
+    "options_fr": [
+      "Sir George-Étienne Cartier",
+      "Sir Wilfrid Laurier",
+      "Sir Étienne-Paschal Taché",
+      "Sir Louis-Hippolyte La Fontaine"
+    ],
+    "correct": 1
+  },
+  {
+    "q": "What made it possible for immigrants to settle in Western Canada?",
+    "q_fa": "چه چیزی مهاجرت به غرب کانادا را ممکن کرد؟",
+    "q_fr": "Qu'est-ce qui a permis aux immigrants de s'établir dans l'Ouest canadien?",
+    "options": [
+      "The completion of the port of Vancouver",
+      "The completion of the Canadian National Railway",
+      "The giving of free land to new settlers",
+      "The completion of the Canadian Pacific Railway"
+    ],
+    "options_fr": [
+      "L'achèvement du port de Vancouver",
+      "L'achèvement du chemin de fer Canadien National",
+      "L'attribution de terres gratuites aux colons",
+      "L'achèvement du chemin de fer Canadien Pacifique"
+    ],
+    "correct": 3
+  },
+  {
+    "q": "How many Canadians served in the First World War (28 July 1914-11 November 1918)?",
+    "q_fa": "چند کانادایی در جنگ جهانی اول (۲۸ ژوئیه ۱۹۱۴–۱۱ نوامبر ۱۹۱۸) خدمت کردند؟",
+    "q_fr": "Combien de Canadiens ont servi pendant la Première Guerre mondiale?",
+    "options": [
+      "About 60,000",
+      "About 170,000",
+      "About 10,000",
+      "More than 600,000"
+    ],
+    "options_fr": [
+      "Environ 60 000",
+      "Environ 170 000",
+      "Environ 10 000",
+      "Plus de 600 000"
+    ],
+    "correct": 3
+  },
+  {
+    "q": "Who had the reputation of being the \"shock troops of the British Empire\"?",
+    "q_fa": "چه کسانی به عنوان «نیروهای ضربتی امپراتوری بریتانیا» شهرت داشتند؟",
+    "q_fr": "Qui avait la réputation d'être les « troupes de choc de l'Empire britannique »?",
+    "options": [
+      "The Canadian troops",
+      "The French troops",
+      "The British troops",
+      "The Caribbean troops"
+    ],
+    "options_fr": [
+      "Les troupes canadiennes",
+      "Les troupes françaises",
+      "Les troupes britanniques",
+      "Les troupes des Caraïbes"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "Who was Canada's greatest soldier during the First World War?",
+    "q_fa": "بزرگترین سرباز کانادا در جنگ جهانی اول که بود؟",
+    "q_fr": "Qui était le plus grand soldat du Canada pendant la Première Guerre mondiale?",
+    "options": [
+      "Lt. Col. John McCrae",
+      "General Sir Alexander Macdonald",
+      "General Sir Arthur Currie",
+      "Colonel Sir Joseph Howe"
+    ],
+    "options_fr": [
+      "Lt.-col. John McCrae",
+      "Le général Sir Alexander Macdonald",
+      "Le général Sir Arthur Currie",
+      "Le colonel Sir Joseph Howe"
+    ],
+    "correct": 2
+  },
+  {
+    "q": "What is known as the women's suffrage movement?",
+    "q_fa": "جنبش حق رأی زنان به چه معروف است؟",
+    "q_fr": "Qu'est-ce que le mouvement pour le droit de vote des femmes?",
+    "options": [
+      "The effort by women to end suffering",
+      "The effort by women to achieve the right to vote",
+      "The feminist movement",
+      "The war liberation movement by women"
+    ],
+    "options_fr": [
+      "L'effort des femmes pour mettre fin à la souffrance",
+      "L'effort des femmes pour obtenir le droit de vote",
+      "Le mouvement féministe",
+      "Le mouvement de libération des femmes pendant la guerre"
+    ],
+    "correct": 1
+  },
+  {
+    "q": "When were most Canadian female citizens, aged 21 and over, granted the right to vote in federal elections?",
+    "q_fa": "اکثر شهروندان زن کانادایی ۲۱ سال به بالا چه زمانی حق رأی در انتخابات فدرال گرفتند؟",
+    "q_fr": "Quand la plupart des citoyennes canadiennes de 21 ans et plus ont-elles obtenu le droit de vote aux élections fédérales?",
+    "options": [
+      "1918",
+      "1921",
+      "1889",
+      "1945"
+    ],
+    "options_fr": [
+      "1918",
+      "1921",
+      "1889",
+      "1945"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "Who was the founder of the women's suffrage movement?",
+    "q_fa": "بنیانگذار جنبش حق رأی زنان که بود؟",
+    "q_fr": "Qui était la fondatrice du mouvement pour le droit de vote des femmes?",
+    "options": [
+      "Agnes Macphail",
+      "Dr. Emily Stowe",
+      "Thérèse Casgrain",
+      "Marie Howe"
+    ],
+    "options_fr": [
+      "Agnes Macphail",
+      "Dr Emily Stowe",
+      "Thérèse Casgrain",
+      "Marie Howe"
+    ],
+    "correct": 1
+  },
+  {
+    "q": "When is Remembrance Day?",
+    "q_fa": "روز یادبود چه زمانی است؟",
+    "q_fr": "Quand est le jour du Souvenir?",
+    "options": [
+      "First of November",
+      "11th of November",
+      "11th of September",
+      "21st of December"
+    ],
+    "options_fr": [
+      "Premier novembre",
+      "11 novembre",
+      "11 septembre",
+      "21 décembre"
+    ],
+    "correct": 1
+  },
+  {
+    "q": "What is the meaning of the Remembrance Day poppy?",
+    "q_fa": "شقایق روز یادبود چه معنایی دارد؟",
+    "q_fr": "Que signifie le coquelicot du jour du Souvenir?",
+    "options": [
+      "To remember our Sovereign Queen Elizabeth II",
+      "To celebrate Confederation",
+      "To honour prime ministers who have died",
+      "To remember the sacrifice of Canadians who have served or died in wars up to the present day"
+    ],
+    "options_fr": [
+      "Pour se souvenir de la reine Elizabeth II",
+      "Pour célébrer la Confédération",
+      "Pour honorer les premiers ministres décédés",
+      "Pour se souvenir du sacrifice des Canadiens qui ont servi ou sont morts dans les guerres"
+    ],
+    "correct": 3
+  },
+  {
+    "q": "What do Canadians remember on Remembrance Day?",
+    "q_fa": "کانادایی‌ها در روز یادبود چه چیزی را به یاد می‌آورند؟",
+    "q_fr": "Que commémorent les Canadiens le jour du Souvenir?",
+    "options": [
+      "The sacrifices of veterans and brave fallen in all wars",
+      "Canada's victory in the First World War",
+      "Canada's victory in the Second World War",
+      "Canada's first settlers"
+    ],
+    "options_fr": [
+      "Les sacrifices des anciens combattants et des braves tombés dans toutes les guerres",
+      "La victoire du Canada dans la Première Guerre mondiale",
+      "La victoire du Canada dans la Deuxième Guerre mondiale",
+      "Les premiers colons du Canada"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "What do Canadians wear on Remembrance Day?",
+    "q_fa": "کانادایی‌ها در روز یادبود چه می‌پوشند؟",
+    "q_fr": "Que portent les Canadiens le jour du Souvenir?",
+    "options": [
+      "Red poppy",
+      "Blue ribbon",
+      "Red ribbon",
+      "Red bracelet"
+    ],
+    "options_fr": [
+      "Coquelicot rouge",
+      "Ruban bleu",
+      "Ruban rouge",
+      "Bracelet rouge"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "What was the name of the free association of states that the British Empire had evolved into after the First World War?",
+    "q_fa": "نام اتحادیهٔ آزاد کشورهایی که امپراتوری بریتانیا پس از جنگ جهانی اول به آن تبدیل شد چه بود؟",
+    "q_fr": "Comment s'appelait l'association libre d'États issue de l'Empire britannique après la Première Guerre mondiale?",
+    "options": [
+      "The British Commonwealth of Nations",
+      "The British Empire",
+      "The British Armed Nations",
+      "The British Colonial Dominion"
+    ],
+    "options_fr": [
+      "Le Commonwealth britannique des Nations",
+      "L'Empire britannique",
+      "Les Nations armées britanniques",
+      "Le Dominion colonial britannique"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "When was the Bank of Canada created?",
+    "q_fa": "بانک کانادا چه زمانی ایجاد شد؟",
+    "q_fr": "Quand la Banque du Canada a-t-elle été créée?",
+    "options": [
+      "1934",
+      "1939",
+      "1942",
+      "1945"
+    ],
+    "options_fr": [
+      "1934",
+      "1939",
+      "1942",
+      "1945"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "What led to the Great Depression in the 1930s?",
+    "q_fa": "چه چیزی به رکود بزرگ در دههٔ ۱۹۳۰ منجر شد؟",
+    "q_fr": "Qu'est-ce qui a mené à la Grande Dépression des années 1930?",
+    "options": [
+      "The stock market crash of 1932",
+      "Low grain prices and a terrible drought in 1929",
+      "The stock market crash of 1929",
+      "Low grain prices and a terrible drought in 1932"
+    ],
+    "options_fr": [
+      "Le krach boursier de 1932",
+      "Les bas prix du grain et une terrible sécheresse en 1929",
+      "Le krach boursier de 1929",
+      "Les bas prix du grain et une terrible sécheresse en 1932"
+    ],
+    "correct": 2
+  },
+  {
+    "q": "In the epic invasion of Normandy in northern France in 1944, known as D-Day, which beach did the Canadians capture?",
+    "q_fa": "در حملهٔ نرماندی (روز D) در ۱۹۴۴ کانادایی‌ها کدام ساحل را تصرف کردند؟",
+    "q_fr": "Lors du débarquement en Normandie (jour J) en 1944, quelle plage les Canadiens ont-ils prise?",
+    "options": [
+      "Juno",
+      "Omaha",
+      "Utah",
+      "Gold"
+    ],
+    "options_fr": [
+      "Juno",
+      "Omaha",
+      "Utah",
+      "Gold"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "During the Second World War, what was the ratio of Canadians in the Allied forces on D-Day?",
+    "q_fa": "در جنگ جهانی دوم در روز D نسبت کانادایی‌ها در نیروهای متفقین چقدر بود؟",
+    "q_fr": "Pendant la Deuxième Guerre mondiale, quel était le ratio des Canadiens dans les forces alliées le jour J?",
+    "options": [
+      "1 in 10",
+      "1 in 5",
+      "1 in 3",
+      "1 in 2"
+    ],
+    "options_fr": [
+      "1 sur 10",
+      "1 sur 5",
+      "1 sur 3",
+      "1 sur 2"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "How many Canadians served in the Second World War (1 September 1939-2 September 1945)?",
+    "q_fa": "چند کانادایی در جنگ جهانی دوم (۱ سپتامبر ۱۹۳۹–۲ سپتامبر ۱۹۴۵) خدمت کردند؟",
+    "q_fr": "Combien de Canadiens ont servi pendant la Deuxième Guerre mondiale?",
+    "options": [
+      "About 600,000",
+      "About 300,000",
+      "About 900,000",
+      "More than one million (Out of the population of 11.5 million)"
+    ],
+    "options_fr": [
+      "Environ 600 000",
+      "Environ 300 000",
+      "Environ 900 000",
+      "Plus d'un million (sur 11,5 millions)"
+    ],
+    "correct": 3
+  },
+  {
+    "q": "Who contributed more to the Allied air effort than any other Commonwealth country during the Second World War?",
+    "q_fa": "در جنگ جهانی دوم کدام کشور بیش از هر کشور مشترک‌المنافع دیگر به تلاش هوایی متفقین کمک کرد؟",
+    "q_fr": "Qui a contribué plus à l'effort aérien allié que tout autre pays du Commonwealth pendant la Deuxième Guerre mondiale?",
+    "options": [
+      "England",
+      "Canada",
+      "India",
+      "Australia"
+    ],
+    "options_fr": [
+      "Angleterre",
+      "Canada",
+      "Inde",
+      "Australie"
+    ],
+    "correct": 1
+  },
+  {
+    "q": "At the end of the Second World War, Canada's navy was:",
+    "q_fa": "در پایان جنگ جهانی دوم نیروی دریایی کانادا چگونه بود؟",
+    "q_fr": "À la fin de la Deuxième Guerre mondiale, la marine du Canada était:",
+    "options": [
+      "The largest in the world",
+      "The second largest in the world",
+      "The third largest in the world",
+      "Canada had no navy at that time"
+    ],
+    "options_fr": [
+      "La plus grande au monde",
+      "La deuxième plus grande au monde",
+      "La troisième plus grande au monde",
+      "Le Canada n'avait pas de marine à l'époque"
+    ],
+    "correct": 2
+  },
+  {
+    "q": "Regarding the European-Aboriginal relationship, which of the following statements is false?",
+    "q_fa": "در مورد رابطهٔ اروپایی‌ها و بومیان کدام جمله نادرست است؟",
+    "q_fr": "Concernant la relation Euro-Autochtones, laquelle de ces affirmations est fausse?",
+    "options": [
+      "The arrival of European traders, missionaries, soldiers and colonists changed the native way of life forever",
+      "Large numbers of Aboriginals died of European diseases to which they lacked immunity",
+      "Aboriginals and Europeans formed strong economic, religious and military bonds in the first 200 years which laid the foundations of Canada",
+      "European traders, missionaries, soldiers and colonists killed most of the native population in Canada"
+    ],
+    "options_fr": [
+      "L'arrivée des Européens a changé à jamais le mode de vie autochtone",
+      "Beaucoup d'Autochtones sont morts de maladies européennes",
+      "Les Autochtones et les Européens ont formé des liens forts dans les 200 premières années",
+      "Les Européens ont tué la plupart de la population autochtone au Canada"
+    ],
+    "correct": 3
+  },
+  {
+    "q": "Who was the first European to explore the St. Lawrence River?",
+    "q_fa": "اولین اروپایی که رود سنت لورنس را کاوش کرد که بود؟",
+    "q_fr": "Qui a été le premier Européen à explorer le fleuve Saint-Laurent?",
+    "options": [
+      "Jacques Cartier",
+      "Pierre de Monts",
+      "Samuel de Champlain",
+      "John Cabot"
+    ],
+    "options_fr": [
+      "Jacques Cartier",
+      "Pierre de Monts",
+      "Samuel de Champlain",
+      "John Cabot"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "What is the significance of \"l'Anse aux Meadows\"?",
+    "q_fa": "اهمیت «l'Anse aux Meadows» چیست؟",
+    "q_fr": "Quelle est la signification de « l'Anse aux Meadows »?",
+    "options": [
+      "It is a World Heritage site with remains of Jacques Cartier's first three voyages",
+      "It is a World Heritage site with remains of the first European town built by early settlers",
+      "It is a World Heritage site with remains of Vikings from Iceland who reached Labrador and Newfoundland 1,000 years ago",
+      "It is a World Heritage site with remains of the Battle of Trafalgar"
+    ],
+    "options_fr": [
+      "Site du patrimoine mondial avec les vestiges des trois premiers voyages de Cartier",
+      "Site du patrimoine mondial avec les vestiges de la première ville européenne",
+      "Site du patrimoine mondial avec les vestiges des Vikings d'Islande il y a 1 000 ans",
+      "Site du patrimoine mondial avec les vestiges de la bataille de Trafalgar"
+    ],
+    "correct": 2
+  },
+  {
+    "q": "What was driving the vast fur trade economy?",
+    "q_fa": "چه چیزی اقتصاد گستردهٔ تجارت خز را به حرکت درمی‌آورد؟",
+    "q_fr": "Qu'est-ce qui animait l'économie de la traite des fourrures?",
+    "options": [
+      "The demand for beaver pelts in Europe",
+      "The demand for beaver pelts in Asia",
+      "The demand for beaver pelts in the Aboriginal communities",
+      "The needs for beaver pelts in the settlers' communities"
+    ],
+    "options_fr": [
+      "La demande de fourrures de castor en Europe",
+      "La demande en Asie",
+      "La demande dans les communautés autochtones",
+      "Les besoins dans les communautés de colons"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "What are leaders like Jean Talon, Bishop Laval, and Count Frontenac famous for?",
+    "q_fa": "رهبرانی مثل Jean Talon، Bishop Laval و Count Frontenac به چه معروفند؟",
+    "q_fr": "Pour quoi des dirigeants comme Jean Talon, Mgr Laval et le comte de Frontenac sont-ils connus?",
+    "options": [
+      "They built a British Empire in North America from Hudson Bay to the Gulf of Mexico",
+      "They built a French Empire in North America from Hudson Bay to the Gulf of Mexico",
+      "They defeated the British armies during the War between France and England",
+      "They defeated the French armies during the War between France and England"
+    ],
+    "options_fr": [
+      "Ils ont bâti un empire britannique en Amérique du Nord",
+      "Ils ont bâti un empire français en Amérique du Nord de la Baie d'Hudson au golfe du Mexique",
+      "Ils ont vaincu les armées britanniques",
+      "Ils ont vaincu les armées françaises"
+    ],
+    "correct": 1
+  },
+  {
+    "q": "In Canada, how did democratic institutions develop?",
+    "q_fa": "نهادهای دموکراتیک در کانادا چگونه توسعه یافتند؟",
+    "q_fr": "Comment les institutions démocratiques se sont-elles développées au Canada?",
+    "options": [
+      "Gradually and with a lot of fighting",
+      "Gradually and peacefully",
+      "Rapidly and peacefully",
+      "Rapidly and with a lot of fighting"
+    ],
+    "options_fr": [
+      "Progressivement et avec beaucoup de combats",
+      "Progressivement et pacifiquement",
+      "Rapidement et pacifiquement",
+      "Rapidement et avec beaucoup de combats"
+    ],
+    "correct": 1
+  },
+  {
+    "q": "What did Upper Canada mainly consist of?",
+    "q_fa": "Upper Canada عمدتاً از چه کسانی تشکیل شده بود؟",
+    "q_fr": "De qui le Haut-Canada était-il principalement composé?",
+    "options": [
+      "Loyalist, Protestant and English-speaking people",
+      "Loyalist, Catholic and English-speaking people",
+      "Catholic and French-speaking people",
+      "Protestant and French-speaking people"
+    ],
+    "options_fr": [
+      "Loyalistes, protestants et anglophones",
+      "Loyalistes, catholiques et anglophones",
+      "Catholiques et francophones",
+      "Protestants et francophones"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "What did Lower Canada mainly consist of?",
+    "q_fa": "Lower Canada عمدتاً از چه کسانی تشکیل شده بود؟",
+    "q_fr": "De qui le Bas-Canada était-il principalement composé?",
+    "options": [
+      "Loyalist, Protestant and English-speaking people",
+      "Loyalist, Catholic and English-speaking people",
+      "Catholic and French-speaking people",
+      "Protestant and French-speaking people"
+    ],
+    "options_fr": [
+      "Loyalistes, protestants et anglophones",
+      "Loyalistes, catholiques et anglophones",
+      "Catholiques et francophones",
+      "Protestants et francophones"
+    ],
+    "correct": 2
+  },
+  {
+    "q": "Who was Upper Canada's first Lieutenant Governor and founder of the City of York (now Toronto)?",
+    "q_fa": "اولین معاون فرماندار Upper Canada و بنیانگذار یورک (اکنون تورنتو) که بود؟",
+    "q_fr": "Qui a été le premier lieutenant-gouverneur du Haut-Canada et fondateur de York (Toronto)?",
+    "options": [
+      "Joseph Brant",
+      "Joseph Howe",
+      "Sir John A. Macdonald",
+      "Lieutenant Colonel John Graves Simcoe"
+    ],
+    "options_fr": [
+      "Joseph Brant",
+      "Joseph Howe",
+      "Sir John A. Macdonald",
+      "Le lieutenant-colonel John Graves Simcoe"
+    ],
+    "correct": 3
+  },
+  {
+    "q": "What was the Underground Railroad?",
+    "q_fa": "راه‌آهن زیرزمینی چه بود؟",
+    "q_fr": "Qu'est-ce que le chemin de fer clandestin?",
+    "options": [
+      "A Christian anti-slavery network",
+      "The name of the new railroad linking the East to the West of Canada",
+      "The name of a famous circle of Canadian artists in the late 1960s",
+      "The unofficial railroad network linking small communities across Canada"
+    ],
+    "options_fr": [
+      "Un réseau chrétien anti-esclavagiste",
+      "Le nom du nouveau chemin de fer reliant l'Est à l'Ouest du Canada",
+      "Un cercle d'artistes canadiens des années 1960",
+      "Un réseau ferroviaire non officiel reliant les communautés"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "When did the Montreal Stock Exchange open?",
+    "q_fa": "بورس مونترال چه زمانی گشایش یافت؟",
+    "q_fr": "Quand la Bourse de Montréal a-t-elle ouvert?",
+    "options": [
+      "1932",
+      "1832",
+      "1887",
+      "1905"
+    ],
+    "options_fr": [
+      "1932",
+      "1832",
+      "1887",
+      "1905"
+    ],
+    "correct": 1
+  },
+  {
+    "q": "Who refused to surrender Quebec to the English in 1690?",
+    "q_fa": "چه کسی در ۱۶۹۰ از تسلیم کبک به انگلیسی‌ها خودداری کرد؟",
+    "q_fr": "Qui a refusé de rendre Québec aux Anglais en 1690?",
+    "options": [
+      "Count Frontenac",
+      "Jean Talon",
+      "Bishop Laval",
+      "Pierre Le Moyne"
+    ],
+    "options_fr": [
+      "Le comte de Frontenac",
+      "Jean Talon",
+      "Mgr Laval",
+      "Pierre Le Moyne"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "What was Pierre Le Moyne famous for?",
+    "q_fa": "Pierre Le Moyne به چه چیزی معروف بود؟",
+    "q_fr": "Pour quoi Pierre Le Moyne était-il connu?",
+    "options": [
+      "He was a great hero of New France, winning many victories over the English in the late 17th and early 18th centuries",
+      "He was a great hero of New England, winning many victories over the French",
+      "He defeated the Americans in the Battle of Trafalgar",
+      "He was Upper Canada's first Lieutenant Governor"
+    ],
+    "options_fr": [
+      "Héros de la Nouvelle-France, nombreuses victoires sur les Anglais",
+      "Héros de la Nouvelle-Angleterre",
+      "Il a vaincu les Américains à Trafalgar",
+      "Premier lieutenant-gouverneur du Haut-Canada"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "Who defended the rights of the Canadiens and defeated an American military invasion of Quebec in 1775?",
+    "q_fa": "چه کسی از حقوق کانادایی‌ها دفاع کرد و حملهٔ نظامی آمریکا به کبک در ۱۷۷۵ را شکست داد؟",
+    "q_fr": "Qui a défendu les droits des Canadiens et repoussé l'invasion américaine du Québec en 1775?",
+    "options": [
+      "Count Frontenac",
+      "Bishop Laval",
+      "Sir Guy Carleton",
+      "Sir John A. Macdonald"
+    ],
+    "options_fr": [
+      "Le comte de Frontenac",
+      "Mgr Laval",
+      "Sir Guy Carleton",
+      "Sir John A. Macdonald"
+    ],
+    "correct": 2
+  },
+  {
+    "q": "Who defeated Napoleon in 1815, and therefore played a direct role in founding the national capital?",
+    "q_fa": "چه کسی ناپلئون را در ۱۸۱۵ شکست داد و در تأسیس پایتخت ملی نقش مستقیم داشت؟",
+    "q_fr": "Qui a vaincu Napoléon en 1815 et a joué un rôle direct dans la fondation de la capitale nationale?",
+    "options": [
+      "Bishop Laval",
+      "Sir Guy Carleton",
+      "Sir John A. Macdonald",
+      "The Duke of Wellington"
+    ],
+    "options_fr": [
+      "Mgr Laval",
+      "Sir Guy Carleton",
+      "Sir John A. Macdonald",
+      "Le duc de Wellington"
+    ],
+    "correct": 3
+  },
+  {
+    "q": "Who was a champion of French language rights?",
+    "q_fa": "چه کسی مدافع حقوق زبان فرانسه بود؟",
+    "q_fr": "Qui était un défenseur des droits de la langue française?",
+    "options": [
+      "Sir Louis-Hippolyte La Fontaine",
+      "Sir Étienne-Paschal Taché",
+      "Sir George-Étienne Cartier",
+      "Count Frontenac"
+    ],
+    "options_fr": [
+      "Sir Louis-Hippolyte La Fontaine",
+      "Sir Étienne-Paschal Taché",
+      "Sir George-Étienne Cartier",
+      "Le comte de Frontenac"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "How many Canadians have died in all wars up to the present day?",
+    "q_fa": "چند کانادایی در تمام جنگ‌ها تا به امروز جان باخته‌اند؟",
+    "q_fr": "Combien de Canadiens sont morts dans toutes les guerres jusqu'à ce jour?",
+    "options": [
+      "110,000",
+      "220,000",
+      "55,000",
+      "500,000"
+    ],
+    "options_fr": [
+      "110 000",
+      "220 000",
+      "55 000",
+      "500 000"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "Who composed the poem \"In Flanders Fields\" that is often recited on Remembrance Day?",
+    "q_fa": "چه کسی شعر «In Flanders Fields» را سرود که در روز یادبود خوانده می‌شود؟",
+    "q_fr": "Qui a composé le poème « In Flanders Fields » souvent récité le jour du Souvenir?",
+    "options": [
+      "Sir Arthur Currie",
+      "Sir Sam Steele",
+      "Lt. Col. John McCrae",
+      "The Duke of Wellington"
+    ],
+    "options_fr": [
+      "Sir Arthur Currie",
+      "Sir Sam Steele",
+      "Lt.-col. John McCrae",
+      "Le duc de Wellington"
+    ],
+    "correct": 2
+  },
+  {
+    "q": "When did Canadian medical officer Lt. Col. John McCrae compose the poem \"In Flanders Fields\" that is often recited on Remembrance Day?",
+    "q_fa": "افسر پزشکی کانادایی Lt. Col. John McCrae چه زمانی شعر «In Flanders Fields» را سرود؟",
+    "q_fr": "Quand le médecin militaire canadien Lt.-col. John McCrae a-t-il composé le poème « In Flanders Fields »?",
+    "options": [
+      "1918",
+      "1945",
+      "1812",
+      "1915"
+    ],
+    "options_fr": [
+      "1918",
+      "1945",
+      "1812",
+      "1915"
+    ],
+    "correct": 3
+  }
+]
