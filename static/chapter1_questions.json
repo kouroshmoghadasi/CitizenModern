@@ -1,0 +1,704 @@
+[
+  {
+    "q": "Name one source of Canadian law.",
+    "q_fa": "یکی از منابع قانون کانادا را نام ببرید.",
+    "q_fr": "Nommez une source du droit canadien.",
+    "options": [
+      "United States common law",
+      "Irish common law",
+      "The military code of France",
+      "English common law"
+    ],
+    "options_fr": [
+      "Common law des États-Unis",
+      "Common law irlandaise",
+      "Code militaire de la France",
+      "Common law anglaise"
+    ],
+    "options_fa": [
+      "حقوق عرفی ایالات متحده",
+      "حقوق عرفی ایرلندی",
+      "قانون نظامی فرانسه",
+      "حقوق عرفی انگلیسی"
+    ],
+    "correct": 3
+  },
+  {
+    "q": "Which one of the following is not a source of Canadian law?",
+    "q_fa": "کدام یک از منابع قانون کانادا نیست؟",
+    "q_fr": "Lequel des éléments suivants n'est pas une source du droit canadien?",
+    "options": [
+      "Laws passed by Parliament",
+      "Civil code of France",
+      "English common law",
+      "Military code of France"
+    ],
+    "options_fr": [
+      "Lois adoptées par le Parlement",
+      "Code civil de la France",
+      "Common law anglaise",
+      "Code militaire de la France"
+    ],
+    "options_fa": [
+      "قوانین مصوب پارلمان",
+      "قانون مدنی فرانسه",
+      "حقوق عرفی انگلیسی",
+      "قانون نظامی فرانسه"
+    ],
+    "correct": 3
+  },
+  {
+    "q": "What is \"Magna Carta\"?",
+    "q_fa": "«مگنا کارتا» چیست؟",
+    "q_fr": "Qu'est-ce que la Grande Charte des libertés (Magna Carta)?",
+    "options": [
+      "The Great Charter of Freedoms",
+      "A map of the world in 1215",
+      "The constitution of Ireland",
+      "The Great Code of England"
+    ],
+    "options_fr": [
+      "La Grande Charte des libertés",
+      "Une carte du monde en 1215",
+      "La constitution de l'Irlande",
+      "Le Grand Code d'Angleterre"
+    ],
+    "options_fa": [
+      "منشور بزرگ آزادی‌ها",
+      "نقشهٔ جهان در ۱۲۱۵",
+      "قانون اساسی ایرلند",
+      "قانون بزرگ انگلستان"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "The Great Charter of Freedoms was signed in:",
+    "q_fa": "منشور بزرگ آزادی‌ها کجا امضا شد؟",
+    "q_fr": "La Grande Charte des libertés a été signée en :",
+    "options": [
+      "France",
+      "Canada",
+      "Ireland",
+      "England"
+    ],
+    "options_fr": [
+      "France",
+      "Canada",
+      "Irlande",
+      "Angleterre"
+    ],
+    "options_fa": ["فرانسه", "کانادا", "ایرلند", "انگلستان"],
+    "correct": 3
+  },
+  {
+    "q": "When was the Magna Carta signed?",
+    "q_fa": "مگنا کارتا چه زمانی امضا شد؟",
+    "q_fr": "Quand la Grande Charte des libertés a-t-elle été signée?",
+    "options": [
+      "1615",
+      "1425",
+      "1215",
+      "1649"
+    ],
+    "options_fr": [
+      "1615",
+      "1425",
+      "1215",
+      "1649"
+    ],
+    "options_fa": ["۱۶۱۵", "۱۴۲۵", "۱۲۱۵", "۱۶۴۹"],
+    "correct": 2
+  },
+  {
+    "q": "The Great Charter of Freedoms is also known as:",
+    "q_fa": "منشور بزرگ آزادی‌ها به چه نام دیگری شناخته می‌شود؟",
+    "q_fr": "La Grande Charte des libertés est aussi connue sous le nom de :",
+    "options": [
+      "Canadian Constitution",
+      "Habeas Corpus",
+      "Dominion of Canada",
+      "Magna Carta"
+    ],
+    "options_fr": [
+      "Constitution canadienne",
+      "Habeas corpus",
+      "Dominion du Canada",
+      "Magna Carta"
+    ],
+    "options_fa": ["قانون اساسی کانادا", "هیبیاس کورپوس", "دومینیون کانادا", "مگنا کارتا"],
+    "correct": 3
+  },
+  {
+    "q": "What does the Great Charter of Freedom include?",
+    "q_fa": "منشور بزرگ آزادی شامل چه چیزی است؟",
+    "q_fr": "Que comprend la Grande Charte des libertés?",
+    "options": [
+      "Freedom of conscience and religion",
+      "Employment rights",
+      "Aboriginal Peoples' rights",
+      "Freedom from taxes"
+    ],
+    "options_fr": [
+      "Liberté de conscience et de religion",
+      "Droits en matière d'emploi",
+      "Droits des peuples autochtones",
+      "Exemption d'impôts"
+    ],
+    "options_fa": ["آزادی وجدان و مذهب", "حقوق اشتغال", "حقوق مردم بومی", "معافیت از مالیات"],
+    "correct": 0
+  },
+  {
+    "q": "Which one of the following is not included in the Great Charter of Freedom?",
+    "q_fa": "کدام یک در منشور بزرگ آزادی گنجانده نشده است؟",
+    "q_fr": "Lequel des éléments suivants n'est pas inclus dans la Grande Charte des libertés?",
+    "options": [
+      "Freedom of thought, belief, opinion and expression",
+      "Freedom of conscience and religion",
+      "Freedom to buy property",
+      "Freedom of association"
+    ],
+    "options_fr": [
+      "Liberté de pensée, de croyance, d'opinion et d'expression",
+      "Liberté de conscience et de religion",
+      "Liberté d'acheter des biens",
+      "Liberté d'association"
+    ],
+    "options_fa": ["آزادی اندیشه، باور، عقیده و بیان", "آزادی وجدان و مذهب", "آزادی خرید ملک", "آزادی تشکل"],
+    "correct": 2
+  },
+  {
+    "q": "What is \"Habeas corpus\"?",
+    "q_fa": "«Habeas corpus» چیست؟",
+    "q_fr": "Qu'est-ce que l'habeas corpus?",
+    "options": [
+      "The right to challenge unlawful detention by the state",
+      "The right to live and work anywhere in Canada",
+      "The right to speak freely",
+      "The right for peaceful assembly"
+    ],
+    "options_fr": [
+      "Droit de contester une détention illégale par l'État",
+      "Droit de vivre et travailler n'importe où au Canada",
+      "Droit de parler librement",
+      "Droit de réunion pacifique"
+    ],
+    "options_fa": ["حق به چالش کشیدن بازداشت غیرقانونی توسط دولت", "حق زندگی و کار در هر نقطهٔ کانادا", "حق سخن گفتن آزادانه", "حق اجتماع مسالمت‌آمیز"],
+    "correct": 0
+  },
+  {
+    "q": "As what is the \"right to challenge unlawful detention by the state\" known?",
+    "q_fa": "«حق به چالش کشیدن بازداشت غیرقانونی توسط دولت» به چه نامی شناخته می‌شود؟",
+    "q_fr": "Sous quel nom le « droit de contester une détention illégale par l'État » est-il connu?",
+    "options": [
+      "Constitutional Act",
+      "Habeas corpus",
+      "Magna Carta",
+      "A mari usque ad mare"
+    ],
+    "options_fr": [
+      "Loi constitutionnelle",
+      "Habeas corpus",
+      "Magna Carta",
+      "A mari usque ad mare"
+    ],
+    "options_fa": ["قانون اساسی", "هیبیاس کورپوس", "مگنا کارتا", "از دریا تا دریا"],
+    "correct": 1
+  },
+  {
+    "q": "Name the source of Habeas corpus:",
+    "q_fa": "منبع Habeas corpus را نام ببرید:",
+    "q_fr": "Nommez la source de l'habeas corpus :",
+    "options": [
+      "English common law",
+      "Irish common law",
+      "Civil code of France",
+      "Magna Carta"
+    ],
+    "options_fr": [
+      "Common law anglaise",
+      "Common law irlandaise",
+      "Code civil de la France",
+      "Magna Carta"
+    ],
+    "options_fa": ["حقوق عرفی انگلیسی", "حقوق عرفی ایرلندی", "قانون مدنی فرانسه", "مگنا کارتا"],
+    "correct": 0
+  },
+  {
+    "q": "When was the Constitution of Canada amended to include the Charter of Rights and Freedoms?",
+    "q_fa": "قانون اساسی کانادا چه زمانی اصلاح شد تا منشور حقوق و آزادی‌ها را شامل شود؟",
+    "q_fr": "Quand la Constitution du Canada a-t-elle été modifiée pour inclure la Charte des droits et libertés?",
+    "options": [
+      "1902",
+      "1982",
+      "1859",
+      "1949"
+    ],
+    "options_fr": [
+      "1902",
+      "1982",
+      "1859",
+      "1949"
+    ],
+    "options_fa": ["۱۹۰۲", "۱۹۸۲", "۱۸۵۹", "۱۹۴۹"],
+    "correct": 1
+  },
+  {
+    "q": "Who proclaimed the amended Constitution of Canada in 1982?",
+    "q_fa": "چه کسی قانون اساسی اصلاح‌شدهٔ کانادا را در ۱۹۸۲ اعلام کرد؟",
+    "q_fr": "Qui a proclamé la Constitution du Canada modifiée en 1982?",
+    "options": [
+      "The Prime Minister",
+      "The Senate",
+      "Queen Elizabeth II",
+      "The people of Canada"
+    ],
+    "options_fr": [
+      "Le Premier ministre",
+      "Le Sénat",
+      "La reine Elizabeth II",
+      "Le peuple canadien"
+    ],
+    "options_fa": ["نخست‌وزیر", "سنا", "ملکه الیزابت دوم", "مردم کانادا"],
+    "correct": 2
+  },
+  {
+    "q": "What are the two principles upon which Canada is founded?",
+    "q_fa": "دو اصلی که کانادا بر آن‌ها بنیان نهاده شده چیست؟",
+    "q_fr": "Quels sont les deux principes sur lesquels le Canada est fondé?",
+    "options": [
+      "The supremacy of God and freedom of speech",
+      "The supremacy of God and the rule of law",
+      "Mobility right and the rule of law",
+      "The supremacy of law and the rule of God"
+    ],
+    "options_fr": [
+      "La suprématie de Dieu et la liberté d'expression",
+      "La suprématie de Dieu et la primauté du droit",
+      "Droit à la mobilité et primauté du droit",
+      "Suprématie de la loi et règle de Dieu"
+    ],
+    "options_fa": ["برتری خدا و آزادی بیان", "برتری خدا و حاکمیت قانون", "حق جابجایی و حاکمیت قانون", "برتری قانون و قانون خدا"],
+    "correct": 1
+  },
+  {
+    "q": "With which words does the Canadian Charter of Rights and Freedoms begin?",
+    "q_fa": "منشور حقوق و آزادی‌های کانادا با کدام کلمات آغاز می‌شود؟",
+    "q_fr": "Par quels mots commence la Charte canadienne des droits et libertés?",
+    "options": [
+      "\\\"Canada is a free country and home of the braves\\\"",
+      "\\\"Oh Canada! Our home and native land!\\\"",
+      "\\\"Whereas Canada is founded upon principles that recognize the supremacy of God and the rule of law\\\"",
+      "\\\"Canadian citizens have rights and responsibilities\\\""
+    ],
+    "options_fr": [
+      "« Le Canada est un pays libre »",
+      "« Ô Canada! Notre pays natal! »",
+      "« Attendu que le Canada est fondé sur des principes qui reconnaissent la suprématie de Dieu et la primauté du droit »",
+      "« Les citoyens canadiens ont des droits et des responsabilités »"
+    ],
+    "options_fa": ["«کانادا کشور آزاد و وطن دلیران است»", "«ای کانادا! میهن و سرزمین مادری ما!»", "«با توجه به اینکه کانادا بر اصولی بنیان نهاده شده که برتری خدا و حاکمیت قانون را به رسمیت می‌شناسد»", "«شهروندان کانادایی حقوق و مسئولیت‌ها دارند»"],
+    "correct": 2
+  },
+  {
+    "q": "What are \"mobility rights\"?",
+    "q_fa": "«حقوق جابجایی» چیست؟",
+    "q_fr": "Que sont les droits à la mobilité?",
+    "options": [
+      "Canadians have freedom of speech",
+      "Canadians can enter and leave the country freely, and apply for a passport",
+      "Canadians can live and work anywhere in Canada, enter/leave the country freely, and apply for a passport",
+      "Canadians can live and work anywhere in Canada, and enter/leave the country freely"
+    ],
+    "options_fr": [
+      "Les Canadiens ont la liberté d'expression",
+      "Les Canadiens peuvent entrer et sortir librement et demander un passeport",
+      "Les Canadiens peuvent vivre et travailler n'importe où au Canada, entrer/sortir librement et demander un passeport",
+      "Les Canadiens peuvent vivre et travailler n'importe où au Canada et entrer/sortir librement"
+    ],
+    "options_fa": [
+      "کانادایی‌ها آزادی بیان دارند",
+      "کانادایی‌ها می‌توانند آزادانه وارد و خارج شوند و برای گذرنامه درخواست دهند",
+      "کانادایی‌ها می‌توانند در هر نقطهٔ کانادا زندگی و کار کنند، آزادانه وارد و خارج شوند و برای گذرنامه درخواست دهند",
+      "کانادایی‌ها می‌توانند در هر نقطهٔ کانادا زندگی و کار کنند و آزادانه وارد و خارج شوند"
+    ],
+    "correct": 2
+  },
+  {
+    "q": "Who can enter and leave the country freely without time constraints?",
+    "q_fa": "چه کسانی می‌توانند بدون محدودیت زمانی آزادانه وارد و خارج شوند؟",
+    "q_fr": "Qui peut entrer et sortir du pays librement sans contraintes de temps?",
+    "options": [
+      "Canadian citizens",
+      "Canadian citizens and landed immigrants",
+      "British citizens",
+      "Commonwealth citizens"
+    ],
+    "options_fr": [
+      "Citoyens canadiens",
+      "Citoyens canadiens et résidents permanents",
+      "Citoyens britanniques",
+      "Citoyens du Commonwealth"
+    ],
+    "options_fa": ["شهروندان کانادایی", "شهروندان کانادایی و مهاجران دارای اقامت دائم", "شهروندان بریتانیایی", "شهروندان کشورهای مشترک‌المنافع"],
+    "correct": 0
+  },
+  {
+    "q": "Which three rights are included in the Canadian Charter of Rights and Freedoms?",
+    "q_fa": "کدام سه حق در منشور حقوق و آزادی‌های کانادا گنجانده شده است؟",
+    "q_fr": "Quels trois droits sont inclus dans la Charte canadienne des droits et libertés?",
+    "options": [
+      "Mobility rights, Aboriginal Peoples' rights, and official language rights",
+      "Freedom of expression, property rights and fair trial rights",
+      "Employment rights, mobility rights, and freedom rights",
+      "Aboriginal Peoples' rights, voting rights and official language rights"
+    ],
+    "options_fr": [
+      "Droits à la mobilité, droits des peuples autochtones et droits linguistiques officiels",
+      "Liberté d'expression, droits de propriété et droit à un procès équitable",
+      "Droits en matière d'emploi, droits à la mobilité et droits à la liberté",
+      "Droits des peuples autochtones, droit de vote et droits linguistiques officiels"
+    ],
+    "options_fa": ["حقوق جابجایی، حقوق مردم بومی و حقوق زبان رسمی", "آزادی بیان، حقوق مالکیت و حق محاکمه عادلانه", "حقوق اشتغال، حقوق جابجایی و حقوق آزادی", "حقوق مردم بومی، حق رأی و حقوق زبان رسمی"],
+    "correct": 0
+  },
+  {
+    "q": "French and English do not have equal status in Parliament and throughout the government.",
+    "q_fa": "فرانسه و انگلیسی در پارلمان و در سراسر دولت از وضعیت برابر برخوردار نیستند.",
+    "q_fr": "Le français et l'anglais n'ont pas un statut égal au Parlement et dans l'ensemble du gouvernement.",
+    "options": ["True", "False"],
+    "options_fr": ["Vrai", "Faux"],
+    "options_fa": ["درست", "نادرست"],
+    "correct": 1
+  },
+  {
+    "q": "Canadians cannot leave their country freely.",
+    "q_fa": "کانادایی‌ها نمی‌توانند آزادانه از کشور خود خارج شوند.",
+    "q_fr": "Les Canadiens ne peuvent pas quitter librement leur pays.",
+    "options": ["True", "False"],
+    "options_fr": ["Vrai", "Faux"],
+    "options_fa": ["درست", "نادرست"],
+    "correct": 1
+  },
+  {
+    "q": "What is a fundamental characteristic of the Canadian heritage and identity?",
+    "q_fa": "کدام یک ویژگی بنیادی میراث و هویت کانادایی است؟",
+    "q_fr": "Quelle est une caractéristique fondamentale du patrimoine et de l'identité canadienne?",
+    "options": [
+      "Hockey",
+      "Maple Syrup",
+      "Multiculturalism",
+      "Habeas Corpus"
+    ],
+    "options_fr": [
+      "Hockey",
+      "Sirop d'érable",
+      "Multiculturalisme",
+      "Habeas corpus"
+    ],
+    "options_fa": ["هاکی", "شیرهٔ افرا", "چندفرهنگی", "هیبیاس کورپوس"],
+    "correct": 2
+  },
+  {
+    "q": "As a new immigrant to Canada, why can a woman get the same education as any man?",
+    "q_fa": "چرا یک زن مهاجر جدید می‌تواند همان تحصیلات هر مردی را داشته باشد؟",
+    "q_fr": "En tant que nouvelle immigrante au Canada, pourquoi une femme peut-elle avoir la même éducation que tout homme?",
+    "options": [
+      "Because she has a university degree",
+      "Because in Canada, men and women are equal under the law",
+      "Because she is from England",
+      "Because her husband approves it"
+    ],
+    "options_fr": [
+      "Parce qu'elle a un diplôme universitaire",
+      "Parce qu'au Canada, les hommes et les femmes sont égaux devant la loi",
+      "Parce qu'elle vient d'Angleterre",
+      "Parce que son mari l'approuve"
+    ],
+    "options_fa": ["چون مدرک دانشگاهی دارد", "چون در کانادا زن و مرد در برابر قانون برابرند", "چون از انگلستان است", "چون همسرش تأیید می‌کند"],
+    "correct": 1
+  },
+  {
+    "q": "In Canada, abuse of your spouse is:",
+    "q_fa": "در کانادا سوءاستفاده از همسر:",
+    "q_fr": "Au Canada, la violence envers votre conjoint est :",
+    "options": [
+      "Tolerated",
+      "Lawful",
+      "Illegal",
+      "Normal"
+    ],
+    "options_fr": [
+      "Tolérée",
+      "Légale",
+      "Illégale",
+      "Normale"
+    ],
+    "options_fa": ["تحمل شده", "قانونی", "غیرقانونی", "عادی"],
+    "correct": 2
+  },
+  {
+    "q": "What are three responsibilities of Canadian citizenship?",
+    "q_fa": "سه مسئولیت شهروندی کانادا چیست؟",
+    "q_fr": "Quelles sont trois responsabilités de la citoyenneté canadienne?",
+    "options": [
+      "Being loyal to Canada, recycling all waste, and serving in the Canadian Forces",
+      "Obeying the law, taking responsibility for oneself and one's family, and serving on a jury",
+      "Learning both official languages, voting in elections, and belonging to a union",
+      "Buying Canadian products, owning your own house, and using less water"
+    ],
+    "options_fr": [
+      "Être loyal au Canada, recycler tous les déchets et servir dans les Forces canadiennes",
+      "Obéir à la loi, assumer ses responsabilités et celles de sa famille, et siéger à un jury",
+      "Apprendre les deux langues officielles, voter aux élections et appartenir à un syndicat",
+      "Acheter des produits canadiens, posséder une maison et utiliser moins d'eau"
+    ],
+    "options_fa": ["وفاداری به کانادا، بازیافت زباله و خدمت در نیروهای مسلح کانادا", "اطاعت از قانون، مسئولیت‌پذیری برای خود و خانواده و خدمت در هیئت منصفه", "یادگیری هر دو زبان رسمی، رأی دادن و عضویت در اتحادیه", "خرید محصولات کانادایی، مالکیت خانه و مصرف کمتر آب"],
+    "correct": 1
+  },
+  {
+    "q": "Which one of the following is not a responsibility of Canadian citizenship?",
+    "q_fa": "کدام یک از مسئولیت‌های شهروندی کانادا نیست؟",
+    "q_fr": "Lequel des éléments suivants n'est pas une responsabilité de la citoyenneté canadienne?",
+    "options": [
+      "Serving on a jury",
+      "Learning French and English",
+      "Obeying the law",
+      "Helping others in the community"
+    ],
+    "options_fr": [
+      "Siéger à un jury",
+      "Apprendre le français et l'anglais",
+      "Obéir à la loi",
+      "Aider les autres dans la collectivité"
+    ],
+    "options_fa": ["خدمت در هیئت منصفه", "یادگیری فرانسه و انگلیسی", "اطاعت از قانون", "کمک به دیگران در جامعه"],
+    "correct": 1
+  },
+  {
+    "q": "Which one of the following is a responsibility of Canadian citizenship?",
+    "q_fa": "کدام یک از مسئولیت‌های شهروندی کانادا است؟",
+    "q_fr": "Lequel des éléments suivants est une responsabilité de la citoyenneté canadienne?",
+    "options": [
+      "Buying a piece of land",
+      "Helping others in the community",
+      "Serving in the Army",
+      "Camping"
+    ],
+    "options_fr": [
+      "Acheter un terrain",
+      "Aider les autres dans la collectivité",
+      "Servir dans l'Armée",
+      "Faire du camping"
+    ],
+    "options_fa": ["خرید زمین", "کمک به دیگران در جامعه", "خدمت در ارتش", "اردو زدن"],
+    "correct": 1
+  },
+  {
+    "q": "Obeying the law is:",
+    "q_fa": "اطاعت از قانون:",
+    "q_fr": "Obéir à la loi est :",
+    "options": [
+      "A responsibility",
+      "A right",
+      "Optional",
+      "Only for immigrants"
+    ],
+    "options_fr": [
+      "Une responsabilité",
+      "Un droit",
+      "Optionnel",
+      "Seulement pour les immigrants"
+    ],
+    "options_fa": ["یک مسئولیت", "یک حق", "اختیاری", "فقط برای مهاجران"],
+    "correct": 0
+  },
+  {
+    "q": "When called to do so, serving on a jury is:",
+    "q_fa": "وقتی فراخوانده شوید، خدمت در هیئت منصفه:",
+    "q_fr": "Lorsque vous y êtes convoqué, siéger à un jury est :",
+    "options": [
+      "A legal requirement",
+      "An option",
+      "Paid only",
+      "For citizens over 40 only"
+    ],
+    "options_fr": [
+      "Une obligation légale",
+      "Une option",
+      "Rémunéré seulement",
+      "Pour les citoyens de plus de 40 ans seulement"
+    ],
+    "options_fa": ["یک الزام قانونی", "یک گزینه", "فقط با حقوق", "فقط برای شهروندان بالای ۴۰ سال"],
+    "correct": 0
+  },
+  {
+    "q": "What is an excellent way to gain useful skills and develop friends and contacts?",
+    "q_fa": "راه عالی برای کسب مهارت‌های مفید و توسعه دوستان و ارتباطات چیست؟",
+    "q_fr": "Quelle est une excellente façon d'acquérir des compétences utiles et de se faire des amis et des contacts?",
+    "options": [
+      "Serve on a jury",
+      "Volunteer",
+      "Serve in the Army",
+      "Pluralism"
+    ],
+    "options_fr": [
+      "Siéger à un jury",
+      "Faire du bénévolat",
+      "Servir dans l'Armée",
+      "Pluralisme"
+    ],
+    "options_fa": ["خدمت در هیئت منصفه", "داوطلب شدن", "خدمت در ارتش", "کثرت‌گرایی"],
+    "correct": 1
+  },
+  {
+    "q": "There is no compulsory military service in Canada.",
+    "q_fa": "در کانادا خدمت نظامی اجباری وجود ندارد.",
+    "q_fr": "Il n'y a pas de service militaire obligatoire au Canada.",
+    "options": ["True", "False"],
+    "options_fr": ["Vrai", "Faux"],
+    "options_fa": ["درست", "نادرست"],
+    "correct": 0
+  },
+  {
+    "q": "What is a noble way to contribute to Canada and an excellent career choice?",
+    "q_fa": "راه نجیبانه برای مشارکت در کانادا و انتخاب شغلی عالی چیست؟",
+    "q_fr": "Quelle est une noble façon de contribuer au Canada et un excellent choix de carrière?",
+    "options": [
+      "Learn both official languages",
+      "Serve on a jury",
+      "Belong to a union",
+      "Serve in the regular Canadian Forces (navy, army, air force)"
+    ],
+    "options_fr": [
+      "Apprendre les deux langues officielles",
+      "Siéger à un jury",
+      "Appartenir à un syndicat",
+      "Servir dans les Forces canadiennes régulières (marine, armée, aviation)"
+    ],
+    "options_fa": ["یادگیری هر دو زبان رسمی", "خدمت در هیئت منصفه", "عضویت در اتحادیه", "خدمت در نیروهای مسلح کانادا (دریایی، زمینی، هوایی)"],
+    "correct": 3
+  },
+  {
+    "q": "The rights guaranteed in the Canadian Charter will not adversely affect any treaty or other rights or freedoms of Aboriginal peoples.",
+    "q_fa": "حقوق تضمین‌شده در منشور کانادا بر معاهدات یا سایر حقوق یا آزادی‌های مردم بومی تأثیر منفی نخواهد گذاشت.",
+    "q_fr": "Les droits garantis par la Charte canadienne ne porteront pas atteinte aux traités ou autres droits ou libertés des peuples autochtones.",
+    "options": ["True", "False"],
+    "options_fr": ["Vrai", "Faux"],
+    "options_fa": ["درست", "نادرست"],
+    "correct": 0
+  },
+  {
+    "q": "In Canada, what does \"equality of men and women\" mean?",
+    "q_fa": "در کانادا «برابری زن و مرد» به چه معناست؟",
+    "q_fr": "Au Canada, que signifie « l'égalité des hommes et des femmes »?",
+    "options": [
+      "Men and women can both perform housework",
+      "Men and women are equal under the law",
+      "Men and women must both drive a vehicle",
+      "Women must earn more money"
+    ],
+    "options_fr": [
+      "Les hommes et les femmes peuvent faire le ménage",
+      "Les hommes et les femmes sont égaux devant la loi",
+      "Les hommes et les femmes doivent conduire",
+      "Les femmes doivent gagner plus"
+    ],
+    "options_fa": ["زن و مرد هر دو می‌توانند کار خانه انجام دهند", "زن و مرد در برابر قانون برابرند", "زن و مرد هر دو باید رانندگی کنند", "زنان باید درآمد بیشتری داشته باشند"],
+    "correct": 1
+  },
+  {
+    "q": "The right to apply for a passport is included in:",
+    "q_fa": "حق درخواست گذرنامه در کدام مورد گنجانده شده است؟",
+    "q_fr": "Le droit de demander un passeport est inclus dans :",
+    "options": [
+      "The Confederation Act",
+      "Multiculturalism",
+      "Mobility Rights",
+      "Official Language Act"
+    ],
+    "options_fr": [
+      "L'Acte de la Confédération",
+      "Multiculturalisme",
+      "Droits à la mobilité",
+      "Loi sur les langues officielles"
+    ],
+    "options_fa": ["قانون کنفدراسیون", "چندفرهنگی", "حقوق جابجایی", "قانون زبان رسمی"],
+    "correct": 2
+  },
+  {
+    "q": "Which part of the Constitution summarizes fundamental freedoms while also setting out additional rights?",
+    "q_fa": "کدام بخش قانون اساسی آزادی‌های بنیادی را خلاصه و حقوق اضافی را مقرر می‌کند؟",
+    "q_fr": "Quelle partie de la Constitution résume les libertés fondamentales tout en énonçant des droits supplémentaires?",
+    "options": [
+      "The Canadian Charter of Rights and Freedoms",
+      "The Canadian Charter of Rights",
+      "The Canadian Charter of Freedoms",
+      "The British Charter of Rights and Freedoms"
+    ],
+    "options_fr": [
+      "La Charte canadienne des droits et libertés",
+      "La Charte canadienne des droits",
+      "La Charte canadienne des libertés",
+      "La Charte britannique des droits et libertés"
+    ],
+    "options_fa": ["منشور کانادایی حقوق و آزادی‌ها", "منشور کانادایی حقوق", "منشور کانادایی آزادی‌ها", "منشور بریتانیایی حقوق و آزادی‌ها"],
+    "correct": 0
+  },
+  {
+    "q": "In Canada, how are individuals and governments regulated?",
+    "q_fa": "در کانادا افراد و دولت‌ها چگونه تنظیم می‌شوند؟",
+    "q_fr": "Au Canada, comment les personnes et les gouvernements sont-ils régis?",
+    "options": [
+      "By arbitrary actions",
+      "By force",
+      "By laws",
+      "By traditions"
+    ],
+    "options_fr": [
+      "Par des actions arbitraires",
+      "Par la force",
+      "Par les lois",
+      "Par les traditions"
+    ],
+    "options_fa": ["با اقدامات خودسرانه", "با زور", "با قوانین", "با سنت‌ها"],
+    "correct": 2
+  },
+  {
+    "q": "What is the significance of serving on a jury?",
+    "q_fa": "اهمیت خدمت در هیئت منصفه چیست؟",
+    "q_fr": "Quelle est l'importance de siéger à un jury?",
+    "options": [
+      "You get paid very generously",
+      "It makes the justice system work as it depends on impartial juries made up of citizens",
+      "It makes the justice system work by eliminating the need of judges",
+      "Your police record is cleared afterwards"
+    ],
+    "options_fr": [
+      "Vous êtes très bien payé",
+      "Cela fait fonctionner le système judiciaire qui dépend de jurys impartiaux composés de citoyens",
+      "Cela élimine le besoin de juges",
+      "Votre casier judiciaire est effacé ensuite"
+    ],
+    "options_fa": ["حقوق زیادی می‌گیرید", "سیستم قضایی را به کار می‌اندازد چون به هیئت‌های منصفهٔ بی‌طرف متشکل از شهروندان وابسته است", "نیاز به قضات را از بین می‌برد", "سابقهٔ پلیس شما بعداً پاک می‌شود"],
+    "correct": 1
+  },
+  {
+    "q": "As a Canadian citizen, in which elections do you have a responsibility to vote?",
+    "q_fa": "به عنوان شهروند کانادا در کدام انتخابات مسئولیت رأی دادن دارید؟",
+    "q_fr": "En tant que citoyen canadien, à quelles élections avez-vous la responsabilité de voter?",
+    "options": [
+      "Federal, provincial or territorial and local elections",
+      "Federal, provincial or territorial elections only",
+      "Local elections only",
+      "Federal elections only"
+    ],
+    "options_fr": [
+      "Élections fédérales, provinciales ou territoriales et locales",
+      "Élections fédérales, provinciales ou territoriales seulement",
+      "Élections locales seulement",
+      "Élections fédérales seulement"
+    ],
+    "options_fa": ["انتخابات فدرال، استانی یا قلمروی و محلی", "فقط انتخابات فدرال، استانی یا قلمروی", "فقط انتخابات محلی", "فقط انتخابات فدرال"],
+    "correct": 0
+  }
+]

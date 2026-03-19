@@ -1,0 +1,1190 @@
+[
+  {
+    "q": "Canada is not the only constitutional monarchy in North America.",
+    "q_fa": "کانادا تنها سلطنت مشروطه در آمریکای شمالی نیست.",
+    "q_fr": "Le Canada n'est pas la seule monarchie constitutionnelle en Amérique du Nord.",
+    "options": [
+      "True",
+      "False"
+    ],
+    "options_fr": [
+      "Vrai",
+      "Faux"
+    ],
+    "correct": 1,
+    "options_fa": [
+      "درست",
+      "نادرست"
+    ]
+  },
+  {
+    "q": "What is the key phrase in Canada's original constitutional document?",
+    "q_fa": "عبارت کلیدی در سند قانون اساسی اولیهٔ کانادا چیست؟",
+    "q_fr": "Quelle est l'expression clé du document constitutionnel original du Canada?",
+    "options": [
+      "Peace, Order and Good Government",
+      "Work, Order and Good Government",
+      "Peace, Order and Mobility Rights",
+      "Government, Work and Good Order"
+    ],
+    "options_fr": [
+      "Paix, ordre et bon gouvernement",
+      "Travail, ordre et bon gouvernement",
+      "Paix, ordre et droits à la mobilité",
+      "Gouvernement, travail et bon ordre"
+    ],
+    "correct": 0,
+    "options_fa": [
+      "صلح، نظم و حکومت خوب",
+      "کار، نظم و حکومت خوب",
+      "صلح، نظم و حقوق جابجایی",
+      "حکومت، کار و نظم خوب"
+    ]
+  },
+  {
+    "q": "What is the name of Canada's original constitutional document?",
+    "q_fa": "نام سند قانون اساسی اولیهٔ کانادا چیست؟",
+    "q_fr": "Quel est le nom du document constitutionnel original du Canada?",
+    "options": [
+      "The British North America Act (1867)",
+      "The Constitutional Act",
+      "The Legislative Act",
+      "The Confederation Act"
+    ],
+    "options_fr": [
+      "L'Acte de l'Amérique du Nord britannique (1867)",
+      "L'Acte constitutionnel",
+      "L'Acte législatif",
+      "L'Acte de la Confédération"
+    ],
+    "correct": 0,
+    "options_fa": [
+      "قانون آمریکای شمال بریتانیا (۱۸۶۷)",
+      "قانون اساسی",
+      "قانون تقنینی",
+      "قانون کنفدراسیون"
+    ]
+  },
+  {
+    "q": "Name three beliefs that have enabled Canadians to build a prosperous society (from Atlantic to Pacific to the Arctic)?",
+    "q_fa": "سه باوری که به کانادایی‌ها امکان ساختن جامعه‌ای مرفه داده نام ببرید.",
+    "q_fr": "Nommez trois croyances qui ont permis aux Canadiens de bâtir une société prospère.",
+    "options": [
+      "Ordered liberty, enterprise and buying houses",
+      "Enterprise, hard work and driving cars",
+      "Hard work, fair play and ordered liberty, enterprise",
+      "Outdoor life, hard work, and fair play"
+    ],
+    "options_fr": [
+      "Liberté ordonnée, esprit d'entreprise et achat de maisons",
+      "Esprit d'entreprise, travail et voitures",
+      "Travail, fair-play, liberté ordonnée et esprit d'entreprise",
+      "Vie en plein air, travail et fair-play"
+    ],
+    "correct": 2,
+    "options_fa": [
+      "آزادی منظم، کارآفرینی و خرید خانه",
+      "کارآفرینی، کار سخت و رانندگی",
+      "کار سخت، بازی عادلانه، آزادی منظم و کارآفرینی",
+      "زندگی در فضای باز، کار سخت و بازی عادلانه"
+    ]
+  },
+  {
+    "q": "What kind of commitment do Canadian institutions uphold?",
+    "q_fa": "نهادهای کانادایی چه تعهدی را حفظ می‌کنند؟",
+    "q_fr": "Quel engagement les institutions canadiennes défendent-elles?",
+    "options": [
+      "Peace, Order, and Good Government",
+      "Work, Order and Good Government",
+      "Peace, Order, and Mobility Rights",
+      "Work, Order, and Good Government"
+    ],
+    "options_fr": [
+      "Paix, ordre et bon gouvernement",
+      "Travail, ordre et bon gouvernement",
+      "Paix, ordre et droits à la mobilité",
+      "Travail, ordre et bon gouvernement"
+    ],
+    "correct": 0,
+    "options_fa": [
+      "صلح، نظم و حکومت خوب",
+      "کار، نظم و حکومت خوب",
+      "صلح، نظم و حقوق جابجایی",
+      "کار، نظم و حکومت خوب"
+    ]
+  },
+  {
+    "q": "As what have poets and songwriters hailed Canada?",
+    "q_fa": "شاعران و ترانه‌سرایان کانادا را به چه نامی خوانده‌اند؟",
+    "q_fr": "Comment les poètes et paroliers ont-ils salué le Canada?",
+    "options": [
+      "The \\\"Great Dominion\\\"",
+      "The \\\"Land of the Brave\\\"",
+      "The \\\"Great Outdoors\\\"",
+      "\\\"Peace, Order and Good Government\\\""
+    ],
+    "options_fr": [
+      "Le « Grand Dominion »",
+      "« Le pays des braves »",
+      "« La grande nature »",
+      "« Paix, ordre et bon gouvernement »"
+    ],
+    "correct": 0,
+    "options_fa": [
+      "«قلمروی بزرگ»",
+      "«سرزمین دلیران»",
+      "«فضای باز بزرگ»",
+      "«صلح، نظم و حکومت خوب»"
+    ]
+  },
+  {
+    "q": "Who are the three founding peoples of Canada?",
+    "q_fa": "سه مردم بنیانگذار کانادا چه کسانی هستند؟",
+    "q_fr": "Qui sont les trois peuples fondateurs du Canada?",
+    "options": [
+      "Aboriginal, Métis and Inuit",
+      "British, Métis and Aboriginal",
+      "Aboriginal, French, and British",
+      "Early settlers, Métis and Inuit"
+    ],
+    "options_fr": [
+      "Autochtones, Métis et Inuit",
+      "Britanniques, Métis et Autochtones",
+      "Autochtones, Français et Britanniques",
+      "Premiers colons, Métis et Inuit"
+    ],
+    "correct": 2,
+    "options_fa": [
+      "بومیان، متیس و اینویت",
+      "بریتانیایی‌ها، متیس و بومیان",
+      "بومیان، فرانسوی و بریتانیایی",
+      "مهاجران اولیه، متیس و اینویت"
+    ]
+  },
+  {
+    "q": "From where were the ancestors of Aboriginal peoples believed to have migrated?",
+    "q_fa": "اعتقاد بر این است که اجداد مردم بومی از کجا مهاجرت کرده‌اند؟",
+    "q_fr": "D'où les ancêtres des peuples autochtones auraient-ils migré?",
+    "options": [
+      "Europe",
+      "Africa",
+      "Australia",
+      "Asia"
+    ],
+    "options_fr": [
+      "Europe",
+      "Afrique",
+      "Australie",
+      "Asie"
+    ],
+    "correct": 3,
+    "options_fa": [
+      "اروپا",
+      "آفریقا",
+      "استرالیا",
+      "آسیا"
+    ]
+  },
+  {
+    "q": "When were Aboriginal territorial rights first guaranteed?",
+    "q_fa": "حقوق سرزمینی بومیان برای اولین بار چه زمانی تضمین شد؟",
+    "q_fr": "Quand les droits territoriaux des Autochtones ont-ils été garantis pour la première fois?",
+    "options": [
+      "1759",
+      "1659",
+      "1749",
+      "1763"
+    ],
+    "options_fr": [
+      "1759",
+      "1659",
+      "1749",
+      "1763"
+    ],
+    "correct": 3,
+    "options_fa": [
+      "۱۷۵۹",
+      "۱۶۵۹",
+      "۱۷۴۹",
+      "۱۷۶۳"
+    ]
+  },
+  {
+    "q": "Aboriginal and Treaty rights are not in the Constitution.",
+    "q_fa": "حقوق بومیان و معاهدات در قانون اساسی نیست.",
+    "q_fr": "Les droits des Autochtones et les droits issus de traités ne sont pas dans la Constitution.",
+    "options": [
+      "True",
+      "False"
+    ],
+    "options_fr": [
+      "Vrai",
+      "Faux"
+    ],
+    "correct": 1,
+    "options_fa": [
+      "درست",
+      "نادرست"
+    ]
+  },
+  {
+    "q": "Who proclaimed the first territorial right guarantee for the First Nations?",
+    "q_fa": "چه کسی اولین تضمین حقوق سرزمینی برای ملل اول را اعلام کرد؟",
+    "q_fr": "Qui a proclamé la première garantie des droits territoriaux pour les Premières Nations?",
+    "options": [
+      "King George III",
+      "King George II",
+      "King George I",
+      "Queen Elizabeth"
+    ],
+    "options_fr": [
+      "Le roi George III",
+      "Le roi George II",
+      "Le roi George I",
+      "La reine Elizabeth"
+    ],
+    "correct": 0,
+    "options_fa": [
+      "پادشاه جورج سوم",
+      "پادشاه جورج دوم",
+      "پادشاه جورج اول",
+      "ملکه الیزابت"
+    ]
+  },
+  {
+    "q": "When did the federal government place many Aboriginal children in residential schools?",
+    "q_fa": "دولت فدرال چه زمانی بسیاری از کودکان بومی را در مدارس مسکونی قرار داد؟",
+    "q_fr": "Quand le gouvernement fédéral a-t-il placé de nombreux enfants autochtones dans des pensionnats?",
+    "options": [
+      "From the beginning of the 1900s until the 1980s",
+      "From the 1700s until the 1980s",
+      "From the 1800s until the 1980s",
+      "From the 1700s until the 1970s"
+    ],
+    "options_fr": [
+      "Du début des années 1900 jusqu'aux années 1980",
+      "Des années 1700 jusqu'aux années 1980",
+      "Des années 1800 jusqu'aux années 1980",
+      "Des années 1700 jusqu'aux années 1970"
+    ],
+    "correct": 0,
+    "options_fa": [
+      "از اوایل دههٔ ۱۹۰۰ تا دههٔ ۱۹۸۰",
+      "از دههٔ ۱۷۰۰ تا دههٔ ۱۹۸۰",
+      "از دههٔ ۱۸۰۰ تا دههٔ ۱۹۸۰",
+      "از دههٔ ۱۷۰۰ تا دههٔ ۱۹۷۰"
+    ]
+  },
+  {
+    "q": "To what does the term \"Indians\" refer?",
+    "q_fa": "اصطلاح «سرخپوستان» به چه اشاره دارد؟",
+    "q_fr": "À quoi le terme « Indiens » fait-il référence?",
+    "options": [
+      "Métis and Inuit",
+      "Acadians, Métis and First Nations",
+      "All aboriginal peoples who are not Inuit or Métis",
+      "Early settlers, Métis and Inuit"
+    ],
+    "options_fr": [
+      "Métis et Inuit",
+      "Acadiens, Métis et Premières Nations",
+      "Tous les peuples autochtones qui ne sont pas Inuit ou Métis",
+      "Premiers colons, Métis et Inuit"
+    ],
+    "correct": 2,
+    "options_fa": [
+      "متیس و اینویت",
+      "آکادیان، متیس و ملل اول",
+      "همهٔ مردم بومی که اینویت یا متیس نیستند",
+      "مهاجران اولیه، متیس و اینویت"
+    ]
+  },
+  {
+    "q": "When did the term \"First Nations\" begin to be used?",
+    "q_fa": "اصطلاح «ملل اول» از چه زمانی رواج یافت؟",
+    "q_fr": "Quand le terme « Premières Nations » a-t-il commencé à être utilisé?",
+    "options": [
+      "In the 1970s",
+      "In the 1960s",
+      "In the 1980s",
+      "Never"
+    ],
+    "options_fr": [
+      "Dans les années 1970",
+      "Dans les années 1960",
+      "Dans les années 1980",
+      "Jamais"
+    ],
+    "correct": 0,
+    "options_fa": [
+      "در دههٔ ۱۹۷۰",
+      "در دههٔ ۱۹۶۰",
+      "در دههٔ ۱۹۸۰",
+      "هرگز"
+    ]
+  },
+  {
+    "q": "How many First Nations people live on reserve land today?",
+    "q_fa": "امروز چند نفر از ملل اول در زمین‌های ذخیره زندگی می‌کنند؟",
+    "q_fr": "Combien de membres des Premières Nations vivent aujourd'hui en réserve?",
+    "options": [
+      "About two thirds",
+      "About half",
+      "About one third",
+      "100%"
+    ],
+    "options_fr": [
+      "Environ les deux tiers",
+      "Environ la moitié",
+      "Environ un tiers",
+      "100 %"
+    ],
+    "correct": 2,
+    "options_fa": [
+      "حدود دو سوم",
+      "حدود نیمی",
+      "حدود یک سوم",
+      "۱۰۰٪"
+    ]
+  },
+  {
+    "q": "What are the three main groups of Aboriginal peoples?",
+    "q_fa": "سه گروه اصلی مردم بومی کدامند؟",
+    "q_fr": "Quels sont les trois principaux groupes de peuples autochtones?",
+    "options": [
+      "First Nations, Métis and Inuit",
+      "Acadians, Métis and First Nations",
+      "French, English and First Nations",
+      "Early settlers, Métis and Inuit"
+    ],
+    "options_fr": [
+      "Premières Nations, Métis et Inuit",
+      "Acadiens, Métis et Premières Nations",
+      "Français, Anglais et Premières Nations",
+      "Premiers colons, Métis et Inuit"
+    ],
+    "correct": 0,
+    "options_fa": [
+      "ملل اول، متیس و اینویت",
+      "آکادیان، متیس و ملل اول",
+      "فرانسوی، انگلیسی و ملل اول",
+      "مهاجران اولیه، متیس و اینویت"
+    ]
+  },
+  {
+    "q": "Who was John Buchan?",
+    "q_fa": "جان بوکان که بود؟",
+    "q_fr": "Qui était John Buchan?",
+    "options": [
+      "A popular Governor General of Canada",
+      "A famous Canadian general",
+      "A victorious Canadian army General",
+      "One of the Fathers of Confederation"
+    ],
+    "options_fr": [
+      "Un gouverneur général populaire du Canada",
+      "Un général canadien célèbre",
+      "Un général victorieux de l'armée canadienne",
+      "Un des Pères de la Confédération"
+    ],
+    "correct": 0,
+    "options_fa": [
+      "یک فرماندار کل محبوب کانادا",
+      "یک ژنرال معروف کانادایی",
+      "یک ژنرال پیروز ارتش کانادا",
+      "یکی از پدران کنفدراسیون"
+    ]
+  },
+  {
+    "q": "What was the view on immigration of John Buchan, a popular Governor General in the 1930s?",
+    "q_fa": "نظر جان بوکان دربارهٔ مهاجرت چه بود؟",
+    "q_fr": "Quelle était la vision de John Buchan sur l'immigration?",
+    "options": [
+      "Complete cultural assimilation",
+      "No unity",
+      "No diversity",
+      "Unity in diversity"
+    ],
+    "options_fr": [
+      "Assimilation culturelle complète",
+      "Pas d'unité",
+      "Pas de diversité",
+      "Unité dans la diversité"
+    ],
+    "correct": 3,
+    "options_fa": [
+      "همگون‌سازی کامل فرهنگی",
+      "بدون وحدت",
+      "بدون تنوع",
+      "وحدت در تنوع"
+    ]
+  },
+  {
+    "q": "What does the word \"Inuit\" mean?",
+    "q_fa": "واژهٔ «اینویت» به چه معناست؟",
+    "q_fr": "Que signifie le mot « Inuit »?",
+    "options": [
+      "\\\"The people\\\"",
+      "\\\"The land\\\"",
+      "\\\"The village\\\"",
+      "\\\"The far North\\\""
+    ],
+    "options_fr": [
+      "« Le peuple »",
+      "« La terre »",
+      "« Le village »",
+      "« Le Grand Nord »"
+    ],
+    "correct": 0,
+    "options_fa": [
+      "«مردم»",
+      "«سرزمین»",
+      "«روستا»",
+      "«شمال دور»"
+    ]
+  },
+  {
+    "q": "Where do Inuit people live?",
+    "q_fa": "مردم اینویت کجا زندگی می‌کنند؟",
+    "q_fr": "Où vivent les Inuit?",
+    "options": [
+      "In scattered communities across the Arctic",
+      "In small towns across Manitoba",
+      "Across the Yukon",
+      "In reserve land across the Northwest Territories"
+    ],
+    "options_fr": [
+      "Dans des communautés dispersées dans l'Arctique",
+      "Dans de petites villes au Manitoba",
+      "Au Yukon",
+      "En réserve dans les Territoires du Nord-Ouest"
+    ],
+    "correct": 0,
+    "options_fa": [
+      "در جوامع پراکنده در سراسر قطب شمال",
+      "در شهرهای کوچک در مانیتوبا",
+      "در یوکان",
+      "در زمین ذخیره در قلمروهای شمال غرب"
+    ]
+  },
+  {
+    "q": "Who are the Métis?",
+    "q_fa": "متیس چه کسانی هستند؟",
+    "q_fr": "Qui sont les Métis?",
+    "options": [
+      "A distinct people of mixed Aboriginal and European ancestry",
+      "First Nations",
+      "Acadians",
+      "Inuit"
+    ],
+    "options_fr": [
+      "Un peuple distinct d'ascendance mixte autochtone et européenne",
+      "Premières Nations",
+      "Acadiens",
+      "Inuit"
+    ],
+    "correct": 0,
+    "options_fa": [
+      "مردمی متمایز با تبار مختلط بومی و اروپایی",
+      "ملل اول",
+      "آکادیان",
+      "اینویت"
+    ]
+  },
+  {
+    "q": "Where does the majority of the Métis live?",
+    "q_fa": "اکثریت متیس کجا زندگی می‌کنند؟",
+    "q_fr": "Où vit la majorité des Métis?",
+    "options": [
+      "Atlantic provinces",
+      "Prairie provinces",
+      "Western provinces",
+      "Northern provinces"
+    ],
+    "options_fr": [
+      "Provinces de l'Atlantique",
+      "Provinces des Prairies",
+      "Provinces de l'Ouest",
+      "Provinces du Nord"
+    ],
+    "correct": 1,
+    "options_fa": [
+      "استان‌های آتلانتیک",
+      "استان‌های پریری",
+      "استان‌های غربی",
+      "استان‌های شمالی"
+    ]
+  },
+  {
+    "q": "What is the speaking background of the Métis population?",
+    "q_fa": "پیشینهٔ زبانی جمعیت متیس چیست؟",
+    "q_fr": "Quel est le contexte linguistique de la population métisse?",
+    "options": [
+      "French",
+      "English",
+      "Both French and English (they come from both French and English-speaking background)",
+      "Acadian"
+    ],
+    "options_fr": [
+      "Français",
+      "Anglais",
+      "Français et anglais (contexte francophone et anglophone)",
+      "Acadien"
+    ],
+    "correct": 2,
+    "options_fa": [
+      "فرانسوی",
+      "انگلیسی",
+      "هر دو فرانسوی و انگلیسی (پیشینهٔ فرانسه‌زبان و انگلیسی‌زبان)",
+      "آکادی"
+    ]
+  },
+  {
+    "q": "What is the name of the Métis dialect?",
+    "q_fa": "نام گویش متیس چیست؟",
+    "q_fr": "Quel est le nom du dialecte métis?",
+    "options": [
+      "Acadian",
+      "Michif",
+      "Frenglish",
+      "Inuit"
+    ],
+    "options_fr": [
+      "Acadien",
+      "Michif",
+      "Frenglais",
+      "Inuit"
+    ],
+    "correct": 1,
+    "options_fa": [
+      "آکادی",
+      "میچیف",
+      "فرانگلیش",
+      "اینویت"
+    ]
+  },
+  {
+    "q": "Which group of Aboriginal peoples has the largest population in Canada?",
+    "q_fa": "کدام گروه از مردم بومی بیشترین جمعیت را در کانادا دارد؟",
+    "q_fr": "Quel groupe de peuples autochtones a la plus grande population au Canada?",
+    "options": [
+      "Inuit",
+      "Métis",
+      "First Nations (65%)",
+      "Acadians"
+    ],
+    "options_fr": [
+      "Inuit",
+      "Métis",
+      "Premières Nations (65 %)",
+      "Acadiens"
+    ],
+    "correct": 2,
+    "options_fa": [
+      "اینویت",
+      "متیس",
+      "ملل اول (۶۵٪)",
+      "آکادیان"
+    ]
+  },
+  {
+    "q": "What are Canada's two official languages?",
+    "q_fa": "دو زبان رسمی کانادا کدامند؟",
+    "q_fr": "Quelles sont les deux langues officielles du Canada?",
+    "options": [
+      "English and First Nations",
+      "English and French",
+      "French and British",
+      "First Nations and French"
+    ],
+    "options_fr": [
+      "Anglais et Premières Nations",
+      "Anglais et français",
+      "Français et britannique",
+      "Premières Nations et français"
+    ],
+    "correct": 1,
+    "options_fa": [
+      "انگلیسی و ملل اول",
+      "انگلیسی و فرانسه",
+      "فرانسه و بریتانیایی",
+      "ملل اول و فرانسه"
+    ]
+  },
+  {
+    "q": "The federal government is required by law to provide services throughout Canada in:",
+    "q_fa": "دولت فدرال طبق قانون موظف است در سراسر کانادا خدمات را به چه زبانی ارائه دهد؟",
+    "q_fr": "Le gouvernement fédéral est tenu par la loi de fournir des services dans tout le Canada en :",
+    "options": [
+      "English and French",
+      "Chinese and English",
+      "English only",
+      "English, French and Chinese"
+    ],
+    "options_fr": [
+      "Anglais et français",
+      "Chinois et anglais",
+      "Anglais seulement",
+      "Anglais, français et chinois"
+    ],
+    "correct": 0,
+    "options_fa": [
+      "انگلیسی و فرانسه",
+      "چینی و انگلیسی",
+      "فقط انگلیسی",
+      "انگلیسی، فرانسه و چینی"
+    ]
+  },
+  {
+    "q": "Who are Anglophones?",
+    "q_fa": "آنگلوفون‌ها چه کسانی هستند؟",
+    "q_fr": "Qui sont les Anglophones?",
+    "options": [
+      "People who speak English as a first language",
+      "People who speak French as a first language",
+      "Aboriginal people who speak English as a first language",
+      "British people"
+    ],
+    "options_fr": [
+      "Personnes dont la première langue est l'anglais",
+      "Personnes dont la première langue est le français",
+      "Autochtones dont la première langue est l'anglais",
+      "Britanniques"
+    ],
+    "correct": 0,
+    "options_fa": [
+      "کسانی که انگلیسی زبان اولشان است",
+      "کسانی که فرانسه زبان اولشان است",
+      "مردم بومی که انگلیسی زبان اولشان است",
+      "بریتانیایی‌ها"
+    ]
+  },
+  {
+    "q": "Who are Francophones?",
+    "q_fa": "فرانکوفون‌ها چه کسانی هستند؟",
+    "q_fr": "Qui sont les Francophones?",
+    "options": [
+      "Aboriginal people who speak French as a first language",
+      "People who speak English as a first language",
+      "French people",
+      "People who speak French as a first language"
+    ],
+    "options_fr": [
+      "Autochtones dont la première langue est le français",
+      "Personnes dont la première langue est l'anglais",
+      "Français",
+      "Personnes dont la première langue est le français"
+    ],
+    "correct": 3,
+    "options_fa": [
+      "مردم بومی که فرانسه زبان اولشان است",
+      "کسانی که انگلیسی زبان اولشان است",
+      "فرانسوی‌ها",
+      "کسانی که فرانسه زبان اولشان است"
+    ]
+  },
+  {
+    "q": "How many Anglophones are there in Canada today?",
+    "q_fa": "امروز چند آنگلوفون در کانادا هست؟",
+    "q_fr": "Combien y a-t-il d'Anglophones au Canada aujourd'hui?",
+    "options": [
+      "18 million",
+      "50 million",
+      "10 million",
+      "5 million"
+    ],
+    "options_fr": [
+      "18 millions",
+      "50 millions",
+      "10 millions",
+      "5 millions"
+    ],
+    "correct": 0,
+    "options_fa": [
+      "۱۸ میلیون",
+      "۵۰ میلیون",
+      "۱۰ میلیون",
+      "۵ میلیون"
+    ]
+  },
+  {
+    "q": "How many Francophones are there in Canada today?",
+    "q_fa": "امروز چند فرانکوفون در کانادا هست؟",
+    "q_fr": "Combien y a-t-il de Francophones au Canada aujourd'hui?",
+    "options": [
+      "10 million",
+      "5 million",
+      "7 million",
+      "50 million"
+    ],
+    "options_fr": [
+      "10 millions",
+      "5 millions",
+      "7 millions",
+      "50 millions"
+    ],
+    "correct": 2,
+    "options_fa": [
+      "۱۰ میلیون",
+      "۵ میلیون",
+      "۷ میلیون",
+      "۵۰ میلیون"
+    ]
+  },
+  {
+    "q": "In which province does the majority of Francophones live?",
+    "q_fa": "اکثریت فرانکوفون‌ها در کدام استان زندگی می‌کنند؟",
+    "q_fr": "Dans quelle province vit la majorité des Francophones?",
+    "options": [
+      "Alberta",
+      "New Brunswick",
+      "Manitoba",
+      "Quebec"
+    ],
+    "options_fr": [
+      "Alberta",
+      "Nouveau-Brunswick",
+      "Manitoba",
+      "Québec"
+    ],
+    "correct": 3,
+    "options_fa": [
+      "آلبرتا",
+      "نیوبرانزویک",
+      "مانیتوبا",
+      "کبک"
+    ]
+  },
+  {
+    "q": "Which province is the only official bilingual province?",
+    "q_fa": "کدام استان تنها استان دوزبانهٔ رسمی است؟",
+    "q_fr": "Quelle province est la seule province officiellement bilingue?",
+    "options": [
+      "Alberta",
+      "New Brunswick",
+      "Manitoba",
+      "Quebec"
+    ],
+    "options_fr": [
+      "Alberta",
+      "Nouveau-Brunswick",
+      "Manitoba",
+      "Québec"
+    ],
+    "correct": 1,
+    "options_fa": [
+      "آلبرتا",
+      "نیوبرانزویک",
+      "مانیتوبا",
+      "کبک"
+    ]
+  },
+  {
+    "q": "Acadians are the descendants of what groups?",
+    "q_fa": "آکادیان‌ها از نسل کدام گروه‌ها هستند؟",
+    "q_fr": "Les Acadiens sont les descendants de quels groupes?",
+    "options": [
+      "Métis and Inuits",
+      "French colonists who began settling in what are now the Maritime provinces in 1604",
+      "First Nations who began settling in the Prairie provinces in 1600s",
+      "British colonists who began settling in the Maritime provinces in 1604"
+    ],
+    "options_fr": [
+      "Métis et Inuit",
+      "Colons français qui ont commencé à s'installer dans les provinces maritimes en 1604",
+      "Premières Nations dans les Prairies dans les années 1600",
+      "Colons britanniques dans les provinces maritimes en 1604"
+    ],
+    "correct": 1,
+    "options_fa": [
+      "متیس و اینویت",
+      "مهاجران فرانسوی که از ۱۶۰۴ در استان‌های دریایی امروزی ساکن شدند",
+      "ملل اول که در دههٔ ۱۶۰۰ در پریری ساکن شدند",
+      "مهاجران بریتانیایی که از ۱۶۰۴ در استان‌های دریایی ساکن شدند"
+    ]
+  },
+  {
+    "q": "What was the \"Great Upheaval\"?",
+    "q_fa": "«بحران بزرگ» چه بود؟",
+    "q_fr": "Qu'est-ce que le « Grand Dérangement »?",
+    "options": [
+      "The deportation of more than two-third of Acadians from their homeland between 1755 and 1763",
+      "The deportation of more than two-third of Aboriginal from their homeland between 1755 and 1763",
+      "The deportation of more than two-third of Inuit from their homeland between 1755 and 1763",
+      "The great earthquake that ravaged Canada's East Coast during the 18th century"
+    ],
+    "options_fr": [
+      "La déportation de plus des deux tiers des Acadiens de leur patrie entre 1755 et 1763",
+      "La déportation de plus des deux tiers des Autochtones entre 1755 et 1763",
+      "La déportation de plus des deux tiers des Inuit entre 1755 et 1763",
+      "Le grand séisme qui a dévasté la côte est au 18e siècle"
+    ],
+    "correct": 0,
+    "options_fa": [
+      "تبعید بیش از دو سوم آکادیان از میهنشان بین ۱۷۵۵ و ۱۷۶۳",
+      "تبعید بیش از دو سوم بومیان بین ۱۷۵۵ و ۱۷۶۳",
+      "تبعید بیش از دو سوم اینویت بین ۱۷۵۵ و ۱۷۶۳",
+      "زلزلهٔ بزرگی که در قرن ۱۸ ساحل شرق کانادا را ویران کرد"
+    ]
+  },
+  {
+    "q": "What are Quebecers?",
+    "q_fa": "کبکی‌ها چه کسانی هستند؟",
+    "q_fr": "Qui sont les Québécois?",
+    "options": [
+      "The Acadians",
+      "The francophones",
+      "The French-speaking Aboriginals",
+      "The people of Quebec"
+    ],
+    "options_fr": [
+      "Les Acadiens",
+      "Les francophones",
+      "Les Autochtones francophones",
+      "Les habitants du Québec"
+    ],
+    "correct": 3,
+    "options_fa": [
+      "آکادیان",
+      "فرانکوفون‌ها",
+      "بومیان فرانسه‌زبان",
+      "مردم کبک"
+    ]
+  },
+  {
+    "q": "Quebecers are the descendants of what groups?",
+    "q_fa": "کبکی‌ها از نسل کدام گروه‌ها هستند؟",
+    "q_fr": "Les Québécois sont les descendants de quels groupes?",
+    "options": [
+      "British colonists who began settling in the 1600s in the Maritime provinces",
+      "Métis and Inuit",
+      "French settlers from the 1600s and 1700s",
+      "Acadians"
+    ],
+    "options_fr": [
+      "Colons britanniques dans les provinces maritimes dans les années 1600",
+      "Métis et Inuit",
+      "Colons français des 17e et 18e siècles",
+      "Acadiens"
+    ],
+    "correct": 2,
+    "options_fa": [
+      "مهاجران بریتانیایی که در دههٔ ۱۶۰۰ در استان‌های دریایی ساکن شدند",
+      "متیس و اینویت",
+      "مهاجران فرانسوی در قرن ۱۷ و ۱۸",
+      "آکادیان"
+    ]
+  },
+  {
+    "q": "Who recognized in 2006 that the Quebecois form a nation within a united Canada?",
+    "q_fa": "چه کسی در ۲۰۰۶ به رسمیت شناخت که کبکی‌ها ملتی در یک کانادای متحد هستند؟",
+    "q_fr": "Qui a reconnu en 2006 que les Québécois forment une nation dans un Canada uni?",
+    "options": [
+      "The Prime Minister",
+      "The House of Commons",
+      "The Senate",
+      "The Cabinet Ministers"
+    ],
+    "options_fr": [
+      "Le Premier ministre",
+      "La Chambre des communes",
+      "Le Sénat",
+      "Les ministres du Cabinet"
+    ],
+    "correct": 1,
+    "options_fa": [
+      "نخست‌وزیر",
+      "مجلس عوام",
+      "سنا",
+      "وزیران کابینه"
+    ]
+  },
+  {
+    "q": "When did the House of Commons recognize that the Quebecois form a nation within a united Canada?",
+    "q_fa": "مجلس عوام چه زمانی به رسمیت شناخت که کبکی‌ها ملتی در یک کانادای متحد هستند؟",
+    "q_fr": "Quand la Chambre des communes a-t-elle reconnu que les Québécois forment une nation dans un Canada uni?",
+    "options": [
+      "2006",
+      "2001",
+      "1986",
+      "1972"
+    ],
+    "options_fr": [
+      "2006",
+      "2001",
+      "1986",
+      "1972"
+    ],
+    "correct": 0,
+    "options_fa": [
+      "۲۰۰۶",
+      "۲۰۰۱",
+      "۱۹۸۶",
+      "۱۹۷۲"
+    ]
+  },
+  {
+    "q": "In becoming Canadian, which principles are newcomers expected to embrace?",
+    "q_fa": "در تبدیل شدن به کانادایی، از تازه‌واردان انتظار می‌رود کدام اصول را بپذیرند؟",
+    "q_fr": "En devenant Canadiens, quels principes les nouveaux arrivants sont-ils censés adopter?",
+    "options": [
+      "Democratic (such as the rule of law)",
+      "Libertarian",
+      "Liberalist",
+      "Capitalist"
+    ],
+    "options_fr": [
+      "Démocratiques (comme la primauté du droit)",
+      "Libertarien",
+      "Libéral",
+      "Capitaliste"
+    ],
+    "correct": 0,
+    "options_fa": [
+      "دموکراتیک (مثل حاکمیت قانون)",
+      "لیبرترین",
+      "لیبرال",
+      "سرمایه‌دار"
+    ]
+  },
+  {
+    "q": "Who were the English-speaking settlers?",
+    "q_fa": "مهاجران انگلیسی‌زبان چه کسانی بودند؟",
+    "q_fr": "Qui étaient les colons anglophones?",
+    "options": [
+      "English, Welsh, Scottish and Métis",
+      "Australians and British",
+      "English, Irish and French",
+      "English, Welsh, Scottish and Irish"
+    ],
+    "options_fr": [
+      "Anglais, Gallois, Écossais et Métis",
+      "Australiens et Britanniques",
+      "Anglais, Irlandais et Français",
+      "Anglais, Gallois, Écossais et Irlandais"
+    ],
+    "correct": 3,
+    "options_fa": [
+      "انگلیسی، ولزی، اسکاتلندی و متیس",
+      "استرالیایی و بریتانیایی",
+      "انگلیسی، ایرلندی و فرانسوی",
+      "انگلیسی، ولزی، اسکاتلندی و ایرلندی"
+    ]
+  },
+  {
+    "q": "Who are generally referred to as \"English Canadians\"?",
+    "q_fa": "به «انگلیسی-کانادایی‌ها» معمولاً چه کسانی گفته می‌شود؟",
+    "q_fr": "Qui appelle-t-on généralement « Canadiens anglais »?",
+    "options": [
+      "The English-speaking Aboriginals",
+      "The Anglophones",
+      "The British",
+      "The English"
+    ],
+    "options_fr": [
+      "Les Autochtones anglophones",
+      "Les Anglophones",
+      "Les Britanniques",
+      "Les Anglais"
+    ],
+    "correct": 1,
+    "options_fa": [
+      "بومیان انگلیسی‌زبان",
+      "آنگلوفون‌ها",
+      "بریتانیایی‌ها",
+      "انگلیسی‌ها"
+    ]
+  },
+  {
+    "q": "Since the 1800s, where were the majority of Canadians born?",
+    "q_fa": "از قرن ۱۹ به بعد اکثر کانادایی‌ها کجا به دنیا آمده‌اند؟",
+    "q_fr": "Depuis les années 1800, où sont nés la majorité des Canadiens?",
+    "options": [
+      "China",
+      "India",
+      "Canada",
+      "England"
+    ],
+    "options_fr": [
+      "Chine",
+      "Inde",
+      "Canada",
+      "Angleterre"
+    ],
+    "correct": 2,
+    "options_fa": [
+      "چین",
+      "هند",
+      "کانادا",
+      "انگلستان"
+    ]
+  },
+  {
+    "q": "Regarding diversity, as what is Canada often referred?",
+    "q_fa": "در مورد تنوع، کانادا اغلب به چه نامی خوانده می‌شود؟",
+    "q_fr": "En matière de diversité, comment appelle-t-on souvent le Canada?",
+    "options": [
+      "The land of the strong and free",
+      "The Great Dominion",
+      "A land of immigrants (because in the past 200 years, millions of newcomers have helped to build and defend our way of life)",
+      "The Great Outdoors"
+    ],
+    "options_fr": [
+      "Le pays des forts et des libres",
+      "Le Grand Dominion",
+      "Un pays d'immigrants (car depuis 200 ans, des millions de nouveaux venus ont aidé à bâtir et défendre notre mode de vie)",
+      "La grande nature"
+    ],
+    "correct": 2,
+    "options_fa": [
+      "سرزمین قوی و آزاد",
+      "قلمروی بزرگ",
+      "سرزمین مهاجران (چون در ۲۰۰ سال گذشته میلیون‌ها تازه‌وارد به ساختن و دفاع از شیوهٔ زندگی ما کمک کرده‌اند)",
+      "فضای باز بزرگ"
+    ]
+  },
+  {
+    "q": "Since the 1970s, from where do most immigrants come?",
+    "q_fa": "از دههٔ ۱۹۷۰ به بعد بیشتر مهاجران از کجا آمده‌اند؟",
+    "q_fr": "Depuis les années 1970, d'où viennent la plupart des immigrants?",
+    "options": [
+      "Asia",
+      "Europe",
+      "South America",
+      "Africa"
+    ],
+    "options_fr": [
+      "Asie",
+      "Europe",
+      "Amérique du Sud",
+      "Afrique"
+    ],
+    "correct": 0,
+    "options_fa": [
+      "آسیا",
+      "اروپا",
+      "آمریکای جنوبی",
+      "آفریقا"
+    ]
+  },
+  {
+    "q": "After English, what is the second most-spoken non-official language in Canadian homes?",
+    "q_fa": "بعد از انگلیسی، دومین زبان غیررسمی که در خانه‌های کانادایی صحبت می‌شود چیست؟",
+    "q_fr": "Après l'anglais, quelle est la deuxième langue non officielle la plus parlée dans les foyers canadiens?",
+    "options": [
+      "Punjabi",
+      "Chinese",
+      "French",
+      "Spanish"
+    ],
+    "options_fr": [
+      "Pendjabi",
+      "Chinois",
+      "Français",
+      "Espagnol"
+    ],
+    "correct": 1,
+    "options_fa": [
+      "پنجابی",
+      "چینی",
+      "فرانسه",
+      "اسپانیایی"
+    ]
+  },
+  {
+    "q": "To which religious affiliation do the great majority of Canadians identify?",
+    "q_fa": "اکثریت بزرگ کانادایی‌ها به کدام وابستگی مذهبی تعلق دارند؟",
+    "q_fr": "À quelle affiliation religieuse la grande majorité des Canadiens s'identifient-ils?",
+    "options": [
+      "Christian",
+      "Muslim",
+      "Jewish",
+      "Hinduism"
+    ],
+    "options_fr": [
+      "Chrétien",
+      "Musulman",
+      "Juif",
+      "Hindouisme"
+    ],
+    "correct": 0,
+    "options_fa": [
+      "مسیحی",
+      "مسلمان",
+      "یهودی",
+      "هندو"
+    ]
+  },
+  {
+    "q": "Who is Marjorie Turner-Bailey?",
+    "q_fa": "Marjorie Turner-Bailey که بود؟",
+    "q_fr": "Qui est Marjorie Turner-Bailey?",
+    "options": [
+      "An Olympian and descendant of black Loyalists",
+      "A famous Canadian settler",
+      "The first woman to become Prime Minister",
+      "The first Canadian female athlete"
+    ],
+    "options_fr": [
+      "Une olympienne et descendante de Loyalistes noirs",
+      "Une colonisatrice canadienne célèbre",
+      "La première femme à devenir Premier ministre",
+      "La première athlète féminine canadienne"
+    ],
+    "correct": 0,
+    "options_fa": [
+      "المپیانی و از نوادگان لویالیست‌های سیاه",
+      "مهاجر معروف کانادایی",
+      "اولین زن نخست‌وزیر",
+      "اولین ورزشکار زن کانادایی"
+    ]
+  },
+  {
+    "q": "In Canada, gays and lesbians enjoy the full protection of and equal treatment under the law, including access to civil marriage.",
+    "q_fa": "در کانادا همجنسگرایان از حمایت کامل و رفتار برابر تحت قانون از جمله ازدواج مدنی برخوردارند.",
+    "q_fr": "Au Canada, les gais et lesbiennes jouissent d'une protection complète et d'un traitement égal en vertu de la loi, y compris le mariage civil.",
+    "options": [
+      "True",
+      "False",
+      "Only in some provinces",
+      "Only since 2020"
+    ],
+    "options_fr": [
+      "Vrai",
+      "Faux",
+      "Seulement dans certaines provinces",
+      "Seulement depuis 2020"
+    ],
+    "correct": 0,
+    "options_fa": [
+      "درست",
+      "نادرست",
+      "فقط در برخی استان‌ها",
+      "فقط از ۲۰۲۰"
+    ]
+  },
+  {
+    "q": "Which of the following statements about residential schools is false?",
+    "q_fa": "کدام عبارت دربارهٔ مدارس مسکونی نادرست است؟",
+    "q_fr": "Laquelle des affirmations suivantes sur les pensionnats est fausse?",
+    "options": [
+      "Aboriginal people demanded to be placed in residential schools",
+      "The schools were poorly funded and inflicted hardship on the students",
+      "Aboriginal language and cultural practices were mostly prohibited",
+      "The federal government placed many Aboriginal children in residential schools to educate and assimilate them into mainstream Canadian culture"
+    ],
+    "options_fr": [
+      "Les Autochtones ont demandé à être placés dans des pensionnats",
+      "Les écoles étaient sous-financées et ont infligé des épreuves aux élèves",
+      "Les langues et pratiques culturelles autochtones étaient pour la plupart interdites",
+      "Le gouvernement fédéral a placé de nombreux enfants autochtones dans des pensionnats pour les éduquer et les assimiler"
+    ],
+    "correct": 0,
+    "options_fa": [
+      "بومیان خواستار قرار گرفتن در مدارس مسکونی بودند",
+      "مدارس کم‌بودجه بودند و به دانش‌آموزان سختی تحمیل کردند",
+      "زبان و اعمال فرهنگی بومی عمدتاً ممنوع بود",
+      "دولت فدرال بسیاری از کودکان بومی را برای آموزش و همگون‌سازی در فرهنگ غالب کانادا در مدارس مسکونی قرار داد"
+    ]
+  }
+]

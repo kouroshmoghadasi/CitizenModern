@@ -350,6 +350,8 @@ def book_summary():
 _cache_414 = None
 _cache_571 = None
 _cache_introduction = None
+_cache_chapter1 = None
+_cache_chapter2 = None
 
 
 def _load_414_questions():
@@ -583,6 +585,68 @@ def _load_introduction_questions():
     return _cache_introduction
 
 
+def _load_chapter1_questions():
+    """Load Chapter 1 (Rights and Responsibilities) questions once and cache. options_fa from JSON if present, else 571/414 FA map."""
+    global _cache_chapter1
+    if _cache_chapter1 is not None:
+        return _cache_chapter1
+    base = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static')
+    path = os.path.join(base, 'chapter1_questions.json')
+    try:
+        if os.path.isfile(path):
+            with open(path, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+            en_to_fa = _build_en_to_fa_option_map()
+            for q in data:
+                q.setdefault('q_fa', q.get('q', ''))
+                q.setdefault('q_fr', q.get('q', ''))
+                opts = q.get('options', [])
+                q.setdefault('options_fr', opts)
+                q['options_en'] = opts
+                opts_fa = q.get('options_fa')
+                if opts_fa and len(opts_fa) == len(opts):
+                    q['options_fa'] = opts_fa
+                else:
+                    q['options_fa'] = [_fa_lookup(en_to_fa, e) for e in opts]
+            _cache_chapter1 = data
+            return _cache_chapter1
+    except Exception:
+        pass
+    _cache_chapter1 = []
+    return _cache_chapter1
+
+
+def _load_chapter2_questions():
+    """Load Chapter 2 (Who We Are) questions once and cache. options_fa from JSON if present, else FA map."""
+    global _cache_chapter2
+    if _cache_chapter2 is not None:
+        return _cache_chapter2
+    base = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static')
+    path = os.path.join(base, 'chapter2_questions.json')
+    try:
+        if os.path.isfile(path):
+            with open(path, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+            en_to_fa = _build_en_to_fa_option_map()
+            for q in data:
+                q.setdefault('q_fa', q.get('q', ''))
+                q.setdefault('q_fr', q.get('q', ''))
+                opts = q.get('options', [])
+                q.setdefault('options_fr', opts)
+                q['options_en'] = opts
+                opts_fa = q.get('options_fa')
+                if opts_fa and len(opts_fa) == len(opts):
+                    q['options_fa'] = opts_fa
+                else:
+                    q['options_fa'] = [_fa_lookup(en_to_fa, e) for e in opts]
+            _cache_chapter2 = data
+            return _cache_chapter2
+    except Exception:
+        pass
+    _cache_chapter2 = []
+    return _cache_chapter2
+
+
 @app.route('/citizenship-571')
 def citizenship_571():
     """۵۷۱ سوال — سوالات ۱–۷۱ رایگان؛ از ۷۲ به بعد با اشتراک (همان نام کاربری ۴۱۴)."""
@@ -649,6 +713,74 @@ def citizenship_introduction():
         questions=questions,
         max_question_intro=n,
         max_visible_intro=max_visible_intro,
+        show_paywall=show_paywall,
+    )
+
+
+@app.route('/citizenship-rights-responsibilities')
+def citizenship_rights_responsibilities():
+    """صفحه Rights and Responsibilities of Citizenship (Chapter 1) — سوالات ۱–۲ رایگان؛ از ۳ به بعد با اشتراک. No print / No select."""
+    log_visitor('/citizenship-rights-responsibilities')
+    all_questions = _load_chapter1_questions()
+    n = len(all_questions)
+    today = _today()
+    has_access = False
+    if session.get('sub_414_expiry'):
+        try:
+            exp = session['sub_414_expiry']
+            if isinstance(exp, str):
+                exp = date.fromisoformat(exp)
+            if exp >= today:
+                has_access = True
+        except Exception:
+            pass
+    if has_access:
+        questions = all_questions
+        show_paywall = False
+        max_visible_ch1 = n
+    else:
+        questions = all_questions[:2] if n >= 2 else all_questions
+        show_paywall = True
+        max_visible_ch1 = 3
+    return render_template(
+        'citizenship_rights_responsibilities.html',
+        questions=questions,
+        max_question_ch1=n,
+        max_visible_ch1=max_visible_ch1,
+        show_paywall=show_paywall,
+    )
+
+
+@app.route('/citizenship-who-we-are')
+def citizenship_who_we_are():
+    """صفحه Who We Are (Chapter 2) — سوالات ۱–۲ رایگان؛ از ۳ به بعد با اشتراک. No print / No select."""
+    log_visitor('/citizenship-who-we-are')
+    all_questions = _load_chapter2_questions()
+    n = len(all_questions)
+    today = _today()
+    has_access = False
+    if session.get('sub_414_expiry'):
+        try:
+            exp = session['sub_414_expiry']
+            if isinstance(exp, str):
+                exp = date.fromisoformat(exp)
+            if exp >= today:
+                has_access = True
+        except Exception:
+            pass
+    if has_access:
+        questions = all_questions
+        show_paywall = False
+        max_visible_ch2 = n
+    else:
+        questions = all_questions[:2] if n >= 2 else all_questions
+        show_paywall = True
+        max_visible_ch2 = 3
+    return render_template(
+        'citizenship_who_we_are.html',
+        questions=questions,
+        max_question_ch2=n,
+        max_visible_ch2=max_visible_ch2,
         show_paywall=show_paywall,
     )
 

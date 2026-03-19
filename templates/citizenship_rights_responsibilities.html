@@ -6,9 +6,9 @@
     <link rel="icon" href="{{ url_for('static', filename='images/logo.png') }}" type="image/png">
     <link rel="apple-touch-icon" href="{{ url_for('static', filename='images/logo.png') }}">
     <meta property="og:image" content="{{ request.url_root.rstrip('/') }}{{ url_for('static', filename='images/logo.png') }}">
-    <title>Introduction | آزمون شهروندی – مقدمه</title>
-    <meta name="description" content="سوالات Introduction آزمون شهروندی کانادا با ترجمه فارسی. انگلیسی و فرانسه + فارسی.">
-    <link rel="canonical" href="{{ request.host_url.rstrip('/') }}/citizenship-introduction">
+    <title>Rights and Responsibilities of Citizenship | آزمون شهروندی – حقوق و مسئولیت‌ها</title>
+    <meta name="description" content="سوالات فصل ۱ (Rights and Responsibilities of Citizenship) آزمون شهروندی کانادا با ترجمه فارسی. انگلیسی و فرانسه + فارسی.">
+    <link rel="canonical" href="{{ request.host_url.rstrip('/') }}/citizenship-rights-responsibilities">
     {% include 'pwa_meta.html' %}
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -70,12 +70,12 @@
         .go-to-q-wrap .go-to-q-btn { padding: 8px 14px; border-radius: 8px; border: 1px solid var(--accent); background: var(--accent); color: #fff; font-weight: 600; font-size: 0.9rem; cursor: pointer; }
         .questions-one-by-one .q-card { display: none; }
         .questions-one-by-one .q-card.current { display: block; }
-        .q-nav-bar-intro { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px; margin-bottom: 20px; padding: 14px 18px; background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.06); }
-        .q-nav-bar-intro .q-nav-current { font-weight: 700; color: var(--accent); font-size: 1.05em; }
-        .q-nav-bar-intro .q-nav-btn { padding: 10px 20px; border-radius: 10px; border: 2px solid var(--accent); background: var(--accent); color: #fff; font-weight: 600; cursor: pointer; transition: opacity 0.2s; }
-        .q-nav-bar-intro .q-nav-btn:hover:not(:disabled) { opacity: 0.9; }
-        .q-nav-bar-intro .q-nav-btn:disabled { opacity: 0.5; cursor: not-allowed; }
-        .q-nav-bar-intro .q-nav-btn.btn-prev { background: var(--card-bg); color: var(--accent); }
+        .q-nav-bar-ch1 { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px; margin-bottom: 20px; padding: 14px 18px; background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.06); }
+        .q-nav-bar-ch1 .q-nav-current { font-weight: 700; color: var(--accent); font-size: 1.05em; }
+        .q-nav-bar-ch1 .q-nav-btn { padding: 10px 20px; border-radius: 10px; border: 2px solid var(--accent); background: var(--accent); color: #fff; font-weight: 600; cursor: pointer; transition: opacity 0.2s; }
+        .q-nav-bar-ch1 .q-nav-btn:hover:not(:disabled) { opacity: 0.9; }
+        .q-nav-bar-ch1 .q-nav-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+        .q-nav-bar-ch1 .q-nav-btn.btn-prev { background: var(--card-bg); color: var(--accent); }
         .page-header { background: var(--header-bg); color: var(--header-text); padding: 28px 24px; border-radius: 16px; margin-bottom: 24px; text-align: center; box-shadow: 0 8px 24px rgba(30,60,114,0.25); }
         .page-header h1 { font-size: 1.6em; margin-bottom: 8px; }
         .back-bar { margin-bottom: 12px; text-align: right; }
@@ -114,7 +114,7 @@
       document.addEventListener('contextmenu',function(e){ e.preventDefault(); return false; });
     })();
     </script>
-    <style media="print">.wrap,.q-card,.q-nav-bar-intro,.tool-bar,.page-header,.back-bar,.sub-nav{ display:none !important; } body::before{ content:"Printing not allowed."; display:block !important; padding:2em; text-align:center; font-size:18px; }</style>
+    <style media="print">.wrap,.q-card,.q-nav-bar-ch1,.tool-bar,.page-header,.back-bar,.sub-nav{ display:none !important; } body::before{ content:"Printing not allowed."; display:block !important; padding:2em; text-align:center; font-size:18px; }</style>
     <div class="wrap">
         <div class="back-bar">
             <a href="/" class="back-btn">← بازگشت به صفحه اصلی / Back to Home</a>
@@ -122,13 +122,13 @@
         <nav class="sub-nav">
             <a href="/">خانه / Home</a>
             <a href="/citizenship-571">۵۷۱ سوال شهروندی</a>
-            <a href="/citizenship-introduction" class="active">Introduction</a>
-            <a href="/citizenship-rights-responsibilities">Rights and Responsibilities</a>
+            <a href="/citizenship-introduction">Introduction</a>
+            <a href="/citizenship-rights-responsibilities" class="active">Rights and Responsibilities</a>
             <a href="/citizenship-who-we-are">Who We Are</a>
         </nav>
         <div class="page-header">
-            <h1>Introduction</h1>
-            <p>آزمون مقدماتی شهروندی کانادا – انگلیسی/فرانسه + فارسی</p>
+            <h1>Rights and Responsibilities of Citizenship</h1>
+            <p>حقوق و مسئولیت‌های شهروندی – انگلیسی/فرانسه + فارسی</p>
         </div>
         <div class="tool-bar">
             <div class="group theme-toggle-wrap">
@@ -136,9 +136,9 @@
                 <button type="button" class="lang-mode-btn" id="langModeFr" aria-pressed="false">Français + فارسی</button>
             </div>
             <div class="group go-to-q-wrap">
-                <label for="goToQuestionIntro" class="theme-label" style="margin: 0;">سوال</label>
-                <input type="number" id="goToQuestionIntro" min="1" max="{{ max_question_intro }}" placeholder="1–{{ max_question_intro }}" aria-label="Question number">
-                <button type="button" class="go-to-q-btn" id="goToQuestionBtnIntro">برو</button>
+                <label for="goToQuestionCh1" class="theme-label" style="margin: 0;">سوال</label>
+                <input type="number" id="goToQuestionCh1" min="1" max="{{ max_question_ch1 }}" placeholder="1–{{ max_question_ch1 }}" aria-label="Question number">
+                <button type="button" class="go-to-q-btn" id="goToQuestionBtnCh1">برو</button>
             </div>
             <div class="group theme-toggle-wrap">
                 <span class="theme-label">Theme:</span>
@@ -146,12 +146,12 @@
                 <button type="button" class="theme-btn theme-dark" id="themeDark" title="تاریک / Dark" aria-pressed="false">🌙</button>
             </div>
         </div>
-        <div id="q-nav-bar-intro" class="q-nav-bar-intro" data-max-question="{{ max_visible_intro }}">
-            <button type="button" class="q-nav-btn btn-prev" id="qPrevIntro" aria-label="سوال قبلی">← سوال قبلی</button>
-            <span class="q-nav-current">Question <span id="currentQNumIntro">1</span> of {{ max_question_intro }}</span>
-            <button type="button" class="q-nav-btn" id="qNextIntro" aria-label="سوال بعدی">سوال بعدی →</button>
+        <div id="q-nav-bar-ch1" class="q-nav-bar-ch1" data-max-question="{{ max_visible_ch1 }}">
+            <button type="button" class="q-nav-btn btn-prev" id="qPrevCh1" aria-label="سوال قبلی">← سوال قبلی</button>
+            <span class="q-nav-current">Question <span id="currentQNumCh1">1</span> of {{ max_question_ch1 }}</span>
+            <button type="button" class="q-nav-btn" id="qNextCh1" aria-label="سوال بعدی">سوال بعدی →</button>
         </div>
-        <div id="questions-container-intro" class="questions-one-by-one">
+        <div id="questions-container-ch1" class="questions-one-by-one">
         {% for q in questions %}
         <div class="q-card" id="q{{ loop.index }}">
             <div class="q-num">سوال {{ loop.index }} / Question {{ loop.index }}</div>
@@ -204,15 +204,15 @@
         </div>
         {% endfor %}
         {% if show_paywall %}
-        <div class="q-card paywall-as-q4" id="q4">
-            <div class="paywall-intro" style="padding: 0; margin: 0; border: none; max-width: none;">
-                <h2 style="margin-bottom: 12px; color: var(--accent);">دسترسی به سوالات ۴ تا ۲۰</h2>
-                <p style="margin-bottom: 16px;">سوالات ۱ تا ۳ رایگان است. برای مشاهده همهٔ ۲۰ سوال Introduction، همان اشتراک (کد کاربری و رمز) مربوط به ۴۱۴ سوال کافی است.</p>
+        <div class="q-card paywall-as-q3" id="q3">
+            <div class="paywall-ch1" style="padding: 0; margin: 0; border: none; max-width: none;">
+                <h2 style="margin-bottom: 12px; color: var(--accent);">دسترسی به سوالات ۳ تا {{ max_question_ch1 }}</h2>
+                <p style="margin-bottom: 16px;">سوالات ۱ تا ۲ رایگان است. برای مشاهده همهٔ {{ max_question_ch1 }} سوال Rights and Responsibilities، همان اشتراک (کد کاربری و رمز) مربوط به ۴۱۴ سوال کافی است.</p>
                 <p style="margin-bottom: 14px;"><strong>ورود (در صورت داشتن کد و رمز):</strong></p>
-                <input type="text" id="paywallIntroMobile" placeholder="کد کاربری (شماره موبایل)" style="width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid var(--border); border-radius: 10px; background: var(--card-bg); color: var(--text);">
-                <input type="password" id="paywallIntroPassword" placeholder="کلمه عبور" style="width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid var(--border); border-radius: 10px; background: var(--card-bg); color: var(--text);">
-                <p id="paywallIntroError" class="subscription-error" style="display: none; color: #c00; margin-bottom: 8px;"></p>
-                <button type="button" id="paywallIntroLoginBtn" style="padding: 12px 24px; background: var(--accent); color: #fff; border: none; border-radius: 10px; cursor: pointer; font-weight: 600;">ورود و مشاهده همه سوالات</button>
+                <input type="text" id="paywallCh1Mobile" placeholder="کد کاربری (شماره موبایل)" style="width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid var(--border); border-radius: 10px; background: var(--card-bg); color: var(--text);">
+                <input type="password" id="paywallCh1Password" placeholder="کلمه عبور" style="width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid var(--border); border-radius: 10px; background: var(--card-bg); color: var(--text);">
+                <p id="paywallCh1Error" class="subscription-error" style="display: none; color: #c00; margin-bottom: 8px;"></p>
+                <button type="button" id="paywallCh1LoginBtn" style="padding: 12px 24px; background: var(--accent); color: #fff; border: none; border-radius: 10px; cursor: pointer; font-weight: 600;">ورود و مشاهده همه سوالات</button>
             </div>
         </div>
         {% endif %}
@@ -225,7 +225,7 @@
     <script>
         (function() {
             var themeKey = 'citizenship571_theme';
-            var langModeKey = 'citizenship_intro_lang_mode';
+            var langModeKey = 'citizenship_ch1_lang_mode';
             var themeLight = document.getElementById('themeLight');
             var themeDark = document.getElementById('themeDark');
             var langModeEn = document.getElementById('langModeEn');
@@ -250,15 +250,15 @@
             if (langModeEn) langModeEn.addEventListener('click', function() { localStorage.setItem(langModeKey, 'en'); applyLangMode('en'); });
             if (langModeFr) langModeFr.addEventListener('click', function() { localStorage.setItem(langModeKey, 'fr'); applyLangMode('fr'); });
 
-            var goInput = document.getElementById('goToQuestionIntro');
-            var goBtn = document.getElementById('goToQuestionBtnIntro');
-            var container = document.getElementById('questions-container-intro');
-            var navBar = document.getElementById('q-nav-bar-intro');
-            var currentQNumEl = document.getElementById('currentQNumIntro');
-            var qPrevBtn = document.getElementById('qPrevIntro');
-            var qNextBtn = document.getElementById('qNextIntro');
+            var goInput = document.getElementById('goToQuestionCh1');
+            var goBtn = document.getElementById('goToQuestionBtnCh1');
+            var container = document.getElementById('questions-container-ch1');
+            var navBar = document.getElementById('q-nav-bar-ch1');
+            var currentQNumEl = document.getElementById('currentQNumCh1');
+            var qPrevBtn = document.getElementById('qPrevCh1');
+            var qNextBtn = document.getElementById('qNextCh1');
             var current = 1;
-            var maxQ = {{ max_question_intro }};
+            var maxQ = {{ max_question_ch1 }};
             if (navBar && navBar.getAttribute('data-max-question')) maxQ = parseInt(navBar.getAttribute('data-max-question'), 10) || maxQ;
 
             function showQ(n) {
@@ -289,12 +289,12 @@
         })();
         {% if show_paywall %}
         (function() {
-            var btn = document.getElementById('paywallIntroLoginBtn');
+            var btn = document.getElementById('paywallCh1LoginBtn');
             if (!btn) return;
             btn.addEventListener('click', function() {
-                var mobile = (document.getElementById('paywallIntroMobile').value || '').trim();
-                var password = document.getElementById('paywallIntroPassword').value || '';
-                var errEl = document.getElementById('paywallIntroError');
+                var mobile = (document.getElementById('paywallCh1Mobile').value || '').trim();
+                var password = document.getElementById('paywallCh1Password').value || '';
+                var errEl = document.getElementById('paywallCh1Error');
                 errEl.style.display = 'none';
                 errEl.textContent = '';
                 if (!mobile || !password) {
@@ -315,7 +315,7 @@
         })();
         {% endif %}
         (function() {
-            document.querySelectorAll('#questions-container-intro .q-options-mcq').forEach(function(container) {
+            document.querySelectorAll('#questions-container-ch1 .q-options-mcq').forEach(function(container) {
                 var correctIdx = parseInt(container.getAttribute('data-correct'), 10);
                 if (correctIdx < 0) return;
                 var allLists = container.querySelectorAll('.q-options-list ul');
