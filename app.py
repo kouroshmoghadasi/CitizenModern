@@ -349,6 +349,7 @@ def book_summary():
 # Cache for 414/571 questions (loaded once per process, no disk read per request)
 _cache_414 = None
 _cache_571 = None
+_cache_introduction = None
 
 
 def _load_414_questions():
@@ -551,6 +552,37 @@ def _load_571_questions():
     return _cache_571
 
 
+def _load_introduction_questions():
+    """Load Introduction (Test 103) questions once and cache in memory. options_fa from JSON if present, else 571/414 FA map."""
+    global _cache_introduction
+    if _cache_introduction is not None:
+        return _cache_introduction
+    base = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static')
+    path = os.path.join(base, 'introduction_questions.json')
+    try:
+        if os.path.isfile(path):
+            with open(path, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+            en_to_fa = _build_en_to_fa_option_map()
+            for q in data:
+                q.setdefault('q_fa', q.get('q', ''))
+                q.setdefault('q_fr', q.get('q', ''))
+                opts = q.get('options', [])
+                q.setdefault('options_fr', opts)
+                q['options_en'] = opts
+                opts_fa = q.get('options_fa')
+                if opts_fa and len(opts_fa) == len(opts):
+                    q['options_fa'] = opts_fa
+                else:
+                    q['options_fa'] = [_fa_lookup(en_to_fa, e) for e in opts]
+            _cache_introduction = data
+            return _cache_introduction
+    except Exception:
+        pass
+    _cache_introduction = []
+    return _cache_introduction
+
+
 @app.route('/citizenship-571')
 def citizenship_571():
     """۵۷۱ سوال — سوالات ۱–۷۱ رایگان؛ از ۷۲ به بعد با اشتراک (همان نام کاربری ۴۱۴)."""
@@ -585,6 +617,40 @@ def citizenship_571():
     resp.headers['Pragma'] = 'no-cache'
     resp.headers['Expires'] = '0'
     return resp
+
+
+@app.route('/citizenship-introduction')
+def citizenship_introduction():
+    """صفحه Introduction — سوالات ۱–۳ رایگان؛ از ۴ به بعد با اشتراک (همان ۴۱۴)."""
+    log_visitor('/citizenship-introduction')
+    all_questions = _load_introduction_questions()
+    n = len(all_questions)
+    today = _today()
+    has_access = False
+    if session.get('sub_414_expiry'):
+        try:
+            exp = session['sub_414_expiry']
+            if isinstance(exp, str):
+                exp = date.fromisoformat(exp)
+            if exp >= today:
+                has_access = True
+        except Exception:
+            pass
+    if has_access:
+        questions = all_questions
+        show_paywall = False
+        max_visible_intro = n
+    else:
+        questions = all_questions[:3] if n >= 3 else all_questions
+        show_paywall = True
+        max_visible_intro = 4
+    return render_template(
+        'citizenship_introduction.html',
+        questions=questions,
+        max_question_intro=n,
+        max_visible_intro=max_visible_intro,
+        show_paywall=show_paywall,
+    )
 
 
 @app.route('/discover.pdf')

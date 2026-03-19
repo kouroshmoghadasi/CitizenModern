@@ -4892,6 +4892,13 @@
                 direction: rtl;
             }
             
+            /* باکس Introduction در موبایل هم بلافاصله بعد از ۵۷۱، با همان استایل */
+            .mobile-sidebar-sections .mobile-intro-after-571 {
+                display: block !important;
+                margin-top: 4px;
+                margin-bottom: 4px;
+            }
+            
             .classifieds-promo-section.mobile-version {
                 margin-top: 10px;
                 margin-bottom: 4px;
@@ -5696,6 +5703,12 @@
                 direction: rtl;
             }
             
+            .mobile-sidebar-sections .mobile-intro-after-571 {
+                display: block !important;
+                margin-top: 4px;
+                margin-bottom: 4px;
+            }
+            
             .classifieds-promo-section.mobile-version {
                 margin-top: 10px;
                 margin-bottom: 4px;
@@ -6270,6 +6283,12 @@
                 display: block;
                 margin-bottom: 3px;
                 direction: rtl;
+            }
+            
+            .mobile-sidebar-sections .mobile-intro-after-571 {
+                display: block !important;
+                margin-top: 4px;
+                margin-bottom: 3px;
             }
             
             .donation-section.mobile-version {

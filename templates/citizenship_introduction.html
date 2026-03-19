@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{{ url_for('static', filename='images/logo.png') }}" type="image/png">
+    <link rel="apple-touch-icon" href="{{ url_for('static', filename='images/logo.png') }}">
+    <meta property="og:image" content="{{ request.url_root.rstrip('/') }}{{ url_for('static', filename='images/logo.png') }}">
+    <title>Introduction | آزمون شهروندی – مقدمه</title>
+    <meta name="description" content="سوالات Introduction آزمون شهروندی کانادا با ترجمه فارسی. انگلیسی و فرانسه + فارسی.">
+    <link rel="canonical" href="{{ request.host_url.rstrip('/') }}/citizenship-introduction">
+    {% include 'pwa_meta.html' %}
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            --card-bg: #fff;
+            --text: #1a1a1a;
+            --text-muted: #444;
+            --header-bg: linear-gradient(135deg, #1e3c72 0%, #2c5282 100%);
+            --header-text: #fff;
+            --accent: #1e3c72;
+            --accent-light: #2c5282;
+            --border: rgba(30,60,114,0.08);
+            --option-bg: #f8f9fa;
+            --option-border: #e9ecef;
+            --expl-bg: #f0f4f8;
+            --expl-bg2: #f8f9fa;
+            --section-border: #f1c40f;
+        }
+        body.theme-dark {
+            --bg: linear-gradient(135deg, #1a1d24 0%, #0f1115 100%);
+            --card-bg: #252830;
+            --text: #e8eaed;
+            --text-muted: #b0b4b8;
+            --header-bg: linear-gradient(135deg, #2d3748 0%, #1e3c72 100%);
+            --header-text: #fff;
+            --accent: #7cb3f5;
+            --accent-light: #90c5f7;
+            --border: rgba(255,255,255,0.1);
+            --option-bg: #2d323c;
+            --option-border: rgba(255,255,255,0.12);
+            --expl-bg: #2d323c;
+            --expl-bg2: #353a45;
+            --section-border: #f1c40f;
+        }
+        body {
+            font-family: Tahoma, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.7;
+            color: var(--text);
+            -webkit-user-select: none;
+            user-select: none;
+            -webkit-touch-callout: none;
+        }
+        .wrap { max-width: 900px; margin: 0 auto; }
+        .tool-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 20px; padding: 14px 18px; background: var(--card-bg); border-radius: 12px; border: 1px solid var(--border); box-shadow: 0 2px 10px rgba(0,0,0,0.06); }
+        body.theme-dark .tool-bar { box-shadow: 0 2px 10px rgba(0,0,0,0.3); }
+        .tool-bar .group { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+        .theme-toggle-wrap { display: flex; align-items: center; gap: 6px; }
+        .theme-label { font-weight: 600; color: var(--text); font-size: 0.95em; }
+        .theme-btn { width: 44px; height: 44px; border-radius: 12px; border: 2px solid var(--border); background: var(--card-bg); font-size: 1.35em; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s; }
+        .theme-btn:hover { transform: scale(1.08); box-shadow: 0 4px 12px rgba(0,0,0,0.12); }
+        .theme-btn[aria-pressed="true"] { border-color: #1e3c72; box-shadow: 0 0 0 2px rgba(30,60,114,0.35); background: linear-gradient(135deg, #e8eef5 0%, #dce4ed 100%); }
+        body.theme-dark .theme-btn[aria-pressed="true"] { border-color: #7cb3f5; box-shadow: 0 0 0 2px rgba(124,179,245,0.4); background: linear-gradient(135deg, #3d4a5c 0%, #2d3748 100%); }
+        .go-to-q-wrap { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+        .go-to-q-wrap input[type="number"] { width: 72px; padding: 8px 10px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.95rem; background: var(--card-bg); color: var(--text); }
+        .go-to-q-wrap .go-to-q-btn { padding: 8px 14px; border-radius: 8px; border: 1px solid var(--accent); background: var(--accent); color: #fff; font-weight: 600; font-size: 0.9rem; cursor: pointer; }
+        .questions-one-by-one .q-card { display: none; }
+        .questions-one-by-one .q-card.current { display: block; }
+        .q-nav-bar-intro { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px; margin-bottom: 20px; padding: 14px 18px; background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.06); }
+        .q-nav-bar-intro .q-nav-current { font-weight: 700; color: var(--accent); font-size: 1.05em; }
+        .q-nav-bar-intro .q-nav-btn { padding: 10px 20px; border-radius: 10px; border: 2px solid var(--accent); background: var(--accent); color: #fff; font-weight: 600; cursor: pointer; transition: opacity 0.2s; }
+        .q-nav-bar-intro .q-nav-btn:hover:not(:disabled) { opacity: 0.9; }
+        .q-nav-bar-intro .q-nav-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+        .q-nav-bar-intro .q-nav-btn.btn-prev { background: var(--card-bg); color: var(--accent); }
+        .page-header { background: var(--header-bg); color: var(--header-text); padding: 28px 24px; border-radius: 16px; margin-bottom: 24px; text-align: center; box-shadow: 0 8px 24px rgba(30,60,114,0.25); }
+        .page-header h1 { font-size: 1.6em; margin-bottom: 8px; }
+        .back-bar { margin-bottom: 12px; text-align: right; }
+        .back-btn { display: inline-block; padding: 10px 20px; background: var(--accent); color: #fff; text-decoration: none; border-radius: 10px; font-weight: 600; }
+        .back-btn:hover { background: var(--accent-light); }
+        .sub-nav { display: flex; flex-wrap: wrap; gap: 10px 16px; margin-bottom: 20px; padding: 12px 16px; background: var(--card-bg); border-radius: 12px; border: 1px solid var(--border); }
+        .sub-nav a { color: var(--accent); text-decoration: none; font-weight: 600; font-size: 0.95em; padding: 6px 12px; border-radius: 8px; }
+        .sub-nav a:hover { background: rgba(30,60,114,0.1); }
+        .sub-nav a.active { background: rgba(30,60,114,0.15); }
+        .q-card { background: var(--card-bg); border-radius: 14px; padding: 22px 24px; margin-bottom: 20px; box-shadow: 0 4px 16px rgba(0,0,0,0.06); border: 1px solid var(--border); }
+        .q-num { font-weight: 800; color: var(--accent); font-size: 1em; margin-bottom: 12px; }
+        .q-text-fa { font-size: 1.15em; font-weight: 700; color: var(--accent); margin-bottom: 10px; text-align: right; direction: rtl; }
+        .q-options-list { list-style: none; margin: 12px 0; }
+        .q-options-list li { padding: 10px 14px; margin: 6px 0; background: var(--option-bg); border-radius: 10px; border: 1px solid var(--option-border); direction: ltr; text-align: left; }
+        .q-options-list li.option-correct { background: #d4edda; border-color: #28a745; font-weight: 600; color: #155724; }
+        .q-options-list li.option-wrong { background: #f8d7da; border-color: #dc3545; font-weight: 600; color: #721c24; }
+        .q-options-list li.q-option-clickable { cursor: pointer; }
+        .q-options-list li.q-option-answered { cursor: default; }
+        .q-option-letter { font-weight: 700; margin-right: 8px; color: var(--accent); }
+        .block-en { direction: ltr; text-align: left; margin-bottom: 10px; padding: 10px 12px; background: rgba(30,60,114,0.06); border-radius: 10px; border-left: 3px solid var(--accent); }
+        .block-fa { direction: rtl; text-align: right; margin-bottom: 10px; padding: 10px 12px; background: rgba(241,196,15,0.12); border-radius: 10px; border-right: 3px solid #f1c40f; }
+        .block-fr { direction: ltr; text-align: left; margin-bottom: 10px; padding: 10px 12px; background: rgba(0,82,147,0.08); border-radius: 10px; border-left: 3px solid #005293; }
+        .lang-mode-btn { padding: 10px 18px; border-radius: 10px; border: 2px solid var(--border); background: var(--card-bg); color: var(--text); font-weight: 600; cursor: pointer; }
+        .lang-mode-btn[aria-pressed="true"] { border-color: var(--accent); background: linear-gradient(135deg, #e8eef5 0%, #dce4ed 100%); }
+        .q-num-badge { display: inline-flex; align-items: center; justify-content: center; min-width: 2rem; height: 1.75rem; padding: 0 0.5rem; background: linear-gradient(135deg, #1e3c72 0%, #2c5282 100%); color: #fff; border-radius: 8px; font-weight: 700; font-size: 0.9em; margin-right: 0.6rem; }
+        .block-fa .q-num-badge { margin-right: 0; margin-left: 0.6rem; }
+    </style>
+</head>
+<body>
+    <script>try{var t=localStorage.getItem('citizenship571_theme');if(t==='dark')document.body.classList.add('theme-dark');}catch(e){}</script>
+    <script>
+    (function(){
+      function block(e){ if(e.ctrlKey||e.metaKey){ var k=e.key||''; if(k==='a'||k==='A'||k==='p'||k==='P'||k==='c'||k==='C'){ e.preventDefault(); e.stopPropagation(); return false; } } }
+      document.addEventListener('keydown',block,true);
+      document.addEventListener('keypress',block,true);
+      document.addEventListener('contextmenu',function(e){ e.preventDefault(); return false; });
+    })();
+    </script>
+    <style media="print">.wrap,.q-card,.q-nav-bar-intro,.tool-bar,.page-header,.back-bar,.sub-nav{ display:none !important; } body::before{ content:"Printing not allowed."; display:block !important; padding:2em; text-align:center; font-size:18px; }</style>
+    <div class="wrap">
+        <div class="back-bar">
+            <a href="/" class="back-btn">← بازگشت به صفحه اصلی / Back to Home</a>
+        </div>
+        <nav class="sub-nav">
+            <a href="/">خانه / Home</a>
+            <a href="/citizenship-571">۵۷۱ سوال شهروندی</a>
+            <a href="/citizenship-introduction" class="active">Introduction</a>
+        </nav>
+        <div class="page-header">
+            <h1>Introduction</h1>
+            <p>آزمون مقدماتی شهروندی کانادا – انگلیسی/فرانسه + فارسی</p>
+        </div>
+        <div class="tool-bar">
+            <div class="group theme-toggle-wrap">
+                <button type="button" class="lang-mode-btn" id="langModeEn" aria-pressed="true">English + فارسی</button>
+                <button type="button" class="lang-mode-btn" id="langModeFr" aria-pressed="false">Français + فارسی</button>
+            </div>
+            <div class="group go-to-q-wrap">
+                <label for="goToQuestionIntro" class="theme-label" style="margin: 0;">سوال</label>
+                <input type="number" id="goToQuestionIntro" min="1" max="{{ max_question_intro }}" placeholder="1–{{ max_question_intro }}" aria-label="Question number">
+                <button type="button" class="go-to-q-btn" id="goToQuestionBtnIntro">برو</button>
+            </div>
+            <div class="group theme-toggle-wrap">
+                <span class="theme-label">Theme:</span>
+                <button type="button" class="theme-btn theme-light" id="themeLight" title="روشن / Light" aria-pressed="true">☀️</button>
+                <button type="button" class="theme-btn theme-dark" id="themeDark" title="تاریک / Dark" aria-pressed="false">🌙</button>
+            </div>
+        </div>
+        <div id="q-nav-bar-intro" class="q-nav-bar-intro" data-max-question="{{ max_visible_intro }}">
+            <button type="button" class="q-nav-btn btn-prev" id="qPrevIntro" aria-label="سوال قبلی">← سوال قبلی</button>
+            <span class="q-nav-current">Question <span id="currentQNumIntro">1</span> of {{ max_question_intro }}</span>
+            <button type="button" class="q-nav-btn" id="qNextIntro" aria-label="سوال بعدی">سوال بعدی →</button>
+        </div>
+        <div id="questions-container-intro" class="questions-one-by-one">
+        {% for q in questions %}
+        <div class="q-card" id="q{{ loop.index }}">
+            <div class="q-num">سوال {{ loop.index }} / Question {{ loop.index }}</div>
+            <div class="q-text-fa" style="margin-bottom: 10px;">
+                <div class="block-en lang-block-en"><span class="q-num-badge">{{ loop.index }}</span> {{ q.q|e }}</div>
+                <div class="block-fr lang-block-fr" style="display: none;"><span class="q-num-badge">{{ loop.index }}</span> {{ (q.q_fr or q.q)|e }}</div>
+                <div class="block-fa"><span class="q-num-badge">{{ loop.index }}</span> {{ (q.q_fa or '')|e }}</div>
+            </div>
+            {% if q.options_en is defined and q.options_en|length >= 2 %}
+            <div class="q-options-list q-options-mcq" style="margin-top: 14px;" data-correct="{{ q.correct if q.correct is defined else -1 }}">
+                <div class="lang-block-en">
+                    <ul class="q-options-list">
+                        {% for opt in q.options_en %}
+                        <li class="q-option-clickable" data-option-index="{{ loop.index0 }}" role="button" tabindex="0"><span class="q-option-letter">{{ ['A','B','C','D'][loop.index0] if loop.index0 < 4 else loop.index0 + 1 }}.</span> {{ opt|e }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="lang-block-fr" style="display: none;">
+                    <ul class="q-options-list">
+                        {% for opt in (q.options_fr or q.options_en) %}
+                        <li class="q-option-clickable" data-option-index="{{ loop.index0 }}" role="button" tabindex="0"><span class="q-option-letter">{{ ['A','B','C','D'][loop.index0] }}.</span> {{ opt|e }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="block-fa">
+                    <p class="q-options-fa-label" style="font-size: 0.9em; font-weight: 600; color: var(--accent); margin-bottom: 8px;">گزینه‌ها به فارسی</p>
+                    <ul class="q-options-list" style="direction: rtl; text-align: right;">
+                        {% for opt in (q.options_fa or q.options_en) %}
+                        <li class="q-option-clickable" data-option-index="{{ loop.index0 }}" style="direction: rtl; text-align: right;" role="button" tabindex="0"><span class="q-option-letter">{{ ['الف','ب','ج','د'][loop.index0] }}.</span> {{ opt|e }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            {% else %}
+            <div class="lang-block-en">
+                <ul class="q-options-list">
+                    {% for opt in (q.options or q.options_en or []) %}
+                    <li{% if loop.index0 == q.correct %} class="option-correct"{% endif %}>{{ opt|e }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="lang-block-fr" style="display: none;">
+                <ul class="q-options-list">
+                    {% for opt in (q.options_fr or q.options or q.options_en or []) %}
+                    <li{% if loop.index0 == q.correct %} class="option-correct"{% endif %}>{{ opt|e }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+        </div>
+        {% endfor %}
+        {% if show_paywall %}
+        <div class="q-card paywall-as-q4" id="q4">
+            <div class="paywall-intro" style="padding: 0; margin: 0; border: none; max-width: none;">
+                <h2 style="margin-bottom: 12px; color: var(--accent);">دسترسی به سوالات ۴ تا ۲۰</h2>
+                <p style="margin-bottom: 16px;">سوالات ۱ تا ۳ رایگان است. برای مشاهده همهٔ ۲۰ سوال Introduction، همان اشتراک (کد کاربری و رمز) مربوط به ۴۱۴ سوال کافی است.</p>
+                <p style="margin-bottom: 14px;"><strong>ورود (در صورت داشتن کد و رمز):</strong></p>
+                <input type="text" id="paywallIntroMobile" placeholder="کد کاربری (شماره موبایل)" style="width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid var(--border); border-radius: 10px; background: var(--card-bg); color: var(--text);">
+                <input type="password" id="paywallIntroPassword" placeholder="کلمه عبور" style="width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid var(--border); border-radius: 10px; background: var(--card-bg); color: var(--text);">
+                <p id="paywallIntroError" class="subscription-error" style="display: none; color: #c00; margin-bottom: 8px;"></p>
+                <button type="button" id="paywallIntroLoginBtn" style="padding: 12px 24px; background: var(--accent); color: #fff; border: none; border-radius: 10px; cursor: pointer; font-weight: 600;">ورود و مشاهده همه سوالات</button>
+            </div>
+        </div>
+        {% endif %}
+        </div>
+
+        <div class="back-bar" style="margin-top: 24px;">
+            <a href="/" class="back-btn">← بازگشت به صفحه اصلی / Back to Home</a>
+        </div>
+    </div>
+    <script>
+        (function() {
+            var themeKey = 'citizenship571_theme';
+            var langModeKey = 'citizenship_intro_lang_mode';
+            var themeLight = document.getElementById('themeLight');
+            var themeDark = document.getElementById('themeDark');
+            var langModeEn = document.getElementById('langModeEn');
+            var langModeFr = document.getElementById('langModeFr');
+            function applyTheme(val) {
+                if (val === 'dark') { document.body.classList.add('theme-dark'); if (themeLight) themeLight.setAttribute('aria-pressed', 'false'); if (themeDark) themeDark.setAttribute('aria-pressed', 'true'); }
+                else { document.body.classList.remove('theme-dark'); if (themeLight) themeLight.setAttribute('aria-pressed', 'true'); if (themeDark) themeDark.setAttribute('aria-pressed', 'false'); }
+            }
+            function applyLangMode(mode) {
+                var showEn = (mode === 'en');
+                document.querySelectorAll('.lang-block-en').forEach(function(el) { el.style.display = showEn ? '' : 'none'; });
+                document.querySelectorAll('.lang-block-fr').forEach(function(el) { el.style.display = showEn ? 'none' : ''; });
+                if (langModeEn) langModeEn.setAttribute('aria-pressed', showEn ? 'true' : 'false');
+                if (langModeFr) langModeFr.setAttribute('aria-pressed', showEn ? 'false' : 'true');
+            }
+            var savedTheme = localStorage.getItem(themeKey) || 'light';
+            var savedMode = localStorage.getItem(langModeKey) || 'en';
+            applyTheme(savedTheme);
+            applyLangMode(savedMode);
+            if (themeLight) themeLight.addEventListener('click', function() { localStorage.setItem(themeKey, 'light'); applyTheme('light'); });
+            if (themeDark) themeDark.addEventListener('click', function() { localStorage.setItem(themeKey, 'dark'); applyTheme('dark'); });
+            if (langModeEn) langModeEn.addEventListener('click', function() { localStorage.setItem(langModeKey, 'en'); applyLangMode('en'); });
+            if (langModeFr) langModeFr.addEventListener('click', function() { localStorage.setItem(langModeKey, 'fr'); applyLangMode('fr'); });
+
+            var goInput = document.getElementById('goToQuestionIntro');
+            var goBtn = document.getElementById('goToQuestionBtnIntro');
+            var container = document.getElementById('questions-container-intro');
+            var navBar = document.getElementById('q-nav-bar-intro');
+            var currentQNumEl = document.getElementById('currentQNumIntro');
+            var qPrevBtn = document.getElementById('qPrevIntro');
+            var qNextBtn = document.getElementById('qNextIntro');
+            var current = 1;
+            var maxQ = {{ max_question_intro }};
+            if (navBar && navBar.getAttribute('data-max-question')) maxQ = parseInt(navBar.getAttribute('data-max-question'), 10) || maxQ;
+
+            function showQ(n) {
+                if (n < 1) n = 1;
+                if (n > maxQ) n = maxQ;
+                current = n;
+                if (container) {
+                    container.querySelectorAll('.q-card').forEach(function(el) { el.classList.remove('current'); });
+                    var el = document.getElementById('q' + n);
+                    if (el) el.classList.add('current');
+                }
+                if (currentQNumEl) currentQNumEl.textContent = n;
+                if (qPrevBtn) qPrevBtn.disabled = n <= 1;
+                if (qNextBtn) qNextBtn.disabled = n >= maxQ;
+                if (goInput) goInput.value = n;
+            }
+            function goToQ() {
+                var val = goInput && parseInt(goInput.value, 10);
+                if (!val || val < 1) val = 1;
+                if (val > maxQ) val = maxQ;
+                showQ(val);
+            }
+            if (container) showQ(1);
+            if (qPrevBtn) qPrevBtn.addEventListener('click', function() { showQ(current - 1); });
+            if (qNextBtn) qNextBtn.addEventListener('click', function() { showQ(current + 1); });
+            if (goBtn) goBtn.addEventListener('click', goToQ);
+            if (goInput) goInput.addEventListener('keydown', function(e) { if (e.key === 'Enter') { e.preventDefault(); goToQ(); } });
+        })();
+        {% if show_paywall %}
+        (function() {
+            var btn = document.getElementById('paywallIntroLoginBtn');
+            if (!btn) return;
+            btn.addEventListener('click', function() {
+                var mobile = (document.getElementById('paywallIntroMobile').value || '').trim();
+                var password = document.getElementById('paywallIntroPassword').value || '';
+                var errEl = document.getElementById('paywallIntroError');
+                errEl.style.display = 'none';
+                errEl.textContent = '';
+                if (!mobile || !password) {
+                    errEl.textContent = 'کد کاربری و کلمه عبور الزامی است.';
+                    errEl.style.display = 'block';
+                    return;
+                }
+                fetch(window.location.origin + '/api/subscription/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    credentials: 'include',
+                    body: JSON.stringify({ mobile: mobile, password: password, section: 'questions_414' })
+                }).then(function(r) { return r.json(); }).then(function(data) {
+                    if (data && data.success) { window.location.reload(); }
+                    else { errEl.textContent = (data && data.error) ? data.error : 'خطا در ورود.'; errEl.style.display = 'block'; }
+                }).catch(function() { errEl.textContent = 'خطای اتصال.'; errEl.style.display = 'block'; });
+            });
+        })();
+        {% endif %}
+        (function() {
+            document.querySelectorAll('#questions-container-intro .q-options-mcq').forEach(function(container) {
+                var correctIdx = parseInt(container.getAttribute('data-correct'), 10);
+                if (correctIdx < 0) return;
+                var allLists = container.querySelectorAll('.q-options-list ul');
+                function markAnswered() {
+                    allLists.forEach(function(ul) {
+                        ul.querySelectorAll('li').forEach(function(li) {
+                            li.classList.remove('q-option-clickable');
+                            li.classList.add('q-option-answered');
+                            li.removeAttribute('tabindex');
+                            li.removeAttribute('role');
+                        });
+                    });
+                }
+                function handleSelect(clickedIndex) {
+                    if (container.classList.contains('q-answered')) return;
+                    container.classList.add('q-answered');
+                    markAnswered();
+                    allLists.forEach(function(ul) {
+                        var lis = ul.querySelectorAll('li');
+                        for (var i = 0; i < lis.length; i++) {
+                            lis[i].classList.remove('option-correct', 'option-wrong');
+                            if (i === clickedIndex) lis[i].classList.add(i === correctIdx ? 'option-correct' : 'option-wrong');
+                            else if (i === correctIdx) lis[i].classList.add('option-correct');
+                        }
+                    });
+                }
+                allLists.forEach(function(ul) {
+                    [].slice.call(ul.querySelectorAll('li')).forEach(function(li) {
+                        li.addEventListener('click', function() { handleSelect(parseInt(li.getAttribute('data-option-index'), 10)); });
+                        li.addEventListener('keydown', function(e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleSelect(parseInt(li.getAttribute('data-option-index'), 10)); } });
+                    });
+                });
+            });
+        })();
+    </script>
+</body>
+</html>
