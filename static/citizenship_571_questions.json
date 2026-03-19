@@ -5906,7 +5906,7 @@
       "The Canadian Rangers",
       "Navy"
     ],
-    "correct": 0,
+    "correct": 2,
     "page": 0,
     "section": "571 Question For Citizenship Test",
     "book_text": "",
@@ -5967,21 +5967,21 @@
     "q": "Name the five regions of Canada.",
     "q_fa": "پنج منطقه کانادا را نام ببرید.",
     "options": [
-      "Atlantic, Central, Prairie, West Coast, North",
-      "East, West, North, South, Central",
-      "10 provinces",
-      "5 territories"
+      "Midwest, North, South, East, Central",
+      "Maritimes, Ontario, Quebec, Prairies, British Columbia",
+      "Atlantic , Central, Prairie, West Coast and North",
+      "West, Central, East, Prairies and Territories"
     ],
-    "correct": 0,
+    "correct": 2,
     "page": 0,
     "section": "571 Question For Citizenship Test",
     "book_text": "",
     "q_fr": "Nommez les cinq régions du Canada.",
     "options_fr": [
-      "Atlantique, Centre, Prairies, Côte Ouest, Nord",
-      "Est, Ouest, Nord, Sud, Centre",
-      "10 provinces",
-      "5 territoires"
+      "Midwest, Nord, Sud, Est, Centre",
+      "Maritimes, Ontario, Québec, Prairies, Colombie-Britannique",
+      "Atlantique, Centre, Prairies, Côte Ouest et Nord",
+      "Ouest, Centre, Est, Prairies et Territoires"
     ],
     "expl_fr": ""
   },
@@ -6264,8 +6264,8 @@
     "expl_fr": ""
   },
   {
-    "q": "19. Canada is divided in 10 regions",
-    "q_fa": "19. کانادا به 10 منطقه تقسیم شده است",
+    "q": "Canada is divided in 10 regions",
+    "q_fa": "کانادا به 10 منطقه تقسیم شده است",
     "options": [
       "True",
       "False"
@@ -6274,7 +6274,7 @@
     "page": 0,
     "section": "571 Question For Citizenship Test",
     "book_text": "",
-    "q_fr": "19. Le Canada est divisé en 10 régions",
+    "q_fr": "Le Canada est divisé en 10 régions",
     "options_fr": [
       "Vrai",
       "Faux"
@@ -6282,19 +6282,19 @@
     "expl_fr": ""
   },
   {
-    "q": "20. Which province in Canada is the smallest in land size?",
-    "q_fa": "20. کدام استان در کانادا از نظر مساحت کوچکترین استان است؟",
+    "q": "Which province in Canada is the smallest in land size?",
+    "q_fa": "کدام استان در کانادا از نظر مساحت کوچکترین استان است؟",
     "options": [
       "Nova Scotia",
       "Prince Edward Island",
       "Yukon Territory",
       "Newfoundland and Labrador Canada’s Regions Page 45"
     ],
-    "correct": 0,
+    "correct": 1,
     "page": 0,
     "section": "571 Question For Citizenship Test",
     "book_text": "",
-    "q_fr": "20. Quelle province du Canada est la plus petite en termes de superficie?",
+    "q_fr": "Quelle province du Canada est la plus petite en termes de superficie?",
     "options_fr": [
       "Nouvelle-Écosse",
       "Île-du-Prince-Édouard",
@@ -6694,8 +6694,8 @@
     "expl_fr": ""
   },
   {
-    "q": "19. Canada is divided in 10 regions",
-    "q_fa": "19. کانادا به 10 منطقه تقسیم شده است",
+    "q": "Canada is divided in 10 regions",
+    "q_fa": "کانادا به 10 منطقه تقسیم شده است",
     "options": [
       "True",
       "False"
@@ -6704,7 +6704,7 @@
     "page": 0,
     "section": "571 Question For Citizenship Test",
     "book_text": "",
-    "q_fr": "19. Le Canada est divisé en 10 régions",
+    "q_fr": "Le Canada est divisé en 10 régions",
     "options_fr": [
       "Vrai",
       "Faux"
@@ -6712,19 +6712,19 @@
     "expl_fr": ""
   },
   {
-    "q": "20. Which province in Canada is the smallest in land size?",
-    "q_fa": "20. کدام استان در کانادا از نظر مساحت کوچکترین استان است؟",
+    "q": "Which province in Canada is the smallest in land size?",
+    "q_fa": "کدام استان در کانادا از نظر مساحت کوچکترین استان است؟",
     "options": [
       "Nova Scotia",
       "Prince Edward Island",
       "Yukon Territory",
       "Newfoundland and Labrador Canadian Symbols"
     ],
-    "correct": 0,
+    "correct": 1,
     "page": 0,
     "section": "571 Question For Citizenship Test",
     "book_text": "",
-    "q_fr": "20. Quelle province du Canada est la plus petite en termes de superficie?",
+    "q_fr": "Quelle province du Canada est la plus petite en termes de superficie?",
     "options_fr": [
       "Nouvelle-Écosse",
       "Île-du-Prince-Édouard",
@@ -6803,21 +6803,21 @@
     "q": "What is the highest honor a Canadian can receive?",
     "q_fa": "بالاترین افتخاری که یک کانادایی می تواند دریافت کند چیست؟",
     "options": [
-      "The Order of Canada",
-      "Victoria Cross",
-      "Medal of Bravery",
-      "Citizenship"
+      "The Canadian Cross",
+      "The Canadian Crown",
+      "The Victoria Cross",
+      "The Peace Order"
     ],
-    "correct": 0,
+    "correct": 2,
     "page": 0,
     "section": "571 Question For Citizenship Test",
     "book_text": "",
     "q_fr": "Quelle est la plus haute distinction qu’un Canadien puisse recevoir ?",
     "options_fr": [
-      "L'Ordre du Canada",
-      "Croix de Victoria",
-      "Médaille de la bravoure",
-      "Citoyenneté"
+      "La Croix canadienne",
+      "La Couronne canadienne",
+      "La Croix de Victoria",
+      "L'Ordre de la paix"
     ],
     "expl_fr": ""
   },
@@ -6874,7 +6874,7 @@
       "Canada is a constitutional monarchy",
       "RCMP, the national police force and one of Canada's best-known symbols"
     ],
-    "correct": 0,
+    "correct": 1,
     "page": 0,
     "section": "571 Question For Citizenship Test",
     "book_text": "",
@@ -6918,7 +6918,7 @@
       "The 1st Monday of September",
       "The 1st of July"
     ],
-    "correct": 0,
+    "correct": 2,
     "page": 0,
     "section": "571 Question For Citizenship Test",
     "book_text": "",
@@ -7138,7 +7138,7 @@
       "English & France",
       "United States & British"
     ],
-    "correct": 0,
+    "correct": 2,
     "page": 0,
     "section": "571 Question For Citizenship Test",
     "book_text": "",
@@ -7636,52 +7636,44 @@
     "expl_fr": ""
   },
   {
-    "q": "22. A Permanent Resident of Canada has the right to vote.",
-    "q_fa": "22. مقیم دائم کانادا حق رای دارد.",
+    "q": "A Permanent Resident of Canada has the right to vote.",
+    "q_fa": "مقیم دائم کانادا حق رای دارد.",
     "options": [
-      "False – only citizens can vote in federal elections",
       "True",
-      "Only in provincial elections",
-      "Only in municipal elections"
+      "False"
     ],
-    "correct": 0,
+    "correct": 1,
     "page": 0,
     "section": "571 Question For Citizenship Test",
     "book_text": "",
-    "q_fr": "22. Un résident permanent du Canada a le droit de voter.",
+    "q_fr": "Un résident permanent du Canada a le droit de voter.",
     "options_fr": [
-      "Faux – seuls les citoyens peuvent voter aux élections fédérales",
       "Vrai",
-      "Seulement aux élections provinciales",
-      "Seulement aux élections municipales"
+      "Faux"
     ],
     "expl_fr": ""
   },
   {
-    "q": "23. You need to be 21 year old and older to be eligible to vote.",
-    "q_fa": "23. برای رای دادن باید 21 سال به بالا داشته باشید.",
+    "q": "You need to be 21 year old and older to be eligible to vote.",
+    "q_fa": "برای رای دادن باید 21 سال به بالا داشته باشید.",
     "options": [
-      "False – 18 years old",
       "True",
-      "19 years old",
-      "16 years old"
+      "False"
     ],
-    "correct": 0,
+    "correct": 1,
     "page": 0,
     "section": "571 Question For Citizenship Test",
     "book_text": "",
-    "q_fr": "23. Vous devez avoir 21 ans et plus pour pouvoir voter.",
+    "q_fr": "Vous devez avoir 21 ans et plus pour pouvoir voter.",
     "options_fr": [
-      "Faux – 18 ans",
       "Vrai",
-      "19 ans",
-      "16 ans"
+      "Faux"
     ],
     "expl_fr": ""
   },
   {
-    "q": "24. If the party in power holds at least half of the seats in the House of Commons,",
-    "q_fa": "24. اگر حزب در قدرت حداقل نیمی از کرسی های مجلس عوام را در اختیار داشته باشد،",
+    "q": "If the party in power holds at least half of the seats in the House of Commons,",
+    "q_fa": "اگر حزب در قدرت حداقل نیمی از کرسی های مجلس عوام را در اختیار داشته باشد،",
     "options": [
       "A majority government",
       "A minority government",
@@ -7692,7 +7684,7 @@
     "page": 0,
     "section": "571 Question For Citizenship Test",
     "book_text": "",
-    "q_fr": "24. Si le parti au pouvoir détient au moins la moitié des sièges à la Chambre des communes,",
+    "q_fr": "Si le parti au pouvoir détient au moins la moitié des sièges à la Chambre des communes,",
     "options_fr": [
       "Un gouvernement majoritaire",
       "Un gouvernement minoritaire",
@@ -7702,46 +7694,38 @@
     "expl_fr": ""
   },
   {
-    "q": "25. The Prime Minister and the party in power run the government for 7 years.",
-    "q_fa": "25. نخست وزیر و حزب حاکم به مدت 7 سال دولت را اداره می کنند.",
+    "q": "The Prime Minister and the party in power run the government for 7 years.",
+    "q_fa": "نخست وزیر و حزب حاکم به مدت 7 سال دولت را اداره می کنند.",
     "options": [
       "True",
-      "False",
-      "Only the PM",
-      "Only the party"
+      "False"
     ],
-    "correct": 0,
+    "correct": 1,
     "page": 0,
     "section": "571 Question For Citizenship Test",
     "book_text": "",
-    "q_fr": "25. Le Premier ministre et le parti au pouvoir dirigent le gouvernement pendant 7 ans.",
+    "q_fr": "Le Premier ministre et le parti au pouvoir dirigent le gouvernement pendant 7 ans.",
     "options_fr": [
       "Vrai",
-      "Faux",
-      "Seul le PM",
-      "Seul le parti"
+      "Faux"
     ],
     "expl_fr": ""
   },
   {
-    "q": "26. The Federal government is responsible for Education",
-    "q_fa": "26. دولت فدرال مسئول آموزش است",
+    "q": "The Federal government is responsible for Education",
+    "q_fa": "دولت فدرال مسئول آموزش است",
     "options": [
-      "False – provincial responsibility",
       "True",
-      "Municipal",
-      "Territorial only"
+      "False"
     ],
-    "correct": 0,
+    "correct": 1,
     "page": 0,
     "section": "571 Question For Citizenship Test",
     "book_text": "",
-    "q_fr": "26. Le gouvernement fédéral est responsable de l'éducation",
+    "q_fr": "Le gouvernement fédéral est responsable de l'éducation",
     "options_fr": [
-      "Faux – responsabilité provinciale",
       "Vrai",
-      "Municipal",
-      "Territorial seulement"
+      "Faux"
     ],
     "expl_fr": ""
   },
@@ -7754,7 +7738,7 @@
       "New Brunswick, Nova Scotia, Province of Canada (Ontario & Quebe",
       "Manitoba, Nova Scotia, Province of Canada (Ontario & Quebe"
     ],
-    "correct": 0,
+    "correct": 2,
     "page": 0,
     "section": "571 Question For Citizenship Test",
     "book_text": "",
@@ -7771,8 +7755,7 @@
     "q": "Who was the first Prime Minister of Canada?",
     "q_fa": "اولین نخست وزیر کانادا چه کسی بود؟",
     "options": [
-      "Sir John",
-      "Macdonald",
+      "Sir John A. Macdonald",
       "Sir Guy Carleton",
       "Sir Louis-Hippolyte La Fontaine",
       "Sir Isaac Brock"
@@ -7783,9 +7766,8 @@
     "book_text": "",
     "q_fr": "Qui a été le premier premier ministre du Canada ?",
     "options_fr": [
-      "Monsieur John",
-      "MacDonald",
-      "Monsieur Guy Carleton",
+      "Sir John A. Macdonald",
+      "Sir Guy Carleton",
       "Sir Louis-Hippolyte La Fontaine",
       "Sir Isaac Brock"
     ],
@@ -7822,7 +7804,7 @@
       "Divided the Province of Quebec into Upper Canada",
       "Canada's tolerance towards all religions was affected"
     ],
-    "correct": 0,
+    "correct": 3,
     "page": 0,
     "section": "571 Question For Citizenship Test",
     "book_text": "",
@@ -10270,7 +10252,7 @@
       "Reginald Fessenden",
       "Alexander Graham Bell"
     ],
-    "correct": 0,
+    "correct": 2,
     "page": 0,
     "section": "571 Question For Citizenship Test",
     "book_text": "",
@@ -10292,7 +10274,7 @@
       "Alexander Graham Bell",
       "Louis Riel"
     ],
-    "correct": 0,
+    "correct": 1,
     "page": 0,
     "section": "571 Question For Citizenship Test",
     "book_text": "",
@@ -10353,11 +10335,10 @@
     "q": "Who invented the Cardio Pacemaker?",
     "q_fa": "چه کسی ضربان ساز قلبی را اختراع کرد؟",
     "options": [
-      "Dr, John",
-      "Hopps",
+      "Dr. John A. Hopps",
       "Alexander Graham Bell",
-      "Gabrieh Dumont",
-      "Mathew Evans and Henry Wood ward"
+      "Mathew Evans and Henry Woodward",
+      "Gabriel Dumont"
     ],
     "correct": 0,
     "page": 0,
@@ -10365,11 +10346,10 @@
     "book_text": "",
     "q_fr": "Qui a inventé le Cardio Pacemaker ?",
     "options_fr": [
-      "Dr Jean",
-      "Houblon",
-      "Alexandre Graham Bell",
-      "Gabrieh Dumont",
-      "Quartier Mathew Evans et Henry Wood"
+      "Dr. John A. Hopps",
+      "Alexander Graham Bell",
+      "Mathew Evans et Henry Woodward",
+      "Gabriel Dumont"
     ],
     "expl_fr": ""
   },
@@ -10426,7 +10406,7 @@
       "Fax Machine",
       "Telephone"
     ],
-    "correct": 0,
+    "correct": 3,
     "page": 0,
     "section": "571 Question For Citizenship Test",
     "book_text": "",
@@ -10624,7 +10604,7 @@
       "Divided the Province of Quebec into Upper Canada",
       "Canada's tolerance towards all religions was affected"
     ],
-    "correct": 0,
+    "correct": 3,
     "page": 0,
     "section": "571 Question For Citizenship Test",
     "book_text": "",
@@ -11327,21 +11307,17 @@
     "q": "Canada is not the only constitutional monarchy in North America",
     "q_fa": "کانادا تنها سلطنت مشروطه در آمریکای شمالی نیست",
     "options": [
-      "False – Canada is not the only one",
       "True",
-      "Canada is the only one in the world",
-      "There are none"
+      "False"
     ],
-    "correct": 0,
+    "correct": 1,
     "page": 0,
     "section": "571 Question For Citizenship Test",
     "book_text": "",
     "q_fr": "Le Canada n'est pas la seule monarchie constitutionnelle en Amérique du Nord",
     "options_fr": [
-      "Faux – le Canada n'est pas le seul",
       "Vrai",
-      "Le Canada est le seul au monde",
-      "Il n'y en a pas"
+      "Faux"
     ],
     "expl_fr": ""
   },
@@ -11434,24 +11410,24 @@
     "expl_fr": ""
   },
   {
-    "q": "The Canadian Charter of Rights and Freedom begins with which words? A. Canadians can live and work anywhere they choose in Canada B. The rights guaranteed in the Charter will not adversely affect any treaty or",
-    "q_fa": "منشور حقوق و آزادی کانادا با چه کلماتی شروع می شود؟ الف. کانادایی‌ها می‌توانند در هر جایی که در کانادا انتخاب کنند زندگی و کار کنند.",
+    "q": "The Canadian Charter of Rights and Freedom begins with which words?",
+    "q_fa": "منشور حقوق و آزادی کانادا با چه کلماتی شروع می شود؟",
     "options": [
-      "Whereas Canada is founded upon principles that recognize the supremacy of God and the rule of law",
-      "We the people",
-      "All Canadians are equal",
-      "Freedom of speech"
+      "Canadians can live and work anywhere they choose in Canada",
+      "The rights guaranteed in the Charter will not adversely affect any treaty or other rights or freedom of Aboriginal people",
+      "O Canada! Our home and native land!",
+      "Whereas Canada is founded upon principles that recognize the supremacy of God and the rule of law"
     ],
-    "correct": 0,
+    "correct": 3,
     "page": 0,
     "section": "571 Question For Citizenship Test",
     "book_text": "",
-    "q_fr": "La Charte canadienne des droits et libertés commence par quels mots ? A. Les Canadiens peuvent vivre et travailler n'importe où au Canada. B. Les droits garantis dans la Charte ne porteront atteinte à aucun traité ou",
+    "q_fr": "La Charte canadienne des droits et libertés commence par quels mots ?",
     "options_fr": [
-      "Attendu que le Canada est fondé sur des principes qui reconnaissent la suprématie de Dieu et la primauté du droit",
-      "Nous le peuple",
-      "Tous les Canadiens sont égaux",
-      "Liberté d'expression"
+      "Les Canadiens peuvent vivre et travailler partout au Canada où ils choisissent",
+      "Les droits garantis par la Charte ne porteront pas atteinte aux traités ou autres droits ou libertés des peuples autochtones",
+      "Ô Canada! Notre pays et notre patrie!",
+      "Attendu que le Canada est fondé sur des principes qui reconnaissent la suprématie de Dieu et la primauté du droit"
     ],
     "expl_fr": ""
   },
@@ -12372,7 +12348,7 @@
       "Democratic principles and due process",
       "All answers"
     ],
-    "correct": 0,
+    "correct": 3,
     "page": 0,
     "section": "571 Question For Citizenship Test",
     "book_text": "",
@@ -12394,7 +12370,7 @@
       "The Small Claims Courts",
       "The Supreme Court"
     ],
-    "correct": 0,
+    "correct": 3,
     "page": 0,
     "section": "571 Question For Citizenship Test",
     "book_text": "",
@@ -12460,7 +12436,7 @@
       "The Provincial Court",
       "The Small Claims Courts"
     ],
-    "correct": 0,
+    "correct": 1,
     "page": 0,
     "section": "571 Question For Citizenship Test",
     "book_text": "",
@@ -12482,7 +12458,7 @@
       "The politicians",
       "The lawyers"
     ],
-    "correct": 0,
+    "correct": 3,
     "page": 0,
     "section": "571 Question For Citizenship Test",
     "book_text": "",
