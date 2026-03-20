@@ -1,0 +1,766 @@
+[
+  {
+    "q": "What began Canada's modern energy industry in 1947?",
+    "q_fa": "چه چیزی صنعت انرژی مدرن کانادا را در ۱۹۴۷ آغاز کرد؟",
+    "q_fr": "Qu'est-ce qui a lancé l'industrie énergétique moderne du Canada en 1947?",
+    "options": [
+      "The discovery of hydro-electricity in British Columbia",
+      "The Energy Bill passed by the House of Commons",
+      "The discovery of coal in Manitoba",
+      "The discovery of oil in Alberta"
+    ],
+    "options_fr": [
+      "La découverte de l'hydroélectricité en Colombie-Britannique",
+      "La loi sur l'énergie adoptée par la Chambre des communes",
+      "La découverte du charbon au Manitoba",
+      "La découverte du pétrole en Alberta"
+    ],
+    "correct": 3
+  },
+  {
+    "q": "When were the majority of Canadians able to afford adequate food, shelter and clothing for the first time?",
+    "q_fa": "اکثر کانادایی‌ها برای اولین بار چه زمانی توانستند خوراک، مسکن و پوشاک کافی داشته باشند؟",
+    "q_fr": "Quand la majorité des Canadiens ont-ils pu s'offrir nourriture, logement et vêtements adéquats pour la première fois?",
+    "options": [
+      "1945",
+      "1949",
+      "1951",
+      "1954"
+    ],
+    "options_fr": [
+      "1945",
+      "1949",
+      "1951",
+      "1954"
+    ],
+    "correct": 1
+  },
+  {
+    "q": "Why do Canadians enjoy one of the world's highest standards of living?",
+    "q_fa": "چرا کانادایی‌ها از یکی از بالاترین استانداردهای زندگی جهان برخوردارند؟",
+    "q_fr": "Pourquoi les Canadiens jouissent-ils d'un des niveaux de vie les plus élevés au monde?",
+    "options": [
+      "By working hard and by trading with other nations",
+      "By working hard and by being a NATO member",
+      "Thanks to the NAFTA agreement",
+      "Thanks to the Americans"
+    ],
+    "options_fr": [
+      "En travaillant fort et en commerçant avec d'autres nations",
+      "En travaillant fort et en étant membre de l'OTAN",
+      "Grâce à l'ALENA",
+      "Grâce aux Américains"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "When was Unemployment Insurance introduced by the federal government (now called \"employment insurance\")?",
+    "q_fa": "بیمهٔ بیکاری (اکنون «بیمهٔ اشتغال») چه زمانی توسط دولت فدرال معرفی شد؟",
+    "q_fr": "Quand l'assurance-chômage (aujourd'hui « assurance-emploi ») a-t-elle été introduite par le gouvernement fédéral?",
+    "options": [
+      "1940",
+      "1927",
+      "1965",
+      "1970"
+    ],
+    "options_fr": [
+      "1940",
+      "1927",
+      "1965",
+      "1970"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "When was Old Age Security devised?",
+    "q_fa": "امنیت دوران پیری (Old Age Security) چه زمانی طراحی شد؟",
+    "q_fr": "Quand la Sécurité de la vieillesse a-t-elle été conçue?",
+    "options": [
+      "1940",
+      "1927",
+      "1965",
+      "1970"
+    ],
+    "options_fr": [
+      "1940",
+      "1927",
+      "1965",
+      "1970"
+    ],
+    "correct": 1
+  },
+  {
+    "q": "Canada is not a member of the North Atlantic Treaty Organization (NATO)",
+    "q_fa": "کانادا عضو سازمان پیمان آتلانتیک شمالی (ناتو) نیست",
+    "q_fr": "Le Canada n'est pas membre de l'Organisation du traité de l'Atlantique Nord (OTAN)",
+    "options": [
+      "True",
+      "False"
+    ],
+    "options_fr": [
+      "Vrai",
+      "Faux"
+    ],
+    "correct": 1
+  },
+  {
+    "q": "When were the Canada and Quebec Pension Plans devised?",
+    "q_fa": "طرح‌های بازنشستگی کانادا و کبک چه زمانی طراحی شدند؟",
+    "q_fr": "Quand les régimes de pensions du Canada et du Québec ont-ils été conçus?",
+    "options": [
+      "1940",
+      "1927",
+      "1965",
+      "1970"
+    ],
+    "options_fr": [
+      "1940",
+      "1927",
+      "1965",
+      "1970"
+    ],
+    "correct": 2
+  },
+  {
+    "q": "Canada is a member of the United Nations (UN)",
+    "q_fa": "کانادا عضو سازمان ملل متحد است",
+    "q_fr": "Le Canada est membre des Nations Unies (ONU)",
+    "options": [
+      "True",
+      "False"
+    ],
+    "options_fr": [
+      "Vrai",
+      "Faux"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "What was the \"Quiet Revolution\"?",
+    "q_fa": "«انقلاب آرام» چه بود؟",
+    "q_fr": "Qu'est-ce que la « Révolution tranquille »?",
+    "options": [
+      "An era of rapid change in the 1960s in Quebec",
+      "The Cold War between the East and the West",
+      "The coming of the Old Age Security in Canada",
+      "The development of Canada's autonomy in the world after the Second World War"
+    ],
+    "options_fr": [
+      "Une ère de changements rapides dans les années 1960 au Québec",
+      "La guerre froide entre l'Est et l'Ouest",
+      "L'avènement de la Sécurité de la vieillesse au Canada",
+      "Le développement de l'autonomie du Canada dans le monde après la Deuxième Guerre mondiale"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "Which Act guarantees French and English services in the federal government across Canada?",
+    "q_fa": "کدام قانون خدمات فرانسوی و انگلیسی را در دولت فدرال در سراسر کانادا تضمین می‌کند؟",
+    "q_fr": "Quelle loi garantit les services en français et en anglais dans le gouvernement fédéral partout au Canada?",
+    "options": [
+      "The French Language Act",
+      "The English Language Act",
+      "The Bilingual Act",
+      "The Official Languages Act"
+    ],
+    "options_fr": [
+      "La Loi sur la langue française",
+      "La Loi sur la langue anglaise",
+      "La Loi sur le bilinguisme",
+      "La Loi sur les langues officielles"
+    ],
+    "correct": 3
+  },
+  {
+    "q": "What are the two official languages of Canada?",
+    "q_fa": "دو زبان رسمی کانادا کدامند؟",
+    "q_fr": "Quelles sont les deux langues officielles du Canada?",
+    "options": [
+      "French and English",
+      "Chinese and English",
+      "English and Inuit",
+      "English and British"
+    ],
+    "options_fr": [
+      "Français et anglais",
+      "Chinois et anglais",
+      "Anglais et inuit",
+      "Anglais et britannique"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "What is \"La Francophonie\"?",
+    "q_fa": "«La Francophonie» چیست؟",
+    "q_fr": "Qu'est-ce que « La Francophonie »?",
+    "options": [
+      "A region in Quebec",
+      "A French music instrument",
+      "An international association of French-speaking countries",
+      "A French music festival"
+    ],
+    "options_fr": [
+      "Une région au Québec",
+      "Un instrument de musique français",
+      "Une association internationale des pays francophones",
+      "Un festival de musique français"
+    ],
+    "correct": 2
+  },
+  {
+    "q": "Quebec enjoys sovereignty in Canada",
+    "q_fa": "کبک در کانادا از حاکمیت برخوردار است",
+    "q_fr": "Le Québec jouit de la souveraineté au Canada",
+    "options": [
+      "True",
+      "False"
+    ],
+    "options_fr": [
+      "Vrai",
+      "Faux"
+    ],
+    "correct": 1
+  },
+  {
+    "q": "When did the Japanese-Canadians gain the right to vote?",
+    "q_fa": "ژاپنی‌تبارهای کانادایی چه زمانی حق رأی گرفتند؟",
+    "q_fr": "Quand les Canadiens d'origine japonaise ont-ils obtenu le droit de vote?",
+    "options": [
+      "1960",
+      "1949",
+      "1948",
+      "1953"
+    ],
+    "options_fr": [
+      "1960",
+      "1949",
+      "1948",
+      "1953"
+    ],
+    "correct": 1
+  },
+  {
+    "q": "When were Aboriginal people granted the right to vote?",
+    "q_fa": "مردم بومی چه زمانی حق رأی دریافت کردند؟",
+    "q_fr": "Quand les Autochtones ont-ils obtenu le droit de vote?",
+    "options": [
+      "1960",
+      "1949",
+      "1961",
+      "1948"
+    ],
+    "options_fr": [
+      "1960",
+      "1949",
+      "1961",
+      "1948"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "By the 1960s, how many Canadians had origins that were neither British nor French?",
+    "q_fa": "تا دههٔ ۱۹۶۰ چند کانادایی اصالتی غیر از بریتانیایی یا فرانسوی داشتند؟",
+    "q_fr": "Dans les années 1960, combien de Canadiens avaient des origines ni britanniques ni françaises?",
+    "options": [
+      "Half",
+      "One-third",
+      "Two-thirds",
+      "One-quarter"
+    ],
+    "options_fr": [
+      "La moitié",
+      "Un tiers",
+      "Les deux tiers",
+      "Un quart"
+    ],
+    "correct": 1
+  },
+  {
+    "q": "Who were the Group of Seven?",
+    "q_fa": "گروه هفت چه کسانی بودند؟",
+    "q_fr": "Qui étaient le Groupe des Sept?",
+    "options": [
+      "Seven Canadian greatest war heroes",
+      "The Fathers of Confederation",
+      "The seven Canadian best hockey players",
+      "Seven Canadian visual art artists who developed a certain style of painting"
+    ],
+    "options_fr": [
+      "Sept des plus grands héros de guerre canadiens",
+      "Les Pères de la Confédération",
+      "Les sept meilleurs joueurs de hockey canadiens",
+      "Sept artistes visuels canadiens qui ont développé un certain style de peinture"
+    ],
+    "correct": 3
+  },
+  {
+    "q": "Who were pioneers of modern abstract art in the 1950s?",
+    "q_fa": "پیشگامان هنر انتزاعی مدرن در دههٔ ۱۹۵۰ چه کسانی بودند؟",
+    "q_fr": "Qui ont été les pionniers de l'art abstrait moderne dans les années 1950?",
+    "options": [
+      "\"Les Automatistes\" of Quebec",
+      "The Abstractists",
+      "\"Les Réformateurs\" of Quebec",
+      "The Group of Seven"
+    ],
+    "options_fr": [
+      "Les Automatistes du Québec",
+      "Les Abstractionnistes",
+      "Les Réformateurs du Québec",
+      "Le Groupe des Sept"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "Basketball was invented by a Canadian",
+    "q_fa": "بسکتبال توسط یک کانادایی اختراع شد",
+    "q_fr": "Le basketball a été inventé par un Canadien",
+    "options": [
+      "True",
+      "False"
+    ],
+    "options_fr": [
+      "Vrai",
+      "Faux"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "Why is Terry Fox a Canadian national hero (Marathon of Hope)?",
+    "q_fa": "چرا Terry Fox قهرمان ملی کانادا است (ماراتن امید)؟",
+    "q_fr": "Pourquoi Terry Fox est-il un héros national canadien (Marathon de l'espoir)?",
+    "options": [
+      "He inspired people to contribute money for cancer research",
+      "He became the first elected President of Canada",
+      "He was the greatest hockey player of all time",
+      "He united Canada in the 19th century"
+    ],
+    "options_fr": [
+      "Il a incité les gens à contribuer à la recherche sur le cancer",
+      "Il est devenu le premier président élu du Canada",
+      "Il était le plus grand joueur de hockey de tous les temps",
+      "Il a uni le Canada au 19e siècle"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "What is often referred to as \"the goal heard around the world\"?",
+    "q_fa": "به چه چیزی اغلب «گلی که در سراسر جهان شنیده شد» گفته می‌شود؟",
+    "q_fr": "À quoi fait-on souvent référence comme « le but entendu dans le monde entier »?",
+    "options": [
+      "The winning goal for Canada in the Canada-Soviet Summit Series in 1992",
+      "The winning goal for Canada in the Canada-USA Summit Series in 1972",
+      "The winning goal for Canada in the Canada-Soviet Summit Series in 1972 (Paul Henderson scored the winning goal)",
+      "The winning goal for Canada in the Canada-Soviet Stanley Cup Series in 1972"
+    ],
+    "options_fr": [
+      "Le but gagnant du Canada dans la Série du siècle Canada-URSS en 1992",
+      "Le but gagnant du Canada dans la Série du siècle Canada-États-Unis en 1972",
+      "Le but gagnant du Canada dans la Série du siècle Canada-URSS en 1972 (Paul Henderson)",
+      "Le but gagnant du Canada dans la Série Coupe Stanley Canada-URSS en 1972"
+    ],
+    "correct": 2
+  },
+  {
+    "q": "Which Canadian circled the globe in a wheelchair to raise funds for spinal cord research?",
+    "q_fa": "کدام کانادایی با ویلچر دور دنیا گشت تا برای تحقیقات نخاع پول جمع کند؟",
+    "q_fr": "Quel Canadien a fait le tour du monde en fauteuil roulant pour amasser des fonds pour la recherche sur la moelle épinière?",
+    "options": [
+      "Terry Fox",
+      "Rick Hansen",
+      "Wayne Gretzky",
+      "Marshall McLuhan"
+    ],
+    "options_fr": [
+      "Terry Fox",
+      "Rick Hansen",
+      "Wayne Gretzky",
+      "Marshall McLuhan"
+    ],
+    "correct": 1
+  },
+  {
+    "q": "Canadian football is absolutely identical to American football",
+    "q_fa": "فوتبال کانادایی کاملاً مشابه فوتبال آمریکایی است",
+    "q_fr": "Le football canadien est absolument identique au football américain",
+    "options": [
+      "True",
+      "False"
+    ],
+    "options_fr": [
+      "Vrai",
+      "Faux"
+    ],
+    "correct": 1
+  },
+  {
+    "q": "Who invented the telephone?",
+    "q_fa": "تلفن را چه کسی اختراع کرد؟",
+    "q_fr": "Qui a inventé le téléphone?",
+    "options": [
+      "Alexander Graham Telus",
+      "Alexander Graham Rogers",
+      "Alexander Graham Shaw",
+      "Alexander Graham Bell"
+    ],
+    "options_fr": [
+      "Alexander Graham Telus",
+      "Alexander Graham Rogers",
+      "Alexander Graham Shaw",
+      "Alexander Graham Bell"
+    ],
+    "correct": 3
+  },
+  {
+    "q": "Who invented the snowmobile?",
+    "q_fa": "اسنوموبیل را چه کسی اختراع کرد؟",
+    "q_fr": "Qui a inventé la motoneige?",
+    "options": [
+      "Joseph-Armand Bombardier",
+      "Joseph-Armand Skidoo",
+      "Mike Lazaridis",
+      "Matthew Evans"
+    ],
+    "options_fr": [
+      "Joseph-Armand Bombardier",
+      "Joseph-Armand Skidoo",
+      "Mike Lazaridis",
+      "Matthew Evans"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "Who invented the worldwide system of standard time zones?",
+    "q_fa": "سیستم جهانی مناطق زمانی استاندارد را چه کسی اختراع کرد؟",
+    "q_fr": "Qui a inventé le système mondial des fuseaux horaires?",
+    "options": [
+      "Sir Sandford Fleming",
+      "Sir John A. Hopps",
+      "Sir Sandford Greenwich",
+      "Sir Henry Woodward"
+    ],
+    "options_fr": [
+      "Sir Sandford Fleming",
+      "Sir John A. Hopps",
+      "Sir Sandford Greenwich",
+      "Sir Henry Woodward"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "Who is known as \"the greatest living Canadian\"?",
+    "q_fa": "چه کسی به عنوان «بزرگترین کانادایی زنده» شناخته می‌شود؟",
+    "q_fr": "Qui est connu comme « le plus grand Canadien vivant »?",
+    "options": [
+      "Sir Sandford Fleming",
+      "Terry Fox",
+      "Dr. Wilder Penfield (Pioneering brain surgeon at McGill University)",
+      "Sir John A. Macdonald"
+    ],
+    "options_fr": [
+      "Sir Sandford Fleming",
+      "Terry Fox",
+      "Dr Wilder Penfield (pionnier de la neurochirurgie à l'Université McGill)",
+      "Sir John A. Macdonald"
+    ],
+    "correct": 2
+  },
+  {
+    "q": "Insulin was discovered by a Canadian:",
+    "q_fa": "انسولین توسط یک کانادایی کشف شد:",
+    "q_fr": "L'insuline a été découverte par un Canadien:",
+    "options": [
+      "True",
+      "False"
+    ],
+    "options_fr": [
+      "Vrai",
+      "Faux"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "Who created insulin?",
+    "q_fa": "انسولین را چه کسانی ساختند؟",
+    "q_fr": "Qui a créé l'insuline?",
+    "options": [
+      "Dr. John A. Hopps",
+      "Dr. Wilder Penfield",
+      "Sir Frederick Banting of Toronto and Charles Best",
+      "Sir Sandford Fleming and Charles Best"
+    ],
+    "options_fr": [
+      "Dr John A. Hopps",
+      "Dr Wilder Penfield",
+      "Sir Frederick Banting de Toronto et Charles Best",
+      "Sir Sandford Fleming et Charles Best"
+    ],
+    "correct": 2
+  },
+  {
+    "q": "Who invented the first cardiac pacemaker?",
+    "q_fa": "اولین ضربان‌ساز قلبی را چه کسی اختراع کرد؟",
+    "q_fr": "Qui a inventé le premier stimulateur cardiaque?",
+    "options": [
+      "Sir Sandford Fleming",
+      "Dr. John A. Hopps",
+      "Dr. Wilder Penfield",
+      "Sir John A. Macdonald"
+    ],
+    "options_fr": [
+      "Sir Sandford Fleming",
+      "Dr John A. Hopps",
+      "Dr Wilder Penfield",
+      "Sir John A. Macdonald"
+    ],
+    "correct": 1
+  },
+  {
+    "q": "When did Canada enjoy one of the strongest economies among industrialized nations?",
+    "q_fa": "کانادا چه زمانی یکی از قوی‌ترین اقتصادها در بین کشورهای صنعتی بود؟",
+    "q_fr": "Quand le Canada a-t-il connu l'une des économies les plus solides parmi les nations industrialisées?",
+    "options": [
+      "Between 1945 and 1970",
+      "Between 1925 and 1960",
+      "Between 1980 and 1990",
+      "Between 1970 and 1980"
+    ],
+    "options_fr": [
+      "Entre 1945 et 1970",
+      "Entre 1925 et 1960",
+      "Entre 1980 et 1990",
+      "Entre 1970 et 1980"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "The Blackberry is a Canadian invention:",
+    "q_fa": "بلک‌بری یک اختراع کانادایی است:",
+    "q_fr": "Le BlackBerry est une invention canadienne:",
+    "options": [
+      "True",
+      "False"
+    ],
+    "options_fr": [
+      "Vrai",
+      "Faux"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "When did Canada draw closer to the United States and other trading partners?",
+    "q_fa": "کانادا چه زمانی به ایالات متحده و سایر شرکای تجاری نزدیک‌تر شد؟",
+    "q_fr": "Quand le Canada s'est-il rapproché des États-Unis et d'autres partenaires commerciaux?",
+    "options": [
+      "Between 1925 and 1960",
+      "Between 1980 and 1990",
+      "Between 1945 and 1970",
+      "Between 1970 and 1980"
+    ],
+    "options_fr": [
+      "Entre 1925 et 1960",
+      "Entre 1980 et 1990",
+      "Entre 1945 et 1970",
+      "Entre 1970 et 1980"
+    ],
+    "correct": 3
+  },
+  {
+    "q": "What does the Canada Health Act ensure?",
+    "q_fa": "قانون بهداشت کانادا چه چیزی را تضمین می‌کند؟",
+    "q_fr": "Que garantit la Loi canadienne sur la santé?",
+    "options": [
+      "Common elements and a basic standard of coverage",
+      "Drinkable water for all Canadians",
+      "No more contagious epidemics in Canada",
+      "Publicly funded education"
+    ],
+    "options_fr": [
+      "Des éléments communs et une norme de base de couverture",
+      "De l'eau potable pour tous les Canadiens",
+      "Plus d'épidémies contagieuses au Canada",
+      "Une éducation financée par l'État"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "What was the name of the war that began when several liberated countries of Eastern Europe became part of a Communist bloc controlled by the Soviet Union?",
+    "q_fa": "نام جنگی که وقتی چند کشور آزادشدهٔ اروپای شرقی به بلوک کمونیستی تحت کنترل اتحاد جماهیر شوروی پیوستند آغاز شد چه بود؟",
+    "q_fr": "Comment s'appelait la guerre qui a commencé lorsque plusieurs pays libérés d'Europe de l'Est sont devenus partie d'un bloc communiste contrôlé par l'URSS?",
+    "options": [
+      "The Soviet War",
+      "The Cold War (1947 – 1991 under the dictator Josef Stalin)",
+      "The Eastern War",
+      "The Union War"
+    ],
+    "options_fr": [
+      "La guerre soviétique",
+      "La guerre froide (1947-1991)",
+      "La guerre de l'Est",
+      "La guerre de l'Union"
+    ],
+    "correct": 1
+  },
+  {
+    "q": "When did the Parliament establish the Royal Commission on Bilingualism and Biculturalism?",
+    "q_fa": "پارلمان چه زمانی کمیسیون سلطنتی دوزبانگی و دوفرهنگگی را تشکیل داد؟",
+    "q_fr": "Quand le Parlement a-t-il créé la Commission royale d'enquête sur le bilinguisme et le biculturalisme?",
+    "options": [
+      "1945",
+      "1969",
+      "1963",
+      "1970"
+    ],
+    "options_fr": [
+      "1945",
+      "1969",
+      "1963",
+      "1970"
+    ],
+    "correct": 2
+  },
+  {
+    "q": "Who invented Basketball?",
+    "q_fa": "بسکتبال را چه کسی اختراع کرد؟",
+    "q_fr": "Qui a inventé le basketball?",
+    "options": [
+      "James Naismith",
+      "Donovan Bailey",
+      "Wayne Gretzky",
+      "Terry Fox"
+    ],
+    "options_fr": [
+      "James Naismith",
+      "Donovan Bailey",
+      "Wayne Gretzky",
+      "Terry Fox"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "Which famous Canadian artist painted the forests and Aboriginal artifacts of the West Coast?",
+    "q_fa": "کدام هنرمند معروف کانادایی جنگل‌ها و آثار بومیان ساحل غربی را نقاشی کرد؟",
+    "q_fr": "Quel artiste canadien célèbre a peint les forêts et les artefacts autochtones de la côte Ouest?",
+    "options": [
+      "Jean-Paul Riopelle",
+      "Emily Carr",
+      "Louis-Philippe Hébert",
+      "Kenojuak Ashevak"
+    ],
+    "options_fr": [
+      "Jean-Paul Riopelle",
+      "Emily Carr",
+      "Louis-Philippe Hébert",
+      "Kenojuak Ashevak"
+    ],
+    "correct": 1
+  },
+  {
+    "q": "Who pioneered modern Inuit art?",
+    "q_fa": "چه کسی هنر مدرن اینویت را پایه‌گذاری کرد؟",
+    "q_fr": "Qui a été le pionnier de l'art inuit moderne?",
+    "options": [
+      "Louis-Philippe Hébert",
+      "Emily Carr",
+      "Kenojuak Ashevak",
+      "Jean-Paul Riopelle"
+    ],
+    "options_fr": [
+      "Louis-Philippe Hébert",
+      "Emily Carr",
+      "Kenojuak Ashevak",
+      "Jean-Paul Riopelle"
+    ],
+    "correct": 2
+  },
+  {
+    "q": "Which of the following is a person of letters who had a significant cultural impact?",
+    "q_fa": "کدام یک از افراد زیر اهل قلم با تأثیر فرهنگی مهم است؟",
+    "q_fr": "Lequel des suivants est une personne de lettres ayant eu un impact culturel important?",
+    "options": [
+      "Sir Ernest MacMillan",
+      "Kenojuak Ashevak",
+      "Pauline Johnson",
+      "Jean-Paul Riopelle"
+    ],
+    "options_fr": [
+      "Sir Ernest MacMillan",
+      "Kenojuak Ashevak",
+      "Pauline Johnson",
+      "Jean-Paul Riopelle"
+    ],
+    "correct": 2
+  },
+  {
+    "q": "Which of the following is a Canadian musician who won renown in Canada and abroad?",
+    "q_fa": "کدام یک موسیقیدان کانادایی است که در کانادا و خارج شهرت یافت؟",
+    "q_fr": "Lequel des suivants est un musicien canadien reconnu au Canada et à l'étranger?",
+    "options": [
+      "Émile Nelligan",
+      "Sir Ernest MacMillan",
+      "Joy Kogawa",
+      "Jean-Paul Riopelle"
+    ],
+    "options_fr": [
+      "Émile Nelligan",
+      "Sir Ernest MacMillan",
+      "Joy Kogawa",
+      "Jean-Paul Riopelle"
+    ],
+    "correct": 1
+  },
+  {
+    "q": "Which of the following is a writer who has diversified Canada's literary experience?",
+    "q_fa": "کدام یک نویسنده‌ای است که تجربهٔ ادبی کانادا را متنوع کرده؟",
+    "q_fr": "Lequel des suivants est un écrivain qui a diversifié l'expérience littéraire du Canada?",
+    "options": [
+      "Michael Ondaatje",
+      "Healey Willan",
+      "Louis-Philippe Hébert",
+      "Denys Arcand"
+    ],
+    "options_fr": [
+      "Michael Ondaatje",
+      "Healey Willan",
+      "Louis-Philippe Hébert",
+      "Denys Arcand"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "Who was a celebrated sculptor of historical figures?",
+    "q_fa": "چه کسی مجسمه‌ساز مشهور چهره‌های تاریخی بود؟",
+    "q_fr": "Qui était un sculpteur célèbre de figures historiques?",
+    "options": [
+      "Kenojuak Ashevak",
+      "Norman Jewison",
+      "Emily Carr",
+      "Louis-Philippe Hébert"
+    ],
+    "options_fr": [
+      "Kenojuak Ashevak",
+      "Norman Jewison",
+      "Emily Carr",
+      "Louis-Philippe Hébert"
+    ],
+    "correct": 3
+  },
+  {
+    "q": "Whose films have been popular in Quebec and across the country, and have won international awards?",
+    "q_fa": "فیلم‌های چه کسی در کبک و سراسر کشور محبوب بوده و جوایز بین‌المللی برده؟",
+    "q_fr": "Les films de qui ont été populaires au Québec et dans tout le pays et ont remporté des prix internationaux?",
+    "options": [
+      "The films of Louis Hémon",
+      "The films of Louis-Philippe Hébert",
+      "The films of Denys Arcand",
+      "The films of Émile Nelligan"
+    ],
+    "options_fr": [
+      "Les films de Louis Hémon",
+      "Les films de Louis-Philippe Hébert",
+      "Les films de Denys Arcand",
+      "Les films d'Émile Nelligan"
+    ],
+    "correct": 2
+  }
+]

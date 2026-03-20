@@ -7,7 +7,7 @@
     <link rel="apple-touch-icon" href="{{ url_for('static', filename='images/logo.png') }}">
     <meta property="og:image" content="{{ request.url_root.rstrip('/') }}{{ url_for('static', filename='images/logo.png') }}">
     <title>Rights and Responsibilities of Citizenship | آزمون شهروندی – حقوق و مسئولیت‌ها</title>
-    <meta name="description" content="سوالات فصل ۱ (Rights and Responsibilities of Citizenship) آزمون شهروندی کانادا با ترجمه فارسی. انگلیسی و فرانسه + فارسی.">
+    <meta name="description" content="سوالات فصل ۱ (Rights and Responsibilities of Citizenship) آزمون شهروندی کانادا با ترجمه فارسی.">
     <link rel="canonical" href="{{ request.host_url.rstrip('/') }}/citizenship-rights-responsibilities">
     {% include 'pwa_meta.html' %}
     <style>
@@ -81,10 +81,120 @@
         .back-bar { margin-bottom: 12px; text-align: right; }
         .back-btn { display: inline-block; padding: 10px 20px; background: var(--accent); color: #fff; text-decoration: none; border-radius: 10px; font-weight: 600; }
         .back-btn:hover { background: var(--accent-light); }
-        .sub-nav { display: flex; flex-wrap: wrap; gap: 10px 16px; margin-bottom: 20px; padding: 12px 16px; background: var(--card-bg); border-radius: 12px; border: 1px solid var(--border); }
-        .sub-nav a { color: var(--accent); text-decoration: none; font-weight: 600; font-size: 0.95em; padding: 6px 12px; border-radius: 8px; }
-        .sub-nav a:hover { background: rgba(30,60,114,0.1); }
-        .sub-nav a.active { background: rgba(30,60,114,0.15); }
+        .sub-nav {
+            position: relative;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: stretch;
+            gap: 12px;
+            margin-bottom: 22px;
+            padding: 20px 14px 18px;
+            background: linear-gradient(168deg, var(--card-bg) 0%, rgba(240, 244, 250, 0.55) 42%, var(--card-bg) 100%);
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            box-shadow:
+                0 4px 6px -1px rgba(30, 60, 114, 0.07),
+                0 12px 28px -8px rgba(30, 60, 114, 0.14);
+            overflow: hidden;
+        }
+        body.theme-dark .sub-nav {
+            background: linear-gradient(168deg, var(--card-bg) 0%, #2d323c 48%, var(--card-bg) 100%);
+            box-shadow:
+                0 4px 20px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        }
+        .sub-nav::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #1e3c72 0%, #f1c40f 48%, #2c5282 100%);
+        }
+        body.theme-dark .sub-nav::before {
+            background: linear-gradient(90deg, #2d3748 0%, #f1c40f 42%, #7cb3f5 100%);
+        }
+        .sub-nav a {
+            position: relative;
+            z-index: 1;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: clamp(0.78rem, 2.2vw, 0.92rem);
+            padding: 12px 14px;
+            border-radius: 12px;
+            text-align: center;
+            line-height: 1.35;
+            min-height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex: 1 1 100%;
+            max-width: 100%;
+            border: 1px solid rgba(30, 60, 114, 0.12);
+            background: rgba(30, 60, 114, 0.04);
+            transition: background 0.2s, border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+            -webkit-tap-highlight-color: transparent;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            hyphens: auto;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+        body.theme-dark .sub-nav a {
+            border-color: rgba(255, 255, 255, 0.1);
+            background: rgba(0, 0, 0, 0.18);
+            box-shadow: none;
+        }
+        @media (min-width: 400px) {
+            .sub-nav a {
+                flex: 1 1 calc(50% - 6px);
+                max-width: calc(50% - 6px);
+            }
+        }
+        @media (min-width: 620px) {
+            .sub-nav a {
+                flex: 1 1 calc(33.333% - 8px);
+                max-width: calc(33.333% - 8px);
+            }
+        }
+        @media (min-width: 900px) {
+            .sub-nav {
+                padding: 22px 18px 20px;
+                gap: 14px;
+            }
+            .sub-nav a {
+                flex: 0 1 158px;
+                max-width: 168px;
+            }
+        }
+        .sub-nav a:hover {
+            background: rgba(30, 60, 114, 0.11);
+            border-color: rgba(30, 60, 114, 0.28);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(30, 60, 114, 0.14);
+        }
+        body.theme-dark .sub-nav a:hover {
+            background: rgba(124, 179, 245, 0.16);
+            border-color: rgba(124, 179, 245, 0.38);
+            box-shadow: 0 8px 22px rgba(0, 0, 0, 0.28);
+        }
+        .sub-nav a.active {
+            background: linear-gradient(150deg, rgba(30, 60, 114, 0.16) 0%, rgba(44, 82, 130, 0.1) 100%);
+            border-color: rgba(30, 60, 114, 0.4);
+            box-shadow:
+                0 0 0 1px rgba(241, 196, 15, 0.45),
+                0 8px 22px rgba(30, 60, 114, 0.18);
+            font-weight: 700;
+        }
+        body.theme-dark .sub-nav a.active {
+            background: linear-gradient(150deg, rgba(124, 179, 245, 0.24) 0%, rgba(30, 60, 114, 0.22) 100%);
+            border-color: rgba(124, 179, 245, 0.55);
+            box-shadow:
+                0 0 0 1px rgba(241, 196, 15, 0.5),
+                0 10px 26px rgba(0, 0, 0, 0.35);
+        }
         .q-card { background: var(--card-bg); border-radius: 14px; padding: 22px 24px; margin-bottom: 20px; box-shadow: 0 4px 16px rgba(0,0,0,0.06); border: 1px solid var(--border); }
         .q-num { font-weight: 800; color: var(--accent); font-size: 1em; margin-bottom: 12px; }
         .q-text-fa { font-size: 1.15em; font-weight: 700; color: var(--accent); margin-bottom: 10px; text-align: right; direction: rtl; }
@@ -98,8 +208,9 @@
         .block-en { direction: ltr; text-align: left; margin-bottom: 10px; padding: 10px 12px; background: rgba(30,60,114,0.06); border-radius: 10px; border-left: 3px solid var(--accent); }
         .block-fa { direction: rtl; text-align: right; margin-bottom: 10px; padding: 10px 12px; background: rgba(241,196,15,0.12); border-radius: 10px; border-right: 3px solid #f1c40f; }
         .block-fr { direction: ltr; text-align: left; margin-bottom: 10px; padding: 10px 12px; background: rgba(0,82,147,0.08); border-radius: 10px; border-left: 3px solid #005293; }
-        .lang-mode-btn { padding: 10px 18px; border-radius: 10px; border: 2px solid var(--border); background: var(--card-bg); color: var(--text); font-weight: 600; cursor: pointer; }
-        .lang-mode-btn[aria-pressed="true"] { border-color: var(--accent); background: linear-gradient(135deg, #e8eef5 0%, #dce4ed 100%); }
+        .lang-mode-btn { padding: 10px 18px; border-radius: 10px; border: 2px solid var(--border); background: var(--card-bg); color: var(--text); font-weight: 600; cursor: pointer; -webkit-appearance: none; appearance: none; }
+        .lang-mode-btn[aria-pressed="true"] { border-color: #1e3c72; background: linear-gradient(135deg, #2c5282 0%, #1e3c72 100%); color: #fff; box-shadow: 0 0 0 2px rgba(30,60,114,0.25); }
+        body.theme-dark .lang-mode-btn[aria-pressed="true"] { border-color: #7cb3f5; box-shadow: 0 0 0 2px rgba(124,179,245,0.35); }
         .q-num-badge { display: inline-flex; align-items: center; justify-content: center; min-width: 2rem; height: 1.75rem; padding: 0 0.5rem; background: linear-gradient(135deg, #1e3c72 0%, #2c5282 100%); color: #fff; border-radius: 8px; font-weight: 700; font-size: 0.9em; margin-right: 0.6rem; }
         .block-fa .q-num-badge { margin-right: 0; margin-left: 0.6rem; }
     </style>
@@ -120,17 +231,12 @@
             <a href="/" class="back-btn">← بازگشت به صفحه اصلی / Back to Home</a>
         </div>
         <nav class="sub-nav">
-            <a href="/">خانه / Home</a>
-            <a href="/citizenship-571">۵۷۱ سوال شهروندی</a>
             <a href="/citizenship-introduction">Introduction</a>
             <a href="/citizenship-rights-responsibilities" class="active">Rights and Responsibilities</a>
             <a href="/citizenship-who-we-are">Who We Are</a>
             <a href="/citizenship-canadas-history">Canada's History</a>
+            <a href="/citizenship-modern-canada">Modern Canada</a>
         </nav>
-        <div class="page-header">
-            <h1>Rights and Responsibilities of Citizenship</h1>
-            <p>حقوق و مسئولیت‌های شهروندی – انگلیسی/فرانسه + فارسی</p>
-        </div>
         <div class="tool-bar">
             <div class="group theme-toggle-wrap">
                 <button type="button" class="lang-mode-btn" id="langModeEn" aria-pressed="true">English + فارسی</button>

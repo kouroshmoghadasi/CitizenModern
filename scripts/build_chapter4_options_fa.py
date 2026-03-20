@@ -1,0 +1,137 @@
+# -*- coding: utf-8 -*-
+import json
+import os
+
+
+BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+MISSING_TXT = os.path.join(BASE, "static", "chapter4_missing_options.txt")
+OUT_JSON = os.path.join(BASE, "static", "chapter4_options_fa.json")
+
+
+# Translations for keys missing from the base en->fa map.
+CHAPTER4_FA = {
+    "\"Les Automatistes\" of Quebec": "«Les Automatistes» در کبک",
+    "\"Les Réformateurs\" of Quebec": "«Les Réformateurs» در کبک",
+    "1927": "۱۹۲۷",
+    "1948": "۱۹۴۸",
+    "1951": "۱۹۵۱",
+    "1953": "۱۹۵۳",
+    "1954": "۱۹۵۴",
+    "1961": "۱۹۶۱",
+    "1963": "۱۹۶۳",
+    "1969": "۱۹۶۹",
+    "1970": "۱۹۷۰",
+    "A French music festival": "یک جشنوارهٔ موسیقی فرانسوی",
+    "A French music instrument": "یک ساز موسیقی فرانسوی",
+    "A region in Quebec": "یک منطقه در کبک",
+    "Alexander Graham Rogers": "الکساندر گراهام راجرز",
+    "Alexander Graham Shaw": "الکساندر گراهام شاو",
+    "Alexander Graham Telus": "الکساندر گراهام تلوس",
+    "An era of rapid change in the 1960s in Quebec": "دوره‌ای از تغییرات سریع در دههٔ ۱۹۶۰ در کبک",
+    "An international association of French-speaking countries": "یک انجمن بین‌المللی از کشورهای فرانسه‌زبان",
+    "Between 1925 and 1960": "بین ۱۹۲۵ تا ۱۹۶۰",
+    "Between 1945 and 1970": "بین ۱۹۴۵ تا ۱۹۷۰",
+    "Between 1970 and 1980": "بین ۱۹۷۰ تا ۱۹۸۰",
+    "Between 1980 and 1990": "بین ۱۹۸۰ تا ۱۹۹۰",
+    "By working hard and by being a NATO member": "با تلاش زیاد و عضو ناتو بودن",
+    "By working hard and by trading with other nations": "با تلاش زیاد و تجارت با دیگر کشورها",
+    "Chinese and English": "چینی و انگلیسی",
+    "Common elements and a basic standard of coverage": "اجزای مشترک و یک استاندارد پایهٔ پوشش",
+    "Denys Arcand": "دنیس آرکَن",
+    "Donovan Bailey": "دونوان بیلی",
+    "Dr. John A. Hopps": "دکتر جان ای. هاپس",
+    "Dr. Wilder Penfield": "دکتر وایلدر پنفیلد",
+    "Dr. Wilder Penfield (Pioneering brain surgeon at McGill University)": "دکتر وایلدر پنفیلد (پیشگام جراح مغز در دانشگاه مک‌گیل)",
+    "Drinkable water for all Canadians": "آب آشامیدنی برای همهٔ کانادایی‌ها",
+    "English and British": "انگلیسی و بریتانیایی",
+    "English and Inuit": "انگلیسی و اینوئیت",
+    "French and English": "فرانسوی و انگلیسی",
+    "Half": "نیم",
+    "He became the first elected President of Canada": "او اولین رئیس‌جمهور منتخب کانادا شد",
+    "He inspired people to contribute money for cancer research": "او مردم را الهام داد تا برای تحقیقات سرطان پول کمک کنند",
+    "He united Canada in the 19th century": "او کانادا را در قرن نوزدهم متحد کرد",
+    "He was the greatest hockey player of all time": "او بزرگ‌ترین بازیکن هاکیِ تمام دوران‌ها بود",
+    "Healey Willan": "هیلی ویلان",
+    "Jean-Paul Riopelle": "ژان-پل ریئوپِل",
+    "Joseph-Armand Skidoo": "ژوزف-آرماند اسکیدو",
+    "Joy Kogawa": "جوی کوگاوا",
+    "Kenojuak Ashevak": "کنوجواک آشف‌واک",
+    "Louis-Philippe Hébert": "لوئی-فیلیپ هه‌بر",
+    "Matthew Evans": "متیو ایوانز",
+    "Michael Ondaatje": "مایکل اوندا‌تیجی",
+    "No more contagious epidemics in Canada": "دیگر هیچ اپیدمیِ مسری در کانادا",
+    "Norman Jewison": "نُرمن جوئیسون",
+    "One-quarter": "یک‌چهارم",
+    "One-third": "یک‌سوم",
+    "Pauline Johnson": "پاولین جانسون",
+    "Publicly funded education": "آموزشِ تامین‌شده با بودجهٔ عمومی",
+    "Seven Canadian greatest war heroes": "هفت قهرمان بزرگ جنگی کانادایی",
+    "Seven Canadian visual art artists who developed a certain style of painting": "هفت هنرمند تجسمی کانادایی که یک سبک مشخص از نقاشی را توسعه دادند",
+    "Sir Ernest MacMillan": "سر ارنست مک‌میلان",
+    "Sir Frederick Banting of Toronto and Charles Best": "سر فردریک بانتینگ از تورنتو و چارلز بست",
+    "Sir Henry Woodward": "سر هنری وودوارد",
+    "Sir John A. Hopps": "سر جان ای. هاپس",
+    "Sir Sandford Fleming and Charles Best": "سر سندفورد فلِمینگ و چارلز بست",
+    "Sir Sandford Greenwich": "سر سندفورد گرینویچ",
+    "Thanks to the Americans": "به لطف آمریکایی‌ها",
+    "Thanks to the NAFTA agreement": "به لطف توافق‌نامهٔ NAFTA",
+    "The Abstractists": "آبستره‌ایست‌ها",
+    "The Bilingual Act": "قانون دوزبانگی",
+    "The Cold War (1947 – 1991 under the dictator Josef Stalin)": "جنگ سرد (۱۹۴۷ تا ۱۹۹۱ تحت دیکتاتوری جوزف استالین)",
+    "The Cold War between the East and the West": "جنگ سرد بین شرق و غرب",
+    "The Eastern War": "جنگ شرقی",
+    "The Energy Bill passed by the House of Commons": "لایحهٔ انرژی تصویب‌شده توسط مجلس عوام",
+    "The English Language Act": "قانون زبان انگلیسی",
+    "The French Language Act": "قانون زبان فرانسوی",
+    "The Group of Seven": "گروه هفت",
+    "The Official Languages Act": "قانون زبان‌های رسمی",
+    "The Soviet War": "جنگ شوروی",
+    "The Union War": "جنگ اتحادیه",
+    "The coming of the Old Age Security in Canada": "فرا رسیدن امنیت سالمندی در کانادا",
+    "The development of Canada's autonomy in the world after the Second World War": "توسعهٔ استقلال کانادا در جهان پس از جنگ جهانی دوم",
+    "The discovery of coal in Manitoba": "کشف زغال‌سنگ در مانیتوبا",
+    "The discovery of hydro-electricity in British Columbia": "کشف برق‌آبی در بریتیش کلمبیا",
+    "The discovery of oil in Alberta": "کشف نفت در آلبرتا",
+    "The films of Denys Arcand": "فیلم‌های دنیس آرکَن",
+    "The films of Louis Hémon": "فیلم‌های لوی هِمون",
+    "The films of Louis-Philippe Hébert": "فیلم‌های لوئی-فیلیپ هه‌بر",
+    "The films of Émile Nelligan": "فیلم‌های امیل نلیگان",
+    "The seven Canadian best hockey players": "هفت بازیکن برتر هاکی کانادایی",
+    "The winning goal for Canada in the Canada-Soviet Stanley Cup Series in 1972": "گلِ پیروزی کانادا در سری جام استنلی کانادا-شوروی در ۱۹۷۲",
+    "The winning goal for Canada in the Canada-Soviet Summit Series in 1972 (Paul Henderson scored the winning goal)": "گلِ پیروزی کانادا در سری اجلاس سران کانادا-شوروی در ۱۹۷۲ (پل هندرسون گلِ پیروزی را زد)",
+    "The winning goal for Canada in the Canada-Soviet Summit Series in 1992": "گلِ پیروزی کانادا در سری اجلاس سران کانادا-شوروی در ۱۹۹۲",
+    "The winning goal for Canada in the Canada-USA Summit Series in 1972": "گلِ پیروزی کانادا در سری اجلاس سران کانادا-آمریکا در ۱۹۷۲",
+    "Two-thirds": "دو سوم",
+    "Wayne Gretzky": "وین گریتسکی",
+    "Émile Nelligan": "امیل نلیگان",
+}
+
+
+def main():
+    if not os.path.isfile(MISSING_TXT):
+        raise SystemExit(f"Missing list not found: {MISSING_TXT}")
+
+    missing = []
+    with open(MISSING_TXT, "r", encoding="utf-8") as f:
+        for line in f:
+            line = line.rstrip("\n")
+            if line:
+                missing.append(line)
+
+    # Validation: must cover all missing keys
+    not_found = [k for k in missing if k not in CHAPTER4_FA]
+    if not_found:
+        raise SystemExit(f"Translations missing for {len(not_found)} keys, e.g. {not_found[:5]}")
+
+    # Write JSON
+    os.makedirs(os.path.dirname(OUT_JSON), exist_ok=True)
+    with open(OUT_JSON, "w", encoding="utf-8") as f:
+        json.dump(CHAPTER4_FA, f, ensure_ascii=False, indent=2)
+
+    print("Wrote", OUT_JSON, "entries:", len(CHAPTER4_FA))
+    print("Covered missing keys:", len(missing))
+
+
+if __name__ == "__main__":
+    main()
+

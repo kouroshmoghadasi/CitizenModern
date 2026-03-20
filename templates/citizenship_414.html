@@ -223,10 +223,10 @@ body {
         body.theme-dark .block-fa { background: rgba(241,196,15,0.15); }
         .block-fr { direction: ltr; text-align: left; margin-bottom: 10px; padding: 10px 12px; background: rgba(0,82,147,0.08); border-radius: 10px; border-left: 3px solid #005293; }
         body.theme-dark .block-fr { background: rgba(0,82,147,0.18); border-left-color: #4a9fd4; }
-        .lang-mode-btn { padding: 10px 18px; border-radius: 10px; border: 2px solid var(--border); background: var(--card-bg); color: var(--text); font-weight: 600; font-size: 0.95em; cursor: pointer; transition: all 0.2s; }
+        .lang-mode-btn { padding: 10px 18px; border-radius: 10px; border: 2px solid var(--border); background: var(--card-bg); color: var(--text); font-weight: 600; font-size: 0.95em; cursor: pointer; transition: all 0.2s; -webkit-appearance: none; appearance: none; }
         .lang-mode-btn:hover { border-color: var(--accent); }
-        .lang-mode-btn[aria-pressed="true"] { border-color: var(--accent); background: linear-gradient(135deg, #e8eef5 0%, #dce4ed 100%); box-shadow: 0 0 0 2px rgba(30,60,114,0.25); }
-        body.theme-dark .lang-mode-btn[aria-pressed="true"] { background: linear-gradient(135deg, #3d4a5c 0%, #2d3748 100%); border-color: #7cb3f5; }
+        .lang-mode-btn[aria-pressed="true"] { border-color: #1e3c72; background: linear-gradient(135deg, #2c5282 0%, #1e3c72 100%); color: #fff; box-shadow: 0 0 0 2px rgba(30,60,114,0.25); }
+        body.theme-dark .lang-mode-btn[aria-pressed="true"] { border-color: #7cb3f5; box-shadow: 0 0 0 2px rgba(124,179,245,0.35); }
         .q-num-badge {
             display: inline-flex; align-items: center; justify-content: center;
             min-width: 2rem; height: 1.75rem; padding: 0 0.5rem;
@@ -490,9 +490,6 @@ body {
         </script>
         {% endif %}
 
-        <div class="page-header" style="margin-top: 32px;">
-            <p>منبع: Citizenship 414 question.pdf</p>
-        </div>
         <div class="back-bar">
             <a href="/" class="back-btn">← بازگشت به صفحه اصلی / Back to Home</a>
   </div>

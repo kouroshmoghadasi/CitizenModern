@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{{ url_for('static', filename='images/logo.png') }}" type="image/png">
+    <link rel="apple-touch-icon" href="{{ url_for('static', filename='images/logo.png') }}">
+    <meta property="og:image" content="{{ request.url_root.rstrip('/') }}{{ url_for('static', filename='images/logo.png') }}">
+    <title>تست‌های دسته‌بندی‌شده | آزمون شهروندی</title>
+    <meta name="description" content="انتخاب بخش آزمون شهروندی کانادا: Introduction، Rights and Responsibilities، Who We Are، Canada's History، Modern Canada.">
+    <link rel="canonical" href="{{ request.host_url.rstrip('/') }}/citizenship-categorized-tests">
+    {% include 'pwa_meta.html' %}
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            --card-bg: #fff;
+            --text: #1a1a1a;
+            --header-bg: linear-gradient(135deg, #1e3c72 0%, #2c5282 100%);
+            --header-text: #fff;
+            --accent: #1e3c72;
+            --accent-light: #2c5282;
+            --border: rgba(30,60,114,0.08);
+        }
+        body.theme-dark {
+            --bg: linear-gradient(135deg, #1a1d24 0%, #0f1115 100%);
+            --card-bg: #252830;
+            --text: #e8eaed;
+            --header-bg: linear-gradient(135deg, #2d3748 0%, #1e3c72 100%);
+            --header-text: #fff;
+            --accent: #7cb3f5;
+            --accent-light: #90c5f7;
+            --border: rgba(255,255,255,0.1);
+        }
+        body {
+            font-family: Tahoma, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.7;
+            color: var(--text);
+        }
+        .wrap { max-width: 900px; margin: 0 auto; }
+        .tool-bar {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 16px;
+            margin-bottom: 20px;
+            padding: 14px 18px;
+            background: var(--card-bg);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+        }
+        body.theme-dark .tool-bar { box-shadow: 0 2px 10px rgba(0,0,0,0.3); }
+        .tool-bar .group { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+        .theme-toggle-wrap { display: flex; align-items: center; gap: 6px; }
+        .theme-label { font-weight: 600; color: var(--text); font-size: 0.95em; }
+        .theme-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            border: 2px solid var(--border);
+            background: var(--card-bg);
+            font-size: 1.35em;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+        }
+        .theme-btn:hover { transform: scale(1.08); box-shadow: 0 4px 12px rgba(0,0,0,0.12); }
+        .theme-btn[aria-pressed="true"] {
+            border-color: #1e3c72;
+            box-shadow: 0 0 0 2px rgba(30,60,114,0.35);
+            background: linear-gradient(135deg, #e8eef5 0%, #dce4ed 100%);
+        }
+        body.theme-dark .theme-btn[aria-pressed="true"] {
+            border-color: #7cb3f5;
+            box-shadow: 0 0 0 2px rgba(124,179,245,0.4);
+            background: linear-gradient(135deg, #3d4a5c 0%, #2d3748 100%);
+        }
+        .back-bar { margin-bottom: 12px; text-align: right; }
+        .back-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: var(--accent);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 600;
+        }
+        .back-btn:hover { background: var(--accent-light); }
+        .sub-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px 16px;
+            margin-bottom: 20px;
+            padding: 12px 16px;
+            background: var(--card-bg);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        body.theme-dark .sub-nav { box-shadow: 0 2px 8px rgba(0,0,0,0.2); }
+        .sub-nav a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95em;
+            padding: 6px 12px;
+            border-radius: 8px;
+            transition: background 0.2s, color 0.2s;
+        }
+        .sub-nav a:hover { background: rgba(30,60,114,0.1); }
+        body.theme-dark .sub-nav a:hover { background: rgba(124,179,245,0.15); }
+        .sub-nav a[href="{{ request.path }}"] { background: rgba(30,60,114,0.15); }
+        body.theme-dark .sub-nav a[href="{{ request.path }}"] { background: rgba(124,179,245,0.2); }
+        .page-header {
+            background: var(--header-bg);
+            color: var(--header-text);
+            padding: 28px 24px;
+            border-radius: 16px;
+            margin-bottom: 24px;
+            text-align: center;
+            box-shadow: 0 8px 24px rgba(30,60,114,0.25);
+        }
+        .page-header h1 { font-size: 1.6em; margin-bottom: 8px; }
+        .page-header p { font-size: 0.95em; opacity: 0.95; }
+    </style>
+</head>
+<body>
+    <script>try{var t=localStorage.getItem('citizenship571_theme');if(t==='dark')document.body.classList.add('theme-dark');}catch(e){}</script>
+    <div class="wrap">
+        <div class="back-bar">
+            <a href="/" class="back-btn">← بازگشت به صفحه اصلی / Back to Home</a>
+        </div>
+        {% include 'sub_nav.html' %}
+        <div class="tool-bar">
+            <div class="group theme-toggle-wrap">
+                <span class="theme-label">Theme:</span>
+                <button type="button" class="theme-btn theme-light" id="themeLight" title="روشن / Light" aria-pressed="true">☀️</button>
+                <button type="button" class="theme-btn theme-dark" id="themeDark" title="تاریک / Dark" aria-pressed="false">🌙</button>
+            </div>
+        </div>
+        
+    </div>
+    <script>
+    (function() {
+        var themeKey = 'citizenship571_theme';
+        var themeLight = document.getElementById('themeLight');
+        var themeDark = document.getElementById('themeDark');
+        function applyTheme(val) {
+            if (val === 'dark') {
+                document.body.classList.add('theme-dark');
+                if (themeLight) themeLight.setAttribute('aria-pressed', 'false');
+                if (themeDark) themeDark.setAttribute('aria-pressed', 'true');
+            } else {
+                document.body.classList.remove('theme-dark');
+                if (themeLight) themeLight.setAttribute('aria-pressed', 'true');
+                if (themeDark) themeDark.setAttribute('aria-pressed', 'false');
+            }
+        }
+        var savedTheme = localStorage.getItem(themeKey) || 'light';
+        applyTheme(savedTheme);
+        if (themeLight) themeLight.addEventListener('click', function() { localStorage.setItem(themeKey, 'light'); applyTheme('light'); });
+        if (themeDark) themeDark.addEventListener('click', function() { localStorage.setItem(themeKey, 'dark'); applyTheme('dark'); });
+    })();
+    </script>
+</body>
+</html>
