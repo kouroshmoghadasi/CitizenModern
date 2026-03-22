@@ -13,6 +13,15 @@
                 <p style="margin-top: 8px; font-size: 0.9em; color: #777;">
                     <strong>This application</strong> covers the complete Canadian citizenship test content and will remain available as long as this site is up.
                 </p>
+                <p class="footer-plain-exam-links" style="margin-top: 12px; font-size: 0.82em; color: #888; line-height: 1.55;" dir="rtl">
+                    لینک مستقیم آزمون‌های نمونه (برای اشتراک در تلگرام و غیره — بدون دکمه در منو):
+                    <br>
+                    <a href="{{ request.url_root.rstrip('/') }}{{ url_for('citizenship_exams') }}" style="color: #2c5282; word-break: break-all;">{{ request.url_root.rstrip('/') }}{{ url_for('citizenship_exams') }}</a>
+                    <span style="color:#aaa;"> — فهرست</span>
+                    <br>
+                    <a href="{{ request.url_root.rstrip('/') }}{{ url_for('exam1') }}" style="color: #2c5282; word-break: break-all;">{{ request.url_root.rstrip('/') }}{{ url_for('exam1') }}</a>
+                    <span style="color:#aaa;"> — Exam1</span>
+                </p>
             </div>
             <div class="footer-bottom-bar">
                 <div class="footer-bottom-inner">

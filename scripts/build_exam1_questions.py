@@ -1,0 +1,582 @@
+# -*- coding: utf-8 -*-
+"""Build static/exam1_questions.json from doc 'Rights and Responsibilities of Citizenship1'.
+   Answers verified against Discover Canada / standard citizenship study material."""
+import json
+import os
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+OUT = os.path.join(ROOT, "static", "exam1_questions.json")
+
+# Each: q_en, q_fr, q_fa, options_en[], options_fr[], options_fa[], correct (0-based)
+RAW = [
+    (
+        "List four rights Canadian citizens have:",
+        "Citez quatre droits dont jouissent les citoyens canadiens :",
+        "چهار حق شهروندان کانادایی را فهرست کنید:",
+        [
+            "Right to have a job, vote, drive, go to school",
+            "Right to go to school, work, have a bank account, travel",
+            "Right to travel, live anywhere, work anywhere, get married",
+            "Right to challenge unlawful detention, vote, apply for a Canadian passport, enter and leave Canada freely",
+        ],
+        [
+            "Droit d'avoir un emploi, de voter, de conduire, d'aller à l'école",
+            "Droit d'aller à l'école, de travailler, d'avoir un compte bancaire, de voyager",
+            "Droit de voyager, de vivre n'importe où, de travailler n'importe où, de se marier",
+            "Droit de contester une détention illégale, de voter, de demander un passeport canadien, d'entrer et de quitter le Canada librement",
+        ],
+        [
+            "حق داشتن شغل، رأی دادن، رانندگی، رفتن به مدرسه",
+            "حق رفتن به مدرسه، کار، داشتن حساب بانکی، سفر",
+            "حق سفر، زندگی در هر جا، کار در هر جا، ازدواج",
+            "حق اعتراض به بازداشت غیرقانونی، رأی دادن، درخواست پاسپورت کانادایی، ورود و خروج آزاد از کانادا",
+        ],
+        3,
+    ),
+    (
+        "Name six responsibilities of citizenship:",
+        "Nommez six responsabilités liées à la citoyenneté :",
+        "شش مسئولیت شهروندی را نام ببرید:",
+        [
+            "Get a job, make money, raise a family, pay taxes, mow your lawn, vote",
+            "Vote, join a political party, get a job, obey the law, drive safely, pick up litter",
+            "Care for the environment, don't litter, pay taxes, obey the law, help others, respect others",
+            "Vote, help others, care for our heritage and environment, obey Canada's laws, respect the rights of others, and eliminate injustice",
+        ],
+        [
+            "Avoir un emploi, gagner de l'argent, fonder une famille, payer des impôts, tondre la pelouse, voter",
+            "Voter, adhérer à un parti politique, avoir un emploi, respecter la loi, conduire prudemment, ramasser les déchets",
+            "Protéger l'environnement, ne pas jeter de détritus, payer des impôts, respecter la loi, aider les autres, respecter les autres",
+            "Voter, aider les autres, prendre soin de notre patrimoine et de l'environnement, respecter les lois du Canada, respecter les droits d'autrui et éliminer l'injustice",
+        ],
+        [
+            "پیدا کردن کار، درآمد، تأسیس خانواده، پرداخت مالیات، چیدن چمن، رأی دادن",
+            "رأی دادن، عضویت در حزب، کار، رعایت قانون، رانندگی ایمن، جمع کردن زباله",
+            "مراقبت از محیط زیست، نریختن زباله، پرداخت مالیات، رعایت قانون، کمک به دیگران، احترام به دیگران",
+            "رأی دادن، کمک به دیگران، مراقبت از میراث و محیط زیست، رعایت قوانین کانادا، احترام به حقوق دیگران و مبارزه با بی‌عدالتی",
+        ],
+        3,
+    ),
+    (
+        "Name two fundamental freedoms protected by the Canadian Charter of Rights and Freedoms.",
+        "Nommez deux libertés fondamentales protégées par la Charte canadienne des droits et libertés.",
+        "دو آزادی بنیادین که منشور حقوق و آزادی‌های کانادا از آن‌ها حفاظت می‌کند را نام ببرید.",
+        [
+            "Freedom of religion and freedom of speech",
+            "Equality rights and to care for Canada's heritage",
+            "Basic freedoms and obey laws",
+            "Aboriginal people's rights and to volunteer",
+        ],
+        [
+            "Liberté de religion et liberté d'expression",
+            "Droit à l'égalité et soin du patrimoine du Canada",
+            "Libertés de base et respect des lois",
+            "Droits des peuples autochtones et bénévolat",
+        ],
+        [
+            "آزادی دین و آزادی بیان",
+            "حقوق برابری و مراقبت از میراث کانادا",
+            "آزادی‌های پایه و رعایت قوانین",
+            "حقوق بومیان و داوطلب بودن",
+        ],
+        0,
+    ),
+    (
+        "Name two key documents that contain our rights and freedoms.",
+        "Nommez deux documents clés qui consacrent nos droits et libertés.",
+        "دو سند کلیدی که حقوق و آزادی‌های ما را شامل می‌شوند نام ببرید.",
+        [
+            "The Canadian Constitution and English common law",
+            "Civil code of France and the Canadian Constitution",
+            "Canadian Charter of Rights and Freedoms and Magna Carta (The Great Charter of Freedoms)",
+            "Laws passed by Parliament and English common law",
+        ],
+        [
+            "La Constitution du Canada et la common law anglaise",
+            "Le code civil de la France et la Constitution du Canada",
+            "La Charte canadienne des droits et libertés et la Magna Carta (Grande Charte des libertés)",
+            "Les lois adoptées par le Parlement et la common law anglaise",
+        ],
+        [
+            "قانون اساسی کانادا و حقوق عرفی انگلیسی",
+            "قانون مدنی فرانسه و قانون اساسی کانادا",
+            "منشور حقوق و آزادی‌های کانادا و منشور ماگنا کارتا (منشور بزرگ آزادی‌ها)",
+            "قوانین مصوب پارلمان و حقوق عرفی انگلیسی",
+        ],
+        2,
+    ),
+    (
+        "The Great Charter of Freedoms was signed in:",
+        "La Grande Charte des libertés a été signée en :",
+        "منشور بزرگ آزادی‌ها در کجا امضا شد؟",
+        ["France", "Canada", "Ireland", "England"],
+        ["France", "Canada", "Irlande", "Angleterre"],
+        ["فرانسه", "کانادا", "ایرلند", "انگلستان"],
+        3,
+    ),
+    (
+        "When was the Magna Carta signed?",
+        "Quand la Magna Carta a-t-elle été signée?",
+        "منشور ماگنا کارتا چه زمانی امضا شد؟",
+        ["1615", "1425", "1215", "1649"],
+        ["1615", "1425", "1215", "1649"],
+        ["۱۶۱۵", "۱۴۲۵", "۱۲۱۵", "۱۶۴۹"],
+        2,
+    ),
+    (
+        "Which one of the following is not included in the Great Charter of Freedom?",
+        "Laquelle des libertés suivantes ne figure pas dans la Grande Charte des libertés?",
+        "کدام مورد در منشور بزرگ آزادی‌ها نیست؟",
+        [
+            "Freedom of thought, belief, opinion, and expression",
+            "Freedom of conscience and religion",
+            "Freedom to buy property",
+            "Freedom of association",
+        ],
+        [
+            "Liberté de pensée, de croyance, d'opinion et d'expression",
+            "Liberté de conscience et de religion",
+            "Liberté d'acheter une propriété",
+            "Liberté d'association",
+        ],
+        [
+            "آزادی اندیشه، باور، عقیده و بیان",
+            "آزادی وجدان و دین",
+            "آزادی خرید ملک",
+            "آزادی تشکیل انجمن و اجتماع",
+        ],
+        2,
+    ),
+    (
+        'What is "Habeas corpus"?',
+        'Qu\'est-ce que le « habeas corpus »?',
+        "«habeas corpus» چیست؟",
+        [
+            "The right to challenge unlawful detention by the state",
+            "The right to live and work anywhere in Canada",
+            "The right to speak freely",
+            "The right for peaceful assembly",
+        ],
+        [
+            "Le droit de contester une détention illégale par l'État",
+            "Le droit de vivre et de travailler n'importe où au Canada",
+            "Le droit de s'exprimer librement",
+            "Le droit de réunion pacifique",
+        ],
+        [
+            "حق اعتراض به بازداشت غیرقانونی توسط دولت",
+            "حق زندگی و کار در هر نقطه از کانادا",
+            "حق آزادانه صحبت کردن",
+            "حق تجمع مسالمت‌آمیز",
+        ],
+        0,
+    ),
+    (
+        "Name the source of Habeas corpus",
+        "Quelle est la source du habeas corpus?",
+        "منبع habeas corpus را نام ببرید.",
+        [
+            "English common law",
+            "Irish common law",
+            "Civil code of France",
+            "Magna Carta",
+        ],
+        [
+            "Common law anglaise",
+            "Common law irlandaise",
+            "Code civil de la France",
+            "Magna Carta",
+        ],
+        [
+            "حقوق عرفی انگلیسی",
+            "حقوق عرفی ایرلندی",
+            "قانون مدنی فرانسه",
+            "منشور ماگنا کارتا",
+        ],
+        0,
+    ),
+    (
+        "When was the Constitution of Canada amended to include the Charter of Rights and Freedoms?",
+        "Quand la Constitution du Canada a-t-elle été modifiée pour inclure la Charte des droits et libertés?",
+        "قانون اساسی کانادا چه زمانی برای افزودن منشور حقوق و آزادی‌ها اصلاح شد؟",
+        ["1902", "1982", "1859", "1949"],
+        ["1902", "1982", "1859", "1949"],
+        ["۱۹۰۲", "۱۹۸۲", "۱۸۵۹", "۱۹۴۹"],
+        1,
+    ),
+    (
+        "Who proclaimed the amended Constitution of Canada in 1982?",
+        "Qui a proclamé la Constitution du Canada modifiée en 1982?",
+        "چه کسی قانون اساسی اصلاح‌شدهٔ کانادا را در ۱۹۸۲ اعلام کرد؟",
+        [
+            "The Prime Minister",
+            "The Senate",
+            "Queen Elizabeth II",
+            "The people of Canada",
+        ],
+        [
+            "Le premier ministre",
+            "Le Sénat",
+            "La reine Elizabeth II",
+            "Le peuple canadien",
+        ],
+        [
+            "نخست‌وزیر",
+            "سنا",
+            "ملکه الیزابت دوم",
+            "مردم کانادا",
+        ],
+        2,
+    ),
+    (
+        "With which words does the Canadian Charter of Rights and Freedoms begin?",
+        "Par quels mots commence la Charte canadienne des droits et libertés?",
+        "منشور حقوق و آزادی‌های کانادا با کدام عبارات آغاز می‌شود؟",
+        [
+            '"Canada is a free country and home of the braves"',
+            '"Oh Canada! Our home and native land!"',
+            '"Whereas Canada is founded upon principles that recognize the supremacy of God and the rule of law"',
+            '"Canadian citizens have rights and responsibilities"',
+        ],
+        [
+            "« Le Canada est un pays libre et le pays des braves »",
+            "« Ô Canada! Terre de nos aïeux! »",
+            "« Attendu que le Canada est fondé sur des principes qui reconnaissent la suprématie de Dieu et la primauté du droit »",
+            "« Les citoyens canadiens ont des droits et des responsabilités »",
+        ],
+        [
+            "«کانادا کشور آزاد و خانهٔ شجاعان است»",
+            "«ای کانادا! سرزمین مادری ما!»",
+            "«از آنجا که کانادا بر اصولی استوار است که برتری خدا و حاکمیت قانون را به رسمیت می‌شناسد»",
+            "«شهروندان کانادا حقوق و مسئولیت‌ها دارند»",
+        ],
+        2,
+    ),
+    (
+        'What are "mobility rights"?',
+        "Que sont les « droits à la mobilité »?",
+        "«حقوق تحرک» (mobility rights) یعنی چه؟",
+        [
+            "Canadians have freedom of speech",
+            "Canadians can enter and leave the country freely, and apply for a passport",
+            "Canadians can live and work anywhere they choose in Canada, enter/leave the country, and apply for a passport",
+            "Canadians can live and work anywhere they choose in Canada, and enter/leave the country freely",
+        ],
+        [
+            "Les Canadiens ont la liberté d'expression",
+            "Les Canadiens peuvent entrer et quitter le pays librement et demander un passeport",
+            "Les Canadiens peuvent vivre et travailler où ils veulent au Canada, entrer/quitter le pays et demander un passeport",
+            "Les Canadiens peuvent vivre et travailler où ils veulent au Canada et entrer/quitter le pays librement",
+        ],
+        [
+            "کانادایی‌ها آزادی بیان دارند",
+            "کانادایی‌ها می‌توانند آزادانه وارد و خارج شوند و برای پاسپورت درخواست دهند",
+            "کانادایی‌ها می‌توانند هر جا در کانادا زندگی و کار کنند، وارد/خارج شوند و پاسپورت بگیرند",
+            "کانادایی‌ها می‌توانند هر جا در کانادا زندگی و کار کنند و آزادانه وارد و خارج شوند",
+        ],
+        3,
+    ),
+    (
+        "Who can enter and leave the country freely without time constraints?",
+        "Qui peut entrer et quitter le pays librement sans limite de temps?",
+        "چه کسی می‌تواند بدون محدودیت زمانی آزادانه وارد و خارج کشور شود؟",
+        [
+            "Canadian citizens",
+            "Canadian citizens and landed immigrants",
+            "British citizens",
+            "Commonwealth citizens",
+        ],
+        [
+            "Citoyens canadiens",
+            "Citoyens canadiens et immigrants reçus",
+            "Citoyens britanniques",
+            "Citoyens du Commonwealth",
+        ],
+        [
+            "شهروندان کانادایی",
+            "شهروندان کانادایی و مهاجران مقیم دائم",
+            "شهروندان بریتانیا",
+            "شهروندان مشترک‌المنافع",
+        ],
+        0,
+    ),
+    (
+        "Which three rights are included in the Canadian Charter of Rights and Freedoms?",
+        "Quels trois droits figurent dans la Charte canadienne des droits et libertés?",
+        "کدام سه حق در منشور حقوق و آزادی‌های کانادا گنجانده شده‌اند؟",
+        [
+            "Mobility rights, Aboriginal People's rights, and official language rights",
+            "Freedom of expression rights, property rights and fair trial rights",
+            "Employment rights, mobility rights, and freedom rights",
+            "Aboriginal People's rights, voting rights and official language rights",
+        ],
+        [
+            "Droits à la mobilité, droits des peuples autochtones et droits linguistiques officiels",
+            "Liberté d'expression, droits de propriété et droit à un procès équitable",
+            "Droits au travail, droits à la mobilité et libertés",
+            "Droits des peuples autochtones, droit de vote et droits linguistiques officiels",
+        ],
+        [
+            "حقوق تحرک، حقوق بومیان و حقوق زبان‌های رسمی",
+            "آزادی بیان، حقوق مالکیت و حق دادرسی منصفانه",
+            "حقوق اشتغال، حقوق تحرک و آزادی‌ها",
+            "حقوق بومیان، حق رأی و حقوق زبان‌های رسمی",
+        ],
+        0,
+    ),
+    (
+        "French and English do not have equal status in Parliament and throughout the government",
+        "Le français et l'anglais n'ont pas un statut égal au Parlement et dans l'ensemble du gouvernement",
+        "فرانسه و انگلیسی در پارلمان و در سراسر دولت وضعیت برابر ندارند",
+        ["True", "False"],
+        ["Vrai", "Faux"],
+        ["درست", "نادرست"],
+        1,
+    ),
+    (
+        "What is a fundamental characteristic of the Canadian heritage and identity?",
+        "Quelle est une caractéristique fondamentale du patrimoine et de l'identité canadiens?",
+        "ویژگی بنیادین میراث و هویت کانادا چیست؟",
+        ["Hockey", "Maple Syrup", "Multiculturalism", "Habeas Corpus"],
+        ["Hockey", "Sirop d'érable", "Multiculturalisme", "Habeas corpus"],
+        ["هاکی", "شربت افرا", "چندفرهنگی", "habeas corpus"],
+        2,
+    ),
+    (
+        "As a new immigrant to Canada, why can a woman get the same education as any man?",
+        "En tant que nouvelle immigrante au Canada, pourquoi une femme peut-elle recevoir la même éducation qu'un homme?",
+        "چرا به‌عنوان مهاجر تازه‌وارد، زن می‌تواند همان آموزشی را ببیند که مرد؟",
+        [
+            "Because she has a university degree",
+            "Because in Canada, men and women are equal under the law",
+            "Because she is from England",
+            "Because her husband approves it",
+        ],
+        [
+            "Parce qu'elle a un diplôme universitaire",
+            "Parce qu'au Canada, les hommes et les femmes sont égaux devant la loi",
+            "Parce qu'elle vient d'Angleterre",
+            "Parce que son mari l'approuve",
+        ],
+        [
+            "چون مدرک دانشگاهی دارد",
+            "چون در کانادا زنان و مردان در برابر قانون برابرند",
+            "چون اهل انگلستان است",
+            "چون شوهرش اجازه می‌دهد",
+        ],
+        1,
+    ),
+    (
+        "In Canada, abuse of your spouse is:",
+        "Au Canada, la violence conjugale est :",
+        "در کانادا آزار همسر:",
+        ["Tolerated", "Lawful", "Illegal", "Normal"],
+        ["Tolérée", "Légale", "Illégale", "Normale"],
+        ["تحمل می‌شود", "قانونی است", "غیرقانونی است", "عادی است"],
+        2,
+    ),
+    (
+        "Which of the following is not a responsibility of Canadian citizenship?",
+        "Laquelle des options suivantes n'est pas une responsabilité de la citoyenneté canadienne?",
+        "کدام یک مسئولیت شهروندی کانادا نیست؟",
+        [
+            "Serving on a jury",
+            "Learning French and English",
+            "Obeying the law",
+            "Helping others in the community",
+        ],
+        [
+            "Siéger comme juré",
+            "Apprendre le français et l'anglais",
+            "Respecter la loi",
+            "Aider les autres dans la communauté",
+        ],
+        [
+            "شرکت در هیئت منصفه",
+            "یادگیری فرانسه و انگلیسی",
+            "رعایت قانون",
+            "کمک به دیگران در جامعه",
+        ],
+        1,
+    ),
+    (
+        "Obeying the law is:",
+        "Respecter la loi, c'est :",
+        "رعایت قانون:",
+        ["A responsibility", "A right"],
+        ["Une responsabilité", "Un droit"],
+        ["یک مسئولیت است", "یک حق است"],
+        0,
+    ),
+    (
+        "When called to do so, serving on a jury is:",
+        "Lorsqu'on y est convoqué, siéger comme juré est :",
+        "وقتی احضار شوید، حضور در هیئت منصفه:",
+        ["A legal requirement", "An option"],
+        ["Une obligation légale", "Une option"],
+        ["الزام قانونی است", "اختیاری است"],
+        0,
+    ),
+    (
+        "There is no compulsory military service in Canada",
+        "Il n'y a pas de service militaire obligatoire au Canada",
+        "در کانادا خدمت نظامی اجباری وجود ندارد",
+        ["True", "False"],
+        ["Vrai", "Faux"],
+        ["درست", "نادرست"],
+        0,
+    ),
+    (
+        "The right to apply for a passport is included in:",
+        "Le droit de demander un passeport est inclus dans :",
+        "حق درخواست پاسپورت در کجا آمده است؟",
+        [
+            "The Confederation Act",
+            "Multiculturalism",
+            "Mobility Rights",
+            "Official Language Act",
+        ],
+        [
+            "Loi de la Confédération",
+            "Multiculturalisme",
+            "Droits à la mobilité",
+            "Loi sur les langues officielles",
+        ],
+        [
+            "قانون کنفدراسیون",
+            "چندفرهنگی",
+            "حقوق تحرک",
+            "قانون زبان‌های رسمی",
+        ],
+        2,
+    ),
+    (
+        "Which part of the Constitution summarizes fundamental freedoms while also setting out additional rights?",
+        "Quelle partie de la Constitution résume les libertés fondamentales et énonce d'autres droits?",
+        "کدام بخش قانون اساسی آزادی‌های بنیادین را خلاصه می‌کند و حقوق بیشتری نیز ذکر می‌کند؟",
+        [
+            "The Canadian Charter of Rights and Freedoms",
+            "The Canadian Charter of Rights",
+            "The Canadian Charter of Freedoms",
+            "The British Charter of Rights and Freedoms",
+        ],
+        [
+            "La Charte canadienne des droits et libertés",
+            "La Charte canadienne des droits",
+            "La Charte canadienne des libertés",
+            "La Charte britannique des droits et libertés",
+        ],
+        [
+            "منشور حقوق و آزادی‌های کانادا",
+            "منشور حقوق کانادا",
+            "منشور آزادی‌های کانادا",
+            "منشور حقوق و آزادی‌های بریتانیا",
+        ],
+        0,
+    ),
+    (
+        "In Canada, how are individuals and governments regulated?",
+        "Au Canada, comment les individus et les gouvernements sont-ils encadrés?",
+        "در کانادا افراد و دولت‌ها چگونه تنظیم می‌شوند؟",
+        [
+            "By arbitrary actions",
+            "By force",
+            "By laws",
+            "By traditions",
+        ],
+        [
+            "Par des actions arbitraires",
+            "Par la force",
+            "Par les lois",
+            "Par les traditions",
+        ],
+        [
+            "با اقدامات خودسرانه",
+            "با زور",
+            "با قوانین",
+            "با سنت‌ها",
+        ],
+        2,
+    ),
+    (
+        "As a Canadian citizen, in which elections do you have a responsibility to vote?",
+        "En tant que citoyen canadien, à quelles élections avez-vous le devoir de voter?",
+        "به‌عنوان شهروند کانادا در کدام انتخابات مسئولیت رأی دادن دارید؟",
+        [
+            "Federal, provincial, or territorial and local elections",
+            "Federal, provincial, or territorial elections",
+            "Local elections only",
+            "Federal elections only",
+        ],
+        [
+            "Élections fédérales, provinciales ou territoriales et locales",
+            "Élections fédérales, provinciales ou territoriales",
+            "Élections locales seulement",
+            "Élections fédérales seulement",
+        ],
+        [
+            "انتخابات فدرال، استانی یا سرزمینی و محلی",
+            "انتخابات فدرال، استانی یا سرزمینی",
+            "فقط انتخابات محلی",
+            "فقط انتخابات فدرال",
+        ],
+        0,
+    ),
+    (
+        "Canada is not the only constitutional monarchy in North America",
+        "Le Canada n'est pas la seule monarchie constitutionnelle en Amérique du Nord",
+        "کانادا تنها پادشاهی مشروطه در آمریکای شمالی نیست",
+        ["True", "False"],
+        ["Vrai", "Faux"],
+        ["درست", "نادرست"],
+        1,
+    ),
+    (
+        "What is the key phrase in Canada's original constitutional document?",
+        "Quelle est la formule clé du document constitutionnel original du Canada?",
+        "عبارت کلیدی در سند قانون اساسی اولیهٔ کانادا چیست؟",
+        [
+            "Peace, Order, and Good Government",
+            "Work, Order, and Good Government",
+            "Peace, Order, and Mobility Rights",
+            "Rights, Order, and Good Government",
+        ],
+        [
+            "Paix, ordre et bon gouvernement",
+            "Travail, ordre et bon gouvernement",
+            "Paix, ordre et droits à la mobilité",
+            "Droits, ordre et bon gouvernement",
+        ],
+        [
+            "صلح، نظم و حکومت نیکو",
+            "کار، نظم و حکومت نیکو",
+            "صلح، نظم و حقوق تحرک",
+            "حقوق، نظم و حکومت نیکو",
+        ],
+        0,
+    ),
+]
+
+
+def main():
+    questions = []
+    for q_en, q_fr, q_fa, oe, ofr, ofa, cor in RAW:
+        questions.append(
+            {
+                "q": q_en,
+                "q_fr": q_fr,
+                "q_fa": q_fa,
+                "options_en": oe,
+                "options_fr": ofr,
+                "options_fa": ofa,
+                "correct": cor,
+            }
+        )
+    os.makedirs(os.path.dirname(OUT), exist_ok=True)
+    with open(OUT, "w", encoding="utf-8") as f:
+        json.dump(questions, f, ensure_ascii=False, indent=2)
+    print("Wrote", OUT, "count=", len(questions))
+
+
+if __name__ == "__main__":
+    main()

@@ -358,6 +358,7 @@ _cache_govern = None
 _cache_federal_elections = None
 _cache_justice = None
 _cache_canadian_symbols = None
+_cache_exam1 = None
 
 
 def _load_414_questions():
@@ -589,6 +590,23 @@ def _load_introduction_questions():
         pass
     _cache_introduction = []
     return _cache_introduction
+
+
+def _load_exam1_questions():
+    """Load Exam1 (Rights & Responsibilities sample MCQ) from static JSON."""
+    global _cache_exam1
+    if _cache_exam1 is not None:
+        return _cache_exam1
+    path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static', 'exam1_questions.json')
+    try:
+        if os.path.isfile(path):
+            with open(path, 'r', encoding='utf-8') as f:
+                _cache_exam1 = json.load(f)
+            return _cache_exam1
+    except Exception:
+        pass
+    _cache_exam1 = []
+    return _cache_exam1
 
 
 def _load_chapter1_questions():
@@ -1005,6 +1023,53 @@ def citizenship_introduction():
     )
 
 
+@app.route('/citizenship-exams')
+def citizenship_exams():
+    """فهرست آزمون‌های نمونه (Exam1, …)."""
+    log_visitor('/citizenship-exams')
+    return render_template('citizenship_exams.html')
+
+
+@app.route('/exam1')
+def exam1():
+    """Exam1 — Rights and Responsibilities (doc-based MCQ). سوالات ۱ تا ۵ رایگان؛ از ۶ به بعد با اشتراک بستهٔ ۴۱۴."""
+    log_visitor('/exam1')
+    all_questions = _load_exam1_questions()
+    n = len(all_questions)
+    today = _today()
+    has_access = False
+    if session.get('sub_414_expiry'):
+        try:
+            exp = session['sub_414_expiry']
+            if isinstance(exp, str):
+                exp = date.fromisoformat(exp)
+            if exp >= today:
+                has_access = True
+        except Exception:
+            pass
+    free_n = 5
+    if has_access:
+        questions = all_questions
+        show_paywall = False
+        max_visible = n
+    else:
+        questions = all_questions[:free_n] if n >= free_n else all_questions
+        show_paywall = n > free_n
+        max_visible = free_n + (1 if show_paywall else 0)
+    resp = app.make_response(render_template(
+        'exam1.html',
+        questions=questions,
+        max_question_exam1=n,
+        max_visible_exam1=max_visible,
+        show_paywall=show_paywall,
+        free_count=free_n,
+    ))
+    resp.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
+    resp.headers['Pragma'] = 'no-cache'
+    resp.headers['Expires'] = '0'
+    return resp
+
+
 @app.route('/citizenship-rights-responsibilities')
 def citizenship_rights_responsibilities():
     """صفحه Rights and Responsibilities of Citizenship (Chapter 1) — سوالات ۱–۲ رایگان؛ از ۳ به بعد با اشتراک. No print / No select."""
@@ -1211,6 +1276,8 @@ def sitemap():
         ('/book_summary.html', 'weekly', '0.9'),
         ('/citizenship-414', 'weekly', '0.9'),
         ('/citizenship-571', 'weekly', '0.9'),
+        ('/citizenship-exams', 'weekly', '0.85'),
+        ('/exam1', 'weekly', '0.85'),
     ]
     xml = '''<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
