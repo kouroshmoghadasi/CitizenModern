@@ -83,10 +83,8 @@
         .back-btn:hover { background: var(--accent-light); }
         .sub-nav {
             position: relative;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: stretch;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(136px, 1fr));
             gap: 12px;
             margin-bottom: 22px;
             padding: 20px 14px 18px;
@@ -122,20 +120,21 @@
             color: var(--accent);
             text-decoration: none;
             font-weight: 600;
-            font-size: clamp(0.78rem, 2.2vw, 0.92rem);
-            padding: 12px 14px;
+            font-size: clamp(0.74rem, 1.9vw, 0.88rem);
+            padding: 12px 8px;
             border-radius: 12px;
             text-align: center;
             line-height: 1.35;
-            min-height: 48px;
+            min-height: 52px;
             display: flex;
             align-items: center;
             justify-content: center;
-            flex: 1 1 100%;
-            max-width: 100%;
+            width: 100%;
+            min-width: 0;
+            box-sizing: border-box;
             border: 1px solid rgba(30, 60, 114, 0.12);
             background: rgba(30, 60, 114, 0.04);
-            transition: background 0.2s, border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+            transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.2s, box-shadow 0.2s, filter 0.2s;
             -webkit-tap-highlight-color: transparent;
             word-wrap: break-word;
             overflow-wrap: break-word;
@@ -147,53 +146,44 @@
             background: rgba(0, 0, 0, 0.18);
             box-shadow: none;
         }
-        @media (min-width: 400px) {
-            .sub-nav a {
-                flex: 1 1 calc(50% - 6px);
-                max-width: calc(50% - 6px);
-            }
-        }
-        @media (min-width: 620px) {
-            .sub-nav a {
-                flex: 1 1 calc(33.333% - 8px);
-                max-width: calc(33.333% - 8px);
-            }
-        }
         @media (min-width: 900px) {
             .sub-nav {
                 padding: 22px 18px 20px;
                 gap: 14px;
-            }
-            .sub-nav a {
-                flex: 0 1 158px;
-                max-width: 168px;
+                grid-template-columns: repeat(auto-fill, minmax(152px, 1fr));
             }
         }
-        .sub-nav a:hover {
+        .sub-nav a:hover:not(.active) {
             background: rgba(30, 60, 114, 0.11);
             border-color: rgba(30, 60, 114, 0.28);
             transform: translateY(-2px);
             box-shadow: 0 8px 20px rgba(30, 60, 114, 0.14);
         }
-        body.theme-dark .sub-nav a:hover {
+        body.theme-dark .sub-nav a:hover:not(.active) {
             background: rgba(124, 179, 245, 0.16);
             border-color: rgba(124, 179, 245, 0.38);
             box-shadow: 0 8px 22px rgba(0, 0, 0, 0.28);
         }
         .sub-nav a.active {
-            background: linear-gradient(150deg, rgba(30, 60, 114, 0.16) 0%, rgba(44, 82, 130, 0.1) 100%);
-            border-color: rgba(30, 60, 114, 0.4);
+            background: linear-gradient(135deg, #1e3c72 0%, #2c5282 52%, #253c6e 100%);
+            color: #fff !important;
+            border-color: #e8b90e;
             box-shadow:
-                0 0 0 1px rgba(241, 196, 15, 0.45),
-                0 8px 22px rgba(30, 60, 114, 0.18);
+                0 0 0 3px rgba(241, 196, 15, 0.95),
+                0 6px 22px rgba(30, 60, 114, 0.4);
             font-weight: 700;
+            transform: none;
         }
         body.theme-dark .sub-nav a.active {
-            background: linear-gradient(150deg, rgba(124, 179, 245, 0.24) 0%, rgba(30, 60, 114, 0.22) 100%);
-            border-color: rgba(124, 179, 245, 0.55);
+            background: linear-gradient(135deg, #355a8c 0%, #1e3c72 50%, #152a50 100%);
+            color: #fff !important;
+            border-color: #f5d03a;
             box-shadow:
-                0 0 0 1px rgba(241, 196, 15, 0.5),
-                0 10px 26px rgba(0, 0, 0, 0.35);
+                0 0 0 3px rgba(241, 196, 15, 1),
+                0 8px 28px rgba(0, 0, 0, 0.5);
+        }
+        .sub-nav a.active:hover {
+            filter: brightness(1.07);
         }
         .q-card { background: var(--card-bg); border-radius: 14px; padding: 22px 24px; margin-bottom: 20px; box-shadow: 0 4px 16px rgba(0,0,0,0.06); border: 1px solid var(--border); }
         .q-num { font-weight: 800; color: var(--accent); font-size: 1em; margin-bottom: 12px; }
@@ -235,6 +225,10 @@
             <a href="/citizenship-rights-responsibilities">Rights and Responsibilities</a>
             <a href="/citizenship-who-we-are" class="active">Who We Are</a>
             <a href="/citizenship-canadas-history">Canada's History</a>
+            <a href="{{ url_for('citizenship_categorized_tests') }}#govern-quiz">How Canadians Govern Themselves</a>
+            <a href="{{ url_for('citizenship_categorized_tests') }}#federal-elections-quiz">Federal Elections</a>
+            <a href="{{ url_for('citizenship_categorized_tests') }}#justice-system-quiz">The Justice System</a>
+            <a href="{{ url_for('citizenship_categorized_tests') }}#canadian-symbols-quiz">Canadian Symbols</a>
             <a href="/citizenship-modern-canada">Modern Canada</a>
         </nav>
         <div class="tool-bar">

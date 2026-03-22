@@ -1,0 +1,435 @@
+[
+  {
+    "q": "In the Canadian justice system, what is the \"presumption of innocence\"?",
+    "q_fa": "در سیستم قضایی کانادا «فرض بر بی‌گناهی» چیست؟",
+    "q_fr": "Dans le système de justice canadien, qu'est-ce que la « présomption d'innocence »?",
+    "options": [
+      "Everyone is guilty until proven innocent",
+      "Everyone is innocent until proven guilty",
+      "Everyone is innocent until proven innocent",
+      "Everyone is guilty until proven guilty"
+    ],
+    "options_fr": [
+      "Tous sont coupables jusqu'à preuve d'innocence",
+      "Tous sont innocents jusqu'à preuve de culpabilité",
+      "Tous sont innocents jusqu'à preuve d'innocence",
+      "Tous sont coupables jusqu'à preuve de culpabilité"
+    ],
+    "correct": 1,
+    "page": 37,
+    "section": "The Justice System",
+    "book_text": "Everyone is innocent until proven guilty."
+  },
+  {
+    "q": "On what is Canada's legal system based?",
+    "q_fa": "سیستم حقوقی کانادا بر چه چیزی استوار است؟",
+    "q_fr": "Sur quoi le système juridique du Canada est-il fondé?",
+    "options": [
+      "The rule of law and freedom under the law",
+      "Democratic principles and due process",
+      "The rule of law, freedom under the law, democratic principles and due process",
+      "The rule of law"
+    ],
+    "options_fr": [
+      "La primauté du droit et la liberté sous la loi",
+      "Les principes démocratiques et la procédure régulière",
+      "La primauté du droit, la liberté sous la loi, les principes démocratiques et la procédure régulière",
+      "La primauté du droit"
+    ],
+    "correct": 2,
+    "page": 37,
+    "section": "The Justice System",
+    "book_text": "Canada's legal system is based on the rule of law, freedom under the law, democratic principles and due process."
+  },
+  {
+    "q": "In the Canadian justice system, what is \"due process\"?",
+    "q_fa": "در سیستم قضایی کانادا «دادرسی عادلانه» (due process) چیست؟",
+    "q_fr": "Dans le système de justice canadien, qu'est-ce que la « procédure régulière » (due process)?",
+    "options": [
+      "The principle that the government must respect all of the legal rights a person is entitled to under the law",
+      "The principle that the government must respect certain legal rights a person is entitled to under the law",
+      "The principle that the government must complete a particular judicial process before convicting anyone",
+      "The principle that the government has its own process when dealing with criminals"
+    ],
+    "options_fr": [
+      "Le principe que le gouvernement doit respecter tous les droits légaux d'une personne",
+      "Le principe que le gouvernement doit respecter certains droits légaux",
+      "Le principe que le gouvernement doit suivre une procédure judiciaire avant de condamner",
+      "Le principe que le gouvernement a sa propre procédure avec les criminels"
+    ],
+    "correct": 0,
+    "page": 37,
+    "section": "The Justice System",
+    "book_text": "Due process means the government must respect all legal rights a person is entitled to under the law."
+  },
+  {
+    "q": "In Canada, how are the laws administered?",
+    "q_fa": "در کانادا قوانین چگونه اعمال می‌شوند؟",
+    "q_fr": "Au Canada, comment les lois sont-elles appliquées?",
+    "options": [
+      "In an impartial manner, only the facts are taken into consideration",
+      "In a partial manner, the facts may be taken into consideration",
+      "Randomly, it depends on the judge's personal opinion",
+      "Only by the police"
+    ],
+    "options_fr": [
+      "De manière impartiale, seuls les faits sont pris en compte",
+      "De manière partiale, les faits peuvent être pris en compte",
+      "Aléatoirement, selon l'opinion personnelle du juge",
+      "Par la police seulement"
+    ],
+    "correct": 0,
+    "page": 37,
+    "section": "The Justice System",
+    "book_text": "Laws are administered in an impartial manner; only the facts are taken into consideration."
+  },
+  {
+    "q": "In Canada, what is the definition of \"law\"?",
+    "q_fa": "در کانادا تعریف «قانون» چیست؟",
+    "q_fr": "Au Canada, quelle est la définition de « loi »?",
+    "options": [
+      "The oral rules intended to guide people in our society",
+      "The written rules intended to guide people in our society",
+      "The rules only applicable to a certain category of people",
+      "The rules intended to punish people whenever possible"
+    ],
+    "options_fr": [
+      "Les règles orales destinées à guider les gens dans notre société",
+      "Les règles écrites destinées à guider les gens dans notre société",
+      "Les règles applicables seulement à certaines catégories de personnes",
+      "Les règles destinées à punir les gens whenever possible"
+    ],
+    "correct": 1,
+    "page": 37,
+    "section": "The Justice System",
+    "book_text": "Law is the written rules intended to guide people in our society."
+  },
+  {
+    "q": "In Canada, how are the rules made?",
+    "q_fa": "در کانادا قوانین چگونه وضع می‌شوند؟",
+    "q_fr": "Au Canada, comment les règles sont-elles établies?",
+    "options": [
+      "By the people",
+      "By the Queen",
+      "By the Prime Minister",
+      "By elected representatives"
+    ],
+    "options_fr": [
+      "Par le peuple",
+      "Par la Reine",
+      "Par le premier ministre",
+      "Par les représentants élus"
+    ],
+    "correct": 3,
+    "page": 37,
+    "section": "The Justice System",
+    "book_text": "Rules (laws) are made by elected representatives."
+  },
+  {
+    "q": "In Canada, who is above the law?",
+    "q_fa": "در کانادا چه کسی بالاتر از قانون است؟",
+    "q_fr": "Au Canada, qui est au-dessus de la loi?",
+    "options": [
+      "The police",
+      "The Prime Minister",
+      "The Queen",
+      "Nobody"
+    ],
+    "options_fr": [
+      "La police",
+      "Le premier ministre",
+      "La Reine",
+      "Personne"
+    ],
+    "correct": 3,
+    "page": 37,
+    "section": "The Justice System",
+    "book_text": "Nobody is above the law."
+  },
+  {
+    "q": "In Canada, to which of the following categories do the laws not apply?",
+    "q_fa": "در کانادا قوانین به کدام دسته اعمال نمی‌شود؟",
+    "q_fr": "Au Canada, à quelle catégorie suivante les lois ne s'appliquent-elles pas?",
+    "options": [
+      "Judges",
+      "Politicians",
+      "Police",
+      "None of the above (The laws in Canada apply to everyone)"
+    ],
+    "options_fr": [
+      "Les juges",
+      "Les politiciens",
+      "La police",
+      "Aucune (les lois s'appliquent à tous)"
+    ],
+    "correct": 3,
+    "page": 37,
+    "section": "The Justice System",
+    "book_text": "The laws in Canada apply to everyone; none are exempt."
+  },
+  {
+    "q": "Which of the following is not an objective of the laws in Canada?",
+    "q_fa": "کدام یک از اهداف قوانین در کانادا نیست؟",
+    "q_fr": "Lequel des suivants n'est pas un objectif des lois au Canada?",
+    "options": [
+      "Provide order in society",
+      "Provide a peaceful way to settle disputes",
+      "Put more people in jail",
+      "Express the values and beliefs of Canadians"
+    ],
+    "options_fr": [
+      "Assurer l'ordre dans la société",
+      "Offrir un moyen pacifique de régler les différends",
+      "Mettre plus de gens en prison",
+      "Exprimer les valeurs et croyances des Canadiens"
+    ],
+    "correct": 2,
+    "page": 37,
+    "section": "The Justice System",
+    "book_text": "Putting more people in jail is not an objective of the law."
+  },
+  {
+    "q": "Which court is the highest one in Canada?",
+    "q_fa": "بالاترین دادگاه در کانادا کدام است؟",
+    "q_fr": "Quelle est la plus haute cour au Canada?",
+    "options": [
+      "The Federal Court",
+      "The Royal Court",
+      "The Provincial Court",
+      "The Supreme Court"
+    ],
+    "options_fr": [
+      "La Cour fédérale",
+      "La Cour royale",
+      "La Cour provinciale",
+      "La Cour suprême"
+    ],
+    "correct": 3,
+    "page": 37,
+    "section": "The Justice System",
+    "book_text": "The Supreme Court is the highest court in Canada."
+  },
+  {
+    "q": "What does the Federal Court deal with?",
+    "q_fa": "دادگاه فدرال به چه مسائلی رسیدگی می‌کند؟",
+    "q_fr": "La Cour fédérale traite de quelles questions?",
+    "options": [
+      "Matters concerning the federal government",
+      "Matters concerning the federal and provincial government",
+      "Matters concerning the police",
+      "Matters concerning National Defence"
+    ],
+    "options_fr": [
+      "Les questions concernant le gouvernement fédéral",
+      "Les questions fédérales et provinciales",
+      "Les questions concernant la police",
+      "Les questions concernant la Défense nationale"
+    ],
+    "correct": 0,
+    "page": 37,
+    "section": "The Justice System",
+    "book_text": "The Federal Court deals with matters concerning the federal government."
+  },
+  {
+    "q": "In Canada, the police are there to help you.",
+    "q_fa": "در کانادا پلیس برای کمک به شماست.",
+    "q_fr": "Au Canada, la police est là pour vous aider.",
+    "options": [
+      "True",
+      "False"
+    ],
+    "options_fr": [
+      "Vrai",
+      "Faux"
+    ],
+    "correct": 0,
+    "page": 37,
+    "section": "The Justice System",
+    "book_text": "True; the police are there to help you."
+  },
+  {
+    "q": "What is the role of the police in Canada?",
+    "q_fa": "نقش پلیس در کانادا چیست؟",
+    "q_fr": "Quel est le rôle de la police au Canada?",
+    "options": [
+      "To resolve legal disputes",
+      "To defend Canadian borders",
+      "To keep people safe and to enforce the law",
+      "To provide National Security data to the Federal government"
+    ],
+    "options_fr": [
+      "Résoudre les différends juridiques",
+      "Défendre les frontières canadiennes",
+      "Assurer la sécurité des personnes et faire respecter la loi",
+      "Fournir des données de sécurité nationale au gouvernement fédéral"
+    ],
+    "correct": 2,
+    "page": 37,
+    "section": "The Justice System",
+    "book_text": "The police keep people safe and enforce the law."
+  },
+  {
+    "q": "In which of the following situations can you not ask the police for help?",
+    "q_fa": "در کدام وضعیت نمی‌توانید از پلیس کمک بخواهید؟",
+    "q_fr": "Dans quelle situation suivante ne pouvez-vous pas demander l'aide de la police?",
+    "options": [
+      "There has been an accident",
+      "Someone has stolen something from you, or if someone you know has gone missing",
+      "You are a victim of assault, or if you see a crime taking place",
+      "Your water pipes are leaking"
+    ],
+    "options_fr": [
+      "Il y a eu un accident",
+      "Quelqu'un vous a volé ou une personne a disparu",
+      "Vous êtes victime d'agression ou vous voyez un crime",
+      "Vos tuyaux d'eau fuient"
+    ],
+    "correct": 3,
+    "page": 37,
+    "section": "The Justice System",
+    "book_text": "Water pipes leaking is not a matter for the police; call a plumber."
+  },
+  {
+    "q": "What does RCMP stand for?",
+    "q_fa": "RCMP مخفف چیست؟",
+    "q_fr": "Que signifie GRC?",
+    "options": [
+      "Royal Canadian Mounted Police",
+      "Royal Canadian Monitoring Police",
+      "Royal Canadian Military Police",
+      "Registered Canadian Mounted Police"
+    ],
+    "options_fr": [
+      "Gendarmerie royale du Canada",
+      "Police royale canadienne de surveillance",
+      "Police militaire royale du Canada",
+      "Police montée canadienne enregistrée"
+    ],
+    "correct": 0,
+    "page": 37,
+    "section": "The Justice System",
+    "book_text": "RCMP stands for Royal Canadian Mounted Police."
+  },
+  {
+    "q": "Which of the following is not a responsibility of the RCMP in Canada?",
+    "q_fa": "کدام یک از مسئولیت‌های RCMP در کانادا نیست؟",
+    "q_fr": "Laquelle des suivantes n'est pas une responsabilité de la GRC au Canada?",
+    "options": [
+      "Enforce federal laws throughout Canada",
+      "Serve as municipal police in all major cities in Canada",
+      "Serve as the provincial police in all provinces and territories except Ontario and Quebec",
+      "Serve as the provincial police in some municipalities"
+    ],
+    "options_fr": [
+      "Faire respecter les lois fédérales partout au Canada",
+      "Servir de police municipale dans toutes les grandes villes",
+      "Servir de police provinciale partout sauf en Ontario et au Québec",
+      "Servir de police provinciale dans certaines municipalités"
+    ],
+    "correct": 1,
+    "page": 37,
+    "section": "The Justice System",
+    "book_text": "The RCMP does not serve as municipal police in all major cities (e.g. not in Ontario and Quebec)."
+  },
+  {
+    "q": "In which province(s) does the RCMP not serve as the provincial police?",
+    "q_fa": "در کدام استان‌ها RCMP به عنوان پلیس استانی خدمت نمی‌کند؟",
+    "q_fr": "Dans quelle(s) province(s) la GRC ne sert-elle pas de police provinciale?",
+    "options": [
+      "Ontario",
+      "Quebec",
+      "Ontario and Quebec",
+      "Manitoba and Alberta"
+    ],
+    "options_fr": [
+      "Ontario",
+      "Québec",
+      "Ontario et Québec",
+      "Manitoba et Alberta"
+    ],
+    "correct": 2,
+    "page": 37,
+    "section": "The Justice System",
+    "book_text": "The RCMP does not serve as provincial police in Ontario and Quebec."
+  },
+  {
+    "q": "In Canada, you can question the police about their service or conduct if you feel the need.",
+    "q_fa": "در کانادا در صورت نیاز می‌توانید خدمت یا رفتار پلیس را به پرسش بگیرید.",
+    "q_fr": "Au Canada, vous pouvez questionner la police sur son service ou sa conduite si vous en ressentez le besoin.",
+    "options": [
+      "True",
+      "False"
+    ],
+    "options_fr": [
+      "Vrai",
+      "Faux"
+    ],
+    "correct": 0,
+    "page": 37,
+    "section": "The Justice System",
+    "book_text": "True; you can question the police about their service or conduct."
+  },
+  {
+    "q": "If you cannot pay for a lawyer, how can you get legal help?",
+    "q_fa": "اگر نتوانید برای وکیل پول بدهید چطور می‌توانید کمک حقوقی بگیرید؟",
+    "q_fr": "Si vous ne pouvez pas payer un avocat, comment obtenir de l'aide juridique?",
+    "options": [
+      "Apply for financial aid with the Court",
+      "Borrow money from the government",
+      "Go to the Police",
+      "Go to legal aid services available in most communities"
+    ],
+    "options_fr": [
+      "Demander une aide financière au tribunal",
+      "Emprunter de l'argent au gouvernement",
+      "Aller à la police",
+      "S'adresser aux services d'aide juridique dans la plupart des communautés"
+    ],
+    "correct": 3,
+    "page": 37,
+    "section": "The Justice System",
+    "book_text": "You can go to legal aid services available in most communities."
+  },
+  {
+    "q": "What does the Canadian justice system guarantee?",
+    "q_fa": "سیستم قضایی کانادا چه چیزی را تضمین می‌کند؟",
+    "q_fr": "Que garantit le système de justice canadien?",
+    "options": [
+      "Due process under the law",
+      "Arbitrary process under the law",
+      "Quick process under the law",
+      "Smooth process under the law"
+    ],
+    "options_fr": [
+      "La procédure régulière en vertu de la loi",
+      "Une procédure arbitraire",
+      "Une procédure rapide",
+      "Une procédure fluide"
+    ],
+    "correct": 0,
+    "page": 37,
+    "section": "The Justice System",
+    "book_text": "The Canadian justice system guarantees due process under the law."
+  },
+  {
+    "q": "Which one of the following is not a provincial court?",
+    "q_fa": "کدام یک از دادگاه‌های استانی نیست؟",
+    "q_fr": "Lequel des suivants n'est pas un tribunal provincial?",
+    "options": [
+      "Court of Queen's Bench or the Supreme Court",
+      "Small claims court for civil cases",
+      "Traffic court, family court",
+      "High court"
+    ],
+    "options_fr": [
+      "Cour du Banc de la Reine ou Cour suprême provinciale",
+      "Cour des petites créances",
+      "Tribunal de la circulation, tribunal de la famille",
+      "Haute cour"
+    ],
+    "correct": 3,
+    "page": 37,
+    "section": "The Justice System",
+    "book_text": "\"High court\" is not a standard name for a provincial court in Canada; provincial courts include Queen's Bench/Supreme Court (provincial), small claims, traffic, family."
+  }
+]

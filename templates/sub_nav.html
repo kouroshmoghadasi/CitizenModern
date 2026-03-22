@@ -4,11 +4,15 @@
     <a href="/citizenship-414">۴۱۴ سوال</a>
     <a href="/citizenship-571">۵۷۱ سوال شهروندی</a>
     {% if request.endpoint != 'citizenship_categorized_tests' %}
-    <a href="{{ url_for('citizenship_categorized_tests') }}">تست‌های دسته‌بندی‌شده</a>
+    <a href="{{ url_for('citizenship_categorized_tests') }}">تست‌های دسته‌بندی‌شده بر اساس فصل کتاب</a>
     {% endif %}
     <a href="/citizenship-introduction">Introduction</a>
     <a href="/citizenship-rights-responsibilities">Rights and Responsibilities</a>
     <a href="/citizenship-who-we-are">Who We Are</a>
     <a href="/citizenship-canadas-history">Canada's History</a>
+    <a href="{{ url_for('citizenship_categorized_tests') }}#govern-quiz">How Canadians Govern Themselves</a>
+    <a href="{{ url_for('citizenship_categorized_tests') }}#federal-elections-quiz">Federal Elections</a>
+    <a href="{{ url_for('citizenship_categorized_tests') }}#justice-system-quiz">The Justice System</a>
+    <a href="{{ url_for('citizenship_categorized_tests') }}#canadian-symbols-quiz">Canadian Symbols</a>
     <a href="/citizenship-modern-canada">Modern Canada</a>
 </nav>

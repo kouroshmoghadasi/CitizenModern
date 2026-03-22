@@ -181,31 +181,6 @@
             font-weight: 600;
         }
         .back-btn:hover { background: var(--accent-light); }
-        .sub-nav {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px 16px;
-            margin-bottom: 20px;
-            padding: 12px 16px;
-            background: var(--card-bg);
-            border-radius: 12px;
-            border: 1px solid var(--border);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-        }
-        body.theme-dark .sub-nav { box-shadow: 0 2px 8px rgba(0,0,0,0.2); }
-        .sub-nav a {
-            color: var(--accent);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.95em;
-            padding: 6px 12px;
-            border-radius: 8px;
-            transition: background 0.2s, color 0.2s;
-        }
-        .sub-nav a:hover { background: rgba(30,60,114,0.1); }
-        body.theme-dark .sub-nav a:hover { background: rgba(124,179,245,0.15); }
-        .sub-nav a[href="{{ request.path }}"] { background: rgba(30,60,114,0.15); }
-        body.theme-dark .sub-nav a[href="{{ request.path }}"] { background: rgba(124,179,245,0.2); }
         .q-card {
             background: var(--card-bg);
             border-radius: 14px;
@@ -279,12 +254,11 @@
       window.addEventListener('keypress',block,true);
     })();
     </script>
-    <style media="print">.wrap,.q-card,.q-nav-bar-571,.tool-bar,.page-header,.back-bar,.sub-nav,.section-title{ display:none !important; } body::before{ content:"Printing not allowed."; display:block !important; padding:2em; text-align:center; font-size:18px; }</style>
+    <style media="print">.wrap,.q-card,.q-nav-bar-571,.tool-bar,.page-header,.back-bar,.section-title{ display:none !important; } body::before{ content:"Printing not allowed."; display:block !important; padding:2em; text-align:center; font-size:18px; }</style>
     <div class="wrap">
         <div class="back-bar">
             <a href="/" class="back-btn">← بازگشت به صفحه اصلی / Back to Home</a>
         </div>
-        {% include 'sub_nav.html' %}
         <div class="tool-bar">
             <div class="group theme-toggle-wrap">
                 <button type="button" class="lang-mode-btn" id="langModeEn" aria-pressed="true">English + فارسی</button>

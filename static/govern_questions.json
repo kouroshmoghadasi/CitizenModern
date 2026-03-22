@@ -1,0 +1,1028 @@
+[
+  {
+    "q": "What are the three levels of government?",
+    "q_fa": "سه سطح دولت چه هستند؟",
+    "q_fr": "What are the three levels of government?",
+    "options": [
+      "Executive, Legislative, Judicial",
+      "Federal, Provincial, Municipal",
+      "House, Senate, Courts",
+      "Prime Minister, Premier, Mayor"
+    ],
+    "options_fr": [
+      "Executive, Legislative, Judicial",
+      "Federal, Provincial, Municipal",
+      "House, Senate, Courts",
+      "Prime Minister, Premier, Mayor"
+    ],
+    "correct": 1,
+    "book_text": "The three levels of government in Canada are: federal, provincial (or territorial), and municipal (local)."
+  },
+  {
+    "q": "What are the responsibilities of the federal government?",
+    "q_fa": "مسئولیت‌های دولت فدرال چیست؟",
+    "q_fr": "What are the responsibilities of the federal government?",
+    "options": [
+      "National defence, foreign policy, citizenship",
+      "Education, health care, natural resources",
+      "Police, fire services, libraries",
+      "All of the above"
+    ],
+    "options_fr": [
+      "National defence, foreign policy, citizenship",
+      "Education, health care, natural resources",
+      "Police, fire services, libraries",
+      "All of the above"
+    ],
+    "correct": 0,
+    "book_text": "The federal government is responsible for national defence, foreign policy, citizenship, and other matters of national concern."
+  },
+  {
+    "q": "Which of the following are the responsibilities of the provincial government?",
+    "q_fa": "کدام یک از موارد زیر مسئولیت‌های دولت استانی است؟",
+    "q_fr": "Which of the following are the responsibilities of the provincial government?",
+    "options": [
+      "National defence, citizenship",
+      "Education, health care, natural resources",
+      "Police, fire services",
+      "Postal service"
+    ],
+    "options_fr": [
+      "National defence, citizenship",
+      "Education, health care, natural resources",
+      "Police, fire services",
+      "Postal service"
+    ],
+    "correct": 1,
+    "book_text": "Provincial governments are responsible for education, health care, natural resources, and other matters within their provinces."
+  },
+  {
+    "q": "What are the three key characteristics of Canada's system of government?",
+    "q_fa": "سه ویژگی کلیدی سیستم حکومتی کانادا چیست؟",
+    "q_fr": "What are the three key characteristics of Canada's system of government?",
+    "options": [
+      "Federalism, Parliamentary democracy, Constitutional monarchy",
+      "Democracy, Republic, Federalism",
+      "Monarchy, Dictatorship, Federalism",
+      "None of the above"
+    ],
+    "options_fr": [
+      "Federalism, Parliamentary democracy, Constitutional monarchy",
+      "Democracy, Republic, Federalism",
+      "Monarchy, Dictatorship, Federalism",
+      "None of the above"
+    ],
+    "correct": 0,
+    "book_text": "Canada's system of government has three key characteristics: federalism, parliamentary democracy, and constitutional monarchy."
+  },
+  {
+    "q": "What do you call the Sovereign's representative in the provinces?",
+    "q_fa": "نماینده حاکم در استان‌ها را چه می‌نامند؟",
+    "q_fr": "What do you call the Sovereign's representative in the provinces?",
+    "options": [
+      "Governor General",
+      "Lieutenant Governor",
+      "Premier",
+      "Mayor"
+    ],
+    "options_fr": [
+      "Governor General",
+      "Lieutenant Governor",
+      "Premier",
+      "Mayor"
+    ],
+    "correct": 1,
+    "book_text": "The Sovereign's representative in the provinces is called the Lieutenant Governor."
+  },
+  {
+    "q": "Which level of government in Canada passes laws known as 'by-laws'?",
+    "q_fa": "کدام سطح دولت در کانادا قوانینی به نام 'by-laws' تصویب می‌کند؟",
+    "q_fr": "Which level of government in Canada passes laws known as 'by-laws'?",
+    "options": [
+      "Federal",
+      "Provincial",
+      "Municipal",
+      "All of them"
+    ],
+    "options_fr": [
+      "Federal",
+      "Provincial",
+      "Municipal",
+      "All of them"
+    ],
+    "correct": 2,
+    "book_text": "Municipal governments pass laws known as 'by-laws' to regulate local matters."
+  },
+  {
+    "q": "Who is Canada's head of state?",
+    "q_fa": "رئیس دولت کانادا کیست؟",
+    "q_fr": "Who is Canada's head of state?",
+    "options": [
+      "The Prime Minister",
+      "The Governor General",
+      "The King or Queen",
+      "The Chief Justice"
+    ],
+    "options_fr": [
+      "The Prime Minister",
+      "The Governor General",
+      "The King or Queen",
+      "The Chief Justice"
+    ],
+    "correct": 2,
+    "book_text": "The King or Queen (monarch) is Canada's head of state."
+  },
+  {
+    "q": "Who is Canada's head of government?",
+    "q_fa": "رئیس دولت کانادا کیست؟",
+    "q_fr": "Who is Canada's head of government?",
+    "options": [
+      "The Prime Minister",
+      "The Governor General",
+      "The King or Queen",
+      "The Chief Justice"
+    ],
+    "options_fr": [
+      "The Prime Minister",
+      "The Governor General",
+      "The King or Queen",
+      "The Chief Justice"
+    ],
+    "correct": 0,
+    "book_text": "The Prime Minister is Canada's head of government."
+  },
+  {
+    "q": "What is the role of the Governor General?",
+    "q_fa": "نقش فرماندار کل چیست؟",
+    "q_fr": "What is the role of the Governor General?",
+    "options": [
+      "To make laws",
+      "To represent the Crown in Canada",
+      "To lead the government",
+      "To interpret laws"
+    ],
+    "options_fr": [
+      "To make laws",
+      "To represent the Crown in Canada",
+      "To lead the government",
+      "To interpret laws"
+    ],
+    "correct": 1,
+    "book_text": "The Governor General represents the Crown (monarch) in Canada."
+  },
+  {
+    "q": "Who appoints the Governor General?",
+    "q_fa": "فرماندار کل را چه کسی منصوب می‌کند؟",
+    "q_fr": "Who appoints the Governor General?",
+    "options": [
+      "The Prime Minister",
+      "The King or Queen",
+      "Parliament",
+      "The people"
+    ],
+    "options_fr": [
+      "The Prime Minister",
+      "The King or Queen",
+      "Parliament",
+      "The people"
+    ],
+    "correct": 1,
+    "book_text": "The Governor General is appointed by the King or Queen on the advice of the Prime Minister."
+  },
+  {
+    "q": "What is the name of the official residence of the Prime Minister?",
+    "q_fa": "نام اقامتگاه رسمی نخست‌وزیر چیست؟",
+    "q_fr": "What is the name of the official residence of the Prime Minister?",
+    "options": [
+      "24 Sussex Drive",
+      "Rideau Hall",
+      "Parliament Hill",
+      "The White House"
+    ],
+    "options_fr": [
+      "24 Sussex Drive",
+      "Rideau Hall",
+      "Parliament Hill",
+      "The White House"
+    ],
+    "correct": 0,
+    "book_text": "24 Sussex Drive is the official residence of the Prime Minister of Canada."
+  },
+  {
+    "q": "What is the name of the official residence of the Governor General?",
+    "q_fa": "نام اقامتگاه رسمی فرماندار کل چیست؟",
+    "q_fr": "What is the name of the official residence of the Governor General?",
+    "options": [
+      "24 Sussex Drive",
+      "Rideau Hall",
+      "Parliament Hill",
+      "The White House"
+    ],
+    "options_fr": [
+      "24 Sussex Drive",
+      "Rideau Hall",
+      "Parliament Hill",
+      "The White House"
+    ],
+    "correct": 1,
+    "book_text": "Rideau Hall in Ottawa is the official residence of the Governor General."
+  },
+  {
+    "q": "Which of the following are responsibilities of the provincial government?",
+    "q_fa": "کدام یک از موارد زیر از مسئولیت‌های دولت استانی است؟",
+    "q_fr": "Which of the following are responsibilities of the provincial government?",
+    "options": [
+      "Education",
+      "Health care",
+      "Natural resources",
+      "All of the above"
+    ],
+    "options_fr": [
+      "Education",
+      "Health care",
+      "Natural resources",
+      "All of the above"
+    ],
+    "correct": 3,
+    "book_text": "Provincial governments are responsible for education, health care, and natural resources."
+  },
+  {
+    "q": "What does it mean to say that Canada is a constitutional monarchy?",
+    "q_fa": "این که بگوییم کانادا یک سلطنت مشروطه است به چه معناست؟",
+    "q_fr": "What does it mean to say that Canada is a constitutional monarchy?",
+    "options": [
+      "Canada has a monarch as head of state",
+      "The monarch's powers are limited by the constitution",
+      "Both of the above",
+      "Canada is a republic"
+    ],
+    "options_fr": [
+      "Canada has a monarch as head of state",
+      "The monarch's powers are limited by the constitution",
+      "Both of the above",
+      "Canada is a republic"
+    ],
+    "correct": 2,
+    "book_text": "Canada is a constitutional monarchy, meaning it has a monarch as head of state, but the monarch's powers are limited by the constitution."
+  },
+  {
+    "q": "What is the difference between the role of the Queen and that of the Prime Minister?",
+    "q_fa": "تفاوت نقش ملکه و نخست‌وزیر چیست؟",
+    "q_fr": "What is the difference between the role of the Queen and that of the Prime Minister?",
+    "options": [
+      "The Queen is head of state, Prime Minister is head of government",
+      "They have the same role",
+      "The Queen makes laws, PM enforces them",
+      "No difference"
+    ],
+    "options_fr": [
+      "The Queen is head of state, Prime Minister is head of government",
+      "They have the same role",
+      "The Queen makes laws, PM enforces them",
+      "No difference"
+    ],
+    "correct": 0,
+    "book_text": "The Queen is the head of state, while the Prime Minister is the head of government."
+  },
+  {
+    "q": "What are the three levels of government?",
+    "q_fa": "سه سطح دولت چیست؟",
+    "q_fr": "What are the three levels of government?",
+    "options": [
+      "Federal, Provincial, Municipal",
+      "Executive, Legislative, Judicial",
+      "House, Senate, Courts",
+      "Prime Minister, Premier, Mayor"
+    ],
+    "options_fr": [
+      "Federal, Provincial, Municipal",
+      "Executive, Legislative, Judicial",
+      "House, Senate, Courts",
+      "Prime Minister, Premier, Mayor"
+    ],
+    "correct": 0,
+    "book_text": "The three levels of government in Canada are: Federal, Provincial, and Municipal."
+  },
+  {
+    "q": "What is the government of all of Canada called?",
+    "q_fa": "دولت کل کانادا چه نامیده می‌شود؟",
+    "q_fr": "What is the government of all of Canada called?",
+    "options": [
+      "Federal government",
+      "National government",
+      "Central government",
+      "All of the above"
+    ],
+    "options_fr": [
+      "Federal government",
+      "National government",
+      "Central government",
+      "All of the above"
+    ],
+    "correct": 0,
+    "book_text": "The government of all of Canada is called the federal government."
+  },
+  {
+    "q": "What are the three key characteristics of Canada's system of government?",
+    "q_fa": "سه ویژگی کلیدی سیستم دولت کانادا چیست؟",
+    "q_fr": "What are the three key characteristics of Canada's system of government?",
+    "options": [
+      "Federalism, Parliamentary democracy, Constitutional monarchy",
+      "Democracy, Republic, Federation",
+      "Monarchy, Democracy, Confederation",
+      "All of the above"
+    ],
+    "options_fr": [
+      "Federalism, Parliamentary democracy, Constitutional monarchy",
+      "Democracy, Republic, Federation",
+      "Monarchy, Democracy, Confederation",
+      "All of the above"
+    ],
+    "correct": 0,
+    "book_text": "The three key characteristics of Canada's system of government are: Federalism, Parliamentary democracy, and Constitutional monarchy."
+  },
+  {
+    "q": "What do you call the Sovereign's representative in the provinces?",
+    "q_fa": "نماینده حاکم در استان‌ها را چه می‌نامند؟",
+    "q_fr": "What do you call the Sovereign's representative in the provinces?",
+    "options": [
+      "Governor General",
+      "Lieutenant Governor",
+      "Premier",
+      "Mayor"
+    ],
+    "options_fr": [
+      "Governor General",
+      "Lieutenant Governor",
+      "Premier",
+      "Mayor"
+    ],
+    "correct": 1,
+    "book_text": "The Sovereign's representative in the provinces is called the Lieutenant Governor."
+  },
+  {
+    "q": "What are the responsibilities of the federal government?",
+    "q_fa": "مسئولیت‌های دولت فدرال چیست؟",
+    "q_fr": "What are the responsibilities of the federal government?",
+    "options": [
+      "National defence, foreign policy, immigration, citizenship",
+      "Education, health care, natural resources",
+      "Local services, police, fire protection",
+      "All of the above"
+    ],
+    "options_fr": [
+      "National defence, foreign policy, immigration, citizenship",
+      "Education, health care, natural resources",
+      "Local services, police, fire protection",
+      "All of the above"
+    ],
+    "correct": 0,
+    "book_text": "The federal government is responsible for national defence, foreign policy, immigration, and citizenship."
+  },
+  {
+    "q": "What does it mean to say that Canada is a constitutional monarchy?",
+    "q_fa": "این که بگوییم کانادا یک سلطنت مشروطه است به چه معناست؟",
+    "q_fr": "What does it mean to say that Canada is a constitutional monarchy?",
+    "options": [
+      "Canada has a monarch as head of state",
+      "The monarch's powers are limited by the constitution",
+      "Both of the above",
+      "Canada is a republic"
+    ],
+    "options_fr": [
+      "Canada has a monarch as head of state",
+      "The monarch's powers are limited by the constitution",
+      "Both of the above",
+      "Canada is a republic"
+    ],
+    "correct": 2,
+    "book_text": "Canada is a constitutional monarchy, meaning it has a monarch as head of state, but the monarch's powers are limited by the constitution."
+  },
+  {
+    "q": "What is the difference between the role of the Queen and that of the Prime Minister?",
+    "q_fa": "تفاوت نقش ملکه و نخست‌وزیر چیست؟",
+    "q_fr": "What is the difference between the role of the Queen and that of the Prime Minister?",
+    "options": [
+      "The Queen is head of state, Prime Minister is head of government",
+      "They have the same role",
+      "The Queen makes laws, PM enforces them",
+      "No difference"
+    ],
+    "options_fr": [
+      "The Queen is head of state, Prime Minister is head of government",
+      "They have the same role",
+      "The Queen makes laws, PM enforces them",
+      "No difference"
+    ],
+    "correct": 0,
+    "book_text": "The Queen is the head of state, while the Prime Minister is the head of government."
+  },
+  {
+    "q": "What are the three levels of government?",
+    "q_fa": "سه سطح دولت چیست؟",
+    "q_fr": "What are the three levels of government?",
+    "options": [
+      "Federal, Provincial, Municipal",
+      "Executive, Legislative, Judicial",
+      "House, Senate, Courts",
+      "Prime Minister, Premier, Mayor"
+    ],
+    "options_fr": [
+      "Federal, Provincial, Municipal",
+      "Executive, Legislative, Judicial",
+      "House, Senate, Courts",
+      "Prime Minister, Premier, Mayor"
+    ],
+    "correct": 0,
+    "book_text": "The three levels of government in Canada are: Federal, Provincial, and Municipal."
+  },
+  {
+    "q": "Is Canada a member of the Commonwealth?",
+    "q_fa": "آیا کانادا عضو کشورهای مشترک‌المنافع است؟",
+    "q_fr": "Is Canada a member of the Commonwealth?",
+    "options": [
+      "Yes",
+      "No",
+      "Only as observer",
+      "Not yet"
+    ],
+    "options_fr": [
+      "Yes",
+      "No",
+      "Only as observer",
+      "Not yet"
+    ],
+    "correct": 0,
+    "book_text": "Canada is a member of the Commonwealth of Nations."
+  },
+  {
+    "q": "What is a parliamentary democracy?",
+    "q_fa": "دموکراسی پارلمانی چیست؟",
+    "q_fr": "What is a parliamentary democracy?",
+    "options": [
+      "A system where Parliament is the primary legislative body",
+      "A system where the President has all power",
+      "A system without elections",
+      "A military government"
+    ],
+    "options_fr": [
+      "A system where Parliament is the primary legislative body",
+      "A system where the President has all power",
+      "A system without elections",
+      "A military government"
+    ],
+    "correct": 0,
+    "book_text": "A parliamentary democracy is a system of government where Parliament is the primary legislative body."
+  },
+  {
+    "q": "What is a constitutional monarchy?",
+    "q_fa": "سلطنت مشروطه چیست؟",
+    "q_fr": "What is a constitutional monarchy?",
+    "options": [
+      "A system where the monarch has unlimited power",
+      "A system where the King/Queen is head of state but power is limited by the constitution",
+      "A republic",
+      "A dictatorship"
+    ],
+    "options_fr": [
+      "A system where the monarch has unlimited power",
+      "A system where the King/Queen is head of state but power is limited by the constitution",
+      "A republic",
+      "A dictatorship"
+    ],
+    "correct": 1,
+    "book_text": "A constitutional monarchy is a system where the King/Queen is head of state but power is limited by the constitution."
+  },
+  {
+    "q": "What is federalism?",
+    "q_fa": "فدرالیسم چیست؟",
+    "q_fr": "What is federalism?",
+    "options": [
+      "Division of power between federal and provincial governments",
+      "All power in one government",
+      "No government",
+      "Military rule"
+    ],
+    "options_fr": [
+      "Division of power between federal and provincial governments",
+      "All power in one government",
+      "No government",
+      "Military rule"
+    ],
+    "correct": 0,
+    "book_text": "Federalism is the division of power between federal and provincial governments."
+  },
+  {
+    "q": "What are the three levels of government in Canada?",
+    "q_fa": "سه سطح دولت در کانادا چیست؟",
+    "q_fr": "What are the three levels of government in Canada?",
+    "options": [
+      "Executive, Legislative, Judicial",
+      "Federal, Provincial, Municipal",
+      "House, Senate, Courts",
+      "Prime Minister, Premier, Mayor"
+    ],
+    "options_fr": [
+      "Executive, Legislative, Judicial",
+      "Federal, Provincial, Municipal",
+      "House, Senate, Courts",
+      "Prime Minister, Premier, Mayor"
+    ],
+    "correct": 1,
+    "book_text": "The three levels of government in Canada are: Federal, Provincial, and Municipal."
+  },
+  {
+    "q": "Who is your member of Parliament?",
+    "q_fa": "عضو پارلمان شما کیست؟",
+    "q_fr": "Who is your member of Parliament?",
+    "options": [
+      "The Prime Minister",
+      "The person elected in your riding",
+      "The Premier",
+      "The Mayor"
+    ],
+    "options_fr": [
+      "The Prime Minister",
+      "The person elected in your riding",
+      "The Premier",
+      "The Mayor"
+    ],
+    "correct": 1,
+    "book_text": "Your member of Parliament is the person elected in your riding (electoral district) to represent you in the House of Commons."
+  },
+  {
+    "q": "How many members are in the House of Commons?",
+    "q_fa": "مجلس عوام چند عضو دارد؟",
+    "q_fr": "How many members are in the House of Commons?",
+    "options": [
+      "308",
+      "338",
+      "350",
+      "400"
+    ],
+    "options_fr": [
+      "308",
+      "338",
+      "350",
+      "400"
+    ],
+    "correct": 1,
+    "book_text": "The House of Commons has 338 members, elected by Canadians in federal elections."
+  },
+  {
+    "q": "How many senators are in the Senate?",
+    "q_fa": "سنا چند سناتور دارد؟",
+    "q_fr": "How many senators are in the Senate?",
+    "options": [
+      "96",
+      "105",
+      "120",
+      "150"
+    ],
+    "options_fr": [
+      "96",
+      "105",
+      "120",
+      "150"
+    ],
+    "correct": 1,
+    "book_text": "The Senate has 105 senators, appointed by the Governor General on the advice of the Prime Minister."
+  },
+  {
+    "q": "What is the name of the building where Parliament meets?",
+    "q_fa": "نام ساختمانی که پارلمان در آن تشکیل جلسه می‌دهد چیست؟",
+    "q_fr": "What is the name of the building where Parliament meets?",
+    "options": [
+      "Parliament Hill",
+      "Rideau Hall",
+      "Supreme Court Building",
+      "National Gallery"
+    ],
+    "options_fr": [
+      "Parliament Hill",
+      "Rideau Hall",
+      "Supreme Court Building",
+      "National Gallery"
+    ],
+    "correct": 0,
+    "book_text": "Parliament Hill in Ottawa is where the Parliament of Canada meets."
+  },
+  {
+    "q": "What is the name of the tower on Parliament Hill?",
+    "q_fa": "نام برج روی تپه پارلمان چیست؟",
+    "q_fr": "What is the name of the tower on Parliament Hill?",
+    "options": [
+      "Peace Tower",
+      "Victory Tower",
+      "Unity Tower",
+      "Freedom Tower"
+    ],
+    "options_fr": [
+      "Peace Tower",
+      "Victory Tower",
+      "Unity Tower",
+      "Freedom Tower"
+    ],
+    "correct": 0,
+    "book_text": "The Peace Tower is the iconic tower on Parliament Hill."
+  },
+  {
+    "q": "What is the name of the ceremony that marks the opening of Parliament?",
+    "q_fa": "نام مراسمی که افتتاح پارلمان را نشان می‌دهد چیست؟",
+    "q_fr": "What is the name of the ceremony that marks the opening of Parliament?",
+    "options": [
+      "Speech from the Throne",
+      "Opening Address",
+      "State of the Union",
+      "Royal Address"
+    ],
+    "options_fr": [
+      "Speech from the Throne",
+      "Opening Address",
+      "State of the Union",
+      "Royal Address"
+    ],
+    "correct": 0,
+    "book_text": "The Speech from the Throne marks the opening of each session of Parliament."
+  },
+  {
+    "q": "What is the name of the document that outlines the government's plans?",
+    "q_fa": "نام سندی که برنامه‌های دولت را مشخص می‌کند چیست؟",
+    "q_fr": "What is the name of the document that outlines the government's plans?",
+    "options": [
+      "Speech from the Throne",
+      "Budget",
+      "Throne Speech",
+      "All of the above"
+    ],
+    "options_fr": [
+      "Speech from the Throne",
+      "Budget",
+      "Throne Speech",
+      "All of the above"
+    ],
+    "correct": 3,
+    "book_text": "The Speech from the Throne outlines the government's plans for the upcoming session."
+  },
+  {
+    "q": "What are the three branches of government?",
+    "q_fa": "سه شاخه دولت چیست؟",
+    "q_fr": "What are the three branches of government?",
+    "options": [
+      "Executive, Legislative, Judicial",
+      "Federal, Provincial, Municipal",
+      "House, Senate, Courts",
+      "Prime Minister, Parliament, Supreme Court"
+    ],
+    "options_fr": [
+      "Executive, Legislative, Judicial",
+      "Federal, Provincial, Municipal",
+      "House, Senate, Courts",
+      "Prime Minister, Parliament, Supreme Court"
+    ],
+    "correct": 0,
+    "book_text": "The three branches of government are: Executive (Prime Minister and Cabinet), Legislative (Parliament), and Judicial (Courts)."
+  },
+  {
+    "q": "What are the three branches of government?",
+    "q_fa": "سه شاخه دولت چیست؟",
+    "q_fr": "What are the three branches of government?",
+    "options": [
+      "Executive, Legislative, Judicial",
+      "Federal, Provincial, Municipal",
+      "House, Senate, Courts",
+      "Prime Minister, Parliament, Supreme Court"
+    ],
+    "options_fr": [
+      "Executive, Legislative, Judicial",
+      "Federal, Provincial, Municipal",
+      "House, Senate, Courts",
+      "Prime Minister, Parliament, Supreme Court"
+    ],
+    "correct": 0,
+    "book_text": "The three branches of government are: Executive (Prime Minister and Cabinet), Legislative (Parliament), and Judicial (Courts)."
+  },
+  {
+    "q": "How many members are in the House of Commons?",
+    "q_fa": "مجلس عوام چند عضو دارد؟",
+    "q_fr": "How many members are in the House of Commons?",
+    "options": [
+      "308",
+      "338",
+      "350",
+      "400"
+    ],
+    "options_fr": [
+      "308",
+      "338",
+      "350",
+      "400"
+    ],
+    "correct": 1,
+    "book_text": "The House of Commons has 338 members, elected by Canadians in federal elections."
+  },
+  {
+    "q": "How many senators are in the Senate?",
+    "q_fa": "سنا چند سناتور دارد؟",
+    "q_fr": "How many senators are in the Senate?",
+    "options": [
+      "96",
+      "105",
+      "120",
+      "150"
+    ],
+    "options_fr": [
+      "96",
+      "105",
+      "120",
+      "150"
+    ],
+    "correct": 1,
+    "book_text": "The Senate has 105 senators, appointed by the Governor General on the advice of the Prime Minister."
+  },
+  {
+    "q": "What are the three branches of government in Canada?",
+    "q_fa": "سه شاخه دولت در کانادا چیست؟",
+    "q_fr": "What are the three branches of government in Canada?",
+    "options": [
+      "Executive, Legislative, Judicial",
+      "Federal, Provincial, Municipal",
+      "House, Senate, Courts",
+      "Prime Minister, Parliament, Supreme Court"
+    ],
+    "options_fr": [
+      "Executive, Legislative, Judicial",
+      "Federal, Provincial, Municipal",
+      "House, Senate, Courts",
+      "Prime Minister, Parliament, Supreme Court"
+    ],
+    "correct": 0,
+    "book_text": "The three branches of government are: Executive (Prime Minister and Cabinet), Legislative (Parliament), and Judicial (Courts)."
+  },
+  {
+    "q": "What is the role of the Executive branch?",
+    "q_fa": "نقش شاخه اجرایی چیست؟",
+    "q_fr": "What is the role of the Executive branch?",
+    "options": [
+      "To make laws",
+      "To implement and enforce laws (Prime Minister and Cabinet)",
+      "To interpret laws",
+      "To elect representatives"
+    ],
+    "options_fr": [
+      "To make laws",
+      "To implement and enforce laws (Prime Minister and Cabinet)",
+      "To interpret laws",
+      "To elect representatives"
+    ],
+    "correct": 1,
+    "book_text": "The Executive branch (Prime Minister and Cabinet) implements and enforces laws."
+  },
+  {
+    "q": "What do you call a law before it is passed?",
+    "q_fa": "قبل از تصویب، قانون را چه می‌نامند؟",
+    "q_fr": "What do you call a law before it is passed?",
+    "options": [
+      "Legislation",
+      "Bill",
+      "Act",
+      "Statute"
+    ],
+    "options_fr": [
+      "Legislation",
+      "Bill",
+      "Act",
+      "Statute"
+    ],
+    "correct": 1,
+    "book_text": "A law before it is passed is called a bill."
+  },
+  {
+    "q": "What is the final step before a bill becomes a law?",
+    "q_fa": "آخرین مرحله قبل از تبدیل شدن یک لایحه به قانون چیست؟",
+    "q_fr": "What is the final step before a bill becomes a law?",
+    "options": [
+      "Royal Assent",
+      "Third reading",
+      "Committee review",
+      "First reading"
+    ],
+    "options_fr": [
+      "Royal Assent",
+      "Third reading",
+      "Committee review",
+      "First reading"
+    ],
+    "correct": 0,
+    "book_text": "The final step before a bill becomes a law is Royal Assent, given by the Governor General or the monarch."
+  },
+  {
+    "q": "What is the name of the process by which a bill becomes a law?",
+    "q_fa": "نام فرآیندی که یک لایحه به قانون تبدیل می‌شود چیست؟",
+    "q_fr": "What is the name of the process by which a bill becomes a law?",
+    "options": [
+      "Legislative process",
+      "Parliamentary process",
+      "Royal Assent",
+      "All of the above"
+    ],
+    "options_fr": [
+      "Legislative process",
+      "Parliamentary process",
+      "Royal Assent",
+      "All of the above"
+    ],
+    "correct": 3,
+    "book_text": "A bill goes through the legislative process in Parliament and receives Royal Assent to become a law."
+  },
+  {
+    "q": "What is the final step before a bill becomes a law?",
+    "q_fa": "آخرین مرحله قبل از تبدیل شدن یک لایحه به قانون چیست؟",
+    "q_fr": "What is the final step before a bill becomes a law?",
+    "options": [
+      "First reading",
+      "Second reading",
+      "Royal Assent",
+      "Committee review"
+    ],
+    "options_fr": [
+      "First reading",
+      "Second reading",
+      "Royal Assent",
+      "Committee review"
+    ],
+    "correct": 2,
+    "book_text": "Royal Assent is the final step before a bill becomes a law."
+  },
+  {
+    "q": "What do you call a law before it is passed?",
+    "q_fa": "قبل از تصویب شدن، یک قانون چه نامیده می‌شود؟",
+    "q_fr": "What do you call a law before it is passed?",
+    "options": [
+      "A bill",
+      "A proposal",
+      "A draft",
+      "A motion"
+    ],
+    "options_fr": [
+      "A bill",
+      "A proposal",
+      "A draft",
+      "A motion"
+    ],
+    "correct": 0,
+    "book_text": "A law before it is passed is called a bill."
+  },
+  {
+    "q": "What is the name of the process by which a bill becomes a law?",
+    "q_fa": "نام فرآیندی که یک لایحه به قانون تبدیل می‌شود چیست؟",
+    "q_fr": "What is the name of the process by which a bill becomes a law?",
+    "options": [
+      "Legislative process",
+      "Parliamentary process",
+      "Royal Assent",
+      "All of the above"
+    ],
+    "options_fr": [
+      "Legislative process",
+      "Parliamentary process",
+      "Royal Assent",
+      "All of the above"
+    ],
+    "correct": 3,
+    "book_text": "A bill goes through the legislative process in Parliament and receives Royal Assent to become a law."
+  },
+  {
+    "q": "After an election, which party forms the government?",
+    "q_fa": "پس از انتخابات، کدام حزب دولت را تشکیل می‌دهد؟",
+    "q_fr": "After an election, which party forms the government?",
+    "options": [
+      "The party with the most votes",
+      "The party with the most seats in the House of Commons",
+      "The largest party",
+      "The party chosen by the Governor General"
+    ],
+    "options_fr": [
+      "The party with the most votes",
+      "The party with the most seats in the House of Commons",
+      "The largest party",
+      "The party chosen by the Governor General"
+    ],
+    "correct": 1,
+    "book_text": "After an election, the party with the most seats in the House of Commons usually forms the government."
+  },
+  {
+    "q": "What is a minority government?",
+    "q_fa": "دولت اقلیت چیست؟",
+    "q_fr": "What is a minority government?",
+    "options": [
+      "Government with less than 50% of seats",
+      "Government with majority of seats",
+      "Coalition government",
+      "Temporary government"
+    ],
+    "options_fr": [
+      "Government with less than 50% of seats",
+      "Government with majority of seats",
+      "Coalition government",
+      "Temporary government"
+    ],
+    "correct": 0,
+    "book_text": "A minority government is a government that has less than 50% of the seats in the House of Commons."
+  },
+  {
+    "q": "Which party is the Official Opposition at the federal level?",
+    "q_fa": "کدام حزب اپوزیسیون رسمی در سطح فدرال است؟",
+    "q_fr": "Which party is the Official Opposition at the federal level?",
+    "options": [
+      "The party with the second most seats",
+      "The largest party",
+      "The party chosen by the PM",
+      "None of the above"
+    ],
+    "options_fr": [
+      "The party with the second most seats",
+      "The largest party",
+      "The party chosen by the PM",
+      "None of the above"
+    ],
+    "correct": 0,
+    "book_text": "The Official Opposition at the federal level is the party with the second most seats in the House of Commons."
+  },
+  {
+    "q": "What is a minority government?",
+    "q_fa": "دولت اقلیت چیست؟",
+    "q_fr": "What is a minority government?",
+    "options": [
+      "A government with less than 50% of seats",
+      "A government for minority groups",
+      "A temporary government",
+      "A provincial government"
+    ],
+    "options_fr": [
+      "A government with less than 50% of seats",
+      "A government for minority groups",
+      "A temporary government",
+      "A provincial government"
+    ],
+    "correct": 0,
+    "book_text": "A minority government is one in which the governing party has fewer than half the seats in the House of Commons."
+  },
+  {
+    "q": "After an election, which party forms the government?",
+    "q_fa": "پس از انتخابات، کدام حزب دولت را تشکیل می‌دهد؟",
+    "q_fr": "After an election, which party forms the government?",
+    "options": [
+      "The party with the most seats",
+      "The party chosen by the Governor General",
+      "The largest party",
+      "All parties together"
+    ],
+    "options_fr": [
+      "The party with the most seats",
+      "The party chosen by the Governor General",
+      "The largest party",
+      "All parties together"
+    ],
+    "correct": 0,
+    "book_text": "After an election, the party with the most seats in the House of Commons forms the government."
+  },
+  {
+    "q": "After an election, which party forms the government?",
+    "q_fa": "پس از انتخابات، کدام حزب دولت را تشکیل می‌دهد؟",
+    "q_fr": "After an election, which party forms the government?",
+    "options": [
+      "The party with the most seats",
+      "The party chosen by the Governor General",
+      "The largest party",
+      "All parties together"
+    ],
+    "options_fr": [
+      "The party with the most seats",
+      "The party chosen by the Governor General",
+      "The largest party",
+      "All parties together"
+    ],
+    "correct": 0,
+    "book_text": "After an election, the party with the most seats in the House of Commons forms the government."
+  },
+  {
+    "q": "Which federal political party is His Majesty's Loyal Opposition?",
+    "q_fa": "کدام حزب سیاسی فدرال مخالف وفادار اعلیحضرت است؟",
+    "q_fr": "Which federal political party is His Majesty's Loyal Opposition?",
+    "options": [
+      "The party with the second-largest number of seats in the House of Commons",
+      "The governing party",
+      "All opposition parties",
+      "The party with the most seats"
+    ],
+    "options_fr": [
+      "The party with the second-largest number of seats in the House of Commons",
+      "The governing party",
+      "All opposition parties",
+      "The party with the most seats"
+    ],
+    "correct": 0,
+    "book_text": "His Majesty's Loyal Opposition is the party with the second-largest number of seats in the House of Commons. The Official Opposition plays an important role in holding the government accountable."
+  }
+]

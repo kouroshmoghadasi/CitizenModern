@@ -992,6 +992,37 @@
         .book-summary-toggle:hover .book-summary-link-icon {
             transform: scale(1.2) rotate(15deg);
         }
+
+        /* باکس «تست بر اساس فصل کتاب»: حاشیهٔ گرادیانی درخشان (به‌جای زرد یکدست)، همهٔ اندازه‌ها */
+        .book-summary-link.book-summary-link--by-chapter .book-summary-toggle {
+            border: 3px solid transparent;
+            background-image:
+                linear-gradient(135deg, #1a3370 0%, #1e3c72 45%, #264a87 100%),
+                linear-gradient(135deg, #2dd4bf 0%, #38bdf8 38%, #818cf8 72%, #c084fc 100%);
+            background-origin: border-box;
+            background-clip: padding-box, border-box;
+            box-shadow:
+                0 4px 20px rgba(56, 189, 248, 0.35),
+                0 6px 22px rgba(30, 60, 114, 0.32),
+                0 0 32px rgba(45, 212, 191, 0.22);
+        }
+        .book-summary-link.book-summary-link--by-chapter .book-summary-toggle:hover {
+            background-image:
+                linear-gradient(135deg, #234078 0%, #2c5282 55%, #3568a8 100%),
+                linear-gradient(135deg, #5eead4 0%, #7dd3fc 35%, #a5b4fc 70%, #e879f9 100%);
+            box-shadow:
+                0 6px 26px rgba(56, 189, 248, 0.45),
+                0 8px 28px rgba(30, 60, 114, 0.38),
+                0 0 40px rgba(45, 212, 191, 0.3);
+        }
+        .book-summary-link.book-summary-link--by-chapter .book-summary-link-icon {
+            color: #7dd3fc;
+            filter: drop-shadow(0 0 8px rgba(125, 211, 252, 0.55));
+        }
+        .book-summary-link.book-summary-link--by-chapter .book-summary-toggle:hover .book-summary-link-icon {
+            color: #a5f3fc;
+            filter: drop-shadow(0 0 10px rgba(165, 243, 252, 0.7));
+        }
         
         .sidebar-install-app-wrap {
             margin-top: 12px;
@@ -4939,6 +4970,16 @@
                 transform: scale(0.97);
                 box-shadow: 0 1px 5px rgba(30, 60, 114, 0.3);
             }
+
+            .book-summary-link.book-summary-link--by-chapter .book-summary-toggle {
+                height: auto;
+                min-height: 60px;
+                border-width: 3px;
+            }
+            .book-summary-link.book-summary-link--by-chapter .book-summary-toggle h3 {
+                line-height: 1.4;
+                padding: 12px 16px;
+            }
             
             .book-summary-toggle h3 {
                 font-size: 0.95em; /* Same font-size as book-link */
@@ -5725,6 +5766,22 @@
                 align-items: center;
                 min-height: 44px;
             }
+
+            .book-summary-link.book-summary-link--by-chapter .book-summary-toggle {
+                height: auto;
+                min-height: 44px;
+                border-width: 3px;
+                justify-content: center;
+            }
+            .book-summary-link.book-summary-link--by-chapter .book-summary-toggle h3 {
+                font-size: 0.88em;
+                line-height: 1.35;
+                padding: 10px 8px;
+            }
+            .book-summary-link.book-summary-link--by-chapter .book-summary-link-icon {
+                color: #7dd3fc;
+                filter: drop-shadow(0 0 6px rgba(125, 211, 252, 0.5));
+            }
             
             .book-summary-toggle h3 {
                 font-size: 0.9em;
@@ -6300,6 +6357,22 @@
                 justify-content: space-between;
                 align-items: center;
                 min-height: 42px;
+            }
+
+            .book-summary-link.book-summary-link--by-chapter .book-summary-toggle {
+                height: auto;
+                min-height: 42px;
+                border-width: 3px;
+                justify-content: center;
+            }
+            .book-summary-link.book-summary-link--by-chapter .book-summary-toggle h3 {
+                font-size: 0.8em;
+                line-height: 1.32;
+                padding: 8px 6px;
+            }
+            .book-summary-link.book-summary-link--by-chapter .book-summary-link-icon {
+                color: #7dd3fc;
+                filter: drop-shadow(0 0 5px rgba(125, 211, 252, 0.45));
             }
             
             .book-summary-toggle h3 {

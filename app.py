@@ -354,6 +354,10 @@ _cache_chapter1 = None
 _cache_chapter2 = None
 _cache_chapter3 = None
 _cache_chapter4 = None
+_cache_govern = None
+_cache_federal_elections = None
+_cache_justice = None
+_cache_canadian_symbols = None
 
 
 def _load_414_questions():
@@ -427,7 +431,7 @@ def _build_en_to_fa_option_map():
                     en_to_fa[en.strip()] = fa_list[j].strip()
     except Exception:
         pass
-    for name in ('571_options_fa.json', '571_options_fa_extra.json', '571_options_fa_complete.json', '571_options_fa_q9.json', 'chapter3_options_fa.json', 'chapter4_options_fa.json'):
+    for name in ('571_options_fa.json', '571_options_fa_extra.json', '571_options_fa_complete.json', '571_options_fa_q9.json', 'chapter3_options_fa.json', 'chapter4_options_fa.json', 'govern_options_fa_patch.json', 'federal_elections_options_fa_patch.json', 'justice_options_fa_patch.json', 'canadian_symbols_options_fa_patch.json'):
         path_571_fa = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static', name)
         try:
             if os.path.isfile(path_571_fa):
@@ -711,6 +715,130 @@ def _load_chapter4_questions():
     return _cache_chapter4
 
 
+def _load_govern_questions():
+    """Load How Canadians Govern Themselves questions (Discover Canada); same shape as Introduction JSON."""
+    global _cache_govern
+    if _cache_govern is not None:
+        return _cache_govern
+    base = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static')
+    path = os.path.join(base, 'govern_questions.json')
+    try:
+        if os.path.isfile(path):
+            with open(path, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+            en_to_fa = _build_en_to_fa_option_map()
+            for q in data:
+                q.setdefault('q_fa', q.get('q', ''))
+                q.setdefault('q_fr', q.get('q', ''))
+                opts = q.get('options', [])
+                q.setdefault('options_fr', opts)
+                q['options_en'] = opts
+                opts_fa = q.get('options_fa')
+                if opts_fa and len(opts_fa) == len(opts):
+                    q['options_fa'] = opts_fa
+                else:
+                    q['options_fa'] = [_fa_lookup(en_to_fa, e) for e in opts]
+            _cache_govern = data
+            return _cache_govern
+    except Exception:
+        pass
+    _cache_govern = []
+    return _cache_govern
+
+
+def _load_federal_elections_questions():
+    """Load Chapter 6 / Federal Elections questions (same shape as govern JSON)."""
+    global _cache_federal_elections
+    if _cache_federal_elections is not None:
+        return _cache_federal_elections
+    base = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static')
+    path = os.path.join(base, 'federal_elections_questions.json')
+    try:
+        if os.path.isfile(path):
+            with open(path, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+            en_to_fa = _build_en_to_fa_option_map()
+            for q in data:
+                q.setdefault('q_fa', q.get('q', ''))
+                q.setdefault('q_fr', q.get('q', ''))
+                opts = q.get('options', [])
+                q.setdefault('options_fr', opts)
+                q['options_en'] = opts
+                opts_fa = q.get('options_fa')
+                if opts_fa and len(opts_fa) == len(opts):
+                    q['options_fa'] = opts_fa
+                else:
+                    q['options_fa'] = [_fa_lookup(en_to_fa, e) for e in opts]
+            _cache_federal_elections = data
+            return _cache_federal_elections
+    except Exception:
+        pass
+    _cache_federal_elections = []
+    return _cache_federal_elections
+
+
+def _load_justice_questions():
+    """Load Chapter 7 / The Justice System questions (same shape as govern JSON)."""
+    global _cache_justice
+    if _cache_justice is not None:
+        return _cache_justice
+    base = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static')
+    path = os.path.join(base, 'justice_questions.json')
+    try:
+        if os.path.isfile(path):
+            with open(path, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+            en_to_fa = _build_en_to_fa_option_map()
+            for q in data:
+                q.setdefault('q_fa', q.get('q', ''))
+                q.setdefault('q_fr', q.get('q', ''))
+                opts = q.get('options', [])
+                q.setdefault('options_fr', opts)
+                q['options_en'] = opts
+                opts_fa = q.get('options_fa')
+                if opts_fa and len(opts_fa) == len(opts):
+                    q['options_fa'] = opts_fa
+                else:
+                    q['options_fa'] = [_fa_lookup(en_to_fa, e) for e in opts]
+            _cache_justice = data
+            return _cache_justice
+    except Exception:
+        pass
+    _cache_justice = []
+    return _cache_justice
+
+
+def _load_canadian_symbols_questions():
+    """Load Chapter 8 / Canadian Symbols questions (same shape as govern JSON)."""
+    global _cache_canadian_symbols
+    if _cache_canadian_symbols is not None:
+        return _cache_canadian_symbols
+    base = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static')
+    path = os.path.join(base, 'canadian_symbols_questions.json')
+    try:
+        if os.path.isfile(path):
+            with open(path, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+            en_to_fa = _build_en_to_fa_option_map()
+            for q in data:
+                q.setdefault('q_fa', q.get('q', ''))
+                q.setdefault('q_fr', q.get('q', ''))
+                opts = q.get('options', [])
+                q.setdefault('options_fr', opts)
+                q['options_en'] = opts
+                opts_fa = q.get('options_fa')
+                if opts_fa and len(opts_fa) == len(opts):
+                    q['options_fa'] = opts_fa
+                else:
+                    q['options_fa'] = [_fa_lookup(en_to_fa, e) for e in opts]
+            _cache_canadian_symbols = data
+            return _cache_canadian_symbols
+    except Exception:
+        pass
+    _cache_canadian_symbols = []
+    return _cache_canadian_symbols
+
+
 @app.route('/citizenship-571')
 def citizenship_571():
     """۵۷۱ سوال — سوالات ۱–۷۱ رایگان؛ از ۷۲ به بعد با اشتراک (همان نام کاربری ۴۱۴)."""
@@ -749,9 +877,98 @@ def citizenship_571():
 
 @app.route('/citizenship-categorized-tests')
 def citizenship_categorized_tests():
-    """صفحهٔ راهنما: لینک به آزمون هر فصل از نوار بالا (همان قالب citizenship_categorized_tests)."""
+    """هاب دسته‌بندی + Govern + Federal + Justice + Canadian Symbols (هر کدام ۵ سوال رایگان به‌جز Govern که ۳)."""
     log_visitor('/citizenship-categorized-tests')
-    return render_template('citizenship_categorized_tests.html')
+    all_govern = _load_govern_questions()
+    n = len(all_govern)
+    all_fe = _load_federal_elections_questions()
+    n_fe = len(all_fe)
+    all_js = _load_justice_questions()
+    n_js = len(all_js)
+    all_sym = _load_canadian_symbols_questions()
+    n_sym = len(all_sym)
+    today = _today()
+    has_access = False
+    if session.get('sub_414_expiry'):
+        try:
+            exp = session['sub_414_expiry']
+            if isinstance(exp, str):
+                exp = date.fromisoformat(exp)
+            if exp >= today:
+                has_access = True
+        except Exception:
+            pass
+    if has_access:
+        govern_questions = all_govern
+        show_paywall_govern = False
+        max_visible_govern = n
+    elif n <= 3:
+        govern_questions = all_govern
+        show_paywall_govern = False
+        max_visible_govern = n
+    else:
+        govern_questions = all_govern[:3]
+        show_paywall_govern = True
+        max_visible_govern = 4
+    if has_access:
+        fe_questions = all_fe
+        show_paywall_fe = False
+        max_visible_fe = n_fe
+    elif n_fe <= 5:
+        fe_questions = all_fe
+        show_paywall_fe = False
+        max_visible_fe = n_fe
+    else:
+        fe_questions = all_fe[:5]
+        show_paywall_fe = True
+        max_visible_fe = 6
+    if has_access:
+        js_questions = all_js
+        show_paywall_js = False
+        max_visible_js = n_js
+    elif n_js <= 5:
+        js_questions = all_js
+        show_paywall_js = False
+        max_visible_js = n_js
+    else:
+        js_questions = all_js[:5]
+        show_paywall_js = True
+        max_visible_js = 6
+    if has_access:
+        sym_questions = all_sym
+        show_paywall_sym = False
+        max_visible_sym = n_sym
+    elif n_sym <= 5:
+        sym_questions = all_sym
+        show_paywall_sym = False
+        max_visible_sym = n_sym
+    else:
+        sym_questions = all_sym[:5]
+        show_paywall_sym = True
+        max_visible_sym = 6
+    resp = app.make_response(render_template(
+        'citizenship_categorized_tests.html',
+        govern_questions=govern_questions,
+        max_question_govern=n,
+        max_visible_govern=max_visible_govern,
+        show_paywall_govern=show_paywall_govern,
+        fe_questions=fe_questions,
+        max_question_fe=n_fe,
+        max_visible_fe=max_visible_fe,
+        show_paywall_fe=show_paywall_fe,
+        js_questions=js_questions,
+        max_question_js=n_js,
+        max_visible_js=max_visible_js,
+        show_paywall_js=show_paywall_js,
+        sym_questions=sym_questions,
+        max_question_sym=n_sym,
+        max_visible_sym=max_visible_sym,
+        show_paywall_sym=show_paywall_sym,
+    ))
+    resp.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
+    resp.headers['Pragma'] = 'no-cache'
+    resp.headers['Expires'] = '0'
+    return resp
 
 
 @app.route('/citizenship-introduction')

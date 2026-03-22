@@ -1,9 +1,13 @@
     <script>
-        // Visitor Counter - Flask API Integration with AWS DynamoDB
-        // Connects to Flask backend API to get and increment visitor count from AWS DynamoDB
+        // Visitor counter: Flask API (DB) — increment limited to once per browser tab session (sessionStorage)
         const API_BASE_URL = window.location.origin; // Use same origin as the page
         const INCREMENT_ENDPOINT = `${API_BASE_URL}/api/visitor-count/increment`;
         const GET_ENDPOINT = `${API_BASE_URL}/api/visitor-count`;
+        /** جلوگیری از +۱ مکرر: (۱) نشست تب (۲) زمان آخرین +۱ روی همین مرورگر — برای رفت‌وبرگشت خانه ↔ خلاصه کتاب و تب جدید */
+        const VISITOR_INCREMENT_SESSION_KEY = 'citizen_visitor_home_incremented';
+        const VISITOR_LAST_INCREMENT_MS_KEY = 'citizen_visitor_last_increment_at';
+        /** اگر کمتر از این فاصله (میلی‌ثانیه) از آخرین +۱ گذشته باشد، فقط شمار فعلی گرفته می‌شود */
+        const VISITOR_INCREMENT_COOLDOWN_MS = 60 * 60 * 1000; /* 1 ساعت — همان مرورگر؛ جلوگیری از +۱ در رفت‌وبرگشت سریع بین صفحات */
         
         /**
          * Get current visitor count from Flask API
@@ -92,10 +96,33 @@
         /**
          * Main function to update visitor count (called on page load)
          */
+        function visitorShouldSkipIncrement() {
+            try {
+                if (sessionStorage.getItem(VISITOR_INCREMENT_SESSION_KEY) === '1') return true;
+            } catch (e) { /* ignore */ }
+            try {
+                var last = parseInt(localStorage.getItem(VISITOR_LAST_INCREMENT_MS_KEY), 10);
+                if (last > 0 && (Date.now() - last) < VISITOR_INCREMENT_COOLDOWN_MS) return true;
+            } catch (e2) { /* ignore */ }
+            return false;
+        }
+        function visitorMarkIncremented() {
+            try {
+                sessionStorage.setItem(VISITOR_INCREMENT_SESSION_KEY, '1');
+            } catch (e) { /* ignore */ }
+            try {
+                localStorage.setItem(VISITOR_LAST_INCREMENT_MS_KEY, String(Date.now()));
+            } catch (e2) { /* ignore */ }
+        }
         async function updateVisitorCount() {
             try {
-                // Increment and get new count from Flask API + DynamoDB
-                const newCount = await incrementVisitorCount();
+                var newCount;
+                if (visitorShouldSkipIncrement()) {
+                    newCount = await getVisitorCount();
+                } else {
+                    newCount = await incrementVisitorCount();
+                    visitorMarkIncremented();
+                }
                 updateCounterDisplay(newCount);
                 return newCount;
             } catch (error) {
@@ -1416,7 +1443,7 @@
             { q: "When is Remembrance Day?", q_fa: "روز یادبود (Remembrance Day) چه تاریخی است؟", q_fr: "Quand est le Jour du Souvenir?", options: ["November 11", "November 20", "December 25", "April 9"], options_fr: ["11 novembre", "20 novembre", "25 décembre", "9 avril"], correct: 0, page: 41, section: "Discover Canada", book_text: "Remembrance Day: November 11." },
             { q: "When is Sir Wilfrid Laurier Day?", q_fa: "روز سر ویلفرد لوریه چه تاریخی است؟", q_fr: "Quand est la Journée de Sir Wilfrid Laurier?", options: ["November 11", "November 20", "January 11", "July 1"], options_fr: ["11 novembre", "20 novembre", "11 janvier", "1er juillet"], correct: 1, page: 41, section: "Discover Canada", book_text: "Sir Wilfrid Laurier Day: November 20." },
             { q: "When is Boxing Day in Canada?", q_fa: "روز باکسینگ در کانادا چه تاریخی است؟", q_fr: "Quand est le lendemain de Noël au Canada?", options: ["December 24", "December 25", "December 26", "January 1"], options_fr: ["24 décembre", "25 décembre", "26 décembre", "1er janvier"], correct: 2, page: 41, section: "Discover Canada", book_text: "Boxing Day: December 26." },
-            { q: "Which holiday is the Sovereign's birthday?", q_fa: "کدام تعطیلی مربوط به سالگرد تولد سلطان است؟", q_fr: "Quelle fête correspond à l'anniversaire du souverain?", options: ["Canada Day", "Remembrance Day", "Victoria Day (Monday preceding May 25)", "Christmas Day"], options_fr: ["Fête du Canada", "Jour du Souvenir", "Fête de la Reine (lundi précédant le 25 mai)", "Noël"], correct: 2, page: 41, section: "Discover Canada", book_text: "Victoria Day: Monday preceding May 25 (Sovereign's birthday)." },
+            { q: "Which holiday is the Sovereign's birthday?", q_fa: "کدام تعطیلی مربوط به سالگرد تولد پادشاه است؟", q_fr: "Quelle fête correspond à l'anniversaire du souverain?", options: ["Canada Day", "Remembrance Day", "Victoria Day (Monday preceding May 25)", "Christmas Day"], options_fr: ["Fête du Canada", "Jour du Souvenir", "Fête de la Reine (lundi précédant le 25 mai)", "Noël"], correct: 2, page: 41, section: "Discover Canada", book_text: "Victoria Day: Monday preceding May 25 (Sovereign's birthday)." },
             { q: "Who was Corporal Filip Konowal?", q_fa: "سرباز فیلیپ کونووال که بود؟", q_fr: "Qui était le caporal Filip Konowal?", options: ["A navy pilot", "A Prime Minister", "A Governor General", "First member of the Canadian Corps not born in the British Empire to be awarded the V.C."], options_fr: ["Un pilote de la marine", "Un Premier ministre", "Un gouverneur général", "Premier membre du Corps canadien né hors de l'Empire britannique à recevoir la Croix de Victoria"], correct: 3, page: 41, section: "Discover Canada", book_text: "Corporal Filip Konowal showed exceptional courage in the Battle of Hill 70 in 1917; first Canadian Corps member not born in the British Empire to receive the V.C." },
             { q: "In which battle did Corporal Filip Konowal show exceptional courage?", q_fa: "سرباز فیلیپ کونووال در کدام نبرد شجاعت استثنایی نشان داد؟", q_fr: "Dans quelle bataille le caporal Filip Konowal a-t-il fait preuve d'un courage exceptionnel?", options: ["Battle of Hill 70 in 1917", "Battle of Vimy Ridge", "Battle of the Somme", "D-Day"], options_fr: ["Bataille de la côte 70 en 1917", "Bataille de la crête de Vimy", "Bataille de la Somme", "Jour J"], correct: 0, page: 41, section: "Discover Canada", book_text: "Corporal Filip Konowal showed exceptional courage in the Battle of Hill 70 in 1917." },
             { q: "Where was Corporal Filip Konowal born?", q_fa: "سرباز فیلیپ کونووال کجا به دنیا آمد؟", q_fr: "Où le caporal Filip Konowal est-il né?", options: ["Canada", "Britain", "Ukraine", "France"], options_fr: ["Canada", "Grande-Bretagne", "Ukraine", "France"], correct: 2, page: 41, section: "Discover Canada", book_text: "Corporal Filip Konowal was born in Ukraine." },
@@ -1433,11 +1460,11 @@
             { q: "When you take the Oath of Citizenship you will swear to:", q_fa: "هنگام ادای سوگند شهروندی سوگند یاد می‌کنید که:", q_fr: "Lors de la prestation du serment de citoyenneté, vous jurez de :", options: ["Buy a property in Canada, obey the government of Canada and contribute to Canada's economy", "Pledge allegiance to the Queen and observe the laws of Great Britain", "Pledge allegiance to the Queen, observe the laws of Canada and fulfil the duties of a Canadian citizen", "Live the Canadian dream"], options_fr: ["Acheter une propriété au Canada, obéir au gouvernement et contribuer à l'économie", "Jurer allégeance à la Reine et respecter les lois de la Grande-Bretagne", "Jurer allégeance à la Reine, respecter les lois du Canada et remplir les devoirs d'un citoyen canadien", "Vivre le rêve canadien"], correct: 2, page: 1, section: "Introduction", book_text: "Oath of Citizenship: pledge allegiance to the Queen, observe the laws of Canada and fulfil the duties of a Canadian citizen." },
             { q: "Who is the Queen of Canada?", q_fa: "ملکهٔ کانادا چه کسی است؟", q_fr: "Qui est la Reine du Canada?", options: ["Her Majesty Queen Elizabeth the Second", "Her Majesty Queen Victoria", "Her Majesty Queen Elizabeth the Third", "Her Majesty Queen Anne the Second"], options_fr: ["Sa Majesté la reine Elizabeth Deux", "Sa Majesté la reine Victoria", "Sa Majesté la reine Elizabeth Trois", "Sa Majesté la reine Anne Deux"], correct: 0, page: 1, section: "Introduction", book_text: "Her Majesty Queen Elizabeth the Second was Queen of Canada." },
             { q: "In Canada, who do we profess loyalty to?", q_fa: "در کانادا وفاداری خود را به چه کسی اعلام می‌کنیم؟", q_fr: "Au Canada, à qui professons-nous notre allégeance?", options: ["To the Canadian flag", "To a person who represents all Canadians", "To the Constitution of Canada", "To Canada"], options_fr: ["Au drapeau canadien", "À une personne qui représente tous les Canadiens", "À la Constitution du Canada", "Au Canada"], correct: 1, page: 1, section: "Introduction", book_text: "We profess loyalty to a person who represents all Canadians (the Sovereign)." },
-            { q: "In Canada, we profess our loyalty to the Sovereign (King or Queen).", q_fa: "در کانادا ما وفاداری خود را به سلطان (پادشاه یا ملکه) اعلام می‌کنیم.", q_fr: "Au Canada, nous professons notre allégeance au souverain (roi ou reine).", options: ["True", "False"], options_fr: ["Vrai", "Faux"], correct: 0, page: 1, section: "Introduction", book_text: "In Canada we profess our loyalty to the Sovereign." },
+            { q: "In Canada, we profess our loyalty to the Sovereign (King or Queen).", q_fa: "در کانادا ما وفاداری خود را به پادشاه یا ملکه اعلام می‌کنیم.", q_fr: "Au Canada, nous professons notre allégeance au souverain (roi ou reine).", options: ["True", "False"], options_fr: ["Vrai", "Faux"], correct: 0, page: 1, section: "Introduction", book_text: "In Canada we profess our loyalty to the Sovereign." },
             { q: "Which form of government does Canada have?", q_fa: "کانادا چه شکلی از حکومت دارد؟", q_fr: "Quelle forme de gouvernement le Canada a-t-il?", options: ["Republic", "Confederation", "Oligarchy", "Constitutional monarchy"], options_fr: ["République", "Confédération", "Oligarchie", "Monarchie constitutionnelle"], correct: 3, page: 1, section: "Introduction", book_text: "Canada is a constitutional monarchy." },
-            { q: "In Canada, the constitution, the flag and the country are not encompassed by the Sovereign.", q_fa: "در کانادا قانون اساسی، پرچم و کشور توسط سلطان در بر گرفته نمی‌شوند.", q_fr: "Au Canada, la constitution, le drapeau et le pays ne sont pas incarnés par le souverain.", options: ["True", "False"], options_fr: ["Vrai", "Faux"], correct: 1, page: 1, section: "Introduction", book_text: "The constitution, the flag and the country are encompassed by the Sovereign." },
-            { q: "Canada is personified by the Sovereign.", q_fa: "کانادا توسط سلطان شخصیت‌پردازی می‌شود.", q_fr: "Le Canada est personnifié par le souverain.", options: ["True", "False"], options_fr: ["Vrai", "Faux"], correct: 0, page: 1, section: "Introduction", book_text: "Canada is personified by the Sovereign." },
-            { q: "The Sovereign is not personified by Canada.", q_fa: "سلطان توسط کانادا شخصیت‌پردازی نمی‌شود.", q_fr: "Le souverain n'est pas personnifié par le Canada.", options: ["True", "False"], options_fr: ["Vrai", "Faux"], correct: 1, page: 1, section: "Introduction", book_text: "The Sovereign is not personified by Canada; Canada is personified by the Sovereign." },
+            { q: "In Canada, the constitution, the flag and the country are not encompassed by the Sovereign.", q_fa: "در کانادا قانون اساسی، پرچم و کشور توسط پادشاه در بر گرفته نمی‌شوند.", q_fr: "Au Canada, la constitution, le drapeau et le pays ne sont pas incarnés par le souverain.", options: ["True", "False"], options_fr: ["Vrai", "Faux"], correct: 1, page: 1, section: "Introduction", book_text: "The constitution, the flag and the country are encompassed by the Sovereign." },
+            { q: "Canada is personified by the Sovereign.", q_fa: "کانادا توسط پادشاه شخصیت‌پردازی می‌شود.", q_fr: "Le Canada est personnifié par le souverain.", options: ["True", "False"], options_fr: ["Vrai", "Faux"], correct: 0, page: 1, section: "Introduction", book_text: "Canada is personified by the Sovereign." },
+            { q: "The Sovereign is not personified by Canada.", q_fa: "پادشاه توسط کانادا شخصیت‌پردازی نمی‌شود.", q_fr: "Le souverain n'est pas personnifié par le Canada.", options: ["True", "False"], options_fr: ["Vrai", "Faux"], correct: 1, page: 1, section: "Introduction", book_text: "The Sovereign is not personified by Canada; Canada is personified by the Sovereign." },
             { q: "Which of the following statements is false?", q_fa: "کدام عبارت زیر نادرست است؟", q_fr: "Laquelle des affirmations suivantes est fausse?", options: ["Canada is personified by the Sovereign", "In Canada, we do not profess our loyalty to the Sovereign", "The Canadian flag is encompassed by the Sovereign", "The Sovereign is personified by Canada"], options_fr: ["Le Canada est personnifié par le souverain", "Au Canada, nous ne professons pas notre allégeance au souverain", "Le drapeau canadien est incarné par le souverain", "Le souverain est personnifié par le Canada"], correct: 1, page: 1, section: "Introduction", book_text: "We do profess our loyalty to the Sovereign; so 'we do not profess' is false." },
             { q: "Which of the following statements is true?", q_fa: "کدام عبارت زیر درست است؟", q_fr: "Laquelle des affirmations suivantes est vraie?", options: ["Canada is a Republic", "Canadians have not made sacrifices to defend their way of life", "Canada has welcomed generations of newcomers to build a free, law-abiding and prosperous society", "Immigrants aged 21 to 54 must learn about voting procedures to become citizens"], options_fr: ["Le Canada est une république", "Les Canadiens n'ont pas fait de sacrifices pour défendre leur mode de vie", "Le Canada a accueilli des générations de nouveaux venus pour bâtir une société libre, respectueuse des lois et prospère", "Les immigrants de 21 à 54 ans doivent apprendre les procédures de vote pour devenir citoyens"], correct: 2, page: 2, section: "Introduction", book_text: "Canada has welcomed generations of newcomers to build a free, law-abiding and prosperous society." },
             { q: "For how many years have settlers and immigrants contributed to the diversity and richness of Canada?", q_fa: "مهاجران و ساکنان جدید چند سال به تنوع و غنای کانادا کمک کرده‌اند؟", q_fr: "Depuis combien d'années les colons et les immigrants contribuent-ils à la diversité et à la richesse du Canada?", options: ["400", "500", "300", "200"], options_fr: ["400", "500", "300", "200"], correct: 0, page: 2, section: "Introduction", book_text: "Settlers and immigrants have contributed for over 400 years." },

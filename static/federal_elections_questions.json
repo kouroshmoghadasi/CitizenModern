@@ -1,0 +1,1502 @@
+[
+  {
+    "q": "What do Canadians vote for in a federal election?",
+    "q_fa": "کانادایی‌ها در انتخابات فدرال برای چه رأی می‌دهند؟",
+    "q_fr": "Pour quoi les Canadiens votent-ils lors d'une élection fédérale?",
+    "options": [
+      "The Governor General they want to represent them in Canada",
+      "The people they want to represent them in the House of Commons",
+      "A person to become the Premier of Canada",
+      "All candidates in their electoral district"
+    ],
+    "options_fr": [
+      "Le gouverneur général qu'ils veulent pour les représenter",
+      "Les personnes qu'ils veulent pour les représenter à la Chambre des communes",
+      "Une personne pour devenir premier ministre du Canada",
+      "Tous les candidats de leur circonscription"
+    ],
+    "correct": 1,
+    "page": 34,
+    "section": "Federal Elections",
+    "book_text": "Canadians vote for the people they want to represent them in the House of Commons."
+  },
+  {
+    "q": "What do the initials \"MP\" stand for in Canadian politics?",
+    "q_fa": "در سیاست کانادا «MP» مخفف چیست؟",
+    "q_fr": "Que signifient les initiales « député » (MP) en politique canadienne?",
+    "options": [
+      "Member of Parliament",
+      "Member of Politics",
+      "Masters of Parliament",
+      "Ministers of Parliaments"
+    ],
+    "options_fr": [
+      "Député (Member of Parliament)",
+      "Membre de la politique",
+      "Maîtres du Parlement",
+      "Ministres des Parlements"
+    ],
+    "correct": 0,
+    "page": 34,
+    "section": "Federal Elections",
+    "book_text": "MP stands for Member of Parliament."
+  },
+  {
+    "q": "When must federal elections be held?",
+    "q_fa": "انتخابات فدرال هر چند وقت باید برگزار شود؟",
+    "q_fr": "À quelle fréquence les élections fédérales doivent-elles avoir lieu?",
+    "options": [
+      "Every four years following the most recent general election",
+      "Every five years following the most recent general election",
+      "By order of the Queen",
+      "By order of the Prime Minister"
+    ],
+    "options_fr": [
+      "Tous les quatre ans après la dernière élection générale",
+      "Tous les cinq ans après la dernière élection générale",
+      "Sur ordre de la Reine",
+      "Sur ordre du premier ministre"
+    ],
+    "correct": 1,
+    "page": 34,
+    "section": "Federal Elections",
+    "book_text": "Federal elections must be held at least every five years."
+  },
+  {
+    "q": "Into how many electoral districts is Canada divided?",
+    "q_fa": "کانادا به چند حوزهٔ انتخابیه تقسیم می‌شود؟",
+    "q_fr": "En combien de circonscriptions électorales le Canada est-il divisé?",
+    "options": [
+      "196",
+      "308",
+      "208",
+      "402"
+    ],
+    "options_fr": [
+      "196",
+      "308",
+      "208",
+      "402"
+    ],
+    "correct": 1,
+    "page": 34,
+    "section": "Federal Elections",
+    "book_text": "Canada is divided into electoral districts (e.g. 308 at time of the study guide; the number can change)."
+  },
+  {
+    "q": "What is an electoral district?",
+    "q_fa": "حوزهٔ انتخابیه چیست؟",
+    "q_fr": "Qu'est-ce qu'une circonscription électorale?",
+    "options": [
+      "The building in which the voting poll is located",
+      "A geographical area represented by a member of Parliament",
+      "The area in which elections are held",
+      "The government office in which you register for voting"
+    ],
+    "options_fr": [
+      "Le bâtiment où se trouve le bureau de vote",
+      "Une zone géographique représentée par un député",
+      "La zone où les élections ont lieu",
+      "Le bureau gouvernemental où vous vous inscrivez"
+    ],
+    "correct": 1,
+    "page": 34,
+    "section": "Federal Elections",
+    "book_text": "An electoral district is a geographical area represented by a member of Parliament."
+  },
+  {
+    "q": "Who do the citizens in each electoral district elect?",
+    "q_fa": "شهروندان هر حوزهٔ انتخابیه چه کسی را انتخاب می‌کنند؟",
+    "q_fr": "Qui les citoyens de chaque circonscription élisent-ils?",
+    "options": [
+      "Member of Parliament",
+      "Member of Politics",
+      "Masters of Parliament",
+      "Ministers of Parliaments"
+    ],
+    "options_fr": [
+      "Un député",
+      "Un membre de la politique",
+      "Maîtres du Parlement",
+      "Ministres des Parlements"
+    ],
+    "correct": 0,
+    "page": 34,
+    "section": "Federal Elections",
+    "book_text": "Citizens in each electoral district elect a Member of Parliament (MP)."
+  },
+  {
+    "q": "Who has the right to run as a candidate in federal elections?",
+    "q_fa": "چه کسی حق نامزدی در انتخابات فدرال را دارد؟",
+    "q_fr": "Qui a le droit de se porter candidat aux élections fédérales?",
+    "options": [
+      "Canadian citizens who are 18 years old or older",
+      "Canadian citizens and landed immigrants",
+      "Canadian citizens",
+      "Canadian citizens who are 16 years or older"
+    ],
+    "options_fr": [
+      "Citoyens canadiens de 18 ans ou plus",
+      "Citoyens canadiens et résidents permanents",
+      "Citoyens canadiens",
+      "Citoyens canadiens de 16 ans ou plus"
+    ],
+    "correct": 0,
+    "page": 34,
+    "section": "Federal Elections",
+    "book_text": "Canadian citizens 18 years of age or older may run as candidates."
+  },
+  {
+    "q": "In Canadian politics, what are the people who run for office called?",
+    "q_fa": "در سیاست کانادا به کسانی که برای مقام انتخاب می‌شوند چه می‌گویند؟",
+    "q_fr": "En politique canadienne, comment appelle-t-on les personnes qui se présentent aux élections?",
+    "options": [
+      "Electors",
+      "Politicians",
+      "Member",
+      "Candidate"
+    ],
+    "options_fr": [
+      "Électeurs",
+      "Politiciens",
+      "Membre",
+      "Candidat"
+    ],
+    "correct": 3,
+    "page": 34,
+    "section": "Federal Elections",
+    "book_text": "People who run for office are called candidates."
+  },
+  {
+    "q": "How are members of Parliament chosen?",
+    "q_fa": "اعضای پارلمان چگونه انتخاب می‌شوند؟",
+    "q_fr": "Comment les députés sont-ils choisis?",
+    "options": [
+      "They are appointed by the United Nations",
+      "They are chosen by the provincial Premiers",
+      "They are elected by voters in their local constituency",
+      "They are elected by landowners and police chiefs"
+    ],
+    "options_fr": [
+      "Ils sont nommés par l'ONU",
+      "Ils sont choisis par les premiers ministres provinciaux",
+      "Ils sont élus par les électeurs de leur circonscription",
+      "Ils sont élus par les propriétaires et les chefs de police"
+    ],
+    "correct": 2,
+    "page": 34,
+    "section": "Federal Elections",
+    "book_text": "MPs are elected by voters in their local constituency."
+  },
+  {
+    "q": "Who does a member of Parliament represent?",
+    "q_fa": "یک عضو پارلمان از چه کسانی نمایندگی می‌کند؟",
+    "q_fr": "Qui un député représente-t-il?",
+    "options": [
+      "The citizens in his/her electoral district, as well as all Canadians",
+      "Only the citizens in his/her electoral district",
+      "The Provincial and Territorial governments",
+      "The Provincial Courts"
+    ],
+    "options_fr": [
+      "Les citoyens de sa circonscription ainsi que tous les Canadiens",
+      "Seulement les citoyens de sa circonscription",
+      "Les gouvernements provinciaux et territoriaux",
+      "Les tribunaux provinciaux"
+    ],
+    "correct": 0,
+    "page": 34,
+    "section": "Federal Elections",
+    "book_text": "An MP represents the citizens in his/her electoral district and all Canadians."
+  },
+  {
+    "q": "There can be many candidates in an electoral district",
+    "q_fa": "در یک حوزهٔ انتخابیه می‌توان چند نامزد داشت",
+    "q_fr": "Il peut y avoir plusieurs candidats dans une circonscription électorale",
+    "options": [
+      "True",
+      "False"
+    ],
+    "options_fr": [
+      "Vrai",
+      "Faux"
+    ],
+    "correct": 0,
+    "page": 34,
+    "section": "Federal Elections",
+    "book_text": "True; there can be many candidates in an electoral district."
+  },
+  {
+    "q": "In a federal election, in each electoral district, what does the candidate who receives the most votes become?",
+    "q_fa": "در انتخابات فدرال، در هر حوزه، نامزدی که بیشترین رأی را می‌آورد چه می‌شود؟",
+    "q_fr": "Lors d'une élection fédérale, que devient le candidat qui reçoit le plus de votes dans chaque circonscription?",
+    "options": [
+      "The MLA",
+      "The MP (member of parliament)",
+      "The MPP",
+      "The MNA"
+    ],
+    "options_fr": [
+      "Le député provincial (MLA)",
+      "Le député (MP)",
+      "Le MPP",
+      "Le MNA"
+    ],
+    "correct": 1,
+    "page": 34,
+    "section": "Federal Elections",
+    "book_text": "The candidate with the most votes becomes the MP for that district."
+  },
+  {
+    "q": "How many candidates can there be in an electoral district?",
+    "q_fa": "در یک حوزهٔ انتخابیه چند نامزد می‌تواند باشد؟",
+    "q_fr": "Combien de candidats peut-il y avoir dans une circonscription?",
+    "options": [
+      "Two",
+      "Three",
+      "A maximum of five",
+      "Many"
+    ],
+    "options_fr": [
+      "Deux",
+      "Trois",
+      "Un maximum de cinq",
+      "Plusieurs"
+    ],
+    "correct": 3,
+    "page": 34,
+    "section": "Federal Elections",
+    "book_text": "There can be many candidates in an electoral district."
+  },
+  {
+    "q": "Who has the right to vote in a federal election?",
+    "q_fa": "چه کسی حق رأی در انتخابات فدرال را دارد؟",
+    "q_fr": "Qui a le droit de voter lors d'une élection fédérale?",
+    "options": [
+      "A Canadian citizen, at least 18 years old on voting day and on the voters' list",
+      "An adult Canadian citizen",
+      "Adult Canadian citizens and permanent residents",
+      "Canadian citizens on the voters' list"
+    ],
+    "options_fr": [
+      "Un citoyen canadien d'au moins 18 ans le jour du scrutin et sur la liste électorale",
+      "Un citoyen canadien adulte",
+      "Citoyens canadiens adultes et résidents permanents",
+      "Citoyens canadiens sur la liste électorale"
+    ],
+    "correct": 0,
+    "page": 34,
+    "section": "Federal Elections",
+    "book_text": "Canadian citizens at least 18 years old on voting day and on the voters' list may vote."
+  },
+  {
+    "q": "Which of the following criteria makes you eligible to vote?",
+    "q_fa": "کدام معیار شما را واجد شرایط رأی دادن می‌کند؟",
+    "q_fr": "Lequel des critères suivants vous rend admissible à voter?",
+    "options": [
+      "You own a property in Canada",
+      "You are on the voters' list",
+      "You have a valid Canadian driving license",
+      "You are a landed immigrant"
+    ],
+    "options_fr": [
+      "Vous possédez une propriété au Canada",
+      "Vous êtes sur la liste électorale",
+      "Vous avez un permis de conduire canadien valide",
+      "Vous êtes résident permanent"
+    ],
+    "correct": 1,
+    "page": 34,
+    "section": "Federal Elections",
+    "book_text": "Being on the voters' list (and being a citizen 18+) makes you eligible to vote."
+  },
+  {
+    "q": "Which of the following is not allowed by a non-Canadian citizen?",
+    "q_fa": "کدام یک برای غیرشهروند کانادا مجاز نیست؟",
+    "q_fr": "Laquelle des suivantes n'est pas permise à un non-citoyen canadien?",
+    "options": [
+      "Vote in a federal or provincial election",
+      "Own a house",
+      "Go to University",
+      "Drive a car"
+    ],
+    "options_fr": [
+      "Voter à une élection fédérale ou provinciale",
+      "Posséder une maison",
+      "Aller à l'université",
+      "Conduire une voiture"
+    ],
+    "correct": 0,
+    "page": 34,
+    "section": "Federal Elections",
+    "book_text": "Non-citizens may not vote in federal or provincial elections."
+  },
+  {
+    "q": "What is the National Register of Electors?",
+    "q_fa": "ثبت ملی رأی‌دهندگان چیست؟",
+    "q_fr": "Qu'est-ce que le Registre national des électeurs?",
+    "options": [
+      "A database of Canadian citizens 18 years of age or older who are qualified to vote in federal elections and referendums",
+      "A database of Canadian citizens 18 years of age or older who are qualified to run as a candidate in federal elections",
+      "A database of landed immigrants 18 years of age or older who have to register to vote in federal elections and referendums",
+      "A database of taxpayers who elected to serve on a jury"
+    ],
+    "options_fr": [
+      "Une base de données des citoyens canadiens de 18 ans ou plus admissibles à voter",
+      "Une base de données des citoyens admissibles à se porter candidats",
+      "Une base de données des résidents permanents qui doivent s'inscrire pour voter",
+      "Une base de données des contribuables qui ont choisi de servir comme jurés"
+    ],
+    "correct": 0,
+    "page": 34,
+    "section": "Federal Elections",
+    "book_text": "The National Register of Electors is a database of citizens 18+ qualified to vote."
+  },
+  {
+    "q": "What is the name of the agency that produces the voters' list?",
+    "q_fa": "نام سازمانی که لیست رأی‌دهندگان را تهیه می‌کند چیست؟",
+    "q_fr": "Comment s'appelle l'organisme qui produit la liste électorale?",
+    "options": [
+      "Voters Canada",
+      "Elections Canada",
+      "Electives Canada",
+      "Voting Canada"
+    ],
+    "options_fr": [
+      "Électeurs Canada",
+      "Élections Canada",
+      "Électives Canada",
+      "Vote Canada"
+    ],
+    "correct": 1,
+    "page": 34,
+    "section": "Federal Elections",
+    "book_text": "Elections Canada produces the voters' list."
+  },
+  {
+    "q": "How does Elections Canada give the election card to the electors whose names are in the National Register of Electors?",
+    "q_fa": "Elections Canada کارت انتخاباتی را چطور به رأی‌دهندگانی که در ثبت ملی هستند می‌دهد؟",
+    "q_fr": "Comment Élections Canada remet-elle la carte d'information de l'électeur aux électeurs inscrits au Registre national?",
+    "options": [
+      "Door delivery",
+      "By mail",
+      "Electors have to pick it up at an Elections Canada office",
+      "None of the above"
+    ],
+    "options_fr": [
+      "Livraison à domicile",
+      "Par la poste",
+      "Les électeurs doivent la récupérer au bureau d'Élections Canada",
+      "Aucune de ces réponses"
+    ],
+    "correct": 1,
+    "page": 34,
+    "section": "Federal Elections",
+    "book_text": "Elections Canada sends the voter information card by mail."
+  },
+  {
+    "q": "What information does the voter information card contain?",
+    "q_fa": "کارت اطلاعات رأی‌دهنده چه اطلاعاتی دارد؟",
+    "q_fr": "Quelles informations la carte d'information de l'électeur contient-elle?",
+    "options": [
+      "When and where to vote",
+      "The number to call if an interpreter or other special services are required",
+      "When and where to vote and the number to call if an interpreter or other special services are required",
+      "The elector's name"
+    ],
+    "options_fr": [
+      "Quand et où voter",
+      "Le numéro à appeler pour un interprète ou d'autres services",
+      "Quand et où voter et le numéro pour interprète ou services spéciaux",
+      "Le nom de l'électeur"
+    ],
+    "correct": 2,
+    "page": 34,
+    "section": "Federal Elections",
+    "book_text": "The card contains when and where to vote and contact for interpreter/special services."
+  },
+  {
+    "q": "What happens if you are not listed in the National Register of Electors?",
+    "q_fa": "اگر نام شما در ثبت ملی رأی‌دهندگان نباشد چه می‌شود؟",
+    "q_fr": "Que se passe-t-il si vous n'êtes pas inscrit au Registre national des électeurs?",
+    "options": [
+      "You can still be added to the voters' list at any time, including election day",
+      "You won't be able to vote",
+      "You can still be added at any time, excluding election day",
+      "You can only be added on election day"
+    ],
+    "options_fr": [
+      "Vous pouvez encore être ajouté à tout moment, y compris le jour du scrutin",
+      "Vous ne pourrez pas voter",
+      "Vous pouvez être ajouté à tout moment sauf le jour du scrutin",
+      "Vous ne pouvez être ajouté que le jour du scrutin"
+    ],
+    "correct": 0,
+    "page": 34,
+    "section": "Federal Elections",
+    "book_text": "You can be added to the voters' list at any time, including on election day."
+  },
+  {
+    "q": "How do Canadians vote?",
+    "q_fa": "کانادایی‌ها چگونه رأی می‌دهند؟",
+    "q_fr": "Comment les Canadiens votent-ils?",
+    "options": [
+      "Online",
+      "By open ballot",
+      "By secret ballot",
+      "By mail"
+    ],
+    "options_fr": [
+      "En ligne",
+      "À bulletin ouvert",
+      "À bulletin secret",
+      "Par la poste"
+    ],
+    "correct": 2,
+    "page": 34,
+    "section": "Federal Elections",
+    "book_text": "Canadians vote by secret ballot."
+  },
+  {
+    "q": "What does a vote by secret ballot mean?",
+    "q_fa": "رأی با برگهٔ مخفی به چه معناست؟",
+    "q_fr": "Que signifie un vote à bulletin secret?",
+    "options": [
+      "No one can watch you vote and no one should look at how you voted",
+      "No one can watch you vote except the election officials",
+      "You can only show your ballot to one person",
+      "You must not tell anyone who you voted for"
+    ],
+    "options_fr": [
+      "Personne ne peut vous regarder voter ni voir comment vous avez voté",
+      "Seuls les responsables électoraux peuvent vous regarder",
+      "Vous ne pouvez montrer votre bulletin qu'à une personne",
+      "Vous ne devez dire à personne pour qui vous avez voté"
+    ],
+    "correct": 0,
+    "page": 34,
+    "section": "Federal Elections",
+    "book_text": "Secret ballot means no one watches you vote and no one looks at your ballot."
+  },
+  {
+    "q": "Who has the right to insist that you tell them how you voted?",
+    "q_fa": "چه کسی حق دارد اصرار کند که به او بگویید چطور رأی داده‌اید؟",
+    "q_fr": "Qui a le droit d'exiger que vous disiez comment vous avez voté?",
+    "options": [
+      "Your family members",
+      "Your union representatives",
+      "Your employer",
+      "Nobody"
+    ],
+    "options_fr": [
+      "Les membres de votre famille",
+      "Les représentants syndicaux",
+      "Votre employeur",
+      "Personne"
+    ],
+    "correct": 3,
+    "page": 34,
+    "section": "Federal Elections",
+    "book_text": "Nobody has the right to insist you reveal how you voted."
+  },
+  {
+    "q": "How are the results of an election announced in Canada?",
+    "q_fa": "نتایج انتخابات در کانادا چگونه اعلام می‌شود؟",
+    "q_fr": "Comment les résultats d'une élection sont-ils annoncés au Canada?",
+    "options": [
+      "Announced on radio",
+      "Announced on radio, on television, and in the newspapers",
+      "Announced on television",
+      "Announced in the newspaper"
+    ],
+    "options_fr": [
+      "À la radio",
+      "À la radio, à la télévision et dans les journaux",
+      "À la télévision",
+      "Dans le journal"
+    ],
+    "correct": 1,
+    "page": 35,
+    "section": "Federal Elections",
+    "book_text": "Results are announced on radio, television and in newspapers."
+  },
+  {
+    "q": "After an election, who is invited by the Governor General to form the government?",
+    "q_fa": "پس از انتخابات، Governor General چه کسی را برای تشکیل دولت دعوت می‌کند؟",
+    "q_fr": "Après une élection, qui le gouverneur général invite-t-il à former le gouvernement?",
+    "options": [
+      "The leader of the political party with the most seats in the House of Commons",
+      "The leader who has the approval of the Queen",
+      "The leader who has been directly elected by Canadians",
+      "The members of Parliament"
+    ],
+    "options_fr": [
+      "Le chef du parti ayant le plus de sièges à la Chambre des communes",
+      "Le chef qui a l'approbation de la Reine",
+      "Le chef directement élu par les Canadiens",
+      "Les députés"
+    ],
+    "correct": 0,
+    "page": 35,
+    "section": "Federal Elections",
+    "book_text": "The Governor General invites the leader of the party with the most seats to form the government."
+  },
+  {
+    "q": "What is the leader of the party with the most seats in the House of Commons called?",
+    "q_fa": "رهبر حزبی که بیشترین کرسی را در مجلس عوام دارد چه نامیده می‌شود؟",
+    "q_fr": "Comment s'appelle le chef du parti qui a le plus de sièges à la Chambre des communes?",
+    "options": [
+      "Queen or King",
+      "Prime Minister",
+      "Governor General",
+      "Senator"
+    ],
+    "options_fr": [
+      "Reine ou Roi",
+      "Premier ministre",
+      "Gouverneur général",
+      "Sénateur"
+    ],
+    "correct": 1,
+    "page": 35,
+    "section": "Federal Elections",
+    "book_text": "The leader of the party with the most seats becomes the Prime Minister."
+  },
+  {
+    "q": "What is a majority government?",
+    "q_fa": "دولت اکثریتی چیست؟",
+    "q_fr": "Qu'est-ce qu'un gouvernement majoritaire?",
+    "options": [
+      "The party in power that holds at least half of the seats in the House of Commons",
+      "The party in power that holds at least half of the seats in the Senate",
+      "The party in power that holds at least half of the seats in the Senate and the House of Commons",
+      "The party in power that holds less than half of the seats in the House of Commons"
+    ],
+    "options_fr": [
+      "Le parti au pouvoir qui détient au moins la moitié des sièges à la Chambre des communes",
+      "Le parti qui détient au moins la moitié des sièges au Sénat",
+      "Le parti qui détient la moitié des sièges au Sénat et à la Chambre",
+      "Le parti qui détient moins de la moitié des sièges à la Chambre"
+    ],
+    "correct": 0,
+    "page": 35,
+    "section": "Federal Elections",
+    "book_text": "A majority government holds at least half of the seats in the House of Commons."
+  },
+  {
+    "q": "What is a minority government?",
+    "q_fa": "دولت اقلیتی چیست؟",
+    "q_fr": "Qu'est-ce qu'un gouvernement minoritaire?",
+    "options": [
+      "The party in power that holds less than half of the seats in the Senate",
+      "The party in power that holds less than half of the seats in the House of Commons",
+      "The party in power that holds less than half of the seats in the Senate and the House of Commons",
+      "The party in power that holds at least half of the seats in the House of Commons"
+    ],
+    "options_fr": [
+      "Le parti qui détient moins de la moitié des sièges au Sénat",
+      "Le parti qui détient moins de la moitié des sièges à la Chambre des communes",
+      "Le parti qui détient moins de la moitié au Sénat et à la Chambre",
+      "Le parti qui détient au moins la moitié des sièges à la Chambre"
+    ],
+    "correct": 1,
+    "page": 35,
+    "section": "Federal Elections",
+    "book_text": "A minority government holds less than half of the seats in the House of Commons."
+  },
+  {
+    "q": "The Prime Minister and the party in power run the government:",
+    "q_fa": "نخست‌وزیر و حزب حاکم دولت را اداره می‌کنند:",
+    "q_fr": "Le premier ministre et le parti au pouvoir dirigent le gouvernement:",
+    "options": [
+      "As long as they have the support or confidence of the majority of the MPs",
+      "As long as they are in good health",
+      "As long as they have the approval of the Queen",
+      "As long as they have the support of the senators"
+    ],
+    "options_fr": [
+      "Tant qu'ils ont l'appui ou la confiance de la majorité des députés",
+      "Tant qu'ils sont en bonne santé",
+      "Tant qu'ils ont l'approbation de la Reine",
+      "Tant qu'ils ont l'appui des sénateurs"
+    ],
+    "correct": 0,
+    "page": 35,
+    "section": "Federal Elections",
+    "book_text": "They run the government as long as they have the confidence of the majority of MPs."
+  },
+  {
+    "q": "In Canada, how can a party in power be defeated?",
+    "q_fa": "در کانادا حزب حاکم چگونه می‌تواند شکست بخورد؟",
+    "q_fr": "Au Canada, comment un parti au pouvoir peut-il être défait?",
+    "options": [
+      "If a majority of the members of the House of Commons vote in favor of a major government decision",
+      "If the Queen votes against a major government decision",
+      "If a majority of the members of the House of Commons vote against a major government decision",
+      "If the Governor General resigns"
+    ],
+    "options_fr": [
+      "Si la majorité des députés vote en faveur d'une décision majeure du gouvernement",
+      "Si la Reine vote contre une décision majeure",
+      "Si la majorité des députés vote contre une décision majeure du gouvernement",
+      "Si le gouverneur général démissionne"
+    ],
+    "correct": 2,
+    "page": 35,
+    "section": "Federal Elections",
+    "book_text": "A party is defeated if a majority of the House of Commons votes against a major government decision."
+  },
+  {
+    "q": "What is usually the result of a party in power being defeated?",
+    "q_fa": "معمولاً نتیجهٔ شکست حزب حاکم چیست؟",
+    "q_fr": "Quel est généralement le résultat de la défaite d'un parti au pouvoir?",
+    "options": [
+      "The Governor General asks the Prime Minister, on behalf of the Sovereign, to call an election",
+      "The Prime Minister must resign from his party",
+      "The opposition party automatically gets to run the government",
+      "The Prime Minister asks the Governor General, on behalf of the Sovereign, to call an election"
+    ],
+    "options_fr": [
+      "Le gouverneur général demande au premier ministre de déclencher une élection",
+      "Le premier ministre doit démissionner de son parti",
+      "Le parti d'opposition dirige automatiquement le gouvernement",
+      "Le premier ministre demande au gouverneur général de déclencher une élection"
+    ],
+    "correct": 3,
+    "page": 35,
+    "section": "Federal Elections",
+    "book_text": "The Prime Minister asks the Governor General to call an election."
+  },
+  {
+    "q": "Who chooses the ministers of the Crown?",
+    "q_fa": "وزرای Crown را چه کسی انتخاب می‌کند؟",
+    "q_fr": "Qui choisit les ministres de la Couronne?",
+    "options": [
+      "The Queen",
+      "The Prime Minister",
+      "The Governor General",
+      "The Senators"
+    ],
+    "options_fr": [
+      "La Reine",
+      "Le premier ministre",
+      "Le gouverneur général",
+      "Les sénateurs"
+    ],
+    "correct": 1,
+    "page": 35,
+    "section": "Federal Elections",
+    "book_text": "The Prime Minister chooses the ministers of the Crown."
+  },
+  {
+    "q": "What is the responsibility of the Cabinet Ministers?",
+    "q_fa": "مسئولیت وزرای کابینه چیست؟",
+    "q_fr": "Quelle est la responsabilité des ministres du Cabinet?",
+    "options": [
+      "They are responsible for running the federal government departments",
+      "They are responsible for running the Senate",
+      "They are responsible for running the House of Commons",
+      "They are responsible for running each province of Canada"
+    ],
+    "options_fr": [
+      "Ils sont responsables des ministères du gouvernement fédéral",
+      "Ils sont responsables du Sénat",
+      "Ils sont responsables de la Chambre des communes",
+      "Ils sont responsables de chaque province"
+    ],
+    "correct": 0,
+    "page": 35,
+    "section": "Federal Elections",
+    "book_text": "Cabinet Ministers are responsible for running federal government departments."
+  },
+  {
+    "q": "What forms the Cabinet?",
+    "q_fa": "کابینه از چه تشکیل می‌شود؟",
+    "q_fr": "Qu'est-ce qui forme le Cabinet?",
+    "options": [
+      "The Prime Minister and the Cabinet ministers",
+      "The Prime Minister and the House of Commons",
+      "The Prime Minister and the Senators",
+      "The Senate and the House of Commons"
+    ],
+    "options_fr": [
+      "Le premier ministre et les ministres du Cabinet",
+      "Le premier ministre et la Chambre des communes",
+      "Le premier ministre et les sénateurs",
+      "Le Sénat et la Chambre des communes"
+    ],
+    "correct": 0,
+    "page": 35,
+    "section": "Federal Elections",
+    "book_text": "The Cabinet is formed by the Prime Minister and the Cabinet ministers."
+  },
+  {
+    "q": "Who can question the decisions of the government?",
+    "q_fa": "چه کسانی می‌توانند تصمیمات دولت را به پرسش بگیرند؟",
+    "q_fr": "Qui peut remettre en question les décisions du gouvernement?",
+    "options": [
+      "The Senate only",
+      "Only certain members of the House of Commons",
+      "The Queen only",
+      "All members of the House of Commons"
+    ],
+    "options_fr": [
+      "Le Sénat seulement",
+      "Seuls certains députés",
+      "La Reine seulement",
+      "Tous les députés de la Chambre des communes"
+    ],
+    "correct": 3,
+    "page": 35,
+    "section": "Federal Elections",
+    "book_text": "All members of the House of Commons can question the government's decisions."
+  },
+  {
+    "q": "What are the responsibilities of the Cabinet?",
+    "q_fa": "مسئولیت‌های کابینه چیست؟",
+    "q_fr": "Quelles sont les responsabilités du Cabinet?",
+    "options": [
+      "International matters",
+      "Natural Resources",
+      "Prepare the budget and propose most new laws",
+      "Education"
+    ],
+    "options_fr": [
+      "Questions internationales",
+      "Ressources naturelles",
+      "Préparer le budget et proposer la plupart des nouvelles lois",
+      "Éducation"
+    ],
+    "correct": 2,
+    "page": 35,
+    "section": "Federal Elections",
+    "book_text": "The Cabinet prepares the budget and proposes most new laws."
+  },
+  {
+    "q": "What is the opposition party with the most members of the House of Commons called?",
+    "q_fa": "حزب مخالف با بیشترین اعضای مجلس عوام چه نامیده می‌شود؟",
+    "q_fr": "Comment s'appelle le parti d'opposition qui a le plus de députés à la Chambre des communes?",
+    "options": [
+      "The Official Opposition or Her Majesty's Loyal Opposition",
+      "The Outside Opposition or Her Majesty's Loyal Opposition",
+      "The Side Opposition",
+      "The Loyal Great Opposition"
+    ],
+    "options_fr": [
+      "L'Opposition officielle ou l'Opposition loyale de Sa Majesté",
+      "L'Opposition extérieure",
+      "L'Opposition latérale",
+      "La Grande opposition loyale"
+    ],
+    "correct": 0,
+    "page": 35,
+    "section": "Federal Elections",
+    "book_text": "It is called the Official Opposition or Her Majesty's Loyal Opposition."
+  },
+  {
+    "q": "What is the name of the parties that are not in power?",
+    "q_fa": "حزب‌هایی که در قدرت نیستند چه نامیده می‌شوند؟",
+    "q_fr": "Comment s'appellent les partis qui ne sont pas au pouvoir?",
+    "options": [
+      "Outside parties",
+      "Side parties",
+      "Powerless parties",
+      "Opposition parties"
+    ],
+    "options_fr": [
+      "Partis extérieurs",
+      "Partis latéraux",
+      "Partis sans pouvoir",
+      "Partis d'opposition"
+    ],
+    "correct": 3,
+    "page": 35,
+    "section": "Federal Elections",
+    "book_text": "Parties not in power are called opposition parties."
+  },
+  {
+    "q": "What is the role of opposition parties?",
+    "q_fa": "نقش حزب‌های مخالف چیست؟",
+    "q_fr": "Quel est le rôle des partis d'opposition?",
+    "options": [
+      "To peacefully oppose or try to improve government proposals",
+      "To help the Prime Minister",
+      "To approve the leading party's bills",
+      "To write bills"
+    ],
+    "options_fr": [
+      "S'opposer pacifiquement ou améliorer les propositions du gouvernement",
+      "Aider le premier ministre",
+      "Approuver les projets de loi du parti au pouvoir",
+      "Rédiger des projets de loi"
+    ],
+    "correct": 0,
+    "page": 35,
+    "section": "Federal Elections",
+    "book_text": "Opposition parties peacefully oppose or try to improve government proposals."
+  },
+  {
+    "q": "What are the names of the three major political parties currently represented in the House of Commons?",
+    "q_fa": "نام سه حزب بزرگ فعلی در مجلس عوام چیست؟",
+    "q_fr": "Quels sont les noms des trois principaux partis actuellement représentés à la Chambre des communes?",
+    "options": [
+      "Conservative Party, Liberal Party and New Royal Party",
+      "Conservative Party, Liberal Party and New Democratic Party",
+      "Quebec Coalition, Conservative Party and Liberal Party",
+      "New Democratic Party, Royal Party, and French Coalition"
+    ],
+    "options_fr": [
+      "Parti conservateur, Parti libéral et Nouveau Parti royal",
+      "Parti conservateur, Parti libéral et Nouveau Parti démocratique",
+      "Coalition québécoise, Parti conservateur et Parti libéral",
+      "NPD, Parti royal et Coalition française"
+    ],
+    "correct": 1,
+    "page": 35,
+    "section": "Federal Elections",
+    "book_text": "The three major parties are Conservative, Liberal and New Democratic Party."
+  },
+  {
+    "q": "What is a voter information card?",
+    "q_fa": "کارت اطلاعات رأی‌دهنده چیست؟",
+    "q_fr": "Qu'est-ce qu'une carte d'information de l'électeur?",
+    "options": [
+      "A card that confirms that your name is on the voters' list and states when and where you vote",
+      "A card that you use to register for voting",
+      "A letter explaining how to vote",
+      "A list with all the election candidates"
+    ],
+    "options_fr": [
+      "Une carte qui confirme que votre nom est sur la liste et indique quand et où voter",
+      "Une carte pour vous inscrire pour voter",
+      "Une lettre expliquant comment voter",
+      "Une liste de tous les candidats"
+    ],
+    "correct": 0,
+    "page": 35,
+    "section": "Federal Elections",
+    "book_text": "A voter information card confirms your name is on the list and states when and where to vote."
+  },
+  {
+    "q": "Who will receive a voter information card?",
+    "q_fa": "کارت اطلاعات رأی‌دهنده به دست چه کسانی می‌رسد؟",
+    "q_fr": "Qui recevra une carte d'information de l'électeur?",
+    "options": [
+      "Electors who own a house",
+      "Everybody",
+      "Electors whose information is in the National Register of Electors",
+      "Electors who are 18 years or older"
+    ],
+    "options_fr": [
+      "Les électeurs qui possèdent une maison",
+      "Tout le monde",
+      "Les électeurs inscrits au Registre national des électeurs",
+      "Les électeurs de 18 ans ou plus"
+    ],
+    "correct": 2,
+    "page": 35,
+    "section": "Federal Elections",
+    "book_text": "Electors in the National Register of Electors receive a voter information card."
+  },
+  {
+    "q": "During an election period, what happens if you do not receive a voter information card?",
+    "q_fa": "در دورهٔ انتخابات اگر کارت اطلاعات رأی‌دهنده دریافت نکنید چه کار کنید؟",
+    "q_fr": "Pendant une élection, que faire si vous ne recevez pas de carte d'information de l'électeur?",
+    "options": [
+      "You cannot vote",
+      "You can only vote online",
+      "You have to call the House of Commons in Ottawa to ensure that you are on the voters' list",
+      "You have to call your local elections office, or Elections Canada in Ottawa, to ensure that you are on the voters' list"
+    ],
+    "options_fr": [
+      "Vous ne pouvez pas voter",
+      "Vous ne pouvez voter qu'en ligne",
+      "Vous devez appeler la Chambre des communes à Ottawa",
+      "Vous devez appeler votre bureau électoral local ou Élections Canada à Ottawa pour vérifier que vous êtes sur la liste"
+    ],
+    "correct": 3,
+    "page": 35,
+    "section": "Federal Elections",
+    "book_text": "Call your local elections office or Elections Canada to ensure you are on the voters' list."
+  },
+  {
+    "q": "What happens if you cannot or do not wish to vote on election day?",
+    "q_fa": "اگر نتوانید یا نخواهید روز انتخابات رأی دهید چه می‌شود؟",
+    "q_fr": "Que faire si vous ne pouvez pas ou ne souhaitez pas voter le jour du scrutin?",
+    "options": [
+      "You can vote at the advance polls only",
+      "You can vote at the advance polls or by special ballot",
+      "You can vote by special ballot only",
+      "You cannot vote at all"
+    ],
+    "options_fr": [
+      "Vous ne pouvez voter qu'aux bureaux de vote par anticipation",
+      "Vous pouvez voter par anticipation ou par bulletin spécial",
+      "Vous ne pouvez voter que par bulletin spécial",
+      "Vous ne pouvez pas voter du tout"
+    ],
+    "correct": 1,
+    "page": 35,
+    "section": "Federal Elections",
+    "book_text": "You can vote at advance polls or by special ballot."
+  },
+  {
+    "q": "What should you do on election day?",
+    "q_fa": "روز انتخابات چه کار باید بکنید؟",
+    "q_fr": "Que devez-vous faire le jour du scrutin?",
+    "options": [
+      "Go to your polling station",
+      "Nothing",
+      "Go to the nearest Elections Canada office",
+      "Call Elections Canada"
+    ],
+    "options_fr": [
+      "Aller à votre bureau de vote",
+      "Rien",
+      "Aller au bureau d'Élections Canada le plus proche",
+      "Appeler Élections Canada"
+    ],
+    "correct": 0,
+    "page": 35,
+    "section": "Federal Elections",
+    "book_text": "On election day, go to your polling station."
+  },
+  {
+    "q": "On election day, what should you bring to the polling station?",
+    "q_fa": "روز انتخابات چه چیزهایی باید به bureau de vote ببرید؟",
+    "q_fr": "Le jour du scrutin, que devez-vous apporter au bureau de vote?",
+    "options": [
+      "The voter information card and proof of your identity and address",
+      "The voter information card",
+      "A piece of identification",
+      "Nothing"
+    ],
+    "options_fr": [
+      "La carte d'information de l'électeur et une preuve d'identité et d'adresse",
+      "La carte d'information de l'électeur",
+      "Une pièce d'identité",
+      "Rien"
+    ],
+    "correct": 0,
+    "page": 35,
+    "section": "Federal Elections",
+    "book_text": "Bring the voter information card and proof of identity and address."
+  },
+  {
+    "q": "During an election period, where is the location of your polling station indicated?",
+    "q_fa": "در دورهٔ انتخابات محل bureau de vote کجا مشخص شده است؟",
+    "q_fr": "Pendant une élection, où l'emplacement de votre bureau de vote est-il indiqué?",
+    "options": [
+      "In your local Member of Parliament's office",
+      "On your ballot",
+      "On your voter information card",
+      "Online"
+    ],
+    "options_fr": [
+      "Au bureau de votre député",
+      "Sur votre bulletin de vote",
+      "Sur votre carte d'information de l'électeur",
+      "En ligne"
+    ],
+    "correct": 2,
+    "page": 35,
+    "section": "Federal Elections",
+    "book_text": "The polling station location is on your voter information card."
+  },
+  {
+    "q": "What do you mark on a federal election ballot?",
+    "q_fa": "روی برگهٔ رأی فدرال چه علامتی می‌زنید؟",
+    "q_fr": "Que marquez-vous sur un bulletin de vote fédéral?",
+    "options": [
+      "An \"X\"",
+      "The candidate's name",
+      "The candidate's number",
+      "The party's name"
+    ],
+    "options_fr": [
+      "Un « X »",
+      "Le nom du candidat",
+      "Le numéro du candidat",
+      "Le nom du parti"
+    ],
+    "correct": 0,
+    "page": 35,
+    "section": "Federal Elections",
+    "book_text": "You mark an \"X\" on the ballot."
+  },
+  {
+    "q": "In Canada, voting is secret",
+    "q_fa": "در کانادا رأی دادن مخفی است",
+    "q_fr": "Au Canada, le vote est secret",
+    "options": [
+      "True",
+      "False"
+    ],
+    "options_fr": [
+      "Vrai",
+      "Faux"
+    ],
+    "correct": 0,
+    "page": 35,
+    "section": "Federal Elections",
+    "book_text": "True; voting in Canada is by secret ballot."
+  },
+  {
+    "q": "On election day, what should you do once you mark your ballot?",
+    "q_fa": "روز انتخابات بعد از علامت زدن برگهٔ رأی چه کار کنید؟",
+    "q_fr": "Le jour du scrutin, que faire une fois le bulletin marqué?",
+    "options": [
+      "Leave it on the table",
+      "Fold it and deposit it in the bin next to you",
+      "Present it to the poll officials",
+      "Fold it and present it to the poll officials"
+    ],
+    "options_fr": [
+      "Le laisser sur la table",
+      "Le plier et le déposer dans la corbeille",
+      "Le présenter aux responsables du bureau de vote",
+      "Le plier et le présenter aux responsables du bureau de vote"
+    ],
+    "correct": 3,
+    "page": 35,
+    "section": "Federal Elections",
+    "book_text": "Fold the ballot and present it to the poll officials."
+  },
+  {
+    "q": "On election day, where should your ballot go?",
+    "q_fa": "روز انتخابات برگهٔ رأی باید کجا برود؟",
+    "q_fr": "Le jour du scrutin, où doit aller votre bulletin de vote?",
+    "options": [
+      "In the ballot box",
+      "In the garbage bin",
+      "In your pocket",
+      "It should stay on the voting table"
+    ],
+    "options_fr": [
+      "Dans l'urne",
+      "À la poubelle",
+      "Dans votre poche",
+      "Il doit rester sur la table de vote"
+    ],
+    "correct": 0,
+    "page": 35,
+    "section": "Federal Elections",
+    "book_text": "Your ballot goes in the ballot box."
+  },
+  {
+    "q": "On election day, what happens when the polls close?",
+    "q_fa": "روز انتخابات وقتی bureauهای رأی بسته می‌شوند چه می‌شود؟",
+    "q_fr": "Le jour du scrutin, que se passe-t-il à la fermeture des bureaux de vote?",
+    "options": [
+      "No ballot gets counted for 48 hours",
+      "No ballot gets counted for 24 hours",
+      "Every ballot is counted and the results are made public",
+      "Every ballot is counted and the results are kept secret for 48 hours"
+    ],
+    "options_fr": [
+      "Aucun bulletin n'est compté pendant 48 heures",
+      "Aucun bulletin n'est compté pendant 24 heures",
+      "Chaque bulletin est compté et les résultats sont rendus publics",
+      "Les bulletins sont comptés et les résultats restent secrets 48 heures"
+    ],
+    "correct": 2,
+    "page": 35,
+    "section": "Federal Elections",
+    "book_text": "When polls close, every ballot is counted and results are made public."
+  },
+  {
+    "q": "Where can you see the results of an election?",
+    "q_fa": "نتایج انتخابات را کجا می‌توانید ببینید؟",
+    "q_fr": "Où peut-on voir les résultats d'une élection?",
+    "options": [
+      "Only on television",
+      "On television or on the Elections Canada website",
+      "Only on the Elections Canada website",
+      "You have to call Elections Canada"
+    ],
+    "options_fr": [
+      "Seulement à la télévision",
+      "À la télévision ou sur le site d'Élections Canada",
+      "Seulement sur le site d'Élections Canada",
+      "Vous devez appeler Élections Canada"
+    ],
+    "correct": 1,
+    "page": 35,
+    "section": "Federal Elections",
+    "book_text": "Results can be seen on television or on the Elections Canada website."
+  },
+  {
+    "q": "What are Municipal laws called?",
+    "q_fa": "قوانین شهرداری چه نامیده می‌شوند؟",
+    "q_fr": "Comment s'appellent les lois municipales?",
+    "options": [
+      "Municipal laws",
+      "Local laws",
+      "City laws",
+      "By-laws"
+    ],
+    "options_fr": [
+      "Lois municipales",
+      "Lois locales",
+      "Lois de la ville",
+      "Règlements municipaux (by-laws)"
+    ],
+    "correct": 3,
+    "page": 36,
+    "section": "Federal Elections",
+    "book_text": "Municipal laws are called by-laws."
+  },
+  {
+    "q": "What area does a \"by-law\" apply to in Canada?",
+    "q_fa": "یک «by-law» در کانادا به چه محدوده‌ای اعمال می‌شود؟",
+    "q_fr": "À quelle zone un « règlement municipal » s'applique-t-il au Canada?",
+    "options": [
+      "The province",
+      "The territory",
+      "The local community",
+      "The entire country"
+    ],
+    "options_fr": [
+      "La province",
+      "Le territoire",
+      "La collectivité locale",
+      "Tout le pays"
+    ],
+    "correct": 2,
+    "page": 36,
+    "section": "Federal Elections",
+    "book_text": "A by-law applies to the local community (municipality)."
+  },
+  {
+    "q": "Which of the following is not a responsibility of a municipality?",
+    "q_fa": "کدام یک از مسئولیت‌های شهرداری نیست؟",
+    "q_fr": "Laquelle des suivantes n'est pas une responsabilité municipale?",
+    "options": [
+      "Civil Rights (Provincial and Territorial)",
+      "Regional planning",
+      "Public transit",
+      "Emergency services"
+    ],
+    "options_fr": [
+      "Droits civils (provincial et territorial)",
+      "Planification régionale",
+      "Transport en commun",
+      "Services d'urgence"
+    ],
+    "correct": 0,
+    "page": 36,
+    "section": "Federal Elections",
+    "book_text": "Civil rights are provincial/territorial, not municipal."
+  },
+  {
+    "q": "Which of the following is a responsibility of a municipality?",
+    "q_fa": "کدام یک از مسئولیت‌های شهرداری است؟",
+    "q_fr": "Laquelle des suivantes est une responsabilité municipale?",
+    "options": [
+      "Education (Provincial and Territorial)",
+      "Sanitation",
+      "Natural Resources (Provincial and Territorial)",
+      "Citizenship (federal)"
+    ],
+    "options_fr": [
+      "Éducation (provincial et territorial)",
+      "Assainissement",
+      "Ressources naturelles (provincial et territorial)",
+      "Citoyenneté (fédéral)"
+    ],
+    "correct": 1,
+    "page": 36,
+    "section": "Federal Elections",
+    "book_text": "Sanitation (e.g. garbage removal) is a municipal responsibility."
+  },
+  {
+    "q": "The rules for provincial, territorial and municipal elections are the same as for federal elections.",
+    "q_fa": "قوانین انتخابات استانی، قلمرو و شهرداری با انتخابات فدرال یکسان است.",
+    "q_fr": "Les règles des élections provinciales, territoriales et municipales sont les mêmes que pour les élections fédérales.",
+    "options": [
+      "True",
+      "False"
+    ],
+    "options_fr": [
+      "Vrai",
+      "Faux"
+    ],
+    "correct": 1,
+    "page": 36,
+    "section": "Federal Elections",
+    "book_text": "False; provincial, territorial and municipal election rules can differ from federal."
+  },
+  {
+    "q": "What do you call the elected officials on a federal level?",
+    "q_fa": "به منتخبان در سطح فدرال چه می‌گویند؟",
+    "q_fr": "Comment appelle-t-on les élus au niveau fédéral?",
+    "options": [
+      "The MLAs",
+      "The MNAs",
+      "The MHAs",
+      "The MPs (Members of Parliament)"
+    ],
+    "options_fr": [
+      "Les députés provinciaux (MLA)",
+      "Les MNA",
+      "Les MHA",
+      "Les députés (MP)"
+    ],
+    "correct": 3,
+    "page": 36,
+    "section": "Federal Elections",
+    "book_text": "Elected officials at the federal level are called MPs (Members of Parliament)."
+  },
+  {
+    "q": "In Canadian politics, what does MP stand for?",
+    "q_fa": "در سیاست کانادا MP مخفف چیست؟",
+    "q_fr": "En politique canadienne, que signifie MP?",
+    "options": [
+      "Member of Parliament",
+      "Member of Police",
+      "Municipal Politician",
+      "Main Parliament"
+    ],
+    "options_fr": [
+      "Député (Member of Parliament)",
+      "Membre de la police",
+      "Politicien municipal",
+      "Parlement principal"
+    ],
+    "correct": 0,
+    "page": 36,
+    "section": "Federal Elections",
+    "book_text": "MP stands for Member of Parliament."
+  },
+  {
+    "q": "Which of the following is a responsibility of a Member of Parliament?",
+    "q_fa": "کدام یک از مسئولیت‌های یک عضو پارلمان است؟",
+    "q_fr": "Laquelle des suivantes est une responsabilité d'un député?",
+    "options": [
+      "Education",
+      "Public transit",
+      "National Defence",
+      "Civil Rights"
+    ],
+    "options_fr": [
+      "Éducation",
+      "Transport en commun",
+      "Défense nationale",
+      "Droits civils"
+    ],
+    "correct": 2,
+    "page": 36,
+    "section": "Federal Elections",
+    "book_text": "National Defence is a federal (MP) responsibility."
+  },
+  {
+    "q": "Which of the following is not a responsibility of a Member of Parliament?",
+    "q_fa": "کدام یک از مسئولیت‌های عضو پارلمان نیست؟",
+    "q_fr": "Laquelle des suivantes n'est pas une responsabilité d'un député?",
+    "options": [
+      "Citizenship",
+      "Policing",
+      "Foreign Policy",
+      "Education (Provincial and Territorial)"
+    ],
+    "options_fr": [
+      "Citoyenneté",
+      "Police",
+      "Politique étrangère",
+      "Éducation (provincial et territorial)"
+    ],
+    "correct": 3,
+    "page": 36,
+    "section": "Federal Elections",
+    "book_text": "Education is provincial/territorial, not a federal MP responsibility."
+  },
+  {
+    "q": "In Canadian politics, what does MLA stand for?",
+    "q_fa": "در سیاست کانادا MLA مخفف چیست؟",
+    "q_fr": "En politique canadienne, que signifie MLA?",
+    "options": [
+      "Members of the Legal Assembly",
+      "Members of the Legislative Assembly",
+      "Municipal Legislative Assembly",
+      "Municipal Legal Action"
+    ],
+    "options_fr": [
+      "Membres de l'assemblée légale",
+      "Membres de l'Assemblée législative",
+      "Assemblée législative municipale",
+      "Action légale municipale"
+    ],
+    "correct": 1,
+    "page": 36,
+    "section": "Federal Elections",
+    "book_text": "MLA stands for Members of the Legislative Assembly (e.g. in some provinces)."
+  },
+  {
+    "q": "In Canadian politics, what does MNA stand for?",
+    "q_fa": "در سیاست کانادا MNA مخفف چیست؟",
+    "q_fr": "En politique canadienne, que signifie MNA?",
+    "options": [
+      "Members of the National Assembly",
+      "Members of the Nunavut Assembly",
+      "Municipal and National Assembly",
+      "Major National Assembly"
+    ],
+    "options_fr": [
+      "Membres de l'Assemblée nationale",
+      "Membres de l'Assemblée du Nunavut",
+      "Assemblée municipale et nationale",
+      "Assemblée nationale majeure"
+    ],
+    "correct": 0,
+    "page": 36,
+    "section": "Federal Elections",
+    "book_text": "MNA stands for Members of the National Assembly (used in Quebec)."
+  },
+  {
+    "q": "In Canadian politics, what does MPP stand for?",
+    "q_fa": "در سیاست کانادا MPP مخفف چیست؟",
+    "q_fr": "En politique canadienne, que signifie MPP?",
+    "options": [
+      "Members of the Politician Parliament",
+      "Municipal and Provincial Parliament",
+      "Members of the Provincial Parliament",
+      "Major Politic Party"
+    ],
+    "options_fr": [
+      "Membres du Parlement des politiciens",
+      "Parlement municipal et provincial",
+      "Membres du Parlement provincial",
+      "Parti politique majeur"
+    ],
+    "correct": 2,
+    "page": 36,
+    "section": "Federal Elections",
+    "book_text": "MPP stands for Members of the Provincial Parliament (used in Ontario)."
+  },
+  {
+    "q": "In Canadian politics, what does MHA stand for?",
+    "q_fa": "در سیاست کانادا MHA مخفف چیست؟",
+    "q_fr": "En politique canadienne, que signifie MHA?",
+    "options": [
+      "Members of the House of Assembly",
+      "Members of the High Assembly",
+      "Municipal House Assembly",
+      "Members of the Honourable Assembly"
+    ],
+    "options_fr": [
+      "Membres de la Chambre d'assemblée",
+      "Membres de la Haute Assemblée",
+      "Chambre d'assemblée municipale",
+      "Membres de l'Assemblée honorable"
+    ],
+    "correct": 0,
+    "page": 36,
+    "section": "Federal Elections",
+    "book_text": "MHA stands for Members of the House of Assembly (e.g. Newfoundland and Labrador)."
+  },
+  {
+    "q": "Which of the following is a responsibility of a territorial or provincial elected official?",
+    "q_fa": "کدام یک از مسئولیت‌های منتخب استانی یا قلمرو است؟",
+    "q_fr": "Laquelle des suivantes est une responsabilité d'un élu provincial ou territorial?",
+    "options": [
+      "Citizenship",
+      "Education",
+      "Criminal Justice",
+      "Aboriginal Affairs"
+    ],
+    "options_fr": [
+      "Citoyenneté",
+      "Éducation",
+      "Justice pénale",
+      "Affaires autochtones"
+    ],
+    "correct": 1,
+    "page": 36,
+    "section": "Federal Elections",
+    "book_text": "Education is a provincial/territorial responsibility."
+  },
+  {
+    "q": "Which of the following is not a responsibility of a territorial or provincial elected official?",
+    "q_fa": "کدام یک از مسئولیت‌های منتخب استانی یا قلمرو نیست؟",
+    "q_fr": "Laquelle des suivantes n'est pas une responsabilité d'un élu provincial ou territorial?",
+    "options": [
+      "Property and Civil Rights",
+      "Highways",
+      "Natural Resources",
+      "Foreign Policy"
+    ],
+    "options_fr": [
+      "Propriété et droits civils",
+      "Routes",
+      "Ressources naturelles",
+      "Politique étrangère"
+    ],
+    "correct": 3,
+    "page": 36,
+    "section": "Federal Elections",
+    "book_text": "Foreign policy is federal, not provincial/territorial."
+  },
+  {
+    "q": "Which of the following is a responsibility of a municipal elected official?",
+    "q_fa": "کدام یک از مسئولیت‌های منتخب شهرداری است؟",
+    "q_fr": "Laquelle des suivantes est une responsabilité d'un élu municipal?",
+    "options": [
+      "Healthcare",
+      "Snow removal",
+      "Highways",
+      "Natural Resources"
+    ],
+    "options_fr": [
+      "Soins de santé",
+      "Déneigement",
+      "Routes",
+      "Ressources naturelles"
+    ],
+    "correct": 1,
+    "page": 36,
+    "section": "Federal Elections",
+    "book_text": "Snow removal is a municipal responsibility."
+  },
+  {
+    "q": "Which of the following is not a responsibility of a municipal elected official?",
+    "q_fa": "کدام یک از مسئولیت‌های منتخب شهرداری نیست؟",
+    "q_fr": "Laquelle des suivantes n'est pas une responsabilité d'un élu municipal?",
+    "options": [
+      "Transportation and Utilities",
+      "Emergency Services",
+      "Citizenship",
+      "Social and Community Health"
+    ],
+    "options_fr": [
+      "Transport et services publics",
+      "Services d'urgence",
+      "Citoyenneté",
+      "Santé sociale et communautaire"
+    ],
+    "correct": 2,
+    "page": 36,
+    "section": "Federal Elections",
+    "book_text": "Citizenship is federal, not municipal."
+  },
+  {
+    "q": "Who are the representatives for the First Nations?",
+    "q_fa": "نمایندگان ملت‌های اولیه چه کسانی هستند؟",
+    "q_fr": "Qui sont les représentants des Premières Nations?",
+    "options": [
+      "Band chiefs and councillors (have major responsibilities on First Nations reserves, including housing, schools and other services)",
+      "First Nation mayors",
+      "First Nation senators",
+      "None"
+    ],
+    "options_fr": [
+      "Chefs et conseillers de bande (responsabilités sur les réserves, logement, écoles, services)",
+      "Maires des Premières Nations",
+      "Sénateurs des Premières Nations",
+      "Aucun"
+    ],
+    "correct": 0,
+    "page": 36,
+    "section": "Federal Elections",
+    "book_text": "Band chiefs and councillors are the representatives for First Nations."
+  }
+]

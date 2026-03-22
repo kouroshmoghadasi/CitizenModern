@@ -1,0 +1,1157 @@
+[
+  {
+    "q": "For how many years has the Crown been a symbol of the state in Canada?",
+    "q_fa": "تاج چند سال نماد دولت در کانادا بوده است؟",
+    "q_fr": "Depuis combien d'années la Couronne est-elle un symbole de l'État au Canada?",
+    "options": [
+      "100",
+      "200",
+      "300",
+      "400"
+    ],
+    "options_fr": [
+      "100",
+      "200",
+      "300",
+      "400"
+    ],
+    "correct": 3,
+    "page": 38,
+    "section": "Canadian Symbols",
+    "book_text": "The Crown has been a symbol of the state in Canada for 400 years."
+  },
+  {
+    "q": "In Canada, what does the Crown symbolize?",
+    "q_fa": "در کانادا تاج چه چیزی را نماد می‌کند؟",
+    "q_fr": "Au Canada, que symbolise la Couronne?",
+    "options": [
+      "The government",
+      "The Queen",
+      "The government, including Parliament, the legislatures, the courts, police services and the Canadian Forces",
+      "The RCMP"
+    ],
+    "options_fr": [
+      "Le gouvernement",
+      "La Reine",
+      "Le gouvernement : Parlement, législatures, tribunaux, police et Forces canadiennes",
+      "La GRC"
+    ],
+    "correct": 2,
+    "page": 38,
+    "section": "Canadian Symbols",
+    "book_text": "The Crown symbolizes the government, including Parliament, legislatures, courts, police and Canadian Forces."
+  },
+  {
+    "q": "Since when has Canada been a constitutional monarchy?",
+    "q_fa": "کانادا از چه زمانی پادشاهی مشروطه بوده است؟",
+    "q_fr": "Depuis quand le Canada est-il une monarchie constitutionnelle?",
+    "options": [
+      "1867",
+      "1849",
+      "1767",
+      "1667"
+    ],
+    "options_fr": [
+      "1867",
+      "1849",
+      "1767",
+      "1667"
+    ],
+    "correct": 0,
+    "page": 38,
+    "section": "Canadian Symbols",
+    "book_text": "Canada has been a constitutional monarchy since 1867."
+  },
+  {
+    "q": "What does the Canadian flag look like?",
+    "q_fa": "پرچم کانادا چه شکلی است؟",
+    "q_fr": "À quoi ressemble le drapeau canadien?",
+    "options": [
+      "Red-white-red stripes with a red lily flower in the center",
+      "Red-white-red stripes with a red maple leaf in the center",
+      "Red maple leaf on a white background",
+      "Red-white-red stripes with the Queen emblem in the center"
+    ],
+    "options_fr": [
+      "Bandes rouge-blanc-rouge avec une fleur de lys au centre",
+      "Bandes rouge-blanc-rouge avec une feuille d'érable rouge au centre",
+      "Feuille d'érable rouge sur fond blanc",
+      "Bandes rouge-blanc-rouge avec l'emblème de la Reine au centre"
+    ],
+    "correct": 1,
+    "page": 38,
+    "section": "Canadian Symbols",
+    "book_text": "The Canadian flag has red-white-red stripes with a red maple leaf in the center."
+  },
+  {
+    "q": "When was the current flag of Canada raised for the first time?",
+    "q_fa": "پرچم فعلی کانادا برای اولین بار چه زمانی برافراشته شد؟",
+    "q_fr": "Quand le drapeau actuel du Canada a-t-il été hissé pour la première fois?",
+    "options": [
+      "1965",
+      "1949",
+      "1982",
+      "1892"
+    ],
+    "options_fr": [
+      "1965",
+      "1949",
+      "1982",
+      "1892"
+    ],
+    "correct": 0,
+    "page": 38,
+    "section": "Canadian Symbols",
+    "book_text": "The current Canadian flag was first raised in 1965."
+  },
+  {
+    "q": "Where does the red-white-red pattern on the Canadian flag come from?",
+    "q_fa": "الگوی قرمز-سفید-قرمز روی پرچم کانادا از کجا آمده است؟",
+    "q_fr": "D'où vient le motif rouge-blanc-rouge du drapeau canadien?",
+    "options": [
+      "The Royal Military College in Kingston",
+      "The Royal Military College in Quebec",
+      "The British Flag",
+      "The French flag"
+    ],
+    "options_fr": [
+      "Le Collège militaire royal de Kingston",
+      "Le Collège militaire royal du Québec",
+      "Le drapeau britannique",
+      "Le drapeau français"
+    ],
+    "correct": 0,
+    "page": 38,
+    "section": "Canadian Symbols",
+    "book_text": "The red-white-red pattern comes from the Royal Military College in Kingston."
+  },
+  {
+    "q": "Since when have red and white been the national colours of Canada?",
+    "q_fa": "قرمز و سفید از چه زمانی رنگ‌های ملی کانادا بوده‌اند؟",
+    "q_fr": "Depuis quand le rouge et le blanc sont-ils les couleurs nationales du Canada?",
+    "options": [
+      "1965",
+      "1949",
+      "1921",
+      "1892"
+    ],
+    "options_fr": [
+      "1965",
+      "1949",
+      "1921",
+      "1892"
+    ],
+    "correct": 2,
+    "page": 38,
+    "section": "Canadian Symbols",
+    "book_text": "Red and white have been Canada's national colours since 1921."
+  },
+  {
+    "q": "What is the official Royal Flag of Canada?",
+    "q_fa": "پرچم سلطنتی رسمی کانادا چیست؟",
+    "q_fr": "Quel est le drapeau royal officiel du Canada?",
+    "options": [
+      "The Royal Standard Flag",
+      "The Union Jack Flag",
+      "Her Majesty's personal Flag",
+      "The Royal Arms Flag"
+    ],
+    "options_fr": [
+      "Le drapeau royal standard",
+      "Le Union Jack",
+      "Le drapeau personnel de Sa Majesté",
+      "Le drapeau des armoiries royales"
+    ],
+    "correct": 2,
+    "page": 38,
+    "section": "Canadian Symbols",
+    "book_text": "Her Majesty's personal Flag is the official Royal Flag of Canada."
+  },
+  {
+    "q": "Who first adopted the maple leaf as a symbol in Canada?",
+    "q_fa": "چه کسانی اولین بار برگ افرا را به عنوان نماد در کانادا پذیرفتند؟",
+    "q_fr": "Qui a adopté le premier la feuille d'érable comme symbole au Canada?",
+    "options": [
+      "English",
+      "Irish",
+      "Métis",
+      "French-Canadians"
+    ],
+    "options_fr": [
+      "Anglais",
+      "Irlandais",
+      "Métis",
+      "Canadiens français"
+    ],
+    "correct": 3,
+    "page": 38,
+    "section": "Canadian Symbols",
+    "book_text": "French-Canadians first adopted the maple leaf as a symbol in Canada."
+  },
+  {
+    "q": "When was the maple leaf first adopted as a symbol in Canada?",
+    "q_fa": "برگ افرا برای اولین بار چه زمانی به عنوان نماد در کانادا پذیرفته شد؟",
+    "q_fr": "Quand la feuille d'érable a-t-elle été adoptée pour la première fois comme symbole au Canada?",
+    "options": [
+      "In the 1700s",
+      "In the 1800s",
+      "In the 1600s",
+      "In the 1900s"
+    ],
+    "options_fr": [
+      "Dans les années 1700",
+      "Dans les années 1800",
+      "Dans les années 1600",
+      "Dans les années 1900"
+    ],
+    "correct": 0,
+    "page": 38,
+    "section": "Canadian Symbols",
+    "book_text": "The maple leaf was first adopted as a symbol in the 1700s."
+  },
+  {
+    "q": "What does the lily flower (\"fleur-de-lys\") symbolize?",
+    "q_fa": "گل سوسن (fleur-de-lys) چه چیزی را نماد می‌کند؟",
+    "q_fr": "Que symbolise la fleur de lys?",
+    "options": [
+      "French Royalty",
+      "English Royalty",
+      "Canadian Peace Act with the First Nations",
+      "Canadian Armed Forces"
+    ],
+    "options_fr": [
+      "La royauté française",
+      "La royauté anglaise",
+      "L'accord de paix avec les Premières Nations",
+      "Les Forces armées canadiennes"
+    ],
+    "correct": 0,
+    "page": 38,
+    "section": "Canadian Symbols",
+    "book_text": "The fleur-de-lys symbolizes French royalty."
+  },
+  {
+    "q": "Why did Canada adopt an official coat of arms and a national motto?",
+    "q_fa": "چرا کانادا نشان رسمی و شعار ملی را پذیرفت؟",
+    "q_fr": "Pourquoi le Canada a-t-il adopté des armoiries officielles et une devise nationale?",
+    "options": [
+      "As a direct request from the Queen of England",
+      "To imitate the United States",
+      "As an expression of national pride after the First World War",
+      "As an expression of imperialism after the First World War"
+    ],
+    "options_fr": [
+      "À la demande directe de la Reine d'Angleterre",
+      "Pour imiter les États-Unis",
+      "Comme expression de fierté nationale après la Première Guerre mondiale",
+      "Comme expression d'impérialisme après la Première Guerre mondiale"
+    ],
+    "correct": 2,
+    "page": 38,
+    "section": "Canadian Symbols",
+    "book_text": "Canada adopted the coat of arms and motto as an expression of national pride after the First World War."
+  },
+  {
+    "q": "What is the meaning of the Canadian national motto, \"A Mari Usque Ad Mare\"?",
+    "q_fa": "معنای شعار ملی کانادا «A Mari Usque Ad Mare» چیست؟",
+    "q_fr": "Que signifie la devise nationale du Canada « A Mari Usque Ad Mare »?",
+    "options": [
+      "\"From sea to sea\"",
+      "\"From coast to coast\"",
+      "\"From mountains to sea\"",
+      "\"From land to land\""
+    ],
+    "options_fr": [
+      "« D'un océan à l'autre »",
+      "« De côte en côte »",
+      "« Des montagnes à la mer »",
+      "« De terre en terre »"
+    ],
+    "correct": 0,
+    "page": 38,
+    "section": "Canadian Symbols",
+    "book_text": "\"A Mari Usque Ad Mare\" means \"From sea to sea\"."
+  },
+  {
+    "q": "What kind of symbols does the Canadian coat of arms contain?",
+    "q_fa": "نشان کانادا چه نمادهایی دارد؟",
+    "q_fr": "Quels symboles les armoiries canadiennes contiennent-elles?",
+    "options": [
+      "Symbols of England, France and Scotland",
+      "Symbols of England and red maple leaves",
+      "Symbols of England, France, Scotland and Ireland as well as red maple leaves",
+      "Symbols of England and France"
+    ],
+    "options_fr": [
+      "Symboles de l'Angleterre, de la France et de l'Écosse",
+      "Symboles de l'Angleterre et feuilles d'érable rouges",
+      "Symboles de l'Angleterre, de la France, de l'Écosse et de l'Irlande ainsi que des feuilles d'érable rouges",
+      "Symboles de l'Angleterre et de la France"
+    ],
+    "correct": 2,
+    "page": 38,
+    "section": "Canadian Symbols",
+    "book_text": "The coat of arms contains symbols of England, France, Scotland, Ireland and red maple leaves."
+  },
+  {
+    "q": "Which of the following does not contain the Canadian coat of arms?",
+    "q_fa": "کدام یک نشان کانادا را ندارد؟",
+    "q_fr": "Lequel des suivants ne contient pas les armoiries du Canada?",
+    "options": [
+      "Dollar bills",
+      "Government documents",
+      "Public buildings",
+      "RCMP logo"
+    ],
+    "options_fr": [
+      "Billets de banque",
+      "Documents gouvernementaux",
+      "Édifices publics",
+      "Logo de la GRC"
+    ],
+    "correct": 3,
+    "page": 38,
+    "section": "Canadian Symbols",
+    "book_text": "The RCMP logo has its own badge; it does not contain the Canadian coat of arms."
+  },
+  {
+    "q": "When were the Parliament buildings completed?",
+    "q_fa": "ساختمان‌های پارلمان چه زمانی تکمیل شدند؟",
+    "q_fr": "Quand les édifices du Parlement ont-ils été achevés?",
+    "options": [
+      "In the 1820s",
+      "In the 1860s",
+      "In the 1920s",
+      "In the 1780s"
+    ],
+    "options_fr": [
+      "Dans les années 1820",
+      "Dans les années 1860",
+      "Dans les années 1920",
+      "Dans les années 1780"
+    ],
+    "correct": 1,
+    "page": 38,
+    "section": "Canadian Symbols",
+    "book_text": "The Parliament buildings were completed in the 1860s."
+  },
+  {
+    "q": "Which of the following is the only part of the original Parliament building that still remains?",
+    "q_fa": "کدام بخش تنها قسمت باقی‌مانده از ساختمان اصلی پارلمان است؟",
+    "q_fr": "Quelle est la seule partie de l'édifice du Parlement d'origine qui subsiste?",
+    "options": [
+      "The Library",
+      "The Centre Block",
+      "The Peace Tower",
+      "The Memorial Chamber"
+    ],
+    "options_fr": [
+      "La Bibliothèque",
+      "L'édifice du Centre",
+      "La Tour de la Paix",
+      "La Chambre du Souvenir"
+    ],
+    "correct": 0,
+    "page": 38,
+    "section": "Canadian Symbols",
+    "book_text": "The Library is the only part of the original Parliament building that still remains."
+  },
+  {
+    "q": "Why was the Peace Tower built in Ottawa?",
+    "q_fa": "چرا برج صلح در اتاوا ساخته شد؟",
+    "q_fr": "Pourquoi la Tour de la Paix a-t-elle été construite à Ottawa?",
+    "options": [
+      "In memory of the war between Canada and the United States",
+      "In memory of the Second World War",
+      "To portray Canada as a peaceful nation",
+      "In memory of the First World War"
+    ],
+    "options_fr": [
+      "En mémoire de la guerre entre le Canada et les États-Unis",
+      "En mémoire de la Deuxième Guerre mondiale",
+      "Pour dépeindre le Canada comme nation pacifique",
+      "En mémoire de la Première Guerre mondiale"
+    ],
+    "correct": 3,
+    "page": 38,
+    "section": "Canadian Symbols",
+    "book_text": "The Peace Tower was built in memory of the First World War."
+  },
+  {
+    "q": "Where are the names of soldiers, sailors and airmen who died serving Canada in wars or while on duty written?",
+    "q_fa": "نام سربازان، ملوانان و خلبانانی که در جنگ یا در حین انجام وظیفه جان باختند کجا نوشته شده است؟",
+    "q_fr": "Où sont inscrits les noms des soldats, marins et aviateurs morts au service du Canada?",
+    "options": [
+      "The Library",
+      "The Centre Block",
+      "The Memorial Chamber",
+      "The Peace Arch"
+    ],
+    "options_fr": [
+      "La Bibliothèque",
+      "L'édifice du Centre",
+      "La Chambre du Souvenir",
+      "L'Arche de la Paix"
+    ],
+    "correct": 2,
+    "page": 38,
+    "section": "Canadian Symbols",
+    "book_text": "Their names are in the Memorial Chamber."
+  },
+  {
+    "q": "What is Canada's most popular spectator sport?",
+    "q_fa": "محبوب‌ترین ورزش تماشایی کانادا چیست؟",
+    "q_fr": "Quel est le sport spectator le plus populaire au Canada?",
+    "options": [
+      "Soccer",
+      "Football",
+      "Ice hockey",
+      "Ice skating"
+    ],
+    "options_fr": [
+      "Soccer",
+      "Football",
+      "Hockey sur glace",
+      "Patinage"
+    ],
+    "correct": 2,
+    "page": 39,
+    "section": "Canadian Symbols",
+    "book_text": "Ice hockey is Canada's most popular spectator sport."
+  },
+  {
+    "q": "What is Canada's national winter sport?",
+    "q_fa": "ورزش زمستانی ملی کانادا چیست؟",
+    "q_fr": "Quel est le sport d'hiver national du Canada?",
+    "options": [
+      "Ice Hockey",
+      "Skiing",
+      "Ice skating",
+      "Ice fishing"
+    ],
+    "options_fr": [
+      "Hockey sur glace",
+      "Ski",
+      "Patinage",
+      "Pêche sur glace"
+    ],
+    "correct": 0,
+    "page": 39,
+    "section": "Canadian Symbols",
+    "book_text": "Ice hockey is Canada's national winter sport."
+  },
+  {
+    "q": "When was ice hockey developed in Canada?",
+    "q_fa": "هاکی روی یخ چه زمانی در کانادا توسعه یافت؟",
+    "q_fr": "Quand le hockey sur glace a-t-il été développé au Canada?",
+    "options": [
+      "In the 1600s",
+      "In the 1800s",
+      "In the 1700s",
+      "In the 1900s"
+    ],
+    "options_fr": [
+      "Dans les années 1600",
+      "Dans les années 1800",
+      "Dans les années 1700",
+      "Dans les années 1900"
+    ],
+    "correct": 1,
+    "page": 39,
+    "section": "Canadian Symbols",
+    "book_text": "Ice hockey was developed in Canada in the 1800s."
+  },
+  {
+    "q": "For which championship does the National Hockey League play?",
+    "q_fa": "لیگ ملی هاکی برای کدام قهرمانی بازی می‌کند؟",
+    "q_fr": "Pour quel championnat la Ligue nationale de hockey joue-t-elle?",
+    "options": [
+      "Stanley Cup",
+      "NHL Cup",
+      "Clarkson Cup",
+      "The All Star Hockey"
+    ],
+    "options_fr": [
+      "Coupe Stanley",
+      "Coupe LNH",
+      "Coupe Clarkson",
+      "Le All Star Hockey"
+    ],
+    "correct": 0,
+    "page": 39,
+    "section": "Canadian Symbols",
+    "book_text": "The NHL plays for the Stanley Cup."
+  },
+  {
+    "q": "What is Canada's second most popular sport?",
+    "q_fa": "دومین ورزش محبوب کانادا چیست؟",
+    "q_fr": "Quel est le deuxième sport le plus populaire au Canada?",
+    "options": [
+      "Curling",
+      "Ice hockey",
+      "Football",
+      "Basketball"
+    ],
+    "options_fr": [
+      "Curling",
+      "Hockey sur glace",
+      "Football",
+      "Basketball"
+    ],
+    "correct": 2,
+    "page": 39,
+    "section": "Canadian Symbols",
+    "book_text": "Canadian football is often cited as Canada's second most popular sport."
+  },
+  {
+    "q": "What is Canada's official summer sport?",
+    "q_fa": "ورزش تابستانی رسمی کانادا چیست؟",
+    "q_fr": "Quel est le sport d'été officiel du Canada?",
+    "options": [
+      "Basketball",
+      "Soccer",
+      "Baseball",
+      "Lacrosse"
+    ],
+    "options_fr": [
+      "Basketball",
+      "Soccer",
+      "Baseball",
+      "Lacrosse"
+    ],
+    "correct": 3,
+    "page": 39,
+    "section": "Canadian Symbols",
+    "book_text": "Lacrosse is Canada's official summer sport."
+  },
+  {
+    "q": "Which sport has the most registered players of any game in Canada?",
+    "q_fa": "کدام ورزش بیشترین بازیکن ثبت‌شده را در کانادا دارد؟",
+    "q_fr": "Quel sport compte le plus de joueurs inscrits au Canada?",
+    "options": [
+      "Lacrosse",
+      "Ice hockey",
+      "Soccer",
+      "Baseball"
+    ],
+    "options_fr": [
+      "Lacrosse",
+      "Hockey sur glace",
+      "Soccer",
+      "Baseball"
+    ],
+    "correct": 2,
+    "page": 39,
+    "section": "Canadian Symbols",
+    "book_text": "Soccer has the most registered players in Canada."
+  },
+  {
+    "q": "Which animal is an official symbol of Canada?",
+    "q_fa": "کدام حیوان نماد رسمی کانادا است؟",
+    "q_fr": "Quel animal est un symbole officiel du Canada?",
+    "options": [
+      "The eagle",
+      "The bear",
+      "The moose",
+      "The beaver"
+    ],
+    "options_fr": [
+      "L'aigle",
+      "L'ours",
+      "L'orignal",
+      "Le castor"
+    ],
+    "correct": 3,
+    "page": 39,
+    "section": "Canadian Symbols",
+    "book_text": "The beaver is an official symbol of Canada."
+  },
+  {
+    "q": "What is the origin of the beaver as a symbol of Canada?",
+    "q_fa": "خاستگاه نماد بودن بیدستر برای کانادا چیست؟",
+    "q_fr": "D'où vient le castor comme symbole du Canada?",
+    "options": [
+      "The beaver was adopted centuries ago as a symbol of the fur trade in general",
+      "The beaver was adopted centuries ago as a symbol of the Hudson's Bay Company",
+      "The beaver was adopted centuries ago as a mascot by the first pioneers",
+      "The beaver was adopted centuries ago as a mascot by the Natives"
+    ],
+    "options_fr": [
+      "Le castor a été adopté il y a des siècles comme symbole de la traite des fourrures",
+      "Le castor a été adopté comme symbole de la Compagnie de la Baie d'Hudson",
+      "Le castor a été adopté comme mascotte par les premiers pionniers",
+      "Le castor a été adopté comme mascotte par les Autochtones"
+    ],
+    "correct": 0,
+    "page": 39,
+    "section": "Canadian Symbols",
+    "book_text": "The beaver was adopted as a symbol of the fur trade in general."
+  },
+  {
+    "q": "What are Anglophones?",
+    "q_fa": "آنگلوفون‌ها چه کسانی هستند؟",
+    "q_fr": "Qui sont les anglophones?",
+    "options": [
+      "French speakers",
+      "Native speakers",
+      "English speakers",
+      "Members of the Anglican Church"
+    ],
+    "options_fr": [
+      "Locuteurs français",
+      "Locuteurs natifs",
+      "Locuteurs anglais",
+      "Membres de l'Église anglicane"
+    ],
+    "correct": 2,
+    "page": 39,
+    "section": "Canadian Symbols",
+    "book_text": "Anglophones are English speakers."
+  },
+  {
+    "q": "What are Francophones?",
+    "q_fa": "فرانکوفون‌ها چه کسانی هستند؟",
+    "q_fr": "Qui sont les francophones?",
+    "options": [
+      "French speakers",
+      "Native speakers",
+      "English speakers",
+      "People from France"
+    ],
+    "options_fr": [
+      "Locuteurs français",
+      "Locuteurs natifs",
+      "Locuteurs anglais",
+      "Personnes de France"
+    ],
+    "correct": 0,
+    "page": 39,
+    "section": "Canadian Symbols",
+    "book_text": "Francophones are French speakers."
+  },
+  {
+    "q": "Which of the following is a criterion to become a Canadian citizen?",
+    "q_fa": "کدام یک از معیارهای شهروند کانادایی شدن است؟",
+    "q_fr": "Lequel des suivants est un critère pour devenir citoyen canadien?",
+    "options": [
+      "Have adequate knowledge of English or French",
+      "Own property in Canada",
+      "Have a Canadian driving license",
+      "Play hockey"
+    ],
+    "options_fr": [
+      "Avoir une connaissance suffisante de l'anglais ou du français",
+      "Posséder une propriété au Canada",
+      "Avoir un permis de conduire canadien",
+      "Jouer au hockey"
+    ],
+    "correct": 0,
+    "page": 39,
+    "section": "Canadian Symbols",
+    "book_text": "Adequate knowledge of English or French is a criterion for citizenship."
+  },
+  {
+    "q": "When was the Official Languages Act passed?",
+    "q_fa": "قانون زبان‌های رسمی چه زمانی تصویب شد؟",
+    "q_fr": "Quand la Loi sur les langues officielles a-t-elle été adoptée?",
+    "options": [
+      "1949",
+      "1969",
+      "1941",
+      "1869"
+    ],
+    "options_fr": [
+      "1949",
+      "1969",
+      "1941",
+      "1869"
+    ],
+    "correct": 1,
+    "page": 39,
+    "section": "Canadian Symbols",
+    "book_text": "The Official Languages Act was passed in 1969."
+  },
+  {
+    "q": "Which of the following is not an objective of the Official Languages Act?",
+    "q_fa": "کدام یک از اهداف قانون زبان‌های رسمی نیست؟",
+    "q_fr": "Lequel des suivants n'est pas un objectif de la Loi sur les langues officielles?",
+    "options": [
+      "Establish equality between French and English in Parliament, the Government of Canada and institutions subject to the Act",
+      "Maintain and develop official language minority communities in Canada",
+      "Promote equality of French and English in Canadian society",
+      "Restrict the ability to speak French outside of Quebec"
+    ],
+    "options_fr": [
+      "Établir l'égalité entre le français et l'anglais au Parlement et dans le gouvernement",
+      "Maintenir et développer les communautés de langue officielle en situation minoritaire",
+      "Promouvoir l'égalité du français et de l'anglais dans la société canadienne",
+      "Restreindre l'usage du français hors du Québec"
+    ],
+    "correct": 3,
+    "page": 39,
+    "section": "Canadian Symbols",
+    "book_text": "Restricting French outside Quebec is not an objective; the Act promotes equality."
+  },
+  {
+    "q": "What is the name of the National Anthem?",
+    "q_fa": "نام سرود ملی چیست؟",
+    "q_fr": "Quel est le nom de l'hymne national?",
+    "options": [
+      "Eh Canada",
+      "O Canada",
+      "My Canada",
+      "Oh Canadians"
+    ],
+    "options_fr": [
+      "Eh Canada",
+      "Ô Canada",
+      "Mon Canada",
+      "Ô Canadiens"
+    ],
+    "correct": 1,
+    "page": 39,
+    "section": "Canadian Symbols",
+    "book_text": "The national anthem is \"O Canada\"."
+  },
+  {
+    "q": "What is the first sentence of the National Anthem?",
+    "q_fa": "جملهٔ اول سرود ملی چیست؟",
+    "q_fr": "Quelle est la première phrase de l'hymne national?",
+    "options": [
+      "From far and wide, O Canada",
+      "Canada, we stand on guard for thee",
+      "O Canada! Our home and native land!",
+      "The true North strong and free!"
+    ],
+    "options_fr": [
+      "D'un océan à l'autre, ô Canada",
+      "Canada, nous montons la garde pour toi",
+      "Ô Canada! Notre pays et notre patrie!",
+      "La vraie Nord forte et libre!"
+    ],
+    "correct": 2,
+    "page": 39,
+    "section": "Canadian Symbols",
+    "book_text": "The first line is \"O Canada! Our home and native land!\""
+  },
+  {
+    "q": "When was \"O Canada\" proclaimed as the national anthem?",
+    "q_fa": "«O Canada» چه زمانی به عنوان سرود ملی اعلام شد؟",
+    "q_fr": "Quand « Ô Canada » a-t-il été proclamé hymne national?",
+    "options": [
+      "1867",
+      "1889",
+      "1980",
+      "1947"
+    ],
+    "options_fr": [
+      "1867",
+      "1889",
+      "1980",
+      "1947"
+    ],
+    "correct": 2,
+    "page": 39,
+    "section": "Canadian Symbols",
+    "book_text": "\"O Canada\" was proclaimed the national anthem in 1980."
+  },
+  {
+    "q": "What is the name of the Royal Anthem of Canada?",
+    "q_fa": "نام سرود سلطنتی کانادا چیست؟",
+    "q_fr": "Quel est le nom de l'hymne royal du Canada?",
+    "options": [
+      "God Save the Queen (or King)",
+      "God Save Canada",
+      "Canada Honour the Queen",
+      "Canada Save the Queen"
+    ],
+    "options_fr": [
+      "God Save the Queen (ou King)",
+      "God Save Canada",
+      "Canada Honour the Queen",
+      "Canada Save the Queen"
+    ],
+    "correct": 0,
+    "page": 39,
+    "section": "Canadian Symbols",
+    "book_text": "The Royal Anthem is \"God Save the Queen\" (or King)."
+  },
+  {
+    "q": "When is the Royal Anthem of Canada sung?",
+    "q_fa": "سرود سلطنتی کانادا کی خوانده می‌شود؟",
+    "q_fr": "Quand l'hymne royal du Canada est-il chanté?",
+    "options": [
+      "Only on Canada Day",
+      "On any occasions when Canadians wish to honour the Queen",
+      "Only when the Queen visits Canada",
+      "Never"
+    ],
+    "options_fr": [
+      "Seulement le jour du Canada",
+      "Lors d'occasions où les Canadiens souhaitent honorer la Reine",
+      "Seulement lorsque la Reine visite le Canada",
+      "Jamais"
+    ],
+    "correct": 1,
+    "page": 39,
+    "section": "Canadian Symbols",
+    "book_text": "The Royal Anthem is sung when Canadians wish to honour the Queen (or King)."
+  },
+  {
+    "q": "What do you call the Canadian honours system that recognizes outstanding citizens?",
+    "q_fa": "سیستم افتخارات کانادا که شهروندان برجسته را می‌شناسد چه نام دارد؟",
+    "q_fr": "Comment s'appelle le système canadien d'honneurs qui reconnaît les citoyens exceptionnels?",
+    "options": [
+      "The Honour of Canada",
+      "The Medal of Canada",
+      "The Decoration of Canada",
+      "The Order of Canada"
+    ],
+    "options_fr": [
+      "L'Honneur du Canada",
+      "La Médaille du Canada",
+      "La Décoration du Canada",
+      "L'Ordre du Canada"
+    ],
+    "correct": 3,
+    "page": 39,
+    "section": "Canadian Symbols",
+    "book_text": "The Order of Canada recognizes outstanding citizens."
+  },
+  {
+    "q": "What year did Canada start its own honours system?",
+    "q_fa": "کانادا در چه سالی سیستم افتخارات خود را آغاز کرد؟",
+    "q_fr": "En quelle année le Canada a-t-il instauré son propre système d'honneurs?",
+    "options": [
+      "1867",
+      "1889",
+      "1967 (the centennial of Confederation in 1867)",
+      "1947"
+    ],
+    "options_fr": [
+      "1867",
+      "1889",
+      "1967 (centenaire de la Confédération)",
+      "1947"
+    ],
+    "correct": 2,
+    "page": 39,
+    "section": "Canadian Symbols",
+    "book_text": "Canada started its honours system in 1967 (centennial of Confederation)."
+  },
+  {
+    "q": "What is the highest honour available to Canadians?",
+    "q_fa": "بالاترین افتخار در دسترس کانادایی‌ها چیست؟",
+    "q_fr": "Quel est le plus haut honneur décerné aux Canadiens?",
+    "options": [
+      "The Royal Cross",
+      "The Canadian Cross",
+      "The British Cross",
+      "The Victoria Cross"
+    ],
+    "options_fr": [
+      "La Croix royale",
+      "La Croix canadienne",
+      "La Croix britannique",
+      "La Croix de Victoria"
+    ],
+    "correct": 3,
+    "page": 39,
+    "section": "Canadian Symbols",
+    "book_text": "The Victoria Cross is the highest honour available to Canadians."
+  },
+  {
+    "q": "For what is the Victoria Cross awarded?",
+    "q_fa": "صلیب ویکتوریا برای چه اعطا می‌شود؟",
+    "q_fr": "Pour quoi la Croix de Victoria est-elle décernée?",
+    "options": [
+      "The most conspicuous bravery, a daring or pre-eminent act of valour or self-sacrifice in the presence of the enemy",
+      "The most brilliant scientific research",
+      "The best Canadian film-making of the year",
+      "The best hockey player in the Stanley Cup"
+    ],
+    "options_fr": [
+      "La bravoure la plus remarquable, un acte de vaillance ou de sacrifice en présence de l'ennemi",
+      "La meilleure recherche scientifique",
+      "Le meilleur film canadien de l'année",
+      "Le meilleur joueur de hockey de la Coupe Stanley"
+    ],
+    "correct": 0,
+    "page": 39,
+    "section": "Canadian Symbols",
+    "book_text": "The Victoria Cross is awarded for the most conspicuous bravery in the presence of the enemy."
+  },
+  {
+    "q": "Who was the first Canadian to be awarded the Victoria Cross?",
+    "q_fa": "اولین کانادایی که صلیب ویکتوریا گرفت که بود؟",
+    "q_fr": "Qui a été le premier Canadien à recevoir la Croix de Victoria?",
+    "options": [
+      "Able Seaman William Hall of Horton",
+      "Corporal Filip Konowal",
+      "Lieutenant Alexander Roberts Dunn",
+      "Flying ace Captain Billy Bishop"
+    ],
+    "options_fr": [
+      "Matelot William Hall de Horton",
+      "Caporal Filip Konowal",
+      "Lieutenant Alexander Roberts Dunn",
+      "As de l'aviation Capitaine Billy Bishop"
+    ],
+    "correct": 2,
+    "page": 39,
+    "section": "Canadian Symbols",
+    "book_text": "Lieutenant Alexander Roberts Dunn was the first Canadian to be awarded the Victoria Cross."
+  },
+  {
+    "q": "Who was the first black man to be awarded the Victoria Cross?",
+    "q_fa": "اولین مرد سیاه‌پوستی که صلیب ویکتوریا گرفت که بود؟",
+    "q_fr": "Qui a été le premier Noir à recevoir la Croix de Victoria?",
+    "options": [
+      "Able Seaman William Hall of Horton",
+      "Corporal Filip Konowal",
+      "Lieutenant Alexander Roberts Dunn",
+      "Flying ace Captain Billy Bishop"
+    ],
+    "options_fr": [
+      "Matelot William Hall de Horton",
+      "Caporal Filip Konowal",
+      "Lieutenant Alexander Roberts Dunn",
+      "As de l'aviation Capitaine Billy Bishop"
+    ],
+    "correct": 0,
+    "page": 39,
+    "section": "Canadian Symbols",
+    "book_text": "Able Seaman William Hall was the first black man to be awarded the Victoria Cross."
+  },
+  {
+    "q": "Who was the first member of the Canadian Corps not born in the British Empire to be awarded the Victoria Cross?",
+    "q_fa": "اولین عضو سپاه کانادا که در امپراتوری بریتانیا متولد نشده بود و صلیب ویکتوریا گرفت که بود؟",
+    "q_fr": "Qui a été le premier membre du Corps canadien né hors de l'Empire britannique à recevoir la Croix de Victoria?",
+    "options": [
+      "Able Seaman William Hall of Horton",
+      "Corporal Filip Konowal",
+      "Lieutenant Alexander Roberts Dunn",
+      "Flying ace Captain Billy Bishop"
+    ],
+    "options_fr": [
+      "Matelot William Hall de Horton",
+      "Caporal Filip Konowal",
+      "Lieutenant Alexander Roberts Dunn",
+      "As de l'aviation Capitaine Billy Bishop"
+    ],
+    "correct": 1,
+    "page": 39,
+    "section": "Canadian Symbols",
+    "book_text": "Corporal Filip Konowal was the first Canadian Corps member not born in the British Empire to receive the Victoria Cross."
+  },
+  {
+    "q": "Who was the last Canadian to receive the Victoria Cross to date?",
+    "q_fa": "آخرین کانادایی که تا به امروز صلیب ویکتوریا دریافت کرد که بود؟",
+    "q_fr": "Qui a été le dernier Canadien à recevoir la Croix de Victoria à ce jour?",
+    "options": [
+      "Able Seaman William Hall of Horton",
+      "Corporal Filip Konowal",
+      "Lieutenant Robert Hampton Gray",
+      "Flying ace Captain Billy Bishop"
+    ],
+    "options_fr": [
+      "Matelot William Hall de Horton",
+      "Caporal Filip Konowal",
+      "Lieutenant Robert Hampton Gray",
+      "As de l'aviation Capitaine Billy Bishop"
+    ],
+    "correct": 2,
+    "page": 39,
+    "section": "Canadian Symbols",
+    "book_text": "Lieutenant Robert Hampton Gray was the last Canadian to receive the Victoria Cross."
+  },
+  {
+    "q": "When do Canadians celebrate Canada Day?",
+    "q_fa": "کانادایی‌ها روز کانادا را کی جشن می‌گیرند؟",
+    "q_fr": "Quand les Canadiens célèbrent-ils la fête du Canada?",
+    "options": [
+      "May 1st",
+      "July 1st",
+      "September 1st",
+      "October 1st"
+    ],
+    "options_fr": [
+      "1er mai",
+      "1er juillet",
+      "1er septembre",
+      "1er octobre"
+    ],
+    "correct": 1,
+    "page": 40,
+    "section": "Canadian Symbols",
+    "book_text": "Canada Day is July 1st."
+  },
+  {
+    "q": "When do Canadians celebrate Victoria Day?",
+    "q_fa": "کانادایی‌ها روز ویکتوریا را کی جشن می‌گیرند؟",
+    "q_fr": "Quand les Canadiens célèbrent-ils la fête de la Reine (Victoria)?",
+    "options": [
+      "Tuesday preceding May 25th",
+      "Monday preceding June 25th",
+      "Monday preceding May 25th",
+      "Tuesday preceding June 25th"
+    ],
+    "options_fr": [
+      "Mardi précédant le 25 mai",
+      "Lundi précédant le 25 juin",
+      "Lundi précédant le 25 mai",
+      "Mardi précédant le 25 juin"
+    ],
+    "correct": 2,
+    "page": 40,
+    "section": "Canadian Symbols",
+    "book_text": "Victoria Day is the Monday preceding May 25th."
+  },
+  {
+    "q": "What do Canadians celebrate on Victoria Day?",
+    "q_fa": "کانادایی‌ها در روز ویکتوریا چه چیزی را جشن می‌گیرند؟",
+    "q_fr": "Que célèbrent les Canadiens le jour de la Reine (Victoria)?",
+    "options": [
+      "The sacrifices of Canadian veterans and brave fallen in all wars",
+      "The Sovereign's birthday",
+      "The Birth of Christ",
+      "The Canadian Victory in the war of 1812 against the United States"
+    ],
+    "options_fr": [
+      "Les sacrifices des anciens combattants et des braves tombés",
+      "L'anniversaire du Souverain",
+      "La naissance du Christ",
+      "La victoire canadienne dans la guerre de 1812"
+    ],
+    "correct": 1,
+    "page": 40,
+    "section": "Canadian Symbols",
+    "book_text": "Victoria Day celebrates the Sovereign's birthday."
+  },
+  {
+    "q": "When do Canadians celebrate Remembrance Day?",
+    "q_fa": "کانادایی‌ها روز یادبود را کی جشن می‌گیرند؟",
+    "q_fr": "Quand les Canadiens commémorent-ils le jour du Souvenir?",
+    "options": [
+      "November 11th",
+      "November 21st",
+      "October 11th",
+      "September 11th"
+    ],
+    "options_fr": [
+      "11 novembre",
+      "21 novembre",
+      "11 octobre",
+      "11 septembre"
+    ],
+    "correct": 0,
+    "page": 40,
+    "section": "Canadian Symbols",
+    "book_text": "Remembrance Day is November 11th."
+  },
+  {
+    "q": "When do Canadians celebrate Sir John A. Macdonald Day?",
+    "q_fa": "کانادایی‌ها روز سر جان ای. مک‌دونالد را کی جشن می‌گیرند؟",
+    "q_fr": "Quand les Canadiens célèbrent-ils le jour de Sir John A. Macdonald?",
+    "options": [
+      "January 4th",
+      "February 11th",
+      "November 11th",
+      "January 11th"
+    ],
+    "options_fr": [
+      "4 janvier",
+      "11 février",
+      "11 novembre",
+      "11 janvier"
+    ],
+    "correct": 3,
+    "page": 40,
+    "section": "Canadian Symbols",
+    "book_text": "Sir John A. Macdonald Day is January 11th."
+  },
+  {
+    "q": "When do Canadians celebrate Labour Day?",
+    "q_fa": "کانادایی‌ها روز کار را کی جشن می‌گیرند؟",
+    "q_fr": "Quand les Canadiens célèbrent-ils la fête du Travail?",
+    "options": [
+      "First Monday of September",
+      "Second Monday of September",
+      "Third Monday of September",
+      "Third Monday of October"
+    ],
+    "options_fr": [
+      "Premier lundi de septembre",
+      "Deuxième lundi de septembre",
+      "Troisième lundi de septembre",
+      "Troisième lundi d'octobre"
+    ],
+    "correct": 0,
+    "page": 40,
+    "section": "Canadian Symbols",
+    "book_text": "Labour Day is the first Monday of September."
+  },
+  {
+    "q": "When do Canadians celebrate Sir Wilfrid Laurier Day?",
+    "q_fa": "کانادایی‌ها روز سر ویلفرید لوریه را کی جشن می‌گیرند؟",
+    "q_fr": "Quand les Canadiens célèbrent-ils le jour de Sir Wilfrid Laurier?",
+    "options": [
+      "November 11th",
+      "October 20th",
+      "November 20th",
+      "November 21st"
+    ],
+    "options_fr": [
+      "11 novembre",
+      "20 octobre",
+      "20 novembre",
+      "21 novembre"
+    ],
+    "correct": 2,
+    "page": 40,
+    "section": "Canadian Symbols",
+    "book_text": "Sir Wilfrid Laurier Day is November 20th."
+  },
+  {
+    "q": "When do Canadians celebrate Vimy Day?",
+    "q_fa": "کانادایی‌ها روز ویمی را کی جشن می‌گیرند؟",
+    "q_fr": "Quand les Canadiens commémorent-ils le jour de Vimy?",
+    "options": [
+      "April 10th",
+      "April 9th",
+      "March 9th",
+      "February 9th"
+    ],
+    "options_fr": [
+      "10 avril",
+      "9 avril",
+      "9 mars",
+      "9 février"
+    ],
+    "correct": 1,
+    "page": 40,
+    "section": "Canadian Symbols",
+    "book_text": "Vimy Day (Battle of Vimy Ridge) is April 9th."
+  },
+  {
+    "q": "When do Canadians celebrate Thanksgiving?",
+    "q_fa": "کانادایی‌ها روز شکرگزاری را کی جشن می‌گیرند؟",
+    "q_fr": "Quand les Canadiens célèbrent-ils l'Action de grâces?",
+    "options": [
+      "Second Monday of November",
+      "Third Monday of October",
+      "Second Monday of October",
+      "Second Tuesday of October"
+    ],
+    "options_fr": [
+      "Deuxième lundi de novembre",
+      "Troisième lundi d'octobre",
+      "Deuxième lundi d'octobre",
+      "Deuxième mardi d'octobre"
+    ],
+    "correct": 2,
+    "page": 40,
+    "section": "Canadian Symbols",
+    "book_text": "Thanksgiving in Canada is the second Monday of October."
+  }
+]
