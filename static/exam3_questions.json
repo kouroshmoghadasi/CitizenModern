@@ -1,0 +1,674 @@
+[
+  {
+    "q": "From where does the name “Canada” come?",
+    "q_fr": "D’où vient le nom « Canada » ?",
+    "q_fa": "نام \"کانادا\" از کجا آمده است؟",
+    "options_en": [
+      "From the Inuit word meaning country",
+      "From the French word meaning joining",
+      "From the Métis word meaning rivers",
+      "From “Kanata”, the Huron-Iroquois word for village"
+    ],
+    "options_fr": [
+      "From the Inuit word meaning country",
+      "From the French word meaning joining",
+      "From the Métis word meaning rivers",
+      "From “Kanata”, the Huron-Iroquois word for village"
+    ],
+    "options_fa": [
+      "From the Inuit word meaning country",
+      "From the French word meaning joining",
+      "From the Métis word meaning rivers",
+      "From “Kanata”, the Huron-Iroquois word for village"
+    ],
+    "correct": 3
+  },
+  {
+    "q": "Who was the first leader of a responsible government of Canada in 1849?",
+    "q_fr": "Qui fut le premier chef d'un gouvernement responsable au Canada en 1849?",
+    "q_fa": "اولین رهبر یک دولت مسئول کانادا در سال 1849 چه کسی بود؟",
+    "options_en": [
+      "Sir John A. Macdonald",
+      "Robert Baldwin",
+      "Louis Riel",
+      "Sir Louis-Hippolyte La Fontaine"
+    ],
+    "options_fr": [
+      "Sir John A. Macdonald",
+      "Robert Baldwin",
+      "Louis Riel",
+      "Sir Louis-Hippolyte La Fontaine"
+    ],
+    "options_fa": [
+      "Sir John A. Macdonald",
+      "Robert Baldwin",
+      "Louis Riel",
+      "Sir Louis-Hippolyte La Fontaine"
+    ],
+    "correct": 3
+  },
+  {
+    "q": "Who were the United Empire Loyalists?",
+    "q_fr": "Qui étaient les Loyalistes?",
+    "q_fa": "لویالیست‌ها چه کسانی بودند؟",
+    "options_en": [
+      "Settlers who came to Canada from the United States during and after the American Revolution",
+      "Aboriginal peoples",
+      "Métis",
+      "Inuit"
+    ],
+    "options_fr": [
+      "Settlers who came to Canada from the United States during and after the American Revolution",
+      "Aboriginal peoples",
+      "Métis",
+      "Inuit"
+    ],
+    "options_fa": [
+      "Settlers who came to Canada from the United States during and after the American Revolution",
+      "Aboriginal peoples",
+      "Métis",
+      "Inuit"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "When did English settlement begin in Canada?",
+    "q_fr": "Quand la colonisation anglaise a-t-elle commencé au Canada?",
+    "q_fa": "اسکان انگلیسی‌ها در کانادا از چه زمانی آغاز شد؟",
+    "options_en": [
+      "1510",
+      "1497",
+      "1610",
+      "1720"
+    ],
+    "options_fr": [
+      "1510",
+      "1497",
+      "1610",
+      "1720"
+    ],
+    "options_fa": [
+      "1510",
+      "1497",
+      "1610",
+      "1720"
+    ],
+    "correct": 2
+  },
+  {
+    "q": "When did the name of “Canada” begin appearing on maps?",
+    "q_fr": "Quand le nom « Canada » a-t-il commencé à apparaître sur les cartes ?",
+    "q_fa": "از چه زمانی نام \"کانادا\" روی نقشه ها ظاهر شد؟",
+    "options_en": [
+      "By the 1650s",
+      "By the 1550s",
+      "By the 1580s",
+      "By the 1750s"
+    ],
+    "options_fr": [
+      "Dans les années 1650",
+      "Dans les années 1550",
+      "Dans les années 1580",
+      "Dans les années 1750"
+    ],
+    "options_fa": [
+      "از دههٔ ۱۶۵۰",
+      "از دههٔ ۱۵۵۰",
+      "از دههٔ ۱۵۸۰",
+      "از دههٔ ۱۷۵۰"
+    ],
+    "correct": 1
+  },
+  {
+    "q": "What did Great Britain rename the French colony of the 1700s?",
+    "q_fr": "Comment la Grande-Bretagne a-t-elle renommé la colonie française au 18e siècle?",
+    "q_fa": "بریتانیا مستعمرهٔ فرانسوی را در قرن ۱۸ چه نامید؟",
+    "options_en": [
+      "Acadia",
+      "The “Province of Quebec”",
+      "Quebec  City",
+      "Ontario"
+    ],
+    "options_fr": [
+      "Acadie",
+      "La « province de Québec »",
+      "Québec (ville)",
+      "Ontario"
+    ],
+    "options_fa": [
+      "Acadia",
+      "The “Province of Quebec”",
+      "Quebec  City",
+      "Ontario"
+    ],
+    "correct": 1
+  },
+  {
+    "q": "Which current provinces came out from the Constitutional Act?",
+    "q_fr": "Quelles provinces actuelles sont sorties de la Loi constitutionnelle ?",
+    "q_fa": "کدام استان های فعلی از قانون اساسی خارج شده اند؟",
+    "options_en": [
+      "Ontario and New Brunswick",
+      "Prince Edward Island and Quebec",
+      "Ontario and Quebec",
+      "Ontario and Prince Edward Island"
+    ],
+    "options_fr": [
+      "Ontario et Nouveau-Brunswick",
+      "Île-du-Prince-Édouard et Québec",
+      "Ontario et Québec",
+      "Ontario et Île-du-Prince-Édouard"
+    ],
+    "options_fa": [
+      "Ontario and New Brunswick",
+      "Prince Edward Island and Quebec",
+      "Ontario and Quebec",
+      "Ontario and Prince Edward Island"
+    ],
+    "correct": 2
+  },
+  {
+    "q": "When did the name “Canada” become official?",
+    "q_fr": "Quand le nom « Canada » est-il devenu officiel ?",
+    "q_fa": "از چه زمانی نام \"کانادا\" رسمی شد؟",
+    "options_en": [
+      "1758",
+      "1889",
+      "1609",
+      "1791"
+    ],
+    "options_fr": [
+      "1758",
+      "1889",
+      "1609",
+      "1791"
+    ],
+    "options_fa": [
+      "۱۷۵۸",
+      "۱۸۸۹",
+      "۱۶۰۹",
+      "۱۷۹۱"
+    ],
+    "correct": 3
+  },
+  {
+    "q": "Who dominated the fur trade in the North West during the French and British regimes?",
+    "q_fr": "Qui a dominé la traite des fourrures dans le Nord-Ouest sous les régimes français et britannique?",
+    "q_fa": "در شمال غرب در دورهٔ فرانسه و بریتانیا چه کسی تجارت خز را در انحصار داشت؟",
+    "options_en": [
+      "The Hudson's Bay Company",
+      "The North Star company",
+      "The Sears company",
+      "The Trading Post Company"
+    ],
+    "options_fr": [
+      "La Compagnie de la Baie d'Hudson",
+      "La compagnie North Star",
+      "La compagnie Sears",
+      "La compagnie Trading Post"
+    ],
+    "options_fa": [
+      "The Hudson's Bay Company",
+      "The North Star company",
+      "The Sears company",
+      "The Trading Post Company"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "When did the United States launch an invasion on Canada?",
+    "q_fr": "Quand les États-Unis ont-ils lancé une invasion du Canada?",
+    "q_fa": "ایالات متحده چه زمانی به کانادا حمله کرد؟",
+    "options_en": [
+      "1812",
+      "1840",
+      "1867",
+      "1849"
+    ],
+    "options_fr": [
+      "1812",
+      "1840",
+      "1867",
+      "1849"
+    ],
+    "options_fa": [
+      "1812",
+      "1840",
+      "1867",
+      "1849"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "Which countries fought in the War of 1812?",
+    "q_fr": "Quels pays ont combattu dans la guerre de 1812?",
+    "q_fa": "در جنگ ۱۸۱۲ کدام کشورها جنگیدند؟",
+    "options_en": [
+      "United Kingdom and United States of America",
+      "France and Canada",
+      "United States of America, France and United Kingdom",
+      "France and United Kingdom"
+    ],
+    "options_fr": [
+      "Royaume-Uni et États-Unis d'Amérique",
+      "France et Canada",
+      "États-Unis, France et Royaume-Uni",
+      "France et Royaume-Uni"
+    ],
+    "options_fa": [
+      "United Kingdom and United States of America",
+      "France and Canada",
+      "United States of America, France and United Kingdom",
+      "France and United Kingdom"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "In which year did the American attempt to conquer Canada fail?",
+    "q_fr": "En quelle année la tentative américaine de conquérir le Canada a-t-elle échoué?",
+    "q_fa": "در کدام سال تلاش آمریکا برای فتح کانادا شکست خورد؟",
+    "options_en": [
+      "1814",
+      "1840",
+      "1867",
+      "1849"
+    ],
+    "options_fr": [
+      "1814",
+      "1840",
+      "1867",
+      "1849"
+    ],
+    "options_fa": [
+      "1814",
+      "1840",
+      "1867",
+      "1849"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "What is a “responsible government”?",
+    "q_fr": "Qu'est-ce qu'un « gouvernement responsable »?",
+    "q_fa": "«حکومت مسئول» چیست؟",
+    "options_en": [
+      "The government is responsible for everything in the country",
+      "The government is responsible for making laws",
+      "The Crown must have the support of all of the elected representatives in order to govern",
+      "The government must resign if it loses a confidence vote in the assembly"
+    ],
+    "options_fr": [
+      "Le gouvernement est responsable de tout dans le pays",
+      "Le gouvernement est responsable de faire les lois",
+      "La Couronne doit avoir le soutien de tous les élus pour gouverner",
+      "Le gouvernement doit démissionner s'il perd un vote de confiance à l'assemblée"
+    ],
+    "options_fa": [
+      "The government is responsible for everything in the country",
+      "The government is responsible for making laws",
+      "The Crown must have the support of all of the elected representatives in order to govern",
+      "The government must resign if it loses a confidence vote in the assembly"
+    ],
+    "correct": 2
+  },
+  {
+    "q": "Approximately how many Canadians served in the First World War?",
+    "q_fr": "Environ combien de Canadiens ont servi pendant la Première Guerre mondiale?",
+    "q_fa": "تقریباً چند کانادایی در جنگ جهانی اول خدمت کردند؟",
+    "options_en": [
+      "",
+      "8 million",
+      "About 60,000",
+      "More than 600,000"
+    ],
+    "options_fr": [
+      "",
+      "8 million",
+      "About 60,000",
+      "More than 600,000"
+    ],
+    "options_fa": [
+      "",
+      "8 million",
+      "About 60,000",
+      "More than 600,000"
+    ],
+    "correct": 3
+  },
+  {
+    "q": "What does Confederation mean?",
+    "q_fr": "Que signifie Confédération ?",
+    "q_fa": "کنفدراسیون یعنی چه؟",
+    "options_en": [
+      "The United States Confederate soldiers came to Canada",
+      "Joining of communities to become a province",
+      "Joining of suburbs to form a large city",
+      "Joining of provinces to make a new country"
+    ],
+    "options_fr": [
+      "Les soldats confédérés américains sont venus au Canada",
+      "Réunion de communautés pour former une province",
+      "Réunion de banlieues pour former une grande ville",
+      "Réunion des provinces pour former un nouveau pays"
+    ],
+    "options_fa": [
+      "The United States Confederate soldiers came to Canada",
+      "Joining of communities to become a province",
+      "Joining of suburbs to form a large city",
+      "Joining of provinces to make a new country"
+    ],
+    "correct": 3
+  },
+  {
+    "q": "What is the meaning of the Remembrance Day poppy?",
+    "q_fr": "Que signifie le coquelicot du jour du Souvenir?",
+    "q_fa": "شقایق روز یادبود چه معنایی دارد؟",
+    "options_en": [
+      "To remember our Sovereign, Queen Elizabeth II",
+      "To celebrate Confederation",
+      "To honour Prime Ministers who have died",
+      "To remember the sacrifices of Canadians who have served or died in wars up to the present day"
+    ],
+    "options_fr": [
+      "Pour se souvenir de la reine Elizabeth II",
+      "Pour célébrer la Confédération",
+      "Pour honorer les premiers ministres décédés",
+      "Pour se souvenir du sacrifice des Canadiens qui ont servi ou sont morts dans les guerres"
+    ],
+    "options_fa": [
+      "To remember our Sovereign, Queen Elizabeth II",
+      "To celebrate Confederation",
+      "To honour Prime Ministers who have died",
+      "To remember the sacrifices of Canadians who have served or died in wars up to the present day"
+    ],
+    "correct": 3
+  },
+  {
+    "q": "Which provinces first formed Confederation?",
+    "q_fr": "Quelles provinces ont été les premières à former la Confédération ?",
+    "q_fa": "کدام استان ها برای اولین بار کنفدراسیون را تشکیل دادند؟",
+    "options_en": [
+      "Ontario, Quebec, Nova Scotia and Newfoundland",
+      "Ontario, Nova Scotia, New Brunswick and Alberta",
+      "Ontario, Quebec, Prince Edward Island and Nova Scotia",
+      "Nova Scotia, New Brunswick and the Province of Quebec"
+    ],
+    "options_fr": [
+      "Ontario, Quebec, Nova Scotia and Newfoundland",
+      "Ontario, Nova Scotia, New Brunswick and Alberta",
+      "Ontario, Quebec, Prince Edward Island and Nova Scotia",
+      "Nova Scotia, New Brunswick and the Province of Quebec"
+    ],
+    "options_fa": [
+      "Ontario, Quebec, Nova Scotia and Newfoundland",
+      "Ontario, Nova Scotia, New Brunswick and Alberta",
+      "Ontario, Quebec, Prince Edward Island and Nova Scotia",
+      "Nova Scotia, New Brunswick and the Province of Quebec"
+    ],
+    "correct": 3
+  },
+  {
+    "q": "Who had played an important part in building the Canadian Pacific Railway (CPR)?",
+    "q_fr": "Qui a joué un rôle important dans la construction du Chemin de fer Canadien Pacifique (CFCP)?",
+    "q_fa": "چه کسی نقش مهمی در ساخت راه‌آهن کانادایی اقیانوس آرام (CPR) داشته است؟",
+    "options_en": [
+      "American railroad engineers",
+      "Acadian railroad workers",
+      "Chinese railroad workers",
+      "Afro- American slaves"
+    ],
+    "options_fr": [
+      "American railroad engineers",
+      "Acadian railroad workers",
+      "Chinese railroad workers",
+      "Afro- American slaves"
+    ],
+    "options_fa": [
+      "American railroad engineers",
+      "Acadian railroad workers",
+      "Chinese railroad workers",
+      "Afro- American slaves"
+    ],
+    "correct": 2
+  },
+  {
+    "q": "Who is General Sir Arthur Currie?",
+    "q_fr": "Qui est le général Sir Arthur Currie ?",
+    "q_fa": "ژنرال سر آرتور کوری کیست؟",
+    "options_en": [
+      "A military leader of the Métis in the 19th century",
+      "A great frontier hero",
+      "An explorer of western Canada",
+      "Canada's greatest soldier in the First World War"
+    ],
+    "options_fr": [
+      "Un chef militaire des Métis au XIXe siècle",
+      "Un grand héros de la frontière",
+      "Un explorateur de l'Ouest canadien",
+      "Le plus grand soldat du Canada pendant la Première Guerre mondiale"
+    ],
+    "options_fa": [
+      "رهبر نظامی میتیس در قرن نوزدهم",
+      "قهرمان بزرگ مرزها",
+      "کاشف غرب کانادا",
+      "بزرگترین سرباز کانادا در جنگ جهانی اول"
+    ],
+    "correct": 3
+  },
+  {
+    "q": "Who was the first Prime Minister of Canada?",
+    "q_fr": "Qui a été le premier premier ministre du Canada ?",
+    "q_fa": "اولین نخست‌وزیر کانادا چه کسی بود؟",
+    "options_en": [
+      "Louis Riel",
+      "Sir John A. Macdonald",
+      "Lester B. Pearson",
+      "Abraham Lincoln"
+    ],
+    "options_fr": [
+      "Louis Riel",
+      "Sir John A. Macdonald",
+      "Lester B. Pearson",
+      "Abraham Lincoln"
+    ],
+    "options_fa": [
+      "Louis Riel",
+      "Sir John A. Macdonald",
+      "Lester B. Pearson",
+      "Abraham Lincoln"
+    ],
+    "correct": 1
+  },
+  {
+    "q": "Why is the Constitution Act of 1982 important in Canadian history?",
+    "q_fr": "Pourquoi la Loi constitutionnelle de 1982 est-elle importante dans l'histoire du Canada ?",
+    "q_fa": "چرا قانون اساسی 1982 در تاریخ کانادا مهم است؟",
+    "options_en": [
+      "It allows Canada to change the Constitution without asking approval of the British Government",
+      "It allows Canadians more freedoms",
+      "It changed the immigration laws",
+      "The Queen became more involved in Canadian Government"
+    ],
+    "options_fr": [
+      "Il permet au Canada de modifier la Constitution sans demander l'approbation du gouvernement britannique.",
+      "Cela donne plus de libertés aux Canadiens",
+      "Cela a changé les lois sur l'immigration",
+      "La Reine s'implique davantage dans le gouvernement canadien"
+    ],
+    "options_fa": [
+      "It allows Canada to change the Constitution without asking approval of the British Government",
+      "It allows Canadians more freedoms",
+      "It changed the immigration laws",
+      "The Queen became more involved in Canadian Government"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "In what year did Canada become a country?",
+    "q_fr": "En quelle année le Canada est-il devenu un pays?",
+    "q_fa": "کانادا در چه سالی به یک کشور تبدیل شد؟",
+    "options_en": [
+      "1840",
+      "1982",
+      "1759",
+      "1867"
+    ],
+    "options_fr": [
+      "1840",
+      "1982",
+      "1759",
+      "1867"
+    ],
+    "options_fa": [
+      "1840",
+      "1982",
+      "1759",
+      "1867"
+    ],
+    "correct": 3
+  },
+  {
+    "q": "What level of government did the Fathers of Confederation create?",
+    "q_fr": "Quel ordre de gouvernement les Pères de la Confédération ont-ils créé?",
+    "q_fa": "پدران کنفدراسیون چه سطحی از دولت را ایجاد کردند؟",
+    "options_en": [
+      "Federal and provincial",
+      "Federal and municipal",
+      "Provincial and municipal",
+      "Provincial and territorial"
+    ],
+    "options_fr": [
+      "Fédéral et provincial",
+      "Fédéral et municipal",
+      "Provincial et municipal",
+      "Provincial et territorial"
+    ],
+    "options_fa": [
+      "Federal and provincial",
+      "Federal and municipal",
+      "Provincial and municipal",
+      "Provincial and territorial"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "What was the Women's Suffrage Movement?",
+    "q_fr": "Qu'est-ce que le mouvement pour le droit de vote des femmes ?",
+    "q_fa": "جنبش حق رای زنان چه بود؟",
+    "options_en": [
+      "The effort by women to achieve the right to vote",
+      "The effort by women to participate in military service",
+      "An unsuccessful movement to get husbands to do housework",
+      "The effort by women to be in Parliament"
+    ],
+    "options_fr": [
+      "Un effort des femmes pour obtenir le droit de vote",
+      "Un effort des femmes pour combattre pendant la guerre",
+      "Un effort des femmes pour travailler",
+      "Un effort des femmes pour être au Parlement"
+    ],
+    "options_fa": [
+      "The effort by women to achieve the right to vote",
+      "The effort by women to participate in military service",
+      "An unsuccessful movement to get husbands to do housework",
+      "The effort by women to be in Parliament"
+    ],
+    "correct": 2
+  },
+  {
+    "q": "Whose portrait is on the Canadian $10 bill?",
+    "q_fr": "Portrait de qui figure sur le billet de 10 $ canadien?",
+    "q_fa": "تصویر چه کسی روی اسکناس ۱۰ دلاری کانادا است؟",
+    "options_en": [
+      "Sir George-Étienne Cartier",
+      "Sir Wilfrid Laurier",
+      "Sir Étienne- Paschal Taché",
+      "Sir John Alexander Macdonald"
+    ],
+    "options_fr": [
+      "Sir George-Étienne Cartier",
+      "Sir Wilfrid Laurier",
+      "Sir Étienne-Paschal Taché",
+      "Sir John Alexander Macdonald"
+    ],
+    "options_fa": [
+      "Sir George-Étienne Cartier",
+      "Sir Wilfrid Laurier",
+      "Sir Étienne- Paschal Taché",
+      "Sir John Alexander Macdonald"
+    ],
+    "correct": 3
+  },
+  {
+    "q": "What does “RCMP” stand for?",
+    "q_fr": "Que signifie « GRC » ?",
+    "q_fa": "\"RCMP\" مخفف چیست؟",
+    "options_en": [
+      "Royal Canadian Mounted Police",
+      "Royal Canadian Master Police",
+      "Registered Canadian Mounted Police",
+      "Registered Canadian Municipal Police"
+    ],
+    "options_fr": [
+      "Gendarmerie royale du Canada",
+      "Police royale canadienne",
+      "Gendarmerie canadienne enregistrée",
+      "Police municipale canadienne enregistrée"
+    ],
+    "options_fa": [
+      "Royal Canadian Mounted Police",
+      "Royal Canadian Master Police",
+      "Registered Canadian Mounted Police",
+      "Registered Canadian Municipal Police"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "Whose portrait is on the $5 bill?",
+    "q_fr": "Quel portrait figure sur le billet de 5 $ ?",
+    "q_fa": "پرتره چه کسی روی اسکناس 5 دلاری است؟",
+    "options_en": [
+      "Sir George- Étienne Cartier",
+      "Sir Wilfrid Laurier",
+      "Sir Étienne-Paschal Taché",
+      "Sir John Alexander Macdonald"
+    ],
+    "options_fr": [
+      "Sir George-Étienne Cartier",
+      "Sir Wilfrid Laurier",
+      "Sir Étienne-Paschal Taché",
+      "Sir John Alexander Macdonald"
+    ],
+    "options_fa": [
+      "Sir George- Étienne Cartier",
+      "Sir Wilfrid Laurier",
+      "Sir Étienne-Paschal Taché",
+      "Sir John Alexander Macdonald"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "How many Canadians served in the Second World War?",
+    "q_fr": ". Combien de Canadiens ont servi pendant la Seconde Guerre mondiale?",
+    "q_fa": ". چند کانادایی در جنگ جهانی دوم خدمت کردند؟",
+    "options_en": [
+      "About 600,000",
+      "About 300,000",
+      "About 900,000",
+      "More than one million"
+    ],
+    "options_fr": [
+      "Environ 600 000",
+      "Environ 300 000",
+      "Environ 900 000",
+      "Plus d’un million de régions du Canada – 44-51"
+    ],
+    "options_fa": [
+      "About 600,000",
+      "About 300,000",
+      "About 900,000",
+      "More than one million"
+    ],
+    "correct": 0
+  }
+]

@@ -3,9 +3,11 @@ from flask_cors import CORS
 import psycopg2
 from psycopg2.extras import RealDictCursor
 import os
+import re
 import json
 import random
 import string
+import ipaddress
 from datetime import datetime, timezone, date, timedelta
 from werkzeug.security import generate_password_hash, check_password_hash
 
@@ -62,6 +64,25 @@ def get_client_ip():
     return ip
 
 
+def _is_loopback_ip(ip):
+    """True برای localhost / 127.x / ::1 — نباید در لاگ یا شمارندهٔ رسمی لحاظ شود."""
+    if ip is None:
+        return False
+    s = str(ip).strip()
+    if not s:
+        return False
+    if s.lower() == 'localhost':
+        return True
+    try:
+        return ipaddress.ip_address(s).is_loopback
+    except ValueError:
+        return s.startswith('127.')
+
+
+def _is_loopback_client():
+    return _is_loopback_ip(get_client_ip())
+
+
 def _device_from_user_agent(ua):
     """بر اساس User-Agent برچسب دستگاه (موبایل، دسکتاپ، تبلت، ربات) برمی‌گرداند."""
     if not ua or not isinstance(ua, str):
@@ -90,7 +111,7 @@ def init_database():
             cur.execute("""
                 CREATE TABLE IF NOT EXISTS visitor_counter (
                     counter_id VARCHAR(50) PRIMARY KEY,
-                    count INTEGER NOT NULL DEFAULT 100,
+                    count INTEGER NOT NULL DEFAULT 0,
                     last_updated TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
                 )
             """)
@@ -117,6 +138,43 @@ def init_database():
             cur.execute("""
                 CREATE INDEX IF NOT EXISTS idx_visitor_log_page ON visitor_log(page_visited)
             """)
+
+            cur.execute("""
+                CREATE TABLE IF NOT EXISTS app_migrations (
+                    id VARCHAR(64) PRIMARY KEY,
+                    applied_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+                )
+            """)
+            cur.execute("SELECT 1 FROM app_migrations WHERE id = 'purge_loopback_visitor_log_v1'")
+            if cur.fetchone() is None:
+                cur.execute("""
+                    DELETE FROM visitor_log
+                    WHERE COALESCE(ip_address, '') ILIKE '127.%%'
+                       OR COALESCE(ip_address, '') ILIKE '::ffff:127.%%'
+                       OR LOWER(TRIM(COALESCE(ip_address, ''))) IN ('::1', 'localhost')
+                """)
+                cur.execute(
+                    "INSERT INTO app_migrations (id) VALUES ('purge_loopback_visitor_log_v1')"
+                )
+            cur.execute("SELECT 1 FROM app_migrations WHERE id = 'visitor_counter_remove_100_baseline_v1'")
+            if cur.fetchone() is None:
+                cur.execute("""
+                    UPDATE visitor_counter
+                    SET count = GREATEST(0, count - 100)
+                    WHERE counter_id = 'main'
+                """)
+                cur.execute(
+                    "INSERT INTO app_migrations (id) VALUES ('visitor_counter_remove_100_baseline_v1')"
+                )
+            cur.execute("SELECT 1 FROM app_migrations WHERE id = 'visitor_counter_default_zero_v1'")
+            if cur.fetchone() is None:
+                try:
+                    cur.execute("ALTER TABLE visitor_counter ALTER COLUMN count SET DEFAULT 0")
+                except Exception:
+                    pass
+                cur.execute(
+                    "INSERT INTO app_migrations (id) VALUES ('visitor_counter_default_zero_v1')"
+                )
             
             # --- Subscription: users (subscribers)
             cur.execute("""
@@ -227,13 +285,12 @@ def init_database():
             result = cur.fetchone()
             
             if result is None:
-                # Initialize counter with starting value of 100
                 cur.execute("""
                     INSERT INTO visitor_counter (counter_id, count, last_updated)
-                    VALUES ('main', 100, CURRENT_TIMESTAMP)
+                    VALUES ('main', 0, CURRENT_TIMESTAMP)
                 """)
                 conn.commit()
-                print("Visitor counter table initialized with count = 100")
+                print("Visitor counter table initialized with count = 0")
             else:
                 print(f"Visitor counter already exists with count = {result[0]}")
             
@@ -296,9 +353,11 @@ def inject_subscription_price():
 
 
 def log_visitor(page_visited='/'):
-    """Log visitor IP address and access time. خودمون (IPهای EXCLUDED_VISITOR_IPS) لاگ نمی‌شوند."""
+    """Log visitor IP address and access time. localhost و IPهای EXCLUDED_VISITOR_IPS لاگ نمی‌شوند."""
     try:
         ip = get_client_ip()
+        if _is_loopback_ip(ip):
+            return
         if ip in _excluded_visitor_ips:
             return
         conn = get_db_connection()
@@ -317,18 +376,37 @@ def log_visitor(page_visited='/'):
         print(f"Error logging visitor: {e}")
 
 
+def _visitor_exclude_sql():
+    """شرط SQL برای حذف IP حلقهٔ محلی (127، ::1، …) و IPهای پیکربندی‌شده (ادمین) از آمار و تاریخچهٔ تجمیعی."""
+    loopback = (
+        " AND COALESCE(ip_address, '') NOT ILIKE '127.%%' "
+        "AND COALESCE(ip_address, '') NOT ILIKE '::ffff:127.%%' "
+        "AND LOWER(TRIM(COALESCE(ip_address, ''))) NOT IN ('::1', 'localhost')"
+    )
+    if not _excluded_visitor_ips:
+        return loopback, ()
+    placeholders = ",".join(["%s"] * len(_excluded_visitor_ips))
+    return (
+        loopback + " AND ip_address NOT IN (" + placeholders + ")",
+        tuple(_excluded_visitor_ips),
+    )
+
+
 def _count_exam_section_visits():
-    """تعداد بازدیدهای ثبت‌شده برای بخش آزمون‌های نمونه (فهرست + Exam1) از visitor_log."""
+    """تعداد بازدیدهای ثبت‌شده برای بخش آزمون‌های نمونه (فهرست + Exam1 + Exam2 + Exam3) از visitor_log."""
     try:
         conn = get_db_connection()
         if not conn:
             return None
         cur = conn.cursor()
+        exclude_sql, exclude_params = _visitor_exclude_sql()
         cur.execute(
             """
             SELECT COUNT(*) FROM visitor_log
-            WHERE page_visited IN ('/citizenship-exams', '/exam1')
+            WHERE page_visited IN ('/citizenship-exams', '/exam1', '/exam2', '/exam3')
             """
+            + exclude_sql,
+            exclude_params,
         )
         row = cur.fetchone()
         cur.close()
@@ -345,7 +423,7 @@ def _count_exam_section_visits():
 init_database()
 
 # Fallback: use in-memory counter if database is not available
-in_memory_counter = 100  # Starting value
+in_memory_counter = 0
 
 
 @app.after_request
@@ -387,6 +465,8 @@ _cache_federal_elections = None
 _cache_justice = None
 _cache_canadian_symbols = None
 _cache_exam1 = None
+_cache_exam2 = None
+_cache_exam3 = None
 
 
 def _load_414_questions():
@@ -489,20 +569,123 @@ def _build_en_to_fa_option_map():
     return en_to_fa
 
 
-def _fa_lookup(en_to_fa, text):
-    """ترجمهٔ فارسی برای متن گزینه؛ با تطبیق نرمال (حروف کوچک و آپوستروف)."""
+_cache_en_to_fr = None
+
+
+def _build_en_to_fr_option_map():
+    """نگاشت متن انگلیسی گزینه → فرانسوی از ۴۱۴، ۵۷۱، question_bank، فصل ۳ و ۴."""
+    global _cache_en_to_fr
+    if _cache_en_to_fr is not None:
+        return _cache_en_to_fr
+    en_to_fr = {}
+    static_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static')
+
+    def add_pairs(en_list, fr_list):
+        if not en_list or not fr_list or len(en_list) != len(fr_list):
+            return
+        for j, en in enumerate(en_list):
+            if not en:
+                continue
+            fr = fr_list[j] if j < len(fr_list) else ''
+            if not fr or not str(fr).strip():
+                continue
+            es = en.strip()
+            fs = str(fr).strip()
+            if fs.lower() == es.lower():
+                continue
+            en_to_fr[es] = fs
+
+    try:
+        q414 = _load_414_questions()
+        for q in q414:
+            add_pairs(q.get('options_en') or [], q.get('options_fr') or [])
+    except Exception:
+        pass
+    for fn in (
+        'citizenship_571_questions.json',
+        'question_bank.json',
+        'chapter3_questions.json',
+        'chapter4_questions.json',
+    ):
+        path = os.path.join(static_dir, fn)
+        if not os.path.isfile(path):
+            continue
+        try:
+            with open(path, encoding='utf-8') as f:
+                data = json.load(f)
+            if not isinstance(data, list):
+                continue
+            for item in data:
+                o_en = item.get('options') or item.get('options_en') or []
+                o_fr = item.get('options_fr') or []
+                add_pairs(o_en, o_fr)
+        except Exception:
+            pass
+    _fr_alias_long = (
+        (
+            'Settlers who came to Canada from the United States during and after the American Revolution',
+            'Settlers who came from the US during and after the American Revolution',
+        ),
+    )
+    for long_k, short_k in _fr_alias_long:
+        if short_k in en_to_fr and long_k not in en_to_fr:
+            en_to_fr[long_k] = en_to_fr[short_k]
+    for k in list(en_to_fr.keys()):
+        low = k.lower()
+        if low not in en_to_fr:
+            en_to_fr[low] = en_to_fr[k]
+        kn = k.replace('\u2019', "'").replace('\u2018', "'")
+        if kn and kn not in en_to_fr:
+            en_to_fr[kn] = en_to_fr[k]
+    _cache_en_to_fr = en_to_fr
+    return en_to_fr
+
+
+def _option_string_lookup(mapping, text):
+    """تطبیق متن گزینه با نگاشت (فارسی/فرانسه)؛ نرمال‌سازی گیومه، Kanata، نقطهٔ انتها."""
     t = text.strip() if text else ''
     if not t:
         return t
-    if t in en_to_fa:
-        return en_to_fa[t]
-    low = t.lower()
-    if low in en_to_fa:
-        return en_to_fa[low]
-    t_norm = t.replace('\u2019', "'")
-    if t_norm in en_to_fa:
-        return en_to_fa[t_norm]
+
+    def _try(s):
+        if not s:
+            return None
+        if s in mapping:
+            return mapping[s]
+        low = s.lower()
+        if low in mapping:
+            return mapping[low]
+        sn = s.replace('\u2019', "'").replace('\u2018', "'")
+        if sn in mapping:
+            return mapping[sn]
+        if sn.lower() in mapping:
+            return mapping[sn.lower()]
+        return None
+
+    variants = []
+    u = t.replace('\u201c', '"').replace('\u201d', '"')
+    u = re.sub(r'From\s+"Kanata"\s*,', 'From Kanata,', u, flags=re.IGNORECASE)
+    for base in (t, u):
+        if base not in variants:
+            variants.append(base)
+        st = base.rstrip('.')
+        if st != base and st not in variants:
+            variants.append(st)
+    for v in variants:
+        hit = _try(v)
+        if hit is not None:
+            return hit
     return text
+
+
+def _fa_lookup(en_to_fa, text):
+    """ترجمهٔ فارسی برای متن گزینه."""
+    return _option_string_lookup(en_to_fa, text)
+
+
+def _fr_lookup(en_to_fr, text):
+    """ترجمهٔ فرانسوی برای متن گزینه (مثل آزمون‌های نمونه)."""
+    return _option_string_lookup(en_to_fr, text)
 
 
 def _expand_571_to_four_options(questions):
@@ -635,6 +818,96 @@ def _load_exam1_questions():
         pass
     _cache_exam1 = []
     return _cache_exam1
+
+
+def _load_exam2_questions():
+    """Load Exam2 (History of Canada sample MCQ) from static JSON. options_fa از chapter3/۴۱۴/۵۷۱ وقتی در JSON همان انگلیسی مانده پر می‌شود."""
+    global _cache_exam2
+    if _cache_exam2 is not None:
+        return _cache_exam2
+    path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static', 'exam2_questions.json')
+    try:
+        if os.path.isfile(path):
+            with open(path, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+            en_to_fa = _build_en_to_fa_option_map()
+            en_to_fr = _build_en_to_fr_option_map()
+            for q in data:
+                opts_en = q.get('options_en') or q.get('options') or []
+                if not opts_en:
+                    continue
+                q['options_en'] = opts_en
+                raw_fa = q.get('options_fa') or []
+                raw_fr = q.get('options_fr') or []
+                merged_fa = []
+                merged_fr = []
+                for i, en in enumerate(opts_en):
+                    en_s = (en or '').strip()
+                    cur_fa = (raw_fa[i] if i < len(raw_fa) else '') or ''
+                    cur_fa_s = cur_fa.strip()
+                    if not cur_fa_s or cur_fa_s.lower() == en_s.lower():
+                        merged_fa.append(_fa_lookup(en_to_fa, en))
+                    else:
+                        merged_fa.append(cur_fa)
+                    cur_fr = (raw_fr[i] if i < len(raw_fr) else '') or ''
+                    cur_fr_s = cur_fr.strip()
+                    if not cur_fr_s or cur_fr_s.lower() == en_s.lower():
+                        merged_fr.append(_fr_lookup(en_to_fr, en))
+                    else:
+                        merged_fr.append(cur_fr)
+                q['options_fa'] = merged_fa
+                q['options_fr'] = merged_fr
+            _cache_exam2 = data
+            return _cache_exam2
+    except Exception:
+        pass
+    _cache_exam2 = []
+    return _cache_exam2
+
+
+def _load_exam3_questions():
+    """Load Exam3 (Canada's History — set 2) from static JSON. options_fa مثل Exam2 از نگاشت پر می‌شود."""
+    global _cache_exam3
+    if _cache_exam3 is not None:
+        return _cache_exam3
+    path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static', 'exam3_questions.json')
+    try:
+        if os.path.isfile(path):
+            with open(path, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+            en_to_fa = _build_en_to_fa_option_map()
+            en_to_fr = _build_en_to_fr_option_map()
+            for q in data:
+                opts_en = q.get('options_en') or q.get('options') or []
+                if not opts_en:
+                    continue
+                q['options_en'] = opts_en
+                raw_fa = q.get('options_fa') or []
+                raw_fr = q.get('options_fr') or []
+                merged_fa = []
+                merged_fr = []
+                for i, en in enumerate(opts_en):
+                    en_s = (en or '').strip()
+                    cur_fa = (raw_fa[i] if i < len(raw_fa) else '') or ''
+                    cur_fa_s = cur_fa.strip()
+                    if not cur_fa_s or cur_fa_s.lower() == en_s.lower():
+                        merged_fa.append(_fa_lookup(en_to_fa, en))
+                    else:
+                        merged_fa.append(cur_fa)
+                    cur_fr = (raw_fr[i] if i < len(raw_fr) else '') or ''
+                    cur_fr_s = cur_fr.strip()
+                    if not cur_fr_s or cur_fr_s.lower() == en_s.lower():
+                        merged_fr.append(_fr_lookup(en_to_fr, en))
+                    else:
+                        merged_fr.append(cur_fr)
+                q['options_fa'] = merged_fa
+                q['options_fr'] = merged_fr
+            _cache_exam3 = data
+            return _cache_exam3
+    except Exception:
+        pass
+    _cache_exam3 = []
+    return _cache_exam3
 
 
 def _load_chapter1_questions():
@@ -1053,7 +1326,7 @@ def citizenship_introduction():
 
 @app.route('/citizenship-exams')
 def citizenship_exams():
-    """فهرست آزمون‌های نمونه (Exam1, …)."""
+    """فهرست آزمون‌های نمونه (Exam1، Exam2، Exam3، …)."""
     log_visitor('/citizenship-exams')
     return render_template(
         'citizenship_exams.html',
@@ -1092,6 +1365,88 @@ def exam1():
         questions=questions,
         max_question_exam1=n,
         max_visible_exam1=max_visible,
+        show_paywall=show_paywall,
+        free_count=free_n,
+        exam_section_views=_count_exam_section_visits(),
+    ))
+    resp.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
+    resp.headers['Pragma'] = 'no-cache'
+    resp.headers['Expires'] = '0'
+    return resp
+
+
+@app.route('/exam2')
+def exam2():
+    """Exam2 — History of Canada (doc-based MCQ). سوالات ۱ تا ۵ رایگان؛ از ۶ به بعد با اشتراک بستهٔ ۴۱۴."""
+    log_visitor('/exam2')
+    all_questions = _load_exam2_questions()
+    n = len(all_questions)
+    today = _today()
+    has_access = False
+    if session.get('sub_414_expiry'):
+        try:
+            exp = session['sub_414_expiry']
+            if isinstance(exp, str):
+                exp = date.fromisoformat(exp)
+            if exp >= today:
+                has_access = True
+        except Exception:
+            pass
+    free_n = 5
+    if has_access:
+        questions = all_questions
+        show_paywall = False
+        max_visible = n
+    else:
+        questions = all_questions[:free_n] if n >= free_n else all_questions
+        show_paywall = n > free_n
+        max_visible = free_n + (1 if show_paywall else 0)
+    resp = app.make_response(render_template(
+        'exam2.html',
+        questions=questions,
+        max_question_exam2=n,
+        max_visible_exam2=max_visible,
+        show_paywall=show_paywall,
+        free_count=free_n,
+        exam_section_views=_count_exam_section_visits(),
+    ))
+    resp.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
+    resp.headers['Pragma'] = 'no-cache'
+    resp.headers['Expires'] = '0'
+    return resp
+
+
+@app.route('/exam3')
+def exam3():
+    """Exam3 — Canada's History (set 2, doc-based MCQ). سوالات ۱ تا ۵ رایگان؛ از ۶ به بعد با اشتراک بستهٔ ۴۱۴."""
+    log_visitor('/exam3')
+    all_questions = _load_exam3_questions()
+    n = len(all_questions)
+    today = _today()
+    has_access = False
+    if session.get('sub_414_expiry'):
+        try:
+            exp = session['sub_414_expiry']
+            if isinstance(exp, str):
+                exp = date.fromisoformat(exp)
+            if exp >= today:
+                has_access = True
+        except Exception:
+            pass
+    free_n = 5
+    if has_access:
+        questions = all_questions
+        show_paywall = False
+        max_visible = n
+    else:
+        questions = all_questions[:free_n] if n >= free_n else all_questions
+        show_paywall = n > free_n
+        max_visible = free_n + (1 if show_paywall else 0)
+    resp = app.make_response(render_template(
+        'exam3.html',
+        questions=questions,
+        max_question_exam3=n,
+        max_visible_exam3=max_visible,
         show_paywall=show_paywall,
         free_count=free_n,
         exam_section_views=_count_exam_section_visits(),
@@ -1310,6 +1665,8 @@ def sitemap():
         ('/citizenship-571', 'weekly', '0.9'),
         ('/citizenship-exams', 'weekly', '0.85'),
         ('/exam1', 'weekly', '0.85'),
+        ('/exam2', 'weekly', '0.85'),
+        ('/exam3', 'weekly', '0.85'),
     ]
     xml = '''<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -1381,20 +1738,44 @@ def get_visitor_count():
 def increment_visitor_count():
     """Increment visitor count by 1 and return new count"""
     global in_memory_counter
-    
-    # Log the visit when counter is incremented
+
+    if _is_loopback_client():
+        try:
+            conn = get_db_connection()
+            if conn:
+                cur = conn.cursor(cursor_factory=RealDictCursor)
+                cur.execute(
+                    "SELECT count, last_updated FROM visitor_counter WHERE counter_id = 'main'"
+                )
+                row = cur.fetchone()
+                cur.close()
+                conn.close()
+                if row:
+                    lu = row['last_updated']
+                    return jsonify({
+                        'success': True,
+                        'count': row['count'],
+                        'last_updated': lu.isoformat() if lu else '',
+                    })
+        except Exception:
+            pass
+        return jsonify({
+            'success': True,
+            'count': in_memory_counter,
+            'last_updated': datetime.now(timezone.utc).isoformat(),
+        })
+
     log_visitor('/api/visitor-count/increment')
-    
+
     try:
         conn = get_db_connection()
         if conn:
             # Use atomic update to increment counter
             cur = conn.cursor(cursor_factory=RealDictCursor)
-            
-            # First, ensure the record exists with starting value of 100
+
             cur.execute("""
                 INSERT INTO visitor_counter (counter_id, count, last_updated)
-                VALUES ('main', 100, CURRENT_TIMESTAMP)
+                VALUES ('main', 0, CURRENT_TIMESTAMP)
                 ON CONFLICT (counter_id) DO NOTHING
             """)
             
@@ -1459,41 +1840,51 @@ def get_visitor_log():
         limit = request.args.get('limit', 100, type=int)
         offset = request.args.get('offset', 0, type=int)
         ip_filter = request.args.get('ip', None)
-        
+
+        exclude_sql, exclude_params = _visitor_exclude_sql()
+
         conn = get_db_connection()
         if conn:
             cur = conn.cursor(cursor_factory=RealDictCursor)
-            
-            if ip_filter:
-                # Filter by IP address
+
+            if ip_filter and _is_loopback_ip(ip_filter):
+                logs = []
+                total = 0
+            elif ip_filter:
                 cur.execute("""
                     SELECT log_id, ip_address, access_time, page_visited, user_agent, referer
                     FROM visitor_log
                     WHERE ip_address = %s
+                    """ + exclude_sql + """
                     ORDER BY access_time DESC
                     LIMIT %s OFFSET %s
-                """, (ip_filter, limit, offset))
+                """, (ip_filter,) + exclude_params + (limit, offset))
+                logs = cur.fetchall()
+                cur.execute("""
+                    SELECT COUNT(*) as total FROM visitor_log
+                    WHERE ip_address = %s
+                    """ + exclude_sql,
+                    (ip_filter,) + exclude_params)
+                total = cur.fetchone()['total']
             else:
-                # Get all logs
                 cur.execute("""
                     SELECT log_id, ip_address, access_time, page_visited, user_agent, referer
                     FROM visitor_log
+                    WHERE 1=1
+                    """ + exclude_sql + """
                     ORDER BY access_time DESC
                     LIMIT %s OFFSET %s
-                """, (limit, offset))
-            
-            logs = cur.fetchall()
-            
-            # Get total count
-            if ip_filter:
-                cur.execute("SELECT COUNT(*) as total FROM visitor_log WHERE ip_address = %s", (ip_filter,))
-            else:
-                cur.execute("SELECT COUNT(*) as total FROM visitor_log")
-            total = cur.fetchone()['total']
-            
+                """, exclude_params + (limit, offset))
+                logs = cur.fetchall()
+                cur.execute(
+                    "SELECT COUNT(*) as total FROM visitor_log WHERE 1=1" + exclude_sql,
+                    exclude_params,
+                )
+                total = cur.fetchone()['total']
+
             cur.close()
             conn.close()
-            
+
             return jsonify({
                 'success': True,
                 'logs': [dict(log) for log in logs],
@@ -1520,31 +1911,46 @@ def get_visitor_stats():
         conn = get_db_connection()
         if conn:
             cur = conn.cursor(cursor_factory=RealDictCursor)
-            
-            # Get total visits
-            cur.execute("SELECT COUNT(*) as total_visits FROM visitor_log")
+            exclude_sql, exclude_params = _visitor_exclude_sql()
+
+            cur.execute(
+                "SELECT COUNT(*) as total_visits FROM visitor_log WHERE 1=1" + exclude_sql,
+                exclude_params,
+            )
             total_visits = cur.fetchone()['total_visits']
-            
-            # Get unique IPs
-            cur.execute("SELECT COUNT(DISTINCT ip_address) as unique_ips FROM visitor_log")
+
+            cur.execute(
+                "SELECT COUNT(DISTINCT ip_address) as unique_ips FROM visitor_log WHERE 1=1"
+                + exclude_sql,
+                exclude_params,
+            )
             unique_ips = cur.fetchone()['unique_ips']
-            
-            # Get visits today
-            cur.execute("""
-                SELECT COUNT(*) as visits_today 
-                FROM visitor_log 
+
+            cur.execute(
+                """
+                SELECT COUNT(*) as visits_today
+                FROM visitor_log
                 WHERE DATE(access_time) = CURRENT_DATE
-            """)
+                """
+                + exclude_sql,
+                exclude_params,
+            )
             visits_today = cur.fetchone()['visits_today']
-            
-            # Get top IPs
-            cur.execute("""
+
+            cur.execute(
+                """
                 SELECT ip_address, COUNT(*) as visit_count
                 FROM visitor_log
+                WHERE 1=1
+                """
+                + exclude_sql
+                + """
                 GROUP BY ip_address
                 ORDER BY visit_count DESC
                 LIMIT 10
-            """)
+                """,
+                exclude_params,
+            )
             top_ips = cur.fetchall()
             
             cur.close()
@@ -1824,18 +2230,10 @@ def admin_api_pending_requests():
         return jsonify({'success': False, 'error': str(e)}), 500
 
 
-def _visitor_exclude_sql():
-    """برای داشبورد حضور: شرط حذف IPهای خودمون از آمار."""
-    if not _excluded_visitor_ips:
-        return "", ()
-    placeholders = ",".join(["%s"] * len(_excluded_visitor_ips))
-    return " AND ip_address NOT IN (" + placeholders + ")", tuple(_excluded_visitor_ips)
-
-
 @app.route('/admin/api/visitor-dashboard', methods=['GET'])
 @_admin_required
 def admin_api_visitor_dashboard():
-    """داشبورد حضور: بازدید به تفکیک روز، IPهای پرتعداد، و جزئیات هر IP. خودمون (EXCLUDED_VISITOR_IPS) در آمار نمی‌آیند."""
+    """داشبورد حضور: بازدید به تفکیک روز، IPهای پرتعداد، و جزئیات هر IP. localhost و EXCLUDED_VISITOR_IPS در آمار نمی‌آیند."""
     ip_filter = request.args.get('ip', '').strip() or None
     try:
         conn = get_db_connection()
@@ -1944,7 +2342,7 @@ def admin_api_visitor_dashboard():
                 row['access_time'] = row['access_time'].isoformat()
             row['device'] = _device_from_user_agent(row.get('user_agent') or '')
 
-        # آمار بخش آزمون نمونه: /citizenship-exams و /exam1 (همان حذف IP ادمین‌ها)
+        # آمار بخش آزمون نمونه: /citizenship-exams، /exam1، /exam2، /exam3 (همان حذف IP ادمین‌ها)
         exam_section = None
         try:
             cur.execute(
@@ -1952,7 +2350,7 @@ def admin_api_visitor_dashboard():
                 SELECT COUNT(*) AS total_hits,
                        COUNT(DISTINCT ip_address) AS unique_ips
                 FROM visitor_log
-                WHERE page_visited IN ('/citizenship-exams', '/exam1')
+                WHERE page_visited IN ('/citizenship-exams', '/exam1', '/exam2', '/exam3')
                 """
                 + exclude_sql,
                 exclude_params,
@@ -1962,7 +2360,7 @@ def admin_api_visitor_dashboard():
                 """
                 SELECT page_visited, COUNT(*) AS cnt
                 FROM visitor_log
-                WHERE page_visited IN ('/citizenship-exams', '/exam1')
+                WHERE page_visited IN ('/citizenship-exams', '/exam1', '/exam2', '/exam3')
                 """
                 + exclude_sql
                 + """
@@ -1975,9 +2373,11 @@ def admin_api_visitor_dashboard():
                 """
                 SELECT DATE(access_time) AS day,
                        SUM(CASE WHEN page_visited = '/citizenship-exams' THEN 1 ELSE 0 END) AS hub_hits,
-                       SUM(CASE WHEN page_visited = '/exam1' THEN 1 ELSE 0 END) AS exam1_hits
+                       SUM(CASE WHEN page_visited = '/exam1' THEN 1 ELSE 0 END) AS exam1_hits,
+                       SUM(CASE WHEN page_visited = '/exam2' THEN 1 ELSE 0 END) AS exam2_hits,
+                       SUM(CASE WHEN page_visited = '/exam3' THEN 1 ELSE 0 END) AS exam3_hits
                 FROM visitor_log
-                WHERE page_visited IN ('/citizenship-exams', '/exam1')
+                WHERE page_visited IN ('/citizenship-exams', '/exam1', '/exam2', '/exam3')
                   AND access_time >= CURRENT_DATE - INTERVAL '30 days'
                 """
                 + exclude_sql
@@ -1995,11 +2395,15 @@ def admin_api_visitor_dashboard():
                     er["day"] = d.isoformat()
                 er["hub_hits"] = int(er["hub_hits"] or 0)
                 er["exam1_hits"] = int(er["exam1_hits"] or 0)
+                er["exam2_hits"] = int(er["exam2_hits"] or 0)
+                er["exam3_hits"] = int(er["exam3_hits"] or 0)
             exam_section = {
                 "total_hits": int(ex_tot["total_hits"] or 0) if ex_tot else 0,
                 "unique_ips": int(ex_tot["unique_ips"] or 0) if ex_tot else 0,
                 "hits_citizenship_exams": int(by_page.get("/citizenship-exams", 0)),
                 "hits_exam1": int(by_page.get("/exam1", 0)),
+                "hits_exam2": int(by_page.get("/exam2", 0)),
+                "hits_exam3": int(by_page.get("/exam3", 0)),
                 "per_day": exam_per_day,
             }
         except Exception as ex_err:

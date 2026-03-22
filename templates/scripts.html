@@ -32,7 +32,7 @@
                 // Fallback to localStorage if API fails
                 const storageKey = 'citizenAppVisitorCount';
                 const localCount = localStorage.getItem(storageKey);
-                return localCount ? parseInt(localCount) : 100;
+                return localCount ? parseInt(localCount, 10) : 0;
             }
         }
         
@@ -78,7 +78,7 @@
                     // Last resort: use localStorage
                     const storageKey = 'citizenAppVisitorCount';
                     const localCount = localStorage.getItem(storageKey);
-                    const newCount = localCount ? parseInt(localCount) + 1 : 101;
+                    const newCount = localCount ? parseInt(localCount, 10) + 1 : 1;
                     localStorage.setItem(storageKey, newCount);
                     return newCount;
                 }

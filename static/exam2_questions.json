@@ -1,0 +1,1292 @@
+[
+  {
+    "q": "Which of the following were the first four provinces in confederation?",
+    "q_fr": "Parmi les provinces suivantes, lesquelles étaient les quatre premières provinces de la Confédération ?",
+    "q_fa": "کدام یک از استان های زیر چهار استان اول کنفدراسیون بودند؟",
+    "options_en": [
+      "New Brunswick, Nova Scotia, Alberta, Manitoba",
+      "New Brunswick, Newfoundland, Province of Canada (Ontario & Quebec)",
+      "New Brunswick, Nova Scotia, Province of Canada (Ontario & Quebec)",
+      "Manitoba, Nova Scotia, Province of Canada (Ontario & Quebec)"
+    ],
+    "options_fr": [
+      "Nouveau-Brunswick, Nouvelle-Écosse, Alberta, Manitoba",
+      "Nouveau-Brunswick, Terre-Neuve, Province du Canada (Ontario et Québec",
+      "Nouveau-Brunswick, Nouvelle-Écosse, Province du Canada (Ontario et Québec",
+      "Manitoba, Nouvelle-Écosse, Province du Canada (Ontario et Québec"
+    ],
+    "options_fa": [
+      "نیوبرانزویک، نوااسکوشیا، آلبرتا، مانیتوبا",
+      "نیوبرانزویک، نیوفاندلند، ایالت کانادا (انتاریو و کبک)",
+      "نیوبرانزویک، نوااسکوشیا، ایالت کانادا (انتاریو و کبک)",
+      "مانیتوبا، نوااسکوشیا، ایالت کانادا (انتاریو و کبک)"
+    ],
+    "correct": 2
+  },
+  {
+    "q": "Who was the first Prime Minister of Canada?",
+    "q_fr": "Qui a été le premier premier ministre du Canada ?",
+    "q_fa": "اولین نخست‌وزیر کانادا چه کسی بود؟",
+    "options_en": [
+      "Sir John A. Macdonald",
+      "Sir Guy Carleton",
+      "Sir Louis-Hippolyte La Fontaine",
+      "Sir Isaac Brock"
+    ],
+    "options_fr": [
+      "Sir John A. Macdonald",
+      "Sir Guy Carleton",
+      "Sir Louis-Hippolyte La Fontaine",
+      "Sir Isaac Brock"
+    ],
+    "options_fa": [
+      "Sir John A. Macdonald",
+      "Sir Guy Carleton",
+      "Sir Louis-Hippolyte La Fontaine",
+      "Sir Isaac Brock"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "What did the Suffrage movement achieve?",
+    "q_fr": "Qu’a réalisé le mouvement pour le droit de vote ?",
+    "q_fa": "جنبش حق رأی چه دستاوردی داشت؟",
+    "options_en": [
+      "Women achieved the right to vote",
+      "Introduction of employment insurance",
+      "Abolished slavery in Canada",
+      "Quebec experienced an era of rapid change"
+    ],
+    "options_fr": [
+      "Les femmes ont obtenu le droit de vote",
+      "Introduction de l'assurance-emploi",
+      "L'esclavage aboli au Canada",
+      "Le Québec a vécu une ère de changement rapide"
+    ],
+    "options_fa": [
+      "Women achieved the right to vote",
+      "Introduction of employment insurance",
+      "Abolished slavery in Canada",
+      "Quebec experienced an era of rapid change"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "What is the significance of the Quebec Act of 1774?",
+    "q_fr": "Quelle est l'importance de l'Acte de Québec de 1774?",
+    "q_fa": "اهمیت قانون کبک ۱۷۷۴ چیست؟",
+    "options_en": [
+      "Peace, Order and Good Government",
+      "The birth of Canada",
+      "Divided the Province of Quebec into Upper Canada",
+      "Canada's tolerance towards all religions was affected"
+    ],
+    "options_fr": [
+      "Il a assuré la paix, l'ordre et le bon gouvernement",
+      "Il a marqué la naissance du Canada",
+      "Il a uni la province de Québec au reste du Canada",
+      "Il a permis la liberté religieuse aux catholiques et de occuper des charges publiques"
+    ],
+    "options_fa": [
+      "Peace, Order and Good Government",
+      "The birth of Canada",
+      "Divided the Province of Quebec into Upper Canada",
+      "Canada's tolerance towards all religions was affected"
+    ],
+    "correct": 3
+  },
+  {
+    "q": "What significance did the war of 1812 with USA had for Canada?",
+    "q_fr": "What significance did the war of 1812 with USA had for Canada?",
+    "q_fa": "What significance did the war of 1812 with USA had for Canada?",
+    "options_en": [
+      "More than two-thirds of the Acadians were deported from their homeland",
+      "Ensured that Canada will remain independent of the United States",
+      "More than 600,000 Canadians served in the war",
+      "North America was divided by war"
+    ],
+    "options_fr": [
+      "More than two-thirds of the Acadians were deported from their homeland",
+      "Ensured that Canada will remain independent of the United States",
+      "More than 600,000 Canadians served in the war",
+      "North America was divided by war"
+    ],
+    "options_fa": [
+      "More than two-thirds of the Acadians were deported from their homeland",
+      "Ensured that Canada will remain independent of the United States",
+      "More than 600,000 Canadians served in the war",
+      "North America was divided by war"
+    ],
+    "correct": 1
+  },
+  {
+    "q": "Why is the battle of Vimy Ridge important to Canadians?",
+    "q_fr": "Pourquoi la bataille de la crête de Vimy est-elle importante ? Le Corps canadien a assuré sa réputation de velours et de bravoure.",
+    "q_fa": "چرا نبرد Vimy Ridge مهم است؟ سپاه کانادا شهرت خود را به خاطر رنگ مخملی و شجاعت حفظ کرد.",
+    "options_en": [
+      "Japan surrendered in 1945 - the end of four years of war in Pacific",
+      "Proved Canadian soldier's reputation for valour- Canadian valour and bravery brought about a fantastic victory",
+      "Canadians took part in the liberation of Italy in 1943-1944",
+      "The Royal Canadian Navy (RCN) saw its finest hour in the battle"
+    ],
+    "options_fr": [
+      "Japan surrendered in 1945 - the end of four years of war in Pacific",
+      "Proved Canadian soldier's reputation for valour- Canadian valour and bravery brought about a fantastic victory",
+      "Canadians took part in the liberation of Italy in 1943-1944",
+      "The Royal Canadian Navy (RCN) saw its finest hour in the battle"
+    ],
+    "options_fa": [
+      "Japan surrendered in 1945 - the end of four years of war in Pacific",
+      "Proved Canadian soldier's reputation for valour- Canadian valour and bravery brought about a fantastic victory",
+      "Canadians took part in the liberation of Italy in 1943-1944",
+      "The Royal Canadian Navy (RCN) saw its finest hour in the battle"
+    ],
+    "correct": 1
+  },
+  {
+    "q": "Why was the Canadian Pacific Railway built?",
+    "q_fr": "Que symbolisait le chemin de fer Canadien Pacifique?",
+    "q_fa": "راه آهن کانادا اقیانوس آرام نماد چه بود؟",
+    "options_en": [
+      "Provides a spectacular tourist excursion across precipitous passes and bridges",
+      "The railway made it possible for immigrants to settle in the Central Canada",
+      "British Columbia joined Canada in 1871 after Ottawa promised to build a railway to the West Coast",
+      "British Columbia handles billions of dollars in goods traded around the world"
+    ],
+    "options_fr": [
+      "Provides a spectacular tourist excursion across precipitous passes and bridges",
+      "The railway made it possible for immigrants to settle in the Central Canada",
+      "British Columbia joined Canada in 1871 after Ottawa promised to build a railway to the West Coast",
+      "British Columbia handles billions of dollars in goods traded around the world"
+    ],
+    "options_fa": [
+      "Provides a spectacular tourist excursion across precipitous passes and bridges",
+      "The railway made it possible for immigrants to settle in the Central Canada",
+      "British Columbia joined Canada in 1871 after Ottawa promised to build a railway to the West Coast",
+      "British Columbia handles billions of dollars in goods traded around the world"
+    ],
+    "correct": 2
+  },
+  {
+    "q": "What does a Confederation mean?",
+    "q_fr": "Que signifie Confédération ?",
+    "q_fa": "کنفدراسیون یعنی چه؟",
+    "options_en": [
+      "The United States Confederate soldiers came to Canada",
+      "Joining of communities to become a province",
+      "Joining of provinces to make a new country",
+      "Joining of suburbs to form a large city"
+    ],
+    "options_fr": [
+      "Les soldats confédérés américains sont venus au Canada",
+      "Réunion de communautés pour former une province",
+      "Réunion des provinces pour former un nouveau pays",
+      "Réunion de banlieues pour former une grande ville"
+    ],
+    "options_fa": [
+      "The United States Confederate soldiers came to Canada",
+      "Joining of communities to become a province",
+      "Joining of provinces to make a new country",
+      "Joining of suburbs to form a large city"
+    ],
+    "correct": 2
+  },
+  {
+    "q": "What do the Canadians remember on Remembrance Day?",
+    "q_fr": "De quoi les Canadiens se souviennent-ils le jour du Souvenir?",
+    "q_fa": "کانادایی ها در روز یادبود چه چیزی را به یاد می آورند؟",
+    "options_en": [
+      "Canadian victory in World War II",
+      "Canadian victory in the battle of Vimy Ridge",
+      "Canadian victory in World War I",
+      "Sacrifices of veterans and brave soldiers in wars"
+    ],
+    "options_fr": [
+      "Victoire canadienne pendant la Seconde Guerre mondiale",
+      "Victoire canadienne à la bataille de la crête de Vimy",
+      "Victoire canadienne pendant la Première Guerre mondiale",
+      "Sacrifices d'anciens combattants et de braves soldats dans les guerres"
+    ],
+    "options_fa": [
+      "Canadian victory in World War II",
+      "Canadian victory in the battle of Vimy Ridge",
+      "Canadian victory in World War I",
+      "Sacrifices of veterans and brave soldiers in wars"
+    ],
+    "correct": 3
+  },
+  {
+    "q": "What are the men who established Canada called?",
+    "q_fr": "Comment s’appellent les hommes qui ont fondé le Canada ?",
+    "q_fa": "مردانی که کانادا را تأسیس کردند چه نام دارند؟",
+    "options_en": [
+      "Fathers of confederation",
+      "Fathers of Canada",
+      "Fathers of Constitution",
+      "Fathers of Dominion of Canada"
+    ],
+    "options_fr": [
+      "Pères de la Confédération",
+      "Pères du Canada",
+      "Pères de la Constitution",
+      "Pères du Dominion du Canada"
+    ],
+    "options_fa": [
+      "Fathers of confederation",
+      "Fathers of Canada",
+      "Fathers of Constitution",
+      "Fathers of Dominion of Canada"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "When was the British Parliament prohibited from buying and selling slaves?",
+    "q_fr": "Quand le Parlement britannique a-t-il interdit d’acheter et de vendre des esclaves ?",
+    "q_fa": "چه زمانی مجلس بریتانیا از خرید و فروش برده منع شد؟",
+    "options_en": [
+      "1793",
+      "1877",
+      "1833",
+      "1807"
+    ],
+    "options_fr": [
+      "1793",
+      "1877",
+      "1833",
+      "1807"
+    ],
+    "options_fa": [
+      "1793",
+      "1877",
+      "1833",
+      "1807"
+    ],
+    "correct": 2
+  },
+  {
+    "q": "Who became the first French-Canadian prime minister since the formation of the Confederation?",
+    "q_fr": "Qui est devenu le premier premier ministre canadien-français depuis la formation de la Confédération ?",
+    "q_fa": "چه کسی اولین نخست وزیر فرانسه-کانادا از زمان تشکیل کنفدراسیون شد؟",
+    "options_en": [
+      "Sir John Alexander Macdonald",
+      "Sir Leonard Tilley",
+      "Sir George-Étienne Cartier",
+      "Sir Wilfrid Laurier"
+    ],
+    "options_fr": [
+      "Sir John Alexander Macdonald",
+      "Sir Léonard Tilley",
+      "Sir George-Étienne Cartier",
+      "Sir Wilfrid Laurier"
+    ],
+    "options_fa": [
+      "Sir John Alexander Macdonald",
+      "Sir Leonard Tilley",
+      "Sir George-Étienne Cartier",
+      "Sir Wilfrid Laurier"
+    ],
+    "correct": 3
+  },
+  {
+    "q": "How many citizens of Canada had served in the Second World War?",
+    "q_fr": "Combien de citoyens canadiens ont servi pendant la Seconde Guerre mondiale?",
+    "q_fa": "چند شهروند کانادایی در جنگ جهانی دوم خدمت کرده بودند؟",
+    "options_en": [
+      "1 million",
+      "2 millions",
+      "5 millions",
+      "11 millions"
+    ],
+    "options_fr": [
+      "1 million",
+      "2 millions",
+      "5 millions",
+      "11 millions"
+    ],
+    "options_fa": [
+      "1 million",
+      "2 millions",
+      "5 millions",
+      "11 millions"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "What do Canadians normally wear on Remembrance Day?",
+    "q_fr": "Que portent habituellement les Canadiens le jour du Souvenir?",
+    "q_fa": "کانادایی ها معمولا در روز یادبود چه می پوشند؟",
+    "options_en": [
+      "White Shirt",
+      "Green shirt",
+      "Red poppy",
+      "Black tie"
+    ],
+    "options_fr": [
+      "Chemise blanche",
+      "Chemise verte",
+      "Coquelicot rouge",
+      "Cravate noire"
+    ],
+    "options_fa": [
+      "White Shirt",
+      "Green shirt",
+      "Red poppy",
+      "Black tie"
+    ],
+    "correct": 2
+  },
+  {
+    "q": "Who was the first leader of a responsible government in Canada in 1849?",
+    "q_fr": "Who was the first leader of a responsible government in Canada in 1849?",
+    "q_fa": "اولین رهبر دولت مسئول در کانادا در سال 1849 چه کسی بود؟",
+    "options_en": [
+      "Jim Basally",
+      "Sir John A. Macdonald",
+      "Sir Sam Steele",
+      "Sir Louis-Hippolyte La Fontaine"
+    ],
+    "options_fr": [
+      "Jim Basally",
+      "Sir John A. Macdonald",
+      "Sir Sam Steele",
+      "Sir Louis-Hippolyte La Fontaine"
+    ],
+    "options_fa": [
+      "Jim Basally",
+      "Sir John A. Macdonald",
+      "Sir Sam Steele",
+      "Sir Louis-Hippolyte La Fontaine"
+    ],
+    "correct": 3
+  },
+  {
+    "q": "How many Canadians served in the First World War?",
+    "q_fr": "Combien de Canadiens ont servi pendant la Première Guerre mondiale?",
+    "q_fa": "چند کانادایی در جنگ جهانی اول خدمت کردند؟",
+    "options_en": [
+      "About 240,000",
+      "About 1,000",
+      "More than 600,000",
+      "More than 80,000"
+    ],
+    "options_fr": [
+      "Environ 240 000",
+      "Environ 1 000",
+      "Plus de 600 000",
+      "Plus de 80 000"
+    ],
+    "options_fa": [
+      "About 240,000",
+      "About 1,000",
+      "More than 600,000",
+      "More than 80,000"
+    ],
+    "correct": 2
+  },
+  {
+    "q": "Which region was stormed and captured on D-Day (June 6, 1944) by the 3rd Canadian Infantry Division?",
+    "q_fr": "Quelle région a été prise d'assaut et capturée le jour J (6 juin 1944) par la 3e Division d'infanterie canadienne ?",
+    "q_fa": "کدام منطقه در D-Day (6 ژوئن 1944) توسط لشکر 3 پیاده نظام کانادا یورش برد و به تصرف درآمد؟",
+    "options_en": [
+      "Paris",
+      "Berlin",
+      "Juno Beach",
+      "London"
+    ],
+    "options_fr": [
+      "Paris",
+      "Berlin",
+      "Plage Juno",
+      "Londres"
+    ],
+    "options_fa": [
+      "Paris",
+      "Berlin",
+      "Juno Beach",
+      "London"
+    ],
+    "correct": 2
+  },
+  {
+    "q": "The ancestors of aboriginals are believed to have migrated from which of the following?",
+    "q_fr": "On pense que les ancêtres des autochtones ont émigré de laquelle des régions suivantes ?",
+    "q_fa": "اعتقاد بر این است که اجداد بومیان از کدام یک از موارد زیر مهاجرت کرده اند؟",
+    "options_en": [
+      "Europe",
+      "America",
+      "Australia",
+      "Asia"
+    ],
+    "options_fr": [
+      "Europe",
+      "Amérique",
+      "Australie",
+      "Asie"
+    ],
+    "options_fa": [
+      "Europe",
+      "America",
+      "Australia",
+      "Asia"
+    ],
+    "correct": 3
+  },
+  {
+    "q": "Whose portrait is on the $10 bill?",
+    "q_fr": "Quel portrait figure sur le billet de 10 $ ?",
+    "q_fa": "پرتره چه کسی روی اسکناس 10 دلاری است؟",
+    "options_en": [
+      "Sir John Alexander MacDonald",
+      "Sir Arthur Currie",
+      "Sir Frederic Banting",
+      "Alexander Graham Bell"
+    ],
+    "options_fr": [
+      "Sir John Alexander MacDonald",
+      "Sir Arthur Currie",
+      "Sir Frédéric Banting",
+      "Alexandre Graham Bell"
+    ],
+    "options_fa": [
+      "Sir John Alexander MacDonald",
+      "Sir Arthur Currie",
+      "Sir Frederic Banting",
+      "Alexander Graham Bell"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "What is celebrated on April 9?",
+    "q_fr": "Que fête-t-on le 9 avril ?",
+    "q_fa": "چه چیزی در 9 آوریل جشن گرفته می شود؟",
+    "options_en": [
+      "Vimy Day",
+      "Boxing Day",
+      "Family Day",
+      "Thanksgiving Day"
+    ],
+    "options_fr": [
+      "Journée de Vimy",
+      "Le lendemain de Noël",
+      "Journée de la famille",
+      "Jour de Thanksgiving"
+    ],
+    "options_fa": [
+      "Vimy Day",
+      "Boxing Day",
+      "Family Day",
+      "Thanksgiving Day"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "The people from which country played a significant role in building of the Canadian Pacific Railway?",
+    "q_fr": "Les gens de quel pays ont joué un rôle important dans la construction du chemin de fer Canadien Pacifique ?",
+    "q_fa": "مردم کدام کشور نقش مهمی در ساخت راه‌آهن کانادا در اقیانوس آرام داشتند؟",
+    "options_en": [
+      "Great Britain",
+      "France",
+      "Italy",
+      "China"
+    ],
+    "options_fr": [
+      "Grande-Bretagne",
+      "France",
+      "Italie",
+      "Chine"
+    ],
+    "options_fa": [
+      "Great Britain",
+      "France",
+      "Italy",
+      "China"
+    ],
+    "correct": 3
+  },
+  {
+    "q": "Who is General Sir Arthur Currie?",
+    "q_fr": "Qui est le général Sir Arthur Currie ?",
+    "q_fa": "ژنرال سر آرتور کوری کیست؟",
+    "options_en": [
+      "The greatest military leader of the Métis",
+      "Canada's greatest soldier in the First World War",
+      "A person who started the “Marathon of Hope”",
+      "An explorer of western Canada"
+    ],
+    "options_fr": [
+      "The greatest military leader of the Métis",
+      "Canada's greatest soldier in the First World War",
+      "A person who started the “Marathon of Hope”",
+      "An explorer of western Canada"
+    ],
+    "options_fa": [
+      "The greatest military leader of the Métis",
+      "Canada's greatest soldier in the First World War",
+      "A person who started the “Marathon of Hope”",
+      "An explorer of western Canada"
+    ],
+    "correct": 1
+  },
+  {
+    "q": "Who is seen by many as the father of Manitoba?",
+    "q_fr": "Qui est considéré par beaucoup comme le père du Manitoba?",
+    "q_fa": "چه کسی توسط بسیاری به عنوان پدر منیتوبا شناخته می شود؟",
+    "options_en": [
+      "Dr. Emily Stowe",
+      "John Graves Simcoe",
+      "Louis Riel",
+      "Gabriel Dumont"
+    ],
+    "options_fr": [
+      "Dr Emily Stowe",
+      "John Graves Simcoe",
+      "Louis Riel",
+      "Gabriel Dumont"
+    ],
+    "options_fa": [
+      "Dr. Emily Stowe",
+      "John Graves Simcoe",
+      "Louis Riel",
+      "Gabriel Dumont"
+    ],
+    "correct": 2
+  },
+  {
+    "q": "Who was John Graves Simcoe?",
+    "q_fr": "Qui était John Graves Simcoe?",
+    "q_fa": "جان گریوز سیمکو که بود؟",
+    "options_en": [
+      "Founder of the city of Victoria",
+      "Founder of the city of Calgary",
+      "Founder of the city of Kingston",
+      "Founder of the city of Toronto"
+    ],
+    "options_fr": [
+      "Fondateur de la ville de Victoria",
+      "Fondateur de la ville de Calgary",
+      "Fondateur de la ville de Kingston",
+      "Fondateur de la ville de Toronto"
+    ],
+    "options_fa": [
+      "Founder of the city of Victoria",
+      "Founder of the city of Calgary",
+      "Founder of the city of Kingston",
+      "Founder of the city of Toronto"
+    ],
+    "correct": 3
+  },
+  {
+    "q": "When did Canada's economy and industry experienced a boom?",
+    "q_fr": "Quand l’économie et l’industrie du Canada ont-elles connu un boom ?",
+    "q_fa": "چه زمانی اقتصاد و صنعت کانادا رونق گرفت؟",
+    "options_en": [
+      "1880s",
+      "1860s",
+      "1840s",
+      "1890s and early 1900s"
+    ],
+    "options_fr": [
+      "années 1880",
+      "années 1860",
+      "années 1840",
+      "Années 1890 et début des années 1900"
+    ],
+    "options_fa": [
+      "1880s",
+      "1860s",
+      "1840s",
+      "1890s and early 1900s"
+    ],
+    "correct": 3
+  },
+  {
+    "q": "Upon whose recommendation was Upper and Lower Canada merged and given a sole responsible government?",
+    "q_fr": "Sur la recommandation de qui le Haut et le Bas-Canada ont-ils fusionné et donné un seul gouvernement responsable?",
+    "q_fa": "به توصیه چه کسی کانادا علیا و سفلی ادغام شد و تنها یک دولت مسئول به آن واگذار شد؟",
+    "options_en": [
+      "Lord Durham",
+      "Sir Leonard Tilley",
+      "La Fontaine",
+      "Sir George-Étienne Cartier"
+    ],
+    "options_fr": [
+      "Seigneur Durham",
+      "Sir Léonard Tilley",
+      "La Fontaine",
+      "Sir George-Étienne Cartier"
+    ],
+    "options_fa": [
+      "Lord Durham",
+      "Sir Leonard Tilley",
+      "La Fontaine",
+      "Sir George-Étienne Cartier"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "Who built the French Empire in North America?",
+    "q_fr": "Qui a construit l’Empire français en Amérique du Nord ?",
+    "q_fa": "چه کسی امپراتوری فرانسه را در آمریکای شمالی ساخت؟",
+    "options_en": [
+      "King Charles II",
+      "Jean Talon, Bishop Laval and Count Frontenac",
+      "Great Britain",
+      "Pierre Le Moyne, Sieur Iberville"
+    ],
+    "options_fr": [
+      "le roi Charles II",
+      "Jean Talon, Mgr Laval et le comte Frontenac",
+      "Grande-Bretagne",
+      "Pierre Le Moyne, Sieur Iberville"
+    ],
+    "options_fa": [
+      "King Charles II",
+      "Jean Talon, Bishop Laval and Count Frontenac",
+      "Great Britain",
+      "Pierre Le Moyne, Sieur Iberville"
+    ],
+    "correct": 1
+  },
+  {
+    "q": "What is the reason of Canada-U.S. border?",
+    "q_fr": "Quelle est la raison de la frontière canado-américaine ?",
+    "q_fa": "دلیل مرز کانادا و آمریکا چیست؟",
+    "options_en": [
+      "maintain distances",
+      "To improve security",
+      "Canada would remain independent of the United States",
+      "To stop the war"
+    ],
+    "options_fr": [
+      "maintenir les distances",
+      "Pour améliorer la sécurité",
+      "Le Canada resterait indépendant des États-Unis",
+      "Pour arrêter la guerre"
+    ],
+    "options_fa": [
+      "maintain distances",
+      "To improve security",
+      "Canada would remain independent of the United States",
+      "To stop the war"
+    ],
+    "correct": 2
+  },
+  {
+    "q": "In World War II, Canada contributed more to Allied air effort than any other Commonwealth country. What did they provide?",
+    "q_fr": "Durant la Seconde Guerre mondiale, le Canada a contribué davantage à l’effort aérien allié que tout autre pays du Commonwealth. Qu’ont-ils fourni ?",
+    "q_fa": "در جنگ جهانی دوم، کانادا بیش از هر کشور مشترک المنافع دیگری به تلاش هوایی متفقین کمک کرد. چه چیزی ارائه کردند؟",
+    "options_en": [
+      "Fighter Planes",
+      "Aircraft Parts",
+      "Bombers",
+      "130,000 allied aircrew trained in Canada"
+    ],
+    "options_fr": [
+      "Avions de chasse",
+      "Pièces d'avion",
+      "Bombardiers",
+      "130 000 équipages alliés formés au Canada"
+    ],
+    "options_fa": [
+      "Fighter Planes",
+      "Aircraft Parts",
+      "Bombers",
+      "130,000 allied aircrew trained in Canada"
+    ],
+    "correct": 3
+  },
+  {
+    "q": "Who was the first person to draw a map of Canada's east coast?",
+    "q_fr": "Who was the first person to draw a map of Canada's east coast?",
+    "q_fa": "اولین کسی که نقشه ساحل شرقی کانادا را ترسیم کرد چه کسی بود؟",
+    "options_en": [
+      "John Cabot",
+      "Jacques Cartier",
+      "Count Frontenac",
+      "Jean Talon"
+    ],
+    "options_fr": [
+      "John Cabot",
+      "Jacques Cartier",
+      "Count Frontenac",
+      "Jean Talon"
+    ],
+    "options_fa": [
+      "John Cabot",
+      "Jacques Cartier",
+      "Count Frontenac",
+      "Jean Talon"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "Who was the first Prime Minister of Dominion of Canada?",
+    "q_fr": "Qui a été le premier premier ministre du Dominion du Canada?",
+    "q_fa": "اولین نخست وزیر Dominion کانادا چه کسی بود؟",
+    "options_en": [
+      "Sir Leonard Tilley",
+      "Sir George-Étienne Cartier",
+      "Sir Louis-Hippolyte La Fontaine",
+      "Sir John Alexander Macdonald"
+    ],
+    "options_fr": [
+      "Sir Léonard Tilley",
+      "Sir George-Étienne Cartier",
+      "Sir Louis-Hippolyte La Fontaine",
+      "Sir John Alexander Macdonald"
+    ],
+    "options_fa": [
+      "Sir Leonard Tilley",
+      "Sir George-Étienne Cartier",
+      "Sir Louis-Hippolyte La Fontaine",
+      "Sir John Alexander Macdonald"
+    ],
+    "correct": 3
+  },
+  {
+    "q": "When was the first financial institutions opened in Canada?",
+    "q_fr": "Quand les premières institutions financières ont-elles été ouvertes au Canada ?",
+    "q_fa": "اولین موسسات مالی در کانادا چه زمانی افتتاح شد؟",
+    "options_en": [
+      "Late 19th century",
+      "Late 18th and early 19th centuries",
+      "Early 16th century",
+      "Early 18th century"
+    ],
+    "options_fr": [
+      "Fin du 19ème siècle",
+      "Fin du XVIIIe et début du XIXe siècle",
+      "Début du 16ème siècle",
+      "Début du XVIIIe siècle"
+    ],
+    "options_fa": [
+      "Late 19th century",
+      "Late 18th and early 19th centuries",
+      "Early 16th century",
+      "Early 18th century"
+    ],
+    "correct": 1
+  },
+  {
+    "q": "Which is the Remembrance Day for war veterans?",
+    "q_fr": "Quel est le jour du Souvenir pour les anciens combattants ?",
+    "q_fa": "روز بزرگداشت جانبازان کدام است؟",
+    "options_en": [
+      "01 July",
+      "07 September",
+      "01 November",
+      "11 November"
+    ],
+    "options_fr": [
+      "01 juillet",
+      "07 septembre",
+      "01 novembre",
+      "11 novembre"
+    ],
+    "options_fa": [
+      "01 July",
+      "07 September",
+      "01 November",
+      "11 November"
+    ],
+    "correct": 3
+  },
+  {
+    "q": "Who among the following were Loyalists?",
+    "q_fr": "Parmi les personnes suivantes, qui étaient des loyalistes ?",
+    "q_fa": "چه کسانی در بین افراد زیر وفادار بودند؟",
+    "options_en": [
+      "People loyal to the Crown",
+      "Aboriginal people",
+      "The commanders of armies",
+      "British colonies"
+    ],
+    "options_fr": [
+      "Des gens fidèles à la Couronne",
+      "Autochtones",
+      "Les commandants des armées",
+      "colonies britanniques"
+    ],
+    "options_fa": [
+      "People loyal to the Crown",
+      "Aboriginal people",
+      "The commanders of armies",
+      "British colonies"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "When did \"Canada\" become the official name of the country?",
+    "q_fr": "Quand « Canada » est-il devenu le nom officiel du pays ?",
+    "q_fa": "از چه زمانی \"کانادا\" نام رسمی این کشور شد؟",
+    "options_en": [
+      "1758",
+      "1799",
+      "1773",
+      "1791"
+    ],
+    "options_fr": [
+      "1758",
+      "1799",
+      "1773",
+      "1791"
+    ],
+    "options_fa": [
+      "1758",
+      "1799",
+      "1773",
+      "1791"
+    ],
+    "correct": 3
+  },
+  {
+    "q": "Who was Sir George-Étienne Cartier?",
+    "q_fr": "Qui était Sir George-Étienne Cartier?",
+    "q_fa": "سر جورج اتین کارتیه که بود؟",
+    "options_en": [
+      "Canada's first Prime minister",
+      "First head of a responsible government",
+      "A railway lawyer from Montreal",
+      "First French-Canadian prime minister"
+    ],
+    "options_fr": [
+      "Le premier premier ministre du Canada",
+      "Premier chef d'un gouvernement responsable",
+      "Un avocat ferroviaire de Montréal",
+      "Premier premier ministre canadien-français"
+    ],
+    "options_fa": [
+      "Canada's first Prime minister",
+      "First head of a responsible government",
+      "A railway lawyer from Montreal",
+      "First French-Canadian prime minister"
+    ],
+    "correct": 2
+  },
+  {
+    "q": "What colors are present within the Canadian Flag?",
+    "q_fr": "Quelles couleurs sont présentes dans le drapeau canadien?",
+    "q_fa": "چه رنگ هایی در پرچم کانادا وجود دارد؟",
+    "options_en": [
+      "Red and blue",
+      "Blue and white",
+      "Red and white",
+      "Green and white"
+    ],
+    "options_fr": [
+      "Rouge et bleu",
+      "Bleu et blanc",
+      "Rouge et blanc",
+      "Vert et blanc"
+    ],
+    "options_fa": [
+      "Red and blue",
+      "Blue and white",
+      "Red and white",
+      "Green and white"
+    ],
+    "correct": 2
+  },
+  {
+    "q": "Where did most immigrants have come from since 1970s?",
+    "q_fr": "D’où viennent la plupart des immigrants depuis les années 1970 ?",
+    "q_fa": "بیشتر مهاجران از دهه 1970 از کجا آمده اند؟",
+    "options_en": [
+      "Asia",
+      "France",
+      "USA",
+      "England"
+    ],
+    "options_fr": [
+      "Asie",
+      "France",
+      "USA",
+      "Angleterre"
+    ],
+    "options_fa": [
+      "Asia",
+      "France",
+      "USA",
+      "England"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "When did most Canadian female citizens over 21 were granted the right to vote in federal elections?",
+    "q_fr": "Quand la plupart des citoyennes canadiennes de plus de 21 ans ont-elles obtenu le droit de voter aux élections fédérales ?",
+    "q_fa": "چه زمانی به اکثر شهروندان زن کانادایی بالای 21 سال حق رای در انتخابات فدرال داده شد؟",
+    "options_en": [
+      "1918",
+      "1818",
+      "1928",
+      "1933"
+    ],
+    "options_fr": [
+      "1918",
+      "1818",
+      "1928",
+      "1933"
+    ],
+    "options_fa": [
+      "1918",
+      "1818",
+      "1928",
+      "1933"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "How many Canadians were killed in the World War 1 from 1914-1918?",
+    "q_fr": "Combien de Canadiens ont été tués pendant la Première Guerre mondiale de 1914 à 1918 ?",
+    "q_fa": "چند کانادایی در جنگ جهانی اول از سال 1914 تا 1918 کشته شدند؟",
+    "options_en": [
+      "200,000",
+      "60,000",
+      "170,000",
+      "70,000"
+    ],
+    "options_fr": [
+      "200 000",
+      "60 000",
+      "170 000",
+      "70 000"
+    ],
+    "options_fa": [
+      "200,000",
+      "60,000",
+      "170,000",
+      "70,000"
+    ],
+    "correct": 1
+  },
+  {
+    "q": "For how long the title \"Dominion of Canada\" was officially used?",
+    "q_fr": "Pendant combien de temps le titre « Dominion du Canada » a-t-il été officiellement utilisé ?",
+    "q_fa": "عنوان \"سلطه کانادا\" برای چه مدت به طور رسمی مورد استفاده قرار گرفت؟",
+    "options_en": [
+      "250 years",
+      "100 years",
+      "50 years",
+      "200 years"
+    ],
+    "options_fr": [
+      "250 ans",
+      "100 ans",
+      "50 ans",
+      "200 ans"
+    ],
+    "options_fa": [
+      "250 years",
+      "100 years",
+      "50 years",
+      "200 years"
+    ],
+    "correct": 1
+  },
+  {
+    "q": "Who is considered as Canada's greatest soldier?",
+    "q_fr": "Who is considered as Canada's greatest soldier?",
+    "q_fa": "Who is considered as Canada's greatest soldier?",
+    "options_en": [
+      "Phil Edwards",
+      "Rick Hansen",
+      "Sir John A. Macdonald",
+      "General Sir Arthur Currie"
+    ],
+    "options_fr": [
+      "Phil Edwards",
+      "Rick Hansen",
+      "Sir John A. Macdonald",
+      "General Sir Arthur Currie"
+    ],
+    "options_fa": [
+      "Phil Edwards",
+      "Rick Hansen",
+      "Sir John A. Macdonald",
+      "General Sir Arthur Currie"
+    ],
+    "correct": 3
+  },
+  {
+    "q": "The first companies formed in Canada competed for what?",
+    "q_fr": "Pour quoi les premières entreprises créées au Canada se disputaient-elles ?",
+    "q_fa": "اولین شرکت هایی که در کانادا تشکیل شدند برای چه چیزی رقابت کردند؟",
+    "options_en": [
+      "Timber trade",
+      "Gold trade",
+      "Fur trade",
+      "Fish trade"
+    ],
+    "options_fr": [
+      "Commerce du bois",
+      "Commerce de l'or",
+      "Commerce des fourrures",
+      "Commerce de poisson"
+    ],
+    "options_fa": [
+      "Timber trade",
+      "Gold trade",
+      "Fur trade",
+      "Fish trade"
+    ],
+    "correct": 2
+  },
+  {
+    "q": "What was the Women's Suffrage Movement?",
+    "q_fr": "Qu'est-ce que le mouvement pour le droit de vote des femmes ?",
+    "q_fa": "جنبش حق رای زنان چه بود؟",
+    "options_en": [
+      "An effort by women to work",
+      "An effort by women to achieve the right to vote",
+      "An effort by women to be in Parliament",
+      "An effort by women to fight in War"
+    ],
+    "options_fr": [
+      "Un effort des femmes pour travailler",
+      "Un effort des femmes pour obtenir le droit de vote",
+      "Un effort des femmes pour être au Parlement",
+      "Un effort des femmes pour combattre pendant la guerre"
+    ],
+    "options_fa": [
+      "An effort by women to work",
+      "An effort by women to achieve the right to vote",
+      "An effort by women to be in Parliament",
+      "An effort by women to fight in War"
+    ],
+    "correct": 1
+  },
+  {
+    "q": "Who suggested the name “Dominion of Canada” in 1864?",
+    "q_fr": "Qui a suggéré le nom « Dominion du Canada » en 1864 ?",
+    "q_fa": "چه کسی نام \"سلطه کانادا\" را در سال 1864 پیشنهاد کرد؟",
+    "options_en": [
+      "Sir John Alexander Macdonald",
+      "La Fontaine",
+      "Sir Leonard Tilley",
+      "Lord Elgin"
+    ],
+    "options_fr": [
+      "Sir John Alexander Macdonald",
+      "La Fontaine",
+      "Sir Léonard Tilley",
+      "Seigneur Elgin"
+    ],
+    "options_fa": [
+      "Sir John Alexander Macdonald",
+      "La Fontaine",
+      "Sir Leonard Tilley",
+      "Lord Elgin"
+    ],
+    "correct": 2
+  },
+  {
+    "q": "When is the Canada day? What is celebrated on this day?",
+    "q_fr": "Quand est la fête du Canada et que célèbre-t-elle ?",
+    "q_fa": "روز کانادا چه زمانی است و چه چیزی را جشن می‌گیریم؟",
+    "options_en": [
+      "July 1st; when we celebrate the anniversary of the Confederation each year",
+      "May 21st when we celebrate the Queen's birthday",
+      "July 4th when we celebrate the anniversary of Confederation each year",
+      "June 24th when we celebrate multiculturalism"
+    ],
+    "options_fr": [
+      "July 1st; when we celebrate the anniversary of the Confederation each year",
+      "May 21st when we celebrate the Queen's birthday",
+      "July 4th when we celebrate the anniversary of Confederation each year",
+      "June 24th when we celebrate multiculturalism"
+    ],
+    "options_fa": [
+      "July 1st; when we celebrate the anniversary of the Confederation each year",
+      "May 21st when we celebrate the Queen's birthday",
+      "July 4th when we celebrate the anniversary of Confederation each year",
+      "June 24th when we celebrate multiculturalism"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "In what year the aboriginal people granted the rights of voting?",
+    "q_fr": "En quelle année les peuples autochtones ont accordé le droit de vote ?",
+    "q_fa": "در چه سالی مردم بومی حق رای را اعطا کردند؟",
+    "options_en": [
+      "1632",
+      "1960",
+      "1790",
+      "1950"
+    ],
+    "options_fr": [
+      "1632",
+      "1960",
+      "1790",
+      "1950"
+    ],
+    "options_fa": [
+      "1632",
+      "1960",
+      "1790",
+      "1950"
+    ],
+    "correct": 1
+  },
+  {
+    "q": "Which dollar bill contains Sir Wilfrid Laurier's portrait?",
+    "q_fr": "Quel billet d’un dollar contient le portrait de sir Wilfrid Laurier ?",
+    "q_fa": "کدام اسکناس دلاری حاوی پرتره سر ویلفرید لوریه است؟",
+    "options_en": [
+      "$5 bill",
+      "$50 bill",
+      "$10 bill",
+      "$20 bill"
+    ],
+    "options_fr": [
+      "billet de 5 $",
+      "billet de 50 $",
+      "billet de 10 $",
+      "billet de 20 $"
+    ],
+    "options_fa": [
+      "$5 bill",
+      "$50 bill",
+      "$10 bill",
+      "$20 bill"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "What was significant about the Canadian navy at the end of the Second World War?",
+    "q_fr": "Qu’est-ce qui était important dans la marine canadienne à la fin de la Seconde Guerre mondiale ?",
+    "q_fa": "چه چیزی در مورد نیروی دریایی کانادا در پایان جنگ جهانی دوم اهمیت داشت؟",
+    "options_en": [
+      "It was fourth-largest navy in world",
+      "It was third-largest navy in world",
+      "It was the largest navy in world",
+      "It was the second-largest navy in world"
+    ],
+    "options_fr": [
+      "C'était la quatrième plus grande marine au monde",
+      "C'était la troisième plus grande marine au monde",
+      "C'était la plus grande marine du monde",
+      "C'était la deuxième plus grande marine au monde"
+    ],
+    "options_fa": [
+      "It was fourth-largest navy in world",
+      "It was third-largest navy in world",
+      "It was the largest navy in world",
+      "It was the second-largest navy in world"
+    ],
+    "correct": 1
+  },
+  {
+    "q": "Which country was liberated by the Canadian Army in 1944 - 1945?",
+    "q_fr": "Quel pays a été libéré par l'armée canadienne en 1944-1945 ?",
+    "q_fa": "کدام کشور توسط ارتش کانادا در سال 1944 - 1945 آزاد شد؟",
+    "options_en": [
+      "Austria",
+      "Japan",
+      "Germany",
+      "The Netherlands"
+    ],
+    "options_fr": [
+      "Autriche",
+      "Japon",
+      "Allemagne",
+      "Les Pays-Bas"
+    ],
+    "options_fa": [
+      "Austria",
+      "Japan",
+      "Germany",
+      "The Netherlands"
+    ],
+    "correct": 3
+  },
+  {
+    "q": "Which was the first province in the Empire to move towards the abolition of slavery?",
+    "q_fr": "Quelle fut la première province de l’Empire à s’orienter vers l’abolition de l’esclavage ?",
+    "q_fa": "اولین استانی که در امپراتوری به سمت لغو برده داری حرکت کرد کدام استان بود؟",
+    "options_en": [
+      "South Canada",
+      "North America",
+      "Upper Canada",
+      "Lower Canada"
+    ],
+    "options_fr": [
+      "Sud du Canada",
+      "Amérique du Nord",
+      "Haut-Canada",
+      "Bas-Canada"
+    ],
+    "options_fa": [
+      "South Canada",
+      "North America",
+      "Upper Canada",
+      "Lower Canada"
+    ],
+    "correct": 2
+  },
+  {
+    "q": "In what year did Canada become an independent country?",
+    "q_fr": "En quelle année le Canada est-il devenu un pays indépendant ?",
+    "q_fa": "در چه سالی کانادا کشور مستقل شد؟",
+    "options_en": [
+      "1776",
+      "1872",
+      "1867",
+      "1967"
+    ],
+    "options_fr": [
+      "1776",
+      "1872",
+      "1867",
+      "1967"
+    ],
+    "options_fa": [
+      "1776",
+      "1872",
+      "1867",
+      "1967"
+    ],
+    "correct": 2
+  },
+  {
+    "q": "Which of the following is the oldest colony of the British Empire in Canada?",
+    "q_fr": "Which of the following is the oldest colony of the British Empire in Canada?",
+    "q_fa": "Which of the following is the oldest colony of the British Empire in Canada?",
+    "options_en": [
+      "Newfoundland and Labrador",
+      "Alberta"
+    ],
+    "options_fr": [
+      "Newfoundland and Labrador",
+      "Alberta"
+    ],
+    "options_fa": [
+      "Newfoundland and Labrador",
+      "Alberta"
+    ],
+    "correct": 0
+  },
+  {
+    "q": "Which Act granted, for the first time in Canada, legislative assemblies elected by the people?",
+    "q_fr": "Quelle loi a accordé, pour la première fois au Canada, des assemblées législatives élues par le peuple ?",
+    "q_fa": "کدام قانون برای اولین بار در کانادا مجامع قانونگذاری را که توسط مردم انتخاب شده بودند اعطا کرد؟",
+    "options_en": [
+      "The Constitutional Act of 1791.",
+      "The Constitutional Act of 1867.",
+      "The Constitutional Act of 1982.",
+      "The Constitutional Act of 2010."
+    ],
+    "options_fr": [
+      "The Constitutional Act of 1791.",
+      "The Constitutional Act of 1867.",
+      "The Constitutional Act of 1982.",
+      "The Constitutional Act of 2010."
+    ],
+    "options_fa": [
+      "The Constitutional Act of 1791.",
+      "The Constitutional Act of 1867.",
+      "The Constitutional Act of 1982.",
+      "The Constitutional Act of 2010."
+    ],
+    "correct": 0
+  }
+]

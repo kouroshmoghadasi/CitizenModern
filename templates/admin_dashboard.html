@@ -334,11 +334,11 @@
             <p style="font-size: 0.85rem; color: #666; margin-bottom: 12px;">بر اساس لاگ IP و زمان ورود. روی «جزئیات» هر IP بزنید تا روزهای استفاده و ساعات کارکرد تقریبی را ببینید.</p>
             <div id="visitorDashboardMsg"></div>
             <div id="visitorExamSectionWrap" style="display: none; margin-bottom: 20px; padding: 14px 16px; background: #f0f9ff; border: 1px solid #bae6fd; border-radius: 10px;">
-                <h3 style="font-size: 1rem; margin: 0 0 10px; color: #0369a1;">آزمون‌های نمونه <span style="font-weight: 600; color: #0c4a6e;">(/citizenship-exams + /exam1)</span></h3>
+                <h3 style="font-size: 1rem; margin: 0 0 10px; color: #0369a1;">آزمون‌های نمونه <span style="font-weight: 600; color: #0c4a6e;">(/citizenship-exams + /exam1 + /exam2)</span></h3>
                 <p id="visitorExamSectionSummary" style="font-size: 0.9rem; margin-bottom: 12px; line-height: 1.55; color: #334155;"></p>
                 <h4 style="font-size: 0.95rem; margin: 0 0 8px; color: #1e3c72;">بازدید این بخش به تفکیک روز (۳۰ روز اخیر)</h4>
                 <table id="visitorExamSectionDaysTable" style="font-size: 0.88rem;">
-                    <thead><tr><th>تاریخ</th><th>فهرست آزمون‌ها</th><th>Exam1</th><th>جمع روز</th></tr></thead>
+                    <thead><tr><th>تاریخ</th><th>فهرست آزمون‌ها</th><th>Exam1</th><th>Exam2</th><th>Exam3</th><th>جمع روز</th></tr></thead>
                     <tbody></tbody>
                 </table>
             </div>
@@ -849,6 +849,8 @@
                                 ' &nbsp;|&nbsp; <strong>IP یکتا (تقریبی):</strong> ' + (ex.unique_ips != null ? ex.unique_ips : '—') +
                                 '<br><strong>فقط /citizenship-exams:</strong> ' + (ex.hits_citizenship_exams != null ? ex.hits_citizenship_exams : 0) +
                                 ' &nbsp;|&nbsp; <strong>فقط /exam1:</strong> ' + (ex.hits_exam1 != null ? ex.hits_exam1 : 0) +
+                                ' &nbsp;|&nbsp; <strong>فقط /exam2:</strong> ' + (ex.hits_exam2 != null ? ex.hits_exam2 : 0) +
+                                ' &nbsp;|&nbsp; <strong>فقط /exam3:</strong> ' + (ex.hits_exam3 != null ? ex.hits_exam3 : 0) +
                                 '<br><span style="font-size:0.82rem;color:#64748b;">IPهای حذف‌شده از آمار کلی داشبورد (مثل ادمین) اینجا هم حذف شده‌اند؛ با شمارندهٔ عمومی سایت ممکن است اختلاف جزئی باشد.</span>';
                         }
                         if (examDaysTbody) {
@@ -856,9 +858,11 @@
                             (ex.per_day || []).forEach(function(row) {
                                 var h = row.hub_hits != null ? row.hub_hits : 0;
                                 var e1 = row.exam1_hits != null ? row.exam1_hits : 0;
-                                var sum = h + e1;
+                                var e2 = row.exam2_hits != null ? row.exam2_hits : 0;
+                                var e3 = row.exam3_hits != null ? row.exam3_hits : 0;
+                                var sum = h + e1 + e2 + e3;
                                 var tr = document.createElement('tr');
-                                tr.innerHTML = '<td>' + (row.day || '').replace(/</g, '&lt;') + '</td><td>' + h + '</td><td>' + e1 + '</td><td>' + sum + '</td>';
+                                tr.innerHTML = '<td>' + (row.day || '').replace(/</g, '&lt;') + '</td><td>' + h + '</td><td>' + e1 + '</td><td>' + e2 + '</td><td>' + e3 + '</td><td>' + sum + '</td>';
                                 examDaysTbody.appendChild(tr);
                             });
                         }

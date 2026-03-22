@@ -108,9 +108,9 @@
         </div>
         <div class="page-header">
             <h1>آزمون‌های نمونه</h1>
-            <p>Sample exams — هر آزمون موضوع مشخص؛ از اینجا به Exam1 و آزمون‌های بعدی بروید.</p>
+            <p>Sample exams — هر آزمون موضوع مشخص؛ از اینجا به Exam1، Exam2، Exam3 و آزمون‌های بعدی بروید.</p>
             {% if exam_section_views is not none %}
-            <p class="exam-visit-count" role="status">بازدید ثبت‌شده از این بخش (فهرست + Exam1): <strong>{{ exam_section_views }}</strong></p>
+            <p class="exam-visit-count" role="status">بازدید ثبت‌شده از بخش آزمون‌های نمونه (فهرست و صفحات آزمون): <strong>{{ exam_section_views }}</strong></p>
             {% endif %}
         </div>
         <div class="exam-grid">
@@ -119,8 +119,25 @@
                     <img src="{{ url_for('static', filename='images/exam1-thumbnail.png') }}" alt="Exam1 — Rights and Responsibilities" width="320" height="180" loading="lazy">
                     <div class="exam-card-body">
                         <h2>Exam1</h2>
-                        <p>Rights and Responsibilities of Citizenship — چندگزینه‌ای؛ انگلیسی/فرانسه + فارسی.</p>
-                        <span class="exam-badge">۲۹ سوال</span>
+                        <p>Rights and Responsibilities of Citizenship</p>
+                    </div>
+                </a>
+            </article>
+            <article class="exam-card">
+                <a href="{{ url_for('exam2') }}">
+                    <img src="{{ url_for('static', filename='images/exam2-thumbnail.png') }}" alt="Exam2 — History of Canada — Quiz Questions" width="320" height="180" loading="lazy">
+                    <div class="exam-card-body">
+                        <h2>Exam2</h2>
+                        <p>History of Canada</p>
+                    </div>
+                </a>
+            </article>
+            <article class="exam-card">
+                <a href="{{ url_for('exam3') }}">
+                    <img src="{{ url_for('static', filename='images/exam3-thumbnail.png') }}" alt="Exam3 — Canada's History — Quiz Questions" width="320" height="180" loading="lazy">
+                    <div class="exam-card-body">
+                        <h2>Exam3</h2>
+                        <p>Canada's History — part 2</p>
                     </div>
                 </a>
             </article>
