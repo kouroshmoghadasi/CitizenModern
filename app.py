@@ -114,6 +114,9 @@ def init_database():
             cur.execute("""
                 CREATE INDEX IF NOT EXISTS idx_visitor_log_time ON visitor_log(access_time)
             """)
+            cur.execute("""
+                CREATE INDEX IF NOT EXISTS idx_visitor_log_page ON visitor_log(page_visited)
+            """)
             
             # --- Subscription: users (subscribers)
             cur.execute("""
@@ -312,6 +315,31 @@ def log_visitor(page_visited='/'):
             conn.close()
     except Exception as e:
         print(f"Error logging visitor: {e}")
+
+
+def _count_exam_section_visits():
+    """تعداد بازدیدهای ثبت‌شده برای بخش آزمون‌های نمونه (فهرست + Exam1) از visitor_log."""
+    try:
+        conn = get_db_connection()
+        if not conn:
+            return None
+        cur = conn.cursor()
+        cur.execute(
+            """
+            SELECT COUNT(*) FROM visitor_log
+            WHERE page_visited IN ('/citizenship-exams', '/exam1')
+            """
+        )
+        row = cur.fetchone()
+        cur.close()
+        conn.close()
+        if row and row[0] is not None:
+            return int(row[0])
+        return 0
+    except Exception as e:
+        print(f"Error counting exam section visits: {e}")
+        return None
+
 
 # Initialize database on startup
 init_database()
@@ -1027,7 +1055,10 @@ def citizenship_introduction():
 def citizenship_exams():
     """فهرست آزمون‌های نمونه (Exam1, …)."""
     log_visitor('/citizenship-exams')
-    return render_template('citizenship_exams.html')
+    return render_template(
+        'citizenship_exams.html',
+        exam_section_views=_count_exam_section_visits(),
+    )
 
 
 @app.route('/exam1')
@@ -1063,6 +1094,7 @@ def exam1():
         max_visible_exam1=max_visible,
         show_paywall=show_paywall,
         free_count=free_n,
+        exam_section_views=_count_exam_section_visits(),
     ))
     resp.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
     resp.headers['Pragma'] = 'no-cache'
@@ -1912,6 +1944,68 @@ def admin_api_visitor_dashboard():
                 row['access_time'] = row['access_time'].isoformat()
             row['device'] = _device_from_user_agent(row.get('user_agent') or '')
 
+        # آمار بخش آزمون نمونه: /citizenship-exams و /exam1 (همان حذف IP ادمین‌ها)
+        exam_section = None
+        try:
+            cur.execute(
+                """
+                SELECT COUNT(*) AS total_hits,
+                       COUNT(DISTINCT ip_address) AS unique_ips
+                FROM visitor_log
+                WHERE page_visited IN ('/citizenship-exams', '/exam1')
+                """
+                + exclude_sql,
+                exclude_params,
+            )
+            ex_tot = cur.fetchone()
+            cur.execute(
+                """
+                SELECT page_visited, COUNT(*) AS cnt
+                FROM visitor_log
+                WHERE page_visited IN ('/citizenship-exams', '/exam1')
+                """
+                + exclude_sql
+                + """
+                GROUP BY page_visited
+                """,
+                exclude_params,
+            )
+            by_page = {r["page_visited"]: int(r["cnt"]) for r in cur.fetchall()}
+            cur.execute(
+                """
+                SELECT DATE(access_time) AS day,
+                       SUM(CASE WHEN page_visited = '/citizenship-exams' THEN 1 ELSE 0 END) AS hub_hits,
+                       SUM(CASE WHEN page_visited = '/exam1' THEN 1 ELSE 0 END) AS exam1_hits
+                FROM visitor_log
+                WHERE page_visited IN ('/citizenship-exams', '/exam1')
+                  AND access_time >= CURRENT_DATE - INTERVAL '30 days'
+                """
+                + exclude_sql
+                + """
+                GROUP BY DATE(access_time)
+                ORDER BY day DESC
+                LIMIT 30
+                """,
+                exclude_params,
+            )
+            exam_per_day = cur.fetchall()
+            for er in exam_per_day:
+                d = er.get("day")
+                if d and hasattr(d, "isoformat"):
+                    er["day"] = d.isoformat()
+                er["hub_hits"] = int(er["hub_hits"] or 0)
+                er["exam1_hits"] = int(er["exam1_hits"] or 0)
+            exam_section = {
+                "total_hits": int(ex_tot["total_hits"] or 0) if ex_tot else 0,
+                "unique_ips": int(ex_tot["unique_ips"] or 0) if ex_tot else 0,
+                "hits_citizenship_exams": int(by_page.get("/citizenship-exams", 0)),
+                "hits_exam1": int(by_page.get("/exam1", 0)),
+                "per_day": exam_per_day,
+            }
+        except Exception as ex_err:
+            print(f"exam_section stats: {ex_err}")
+            exam_section = None
+
         cur.close()
         conn.close()
         return jsonify({
@@ -1919,6 +2013,7 @@ def admin_api_visitor_dashboard():
             'visits_per_day': visits_per_day,
             'top_ips': top_ips,
             'recent_logs': recent,
+            'exam_section': exam_section,
         }), 200
     except Exception as e:
         return jsonify({'success': False, 'error': str(e)}), 500

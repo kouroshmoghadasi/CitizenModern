@@ -333,6 +333,15 @@
         <div class="card-body">
             <p style="font-size: 0.85rem; color: #666; margin-bottom: 12px;">بر اساس لاگ IP و زمان ورود. روی «جزئیات» هر IP بزنید تا روزهای استفاده و ساعات کارکرد تقریبی را ببینید.</p>
             <div id="visitorDashboardMsg"></div>
+            <div id="visitorExamSectionWrap" style="display: none; margin-bottom: 20px; padding: 14px 16px; background: #f0f9ff; border: 1px solid #bae6fd; border-radius: 10px;">
+                <h3 style="font-size: 1rem; margin: 0 0 10px; color: #0369a1;">آزمون‌های نمونه <span style="font-weight: 600; color: #0c4a6e;">(/citizenship-exams + /exam1)</span></h3>
+                <p id="visitorExamSectionSummary" style="font-size: 0.9rem; margin-bottom: 12px; line-height: 1.55; color: #334155;"></p>
+                <h4 style="font-size: 0.95rem; margin: 0 0 8px; color: #1e3c72;">بازدید این بخش به تفکیک روز (۳۰ روز اخیر)</h4>
+                <table id="visitorExamSectionDaysTable" style="font-size: 0.88rem;">
+                    <thead><tr><th>تاریخ</th><th>فهرست آزمون‌ها</th><th>Exam1</th><th>جمع روز</th></tr></thead>
+                    <tbody></tbody>
+                </table>
+            </div>
             <h3 style="font-size: 1rem; margin: 16px 0 8px; color: #1e3c72;">بازدید به تفکیک روز (۳۰ روز اخیر)</h3>
             <table id="visitorDaysTable">
                 <thead><tr><th>تاریخ</th><th>تعداد بازدید</th><th>IP یکتا</th></tr></thead>
@@ -827,6 +836,34 @@
                             tr.innerHTML = '<td>' + (row.day || '').replace(/</g, '&lt;') + '</td><td>' + (row.total_visits || 0) + '</td><td>' + (row.unique_ips || 0) + '</td>';
                             daysTbody.appendChild(tr);
                         });
+                    }
+                    var examWrap = document.getElementById('visitorExamSectionWrap');
+                    var examSummary = document.getElementById('visitorExamSectionSummary');
+                    var examDaysTbody = document.querySelector('#visitorExamSectionDaysTable tbody');
+                    if (examWrap && data.exam_section) {
+                        var ex = data.exam_section;
+                        examWrap.style.display = 'block';
+                        if (examSummary) {
+                            examSummary.innerHTML =
+                                '<strong>جمع بازدید ثبت‌شده:</strong> ' + (ex.total_hits != null ? ex.total_hits : '—') +
+                                ' &nbsp;|&nbsp; <strong>IP یکتا (تقریبی):</strong> ' + (ex.unique_ips != null ? ex.unique_ips : '—') +
+                                '<br><strong>فقط /citizenship-exams:</strong> ' + (ex.hits_citizenship_exams != null ? ex.hits_citizenship_exams : 0) +
+                                ' &nbsp;|&nbsp; <strong>فقط /exam1:</strong> ' + (ex.hits_exam1 != null ? ex.hits_exam1 : 0) +
+                                '<br><span style="font-size:0.82rem;color:#64748b;">IPهای حذف‌شده از آمار کلی داشبورد (مثل ادمین) اینجا هم حذف شده‌اند؛ با شمارندهٔ عمومی سایت ممکن است اختلاف جزئی باشد.</span>';
+                        }
+                        if (examDaysTbody) {
+                            examDaysTbody.innerHTML = '';
+                            (ex.per_day || []).forEach(function(row) {
+                                var h = row.hub_hits != null ? row.hub_hits : 0;
+                                var e1 = row.exam1_hits != null ? row.exam1_hits : 0;
+                                var sum = h + e1;
+                                var tr = document.createElement('tr');
+                                tr.innerHTML = '<td>' + (row.day || '').replace(/</g, '&lt;') + '</td><td>' + h + '</td><td>' + e1 + '</td><td>' + sum + '</td>';
+                                examDaysTbody.appendChild(tr);
+                            });
+                        }
+                    } else if (examWrap) {
+                        examWrap.style.display = 'none';
                     }
                     var ipsTbody = document.querySelector('#visitorIpsTable tbody');
                     if (ipsTbody) {

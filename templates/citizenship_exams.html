@@ -56,6 +56,11 @@
         }
         .page-header h1 { font-size: clamp(1.2rem, 5vw, 1.5em); margin-bottom: 8px; }
         .page-header p { opacity: 0.95; font-size: clamp(0.88rem, 3.5vw, 0.95em); }
+        .page-header .exam-visit-count {
+            margin-top: 14px; font-size: clamp(0.82rem, 3.2vw, 0.92em); opacity: 0.96; line-height: 1.45;
+            font-weight: 600; text-align: center; direction: rtl;
+        }
+        .page-header .exam-visit-count strong { color: #f1c40f; font-weight: 800; }
         .exam-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr));
@@ -104,6 +109,9 @@
         <div class="page-header">
             <h1>آزمون‌های نمونه</h1>
             <p>Sample exams — هر آزمون موضوع مشخص؛ از اینجا به Exam1 و آزمون‌های بعدی بروید.</p>
+            {% if exam_section_views is not none %}
+            <p class="exam-visit-count" role="status">بازدید ثبت‌شده از این بخش (فهرست + Exam1): <strong>{{ exam_section_views }}</strong></p>
+            {% endif %}
         </div>
         <div class="exam-grid">
             <article class="exam-card">
