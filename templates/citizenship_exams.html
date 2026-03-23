@@ -6,7 +6,7 @@
     <link rel="icon" href="{{ url_for('static', filename='images/logo.png') }}" type="image/png">
     <link rel="apple-touch-icon" href="{{ url_for('static', filename='images/logo.png') }}">
     <title>آزمون‌های نمونه | Sample Exams — Citizen</title>
-    <meta name="description" content="فهرست آزمون‌های نمونه (Exam1 و بعدی‌ها) برای تمرین شهروندی کانادا.">
+    <meta name="description" content="فهرست آزمون‌های نمونه: Introduction، Rights، Who We Are، Canada's History، Govern، Federal Elections، Justice، Canadian Symbols، Modern Canada، Exam1–3 و بعدی‌ها برای تمرین شهروندی کانادا.">
     <link rel="canonical" href="{{ request.host_url.rstrip('/') }}/citizenship-exams">
     {% include 'pwa_meta.html' %}
     <style>
@@ -60,7 +60,7 @@
             margin-top: 14px; font-size: clamp(0.82rem, 3.2vw, 0.92em); opacity: 0.96; line-height: 1.45;
             font-weight: 600; text-align: center; direction: rtl;
         }
-        .page-header .exam-visit-count strong { color: #f1c40f; font-weight: 800; }
+        .page-header .exam-visit-count strong { color: #ff8a80; font-weight: 800; }
         .exam-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr));
@@ -76,7 +76,28 @@
             .exam-card:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(30,60,114,0.15); }
         }
         .exam-card a { text-decoration: none; color: inherit; display: block; }
-        .exam-card img { width: 100%; height: clamp(140px, 38vw, 180px); object-fit: cover; display: block; }
+        .exam-card-img-wrap {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 16px 10px;
+            min-height: 120px;
+            max-height: min(78vw, 460px);
+            background: rgba(30, 60, 114, 0.06);
+            border-bottom: 1px solid var(--border);
+            box-sizing: border-box;
+        }
+        body.theme-dark .exam-card-img-wrap { background: rgba(0, 0, 0, 0.22); }
+        .exam-card img {
+            max-width: 100%;
+            max-height: min(70vw, 420px);
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            object-position: center;
+            display: block;
+            border-radius: 10px;
+        }
         .exam-card-body { padding: 16px 18px 20px; }
         .exam-card-body h2 { font-size: clamp(1.05rem, 4vw, 1.2em); color: var(--accent); margin-bottom: 8px; }
         .exam-card-body p { font-size: clamp(0.85rem, 3.2vw, 0.9em); color: var(--text); opacity: 0.88; overflow-wrap: anywhere; }
@@ -108,15 +129,115 @@
         </div>
         <div class="page-header">
             <h1>آزمون‌های نمونه</h1>
-            <p>Sample exams — هر آزمون موضوع مشخص؛ از اینجا به Exam1، Exam2، Exam3 و آزمون‌های بعدی بروید.</p>
             {% if exam_section_views is not none %}
-            <p class="exam-visit-count" role="status">بازدید ثبت‌شده از بخش آزمون‌های نمونه (فهرست و صفحات آزمون): <strong>{{ exam_section_views }}</strong></p>
+            <p class="exam-visit-count" role="status">بازدید ثبت‌شده از بخش آزمون‌های نمونه: <strong>{{ exam_section_views }}</strong></p>
             {% endif %}
         </div>
         <div class="exam-grid">
+            <article class="exam-card" id="introduction-exam">
+                <a href="{{ url_for('citizenship_introduction') }}">
+                    <div class="exam-card-img-wrap">
+                    <img src="{{ url_for('static', filename='images/citizenship-introduction-thumbnail.png') }}" alt="Citizenship Test — Introduction: oath, Queen of Canada, loyalty" width="320" height="180" loading="lazy">
+                    </div>
+                    <div class="exam-card-body">
+                        <h2>Introduction</h2>
+                        <p>Oath of citizenship, the Crown, and loyalty — Discover Canada opening topics</p>
+                    </div>
+                </a>
+            </article>
+            <article class="exam-card" id="rights-responsibilities-exam">
+                <a href="{{ url_for('citizenship_rights_responsibilities') }}">
+                    <div class="exam-card-img-wrap">
+                    <img src="{{ url_for('static', filename='images/citizenship-rights-responsibilities-thumbnail.png') }}" alt="Rights and Responsibilities of Citizenship — Canadian law, Magna Carta" width="320" height="180" loading="lazy">
+                    </div>
+                    <div class="exam-card-body">
+                        <h2>Rights and Responsibilities</h2>
+                        <p>Chapter 1 — law, freedoms, and citizenship duties (Discover Canada)</p>
+                    </div>
+                </a>
+            </article>
+            <article class="exam-card" id="who-we-are-exam">
+                <a href="{{ url_for('citizenship_who_we_are') }}">
+                    <div class="exam-card-img-wrap">
+                    <img src="{{ url_for('static', filename='images/citizenship-who-we-are-thumbnail.png') }}" alt="Who We Are — Parliament Hill, BNA Act, hockey, beaver, Canadian identity collage" width="320" height="180" loading="lazy">
+                    </div>
+                    <div class="exam-card-body">
+                        <h2>Who We Are</h2>
+                        <p>Chapter 2 — identity, symbols, regions, and Canadian society (Discover Canada)</p>
+                    </div>
+                </a>
+            </article>
+            <article class="exam-card" id="canadas-history-exam">
+                <a href="{{ url_for('citizenship_canadas_history') }}">
+                    <div class="exam-card-img-wrap">
+                    <img src="{{ url_for('static', filename='images/citizenship-canadas-history-thumbnail.png') }}" alt="Canada's History — Indigenous peoples, explorers, New France, Confederation (Discover Canada)" width="320" height="213" loading="lazy">
+                    </div>
+                    <div class="exam-card-body">
+                        <h2>Canada's History</h2>
+                        <p>Chapter 3 — Indigenous history, European contact, and Confederation (Discover Canada)</p>
+                    </div>
+                </a>
+            </article>
+            <article class="exam-card" id="how-canadians-govern-exam">
+                <a href="{{ url_for('citizenship_how_canadians_govern_themselves') }}">
+                    <div class="exam-card-img-wrap">
+                    <img src="{{ url_for('static', filename='images/citizenship-how-canadians-govern-thumbnail.png') }}" alt="How Canadians Govern Themselves — Peace Tower, Crown, Constitution Act, Parliament" width="320" height="180" loading="lazy">
+                    </div>
+                    <div class="exam-card-body">
+                        <h2>How Canadians Govern Themselves</h2>
+                        <p>Federalism, Parliament, the Crown, and levels of government (Discover Canada)</p>
+                    </div>
+                </a>
+            </article>
+            <article class="exam-card" id="federal-elections-exam">
+                <a href="{{ url_for('citizenship_federal_elections') }}">
+                    <div class="exam-card-img-wrap">
+                    <img src="{{ url_for('static', filename='images/citizenship-federal-elections-thumbnail.png') }}" alt="Federal Elections in Canada — voting, Parliament Hill, Elections Canada" width="320" height="213" loading="lazy">
+                    </div>
+                    <div class="exam-card-body">
+                        <h2>Federal Elections</h2>
+                        <p>Chapter 6 — voting, MPs, and Elections Canada (Discover Canada)</p>
+                    </div>
+                </a>
+            </article>
+            <article class="exam-card" id="justice-system-exam">
+                <a href="{{ url_for('citizenship_justice_system') }}">
+                    <div class="exam-card-img-wrap">
+                    <img src="{{ url_for('static', filename='images/citizenship-justice-system-thumbnail.png') }}" alt="The Justice System — presumption of innocence, due process, courts" width="320" height="180" loading="lazy">
+                    </div>
+                    <div class="exam-card-body">
+                        <h2>The Justice System</h2>
+                        <p>Chapter 7 — courts, police, legal rights, and due process</p>
+                    </div>
+                </a>
+            </article>
+            <article class="exam-card" id="canadian-symbols-exam">
+                <a href="{{ url_for('citizenship_canadian_symbols') }}">
+                    <div class="exam-card-img-wrap">
+                    <img src="{{ url_for('static', filename='images/citizenship-canadian-symbols-thumbnail.png') }}" alt="Canadian Symbols — Crown, Parliament, RCMP, coat of arms, Discover Canada" width="320" height="213" loading="lazy">
+                    </div>
+                    <div class="exam-card-body">
+                        <h2>Canadian Symbols</h2>
+                        <p>Chapter 8 — Crown, emblems, anthem, and national symbols (Discover Canada)</p>
+                    </div>
+                </a>
+            </article>
+            <article class="exam-card" id="modern-canada-exam">
+                <a href="{{ url_for('citizenship_modern_canada') }}">
+                    <div class="exam-card-img-wrap">
+                    <img src="{{ url_for('static', filename='images/citizenship-modern-canada-thumbnail.png') }}" alt="Modern Canada — oil in Alberta, post-war prosperity, trade, unemployment insurance, old age security" width="320" height="180" loading="lazy">
+                    </div>
+                    <div class="exam-card-body">
+                        <h2>Modern Canada</h2>
+                        <p>Chapter 4 — economy, social programs, and Canada since the mid‑20th century (Discover Canada)</p>
+                    </div>
+                </a>
+            </article>
             <article class="exam-card">
                 <a href="{{ url_for('exam1') }}">
+                    <div class="exam-card-img-wrap">
                     <img src="{{ url_for('static', filename='images/exam1-thumbnail.png') }}" alt="Exam1 — Rights and Responsibilities" width="320" height="180" loading="lazy">
+                    </div>
                     <div class="exam-card-body">
                         <h2>Exam1</h2>
                         <p>Rights and Responsibilities of Citizenship</p>
@@ -125,7 +246,9 @@
             </article>
             <article class="exam-card">
                 <a href="{{ url_for('exam2') }}">
+                    <div class="exam-card-img-wrap">
                     <img src="{{ url_for('static', filename='images/exam2-thumbnail.png') }}" alt="Exam2 — History of Canada — Quiz Questions" width="320" height="180" loading="lazy">
+                    </div>
                     <div class="exam-card-body">
                         <h2>Exam2</h2>
                         <p>History of Canada</p>
@@ -134,7 +257,9 @@
             </article>
             <article class="exam-card">
                 <a href="{{ url_for('exam3') }}">
+                    <div class="exam-card-img-wrap">
                     <img src="{{ url_for('static', filename='images/exam3-thumbnail.png') }}" alt="Exam3 — Canada's History — Quiz Questions" width="320" height="180" loading="lazy">
+                    </div>
                     <div class="exam-card-body">
                         <h2>Exam3</h2>
                         <p>Canada's History — part 2</p>

@@ -393,7 +393,7 @@ def _visitor_exclude_sql():
 
 
 def _count_exam_section_visits():
-    """تعداد بازدیدهای ثبت‌شده برای بخش آزمون‌های نمونه (فهرست + Exam1 + Exam2 + Exam3) از visitor_log."""
+    """تعداد بازدیدهای ثبت‌شده برای بخش آزمون‌های نمونه (فهرست + Introduction + Rights + Who We Are + Canada's History + Govern + Federal Elections + Canadian Symbols + Justice + Modern Canada + Exam1–3) از visitor_log."""
     try:
         conn = get_db_connection()
         if not conn:
@@ -403,7 +403,7 @@ def _count_exam_section_visits():
         cur.execute(
             """
             SELECT COUNT(*) FROM visitor_log
-            WHERE page_visited IN ('/citizenship-exams', '/exam1', '/exam2', '/exam3')
+            WHERE page_visited IN ('/citizenship-exams', '/citizenship-introduction', '/citizenship-rights-responsibilities', '/citizenship-who-we-are', '/citizenship-canadas-history', '/citizenship-how-canadians-govern-themselves', '/citizenship-federal-elections', '/citizenship-canadian-symbols', '/citizenship-justice-system', '/citizenship-modern-canada', '/exam1', '/exam2', '/exam3')
             """
             + exclude_sql,
             exclude_params,
@@ -1194,18 +1194,12 @@ def citizenship_571():
     return resp
 
 
-@app.route('/citizenship-categorized-tests')
-def citizenship_categorized_tests():
-    """هاب دسته‌بندی + Govern + Federal + Justice + Canadian Symbols (هر کدام ۵ سوال رایگان به‌جز Govern که ۳)."""
-    log_visitor('/citizenship-categorized-tests')
+@app.route('/citizenship-how-canadians-govern-themselves')
+def citizenship_how_canadians_govern_themselves():
+    """How Canadians Govern Themselves — سه سوال اول رایگان؛ از چهارم با اشتراک ۴۱۴."""
+    log_visitor('/citizenship-how-canadians-govern-themselves')
     all_govern = _load_govern_questions()
     n = len(all_govern)
-    all_fe = _load_federal_elections_questions()
-    n_fe = len(all_fe)
-    all_js = _load_justice_questions()
-    n_js = len(all_js)
-    all_sym = _load_canadian_symbols_questions()
-    n_sym = len(all_sym)
     today = _today()
     has_access = False
     if session.get('sub_414_expiry'):
@@ -1229,6 +1223,33 @@ def citizenship_categorized_tests():
         govern_questions = all_govern[:3]
         show_paywall_govern = True
         max_visible_govern = 4
+    return render_template(
+        'citizenship_how_canadians_govern_themselves.html',
+        govern_questions=govern_questions,
+        max_question_govern=n,
+        max_visible_govern=max_visible_govern,
+        show_paywall_govern=show_paywall_govern,
+        exam_section_views=_count_exam_section_visits(),
+    )
+
+
+@app.route('/citizenship-federal-elections')
+def citizenship_federal_elections():
+    """Federal Elections (Chapter 6) — پنج سوال اول رایگان؛ از ششم با اشتراک ۴۱۴."""
+    log_visitor('/citizenship-federal-elections')
+    all_fe = _load_federal_elections_questions()
+    n_fe = len(all_fe)
+    today = _today()
+    has_access = False
+    if session.get('sub_414_expiry'):
+        try:
+            exp = session['sub_414_expiry']
+            if isinstance(exp, str):
+                exp = date.fromisoformat(exp)
+            if exp >= today:
+                has_access = True
+        except Exception:
+            pass
     if has_access:
         fe_questions = all_fe
         show_paywall_fe = False
@@ -1241,18 +1262,33 @@ def citizenship_categorized_tests():
         fe_questions = all_fe[:5]
         show_paywall_fe = True
         max_visible_fe = 6
-    if has_access:
-        js_questions = all_js
-        show_paywall_js = False
-        max_visible_js = n_js
-    elif n_js <= 5:
-        js_questions = all_js
-        show_paywall_js = False
-        max_visible_js = n_js
-    else:
-        js_questions = all_js[:5]
-        show_paywall_js = True
-        max_visible_js = 6
+    return render_template(
+        'citizenship_federal_elections.html',
+        fe_questions=fe_questions,
+        max_question_fe=n_fe,
+        max_visible_fe=max_visible_fe,
+        show_paywall_fe=show_paywall_fe,
+        exam_section_views=_count_exam_section_visits(),
+    )
+
+
+@app.route('/citizenship-canadian-symbols')
+def citizenship_canadian_symbols():
+    """Canadian Symbols (Chapter 8) — پنج سوال اول رایگان؛ از ششم با اشتراک ۴۱۴."""
+    log_visitor('/citizenship-canadian-symbols')
+    all_sym = _load_canadian_symbols_questions()
+    n_sym = len(all_sym)
+    today = _today()
+    has_access = False
+    if session.get('sub_414_expiry'):
+        try:
+            exp = session['sub_414_expiry']
+            if isinstance(exp, str):
+                exp = date.fromisoformat(exp)
+            if exp >= today:
+                has_access = True
+        except Exception:
+            pass
     if has_access:
         sym_questions = all_sym
         show_paywall_sym = False
@@ -1265,25 +1301,21 @@ def citizenship_categorized_tests():
         sym_questions = all_sym[:5]
         show_paywall_sym = True
         max_visible_sym = 6
-    resp = app.make_response(render_template(
-        'citizenship_categorized_tests.html',
-        govern_questions=govern_questions,
-        max_question_govern=n,
-        max_visible_govern=max_visible_govern,
-        show_paywall_govern=show_paywall_govern,
-        fe_questions=fe_questions,
-        max_question_fe=n_fe,
-        max_visible_fe=max_visible_fe,
-        show_paywall_fe=show_paywall_fe,
-        js_questions=js_questions,
-        max_question_js=n_js,
-        max_visible_js=max_visible_js,
-        show_paywall_js=show_paywall_js,
+    return render_template(
+        'citizenship_canadian_symbols.html',
         sym_questions=sym_questions,
         max_question_sym=n_sym,
         max_visible_sym=max_visible_sym,
         show_paywall_sym=show_paywall_sym,
-    ))
+        exam_section_views=_count_exam_section_visits(),
+    )
+
+
+@app.route('/citizenship-categorized-tests')
+def citizenship_categorized_tests():
+    """URL قدیمی: هدایت به فهرست آزمون‌ها یا صفحات جدا (با هش در مرورگر)."""
+    log_visitor('/citizenship-categorized-tests')
+    resp = app.make_response(render_template('citizenship_categorized_tests.html'))
     resp.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
     resp.headers['Pragma'] = 'no-cache'
     resp.headers['Expires'] = '0'
@@ -1321,12 +1353,13 @@ def citizenship_introduction():
         max_question_intro=n,
         max_visible_intro=max_visible_intro,
         show_paywall=show_paywall,
+        exam_section_views=_count_exam_section_visits(),
     )
 
 
 @app.route('/citizenship-exams')
 def citizenship_exams():
-    """فهرست آزمون‌های نمونه (Exam1، Exam2، Exam3، …)."""
+    """فهرست آزمون‌های نمونه (Introduction، Rights، Justice، Exam1، Exam2، Exam3، …)."""
     log_visitor('/citizenship-exams')
     return render_template(
         'citizenship_exams.html',
@@ -1488,7 +1521,53 @@ def citizenship_rights_responsibilities():
         max_question_ch1=n,
         max_visible_ch1=max_visible_ch1,
         show_paywall=show_paywall,
+        exam_section_views=_count_exam_section_visits(),
     )
+
+
+@app.route('/citizenship-justice-system')
+def citizenship_justice_system():
+    """The Justice System (Chapter 7) — پنج سوال اول رایگان؛ بقیه با اشتراک ۴۱۴."""
+    log_visitor('/citizenship-justice-system')
+    all_questions = _load_justice_questions()
+    n = len(all_questions)
+    today = _today()
+    has_access = False
+    if session.get('sub_414_expiry'):
+        try:
+            exp = session['sub_414_expiry']
+            if isinstance(exp, str):
+                exp = date.fromisoformat(exp)
+            if exp >= today:
+                has_access = True
+        except Exception:
+            pass
+    if has_access:
+        questions = all_questions
+        show_paywall = False
+        max_visible_justice = n
+    elif n <= 5:
+        questions = all_questions
+        show_paywall = False
+        max_visible_justice = n
+    else:
+        questions = all_questions[:5]
+        show_paywall = True
+        max_visible_justice = 6
+    resp = app.make_response(
+        render_template(
+            'citizenship_justice_system.html',
+            questions=questions,
+            max_question_justice=n,
+            max_visible_justice=max_visible_justice,
+            show_paywall=show_paywall,
+            exam_section_views=_count_exam_section_visits(),
+        )
+    )
+    resp.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
+    resp.headers['Pragma'] = 'no-cache'
+    resp.headers['Expires'] = '0'
+    return resp
 
 
 @app.route('/citizenship-who-we-are')
@@ -1522,12 +1601,13 @@ def citizenship_who_we_are():
         max_question_ch2=n,
         max_visible_ch2=max_visible_ch2,
         show_paywall=show_paywall,
+        exam_section_views=_count_exam_section_visits(),
     )
 
 
 @app.route('/citizenship-canadas-history')
 def citizenship_canadas_history():
-    """صفحه Canada's History (Chapter 3) — سوالات ۱–۲ رایگان؛ از ۳ به بعد با اشتراک. No print / No select."""
+    """صفحه Canada's History (Chapter 3) — پنج سوال اول رایگان؛ از ششم با اشتراک ۴۱۴."""
     log_visitor('/citizenship-canadas-history')
     all_questions = _load_chapter3_questions()
     n = len(all_questions)
@@ -1546,16 +1626,21 @@ def citizenship_canadas_history():
         questions = all_questions
         show_paywall = False
         max_visible_ch3 = n
+    elif n <= 5:
+        questions = all_questions
+        show_paywall = False
+        max_visible_ch3 = n
     else:
-        questions = all_questions[:2] if n >= 2 else all_questions
+        questions = all_questions[:5]
         show_paywall = True
-        max_visible_ch3 = 3
+        max_visible_ch3 = 6
     return render_template(
         'citizenship_canadas_history.html',
         questions=questions,
         max_question_ch3=n,
         max_visible_ch3=max_visible_ch3,
         show_paywall=show_paywall,
+        exam_section_views=_count_exam_section_visits(),
     )
 
 
@@ -1590,6 +1675,7 @@ def citizenship_modern_canada():
         max_question_ch4=n,
         max_visible_ch4=max_visible_ch4,
         show_paywall=show_paywall,
+        exam_section_views=_count_exam_section_visits(),
     )
 
 
@@ -1664,6 +1750,15 @@ def sitemap():
         ('/citizenship-414', 'weekly', '0.9'),
         ('/citizenship-571', 'weekly', '0.9'),
         ('/citizenship-exams', 'weekly', '0.85'),
+        ('/citizenship-introduction', 'weekly', '0.85'),
+        ('/citizenship-rights-responsibilities', 'weekly', '0.85'),
+        ('/citizenship-who-we-are', 'weekly', '0.85'),
+        ('/citizenship-canadas-history', 'weekly', '0.85'),
+        ('/citizenship-how-canadians-govern-themselves', 'weekly', '0.85'),
+        ('/citizenship-federal-elections', 'weekly', '0.85'),
+        ('/citizenship-canadian-symbols', 'weekly', '0.85'),
+        ('/citizenship-justice-system', 'weekly', '0.85'),
+        ('/citizenship-modern-canada', 'weekly', '0.85'),
         ('/exam1', 'weekly', '0.85'),
         ('/exam2', 'weekly', '0.85'),
         ('/exam3', 'weekly', '0.85'),
@@ -2342,7 +2437,7 @@ def admin_api_visitor_dashboard():
                 row['access_time'] = row['access_time'].isoformat()
             row['device'] = _device_from_user_agent(row.get('user_agent') or '')
 
-        # آمار بخش آزمون نمونه: /citizenship-exams، /exam1، /exam2، /exam3 (همان حذف IP ادمین‌ها)
+        # آمار بخش آزمون نمونه: /citizenship-exams، …، /citizenship-federal-elections، /citizenship-canadian-symbols، /citizenship-justice-system، … (همان حذف IP ادمین‌ها)
         exam_section = None
         try:
             cur.execute(
@@ -2350,7 +2445,7 @@ def admin_api_visitor_dashboard():
                 SELECT COUNT(*) AS total_hits,
                        COUNT(DISTINCT ip_address) AS unique_ips
                 FROM visitor_log
-                WHERE page_visited IN ('/citizenship-exams', '/exam1', '/exam2', '/exam3')
+                WHERE page_visited IN ('/citizenship-exams', '/citizenship-introduction', '/citizenship-rights-responsibilities', '/citizenship-who-we-are', '/citizenship-canadas-history', '/citizenship-how-canadians-govern-themselves', '/citizenship-federal-elections', '/citizenship-canadian-symbols', '/citizenship-justice-system', '/citizenship-modern-canada', '/exam1', '/exam2', '/exam3')
                 """
                 + exclude_sql,
                 exclude_params,
@@ -2360,7 +2455,7 @@ def admin_api_visitor_dashboard():
                 """
                 SELECT page_visited, COUNT(*) AS cnt
                 FROM visitor_log
-                WHERE page_visited IN ('/citizenship-exams', '/exam1', '/exam2', '/exam3')
+                WHERE page_visited IN ('/citizenship-exams', '/citizenship-introduction', '/citizenship-rights-responsibilities', '/citizenship-who-we-are', '/citizenship-canadas-history', '/citizenship-how-canadians-govern-themselves', '/citizenship-federal-elections', '/citizenship-canadian-symbols', '/citizenship-justice-system', '/citizenship-modern-canada', '/exam1', '/exam2', '/exam3')
                 """
                 + exclude_sql
                 + """
@@ -2373,11 +2468,20 @@ def admin_api_visitor_dashboard():
                 """
                 SELECT DATE(access_time) AS day,
                        SUM(CASE WHEN page_visited = '/citizenship-exams' THEN 1 ELSE 0 END) AS hub_hits,
+                       SUM(CASE WHEN page_visited = '/citizenship-introduction' THEN 1 ELSE 0 END) AS intro_hits,
+                       SUM(CASE WHEN page_visited = '/citizenship-rights-responsibilities' THEN 1 ELSE 0 END) AS rights_hits,
+                       SUM(CASE WHEN page_visited = '/citizenship-who-we-are' THEN 1 ELSE 0 END) AS who_we_are_hits,
+                       SUM(CASE WHEN page_visited = '/citizenship-canadas-history' THEN 1 ELSE 0 END) AS canadas_history_hits,
+                       SUM(CASE WHEN page_visited = '/citizenship-how-canadians-govern-themselves' THEN 1 ELSE 0 END) AS govern_hits,
+                       SUM(CASE WHEN page_visited = '/citizenship-federal-elections' THEN 1 ELSE 0 END) AS federal_elections_hits,
+                       SUM(CASE WHEN page_visited = '/citizenship-canadian-symbols' THEN 1 ELSE 0 END) AS canadian_symbols_hits,
+                       SUM(CASE WHEN page_visited = '/citizenship-justice-system' THEN 1 ELSE 0 END) AS justice_hits,
+                       SUM(CASE WHEN page_visited = '/citizenship-modern-canada' THEN 1 ELSE 0 END) AS modern_canada_hits,
                        SUM(CASE WHEN page_visited = '/exam1' THEN 1 ELSE 0 END) AS exam1_hits,
                        SUM(CASE WHEN page_visited = '/exam2' THEN 1 ELSE 0 END) AS exam2_hits,
                        SUM(CASE WHEN page_visited = '/exam3' THEN 1 ELSE 0 END) AS exam3_hits
                 FROM visitor_log
-                WHERE page_visited IN ('/citizenship-exams', '/exam1', '/exam2', '/exam3')
+                WHERE page_visited IN ('/citizenship-exams', '/citizenship-introduction', '/citizenship-rights-responsibilities', '/citizenship-who-we-are', '/citizenship-canadas-history', '/citizenship-how-canadians-govern-themselves', '/citizenship-federal-elections', '/citizenship-canadian-symbols', '/citizenship-justice-system', '/citizenship-modern-canada', '/exam1', '/exam2', '/exam3')
                   AND access_time >= CURRENT_DATE - INTERVAL '30 days'
                 """
                 + exclude_sql
@@ -2394,6 +2498,15 @@ def admin_api_visitor_dashboard():
                 if d and hasattr(d, "isoformat"):
                     er["day"] = d.isoformat()
                 er["hub_hits"] = int(er["hub_hits"] or 0)
+                er["intro_hits"] = int(er["intro_hits"] or 0)
+                er["rights_hits"] = int(er["rights_hits"] or 0)
+                er["who_we_are_hits"] = int(er["who_we_are_hits"] or 0)
+                er["canadas_history_hits"] = int(er["canadas_history_hits"] or 0)
+                er["govern_hits"] = int(er["govern_hits"] or 0)
+                er["federal_elections_hits"] = int(er["federal_elections_hits"] or 0)
+                er["canadian_symbols_hits"] = int(er["canadian_symbols_hits"] or 0)
+                er["justice_hits"] = int(er["justice_hits"] or 0)
+                er["modern_canada_hits"] = int(er["modern_canada_hits"] or 0)
                 er["exam1_hits"] = int(er["exam1_hits"] or 0)
                 er["exam2_hits"] = int(er["exam2_hits"] or 0)
                 er["exam3_hits"] = int(er["exam3_hits"] or 0)
@@ -2401,6 +2514,15 @@ def admin_api_visitor_dashboard():
                 "total_hits": int(ex_tot["total_hits"] or 0) if ex_tot else 0,
                 "unique_ips": int(ex_tot["unique_ips"] or 0) if ex_tot else 0,
                 "hits_citizenship_exams": int(by_page.get("/citizenship-exams", 0)),
+                "hits_citizenship_introduction": int(by_page.get("/citizenship-introduction", 0)),
+                "hits_citizenship_rights": int(by_page.get("/citizenship-rights-responsibilities", 0)),
+                "hits_citizenship_who_we_are": int(by_page.get("/citizenship-who-we-are", 0)),
+                "hits_citizenship_canadas_history": int(by_page.get("/citizenship-canadas-history", 0)),
+                "hits_citizenship_how_canadians_govern": int(by_page.get("/citizenship-how-canadians-govern-themselves", 0)),
+                "hits_citizenship_federal_elections": int(by_page.get("/citizenship-federal-elections", 0)),
+                "hits_citizenship_canadian_symbols": int(by_page.get("/citizenship-canadian-symbols", 0)),
+                "hits_citizenship_justice": int(by_page.get("/citizenship-justice-system", 0)),
+                "hits_citizenship_modern_canada": int(by_page.get("/citizenship-modern-canada", 0)),
                 "hits_exam1": int(by_page.get("/exam1", 0)),
                 "hits_exam2": int(by_page.get("/exam2", 0)),
                 "hits_exam3": int(by_page.get("/exam3", 0)),

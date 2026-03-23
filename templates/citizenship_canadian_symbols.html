@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="{{ url_for('static', filename='images/logo.png') }}" type="image/png">
     <link rel="apple-touch-icon" href="{{ url_for('static', filename='images/logo.png') }}">
-    <meta property="og:image" content="{{ request.url_root.rstrip('/') }}{{ url_for('static', filename='images/citizenship-modern-canada-thumbnail.png') }}">
-    <title>Modern Canada | آزمون شهروندی – کانادای مدرن</title>
-    <meta name="description" content="سوالات فصل ۴ (Modern Canada) آزمون شهروندی کانادا با ترجمه فارسی.">
-    <link rel="canonical" href="{{ request.host_url.rstrip('/') }}/citizenship-modern-canada">
+    <meta property="og:image" content="{{ request.url_root.rstrip('/') }}{{ url_for('static', filename='images/citizenship-canadian-symbols-thumbnail.png') }}">
+    <title>Canadian Symbols | آزمون شهروندی – نمادهای کانادا</title>
+    <meta name="description" content="سوالات فصل Canadian Symbols (Chapter 8) آزمون شهروندی کانادا با ترجمه فارسی؛ پنج سوال اول رایگان.">
+    <link rel="canonical" href="{{ request.host_url.rstrip('/') }}/citizenship-canadian-symbols">
     {% include 'pwa_meta.html' %}
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -74,14 +74,12 @@
         .go-to-q-wrap .go-to-q-btn { padding: 8px 14px; border-radius: 8px; border: 1px solid var(--accent); background: var(--accent); color: #fff; font-weight: 600; font-size: 0.9rem; cursor: pointer; }
         .questions-one-by-one .q-card { display: none; }
         .questions-one-by-one .q-card.current { display: block; }
-        .q-nav-bar-ch4 { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px; margin-bottom: 20px; padding: 14px 18px; background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.06); }
-        .q-nav-bar-ch4 .q-nav-current { font-weight: 700; color: var(--accent); font-size: 1.05em; }
-        .q-nav-bar-ch4 .q-nav-btn { padding: 10px 20px; border-radius: 10px; border: 2px solid var(--accent); background: var(--accent); color: #fff; font-weight: 600; cursor: pointer; transition: opacity 0.2s; }
-        .q-nav-bar-ch4 .q-nav-btn:hover:not(:disabled) { opacity: 0.9; }
-        .q-nav-bar-ch4 .q-nav-btn:disabled { opacity: 0.5; cursor: not-allowed; }
-        .q-nav-bar-ch4 .q-nav-btn.btn-prev { background: var(--card-bg); color: var(--accent); }
-        .page-header { background: var(--header-bg); color: var(--header-text); padding: 28px 24px; border-radius: 16px; margin-bottom: 24px; text-align: center; box-shadow: 0 8px 24px rgba(30,60,114,0.25); }
-        .page-header h1 { font-size: 1.6em; margin-bottom: 8px; }
+        .q-nav-bar-sym { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px; margin-bottom: 20px; padding: 14px 18px; background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.06); }
+        .q-nav-bar-sym .q-nav-current { font-weight: 700; color: var(--accent); font-size: 1.05em; }
+        .q-nav-bar-sym .q-nav-btn { padding: 10px 20px; border-radius: 10px; border: 2px solid var(--accent); background: var(--accent); color: #fff; font-weight: 600; cursor: pointer; transition: opacity 0.2s; }
+        .q-nav-bar-sym .q-nav-btn:hover:not(:disabled) { opacity: 0.9; }
+        .q-nav-bar-sym .q-nav-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+        .q-nav-bar-sym .q-nav-btn.btn-prev { background: var(--card-bg); color: var(--accent); }
         .back-bar { margin-bottom: 12px; text-align: right; }
         .back-bar.ch1-top-nav { display: flex; flex-wrap: wrap; gap: 10px; justify-content: space-between; align-items: center; text-align: initial; }
         .back-btn { display: inline-block; padding: 10px 20px; background: var(--accent); color: #fff; text-decoration: none; border-radius: 10px; font-weight: 600; }
@@ -93,6 +91,7 @@
             .back-bar.ch1-top-nav { flex-direction: column; align-items: stretch; text-align: center; }
             .back-bar.ch1-top-nav .back-btn { width: 100%; text-align: center; box-sizing: border-box; }
         }
+        .section-lead { text-align: center; color: var(--text-muted); font-size: 0.95em; margin: 0 0 18px; }
         .q-card { background: var(--card-bg); border-radius: 14px; padding: 22px 24px; margin-bottom: 20px; box-shadow: 0 4px 16px rgba(0,0,0,0.06); border: 1px solid var(--border); }
         .q-num { font-weight: 800; color: var(--accent); font-size: 1em; margin-bottom: 12px; }
         .q-text-fa { font-size: 1.15em; font-weight: 700; color: var(--accent); margin-bottom: 10px; text-align: right; direction: rtl; }
@@ -111,6 +110,8 @@
         body.theme-dark .lang-mode-btn[aria-pressed="true"] { border-color: #7cb3f5; box-shadow: 0 0 0 2px rgba(124,179,245,0.35); }
         .q-num-badge { display: inline-flex; align-items: center; justify-content: center; min-width: 2rem; height: 1.75rem; padding: 0 0.5rem; background: linear-gradient(135deg, #1e3c72 0%, #2c5282 100%); color: #fff; border-radius: 8px; font-weight: 700; font-size: 0.9em; margin-right: 0.6rem; }
         .block-fa .q-num-badge { margin-right: 0; margin-left: 0.6rem; }
+        body.theme-dark .q-options-list li.option-correct { background: #1a3d1c; border-color: #28a745; color: #b8e0ba; }
+        body.theme-dark .q-options-list li.option-wrong { background: #3d1a1a; border-color: #dc3545; color: #f8b4b8; }
     </style>
 </head>
 <body>
@@ -123,7 +124,7 @@
       document.addEventListener('contextmenu',function(e){ e.preventDefault(); return false; });
     })();
     </script>
-    <style media="print">.wrap,.q-card,.q-nav-bar-ch4,.tool-bar,.page-header,.back-bar{ display:none !important; } body::before{ content:"Printing not allowed."; display:block !important; padding:2em; text-align:center; font-size:18px; }</style>
+    <style media="print">.wrap,.q-card,.q-nav-bar-sym,.tool-bar,.back-bar{ display:none !important; } body::before{ content:"Printing not allowed."; display:block !important; padding:2em; text-align:center; font-size:18px; }</style>
     <div class="wrap">
         <div class="back-bar ch1-top-nav">
             <a href="{{ url_for('citizenship_exams') }}" class="back-btn">← همهٔ آزمون‌ها / All exams</a>
@@ -132,29 +133,30 @@
         {% if exam_section_views is not none %}
         <p class="exam-visit-count-ch1" role="status">بازدید ثبت‌شده از بخش آزمون‌های نمونه: <strong>{{ exam_section_views }}</strong></p>
         {% endif %}
+        <p class="section-lead">نمادهای کانادا — Chapter 8؛ پنج سوال اول رایگان.</p>
         <div class="tool-bar">
             <div class="group theme-toggle-wrap">
-                <button type="button" class="lang-mode-btn" id="langModeEn" aria-pressed="true">English + فارسی</button>
-                <button type="button" class="lang-mode-btn" id="langModeFr" aria-pressed="false">Français + فارسی</button>
+                <button type="button" class="lang-mode-btn" id="langModeEnSym" aria-pressed="true">English + فارسی</button>
+                <button type="button" class="lang-mode-btn" id="langModeFrSym" aria-pressed="false">Français + فارسی</button>
             </div>
             <div class="group go-to-q-wrap">
-                <label for="goToQuestionCh4" class="theme-label" style="margin: 0;">سوال</label>
-                <input type="number" id="goToQuestionCh4" min="1" max="{{ max_question_ch4 }}" placeholder="1–{{ max_question_ch4 }}" aria-label="Question number">
-                <button type="button" class="go-to-q-btn" id="goToQuestionBtnCh4">برو</button>
+                <label for="goToQuestionSym" class="theme-label" style="margin: 0;">سوال</label>
+                <input type="number" id="goToQuestionSym" min="1" max="{{ max_question_sym }}" placeholder="1–{{ max_question_sym }}" aria-label="Question number">
+                <button type="button" class="go-to-q-btn" id="goToQuestionBtnSym">برو</button>
             </div>
             <div class="group theme-toggle-wrap">
                 <span class="theme-label">Theme:</span>
-                <button type="button" class="theme-btn theme-light" id="themeLight" title="روشن / Light" aria-pressed="true">☀️</button>
-                <button type="button" class="theme-btn theme-dark" id="themeDark" title="تاریک / Dark" aria-pressed="false">🌙</button>
+                <button type="button" class="theme-btn theme-light" id="themeLightSym" title="روشن / Light" aria-pressed="true">☀️</button>
+                <button type="button" class="theme-btn theme-dark" id="themeDarkSym" title="تاریک / Dark" aria-pressed="false">🌙</button>
             </div>
         </div>
-        <div id="q-nav-bar-ch4" class="q-nav-bar-ch4" data-max-question="{{ max_visible_ch4 }}">
-            <button type="button" class="q-nav-btn btn-prev" id="qPrevCh4" aria-label="سوال قبلی">← سوال قبلی</button>
-            <span class="q-nav-current">Question <span id="currentQNumCh4">1</span> of {{ max_question_ch4 }}</span>
-            <button type="button" class="q-nav-btn" id="qNextCh4" aria-label="سوال بعدی">سوال بعدی →</button>
+        <div id="q-nav-bar-sym" class="q-nav-bar-sym" data-max-question="{{ max_visible_sym }}">
+            <button type="button" class="q-nav-btn btn-prev" id="qPrevSym" aria-label="سوال قبلی">← سوال قبلی</button>
+            <span class="q-nav-current">Question <span id="currentQNumSym">1</span> of {{ max_question_sym }}</span>
+            <button type="button" class="q-nav-btn" id="qNextSym" aria-label="سوال بعدی">سوال بعدی →</button>
         </div>
-        <div id="questions-container-ch4" class="questions-one-by-one">
-        {% for q in questions %}
+        <div id="questions-container-sym" class="questions-one-by-one">
+        {% for q in sym_questions %}
         <div class="q-card" id="q{{ loop.index }}">
             <div class="q-num">سوال {{ loop.index }} / Question {{ loop.index }}</div>
             <div class="q-text-fa" style="margin-bottom: 10px;">
@@ -174,7 +176,7 @@
                 <div class="lang-block-fr" style="display: none;">
                     <ul class="q-options-list">
                         {% for opt in (q.options_fr or q.options_en) %}
-                        <li class="q-option-clickable" data-option-index="{{ loop.index0 }}" role="button" tabindex="0"><span class="q-option-letter">{{ ['A','B','C','D'][loop.index0] }}.</span> {{ opt|e }}</li>
+                        <li class="q-option-clickable" data-option-index="{{ loop.index0 }}" role="button" tabindex="0"><span class="q-option-letter">{{ ['A','B','C','D'][loop.index0] if loop.index0 < 4 else loop.index0 + 1 }}.</span> {{ opt|e }}</li>
                         {% endfor %}
                     </ul>
                 </div>
@@ -182,7 +184,7 @@
                     <p class="q-options-fa-label" style="font-size: 0.9em; font-weight: 600; color: var(--accent); margin-bottom: 8px;">گزینه‌ها به فارسی</p>
                     <ul class="q-options-list" style="direction: rtl; text-align: right;">
                         {% for opt in (q.options_fa or q.options_en) %}
-                        <li class="q-option-clickable" data-option-index="{{ loop.index0 }}" style="direction: rtl; text-align: right;" role="button" tabindex="0"><span class="q-option-letter">{{ ['الف','ب','ج','د'][loop.index0] }}.</span> {{ opt|e }}</li>
+                        <li class="q-option-clickable" data-option-index="{{ loop.index0 }}" style="direction: rtl; text-align: right;" role="button" tabindex="0"><span class="q-option-letter">{{ ['الف','ب','ج','د'][loop.index0] if loop.index0 < 4 else loop.index0 + 1 }}.</span> {{ opt|e }}</li>
                         {% endfor %}
                     </ul>
                 </div>
@@ -205,20 +207,21 @@
             {% endif %}
         </div>
         {% endfor %}
-        {% if show_paywall %}
-        <div class="q-card paywall-as-q3" id="q3">
-            <div class="paywall-ch4" style="padding: 0; margin: 0; border: none; max-width: none;">
-                <h2 style="margin-bottom: 12px; color: var(--accent);">دسترسی به سوالات ۳ تا {{ max_question_ch4 }}</h2>
-                <p style="margin-bottom: 16px;">سوالات ۱ تا ۲ رایگان است. برای مشاهده همهٔ {{ max_question_ch4 }} سوال Modern Canada، همان اشتراک (کد کاربری و رمز) مربوط به ۴۱۴ سوال کافی است.</p>
+        {% if show_paywall_sym %}
+        <div class="q-card paywall-as-q6" id="q6">
+            <div class="paywall-sym" style="padding: 0; margin: 0; border: none; max-width: none;">
+                <h2 style="margin-bottom: 12px; color: var(--accent);">دسترسی به سوالات ۶ تا {{ max_question_sym }}</h2>
+                <p style="margin-bottom: 16px;">سوالات ۱ تا ۵ رایگان است. برای مشاهدهٔ همهٔ {{ max_question_sym }} سوال Canadian Symbols، همان اشتراک (کد کاربری و رمز) مربوط به ۴۱۴ سوال کافی است.</p>
                 <p style="margin-bottom: 14px;"><strong>ورود (در صورت داشتن کد و رمز):</strong></p>
-                <input type="text" id="paywallCh4Mobile" placeholder="کد کاربری (شماره موبایل)" style="width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid var(--border); border-radius: 10px; background: var(--card-bg); color: var(--text);">
-                <input type="password" id="paywallCh4Password" placeholder="کلمه عبور" style="width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid var(--border); border-radius: 10px; background: var(--card-bg); color: var(--text);">
-                <p id="paywallCh4Error" class="subscription-error" style="display: none; color: #c00; margin-bottom: 8px;"></p>
-                <button type="button" id="paywallCh4LoginBtn" style="padding: 12px 24px; background: var(--accent); color: #fff; border: none; border-radius: 10px; cursor: pointer; font-weight: 600;">ورود و مشاهده همه سوالات</button>
+                <input type="text" id="paywallSymMobile" placeholder="کد کاربری (شماره موبایل)" style="width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid var(--border); border-radius: 10px; background: var(--card-bg); color: var(--text);">
+                <input type="password" id="paywallSymPassword" placeholder="کلمه عبور" style="width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid var(--border); border-radius: 10px; background: var(--card-bg); color: var(--text);">
+                <p id="paywallSymError" class="subscription-error" style="display: none; color: #c00; margin-bottom: 8px;"></p>
+                <button type="button" id="paywallSymLoginBtn" style="padding: 12px 24px; background: var(--accent); color: #fff; border: none; border-radius: 10px; cursor: pointer; font-weight: 600;">ورود و مشاهده همه سوالات</button>
             </div>
         </div>
         {% endif %}
         </div>
+
         <div class="back-bar" style="margin-top: 24px;">
             <a href="/" class="back-btn">← بازگشت به صفحه اصلی / Back to Home</a>
         </div>
@@ -226,11 +229,11 @@
     <script>
         (function() {
             var themeKey = 'citizenship571_theme';
-            var langModeKey = 'citizenship_ch4_lang_mode';
-            var themeLight = document.getElementById('themeLight');
-            var themeDark = document.getElementById('themeDark');
-            var langModeEn = document.getElementById('langModeEn');
-            var langModeFr = document.getElementById('langModeFr');
+            var langModeKey = 'citizenship_symbols_lang_mode';
+            var themeLight = document.getElementById('themeLightSym');
+            var themeDark = document.getElementById('themeDarkSym');
+            var langModeEn = document.getElementById('langModeEnSym');
+            var langModeFr = document.getElementById('langModeFrSym');
             function applyTheme(val) {
                 if (val === 'dark') { document.body.classList.add('theme-dark'); if (themeLight) themeLight.setAttribute('aria-pressed', 'false'); if (themeDark) themeDark.setAttribute('aria-pressed', 'true'); }
                 else { document.body.classList.remove('theme-dark'); if (themeLight) themeLight.setAttribute('aria-pressed', 'true'); if (themeDark) themeDark.setAttribute('aria-pressed', 'false'); }
@@ -251,15 +254,15 @@
             if (langModeEn) langModeEn.addEventListener('click', function() { localStorage.setItem(langModeKey, 'en'); applyLangMode('en'); });
             if (langModeFr) langModeFr.addEventListener('click', function() { localStorage.setItem(langModeKey, 'fr'); applyLangMode('fr'); });
 
-            var goInput = document.getElementById('goToQuestionCh4');
-            var goBtn = document.getElementById('goToQuestionBtnCh4');
-            var container = document.getElementById('questions-container-ch4');
-            var navBar = document.getElementById('q-nav-bar-ch4');
-            var currentQNumEl = document.getElementById('currentQNumCh4');
-            var qPrevBtn = document.getElementById('qPrevCh4');
-            var qNextBtn = document.getElementById('qNextCh4');
+            var goInput = document.getElementById('goToQuestionSym');
+            var goBtn = document.getElementById('goToQuestionBtnSym');
+            var container = document.getElementById('questions-container-sym');
+            var navBar = document.getElementById('q-nav-bar-sym');
+            var currentQNumEl = document.getElementById('currentQNumSym');
+            var qPrevBtn = document.getElementById('qPrevSym');
+            var qNextBtn = document.getElementById('qNextSym');
             var current = 1;
-            var maxQ = {{ max_question_ch4 }};
+            var maxQ = {{ max_question_sym }};
             if (navBar && navBar.getAttribute('data-max-question')) maxQ = parseInt(navBar.getAttribute('data-max-question'), 10) || maxQ;
 
             function showQ(n) {
@@ -288,14 +291,14 @@
             if (goBtn) goBtn.addEventListener('click', goToQ);
             if (goInput) goInput.addEventListener('keydown', function(e) { if (e.key === 'Enter') { e.preventDefault(); goToQ(); } });
         })();
-        {% if show_paywall %}
+        {% if show_paywall_sym %}
         (function() {
-            var btn = document.getElementById('paywallCh4LoginBtn');
+            var btn = document.getElementById('paywallSymLoginBtn');
             if (!btn) return;
             btn.addEventListener('click', function() {
-                var mobile = (document.getElementById('paywallCh4Mobile').value || '').trim();
-                var password = document.getElementById('paywallCh4Password').value || '';
-                var errEl = document.getElementById('paywallCh4Error');
+                var mobile = (document.getElementById('paywallSymMobile').value || '').trim();
+                var password = document.getElementById('paywallSymPassword').value || '';
+                var errEl = document.getElementById('paywallSymError');
                 errEl.style.display = 'none';
                 errEl.textContent = '';
                 if (!mobile || !password) {
@@ -316,7 +319,7 @@
         })();
         {% endif %}
         (function() {
-            document.querySelectorAll('#questions-container-ch4 .q-options-mcq').forEach(function(container) {
+            document.querySelectorAll('#questions-container-sym .q-options-mcq').forEach(function(container) {
                 var correctIdx = parseInt(container.getAttribute('data-correct'), 10);
                 if (correctIdx < 0) return;
                 var allLists = container.querySelectorAll('.q-options-list ul');
@@ -354,4 +357,3 @@
     </script>
 </body>
 </html>
-

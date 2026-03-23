@@ -334,11 +334,11 @@
             <p style="font-size: 0.85rem; color: #666; margin-bottom: 12px;">بر اساس لاگ IP و زمان ورود. روی «جزئیات» هر IP بزنید تا روزهای استفاده و ساعات کارکرد تقریبی را ببینید.</p>
             <div id="visitorDashboardMsg"></div>
             <div id="visitorExamSectionWrap" style="display: none; margin-bottom: 20px; padding: 14px 16px; background: #f0f9ff; border: 1px solid #bae6fd; border-radius: 10px;">
-                <h3 style="font-size: 1rem; margin: 0 0 10px; color: #0369a1;">آزمون‌های نمونه <span style="font-weight: 600; color: #0c4a6e;">(/citizenship-exams + /exam1 + /exam2)</span></h3>
+                <h3 style="font-size: 1rem; margin: 0 0 10px; color: #0369a1;">آزمون‌های نمونه <span style="font-weight: 600; color: #0c4a6e;">(فهرست + Introduction + Rights + Who We Are + Canada's History + Govern + Federal Elections + Canadian Symbols + Justice + Modern Canada + Exam1–3)</span></h3>
                 <p id="visitorExamSectionSummary" style="font-size: 0.9rem; margin-bottom: 12px; line-height: 1.55; color: #334155;"></p>
                 <h4 style="font-size: 0.95rem; margin: 0 0 8px; color: #1e3c72;">بازدید این بخش به تفکیک روز (۳۰ روز اخیر)</h4>
                 <table id="visitorExamSectionDaysTable" style="font-size: 0.88rem;">
-                    <thead><tr><th>تاریخ</th><th>فهرست آزمون‌ها</th><th>Exam1</th><th>Exam2</th><th>Exam3</th><th>جمع روز</th></tr></thead>
+                    <thead><tr><th>تاریخ</th><th>فهرست آزمون‌ها</th><th>Introduction</th><th>Rights</th><th>Who We Are</th><th>Canada's History</th><th>Govern</th><th>Federal Elections</th><th>Canadian Symbols</th><th>Justice</th><th>Modern Canada</th><th>Exam1</th><th>Exam2</th><th>Exam3</th><th>جمع روز</th></tr></thead>
                     <tbody></tbody>
                 </table>
             </div>
@@ -848,6 +848,15 @@
                                 '<strong>جمع بازدید ثبت‌شده:</strong> ' + (ex.total_hits != null ? ex.total_hits : '—') +
                                 ' &nbsp;|&nbsp; <strong>IP یکتا (تقریبی):</strong> ' + (ex.unique_ips != null ? ex.unique_ips : '—') +
                                 '<br><strong>فقط /citizenship-exams:</strong> ' + (ex.hits_citizenship_exams != null ? ex.hits_citizenship_exams : 0) +
+                                ' &nbsp;|&nbsp; <strong>فقط /citizenship-introduction:</strong> ' + (ex.hits_citizenship_introduction != null ? ex.hits_citizenship_introduction : 0) +
+                                ' &nbsp;|&nbsp; <strong>فقط /citizenship-rights-responsibilities:</strong> ' + (ex.hits_citizenship_rights != null ? ex.hits_citizenship_rights : 0) +
+                                ' &nbsp;|&nbsp; <strong>فقط /citizenship-who-we-are:</strong> ' + (ex.hits_citizenship_who_we_are != null ? ex.hits_citizenship_who_we_are : 0) +
+                                ' &nbsp;|&nbsp; <strong>فقط /citizenship-canadas-history:</strong> ' + (ex.hits_citizenship_canadas_history != null ? ex.hits_citizenship_canadas_history : 0) +
+                                ' &nbsp;|&nbsp; <strong>فقط /citizenship-how-canadians-govern-themselves:</strong> ' + (ex.hits_citizenship_how_canadians_govern != null ? ex.hits_citizenship_how_canadians_govern : 0) +
+                                ' &nbsp;|&nbsp; <strong>فقط /citizenship-federal-elections:</strong> ' + (ex.hits_citizenship_federal_elections != null ? ex.hits_citizenship_federal_elections : 0) +
+                                ' &nbsp;|&nbsp; <strong>فقط /citizenship-canadian-symbols:</strong> ' + (ex.hits_citizenship_canadian_symbols != null ? ex.hits_citizenship_canadian_symbols : 0) +
+                                ' &nbsp;|&nbsp; <strong>فقط /citizenship-justice-system:</strong> ' + (ex.hits_citizenship_justice != null ? ex.hits_citizenship_justice : 0) +
+                                ' &nbsp;|&nbsp; <strong>فقط /citizenship-modern-canada:</strong> ' + (ex.hits_citizenship_modern_canada != null ? ex.hits_citizenship_modern_canada : 0) +
                                 ' &nbsp;|&nbsp; <strong>فقط /exam1:</strong> ' + (ex.hits_exam1 != null ? ex.hits_exam1 : 0) +
                                 ' &nbsp;|&nbsp; <strong>فقط /exam2:</strong> ' + (ex.hits_exam2 != null ? ex.hits_exam2 : 0) +
                                 ' &nbsp;|&nbsp; <strong>فقط /exam3:</strong> ' + (ex.hits_exam3 != null ? ex.hits_exam3 : 0) +
@@ -857,12 +866,21 @@
                             examDaysTbody.innerHTML = '';
                             (ex.per_day || []).forEach(function(row) {
                                 var h = row.hub_hits != null ? row.hub_hits : 0;
+                                var intro = row.intro_hits != null ? row.intro_hits : 0;
+                                var rights = row.rights_hits != null ? row.rights_hits : 0;
+                                var who = row.who_we_are_hits != null ? row.who_we_are_hits : 0;
+                                var hist = row.canadas_history_hits != null ? row.canadas_history_hits : 0;
+                                var gov = row.govern_hits != null ? row.govern_hits : 0;
+                                var fed = row.federal_elections_hits != null ? row.federal_elections_hits : 0;
+                                var sym = row.canadian_symbols_hits != null ? row.canadian_symbols_hits : 0;
+                                var justice = row.justice_hits != null ? row.justice_hits : 0;
+                                var modern = row.modern_canada_hits != null ? row.modern_canada_hits : 0;
                                 var e1 = row.exam1_hits != null ? row.exam1_hits : 0;
                                 var e2 = row.exam2_hits != null ? row.exam2_hits : 0;
                                 var e3 = row.exam3_hits != null ? row.exam3_hits : 0;
-                                var sum = h + e1 + e2 + e3;
+                                var sum = h + intro + rights + who + hist + gov + fed + sym + justice + modern + e1 + e2 + e3;
                                 var tr = document.createElement('tr');
-                                tr.innerHTML = '<td>' + (row.day || '').replace(/</g, '&lt;') + '</td><td>' + h + '</td><td>' + e1 + '</td><td>' + e2 + '</td><td>' + e3 + '</td><td>' + sum + '</td>';
+                                tr.innerHTML = '<td>' + (row.day || '').replace(/</g, '&lt;') + '</td><td>' + h + '</td><td>' + intro + '</td><td>' + rights + '</td><td>' + who + '</td><td>' + hist + '</td><td>' + gov + '</td><td>' + fed + '</td><td>' + sym + '</td><td>' + justice + '</td><td>' + modern + '</td><td>' + e1 + '</td><td>' + e2 + '</td><td>' + e3 + '</td><td>' + sum + '</td>';
                                 examDaysTbody.appendChild(tr);
                             });
                         }

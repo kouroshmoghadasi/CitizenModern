@@ -67,6 +67,13 @@ body {
             padding: 20px;
             line-height: 1.7;
             color: var(--text);
+            -webkit-user-select: none;
+            user-select: none;
+            -webkit-touch-callout: none;
+        }
+        input, textarea {
+            -webkit-user-select: text;
+            user-select: text;
         }
         .wrap { max-width: 900px; margin: 0 auto; }
         .tool-bar {
@@ -280,11 +287,26 @@ body {
     <script>try{var t=localStorage.getItem('citizenship414_theme');if(t==='dark')document.body.classList.add('theme-dark');}catch(e){}</script>
     <script>
     (function(){
-      function block(e){ if(e.ctrlKey||e.metaKey){ if(e.key==='a'||e.key==='A'||e.key==='p'||e.key==='P'){ e.preventDefault(); e.stopPropagation(); return false; } } }
-      document.addEventListener('keydown',block,true);
-      document.addEventListener('keypress',block,true);
-      window.addEventListener('keydown',block,true);
-      window.addEventListener('keypress',block,true);
+      function block(e){
+        if (e.ctrlKey || e.metaKey) {
+          var k = e.key || '';
+          if (k === 'a' || k === 'A' || k === 'p' || k === 'P' || k === 'c' || k === 'C') {
+            e.preventDefault();
+            e.stopPropagation();
+            return false;
+          }
+        }
+      }
+      document.addEventListener('keydown', block, true);
+      document.addEventListener('keypress', block, true);
+      window.addEventListener('keydown', block, true);
+      window.addEventListener('keypress', block, true);
+      document.addEventListener('contextmenu', function(e){ e.preventDefault(); return false; });
+      document.addEventListener('selectstart', function(e){
+        var t = e.target;
+        if (t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA')) return;
+        e.preventDefault();
+      }, true);
     })();
     </script>
     <style media="print">.wrap,.q-card,.q-nav-bar-414,.tool-bar,.page-header,.back-bar{ display:none !important; } body::before{ content:"Printing not allowed."; display:block !important; padding:2em; text-align:center; font-size:18px; }</style>
