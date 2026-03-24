@@ -8483,21 +8483,27 @@
     "q": "When did \"Canada\" become the official name of the country?",
     "q_fa": "از چه زمانی \"کانادا\" نام رسمی این کشور شد؟",
     "options": [
-      "1758",
       "1799",
       "1773",
-      "1791"
+      "1791",
+      "1867"
     ],
-    "correct": 0,
+    "correct": 3,
     "page": 0,
     "section": "571 Question For Citizenship Test",
     "book_text": "",
     "q_fr": "Quand « Canada » est-il devenu le nom officiel du pays ?",
     "options_fr": [
-      "1758",
       "1799",
       "1773",
-      "1791"
+      "1791",
+      "1867"
+    ],
+    "options_fa": [
+      "۱۷۹۹",
+      "۱۷۷۳",
+      "۱۷۹۱",
+      "۱۸۶۷"
     ],
     "expl_fr": ""
   },

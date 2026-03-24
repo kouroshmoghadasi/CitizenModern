@@ -115,15 +115,7 @@
 </head>
 <body>
     <script>try{var t=localStorage.getItem('citizenship571_theme');if(t==='dark')document.body.classList.add('theme-dark');}catch(e){}</script>
-    <script>
-    (function(){
-      function block(e){ if(e.ctrlKey||e.metaKey){ var k=e.key||''; if(k==='a'||k==='A'||k==='p'||k==='P'||k==='c'||k==='C'){ e.preventDefault(); e.stopPropagation(); return false; } } }
-      document.addEventListener('keydown',block,true);
-      document.addEventListener('keypress',block,true);
-      document.addEventListener('contextmenu',function(e){ e.preventDefault(); return false; });
-    })();
-    </script>
-    <style media="print">.wrap,.q-card,.q-nav-bar-ch2,.tool-bar,.page-header,.back-bar{ display:none !important; } body::before{ content:"Printing not allowed."; display:block !important; padding:2em; text-align:center; font-size:18px; }</style>
+    {% include 'content_protection.html' %}
     <div class="wrap">
         <div class="back-bar ch1-top-nav">
             <a href="{{ url_for('citizenship_exams') }}" class="back-btn">← همهٔ آزمون‌ها / All exams</a>

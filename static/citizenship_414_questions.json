@@ -5088,18 +5088,18 @@
   {
     "num": 317,
     "q_en": "Q: When did \"Canada\" become the official name of the country?",
-    "a_en": "A: C. 1791",
+    "a_en": "A: D. 1867",
     "options_en": ["1799", "1773", "1791", "1867"],
     "options_fa": ["۱۷۹۹", "۱۷۷۳", "۱۷۹۱", "۱۸۶۷"],
     "options_fr": ["1799", "1773", "1791", "1867"],
-    "correct": 2,
-    "expl_en": "The Constitutional Act of 1791 divided the Province of Quebec into Upper Canada (later Ontario) and Lower Canada (later Quebec). The name Canada also became official at this time and has been used ever since.",
+    "correct": 3,
+    "expl_en": "The British North America Act came into force on July 1, 1867, creating the Dominion of Canada from Ontario, Quebec, Nova Scotia and New Brunswick. From then on, Canada was the official name of the new federal country.",
     "q_fa": "س: نام «کانادا» چه زمانی به طور رسمی نام کشور شد؟",
-    "a_fa": "ج: ج. ۱۷۹۱",
-    "expl_fa": "قانون اساسی ۱۷۹۱ کبک را به کانادای علیا و سفلی تقسیم کرد؛ نام کانادا از آن زمان رسمی شد.",
+    "a_fa": "ج: د. ۱۸۶۷",
+    "expl_fa": "قانون آمریکای شمالی بریتانیا از ۱ ژوئیه ۱۸۶۷ اجرا شد و «سلطنت کانادا» را پایه‌گذاری کرد؛ از آن زمان نام کانادا برای کشور فدرال به‌صورت رسمی به‌کار رفت.",
     "q_fr": "Q : Quand « Canada » est-il devenu le nom officiel du pays ?",
-    "a_fr": "R : Vers 1791",
-    "expl_fr": "L'Acte constitutionnel de 1791 divise la province de Québec en Haut-Canada (plus tard l'Ontario) et Bas-Canada (plus tard le Québec). Le nom Canada est également devenu officiel à cette époque et est utilisé depuis."
+    "a_fr": "R : D. 1867",
+    "expl_fr": "L'Acte de l'Amérique du Nord britannique entre en vigueur le 1er juillet 1867 et crée le Dominion du Canada ; le nom Canada devient alors le nom officiel du nouvel État fédéral."
   },
   {
     "num": 318,

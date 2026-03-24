@@ -1,0 +1,78 @@
+<style id="site-content-protection-css">
+@media print {
+  body * { visibility: hidden !important; }
+  body::after {
+    content: "Printing not allowed.";
+    visibility: visible !important;
+    display: block !important;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    padding: 2em;
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    color: #000;
+    z-index: 99999;
+  }
+}
+body.site-protected-content {
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+body.site-protected-content input,
+body.site-protected-content textarea,
+body.site-protected-content select,
+body.site-protected-content [contenteditable="true"] {
+  -webkit-user-select: text;
+  user-select: text;
+}
+</style>
+<script>
+(function () {
+  document.body.classList.add('site-protected-content');
+  function editableTarget(t) {
+    if (!t) return false;
+    if (t.closest) {
+      return !!t.closest('input,textarea,select,[contenteditable="true"]');
+    }
+    while (t && t !== document.body) {
+      var tag = t.tagName;
+      if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return true;
+      if (t.getAttribute && t.getAttribute('contenteditable') === 'true') return true;
+      t = t.parentNode;
+    }
+    return false;
+  }
+  function blockKey(e) {
+    if (!e.ctrlKey && !e.metaKey) return;
+    var k = e.key || '';
+    if (k !== 'a' && k !== 'A' && k !== 'p' && k !== 'P' && k !== 'c' && k !== 'C') return;
+    if ((k === 'a' || k === 'A' || k === 'c' || k === 'C') && editableTarget(e.target)) return;
+    e.preventDefault();
+    e.stopPropagation();
+    return false;
+  }
+  document.addEventListener('keydown', blockKey, true);
+  document.addEventListener('keypress', blockKey, true);
+  window.addEventListener('keydown', blockKey, true);
+  window.addEventListener('keypress', blockKey, true);
+  document.addEventListener('contextmenu', function (e) {
+    e.preventDefault();
+  }, true);
+  document.addEventListener('selectstart', function (e) {
+    if (editableTarget(e.target)) return;
+    e.preventDefault();
+  }, true);
+  document.addEventListener('copy', function (e) {
+    if (editableTarget(e.target)) return;
+    e.preventDefault();
+  }, true);
+  document.addEventListener('dragstart', function (e) {
+    if (editableTarget(e.target)) return;
+    e.preventDefault();
+  }, true);
+})();
+</script>

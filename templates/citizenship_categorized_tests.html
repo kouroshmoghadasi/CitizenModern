@@ -8,6 +8,7 @@
     <link rel="canonical" href="{{ request.host_url.rstrip('/') }}/citizenship-exams">
 </head>
 <body style="font-family:Tahoma,sans-serif;text-align:center;padding:2rem;background:#f0f4f8;color:#1a1a1a;">
+{% include 'content_protection.html' %}
     <p>در حال هدایت به فهرست آزمون‌ها…</p>
     <p style="font-size:0.9rem;margin-top:1rem;"><a href="{{ url_for('citizenship_exams') }}">اگر هدایت نشدید اینجا کلیک کنید</a></p>
     <script>
