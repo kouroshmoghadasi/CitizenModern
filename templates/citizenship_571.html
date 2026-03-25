@@ -154,7 +154,7 @@
             border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.06);
         }
         body.theme-dark .q-nav-bar-571 { box-shadow: 0 2px 10px rgba(0,0,0,0.2); }
-        .q-nav-bar-571 .q-nav-current { font-weight: 700; color: var(--accent); font-size: 1.05em; }
+        .q-nav-bar-571 .q-nav-current { flex: 1 1 auto; min-width: 0; text-align: center; font-weight: 700; color: var(--accent); font-size: 1.05em; }
         .q-nav-bar-571 .q-nav-btn { padding: 10px 20px; border-radius: 10px; border: 2px solid var(--accent); background: var(--accent); color: #fff; font-weight: 600; cursor: pointer; transition: opacity 0.2s; }
         .q-nav-bar-571 .q-nav-btn:hover:not(:disabled) { opacity: 0.9; }
         .q-nav-bar-571 .q-nav-btn:disabled { opacity: 0.5; cursor: not-allowed; }
@@ -269,13 +269,12 @@
         </div>
         <div id="q-nav-bar-571" class="q-nav-bar-571" data-max-question="{{ max_question_571 }}">
             <button type="button" class="q-nav-btn btn-prev" id="qPrev571" aria-label="سوال قبلی">← سوال قبلی</button>
-            <span class="q-nav-current">Question <span id="currentQNum571">1</span> of 571</span>
+            <span class="q-nav-current" role="status" aria-live="polite" dir="ltr">Question <span id="currentQNum571">1</span> of {{ max_question_571 }}</span>
             <button type="button" class="q-nav-btn" id="qNext571" aria-label="سوال بعدی">سوال بعدی →</button>
         </div>
         <div id="questions-container-571" class="questions-one-by-one">
         {% for q in questions %}
         <div class="q-card" id="q{{ loop.index }}">
-            <div class="q-num">سوال {{ loop.index }} / Question {{ loop.index }}</div>
             <div class="q-text-fa" style="margin-bottom: 10px;">
                 <div class="block-en lang-block-en"><span class="q-num-badge">{{ loop.index }}</span> {{ q.q|e }}</div>
                 <div class="block-fr lang-block-fr" style="display: none;"><span class="q-num-badge">{{ loop.index }}</span> {{ (q.q_fr or q.q)|e }}</div>
@@ -294,14 +293,6 @@
                     <ul class="q-options-list">
                         {% for opt in (q.options_fr or q.options_en) %}
                         <li class="q-option-clickable" data-option-index="{{ loop.index0 }}" role="button" tabindex="0"><span class="q-option-letter">{{ ['A','B','C','D'][loop.index0] }}.</span> {{ opt|e }}</li>
-                        {% endfor %}
-                    </ul>
-                </div>
-                <div class="block-fa">
-                    <p class="q-options-fa-label" style="font-size: 0.9em; font-weight: 600; color: var(--accent); margin-bottom: 8px;">گزینه‌ها به فارسی</p>
-                    <ul class="q-options-list" style="direction: rtl; text-align: right;">
-                        {% for opt in (q.options_fa or q.options_en) %}
-                        <li class="q-option-clickable" data-option-index="{{ loop.index0 }}" style="direction: rtl; text-align: right;" role="button" tabindex="0"><span class="q-option-letter">{{ ['الف','ب','ج','د'][loop.index0] }}.</span> {{ opt|e }}</li>
                         {% endfor %}
                     </ul>
                 </div>
@@ -429,9 +420,9 @@
             var goBtn = document.getElementById('goToQuestionBtn571');
             var container571 = document.getElementById('questions-container-571');
             var navBar571 = document.getElementById('q-nav-bar-571');
-            var currentQNumEl = document.getElementById('currentQNum571');
             var qPrevBtn = document.getElementById('qPrev571');
             var qNextBtn = document.getElementById('qNext571');
+            var currentQNumEl = document.getElementById('currentQNum571');
             var current571 = 1;
             var maxQuestion571 = 571;
             if (navBar571 && navBar571.getAttribute('data-max-question')) {
@@ -447,10 +438,10 @@
                     var el = document.getElementById('q' + n);
                     if (el) el.classList.add('current');
                 }
-                if (currentQNumEl) currentQNumEl.textContent = n;
                 if (qPrevBtn) qPrevBtn.disabled = n <= 1;
                 if (qNextBtn) qNextBtn.disabled = n >= maxQuestion571;
                 if (goInput) goInput.value = n;
+                if (currentQNumEl) currentQNumEl.textContent = n;
             }
 
             function goToQuestion571() {

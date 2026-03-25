@@ -573,7 +573,7 @@
       "An unsuccessful movement to get husbands to do housework",
       "The effort by women to be in Parliament"
     ],
-    "correct": 2
+    "correct": 0
   },
   {
     "q": "Whose portrait is on the Canadian $10 bill?",
@@ -645,7 +645,7 @@
       "Sir Étienne-Paschal Taché",
       "Sir John Alexander Macdonald"
     ],
-    "correct": 0
+    "correct": 1
   },
   {
     "q": "How many Canadians served in the Second World War?",
@@ -669,6 +669,6 @@
       "About 900,000",
       "More than one million"
     ],
-    "correct": 0
+    "correct": 3
   }
 ]

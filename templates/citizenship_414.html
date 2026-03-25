@@ -267,7 +267,7 @@ body {
             box-shadow: 0 2px 10px rgba(0,0,0,0.06);
         }
         body.theme-dark .q-nav-bar-414 { box-shadow: 0 2px 10px rgba(0,0,0,0.2); }
-        .q-nav-bar-414 .q-nav-current { font-weight: 700; color: var(--accent); font-size: 1.05em; }
+        .q-nav-bar-414 .q-nav-current { flex: 1 1 auto; min-width: 0; text-align: center; font-weight: 700; color: var(--accent); font-size: 1.05em; }
         .q-nav-bar-414 .q-nav-btn {
             padding: 10px 20px;
             border-radius: 10px;
@@ -309,7 +309,7 @@ body {
         </div>
         <div id="q-nav-bar-414" class="q-nav-bar-414" data-max-question="{{ max_question_414 }}">
             <button type="button" class="q-nav-btn btn-prev" id="qPrev414" aria-label="سوال قبلی">← سوال قبلی</button>
-            <span class="q-nav-current">سوال <span id="currentQNum414">1</span> از ۴۱۴</span>
+            <span class="q-nav-current" role="status" aria-live="polite" dir="ltr">Question <span id="currentQNum414">1</span> of {{ max_question_414 }}</span>
             <button type="button" class="q-nav-btn" id="qNext414" aria-label="سوال بعدی">سوال بعدی →</button>
         </div>
         <div id="questions-container-414" class="questions-one-by-one">
@@ -333,13 +333,6 @@ body {
                     <ul class="q-options-list">
                         {% for opt in (q.options_fr or q.options_en) %}
                         <li class="q-option-clickable" data-option-index="{{ loop.index0 }}" role="button" tabindex="0"><span class="q-option-letter">{{ ['A','B','C','D'][loop.index0] }}.</span> {{ opt|e }}</li>
-                        {% endfor %}
-                    </ul>
-                </div>
-                <div class="block-fa">
-                    <ul class="q-options-list" style="direction: rtl; text-align: right;">
-                        {% for opt in (q.options_fa or q.options_en) %}
-                        <li class="q-option-clickable" data-option-index="{{ loop.index0 }}" style="direction: rtl; text-align: right;" role="button" tabindex="0"><span class="q-option-letter">{{ ['الف','ب','ج','د'][loop.index0] }}.</span> {{ opt|e }}</li>
                         {% endfor %}
                     </ul>
                 </div>
@@ -506,9 +499,9 @@ body {
             var goBtn = document.getElementById('goToQuestionBtn414');
             var container414 = document.getElementById('questions-container-414');
             var navBar414 = document.getElementById('q-nav-bar-414');
-            var currentQNumEl = document.getElementById('currentQNum414');
             var qPrevBtn = document.getElementById('qPrev414');
             var qNextBtn = document.getElementById('qNext414');
+            var currentQNumEl = document.getElementById('currentQNum414');
             var current414 = 1;
             var maxQuestion414 = 414;
             if (navBar414 && navBar414.getAttribute('data-max-question')) {
@@ -524,10 +517,10 @@ body {
                     var el = document.getElementById('q' + n);
                     if (el) el.classList.add('current');
                 }
-                if (currentQNumEl) currentQNumEl.textContent = n;
                 if (qPrevBtn) qPrevBtn.disabled = n <= 1;
                 if (qNextBtn) qNextBtn.disabled = n >= maxQuestion414;
                 if (goInput) goInput.value = n;
+                if (currentQNumEl) currentQNumEl.textContent = n;
             }
 
             function goToQuestion414() {
