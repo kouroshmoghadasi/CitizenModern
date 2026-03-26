@@ -36,6 +36,7 @@
         .btn-outline:hover { background: #f0f4f8; }
         .btn-danger { background: #dc3545; color: #fff; }
         .btn-danger:hover { background: #c82333; }
+        button.btn[disabled] { opacity: 0.45; cursor: not-allowed; pointer-events: none; }
         .btn-free { background: #28a745; color: #fff; }
         .btn-free:hover { background: #218838; }
         .pay-fixed-amount { font-weight: 700; color: #1e3c72; }
@@ -47,7 +48,11 @@
 <body>
     <div class="header">
         <h1>پنل مدیر — اشتراک‌ها</h1>
-        <a href="{{ url_for('admin_logout') }}">خروج</a>
+        <div style="display: flex; flex-wrap: wrap; gap: 10px; align-items: center;">
+            <a href="{{ url_for('admin_visitor_activity') }}" target="_blank" rel="noopener noreferrer" class="btn-outline" style="text-decoration: none; display: inline-block;">👥 حضور و فعالیت بازدیدکنندگان</a>
+            <a href="{{ url_for('admin_exam_visitor_stats') }}" target="_blank" rel="noopener noreferrer" class="btn-outline" style="text-decoration: none; display: inline-block;">📊 آمار بازدید آزمون‌های نمونه</a>
+            <a href="{{ url_for('admin_logout') }}">خروج</a>
+        </div>
     </div>
 
     <div class="card">
@@ -248,6 +253,10 @@
                         <th>شناسه</th>
                         <th>موبایل</th>
                         <th>نام و نام خانوادگی</th>
+                        <th>شهر</th>
+                        <th>تاریخ اپلای</th>
+                        <th>تاریخ امتحان</th>
+                        <th>نمرهٔ امتحان</th>
                         <th>انقضا</th>
                         <th>یادداشت</th>
                         <th>عملیات</th>
@@ -307,8 +316,8 @@
     </div>
 
     <div id="editUserNameModal" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 100; justify-content: center; align-items: center;" class="modal-overlay">
-        <div style="background: #fff; border-radius: 12px; padding: 24px; max-width: 420px; width: 90%; box-shadow: 0 8px 32px rgba(0,0,0,0.2);">
-            <h3 style="margin-bottom: 16px; color: #1e3c72;">ویرایش نام و نام خانوادگی</h3>
+        <div style="background: #fff; border-radius: 12px; padding: 24px; max-width: 460px; width: 90%; box-shadow: 0 8px 32px rgba(0,0,0,0.2); max-height: 90vh; overflow-y: auto;">
+            <h3 style="margin-bottom: 16px; color: #1e3c72;">ویرایش اطلاعات کاربر</h3>
             <div id="editUserNameMsg"></div>
             <input type="hidden" id="editUserNameUserId">
             <div class="form-inline" style="flex-direction: column; align-items: stretch;">
@@ -316,54 +325,36 @@
                     <label>نام</label>
                     <input type="text" id="editUserNameFirst" placeholder="نام">
                 </div>
-                <div class="f" style="margin-bottom: 16px;">
+                <div class="f" style="margin-bottom: 12px;">
                     <label>نام خانوادگی</label>
                     <input type="text" id="editUserNameLast" placeholder="نام خانوادگی">
+                </div>
+                <div class="f" style="margin-bottom: 12px;">
+                    <label>شهر</label>
+                    <input type="text" id="editUserCity" placeholder="مثال: تورنتو، ونکوور" maxlength="150">
+                </div>
+                <div class="f" style="margin-bottom: 12px;">
+                    <label>تاریخ اپلای (شهروندی)</label>
+                    <input type="date" id="editUserApplyDate">
+                </div>
+                <div class="f" style="margin-bottom: 12px;">
+                    <label>تاریخ امتحان</label>
+                    <input type="date" id="editUserExamDate">
+                </div>
+                <div class="f" style="margin-bottom: 12px;">
+                    <label>نمرهٔ امتحان</label>
+                    <input type="text" id="editUserExamScore" placeholder="مثال: قبول، ۲۰/۲۰، ۸۵٪" maxlength="50">
+                </div>
+                <div class="f" style="margin-bottom: 16px;">
+                    <label>تاریخ انقضای اشتراک (کل بسته)</label>
+                    <input type="date" id="editUserExpiryDate">
+                    <p style="font-size: 0.8rem; color: #666; margin: 6px 0 0;">بخش‌های تست و ۴۱۴ هر دو به این تاریخ تنظیم می‌شوند. برای نگه‌داشتن انقضای فعلی، این فیلد را خالی بگذارید و ذخیره کنید.</p>
                 </div>
             </div>
             <div style="display: flex; gap: 10px; justify-content: flex-end;">
                 <button type="button" class="btn btn-outline" id="editUserNameCancel">انصراف</button>
                 <button type="button" class="btn" id="editUserNameSave">ذخیره</button>
             </div>
-        </div>
-    </div>
-
-    <div class="card">
-        <h2>حضور و فعالیت بازدیدکنندگان</h2>
-        <div class="card-body">
-            <p style="font-size: 0.85rem; color: #666; margin-bottom: 12px;">بر اساس لاگ IP و زمان ورود. روی «جزئیات» هر IP بزنید تا روزهای استفاده و ساعات کارکرد تقریبی را ببینید.</p>
-            <div id="visitorDashboardMsg"></div>
-            <div id="visitorExamSectionWrap" style="display: none; margin-bottom: 20px; padding: 14px 16px; background: #f0f9ff; border: 1px solid #bae6fd; border-radius: 10px;">
-                <h3 style="font-size: 1rem; margin: 0 0 10px; color: #0369a1;">آزمون‌های نمونه <span style="font-weight: 600; color: #0c4a6e;">(فهرست + Introduction + Rights + Who We Are + Canada's History + Govern + Federal Elections + Canadian Symbols + Justice + Modern Canada + Exam1–3)</span></h3>
-                <p id="visitorExamSectionSummary" style="font-size: 0.9rem; margin-bottom: 12px; line-height: 1.55; color: #334155;"></p>
-                <h4 style="font-size: 0.95rem; margin: 0 0 8px; color: #1e3c72;">بازدید این بخش به تفکیک روز (۳۰ روز اخیر)</h4>
-                <table id="visitorExamSectionDaysTable" style="font-size: 0.88rem;">
-                    <thead><tr><th>تاریخ</th><th>فهرست آزمون‌ها</th><th>Introduction</th><th>Rights</th><th>Who We Are</th><th>Canada's History</th><th>Govern</th><th>Federal Elections</th><th>Canadian Symbols</th><th>Justice</th><th>Modern Canada</th><th>Exam1</th><th>Exam2</th><th>Exam3</th><th>جمع روز</th></tr></thead>
-                    <tbody></tbody>
-                </table>
-            </div>
-            <h3 style="font-size: 1rem; margin: 16px 0 8px; color: #1e3c72;">بازدید به تفکیک روز (۳۰ روز اخیر)</h3>
-            <table id="visitorDaysTable">
-                <thead><tr><th>تاریخ</th><th>تعداد بازدید</th><th>IP یکتا</th></tr></thead>
-                <tbody></tbody>
-            </table>
-            <h3 style="font-size: 1rem; margin: 20px 0 8px; color: #1e3c72;">IPهای پرتعداد</h3>
-            <table id="visitorIpsTable">
-                <thead><tr><th>IP</th><th>دستگاه</th><th>تعداد بازدید</th><th>اولین بازدید</th><th>آخرین بازدید</th><th>روزهای فعال</th><th>جزئیات</th></tr></thead>
-                <tbody></tbody>
-            </table>
-            <div id="visitorIpDetail" style="display: none; margin-top: 16px; padding: 12px; background: #f8f9fa; border-radius: 8px;">
-                <h4 style="margin-bottom: 8px;">جزئیات IP: <span id="visitorIpDetailTitle"></span> <button type="button" class="btn btn-sm btn-outline" id="visitorIpDetailClose">بستن</button></h4>
-                <table id="visitorIpDaysTable">
-                    <thead><tr><th>تاریخ</th><th>اولین بازدید</th><th>آخرین بازدید</th><th>تعداد</th><th>مدت (دقیقه)</th></tr></thead>
-                    <tbody></tbody>
-                </table>
-            </div>
-            <h3 style="font-size: 1rem; margin: 20px 0 8px; color: #1e3c72;">آخرین بازدیدها</h3>
-            <table id="visitorRecentTable">
-                <thead><tr><th>IP</th><th>دستگاه</th><th>زمان</th><th>صفحه</th></tr></thead>
-                <tbody></tbody>
-            </table>
         </div>
     </div>
 
@@ -377,6 +368,14 @@
                 var c = document.getElementById(containerId);
                 if (!c) return;
                 c.innerHTML = '<div class="msg ' + (isError ? 'error' : 'success') + '">' + (text || '').replace(/</g, '&lt;') + '</div>';
+            }
+
+            function isoDateOnly(v) {
+                if (v == null || v === '') return '';
+                return String(v).slice(0, 10);
+            }
+            function escAttr(s) {
+                return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
             }
 
             function loadUsers() {
@@ -396,12 +395,23 @@
                         var exp = u.tests_expiry || u.questions_414_expiry || '—';
                         var expBadge = exp !== '—' ? (new Date(exp) >= new Date() ? '<span class="badge active">' + exp + '</span>' : '<span class="badge expired">' + exp + '</span>') : '<span class="badge none">ندارد</span>';
                         var nameStr = [u.first_name, u.last_name].filter(Boolean).join(' ') || '—';
+                        var applyDisp = isoDateOnly(u.citizenship_apply_date) || '—';
+                        var examDisp = isoDateOnly(u.citizenship_exam_date) || '—';
+                        var scoreRaw = (u.citizenship_exam_score != null && String(u.citizenship_exam_score).trim() !== '') ? String(u.citizenship_exam_score).trim() : '—';
+                        var scoreDisp = scoreRaw !== '—' ? scoreRaw.replace(/</g, '&lt;') : '—';
+                        var cityRaw = (u.citizenship_city != null && String(u.citizenship_city).trim() !== '') ? String(u.citizenship_city).trim() : '—';
+                        var cityDisp = cityRaw !== '—' ? cityRaw.replace(/</g, '&lt;') : '—';
+                        var payCount = parseInt(u.payment_count, 10);
+                        if (isNaN(payCount)) payCount = 0;
+                        var delTitle = payCount > 0 ? 'حذف فقط برای کاربران بدون پرداخت ثبت‌شده' : 'حذف کاربر (نیاز به تأیید)';
+                        var delDisabled = payCount > 0 ? ' disabled' : '';
                         var tr = document.createElement('tr');
-                        tr.innerHTML = '<td>' + u.id + '</td><td>' + (u.mobile || '').replace(/</g, '&lt;') + '</td><td>' + (nameStr !== '—' ? nameStr.replace(/</g, '&lt;') : nameStr) + '</td><td>' + expBadge + '</td><td>' + (u.notes || '—').replace(/</g, '&lt;') + '</td><td>' +
-                            '<button type="button" class="btn btn-sm" data-user-id="' + u.id + '">ثبت پرداخت</button> ' +
-                            '<button type="button" class="btn btn-sm btn-outline edit-name-btn" data-user-id="' + u.id + '" data-first-name="' + (u.first_name || '').replace(/"/g, '&quot;') + '" data-last-name="' + (u.last_name || '').replace(/"/g, '&quot;') + '" title="ویرایش نام و نام خانوادگی">ویرایش نام</button> ' +
+                        tr.innerHTML = '<td>' + u.id + '</td><td>' + (u.mobile || '').replace(/</g, '&lt;') + '</td><td>' + (nameStr !== '—' ? nameStr.replace(/</g, '&lt;') : nameStr) + '</td><td>' + cityDisp + '</td><td>' + applyDisp.replace(/</g, '&lt;') + '</td><td>' + examDisp.replace(/</g, '&lt;') + '</td><td>' + scoreDisp + '</td><td>' + expBadge + '</td><td>' + (u.notes || '—').replace(/</g, '&lt;') + '</td><td>' +
+                            '<button type="button" class="btn btn-sm btn-pay-user" data-user-id="' + u.id + '">ثبت پرداخت</button> ' +
+                            '<button type="button" class="btn btn-sm btn-outline edit-name-btn" data-user-id="' + u.id + '" data-first-name="' + escAttr(u.first_name || '') + '" data-last-name="' + escAttr(u.last_name || '') + '" data-city="' + escAttr(u.citizenship_city != null ? String(u.citizenship_city) : '') + '" data-apply-date="' + escAttr(isoDateOnly(u.citizenship_apply_date)) + '" data-exam-date="' + escAttr(isoDateOnly(u.citizenship_exam_date)) + '" data-exam-score="' + escAttr(u.citizenship_exam_score != null ? String(u.citizenship_exam_score) : '') + '" data-expiry-date="' + escAttr(isoDateOnly(u.tests_expiry || u.questions_414_expiry)) + '" title="ویرایش نام، شهر، انقضا، تاریخ اپلای، امتحان و نمره">ویرایش</button> ' +
                             '<button type="button" class="btn btn-sm btn-free" data-user-id="' + u.id + '" title="دسترسی رایگان یک‌ساله">لطف</button> ' +
-                            '<button type="button" class="btn btn-sm btn-outline change-user-pw-btn" data-user-id="' + u.id + '" title="تغییر رمز این کاربر">تغییر رمز</button>' +
+                            '<button type="button" class="btn btn-sm btn-outline change-user-pw-btn" data-user-id="' + u.id + '" title="تغییر رمز این کاربر">تغییر رمز</button> ' +
+                            '<button type="button" class="btn btn-sm btn-danger delete-user-btn" data-user-id="' + u.id + '"' + delDisabled + ' title="' + escAttr(delTitle) + '">حذف</button>' +
                             '</td>';
                         tbody.appendChild(tr);
                         var opt = document.createElement('option');
@@ -446,8 +456,28 @@
                             document.getElementById('editUserNameUserId').value = id;
                             document.getElementById('editUserNameFirst').value = this.getAttribute('data-first-name') || '';
                             document.getElementById('editUserNameLast').value = this.getAttribute('data-last-name') || '';
+                            document.getElementById('editUserCity').value = this.getAttribute('data-city') || '';
+                            document.getElementById('editUserApplyDate').value = this.getAttribute('data-apply-date') || '';
+                            document.getElementById('editUserExamDate').value = this.getAttribute('data-exam-date') || '';
+                            document.getElementById('editUserExamScore').value = this.getAttribute('data-exam-score') || '';
+                            document.getElementById('editUserExpiryDate').value = this.getAttribute('data-expiry-date') || '';
                             document.getElementById('editUserNameMsg').innerHTML = '';
                             document.getElementById('editUserNameModal').style.display = 'flex';
+                        });
+                    });
+                    tbody.querySelectorAll('.delete-user-btn').forEach(function(btn) {
+                        btn.addEventListener('click', function() {
+                            if (this.disabled) return;
+                            var id = this.getAttribute('data-user-id');
+                            if (!id) return;
+                            if (!confirm('آیا مطمئن هستید که می‌خواهید این کاربر را حذف کنید؟\nاین عمل برگشت‌پذیر نیست و اشتراک‌های بدون پرداخت حذف می‌شوند.')) return;
+                            fetch('/admin/api/users/' + id, { method: 'DELETE' })
+                                .then(function(r) { return r.json(); })
+                                .then(function(data) {
+                                    showMsg('usersMsg', data.success ? (data.message || 'حذف شد.') : (data.error || 'خطا'), !data.success);
+                                    if (data.success) loadUsers();
+                                })
+                                .catch(function() { showMsg('usersMsg', 'خطا در ارتباط', true); });
                         });
                     });
                     tbody.querySelectorAll('button[data-user-id]').forEach(function(btn) {
@@ -461,7 +491,7 @@
                                         if (data.success) loadUsers();
                                     }).catch(function() { showMsg('usersMsg', 'خطا در ارتباط', true); });
                             });
-                        } else {
+                        } else if (btn.classList.contains('btn-pay-user')) {
                             btn.addEventListener('click', function() {
                                 var id = this.getAttribute('data-user-id');
                                 document.getElementById('payUserId').value = id;
@@ -801,124 +831,6 @@
                 });
             }
 
-            function loadVisitorDashboard(ip) {
-                var url = '/admin/api/visitor-dashboard' + (ip ? '?ip=' + encodeURIComponent(ip) : '');
-                showMsg('visitorDashboardMsg', '', false);
-                fetch(url).then(function(r) { return r.json(); }).then(function(data) {
-                    if (!data.success) {
-                        showMsg('visitorDashboardMsg', data.error || 'خطا', true);
-                        return;
-                    }
-                    if (ip) {
-                        var detailTitle = document.getElementById('visitorIpDetailTitle');
-                        var detailBlock = document.getElementById('visitorIpDetail');
-                        var daysTbody = document.querySelector('#visitorIpDaysTable tbody');
-                        if (detailTitle) detailTitle.textContent = ip;
-                        if (detailBlock) {
-                            detailBlock.style.display = 'block';
-                            detailBlock.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                        }
-                        if (daysTbody) {
-                            daysTbody.innerHTML = '';
-                            (data.days || []).forEach(function(d) {
-                                var tr = document.createElement('tr');
-                                tr.innerHTML = '<td>' + (d.date || '').replace(/</g, '&lt;') + '</td><td>' + (d.first_time || '—').replace(/</g, '&lt;') + '</td><td>' + (d.last_time || '—').replace(/</g, '&lt;') + '</td><td>' + (d.visit_count || 0) + '</td><td>' + (d.duration_minutes || 0) + '</td>';
-                                daysTbody.appendChild(tr);
-                            });
-                        }
-                        return;
-                    }
-                    var daysTbody = document.querySelector('#visitorDaysTable tbody');
-                    if (daysTbody) {
-                        daysTbody.innerHTML = '';
-                        (data.visits_per_day || []).forEach(function(row) {
-                            var tr = document.createElement('tr');
-                            tr.innerHTML = '<td>' + (row.day || '').replace(/</g, '&lt;') + '</td><td>' + (row.total_visits || 0) + '</td><td>' + (row.unique_ips || 0) + '</td>';
-                            daysTbody.appendChild(tr);
-                        });
-                    }
-                    var examWrap = document.getElementById('visitorExamSectionWrap');
-                    var examSummary = document.getElementById('visitorExamSectionSummary');
-                    var examDaysTbody = document.querySelector('#visitorExamSectionDaysTable tbody');
-                    if (examWrap && data.exam_section) {
-                        var ex = data.exam_section;
-                        examWrap.style.display = 'block';
-                        if (examSummary) {
-                            examSummary.innerHTML =
-                                '<strong>جمع بازدید ثبت‌شده:</strong> ' + (ex.total_hits != null ? ex.total_hits : '—') +
-                                ' &nbsp;|&nbsp; <strong>IP یکتا (تقریبی):</strong> ' + (ex.unique_ips != null ? ex.unique_ips : '—') +
-                                '<br><strong>فقط /citizenship-exams:</strong> ' + (ex.hits_citizenship_exams != null ? ex.hits_citizenship_exams : 0) +
-                                ' &nbsp;|&nbsp; <strong>فقط /citizenship-introduction:</strong> ' + (ex.hits_citizenship_introduction != null ? ex.hits_citizenship_introduction : 0) +
-                                ' &nbsp;|&nbsp; <strong>فقط /citizenship-rights-responsibilities:</strong> ' + (ex.hits_citizenship_rights != null ? ex.hits_citizenship_rights : 0) +
-                                ' &nbsp;|&nbsp; <strong>فقط /citizenship-who-we-are:</strong> ' + (ex.hits_citizenship_who_we_are != null ? ex.hits_citizenship_who_we_are : 0) +
-                                ' &nbsp;|&nbsp; <strong>فقط /citizenship-canadas-history:</strong> ' + (ex.hits_citizenship_canadas_history != null ? ex.hits_citizenship_canadas_history : 0) +
-                                ' &nbsp;|&nbsp; <strong>فقط /citizenship-how-canadians-govern-themselves:</strong> ' + (ex.hits_citizenship_how_canadians_govern != null ? ex.hits_citizenship_how_canadians_govern : 0) +
-                                ' &nbsp;|&nbsp; <strong>فقط /citizenship-federal-elections:</strong> ' + (ex.hits_citizenship_federal_elections != null ? ex.hits_citizenship_federal_elections : 0) +
-                                ' &nbsp;|&nbsp; <strong>فقط /citizenship-canadian-symbols:</strong> ' + (ex.hits_citizenship_canadian_symbols != null ? ex.hits_citizenship_canadian_symbols : 0) +
-                                ' &nbsp;|&nbsp; <strong>فقط /citizenship-justice-system:</strong> ' + (ex.hits_citizenship_justice != null ? ex.hits_citizenship_justice : 0) +
-                                ' &nbsp;|&nbsp; <strong>فقط /citizenship-modern-canada:</strong> ' + (ex.hits_citizenship_modern_canada != null ? ex.hits_citizenship_modern_canada : 0) +
-                                ' &nbsp;|&nbsp; <strong>فقط /exam1:</strong> ' + (ex.hits_exam1 != null ? ex.hits_exam1 : 0) +
-                                ' &nbsp;|&nbsp; <strong>فقط /exam2:</strong> ' + (ex.hits_exam2 != null ? ex.hits_exam2 : 0) +
-                                ' &nbsp;|&nbsp; <strong>فقط /exam3:</strong> ' + (ex.hits_exam3 != null ? ex.hits_exam3 : 0) +
-                                '<br><span style="font-size:0.82rem;color:#64748b;">IPهای حذف‌شده از آمار کلی داشبورد (مثل ادمین) اینجا هم حذف شده‌اند؛ با شمارندهٔ عمومی سایت ممکن است اختلاف جزئی باشد.</span>';
-                        }
-                        if (examDaysTbody) {
-                            examDaysTbody.innerHTML = '';
-                            (ex.per_day || []).forEach(function(row) {
-                                var h = row.hub_hits != null ? row.hub_hits : 0;
-                                var intro = row.intro_hits != null ? row.intro_hits : 0;
-                                var rights = row.rights_hits != null ? row.rights_hits : 0;
-                                var who = row.who_we_are_hits != null ? row.who_we_are_hits : 0;
-                                var hist = row.canadas_history_hits != null ? row.canadas_history_hits : 0;
-                                var gov = row.govern_hits != null ? row.govern_hits : 0;
-                                var fed = row.federal_elections_hits != null ? row.federal_elections_hits : 0;
-                                var sym = row.canadian_symbols_hits != null ? row.canadian_symbols_hits : 0;
-                                var justice = row.justice_hits != null ? row.justice_hits : 0;
-                                var modern = row.modern_canada_hits != null ? row.modern_canada_hits : 0;
-                                var e1 = row.exam1_hits != null ? row.exam1_hits : 0;
-                                var e2 = row.exam2_hits != null ? row.exam2_hits : 0;
-                                var e3 = row.exam3_hits != null ? row.exam3_hits : 0;
-                                var sum = h + intro + rights + who + hist + gov + fed + sym + justice + modern + e1 + e2 + e3;
-                                var tr = document.createElement('tr');
-                                tr.innerHTML = '<td>' + (row.day || '').replace(/</g, '&lt;') + '</td><td>' + h + '</td><td>' + intro + '</td><td>' + rights + '</td><td>' + who + '</td><td>' + hist + '</td><td>' + gov + '</td><td>' + fed + '</td><td>' + sym + '</td><td>' + justice + '</td><td>' + modern + '</td><td>' + e1 + '</td><td>' + e2 + '</td><td>' + e3 + '</td><td>' + sum + '</td>';
-                                examDaysTbody.appendChild(tr);
-                            });
-                        }
-                    } else if (examWrap) {
-                        examWrap.style.display = 'none';
-                    }
-                    var ipsTbody = document.querySelector('#visitorIpsTable tbody');
-                    if (ipsTbody) {
-                        ipsTbody.innerHTML = '';
-                        (data.top_ips || []).forEach(function(row) {
-                            var tr = document.createElement('tr');
-                            tr.innerHTML = '<td>' + (row.ip_address || '').replace(/</g, '&lt;') + '</td><td>' + (row.device || '—').replace(/</g, '&lt;') + '</td><td>' + (row.total_visits || 0) + '</td><td>' + (row.first_seen || '—').replace(/</g, '&lt;') + '</td><td>' + (row.last_seen || '—').replace(/</g, '&lt;') + '</td><td>' + (row.days_active || 0) + '</td><td><button type="button" class="btn btn-sm visitor-ip-detail" data-ip="' + (row.ip_address || '').replace(/"/g, '&quot;') + '">جزئیات</button></td>';
-                            ipsTbody.appendChild(tr);
-                        });
-                    }
-                    var recentTbody = document.querySelector('#visitorRecentTable tbody');
-                    if (recentTbody) {
-                        recentTbody.innerHTML = '';
-                        (data.recent_logs || []).forEach(function(row) {
-                            var tr = document.createElement('tr');
-                            tr.innerHTML = '<td>' + (row.ip_address || '').replace(/</g, '&lt;') + '</td><td>' + (row.device || '—').replace(/</g, '&lt;') + '</td><td>' + (row.access_time || '—').replace(/</g, '&lt;') + '</td><td>' + (row.page_visited || '—').replace(/</g, '&lt;') + '</td>';
-                            recentTbody.appendChild(tr);
-                        });
-                    }
-                }).catch(function() { showMsg('visitorDashboardMsg', 'خطا در بارگذاری', true); });
-            }
-            var closeBtn = document.getElementById('visitorIpDetailClose');
-            if (closeBtn) closeBtn.addEventListener('click', function() {
-                var b = document.getElementById('visitorIpDetail');
-                if (b) b.style.display = 'none';
-            });
-            document.body.addEventListener('click', function(e) {
-                var btn = e.target.closest('.visitor-ip-detail');
-                if (!btn) return;
-                var ip = btn.getAttribute('data-ip');
-                if (ip) loadVisitorDashboard(ip);
-            });
-
             function loadSubscriptionPrice() {
                 fetch('/admin/api/settings/subscription-price').then(function(r) { return r.json(); }).then(function(data) {
                     if (data.success && data.amount != null) {
@@ -932,7 +844,6 @@
             loadUsers();
             loadPayments();
             loadPendingRequests();
-            loadVisitorDashboard();
             loadSubscriptionPrice();
 
             var editPaymentModal = document.getElementById('editPaymentModal');
@@ -985,15 +896,29 @@
                     if (!userId) return;
                     var firstName = document.getElementById('editUserNameFirst').value.trim();
                     var lastName = document.getElementById('editUserNameLast').value.trim();
+                    var city = document.getElementById('editUserCity').value.trim();
+                    var applyDate = document.getElementById('editUserApplyDate').value;
+                    var examDate = document.getElementById('editUserExamDate').value;
+                    var examScore = document.getElementById('editUserExamScore').value.trim();
+                    var expiryDate = document.getElementById('editUserExpiryDate').value.trim();
+                    var payload = {
+                        first_name: firstName,
+                        last_name: lastName,
+                        citizenship_city: city,
+                        citizenship_apply_date: applyDate || null,
+                        citizenship_exam_date: examDate || null,
+                        citizenship_exam_score: examScore
+                    };
+                    if (expiryDate) payload.expiry_date = expiryDate;
                     fetch('/admin/api/users/' + userId, {
                         method: 'PUT',
                         headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ first_name: firstName, last_name: lastName })
+                        body: JSON.stringify(payload)
                     }).then(function(r) { return r.json(); }).then(function(data) {
                         if (data.success) {
                             editUserNameModal.style.display = 'none';
                             loadUsers();
-                            showMsg('usersMsg', data.message || 'نام به‌روز شد.', false);
+                            showMsg('usersMsg', data.message || 'اطلاعات به‌روز شد.', false);
                         } else {
                             showMsg('editUserNameMsg', data.error || 'خطا', true);
                         }

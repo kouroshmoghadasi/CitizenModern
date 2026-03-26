@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حضور و فعالیت بازدیدکنندگان | ادمین</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Tahoma, "Segoe UI", sans-serif; background: #f0f4f8; min-height: 100vh; padding: 20px; color: #1e293b; }
+        .topbar { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 20px; padding: 16px 20px; background: #fff; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.06); }
+        .topbar h1 { font-size: 1.2rem; color: #1e3c72; }
+        .topbar-actions { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+        a.btn, button.btn {
+            padding: 10px 18px; background: #1e3c72; color: #fff; text-decoration: none; border-radius: 8px;
+            font-weight: 600; border: none; cursor: pointer; font-size: 0.9rem; font-family: inherit;
+        }
+        a.btn:hover, button.btn:hover { background: #2c5282; }
+        a.btn-outline, button.btn-outline {
+            background: #fff; color: #1e3c72; border: 2px solid #1e3c72;
+        }
+        a.btn-outline:hover, button.btn-outline:hover { background: #f0f4f8; }
+        .btn-sm { padding: 6px 12px; font-size: 0.85rem; }
+        .card { background: #fff; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.06); overflow: hidden; }
+        .card h2 { padding: 16px 20px; font-size: 1.1rem; color: #1e3c72; border-bottom: 1px solid #eee; }
+        .card-body { padding: 20px; }
+        table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+        th, td { padding: 12px 14px; text-align: right; border-bottom: 1px solid #eee; }
+        th { background: #f8f9fa; font-weight: 600; color: #333; }
+        tr:hover { background: #f8fafc; }
+        .msg { padding: 12px 16px; border-radius: 8px; margin-bottom: 16px; }
+        .msg.error { background: #f8d7da; color: #721c24; }
+        .msg.success { background: #d4edda; color: #155724; }
+        h3.section-title { font-size: 1rem; margin: 16px 0 8px; color: #1e3c72; }
+        h3.section-title:first-of-type { margin-top: 0; }
+        .hint { font-size: 0.85rem; color: #64748b; margin-bottom: 12px; line-height: 1.55; }
+        .hint a { color: #1e3c72; font-weight: 600; }
+        #visitorIpDetail { margin-top: 16px; padding: 12px; background: #f8f9fa; border-radius: 8px; }
+    </style>
+</head>
+<body>
+    <div class="topbar">
+        <h1>حضور و فعالیت بازدیدکنندگان</h1>
+        <div class="topbar-actions">
+            <button type="button" class="btn" id="btnRefresh">تازه‌سازی</button>
+            <a href="{{ url_for('admin_exam_visitor_stats') }}" class="btn btn-outline" target="_blank" rel="noopener noreferrer">📊 آمار آزمون‌های نمونه</a>
+            <a href="{{ url_for('admin_dashboard') }}" class="btn btn-outline">بازگشت به پنل</a>
+            <a href="{{ url_for('admin_logout') }}" class="btn btn-outline">خروج</a>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>خلاصه و جداول</h2>
+        <div class="card-body">
+            <p class="hint" style="color: #666;">بر اساس لاگ IP و زمان ورود. روی «جزئیات» هر IP بزنید تا روزهای استفاده و مدت تقریبی (دقیقه) را ببینید. IPهای ادمین و localhost در آمار نیستند.</p>
+            <p class="hint">برای جدول تفکیک روزانهٔ <strong>فقط</strong> صفحات آزمون نمونه به <a href="{{ url_for('admin_exam_visitor_stats') }}" target="_blank" rel="noopener noreferrer">صفحهٔ آمار آزمون‌های نمونه</a> بروید.</p>
+            <div id="visitorDashboardMsg"></div>
+            <h3 class="section-title">بازدید به تفکیک روز (۳۰ روز اخیر)</h3>
+            <table id="visitorDaysTable">
+                <thead><tr><th>تاریخ</th><th>تعداد بازدید</th><th>IP یکتا</th></tr></thead>
+                <tbody></tbody>
+            </table>
+            <h3 class="section-title">IPهای پرتعداد</h3>
+            <table id="visitorIpsTable">
+                <thead><tr><th>IP</th><th>دستگاه</th><th>تعداد بازدید</th><th>اولین بازدید</th><th>آخرین بازدید</th><th>روزهای فعال</th><th>جزئیات</th></tr></thead>
+                <tbody></tbody>
+            </table>
+            <div id="visitorIpDetail" style="display: none;">
+                <h4 style="margin-bottom: 8px;">جزئیات IP: <span id="visitorIpDetailTitle"></span>
+                    <button type="button" class="btn btn-sm btn-outline" id="visitorIpDetailClose">بستن</button>
+                </h4>
+                <table id="visitorIpDaysTable">
+                    <thead><tr><th>تاریخ</th><th>اولین بازدید</th><th>آخرین بازدید</th><th>تعداد</th><th>مدت (دقیقه)</th></tr></thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+            <h3 class="section-title">آخرین بازدیدها</h3>
+            <table id="visitorRecentTable">
+                <thead><tr><th>IP</th><th>دستگاه</th><th>زمان</th><th>صفحه</th></tr></thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            function showMsg(text, isError) {
+                var c = document.getElementById('visitorDashboardMsg');
+                if (!c) return;
+                if (!text) { c.innerHTML = ''; return; }
+                c.innerHTML = '<div class="msg ' + (isError ? 'error' : 'success') + '">' + text.replace(/</g, '&lt;') + '</div>';
+            }
+
+            function loadVisitorDashboard(ip) {
+                var url = '/admin/api/visitor-dashboard' + (ip ? '?ip=' + encodeURIComponent(ip) : '');
+                showMsg('', false);
+                fetch(url).then(function(r) { return r.json(); }).then(function(data) {
+                    if (!data.success) {
+                        showMsg(data.error || 'خطا', true);
+                        return;
+                    }
+                    if (ip) {
+                        var detailTitle = document.getElementById('visitorIpDetailTitle');
+                        var detailBlock = document.getElementById('visitorIpDetail');
+                        var daysTbody = document.querySelector('#visitorIpDaysTable tbody');
+                        if (detailTitle) detailTitle.textContent = ip;
+                        if (detailBlock) {
+                            detailBlock.style.display = 'block';
+                            detailBlock.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                        }
+                        if (daysTbody) {
+                            daysTbody.innerHTML = '';
+                            (data.days || []).forEach(function(d) {
+                                var tr = document.createElement('tr');
+                                tr.innerHTML = '<td>' + (d.date || '').replace(/</g, '&lt;') + '</td><td>' + (d.first_time || '—').replace(/</g, '&lt;') + '</td><td>' + (d.last_time || '—').replace(/</g, '&lt;') + '</td><td>' + (d.visit_count || 0) + '</td><td>' + (d.duration_minutes || 0) + '</td>';
+                                daysTbody.appendChild(tr);
+                            });
+                        }
+                        return;
+                    }
+                    var daysTbody = document.querySelector('#visitorDaysTable tbody');
+                    if (daysTbody) {
+                        daysTbody.innerHTML = '';
+                        (data.visits_per_day || []).forEach(function(row) {
+                            var tr = document.createElement('tr');
+                            tr.innerHTML = '<td>' + (row.day || '').replace(/</g, '&lt;') + '</td><td>' + (row.total_visits || 0) + '</td><td>' + (row.unique_ips || 0) + '</td>';
+                            daysTbody.appendChild(tr);
+                        });
+                    }
+                    var ipsTbody = document.querySelector('#visitorIpsTable tbody');
+                    if (ipsTbody) {
+                        ipsTbody.innerHTML = '';
+                        (data.top_ips || []).forEach(function(row) {
+                            var tr = document.createElement('tr');
+                            tr.innerHTML = '<td>' + (row.ip_address || '').replace(/</g, '&lt;') + '</td><td>' + (row.device || '—').replace(/</g, '&lt;') + '</td><td>' + (row.total_visits || 0) + '</td><td>' + (row.first_seen || '—').replace(/</g, '&lt;') + '</td><td>' + (row.last_seen || '—').replace(/</g, '&lt;') + '</td><td>' + (row.days_active || 0) + '</td><td><button type="button" class="btn btn-sm visitor-ip-detail" data-ip="' + (row.ip_address || '').replace(/"/g, '&quot;') + '">جزئیات</button></td>';
+                            ipsTbody.appendChild(tr);
+                        });
+                    }
+                    var recentTbody = document.querySelector('#visitorRecentTable tbody');
+                    if (recentTbody) {
+                        recentTbody.innerHTML = '';
+                        (data.recent_logs || []).forEach(function(row) {
+                            var tr = document.createElement('tr');
+                            tr.innerHTML = '<td>' + (row.ip_address || '').replace(/</g, '&lt;') + '</td><td>' + (row.device || '—').replace(/</g, '&lt;') + '</td><td>' + (row.access_time || '—').replace(/</g, '&lt;') + '</td><td>' + (row.page_visited || '—').replace(/</g, '&lt;') + '</td>';
+                            recentTbody.appendChild(tr);
+                        });
+                    }
+                }).catch(function() { showMsg('خطا در بارگذاری', true); });
+            }
+
+            document.getElementById('btnRefresh').addEventListener('click', function() { loadVisitorDashboard(); });
+            document.getElementById('visitorIpDetailClose').addEventListener('click', function() {
+                var b = document.getElementById('visitorIpDetail');
+                if (b) b.style.display = 'none';
+            });
+            document.body.addEventListener('click', function(e) {
+                var btn = e.target.closest('.visitor-ip-detail');
+                if (!btn) return;
+                var ip = btn.getAttribute('data-ip');
+                if (ip) loadVisitorDashboard(ip);
+            });
+            loadVisitorDashboard();
+        })();
+    </script>
+</body>
+</html>

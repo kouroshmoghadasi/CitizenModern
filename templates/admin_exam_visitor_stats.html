@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>آمار بازدید آزمون‌های نمونه | ادمین</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Tahoma, "Segoe UI", sans-serif; background: #f5f8fc; min-height: 100vh; padding: 20px; color: #1e293b; }
+        .topbar { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 18px; }
+        .topbar h1 { font-size: 1.2rem; color: #1e3c72; }
+        .topbar-actions { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+        a.btn, button.btn {
+            padding: 10px 18px; background: #1e3c72; color: #fff; text-decoration: none; border-radius: 8px;
+            font-weight: 600; border: none; cursor: pointer; font-size: 0.9rem; font-family: inherit;
+        }
+        a.btn:hover, button.btn:hover { background: #2c5282; }
+        a.btn-outline {
+            background: #fff; color: #1e3c72; border: 2px solid #1e3c72;
+        }
+        a.btn-outline:hover { background: #f0f4f8; }
+        .nav-chapters {
+            background: #fff; border-radius: 12px; padding: 14px 18px; margin-bottom: 18px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.06); line-height: 1.85; font-size: 0.88rem;
+        }
+        .nav-chapters a { color: #1e3c72; font-weight: 700; text-decoration: none; }
+        .nav-chapters a:hover { text-decoration: underline; }
+        .nav-chapters .sep { color: #94a3b8; font-weight: 600; margin: 0 4px; }
+        .summary-box {
+            background: #fff; border-radius: 12px; padding: 16px 18px; margin-bottom: 18px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.06); border: 1px solid #e2e8f0;
+        }
+        .summary-box p { font-size: 0.9rem; line-height: 1.65; color: #334155; }
+        .summary-box .note { font-size: 0.82rem; color: #64748b; margin-top: 10px; display: block; }
+        .card-table {
+            background: #fff; border-radius: 12px; padding: 16px 18px 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+        }
+        .card-table h2 { font-size: 1.05rem; color: #1e3c72; margin-bottom: 14px; }
+        .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+        table.stats { width: 100%; border-collapse: collapse; font-size: 0.82rem; min-width: 1100px; }
+        table.stats th, table.stats td { padding: 10px 8px; text-align: center; border: 1px solid #e2e8f0; }
+        table.stats th { background: #e0f2fe; color: #0c4a6e; font-weight: 700; white-space: nowrap; }
+        table.stats td:first-child, table.stats th:first-child { text-align: right; font-weight: 600; }
+        table.stats tbody tr:nth-child(even) { background: #f8fafc; }
+        table.stats tbody tr:hover { background: #f0f9ff; }
+        .msg { padding: 12px 16px; border-radius: 8px; margin-bottom: 16px; }
+        .msg.error { background: #f8d7da; color: #721c24; }
+        .msg.loading { background: #e0f2fe; color: #0c4a6e; }
+    </style>
+</head>
+<body>
+    <div class="topbar">
+        <h1>آمار بازدید — آزمون‌های نمونه (فهرست + فصل‌ها + Exam1–3)</h1>
+        <div class="topbar-actions">
+            <button type="button" class="btn" id="btnRefresh">تازه‌سازی</button>
+            <a href="{{ url_for('admin_visitor_activity') }}" class="btn btn-outline" target="_blank" rel="noopener noreferrer">👥 حضور بازدیدکنندگان</a>
+            <a href="{{ url_for('admin_dashboard') }}" class="btn btn-outline">بازگشت به پنل</a>
+            <a href="{{ url_for('admin_logout') }}" class="btn btn-outline">خروج</a>
+        </div>
+    </div>
+
+    <nav class="nav-chapters" aria-label="پیوند سریع به صفحات آزمون">
+        <a href="{{ url_for('citizenship_introduction') }}" target="_blank" rel="noopener">Introduction</a><span class="sep">+</span>
+        <a href="{{ url_for('citizenship_rights_responsibilities') }}" target="_blank" rel="noopener">Rights</a><span class="sep">+</span>
+        <a href="{{ url_for('citizenship_who_we_are') }}" target="_blank" rel="noopener">Who We Are</a><span class="sep">+</span>
+        <a href="{{ url_for('citizenship_canadas_history') }}" target="_blank" rel="noopener">Canada's History</a><span class="sep">+</span>
+        <a href="{{ url_for('citizenship_how_canadians_govern_themselves') }}" target="_blank" rel="noopener">Govern</a><span class="sep">+</span>
+        <a href="{{ url_for('citizenship_federal_elections') }}" target="_blank" rel="noopener">Federal Elections</a><span class="sep">+</span>
+        <a href="{{ url_for('citizenship_canadian_symbols') }}" target="_blank" rel="noopener">Canadian Symbols</a><span class="sep">+</span>
+        <a href="{{ url_for('citizenship_justice_system') }}" target="_blank" rel="noopener">Justice</a><span class="sep">+</span>
+        <a href="{{ url_for('citizenship_modern_canada') }}" target="_blank" rel="noopener">Modern Canada</a><span class="sep">+</span>
+        <a href="{{ url_for('citizenship_exams') }}" target="_blank" rel="noopener">آزمون‌های نمونه (فهرست)</a><span class="sep">+</span>
+        <a href="{{ url_for('exam1') }}" target="_blank" rel="noopener">Exam1</a><span class="sep">+</span>
+        <a href="{{ url_for('exam2') }}" target="_blank" rel="noopener">Exam2</a><span class="sep">+</span>
+        <a href="{{ url_for('exam3') }}" target="_blank" rel="noopener">Exam3</a>
+    </nav>
+
+    <div id="pageMsg"></div>
+
+    <div class="summary-box" id="summaryBox" style="display: none;">
+        <p id="summaryText"></p>
+    </div>
+
+    <div class="card-table">
+        <h2>بازدید این بخش به تفکیک روز (۳۰ روز اخیر)</h2>
+        <div class="table-wrap">
+            <table class="stats" id="examDaysTable">
+                <thead>
+                    <tr>
+                        <th>تاریخ</th>
+                        <th>فهرست آزمون‌ها</th>
+                        <th>Introduction</th>
+                        <th>Rights</th>
+                        <th>Who We Are</th>
+                        <th>Canada's History</th>
+                        <th>Govern</th>
+                        <th>Federal Elections</th>
+                        <th>Canadian Symbols</th>
+                        <th>Justice</th>
+                        <th>Modern Canada</th>
+                        <th>Exam1</th>
+                        <th>Exam2</th>
+                        <th>Exam3</th>
+                        <th>جمع روز</th>
+                    </tr>
+                </thead>
+                <tbody id="examDaysTbody"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            var msgEl = document.getElementById('pageMsg');
+            var summaryBox = document.getElementById('summaryBox');
+            var summaryText = document.getElementById('summaryText');
+            var tbody = document.getElementById('examDaysTbody');
+
+            function showMsg(text, isError) {
+                if (!msgEl) return;
+                if (!text) { msgEl.innerHTML = ''; return; }
+                msgEl.innerHTML = '<div class="msg ' + (isError ? 'error' : 'loading') + '">' + text.replace(/</g, '&lt;') + '</div>';
+            }
+
+            function renderExamSection(ex) {
+                if (!ex) {
+                    showMsg('داده‌ای برای بخش آزمون‌ها یافت نشد (یا خطای پایگاه داده).', true);
+                    if (summaryBox) summaryBox.style.display = 'none';
+                    if (tbody) tbody.innerHTML = '';
+                    return;
+                }
+                showMsg('', false);
+                if (summaryBox) summaryBox.style.display = 'block';
+                if (summaryText) {
+                    var lines = [];
+                    lines.push('<strong>جمع بازدید ثبت‌شده:</strong> ' + (ex.total_hits != null ? ex.total_hits : '—') +
+                        ' &nbsp;|&nbsp; <strong>IP یکتا (تقریبی):</strong> ' + (ex.unique_ips != null ? ex.unique_ips : '—'));
+                    lines.push(
+                        '<strong>citizenship-exams:</strong> ' + (ex.hits_citizenship_exams != null ? ex.hits_citizenship_exams : 0) +
+                        ' &nbsp;|&nbsp; <strong>citizenship-introduction:</strong> ' + (ex.hits_citizenship_introduction != null ? ex.hits_citizenship_introduction : 0) +
+                        ' &nbsp;|&nbsp; <strong>citizenship-rights-responsibilities:</strong> ' + (ex.hits_citizenship_rights != null ? ex.hits_citizenship_rights : 0) +
+                        ' &nbsp;|&nbsp; <strong>citizenship-who-we-are:</strong> ' + (ex.hits_citizenship_who_we_are != null ? ex.hits_citizenship_who_we_are : 0) +
+                        ' &nbsp;|&nbsp; <strong>citizenship-canadas-history:</strong> ' + (ex.hits_citizenship_canadas_history != null ? ex.hits_citizenship_canadas_history : 0) +
+                        ' &nbsp;|&nbsp; <strong>citizenship-how-canadians-govern-themselves:</strong> ' + (ex.hits_citizenship_how_canadians_govern != null ? ex.hits_citizenship_how_canadians_govern : 0) +
+                        ' &nbsp;|&nbsp; <strong>citizenship-federal-elections:</strong> ' + (ex.hits_citizenship_federal_elections != null ? ex.hits_citizenship_federal_elections : 0) +
+                        ' &nbsp;|&nbsp; <strong>citizenship-canadian-symbols:</strong> ' + (ex.hits_citizenship_canadian_symbols != null ? ex.hits_citizenship_canadian_symbols : 0) +
+                        ' &nbsp;|&nbsp; <strong>citizenship-justice-system:</strong> ' + (ex.hits_citizenship_justice != null ? ex.hits_citizenship_justice : 0) +
+                        ' &nbsp;|&nbsp; <strong>citizenship-modern-canada:</strong> ' + (ex.hits_citizenship_modern_canada != null ? ex.hits_citizenship_modern_canada : 0) +
+                        ' &nbsp;|&nbsp; <strong>exam1:</strong> ' + (ex.hits_exam1 != null ? ex.hits_exam1 : 0) +
+                        ' &nbsp;|&nbsp; <strong>exam2:</strong> ' + (ex.hits_exam2 != null ? ex.hits_exam2 : 0) +
+                        ' &nbsp;|&nbsp; <strong>exam3:</strong> ' + (ex.hits_exam3 != null ? ex.hits_exam3 : 0)
+                    );
+                    summaryText.innerHTML = lines.join('<br>') +
+                        '<span class="note">IPهای حذف‌شده از آمار کلی داشبورد (مثل ادمین) اینجا هم حذف شده‌اند؛ با شمارندهٔ عمومی سایت ممکن است اختلاف جزئی باشد.</span>';
+                }
+                if (tbody) {
+                    tbody.innerHTML = '';
+                    (ex.per_day || []).forEach(function(row) {
+                        var h = row.hub_hits != null ? row.hub_hits : 0;
+                        var intro = row.intro_hits != null ? row.intro_hits : 0;
+                        var rights = row.rights_hits != null ? row.rights_hits : 0;
+                        var who = row.who_we_are_hits != null ? row.who_we_are_hits : 0;
+                        var hist = row.canadas_history_hits != null ? row.canadas_history_hits : 0;
+                        var gov = row.govern_hits != null ? row.govern_hits : 0;
+                        var fed = row.federal_elections_hits != null ? row.federal_elections_hits : 0;
+                        var sym = row.canadian_symbols_hits != null ? row.canadian_symbols_hits : 0;
+                        var justice = row.justice_hits != null ? row.justice_hits : 0;
+                        var modern = row.modern_canada_hits != null ? row.modern_canada_hits : 0;
+                        var e1 = row.exam1_hits != null ? row.exam1_hits : 0;
+                        var e2 = row.exam2_hits != null ? row.exam2_hits : 0;
+                        var e3 = row.exam3_hits != null ? row.exam3_hits : 0;
+                        var sum = h + intro + rights + who + hist + gov + fed + sym + justice + modern + e1 + e2 + e3;
+                        var tr = document.createElement('tr');
+                        tr.innerHTML = '<td>' + (row.day || '').replace(/</g, '&lt;') + '</td><td>' + h + '</td><td>' + intro + '</td><td>' + rights + '</td><td>' + who + '</td><td>' + hist + '</td><td>' + gov + '</td><td>' + fed + '</td><td>' + sym + '</td><td>' + justice + '</td><td>' + modern + '</td><td>' + e1 + '</td><td>' + e2 + '</td><td>' + e3 + '</td><td>' + sum + '</td>';
+                        tbody.appendChild(tr);
+                    });
+                }
+            }
+
+            function load() {
+                showMsg('در حال بارگذاری…', false);
+                fetch('/admin/api/visitor-dashboard')
+                    .then(function(r) { return r.json(); })
+                    .then(function(data) {
+                        if (!data.success) {
+                            showMsg(data.error || 'خطا در دریافت داده', true);
+                            return;
+                        }
+                        renderExamSection(data.exam_section);
+                    })
+                    .catch(function() { showMsg('خطا در ارتباط با سرور', true); });
+            }
+
+            document.getElementById('btnRefresh').addEventListener('click', load);
+            load();
+        })();
+    </script>
+</body>
+</html>

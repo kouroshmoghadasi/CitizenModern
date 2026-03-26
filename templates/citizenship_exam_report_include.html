@@ -1,0 +1,133 @@
+{# دو جدول گزارش — فقط در صفحهٔ /citizenship-exam-report include می‌شود #}
+<style>
+    .citizen-exam-report {
+        margin-bottom: clamp(20px, 5vw, 28px);
+        background: var(--card-bg, #fff);
+        border-radius: 16px;
+        border: 1px solid var(--border, rgba(30,60,114,0.1));
+        padding: clamp(16px, 4vw, 22px);
+        box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+        width: 100%;
+        box-sizing: border-box;
+    }
+    body.theme-dark .citizen-exam-report { box-shadow: 0 4px 20px rgba(0,0,0,0.35); }
+    .citizen-exam-report h2 {
+        font-size: clamp(1.02rem, 4vw, 1.2em);
+        color: var(--accent, #1e3c72);
+        margin-bottom: 18px;
+        text-align: center;
+        line-height: 1.5;
+    }
+    .citizen-exam-report .table-wrap {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        margin: 0 -2px;
+        border-radius: 10px;
+        border: 1px solid var(--border, rgba(30,60,114,0.12));
+    }
+    .citizen-exam-report table {
+        width: 100%;
+        border-collapse: collapse;
+        min-width: min(100%, 520px);
+        font-size: clamp(0.8rem, 3vw, 0.95rem);
+    }
+    .citizen-exam-report th,
+    .citizen-exam-report td {
+        padding: 10px 12px;
+        border-bottom: 1px solid var(--border, rgba(30,60,114,0.12));
+        text-align: right;
+        vertical-align: top;
+        overflow-wrap: anywhere;
+    }
+    .citizen-exam-report th {
+        background: rgba(30,60,114,0.08);
+        font-weight: 700;
+        color: var(--accent, #1e3c72);
+        white-space: nowrap;
+    }
+    body.theme-dark .citizen-exam-report th { background: rgba(255,255,255,0.06); }
+    .citizen-exam-report tbody tr:nth-child(even) { background: rgba(0,0,0,0.028); }
+    body.theme-dark .citizen-exam-report tbody tr:nth-child(even) { background: rgba(255,255,255,0.04); }
+    .citizen-exam-report-empty {
+        text-align: center;
+        color: var(--text, #1a1a1a);
+        opacity: 0.85;
+        padding: 18px 12px;
+        font-size: 0.95em;
+    }
+    .citizen-exam-report .col-row-num {
+        width: 1%;
+        white-space: nowrap;
+        text-align: center;
+        font-weight: 600;
+        color: var(--accent, #1e3c72);
+    }
+</style>
+<section class="citizen-exam-report" aria-labelledby="citizen-exam-report-title" lang="fa" dir="rtl">
+    <h2 id="citizen-exam-report-title">لیست قبولی افراد از تاریخ 25 ژانویه 2026 تا کنون</h2>
+    {% if report_rows and report_rows|length > 0 %}
+    <div class="table-wrap" role="region" aria-label="جدول لیست قبولی">
+        <table>
+            <thead>
+                <tr>
+                    <th scope="col" class="col-row-num">ردیف</th>
+                    <th scope="col">نام و نام خانوادگی</th>
+                    <th scope="col">شهر</th>
+                    <th scope="col">تاریخ اپلای</th>
+                    <th scope="col">تاریخ امتحان</th>
+                    <th scope="col">نمرهٔ امتحان</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in report_rows %}
+                <tr>
+                    <td class="col-row-num">{{ loop.index }}</td>
+                    <td>{{ row.name }}</td>
+                    <td>{{ row.city }}</td>
+                    <td>{{ row.apply }}</td>
+                    <td>{{ row.exam }}</td>
+                    <td>{{ row.score }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+    <p class="citizen-exam-report-empty">در این بازه زمانی هیچ ردیفی مطابق معیار فهرست ثبت نشده است.</p>
+    {% endif %}
+</section>
+
+<section class="citizen-exam-report" aria-labelledby="citizen-exam-waiting-title" lang="fa" dir="rtl">
+    <h2 id="citizen-exam-waiting-title">لیست افراد در انتظار امتحان</h2>
+    {% set waiting = waiting_rows if waiting_rows is defined else [] %}
+    {% if waiting and waiting|length > 0 %}
+    <div class="table-wrap" role="region" aria-label="جدول افراد در انتظار امتحان">
+        <table>
+            <thead>
+                <tr>
+                    <th scope="col" class="col-row-num">ردیف</th>
+                    <th scope="col">نام و نام خانوادگی</th>
+                    <th scope="col">شهر</th>
+                    <th scope="col">تاریخ اپلای</th>
+                    <th scope="col">تاریخ امتحان</th>
+                    <th scope="col">نمرهٔ امتحان</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in waiting %}
+                <tr>
+                    <td class="col-row-num">{{ loop.index }}</td>
+                    <td>{{ row.name }}</td>
+                    <td>{{ row.city }}</td>
+                    <td>{{ row.apply }}</td>
+                    <td>{{ row.exam }}</td>
+                    <td>—</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+    <p class="citizen-exam-report-empty">فعلاً کسی در این فهرست ثبت نشده است.</p>
+    {% endif %}
+</section>

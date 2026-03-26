@@ -99,6 +99,28 @@ def _device_from_user_agent(ua):
     return 'دسکتاپ'
 
 
+def _ensure_subscription_users_citizenship_columns(cur):
+    """ستون‌های شهروندی را در صورت نبود اضافه می‌کند (ابتدا IF NOT EXISTS برای PG11+، وگرنه ADD معمولی)."""
+    specs = (
+        ("citizenship_city", "VARCHAR(150)"),
+        ("citizenship_apply_date", "DATE"),
+        ("citizenship_exam_date", "DATE"),
+        ("citizenship_exam_score", "VARCHAR(50)"),
+    )
+    for col, typ in specs:
+        try:
+            cur.execute(
+                f"ALTER TABLE subscription_users ADD COLUMN IF NOT EXISTS {col} {typ}"
+            )
+        except Exception:
+            try:
+                cur.execute(
+                    f"ALTER TABLE subscription_users ADD COLUMN {col} {typ}"
+                )
+            except Exception:
+                pass
+
+
 def init_database():
     """Initialize database tables if they don't exist"""
     global db_connected
@@ -278,6 +300,26 @@ def init_database():
                         END IF;
                     END $$;
                 """, (col,))
+            for _col_name, _col_type in (
+                ("citizenship_apply_date", "DATE"),
+                ("citizenship_exam_date", "DATE"),
+                ("citizenship_exam_score", "VARCHAR(50)"),
+                ("citizenship_city", "VARCHAR(150)"),
+            ):
+                cur.execute(
+                    f"""
+                    DO $$
+                    BEGIN
+                        IF NOT EXISTS (
+                            SELECT 1 FROM information_schema.columns
+                            WHERE table_schema = 'public' AND table_name = 'subscription_users' AND column_name = '{_col_name}'
+                        ) THEN
+                            ALTER TABLE subscription_users ADD COLUMN {_col_name} {_col_type};
+                        END IF;
+                    END $$;
+                    """
+                )
+            _ensure_subscription_users_citizenship_columns(cur)
             conn.commit()
             
             # Check if main counter exists
@@ -1367,6 +1409,21 @@ def citizenship_exams():
     )
 
 
+@app.route('/citizenship-exam-report')
+def citizenship_exam_report():
+    """صفحهٔ فهرست قبولی از تاریخ ۲۵ ژانویه ۲۰۲۶؛ فیلتر تاریخ امتحان + نمره در _get_citizenship_exam_report_rows."""
+    log_visitor('/citizenship-exam-report')
+    resp = app.make_response(
+        render_template(
+            'citizenship_exam_report.html',
+            report_rows=_get_citizenship_exam_report_rows(),
+            waiting_rows=_get_citizenship_exam_waiting_rows(),
+        )
+    )
+    resp.headers['Cache-Control'] = 'public, max-age=120'
+    return resp
+
+
 @app.route('/exam1')
 def exam1():
     """Exam1 — Rights and Responsibilities (doc-based MCQ). سوالات ۱ تا ۵ رایگان؛ از ۶ به بعد با اشتراک بستهٔ ۴۱۴."""
@@ -2093,6 +2150,154 @@ def health_check():
 def _today():
     return date.today()
 
+
+# حداقل تاریخ امتحان برای فهرست عمومی قبولی (فقط ردیف‌های با تاریخ امتحان >= این مقدار)
+_CITIZENSHIP_PASS_LIST_EXAM_SINCE = date(2026, 1, 25)
+
+
+def _parse_optional_date(value):
+    """Accept YYYY-MM-DD or empty; return date or None."""
+    if value is None:
+        return None
+    s = str(value).strip()
+    if not s:
+        return None
+    try:
+        return date.fromisoformat(s[:10])
+    except ValueError:
+        return None
+
+
+def _exam_score_as_float(raw):
+    """اولین عدد قابل‌تفسیر از رشتهٔ نمره (مثلاً ۲۰، ۱۹٪، 85)؛ وگرنه None."""
+    if raw is None:
+        return None
+    s = str(raw).strip()
+    if not s:
+        return None
+    fa_digits = '۰۱۲۳۴۵۶۷۸۹'
+    en_digits = '0123456789'
+    s = s.translate(str.maketrans(fa_digits, en_digits))
+    m = re.search(r'([0-9]+(?:[.,][0-9]+)?)', s)
+    if not m:
+        return None
+    try:
+        return float(m.group(1).replace(',', '.'))
+    except ValueError:
+        return None
+
+
+def _get_citizenship_exam_report_rows(min_exclusive=14.0, limit=800, exam_since=None):
+    """فهرست عمومی قبولی: تاریخ امتحان از exam_since (پیش‌فرض ۲۵ ژانویه ۲۰۲۶) تا امروز + آستانهٔ عددی نمره فقط در کد."""
+    if exam_since is None:
+        exam_since = _CITIZENSHIP_PASS_LIST_EXAM_SINCE
+    rows_out = []
+    try:
+        conn = get_db_connection()
+        if not conn:
+            return []
+        cur = conn.cursor(cursor_factory=RealDictCursor)
+        cur.execute(
+            """
+            SELECT first_name, last_name, citizenship_city,
+                   citizenship_apply_date, citizenship_exam_date, citizenship_exam_score
+            FROM subscription_users
+            WHERE citizenship_exam_date IS NOT NULL
+              AND citizenship_exam_date >= %s
+              AND citizenship_exam_score IS NOT NULL
+              AND TRIM(citizenship_exam_score) <> ''
+            ORDER BY citizenship_exam_date DESC, id DESC
+            LIMIT %s
+            """,
+            (exam_since, limit),
+        )
+        raw = cur.fetchall()
+        cur.close()
+        conn.close()
+    except Exception:
+        return []
+
+    for r in raw:
+        sc = _exam_score_as_float(r.get('citizenship_exam_score'))
+        if sc is None or sc <= min_exclusive:
+            continue
+        ed_raw = r.get('citizenship_exam_date')
+        exam_d = ed_raw if isinstance(ed_raw, date) else _parse_optional_date(ed_raw)
+        if exam_d is None:
+            continue
+        fn = (r.get('first_name') or '').strip()
+        ln = (r.get('last_name') or '').strip()
+        name = ' '.join(x for x in (fn, ln) if x) or '—'
+        city = (r.get('citizenship_city') or '').strip() or '—'
+        ad = r.get('citizenship_apply_date')
+        if hasattr(ad, 'isoformat'):
+            ad = ad.isoformat()
+        ed = ed_raw.isoformat() if hasattr(ed_raw, 'isoformat') else str(ed_raw)
+        apply_disp = (str(ad)[:10] if ad else '') or '—'
+        exam_disp = (str(ed)[:10] if ed else '') or '—'
+        score_disp = str(r.get('citizenship_exam_score') or '').strip()
+        rows_out.append({
+            'name': name,
+            'city': city,
+            'apply': apply_disp,
+            'exam': exam_disp,
+            'score': score_disp,
+            '_sort_score': sc,
+            '_exam_d': exam_d,
+        })
+    rows_out.sort(key=lambda x: (x['_exam_d'], x['_sort_score'], x['name']), reverse=True)
+    for x in rows_out:
+        del x['_sort_score']
+        del x['_exam_d']
+    return rows_out
+
+
+def _get_citizenship_exam_waiting_rows(limit=800):
+    """پرداخت‌کنندگان با حداقل یک ردیف در subscription_payments که هنوز نمرهٔ امتحان ثبت نکرده‌اند."""
+    rows_out = []
+    try:
+        conn = get_db_connection()
+        if not conn:
+            return []
+        cur = conn.cursor(cursor_factory=RealDictCursor)
+        cur.execute(
+            """
+            SELECT u.first_name, u.last_name, u.citizenship_city,
+                   u.citizenship_apply_date, u.citizenship_exam_date
+            FROM subscription_users u
+            WHERE EXISTS (SELECT 1 FROM subscription_payments p WHERE p.user_id = u.id)
+              AND (
+                    u.citizenship_exam_score IS NULL
+                    OR TRIM(COALESCE(u.citizenship_exam_score, '')) = ''
+                  )
+            ORDER BY u.id DESC
+            LIMIT %s
+            """,
+            (limit,),
+        )
+        raw = cur.fetchall()
+        cur.close()
+        conn.close()
+    except Exception:
+        return []
+
+    for r in raw:
+        fn = (r.get('first_name') or '').strip()
+        ln = (r.get('last_name') or '').strip()
+        name = ' '.join(x for x in (fn, ln) if x) or '—'
+        city = (r.get('citizenship_city') or '').strip() or '—'
+        ad = r.get('citizenship_apply_date')
+        if hasattr(ad, 'isoformat'):
+            ad = ad.isoformat()
+        apply_disp = (str(ad)[:10] if ad else '') or '—'
+        ed_raw = r.get('citizenship_exam_date')
+        if hasattr(ed_raw, 'isoformat'):
+            ed_raw = ed_raw.isoformat()
+        exam_disp = (str(ed_raw)[:10] if ed_raw else '') or '—'
+        rows_out.append({'name': name, 'city': city, 'apply': apply_disp, 'exam': exam_disp})
+    return rows_out
+
+
 @app.route('/api/subscription/status', methods=['GET'])
 def api_subscription_status():
     """Return current session subscription status for both sections."""
@@ -2262,6 +2467,20 @@ def admin_logout():
 @_admin_required
 def admin_dashboard():
     return render_template('admin_dashboard.html')
+
+
+@app.route('/admin/exam-visitor-stats')
+@_admin_required
+def admin_exam_visitor_stats():
+    """صفحهٔ جداگانهٔ آمار بازدید بخش آزمون‌های نمونه (فهرست فصل‌ها + Exam1–3)، همان دادهٔ API visitor-dashboard."""
+    return render_template('admin_exam_visitor_stats.html')
+
+
+@app.route('/admin/visitor-activity')
+@_admin_required
+def admin_visitor_activity():
+    """صفحهٔ جداگانه: بازدید روزانه، IPهای پرتعداد، آخرین لاگ‌ها (بدون جدول تفصیلی آزمون نمونه)."""
+    return render_template('admin_visitor_activity.html')
 
 
 @app.route('/admin/api/change-password', methods=['POST'])
@@ -2553,8 +2772,12 @@ def admin_api_users():
         if not conn:
             return jsonify({'success': False, 'error': 'DB'}), 500
         cur = conn.cursor(cursor_factory=RealDictCursor)
+        _ensure_subscription_users_citizenship_columns(cur)
+        conn.commit()
         cur.execute("""
             SELECT u.id, u.mobile, u.first_name, u.last_name, u.notes, u.created_at,
+                   u.citizenship_city, u.citizenship_apply_date, u.citizenship_exam_date, u.citizenship_exam_score,
+                   (SELECT COUNT(*)::int FROM subscription_payments WHERE user_id = u.id) AS payment_count,
                    (SELECT expiry_date FROM subscription_subscriptions WHERE user_id = u.id AND section = 'tests' AND status = 'active' ORDER BY expiry_date DESC LIMIT 1) AS tests_expiry,
                    (SELECT expiry_date FROM subscription_subscriptions WHERE user_id = u.id AND section = 'questions_414' AND status = 'active' ORDER BY expiry_date DESC LIMIT 1) AS questions_414_expiry
             FROM subscription_users u
@@ -2685,31 +2908,103 @@ def admin_api_users_add():
         return jsonify({'success': False, 'error': str(e)}), 200
 
 
-@app.route('/admin/api/users/<int:user_id>', methods=['PUT'])
+@app.route('/admin/api/users/<int:user_id>', methods=['PUT', 'DELETE'])
 @_admin_required
 def admin_api_users_update(user_id):
-    """به‌روزرسانی نام و نام خانوادگی کاربر اشتراک."""
+    """PUT: به‌روزرسانی پروفایل و اختیاری انقضا. DELETE: حذف کاربر فقط در صورت نداشتن ردیف پرداخت."""
+    if request.method == 'DELETE':
+        try:
+            conn = get_db_connection()
+            if not conn:
+                return jsonify({'success': False, 'error': 'DB'}), 500
+            cur = conn.cursor()
+            cur.execute(
+                "SELECT COUNT(*) FROM subscription_payments WHERE user_id = %s",
+                (user_id,),
+            )
+            pay_n = cur.fetchone()[0]
+            if pay_n > 0:
+                cur.close()
+                conn.close()
+                return jsonify(
+                    {
+                        'success': False,
+                        'error': 'این کاربر دارای سابقهٔ پرداخت است؛ حذف مجاز نیست.',
+                    }
+                ), 200
+            cur.execute("DELETE FROM subscription_users WHERE id = %s", (user_id,))
+            if cur.rowcount == 0:
+                conn.rollback()
+                cur.close()
+                conn.close()
+                return jsonify({'success': False, 'error': 'کاربر یافت نشد.'}), 200
+            conn.commit()
+            cur.close()
+            conn.close()
+            return jsonify({'success': True, 'message': 'کاربر حذف شد.'}), 200
+        except Exception as e:
+            return jsonify({'success': False, 'error': str(e)}), 200
+
     data = request.get_json() or request.form or {}
     first_name = (data.get('first_name') or '').strip()[:100]
     last_name = (data.get('last_name') or '').strip()[:100]
+    city = (data.get('citizenship_city') or '').strip()[:150]
+    apply_d = _parse_optional_date(data.get('citizenship_apply_date'))
+    exam_d = _parse_optional_date(data.get('citizenship_exam_date'))
+    exam_score = (data.get('citizenship_exam_score') or '').strip()[:50]
+    if data.get('citizenship_apply_date') and str(data.get('citizenship_apply_date')).strip() and apply_d is None:
+        return jsonify({'success': False, 'error': 'تاریخ اپلای نامعتبر است (فرمت YYYY-MM-DD).'}), 200
+    if data.get('citizenship_exam_date') and str(data.get('citizenship_exam_date')).strip() and exam_d is None:
+        return jsonify({'success': False, 'error': 'تاریخ امتحان نامعتبر است (فرمت YYYY-MM-DD).'}), 200
+    subscription_exp = None
+    if 'expiry_date' in data:
+        exp_s = str(data.get('expiry_date') or '').strip()
+        if exp_s:
+            subscription_exp = _parse_optional_date(exp_s)
+            if subscription_exp is None:
+                return jsonify({'success': False, 'error': 'تاریخ انقضای اشتراک نامعتبر است (فرمت YYYY-MM-DD).'}), 200
     try:
         conn = get_db_connection()
         if not conn:
             return jsonify({'success': False, 'error': 'DB'}), 500
         cur = conn.cursor()
+        _ensure_subscription_users_citizenship_columns(cur)
+        conn.commit()
         cur.execute(
-            "UPDATE subscription_users SET first_name = NULLIF(%s, ''), last_name = NULLIF(%s, ''), updated_at = CURRENT_TIMESTAMP WHERE id = %s",
-            (first_name or None, last_name or None, user_id)
+            """UPDATE subscription_users SET
+               first_name = NULLIF(%s, ''),
+               last_name = NULLIF(%s, ''),
+               citizenship_city = NULLIF(%s, ''),
+               citizenship_apply_date = %s,
+               citizenship_exam_date = %s,
+               citizenship_exam_score = NULLIF(%s, ''),
+               updated_at = CURRENT_TIMESTAMP
+               WHERE id = %s""",
+            (first_name or None, last_name or None, city or None, apply_d, exam_d, exam_score or None, user_id)
         )
         if cur.rowcount == 0:
             conn.rollback()
             cur.close()
             conn.close()
             return jsonify({'success': False, 'error': 'کاربر یافت نشد.'}), 200
+        if subscription_exp is not None:
+            for section in ('tests', 'questions_414'):
+                cur.execute(
+                    """
+                    INSERT INTO subscription_subscriptions (user_id, section, expiry_date, status)
+                    VALUES (%s, %s, %s, 'active')
+                    ON CONFLICT (user_id, section) DO UPDATE SET
+                    expiry_date = EXCLUDED.expiry_date, updated_at = CURRENT_TIMESTAMP
+                    """,
+                    (user_id, section, subscription_exp),
+                )
         conn.commit()
         cur.close()
         conn.close()
-        return jsonify({'success': True, 'message': 'نام و نام خانوادگی به‌روز شد.'}), 200
+        msg = 'اطلاعات کاربر به‌روز شد.'
+        if subscription_exp is not None:
+            msg += ' انقضای اشتراک (تست‌ها و ۴۱۴) نیز به‌روز شد.'
+        return jsonify({'success': True, 'message': msg}), 200
     except Exception as e:
         return jsonify({'success': False, 'error': str(e)}), 200
 
