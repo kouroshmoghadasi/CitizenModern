@@ -62,12 +62,100 @@
         font-weight: 600;
         color: var(--accent, #1e3c72);
     }
+    /* موبایل: هر ردیف جدول به‌صورت کارت با برچسب کنار مقدار */
+    @media (max-width: 640px) {
+        .citizen-exam-report {
+            padding: 14px 12px;
+            margin-bottom: 16px;
+            border-radius: 12px;
+        }
+        .citizen-exam-report h2 {
+            font-size: clamp(0.95rem, 4.2vw, 1.08rem);
+            margin-bottom: 12px;
+            line-height: 1.55;
+            padding: 0 2px;
+            hyphens: auto;
+            overflow-wrap: break-word;
+        }
+        .citizen-exam-report .table-wrap {
+            overflow-x: visible;
+            margin: 0;
+            border: none;
+            border-radius: 0;
+        }
+        .citizen-exam-report-table {
+            min-width: 0 !important;
+            width: 100%;
+            font-size: 0.9375rem;
+            display: block;
+        }
+        .citizen-exam-report-table thead {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+        .citizen-exam-report-table tbody {
+            display: block;
+        }
+        .citizen-exam-report-table tbody tr {
+            display: block;
+            margin-bottom: 12px;
+            padding: 4px 14px 12px;
+            border: 1px solid var(--border, rgba(30,60,114,0.15));
+            border-radius: 12px;
+            background: var(--card-bg, #fff);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+        body.theme-dark .citizen-exam-report-table tbody tr {
+            box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+        }
+        .citizen-exam-report-table tbody tr:nth-child(even) {
+            background: var(--card-bg, #fff);
+        }
+        .citizen-exam-report-table td {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
+            gap: 6px 12px;
+            align-items: start;
+            width: 100% !important;
+            border: none;
+            border-bottom: 1px solid var(--border, rgba(30,60,114,0.1));
+            padding: 11px 0;
+            text-align: right;
+            box-sizing: border-box;
+        }
+        .citizen-exam-report-table td:last-child {
+            border-bottom: none;
+        }
+        .citizen-exam-report-table td::before {
+            content: attr(data-label);
+            font-weight: 700;
+            font-size: 0.78rem;
+            color: var(--accent, #1e3c72);
+            line-height: 1.4;
+            word-break: break-word;
+        }
+        .citizen-exam-report-table .col-row-num {
+            font-variant-numeric: tabular-nums;
+        }
+        .citizen-exam-report-empty {
+            font-size: 0.92rem;
+            padding: 14px 8px;
+            line-height: 1.6;
+        }
+    }
 </style>
 <section class="citizen-exam-report" aria-labelledby="citizen-exam-report-title" lang="fa" dir="rtl">
     <h2 id="citizen-exam-report-title">لیست قبولی افراد از تاریخ 25 ژانویه 2026 تا کنون</h2>
     {% if report_rows and report_rows|length > 0 %}
     <div class="table-wrap" role="region" aria-label="جدول لیست قبولی">
-        <table>
+        <table class="citizen-exam-report-table">
             <thead>
                 <tr>
                     <th scope="col" class="col-row-num">ردیف</th>
@@ -81,12 +169,12 @@
             <tbody>
                 {% for row in report_rows %}
                 <tr>
-                    <td class="col-row-num">{{ loop.index }}</td>
-                    <td>{{ row.name }}</td>
-                    <td>{{ row.city }}</td>
-                    <td>{{ row.apply }}</td>
-                    <td>{{ row.exam }}</td>
-                    <td>{{ row.score }}</td>
+                    <td class="col-row-num" data-label="ردیف">{{ loop.index }}</td>
+                    <td data-label="نام و نام خانوادگی">{{ row.name }}</td>
+                    <td data-label="شهر">{{ row.city }}</td>
+                    <td data-label="تاریخ اپلای">{{ row.apply }}</td>
+                    <td data-label="تاریخ امتحان">{{ row.exam }}</td>
+                    <td data-label="نمرهٔ امتحان">{{ row.score }}</td>
                 </tr>
                 {% endfor %}
             </tbody>
@@ -102,7 +190,7 @@
     {% set waiting = waiting_rows if waiting_rows is defined else [] %}
     {% if waiting and waiting|length > 0 %}
     <div class="table-wrap" role="region" aria-label="جدول افراد در انتظار امتحان">
-        <table>
+        <table class="citizen-exam-report-table">
             <thead>
                 <tr>
                     <th scope="col" class="col-row-num">ردیف</th>
@@ -116,12 +204,12 @@
             <tbody>
                 {% for row in waiting %}
                 <tr>
-                    <td class="col-row-num">{{ loop.index }}</td>
-                    <td>{{ row.name }}</td>
-                    <td>{{ row.city }}</td>
-                    <td>{{ row.apply }}</td>
-                    <td>{{ row.exam }}</td>
-                    <td>—</td>
+                    <td class="col-row-num" data-label="ردیف">{{ loop.index }}</td>
+                    <td data-label="نام و نام خانوادگی">{{ row.name }}</td>
+                    <td data-label="شهر">{{ row.city }}</td>
+                    <td data-label="تاریخ اپلای">{{ row.apply }}</td>
+                    <td data-label="تاریخ امتحان">{{ row.exam }}</td>
+                    <td data-label="نمرهٔ امتحان">—</td>
                 </tr>
                 {% endfor %}
             </tbody>
