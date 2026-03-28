@@ -202,6 +202,251 @@
             }
         });
         
+        /** تست ۲ — ۲۰ سؤال همان Mock Test 3 (Hard) از اسکرین‌شات‌های شما */
+        const test2HistoryEarlyCanadaQuestions = [
+
+                    {
+                        q: "Which Canadian Prime Minister signed the Canada-U.S. Free Trade Agreement in 1988?",
+                        q_fa: "کدام نخست‌وزیر کانادا توافقنامه تجارت آزاد کانادا و آمریکا را در ۱۹۸۸ امضا کرد؟",
+                        q_fr: "Quel premier ministre canadien a signé l'Accord de libre-échange Canada-États-Unis en 1988?",
+                        options: ["Pierre Trudeau", "Brian Mulroney", "John Turner", "Joe Clark"],
+                        options_fr: ["Pierre Trudeau", "Brian Mulroney", "John Turner", "Joe Clark"],
+                        correct: 1,
+                        page: 10,
+                        section: "Citizenship practice",
+                        book_text: "The Canada-U.S. Free Trade Agreement was signed in 1988 under Prime Minister Brian Mulroney."
+                    },
+
+                    {
+                        q: "Which Canadian city is known as the \"City of Saints\"?",
+                        q_fa: "کدام شهر کانادا به «شهر قدیسان» معروف است؟",
+                        q_fr: "Quelle ville canadienne est connue comme la « Ville des Saints » ?",
+                        options: ["Toronto", "Montreal", "Quebec City", "Ottawa"],
+                        options_fr: ["Toronto", "Montréal", "Ville de Québec", "Ottawa"],
+                        correct: 1,
+                        page: 10,
+                        section: "Citizenship practice",
+                        book_text: "Montreal is sometimes nicknamed the City of Saints."
+                    },
+
+                    {
+                        q: "Which Act of 1867 created the provinces of Ontario and Quebec?",
+                        q_fa: "کدام قانون در ۱۸۶۷ استان‌های انتاریو و کبک را ایجاد کرد؟",
+                        q_fr: "Quelle loi de 1867 a créé les provinces de l'Ontario et du Québec?",
+                        options: ["British North America Act", "Constitution Act, 1867", "Quebec Act", "Statute of Westminster"],
+                        options_fr: ["Acte de l'Amérique du Nord britannique", "Loi constitutionnelle de 1867", "Acte de Québec", "Statut de Westminster"],
+                        correct: 1,
+                        page: 10,
+                        section: "Citizenship practice",
+                        book_text: "The Constitution Act, 1867 (formerly the BNA Act) created Ontario and Quebec."
+                    },
+
+                    {
+                        q: "Which Canadian scientist discovered insulin?",
+                        q_fa: "کدام دانشمند کانادایی انسولین را کشف کرد؟",
+                        q_fr: "Quel scientifique canadien a découvert l'insuline?",
+                        options: ["Frederick Banting", "Alexander Graham Bell", "James Naismith", "Charles Best"],
+                        options_fr: ["Frederick Banting", "Alexander Graham Bell", "James Naismith", "Charles Best"],
+                        correct: 0,
+                        page: 10,
+                        section: "Citizenship practice",
+                        book_text: "Frederick Banting (with Charles Best and others) was central to the discovery of insulin."
+                    },
+
+                    {
+                        q: "What is the official residence of the Prime Minister of Canada?",
+                        q_fa: "اقامتگاه رسمی نخست‌وزیر کانادا کجاست؟",
+                        q_fr: "Quelle est la résidence officielle du Premier ministre du Canada?",
+                        options: ["Rideau Hall", "24 Sussex Drive", "Parliament Hill", "Harrington House"],
+                        options_fr: ["Rideau Hall", "24, promenade Sussex", "Colline du Parlement", "Harrington House"],
+                        correct: 1,
+                        page: 10,
+                        section: "Citizenship practice",
+                        book_text: "24 Sussex Drive is the official residence of the Prime Minister of Canada."
+                    },
+
+                    {
+                        q: "Which Canadian province has the largest area?",
+                        q_fa: "کدام استان کانادا از نظر مساحت بزرگ‌ترین است؟",
+                        q_fr: "Quelle province canadienne a la plus grande superficie?",
+                        options: ["Quebec", "Ontario", "British Columbia", "Nunavut"],
+                        options_fr: ["Québec", "Ontario", "Colombie-Britannique", "Nunavut"],
+                        correct: 3,
+                        page: 10,
+                        section: "Citizenship practice",
+                        book_text: "Among the options given, Nunavut has the largest area (it is a territory)."
+                    },
+
+                    {
+                        q: "Which Canadian city is home to the first Canadian parliament?",
+                        q_fa: "کدام شهر کانادا میزبان اولین پارلمان کانادا بود؟",
+                        q_fr: "Quelle ville canadienne a accueilli le premier Parlement du Canada?",
+                        options: ["Ottawa", "Toronto", "Kingston", "Montreal"],
+                        options_fr: ["Ottawa", "Toronto", "Kingston", "Montréal"],
+                        correct: 2,
+                        page: 10,
+                        section: "Citizenship practice",
+                        book_text: "Kingston hosted early parliament meetings for the Province of Canada."
+                    },
+
+                    {
+                        q: "Which Canadian province has both English and French as official languages?",
+                        q_fa: "کدام استان کانادا انگلیسی و فرانسوی را هر دو به‌عنوان زبان رسمی دارد؟",
+                        q_fr: "Quelle province canadienne a l'anglais et le français comme langues officielles?",
+                        options: ["Quebec", "New Brunswick", "Manitoba", "Ontario"],
+                        options_fr: ["Québec", "Nouveau-Brunswick", "Manitoba", "Ontario"],
+                        correct: 1,
+                        page: 10,
+                        section: "Citizenship practice",
+                        book_text: "New Brunswick is Canada's only officially bilingual province."
+                    },
+
+                    {
+                        q: "Which Indigenous people are known for building longhouses?",
+                        q_fa: "کدام مردم بومی به ساخت خانه‌های دراز (longhouses) معروفند؟",
+                        q_fr: "Quel peuple autochtone est connu pour la construction des longues maisons?",
+                        options: ["Inuit", "Iroquois", "Cree", "Métis"],
+                        options_fr: ["Inuit", "Iroquois", "Cree", "Métis"],
+                        correct: 1,
+                        page: 10,
+                        section: "Citizenship practice",
+                        book_text: "The Haudenosaunee (Iroquois) are known for longhouse communities."
+                    },
+
+                    {
+                        q: "Which Canadian province joined Confederation in 1949?",
+                        q_fa: "کدام استان کانادا در ۱۹۴۹ به کنفدراسیون پیوست؟",
+                        q_fr: "Quelle province canadienne a adhéré à la Confédération en 1949?",
+                        options: ["Newfoundland and Labrador", "British Columbia", "Alberta", "Saskatchewan"],
+                        options_fr: ["Terre-Neuve-et-Labrador", "Colombie-Britannique", "Alberta", "Saskatchewan"],
+                        correct: 0,
+                        page: 10,
+                        section: "Citizenship practice",
+                        book_text: "Newfoundland and Labrador joined Canada in 1949."
+                    },
+
+                    {
+                        q: "Which Canadian Prime Minister enacted the Official Languages Act in 1969?",
+                        q_fa: "کدام نخست‌وزیر کانادا قانون زبان‌های رسمی را در ۱۹۶۹ تصویب کرد؟",
+                        q_fr: "Quel premier ministre canadien a adopté la Loi sur les langues officielles en 1969?",
+                        options: ["Lester B. Pearson", "Pierre Trudeau", "John Diefenbaker", "Brian Mulroney"],
+                        options_fr: ["Lester B. Pearson", "Pierre Trudeau", "John Diefenbaker", "Brian Mulroney"],
+                        correct: 1,
+                        page: 10,
+                        section: "Citizenship practice",
+                        book_text: "Pierre Trudeau's government enacted the Official Languages Act in 1969."
+                    },
+
+                    {
+                        q: "Which river forms part of the border between Ontario and the United States?",
+                        q_fa: "کدام رودخانه بخشی از مرز بین انتاریو و ایالات متحده را تشکیل می‌دهد؟",
+                        q_fr: "Quelle rivière forme une partie de la frontière entre l'Ontario et les États-Unis?",
+                        options: ["Mackenzie River", "Niagara River", "St. Lawrence River", "Red River"],
+                        options_fr: ["Rivière Mackenzie", "Rivière Niagara", "Fleuve Saint-Laurent", "Rivière Rouge"],
+                        correct: 2,
+                        page: 10,
+                        section: "Citizenship practice",
+                        book_text: "The St. Lawrence River is part of the international boundary in the Great Lakes region."
+                    },
+
+                    {
+                        q: "Which treaty ended the Seven Years' War and ceded New France to Britain?",
+                        q_fa: "کدام پیمان جنگ هفت‌ساله را پایان داد و نیوفرانس را به بریتانیا واگذار کرد؟",
+                        q_fr: "Quel traité a mis fin à la guerre de Sept Ans et a cédé la Nouvelle-France à la Grande-Bretagne?",
+                        options: ["Treaty of Paris, 1763", "Treaty of Utrecht", "Treaty of Ghent", "Quebec Act"],
+                        options_fr: ["Traité de Paris, 1763", "Traité d'Utrecht", "Traité de Gand", "Acte de Québec"],
+                        correct: 0,
+                        page: 10,
+                        section: "Citizenship practice",
+                        book_text: "The Treaty of Paris (1763) ended the Seven Years' War and ceded New France to Britain."
+                    },
+
+                    {
+                        q: "Which Canadian city is known as the \"Gateway to the North\"?",
+                        q_fa: "کدام شهر کانادا به «دروازه شمال» معروف است؟",
+                        q_fr: "Quelle ville canadienne est connue comme la « porte du Nord » ?",
+                        options: ["Edmonton", "Winnipeg", "Yellowknife", "Calgary"],
+                        options_fr: ["Edmonton", "Winnipeg", "Yellowknife", "Calgary"],
+                        correct: 0,
+                        page: 10,
+                        section: "Citizenship practice",
+                        book_text: "Edmonton is often called the Gateway to the North."
+                    },
+
+                    {
+                        q: "Which Canadian law governs the rights of workers and labor relations federally?",
+                        q_fa: "کدام قانون کانادا به‌صورت فدرال حقوق کارگران و روابط کار را تنظیم می‌کند؟",
+                        q_fr: "Quelle loi canadienne régit au niveau fédéral les droits des travailleurs et les relations de travail?",
+                        options: ["Employment Standards Act", "Canada Labour Code", "Trade Unions Act", "Labour Relations Act"],
+                        options_fr: ["Loi sur les normes d'emploi", "Code canadien du travail", "Loi sur les syndicats ouvriers", "Loi sur les relations de travail"],
+                        correct: 1,
+                        page: 10,
+                        section: "Citizenship practice",
+                        book_text: "The Canada Labour Code governs federal labour relations."
+                    },
+
+                    {
+                        q: "Which Canadian Prime Minister repatriated the Constitution in 1982?",
+                        q_fa: "کدام نخست‌وزیر کانادا قانون اساسی را در ۱۹۸۲ به کانادا بازگرداند؟",
+                        q_fr: "Quel premier ministre canadien a rapatrié la Constitution en 1982?",
+                        options: ["Joe Clark", "Pierre Trudeau", "Brian Mulroney", "John Turner"],
+                        options_fr: ["Joe Clark", "Pierre Trudeau", "Brian Mulroney", "John Turner"],
+                        correct: 1,
+                        page: 10,
+                        section: "Citizenship practice",
+                        book_text: "Pierre Trudeau's government patriated the Constitution in 1982."
+                    },
+
+                    {
+                        q: "Which Canadian province is nicknamed the \"Land of 100,000 Lakes\"?",
+                        q_fa: "کدام استان کانادا لقب «سرزمین ۱۰۰٬۰۰۰ دریاچه» را دارد؟",
+                        q_fr: "Quelle province canadienne est surnommée le « pays de 100 000 lacs » ?",
+                        options: ["Manitoba", "Ontario", "Saskatchewan", "Alberta"],
+                        options_fr: ["Manitoba", "Ontario", "Saskatchewan", "Alberta"],
+                        correct: 0,
+                        page: 10,
+                        section: "Citizenship practice",
+                        book_text: "Many practice tests use Manitoba for this nickname."
+                    },
+
+                    {
+                        q: "Which Canadian territory was governed as part of the Northwest Territories before 1999?",
+                        q_fa: "کدام قلمرو کانادا پیش از ۱۹۹۹ بخشی از سرزمین‌های شمال‌غرب اداره می‌شد؟",
+                        q_fr: "Quel territoire canadien était administré dans les Territoires du Nord-Ouest avant 1999?",
+                        options: ["Yukon", "Nunavut", "Newfoundland", "Labrador"],
+                        options_fr: ["Yukon", "Nunavut", "Terre-Neuve", "Labrador"],
+                        correct: 1,
+                        page: 10,
+                        section: "Citizenship practice",
+                        book_text: "Nunavut was created in 1999 from the eastern part of the Northwest Territories."
+                    },
+
+                    {
+                        q: "Which Canadian Prime Minister first appointed a female cabinet minister?",
+                        q_fa: "کدام نخست‌وزیر کانادا نخستین وزیر زن کابینه را منصوب کرد؟",
+                        q_fr: "Quel premier ministre canadien a nommé la première femme au cabinet?",
+                        options: ["William Lyon Mackenzie King", "John Diefenbaker", "Lester B. Pearson", "Pierre Trudeau"],
+                        options_fr: ["William Lyon Mackenzie King", "John Diefenbaker", "Lester B. Pearson", "Pierre Trudeau"],
+                        correct: 1,
+                        page: 10,
+                        section: "Citizenship practice",
+                        book_text: "Ellen Fairclough was the first woman appointed to federal cabinet, under John Diefenbaker."
+                    },
+
+                    {
+                        q: "Which Canadian Supreme Court case in 1990 recognized Indigenous land rights for hunting and fishing?",
+                        q_fa: "کدام پرونده دادگاه عالی کانادا در ۱۹۹۰ حقوق شکار و ماهیگیری بومیان را به رسمیت شناخت؟",
+                        q_fr: "Quel arrêt de la Cour suprême du Canada en 1990 a reconnu des droits autochtones pour la chasse et la pêche?",
+                        options: ["R v Sparrow", "R v Gladstone", "R v Van der Peet", "R v Powley"],
+                        options_fr: ["R. c. Sparrow", "R. c. Gladstone", "R. c. Van der Peet", "R. c. Powley"],
+                        correct: 0,
+                        page: 10,
+                        section: "Citizenship practice",
+                        book_text: "R v Sparrow (1990) addressed Aboriginal fishing rights under section 35."
+                    }
+
+                ];
+
         // تمام سوالات و پاسخ‌های آزمون
         const allTests = [
             // Test 1: Rights and Freedoms
@@ -430,228 +675,7 @@
             },
             // Test 2: History - Early Canada
             {
-                questions: [
-                    {
-                        q: "What are the three main groups of Aboriginal peoples?",
-                        q_fa: "سه گروه اصلی بومیان چه کسانی هستند؟",
-                        q_fr: "Quels sont les trois principaux groupes de peuples autochtones?",
-                        options: ["First Nations, Métis, Inuit", "Indians, Métis, Eskimos", "Aboriginal, Native, Indigenous", "Tribes, Nations, Communities"],
-                        options_fr: ["Premières Nations, Métis, Inuit", "Indiens, Métis, Esquimaux", "Autochtones, Indigènes", "Tribus, Nations, Communautés"],
-                        correct: 0,
-                        page: 8,
-                        section: "Who We Are",
-                        book_text: "Aboriginal peoples are the first people to live in Canada. The three main groups are: First Nations, Métis, and Inuit."
-                    },
-                    {
-                        q: "Who are the Métis?",
-                        q_fa: "متی‌ها چه کسانی هستند؟",
-                        q_fr: "Qui sont les Métis?",
-                        options: ["People of mixed Aboriginal and European ancestry", "First Nations people", "Inuit people", "French settlers"],
-                        options_fr: ["Peuple d'ascendance autochtone et européenne mixte", "Peuples des Premières Nations", "Peuple inuit", "Colons français"],
-                        correct: 0,
-                        page: 8,
-                        section: "Who We Are",
-                        book_text: "The Métis are a distinct people of mixed Aboriginal and European ancestry."
-                    },
-                    {
-                        q: "What does the word 'Inuit' mean?",
-                        q_fa: "کلمه 'Inuit' به چه معناست؟",
-                        q_fr: "Que signifie le mot « Inuit »?",
-                        options: ["The people", "The land", "The water", "The sky"],
-                        options_fr: ["Le peuple", "La terre", "L'eau", "Le ciel"],
-                        correct: 0,
-                        page: 8,
-                        section: "Who We Are",
-                        book_text: "Inuit means 'the people' in the Inuktitut language."
-                    },
-                    {
-                        q: "When did English settlement begin in Canada?",
-                        q_fa: "استعمار انگلیسی در کانادا چه زمانی آغاز شد؟",
-                        q_fr: "Quand la colonisation anglaise a-t-elle commencé au Canada?",
-                        options: ["1000", "1497", "1608", "1763"],
-                        options_fr: ["1000", "1497", "1608", "1763"],
-                        correct: 1,
-                        page: 18,
-                        section: "Canada's History",
-                        book_text: "English settlement began in 1497 when John Cabot explored Canada's east coast."
-                    },
-                    {
-                        q: "Who established the first European settlements?",
-                        q_fa: "چه کسی اولین سکونتگاه‌های اروپایی را تأسیس کرد؟",
-                        q_fr: "Qui a établi les premières colonies européennes?",
-                        options: ["John Cabot", "Jacques Cartier", "Samuel de Champlain", "All of the above"],
-                        options_fr: ["John Cabot", "Jacques Cartier", "Samuel de Champlain", "Toutes ces réponses"],
-                        correct: 3,
-                        page: 18,
-                        section: "Canada's History",
-                        book_text: "John Cabot, Jacques Cartier, and Samuel de Champlain all played important roles in establishing the first European settlements in Canada."
-                    },
-                    {
-                        q: "Who passed the Quebec Act of 1774?",
-                        q_fa: "چه کسی قانون کبک 1774 را تصویب کرد؟",
-                        q_fr: "Qui a adopté l'Acte de Québec de 1774?",
-                        options: ["French Parliament", "British Parliament", "Canadian Parliament", "American Congress"],
-                        options_fr: ["Parlement français", "Parlement britannique", "Parlement canadien", "Congrès américain"],
-                        correct: 1,
-                        page: 20,
-                        section: "Canada's History",
-                        book_text: "The British Parliament passed the Quebec Act of 1774, which allowed French Canadians to maintain their language, religion, and civil law."
-                    },
-                    {
-                        q: "Which Act granted to the Canadas, for the first time, legislative assemblies elected by the people?",
-                        q_fa: "کدام قانون برای اولین بار به کانادا، مجامع قانونگذاری منتخب مردم را اعطا کرد؟",
-                        q_fr: "Quelle loi a accordé pour la première fois aux Canadas des assemblées législatives élues par le peuple?",
-                        options: ["Quebec Act", "Constitutional Act of 1791", "British North America Act", "Charter of Rights"],
-                        options_fr: ["Acte de Québec", "Acte constitutionnel de 1791", "Acte de l'Amérique du Nord britannique", "Charte des droits"],
-                        correct: 1,
-                        page: 20,
-                        section: "Canada's History",
-                        book_text: "The Constitutional Act of 1791 granted to the Canadas, for the first time, legislative assemblies elected by the people."
-                    },
-                    {
-                        q: "Who was Lieutenant Colonel John Graves Simcoe?",
-                        q_fa: "سرهنگ جان گریوز سیمکو چه کسی بود؟",
-                        q_fr: "Qui était le lieutenant-colonel John Graves Simcoe?",
-                        options: ["First Governor of Upper Canada", "First Prime Minister", "First Governor General", "A military hero"],
-                        options_fr: ["Premier gouverneur du Haut-Canada", "Premier ministre", "Premier gouverneur général", "Un héros militaire"],
-                        correct: 0,
-                        page: 21,
-                        section: "Canada's History",
-                        book_text: "Lieutenant Colonel John Graves Simcoe was the first Governor of Upper Canada (now Ontario)."
-                    },
-                    {
-                        q: "When did the British Parliament abolish slavery throughout the Empire?",
-                        q_fa: "پارلمان بریتانیا چه زمانی برده‌داری را در سراسر امپراتوری لغو کرد؟",
-                        q_fr: "Quand le Parlement britannique a-t-il aboli l'esclavage dans tout l'Empire?",
-                        options: ["1776", "1793", "1833", "1865"],
-                        options_fr: ["1776", "1793", "1833", "1865"],
-                        correct: 2,
-                        page: 22,
-                        section: "Canada's History",
-                        book_text: "The British Parliament abolished slavery throughout the Empire in 1833."
-                    },
-                    {
-                        q: "Name 3 fathers of Confederation.",
-                        q_fa: "3 پدر کنفدراسیون را نام ببرید.",
-                        q_fr: "Nommez 3 Pères de la Confédération.",
-                        options: ["Sir John A. Macdonald, George-Étienne Cartier, George Brown", "William Lyon Mackenzie King, Pierre Trudeau, Lester Pearson", "John Cabot, Jacques Cartier, Samuel de Champlain", "None of the above"],
-                        options_fr: ["Sir John A. Macdonald, George-Étienne Cartier, George Brown", "William Lyon Mackenzie King, Pierre Trudeau, Lester Pearson", "John Cabot, Jacques Cartier, Samuel de Champlain", "Aucune de ces réponses"],
-                        correct: 0,
-                        page: 25,
-                        section: "Canada's History",
-                        book_text: "The Fathers of Confederation include Sir John A. Macdonald, George-Étienne Cartier, and George Brown, among others."
-                    },
-                    {
-                        q: "Which phrase embodied the vision for the Dominion of Canada?",
-                        q_fa: "کدام عبارت دیدگاه برای دومینیون کانادا را تجسم می‌کرد؟",
-                        q_fr: "Quelle phrase incarnait la vision du Dominion du Canada?",
-                        options: ["From sea to sea", "A Mari Usque Ad Mare", "Peace, order and good government", "All of the above"],
-                        options_fr: ["D'un océan à l'autre", "A Mari Usque Ad Mare", "Paix, ordre et bon gouvernement", "Toutes ces réponses"],
-                        correct: 0,
-                        page: 25,
-                        section: "Canada's History",
-                        book_text: "Sir Leonard Tilley was inspired by Psalm 72: 'from sea to sea and from the river to the ends of the earth.' This phrase embodied the vision for the Dominion of Canada."
-                    },
-                    {
-                        q: "What made it possible for immigrants to settle in Western Canada?",
-                        q_fa: "چه چیزی مهاجرت به غرب کانادا را ممکن ساخت؟",
-                        q_fr: "Qu'est-ce qui a permis aux immigrants de s'établir dans l'Ouest canadien?",
-                        options: ["The railway", "The highway", "The airplane", "The ship"],
-                        options_fr: ["Le chemin de fer", "L'autoroute", "L'avion", "Le navire"],
-                        correct: 0,
-                        page: 28,
-                        section: "Canada's History",
-                        book_text: "The Canadian Pacific Railway made it possible for immigrants to settle in Western Canada."
-                    },
-                    {
-                        q: "When did the House of Commons recognize that the Quebecois form a nation within a united Canada?",
-                        q_fa: "مجلس عوام چه زمانی به رسمیت شناخت که کبکی‌ها یک ملت در یک کانادای متحد تشکیل می‌دهند؟",
-                        q_fr: "Quand la Chambre des communes a-t-elle reconnu que les Québécois forment une nation au sein d'un Canada uni?",
-                        options: ["1867", "1982", "2006", "2010"],
-                        options_fr: ["1867", "1982", "2006", "2010"],
-                        correct: 2,
-                        page: 10,
-                        section: "Who We Are",
-                        book_text: "In 2006, the House of Commons recognized that the Quebecois form a nation within a united Canada."
-                    },
-                    {
-                        q: "What is 'La Francophonie'?",
-                        q_fa: "'La Francophonie' چیست؟",
-                        q_fr: "Qu'est-ce que la Francophonie?",
-                        options: ["French community in Canada", "International organization of French-speaking nations", "Quebec language law", "A French colony"],
-                        options_fr: ["Communauté francophone au Canada", "Organisation internationale des pays francophones", "Loi sur la langue au Québec", "Une colonie française"],
-                        correct: 1,
-                        page: 9,
-                        section: "Who We Are",
-                        book_text: "La Francophonie is an international organization of French-speaking nations."
-                    },
-                    {
-                        q: "Why is Terry Fox a Canadian national hero?",
-                        q_fa: "چرا تری فاکس یک قهرمان ملی کانادایی است؟",
-                        q_fr: "Pourquoi Terry Fox est-il un héros national canadien?",
-                        options: ["He won Olympic gold", "He ran across Canada to raise money for cancer research", "He was a war hero", "He was a politician"],
-                        options_fr: ["Il a remporté l'or olympique", "Il a traversé le Canada à la course pour amasser des fonds pour la recherche sur le cancer", "C'était un héros de guerre", "C'était un homme politique"],
-                        correct: 1,
-                        page: 40,
-                        section: "Modern Canada",
-                        book_text: "Terry Fox is a Canadian national hero because he ran across Canada to raise money for cancer research, despite having lost a leg to cancer."
-                    },
-                    {
-                        q: "Who was John Buchan?",
-                        q_fa: "جان بوکان چه کسی بود؟",
-                        q_fr: "Qui était John Buchan?",
-                        options: ["First Prime Minister", "15th Governor General of Canada", "A war hero", "A famous writer"],
-                        options_fr: ["Premier ministre", "15e gouverneur général du Canada", "Un héros de guerre", "Un écrivain célèbre"],
-                        correct: 1,
-                        page: 33,
-                        section: "Canada's History",
-                        book_text: "John Buchan was the 15th Governor General of Canada and a famous writer."
-                    },
-                    {
-                        q: "Who is Marjorie Turner-Bailey?",
-                        q_fa: "مارجوری ترنر-بیلی کیست؟",
-                        q_fr: "Qui est Marjorie Turner-Bailey?",
-                        options: ["First woman Prime Minister", "First Black woman elected to the Nova Scotia legislature", "First Governor General", "A famous athlete"],
-                        options_fr: ["Première femme premier ministre", "Première femme noire élue à l'Assemblée législative de la Nouvelle-Écosse", "Première gouverneure générale", "Une athlète célèbre"],
-                        correct: 1,
-                        page: 39,
-                        section: "Modern Canada",
-                        book_text: "Marjorie Turner-Bailey was the first Black woman elected to the Nova Scotia legislature."
-                    },
-                    {
-                        q: "What is the origin of Habeas corpus?",
-                        q_fa: "منشاء Habeas corpus چیست؟",
-                        q_fr: "Quelle est l'origine de l'habeas corpus?",
-                        options: ["Canadian law", "British common law", "French civil law", "American law"],
-                        options_fr: ["Droit canadien", "Common law britannique", "Droit civil français", "Droit américain"],
-                        correct: 1,
-                        page: 11,
-                        section: "Rights and Responsibilities of Citizenship",
-                        book_text: "Habeas corpus comes from British common law."
-                    },
-                    {
-                        q: "What does Confederation mean?",
-                        q_fa: "کنفدراسیون به چه معناست؟",
-                        q_fr: "Que signifie la Confédération?",
-                        options: ["Independence", "Union of provinces", "Federal system", "All of the above"],
-                        options_fr: ["Indépendance", "Union des provinces", "Système fédéral", "Toutes ces réponses"],
-                        correct: 3,
-                        page: 25,
-                        section: "Canada's History",
-                        book_text: "Confederation means the union of provinces and territories into a single country, creating a federal system."
-                    },
-                    {
-                        q: "What did the Canadian Pacific Railway symbolize?",
-                        q_fa: "راه‌آهن اقیانوس آرام کانادا نماد چه چیزی بود؟",
-                        q_fr: "Que symbolisait le chemin de fer Canadien Pacifique?",
-                        options: ["Economic development", "National unity", "Both economic development and national unity", "Western expansion only"],
-                        options_fr: ["Le développement économique", "L'unité nationale", "Le développement économique et l'unité nationale", "Seulement l'expansion vers l'Ouest"],
-                        correct: 2,
-                        page: 28,
-                        section: "Canada's History",
-                        book_text: "The Canadian Pacific Railway symbolized both economic development and national unity, connecting Canada from coast to coast."
-                    }
-                ]
+                questions: test2HistoryEarlyCanadaQuestions
             },
             // Test 3: Government and Politics
             {
