@@ -43,6 +43,8 @@
         .reset-password-result { padding: 12px; background: #f0f9ff; border: 1px solid #0ea5e9; border-radius: 8px; }
         .reset-password-result label { display: block; margin-bottom: 6px; font-weight: 600; color: #333; }
         .reset-password-display { padding: 10px 12px; font-family: monospace; font-size: 1.1rem; width: 220px; margin-left: 8px; border-radius: 6px; border: 1px solid #ccc; }
+        .payments-summary { margin-top: 14px; padding: 12px 14px; background: #e8f4fc; border-radius: 8px; font-size: 0.95rem; color: #1e3c72; border: 1px solid #b8d4e8; }
+        .payments-summary .sep { margin: 0 10px; color: #94a3b8; }
     </style>
 </head>
 <body>
@@ -136,11 +138,11 @@
                 </div>
                 <div class="f">
                     <label>نام (پرداخت‌کننده)</label>
-                    <input type="text" id="payFirstName" placeholder="اختیاری — ذخیره روی کاربر">
+                    <input type="text" id="payFirstName" placeholder="با انتخاب کاربر پر می‌شود؛ هر دو را کامل کنید">
                 </div>
                 <div class="f">
                     <label>نام خانوادگی</label>
-                    <input type="text" id="payLastName" placeholder="اختیاری">
+                    <input type="text" id="payLastName" placeholder="برای جدول پرداخت‌ها هر دو فیلد را پر کنید">
                 </div>
                 <div class="f">
                     <label>مبلغ (دلار) — کل بسته</label>
@@ -273,7 +275,7 @@
             <table id="paymentsTable">
                 <thead>
                     <tr>
-                        <th>کاربر (نام / موبایل)</th>
+                        <th>نام و نام خانوادگی (موبایل)</th>
                         <th>مبلغ</th>
                         <th>تاریخ پرداخت</th>
                         <th>کد واریز</th>
@@ -283,6 +285,8 @@
                 </thead>
                 <tbody></tbody>
             </table>
+            <p id="paymentsSummary" class="payments-summary" style="display: none;" aria-live="polite"></p>
+            <p class="payments-summary-hint" style="margin-top: 8px; font-size: 0.8rem; color: #64748b;">خلاصه بر اساس همین جدول است (حداکثر ۲۰۰ پرداخت اخیر از سرور).</p>
         </div>
     </div>
 
@@ -771,12 +775,34 @@
 
             function loadPayments() {
                 fetch('/admin/api/payments').then(function(r) { return r.json(); }).then(function(data) {
-                    if (!data.success) return;
+                    var sumElPre = document.getElementById('paymentsSummary');
+                    if (!data.success) {
+                        if (sumElPre) { sumElPre.style.display = 'none'; sumElPre.innerHTML = ''; }
+                        return;
+                    }
                     var tbody = document.querySelector('#paymentsTable tbody');
                     if (!tbody) return;
                     tbody.innerHTML = '';
+                    var sumEl = document.getElementById('paymentsSummary');
+                    var totalAmount = 0;
+                    var uniqueUserIds = new Set();
+                    function paymentDisplayName(p) {
+                        var fn = (p.first_name != null && p.first_name !== '') ? String(p.first_name).trim() : '';
+                        var ln = (p.last_name != null && p.last_name !== '') ? String(p.last_name).trim() : '';
+                        if (fn && ln) return fn + ' ' + ln;
+                        if (fn && !ln) {
+                            var parts = fn.split(/\s+/).filter(Boolean);
+                            if (parts.length >= 2) return parts[0] + ' ' + parts.slice(1).join(' ');
+                            return fn;
+                        }
+                        if (!fn && ln) return ln;
+                        return '';
+                    }
                     data.payments.forEach(function(p) {
-                        var namePart = [p.first_name, p.last_name].filter(Boolean).join(' ');
+                        var amt = parseInt(p.amount, 10);
+                        if (!isNaN(amt)) totalAmount += amt;
+                        if (p.user_id != null && p.user_id !== '') uniqueUserIds.add(Number(p.user_id));
+                        var namePart = paymentDisplayName(p);
                         var userDisplay = namePart ? (namePart.replace(/</g, '&lt;') + ' (' + (p.mobile || '').replace(/</g, '&lt;') + ')') : (p.mobile || '#' + p.user_id).replace(/</g, '&lt;');
                         var tr = document.createElement('tr');
                         tr.innerHTML = '<td>' + userDisplay + '</td><td>' + p.amount + ' $</td><td>' + (p.payment_date || '') + '</td><td>' + (p.payment_reference || '—').replace(/</g, '&lt;') + '</td>' +
@@ -784,6 +810,14 @@
                             '<td><button type="button" class="btn btn-sm btn-danger delete-pay-btn" data-pay-id="' + p.id + '">حذف</button></td>';
                         tbody.appendChild(tr);
                     });
+                    if (sumEl) {
+                        var nPay = data.payments.length;
+                        var nPeople = uniqueUserIds.size;
+                        sumEl.style.display = 'block';
+                        sumEl.innerHTML = '<strong>جمع مبلغ:</strong> ' + totalAmount + ' $' +
+                            '<span class="sep">|</span><strong>تعداد نفر (پرداخت‌کنندهٔ یکتا):</strong> ' + nPeople + ' نفر' +
+                            '<span class="sep">|</span><strong>تعداد پرداخت ثبت‌شده:</strong> ' + nPay;
+                    }
                     tbody.querySelectorAll('.edit-pay-btn').forEach(function(btn) {
                         btn.addEventListener('click', function() {
                             var id = this.getAttribute('data-pay-id');

@@ -3138,9 +3138,18 @@ def admin_api_payments_add():
         cur = conn.cursor()
         first_name = (data.get('first_name') or '').strip()[:100]
         last_name = (data.get('last_name') or '').strip()[:100]
+        # فقط فیلدهای پرشده را به‌روز کن؛ خالی نفرست تا نام/نام خانوادگی قبلی پاک نشود
         if first_name or last_name:
-            cur.execute("UPDATE subscription_users SET first_name = NULLIF(%s, ''), last_name = NULLIF(%s, ''), updated_at = CURRENT_TIMESTAMP WHERE id = %s",
-                        (first_name or None, last_name or None, user_id))
+            cur.execute(
+                """
+                UPDATE subscription_users SET
+                    first_name = COALESCE(NULLIF(%s, ''), first_name),
+                    last_name = COALESCE(NULLIF(%s, ''), last_name),
+                    updated_at = CURRENT_TIMESTAMP
+                WHERE id = %s
+                """,
+                (first_name, last_name, user_id),
+            )
         cur.execute("INSERT INTO subscription_payments (user_id, amount, sections_purchased, payment_date, payment_reference, notes) VALUES (%s, %s, %s, %s, %s, %s)",
                     (user_id, amount, sections_purchased, pay_date, payment_reference or None, notes or None))
         sections_to_update = ['tests', 'questions_414']  # کل بسته
