@@ -5,10 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="{{ url_for('static', filename='images/logo.png') }}" type="image/png">
     <link rel="apple-touch-icon" href="{{ url_for('static', filename='images/logo.png') }}">
-    <meta property="og:image" content="{{ request.url_root.rstrip('/') }}{{ url_for('static', filename='images/citizenship-federal-elections-thumbnail.png') }}">
     <title>Federal Elections | آزمون شهروندی – انتخابات فدرال</title>
     <meta name="description" content="سوالات فصل Federal Elections (Chapter 6) آزمون شهروندی کانادا با ترجمه فارسی؛ پنج سوال اول رایگان.">
-    <link rel="canonical" href="{{ request.host_url.rstrip('/') }}/citizenship-federal-elections">
+    {% set seo_title = "Federal Elections | آزمون شهروندی کانادا – فصل ۶" %}
+    {% set seo_description = "سوالات فصل Federal Elections آزمون شهروندی کانادا با ترجمه فارسی؛ پنج سوال اول رایگان. Discover Canada." %}
+    {% set seo_image = "images/citizenship-federal-elections-thumbnail.png" %}
+    {% set seo_path = "/citizenship-federal-elections" %}
+    {% include '_seo_head_social.html' %}
     {% include 'pwa_meta.html' %}
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }

@@ -5,22 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="{{ url_for('static', filename='images/logo.png') }}" type="image/png">
     <link rel="apple-touch-icon" href="{{ url_for('static', filename='images/logo.png') }}">
-    <meta property="og:image" content="{{ request.url_root.rstrip('/') }}{{ url_for('static', filename='images/logo.png') }}">
-    <meta name="twitter:image" content="{{ request.url_root.rstrip('/') }}{{ url_for('static', filename='images/logo.png') }}">
+    <meta property="og:image" content="{{ seo_base_url() }}{{ url_for('static', filename='images/logo.png') }}">
+    <meta property="og:image:alt" content="خلاصه کتاب Discover Canada — CitizenTest">
+    <meta property="og:site_name" content="CitizenTest · discovercanadatest.com">
+    <meta property="og:locale:alternate" content="en_CA">
+    <meta property="og:locale:alternate" content="fr_CA">
+    <meta name="twitter:image" content="{{ seo_base_url() }}{{ url_for('static', filename='images/logo.png') }}">
     <title>خلاصه کامل کتاب Discover Canada - فارسی و انگلیسی و فرانسه</title>
     <meta name="description" content="خلاصه کامل کتاب Discover Canada برای آزمون شهروندی کانادا به سه زبان فارسی، انگلیسی و فرانسه. مرور سریع نکات کلیدی برای قبولی در آزمون.">
-    <meta name="keywords" content="Discover Canada, خلاصه کتاب شهروندی, خلاصه Discover Canada, آموزش شهروندی, نمونه سوال شهروندی, مرور کتاب شهروندی, نکات کلیدی شهروندی, جزوه شهروندی, آمادگی آزمون شهروندی, کتاب Discover Canada, Découvrir le Canada, résumé Discover Canada, résumé livre citoyenneté, résumé Découvrir le Canada, résumé examen citoyenneté, Discover Canada summary, citizenship study guide Canada, Discover Canada book summary, Canadian citizenship study guide, citizenship education, sample citizenship questions, study guide citizenship, résumé test citoyenneté, formation citoyenneté, exemples questions citoyenneté, خلاصه به سه زبان, فارسی انگلیسی فرانسه">
-    <link rel="canonical" href="{{ request.host_url.rstrip('/') }}/book_summary.html">
+    <meta name="keywords" content="discovercanadatest.com, Discover Canada, خلاصه کتاب شهروندی, خلاصه Discover Canada, آموزش شهروندی, نمونه سوال شهروندی, مرور کتاب شهروندی, نکات کلیدی شهروندی, جزوه شهروندی, آمادگی آزمون شهروندی, کتاب Discover Canada, Découvrir le Canada, résumé Discover Canada, résumé livre citoyenneté, résumé Découvrir le Canada, résumé examen citoyenneté, Discover Canada summary, citizenship study guide Canada, Discover Canada book summary, Canadian citizenship study guide, citizenship education, sample citizenship questions, study guide citizenship, résumé test citoyenneté, formation citoyenneté, exemples questions citoyenneté, خلاصه به سه زبان, فارسی انگلیسی فرانسه">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+    <link rel="canonical" href="{{ seo_base_url() }}/book_summary.html">
     <meta property="og:title" content="خلاصه کامل کتاب Discover Canada - فارسی، انگلیسی، فرانسه">
     <meta property="og:description" content="خلاصه کامل کتاب Discover Canada برای آزمون شهروندی کانادا به سه زبان.">
-    <meta property="og:url" content="{{ request.host_url.rstrip('/') }}/book_summary.html">
+    <meta property="og:url" content="{{ seo_base_url() }}/book_summary.html">
     <meta property="og:type" content="article">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="خلاصه کامل کتاب Discover Canada">
     <meta name="twitter:description" content="خلاصه کامل Discover Canada برای آزمون شهروندی کانادا به سه زبان.">
     {% include 'pwa_meta.html' %}
     <script type="application/ld+json">
-    {"@context":"https://schema.org","@type":"Article","name":"خلاصه کامل کتاب Discover Canada - فارسی، انگلیسی، فرانسه","description":"خلاصه کامل کتاب Discover Canada برای آزمون شهروندی کانادا به سه زبان. مرور سریع نکات کلیدی.","url":"{{ request.host_url.rstrip('/') }}/book_summary.html","inLanguage":["fa","en","fr"],"publisher":{"@type":"Organization","name":"CitizenTest"}}
+    {"@context":"https://schema.org","@type":"Article","name":"خلاصه کامل کتاب Discover Canada - فارسی، انگلیسی، فرانسه","description":"خلاصه کامل کتاب Discover Canada برای آزمون شهروندی کانادا به سه زبان. مرور سریع نکات کلیدی.","url":"{{ seo_base_url() }}/book_summary.html","inLanguage":["fa","en","fr"],"publisher":{"@type":"Organization","name":"CitizenTest"}}
     </script>
     <style>
         * {

@@ -5,10 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="{{ url_for('static', filename='images/logo.png') }}" type="image/png">
     <link rel="apple-touch-icon" href="{{ url_for('static', filename='images/logo.png') }}">
-    <meta property="og:image" content="{{ request.url_root.rstrip('/') }}{{ url_for('static', filename='images/citizenship-who-we-are-thumbnail.png') }}">
     <title>Who We Are | آزمون شهروندی – ما چه کسانی هستیم</title>
-    <meta name="description" content="سوالات فصل ۲ (Who We Are) آزمون شهروندی کانادا با ترجمه فارسی.">
-    <link rel="canonical" href="{{ request.host_url.rstrip('/') }}/citizenship-who-we-are">
+    <meta name="description" content="سوالات فصل ۲ (Who We Are) آزمون شهروندی کانادا با ترجمه فارسی؛ پنج سوال اول رایگان. Discover Canada.">
+    {% set seo_title = "Who We Are | آزمون شهروندی کانادا – فصل ۲" %}
+    {% set seo_description = "سوالات فصل ۲ (Who We Are) آزمون شهروندی کانادا با ترجمه فارسی؛ پنج سوال اول رایگان." %}
+    {% set seo_image = "images/citizenship-who-we-are-thumbnail.png" %}
+    {% set seo_path = "/citizenship-who-we-are" %}
+    {% include '_seo_head_social.html' %}
     {% include 'pwa_meta.html' %}
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }

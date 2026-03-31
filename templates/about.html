@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <link rel="icon" href="{{ url_for('static', filename='images/logo.png') }}" type="image/png">
+    <link rel="apple-touch-icon" href="{{ url_for('static', filename='images/logo.png') }}">
+    <title>درباره discovercanadatest.com | About — آزمون شهروندی کانادا</title>
+    <meta name="description" content="درباره سایت discovercanadatest.com (CitizenTest): آزمون تمرینی شهروندی کانادا بر پایه Discover Canada — ابزار آموزشی مستقل از دولت کانادا.">
+    <meta name="robots" content="index, follow">
+    {% set seo_title = "درباره discovercanadatest.com | CitizenTest — آزمون شهروندی کانادا" %}
+    {% set seo_description = "درباره CitizenTest و discovercanadatest.com: تمرین آزمون شهروندی کانادا بر پایه Discover Canada؛ تماس و سلب مسئولیت." %}
+    {% set seo_image = "images/logo.png" %}
+    {% set seo_path = "/about" %}
+    {% set seo_og_type = "website" %}
+    {% include '_seo_head_social.html' %}
+    {% include 'pwa_meta.html' %}
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            min-height: 100vh;
+            min-height: 100dvh;
+            padding: max(16px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) max(24px, env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px));
+            line-height: 1.75;
+            color: #1a1a1a;
+        }
+        .wrap { max-width: 720px; margin: 0 auto; width: 100%; }
+        .back-bar { margin-bottom: 18px; }
+        .back-btn {
+            display: inline-block; padding: 12px 18px; min-height: 48px; line-height: 1.3;
+            background: linear-gradient(135deg, #1e3c72 0%, #2c5282 100%); color: #fff;
+            text-decoration: none; border-radius: 10px; font-weight: 600;
+            -webkit-tap-highlight-color: transparent; touch-action: manipulation;
+        }
+        .back-btn:hover { opacity: 0.92; }
+        .page-header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2c5282 100%);
+            color: #fff; padding: 28px 22px; border-radius: 16px; margin-bottom: 22px;
+            text-align: center; box-shadow: 0 8px 24px rgba(30,60,114,0.25);
+        }
+        .page-header h1 { font-size: clamp(1.15rem, 4.5vw, 1.45rem); margin-bottom: 10px; font-weight: 700; }
+        .page-header .sub { opacity: 0.95; font-size: clamp(0.88rem, 3.2vw, 0.95rem); }
+        .card {
+            background: #fff; border-radius: 14px; padding: 22px 20px; margin-bottom: 16px;
+            border: 1px solid rgba(30, 60, 114, 0.1);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+        }
+        .card h2 { color: #1e3c72; font-size: 1.05rem; margin-bottom: 12px; }
+        .card p { margin-bottom: 12px; color: #2c3e50; }
+        .card p:last-child { margin-bottom: 0; }
+        .card .en { direction: ltr; text-align: left; color: #34495e; font-size: 0.95rem; }
+        .card .fr { direction: ltr; text-align: left; color: #34495e; font-size: 0.95rem; margin-top: 10px; border-top: 1px solid #eee; padding-top: 12px; }
+        .footer-note { text-align: center; margin-top: 20px; font-size: 0.88em; color: #666; }
+        a.mail { color: #1e3c72; font-weight: 600; word-break: break-all; }
+        .contact-list { margin-top: 16px; display: flex; flex-direction: column; gap: 10px; }
+        .contact-tile {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 14px;
+            background: rgba(30, 60, 114, 0.06);
+            border: 1px solid rgba(30, 60, 114, 0.12);
+            border-radius: 12px;
+            text-decoration: none;
+            color: inherit;
+            transition: background 0.2s, box-shadow 0.2s;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .contact-tile:hover {
+            background: rgba(30, 60, 114, 0.1);
+            box-shadow: 0 4px 12px rgba(30, 60, 114, 0.12);
+        }
+        .contact-tile:focus-visible {
+            outline: 2px solid #1e3c72;
+            outline-offset: 2px;
+        }
+        .contact-tile-icon {
+            flex-shrink: 0;
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #fff;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+        }
+        .contact-tile-icon svg { display: block; }
+        .contact-tile-body { flex: 1; min-width: 0; text-align: right; }
+        .contact-tile[dir="ltr"] .contact-tile-body { text-align: left; }
+        .contact-tile-label { display: block; font-size: 0.82rem; color: #5a6c7d; font-weight: 600; margin-bottom: 2px; }
+        .contact-tile-value { display: block; font-size: 0.95rem; color: #1e3c72; font-weight: 700; word-break: break-all; }
+        .contact-tile-hint { display: block; font-size: 0.8rem; color: #6b7c8f; margin-top: 4px; font-weight: 500; }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="back-bar">
+            <a href="{{ url_for('index') }}" class="back-btn">← بازگشت به صفحه اصلی / Back to Home</a>
+        </div>
+        <header class="page-header">
+            <h1>دربارهٔ discovercanadatest.com</h1>
+            <p class="sub">CitizenTest — آزمون تمرینی شهروندی کانادا · Canadian Citizenship Practice</p>
+        </header>
+
+        <section class="card">
+            <h2>این سایت چیست؟</h2>
+            <p>
+                وب‌سایت رسمی این پروژه <strong><a class="mail" href="https://discovercanadatest.com/" rel="noopener">discovercanadatest.com</a></strong> است (نام تجاری <strong>CitizenTest</strong>). یک ابزار آموزشی برای آمادگی آزمون شهروندی کاناداست؛ محتوا بر پایهٔ راهنمای رسمی <strong>Discover Canada</strong> و موضوعات رایج آزمون است — تست‌های چندگزینه‌ای، بانک‌های سوال بزرگ‌تر و خلاصهٔ کتاب به فارسی، انگلیسی و در بخش‌هایی فرانسه.
+            </p>
+            <p class="en">
+                This site lives at <strong><a class="mail" href="https://discovercanadatest.com/" rel="noopener">discovercanadatest.com</a></strong> (branded <strong>CitizenTest</strong>). It is an independent study tool for the Canadian citizenship test, with practice questions and summaries based on <strong>Discover Canada</strong>. It is not a government website.
+            </p>
+            <p class="fr">
+                Le site officiel du projet est <strong><a class="mail" href="https://discovercanadatest.com/" rel="noopener">discovercanadatest.com</a></strong> (marque <strong>CitizenTest</strong>) — outil d’étude indépendant pour le test de citoyenneté, inspiré de <strong>Découvrir le Canada</strong>. Ce n’est pas un site gouvernemental.
+            </p>
+        </section>
+
+        <section class="card">
+            <h2>سلب مسئولیت</h2>
+            <p>
+                نتیجهٔ تمرین در این سایت تضمین قبولی در آزمون رسمی نیست. برای اطلاعات به‌روز، همیشه به منابع رسمی مهاجرت، پناهندگی و شهروندی کانادا (IRCC) مراجعه کنید.
+            </p>
+            <p class="en">
+                Practice scores here do not guarantee success on the official test. Always check <abbr title="Immigration, Refugees and Citizenship Canada">IRCC</abbr> for current requirements and official materials.
+            </p>
+        </section>
+
+        <section class="card">
+            <h2>سازنده و تماس</h2>
+            <p>
+                خالق و مالک اثر: <strong>KANA Soft System</strong>؛ پدیدآورنده و مسئول تماس: <strong>کورش مقدسی</strong> <span dir="ltr">(Kourosh Moghadasi)</span>. برای پیشنهاد، گزارش مشکل یا حمایت از پروژه از همان دکمهٔ قرمز گوشهٔ صفحه (منو) گزینه‌های «حمایت مالی» و «پیشنهادات» را بزنید، یا از ایمیل / تلگرام / واتساپ زیر استفاده کنید.
+            </p>
+            <div class="contact-list" dir="rtl">
+                <a class="contact-tile" href="mailto:Koroush.mog@gmail.com" aria-label="ایمیل: Koroush.mog@gmail.com">
+                    <span class="contact-tile-icon" aria-hidden="true">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 6h16a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V8a2 2 0 012-2z" stroke="#1e3c72" stroke-width="1.75" stroke-linejoin="round"/><path d="M22 8l-10 6L2 8" stroke="#1e3c72" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </span>
+                    <span class="contact-tile-body">
+                        <span class="contact-tile-label">ایمیل</span>
+                        <span class="contact-tile-value" dir="ltr">Koroush.mog@gmail.com</span>
+                    </span>
+                </a>
+                <a class="contact-tile" href="https://t.me/Kouroshmoghadasi" target="_blank" rel="noopener" aria-label="تلگرام: Kouroshmoghadasi">
+                    <span class="contact-tile-icon" aria-hidden="true">
+                        <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="12" fill="#229ED9"/><path fill="#fff" d="M5.5 11.8l12.5-4.8c.5-.2 1 .1.8.9l-2.1 9.9c-.1.6-.5.8-1 .5l-2.8-2.1-1.4 1.3c-.2.2-.4.3-.7.3l.2-3.5 5.2-4.7c.2-.2 0-.3-.3-.2l-6.4 4-2.8-.9c-.6-.2-.6-.6.1-.8z"/></svg>
+                    </span>
+                    <span class="contact-tile-body">
+                        <span class="contact-tile-label">تلگرام</span>
+                        <span class="contact-tile-value" dir="ltr">@Kouroshmoghadasi</span>
+                        <span class="contact-tile-hint" dir="ltr">t.me/Kouroshmoghadasi</span>
+                    </span>
+                </a>
+                <a class="contact-tile" href="https://wa.me/15144767079" target="_blank" rel="noopener" aria-label="واتساپ: 514-476-7079">
+                    <span class="contact-tile-icon" aria-hidden="true">
+                        <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="12" fill="#25D366"/><path fill="#fff" d="M12.04 4.5c-3.88 0-7.04 3.16-7.04 7.05 0 1.24.33 2.45.95 3.52L5 19.5l4.63-1.21a7.07 7.07 0 003.41.87h.01c3.88 0 7.04-3.16 7.04-7.05 0-1.88-.73-3.65-2.06-4.98a6.98 6.98 0 00-4.99-2.06zm0 12.78h-.01a5.8 5.8 0 01-2.95-.81l-.21-.12-2.14.56.57-2.09-.14-.22a5.74 5.74 0 01-.89-3.07c0-3.18 2.59-5.77 5.77-5.77 1.54 0 2.99.6 4.07 1.69a5.71 5.71 0 011.69 4.08c0 3.18-2.59 5.77-5.77 5.77zm3.31-4.45c-.18-.09-1.07-.53-1.24-.59-.16-.06-.28-.09-.4.09-.12.18-.46.59-.57.71-.1.12-.21.14-.39.05-.18-.09-.76-.28-1.45-.9-.54-.48-.9-1.07-1-1.25-.1-.18-.01-.28.08-.37.08-.08.18-.21.27-.32.09-.11.12-.18.18-.3.06-.12.03-.23-.02-.32-.05-.09-.4-.96-.55-1.31-.14-.34-.29-.29-.4-.3-.1-.01-.22-.01-.34-.01-.12 0-.32.05-.49.23-.17.18-.64.63-.64 1.53s.66 1.78.75 1.9c.09.12 1.29 1.97 3.12 2.76.44.19.78.3 1.05.39.44.14.84.12 1.16.07.35-.05 1.07-.44 1.22-.86.15-.42.15-.78.1-.86-.05-.08-.18-.14-.37-.23z"/></svg>
+                    </span>
+                    <span class="contact-tile-body">
+                        <span class="contact-tile-label">واتساپ</span>
+                        <span class="contact-tile-value" dir="ltr">514-476-7079</span>
+                        <span class="contact-tile-hint">برای چت در واتساپ کلیک کنید</span>
+                    </span>
+                </a>
+            </div>
+            <p class="en" style="margin-top: 16px; margin-bottom: 0;">
+                Rights holder: <strong>KANA Soft System</strong>. Publisher and contact: <strong>Kourosh Moghadasi</strong> (کورش مقدسی).
+            </p>
+            <div class="contact-list en" dir="ltr" style="margin-top: 14px;">
+                <a class="contact-tile" href="mailto:Koroush.mog@gmail.com" dir="ltr" aria-label="Email Koroush.mog@gmail.com">
+                    <span class="contact-tile-icon" aria-hidden="true">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 6h16a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V8a2 2 0 012-2z" stroke="#1e3c72" stroke-width="1.75" stroke-linejoin="round"/><path d="M22 8l-10 6L2 8" stroke="#1e3c72" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </span>
+                    <span class="contact-tile-body">
+                        <span class="contact-tile-label">Email</span>
+                        <span class="contact-tile-value">Koroush.mog@gmail.com</span>
+                    </span>
+                </a>
+                <a class="contact-tile" href="https://t.me/Kouroshmoghadasi" target="_blank" rel="noopener" dir="ltr" aria-label="Telegram Kouroshmoghadasi">
+                    <span class="contact-tile-icon" aria-hidden="true">
+                        <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="12" fill="#229ED9"/><path fill="#fff" d="M5.5 11.8l12.5-4.8c.5-.2 1 .1.8.9l-2.1 9.9c-.1.6-.5.8-1 .5l-2.8-2.1-1.4 1.3c-.2.2-.4.3-.7.3l.2-3.5 5.2-4.7c.2-.2 0-.3-.3-.2l-6.4 4-2.8-.9c-.6-.2-.6-.6.1-.8z"/></svg>
+                    </span>
+                    <span class="contact-tile-body">
+                        <span class="contact-tile-label">Telegram</span>
+                        <span class="contact-tile-value">@Kouroshmoghadasi</span>
+                        <span class="contact-tile-hint">Open in Telegram</span>
+                    </span>
+                </a>
+                <a class="contact-tile" href="https://wa.me/15144767079" target="_blank" rel="noopener" dir="ltr" aria-label="WhatsApp 514-476-7079">
+                    <span class="contact-tile-icon" aria-hidden="true">
+                        <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="12" fill="#25D366"/><path fill="#fff" d="M12.04 4.5c-3.88 0-7.04 3.16-7.04 7.05 0 1.24.33 2.45.95 3.52L5 19.5l4.63-1.21a7.07 7.07 0 003.41.87h.01c3.88 0 7.04-3.16 7.04-7.05 0-1.88-.73-3.65-2.06-4.98a6.98 6.98 0 00-4.99-2.06zm0 12.78h-.01a5.8 5.8 0 01-2.95-.81l-.21-.12-2.14.56.57-2.09-.14-.22a5.74 5.74 0 01-.89-3.07c0-3.18 2.59-5.77 5.77-5.77 1.54 0 2.99.6 4.07 1.69a5.71 5.71 0 011.69 4.08c0 3.18-2.59 5.77-5.77 5.77zm3.31-4.45c-.18-.09-1.07-.53-1.24-.59-.16-.06-.28-.09-.4.09-.12.18-.46.59-.57.71-.1.12-.21.14-.39.05-.18-.09-.76-.28-1.45-.9-.54-.48-.9-1.07-1-1.25-.1-.18-.01-.28.08-.37.08-.08.18-.21.27-.32.09-.11.12-.18.18-.3.06-.12.03-.23-.02-.32-.05-.09-.4-.96-.55-1.31-.14-.34-.29-.29-.4-.3-.1-.01-.22-.01-.34-.01-.12 0-.32.05-.49.23-.17.18-.64.63-.64 1.53s.66 1.78.75 1.9c.09.12 1.29 1.97 3.12 2.76.44.19.78.3 1.05.39.44.14.84.12 1.16.07.35-.05 1.07-.44 1.22-.86.15-.42.15-.78.1-.86-.05-.08-.18-.14-.37-.23z"/></svg>
+                    </span>
+                    <span class="contact-tile-body">
+                        <span class="contact-tile-label">WhatsApp</span>
+                        <span class="contact-tile-value">514-476-7079</span>
+                        <span class="contact-tile-hint">Tap to open WhatsApp chat</span>
+                    </span>
+                </a>
+            </div>
+        </section>
+
+        <p class="footer-note"><a class="mail" href="https://discovercanadatest.com/">discovercanadatest.com</a> · CitizenTest 🇨🇦</p>
+    </div>
+</body>
+</html>

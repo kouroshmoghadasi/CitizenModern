@@ -5,26 +5,29 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="{{ url_for('static', filename='images/logo.png') }}" type="image/png">
     <link rel="apple-touch-icon" href="{{ url_for('static', filename='images/logo.png') }}">
-    <meta property="og:image" content="{{ request.url_root.rstrip('/') }}{{ url_for('static', filename='images/logo.png') }}">
-    <meta name="twitter:image" content="{{ request.url_root.rstrip('/') }}{{ url_for('static', filename='images/logo.png') }}">
+    <meta property="og:image" content="{{ seo_base_url() }}{{ url_for('static', filename='images/logo.png') }}">
+    <meta name="twitter:image" content="{{ seo_base_url() }}{{ url_for('static', filename='images/logo.png') }}">
     <title>۴۱۴ سوال آزمون شهروندی کانادا | سوالات شهروندی انگلیسی و فرانسه + فارسی</title>
     <meta name="description" content="همه ۴۱۴ سوال آزمون شهروندی کانادا به انگلیسی و فرانسه با ترجمه فارسی. بر اساس Discover Canada. تمرین رایگان برای قبولی در آزمون.">
     <meta name="keywords" content="۴۱۴ سوال شهروندی, سوالات آزمون شهروندی کانادا, ۴۱۴ سوال, نمونه آزمون ۴۱۴, نمونه امتحان شهروندی ۴۱۴ سوال, نمونه سوال شهروندی ۴۱۴, آموزش شهروندی ۴۱۴ سوال, تمونه آزمون ۴۱۴, تمرین ۴۱۴ سوال, سوالات ۴۱۴ با ترجمه فارسی, ۴۱۴ سوال با جواب, انگلیسی فارسی, فرانسه فارسی, Discover Canada, تست شهروندی, امتحان تمرینی ۴۱۴, آزمون آزمایشی ۴۱۴, citizenship 414 questions, 414 citizenship questions Canada, sample citizenship test 414, sample exam 414 questions, Discover Canada 414, citizenship test 414 practice, 414 questions practice, questions citoyenneté 414, 414 questions citoyenneté Canada, examen type 414 questions, échantillon 414 questions citoyenneté, Découvrir le Canada 414, test pratique 414, سوالات شهروندی انگلیسی و فرانسه">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="{{ request.host_url.rstrip('/') }}/citizenship-414">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+    <link rel="canonical" href="{{ seo_base_url() }}/citizenship-414">
     <meta property="og:title" content="۴۱۴ سوال شهروندی کانادا - انگلیسی/فرانسه + فارسی">
     <meta property="og:description" content="۴۱۴ سوال با انتخاب انگلیسی+فارسی یا فرانسه+فارسی.">
-    <meta property="og:url" content="{{ request.host_url.rstrip('/') }}/citizenship-414">
+    <meta property="og:url" content="{{ seo_base_url() }}/citizenship-414">
     <meta property="og:type" content="article">
+    <meta property="og:site_name" content="CitizenTest · discovercanadatest.com">
+    <meta property="og:locale:alternate" content="en_CA">
+    <meta property="og:locale:alternate" content="fr_CA">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="۴۱۴ سوال آزمون شهروندی کانادا | انگلیسی و فرانسه + فارسی">
     <meta name="twitter:description" content="۴۱۴ سوال آزمون شهروندی کانادا با ترجمه فارسی. بر اساس Discover Canada.">
     {% include 'pwa_meta.html' %}
     <script type="application/ld+json">
-    {"@context":"https://schema.org","@type":"LearningResource","name":"۴۱۴ سوال شهروندی کانادا","description":"۴۱۴ سوال آزمون شهروندی کانادا به انگلیسی و فرانسه با ترجمه فارسی. بر اساس کتاب Discover Canada.","url":"{{ request.host_url.rstrip('/') }}/citizenship-414","inLanguage":["fa","en","fr"],"learningResourceType":"Practice Questions","educationalLevel":"Adult Education"}
+    {"@context":"https://schema.org","@type":"LearningResource","name":"۴۱۴ سوال شهروندی کانادا","description":"۴۱۴ سوال آزمون شهروندی کانادا به انگلیسی و فرانسه با ترجمه فارسی. بر اساس کتاب Discover Canada.","url":"{{ seo_base_url() }}/citizenship-414","inLanguage":["fa","en","fr"],"learningResourceType":"Practice Questions","educationalLevel":"Adult Education"}
     </script>
     <script type="application/ld+json">
-    {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"خانه","item":"{{ request.host_url.rstrip('/') }}"},{"@type":"ListItem","position":2,"name":"۴۱۴ سوال شهروندی","item":"{{ request.host_url.rstrip('/') }}/citizenship-414"}]}
+    {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"خانه","item":"{{ seo_base_url() }}"},{"@type":"ListItem","position":2,"name":"۴۱۴ سوال شهروندی","item":"{{ seo_base_url() }}/citizenship-414"}]}
     </script>
 <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -366,7 +369,7 @@ body {
                 <p style="margin-bottom: 16px;">برای مشاهده همه ۴۱۴ سوال و دسترسی به تست‌ها، اشتراک یک‌ماهه <strong>{{ subscription_price }} دلار</strong> (کل بسته) لازم است. واریز به آدرس ایمیل زیر و ارسال کد واریز به همان ایمیل؛ پس از تأیید، کد کاربری و رمز برای شما ارسال می‌شود.</p>
                 <div class="paywall-414-email-block">
                     <span class="paywall-414-email-label">ایمیل:</span>
-                    <span class="paywall-414-email-value" id="paywall414EmailValue">Koroush.Mog@gmail.com</span>
+                    <span class="paywall-414-email-value" id="paywall414EmailValue">Koroush.mog@gmail.com</span>
                     <button type="button" class="paywall-414-btn-copy" id="paywall414EmailCopy" title="کپی">کپی</button>
                 </div>
                 <p style="margin-bottom: 14px;"><strong>ورود (در صورت داشتن کد و رمز):</strong></p>

@@ -4465,12 +4465,16 @@
         </a>
     </div>
     
-    <!-- دکمه راهنما -->
+    <!-- دکمه منو (قرمز): درباره، راهنما، حمایت و غیره -->
     <div class="help-btn-wrapper">
         <button class="help-btn" onclick="toggleHelpMenu()" title="منو / Menu" aria-label="منو">
             <svg class="help-btn-icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="currentColor" d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z"/></svg>
         </button>
         <div class="help-menu" id="helpMenu">
+            <a href="{{ url_for('about') }}" class="help-menu-item help-menu-item-link" onclick="toggleHelpMenu()">
+                <span class="help-menu-item-icon">ℹ️</span>
+                <span>درباره سایت / About (discovercanadatest.com)</span>
+            </a>
             <a href="https://niazmandiha.invoisky.com/" target="_blank" rel="noopener" class="help-menu-item help-menu-item-link" onclick="toggleHelpMenu()">
                 <span class="help-menu-item-icon">📋</span>
                 <span>نیازمندی‌های کانادا - آمریکا — کسب‌کارهای فارسی‌زبان</span>
@@ -4503,17 +4507,27 @@
                 To keep this site alive and continue providing free services, please consider supporting us with a small donation.
             </p>
             <h4 style="margin-top: 20px;">📧 اطلاعات تماس / Contact</h4>
+            <p style="margin: 6px 0 12px; font-size: 0.93em; color: #444; text-align: center; line-height: 1.5;" dir="rtl">
+                <strong>کورش مقدسی</strong> <span dir="ltr" style="font-weight: 600;">Kourosh Moghadasi</span>
+            </p>
             <div class="donation-modal-contact">
                 <div class="donation-modal-row">
                     <span class="donation-modal-label">ایمیل / Email</span>
-                    <a href="mailto:koroush.mog@gmail.com">koroush.mog@gmail.com</a>
-                    <button type="button" class="donation-modal-copy" onclick="copyToClipboard('koroush.mog@gmail.com', this)">کپی</button>
+                    <a href="mailto:Koroush.mog@gmail.com">Koroush.mog@gmail.com</a>
+                    <button type="button" class="donation-modal-copy" onclick="copyToClipboard('Koroush.mog@gmail.com', this)">کپی</button>
                 </div>
                 <div class="donation-modal-row">
-                    <span class="donation-modal-label">موبایل / Mobile</span>
+                    <span class="donation-modal-label">تلگرام / Telegram</span>
+                    <a href="https://t.me/Kouroshmoghadasi" target="_blank" rel="noopener" style="direction: ltr;">t.me/Kouroshmoghadasi</a>
+                    <button type="button" class="donation-modal-copy" onclick="copyToClipboard('https://t.me/Kouroshmoghadasi', this)">کپی</button>
+                </div>
+                <div class="donation-modal-row">
+                    <span class="donation-modal-label">موبایل · واتساپ</span>
                     <span style="direction: ltr;">514-476-7079</span>
                     <button type="button" class="donation-modal-copy" onclick="copyToClipboard('514-476-7079', this)">کپی</button>
                 </div>
+                <p style="margin: 10px 0 0; font-size: 0.88em; color: #666; line-height: 1.5;" dir="rtl">واتساپ روی همین شماره فعال است.</p>
+                <p style="margin: 4px 0 0; font-size: 0.85em; color: #666; direction: ltr; text-align: center;">WhatsApp is available on this number.</p>
             </div>
             <div class="donation-modal-payment">
                 <strong>💡 روش‌های پرداخت / Payment</strong>
@@ -4528,8 +4542,30 @@
         <div class="help-modal-content" onclick="event.stopPropagation()">
             <button class="help-modal-close" onclick="closeHelpModal()">×</button>
             <h2>راهنمای استفاده</h2>
-            <p>
-                به صفحه تمرین آزمون شهروندی کانادا خوش آمدید! این ابزار آموزشی شامل 100 تست مختلف است که هر کدام 20 سوال دارند، دقیقاً مشابه آزمون واقعی شهروندی کانادا. برای هر تست، سوالات به صورت دو زبانه (فارسی و انگلیسی) ارائه شده‌اند و شما می‌توانید پاسخ خود را انتخاب کنید. پس از انتخاب هر پاسخ، بلافاصله رنگ سبز برای پاسخ صحیح و رنگ قرمز برای پاسخ غلط نمایش داده می‌شود. پس از اتمام تست، نمره شما محاسبه می‌شود و جدول کامل سوالات، پاسخ‌های صحیح و پاسخ‌های شما نمایش داده می‌شود. هر تست بر اساس محتوای کتاب "Discover Canada" طراحی شده است و شامل موضوعاتی مانند تاریخ کانادا، قوانین اساسی، حقوق و آزادی‌ها، جغرافیا و فرهنگ می‌باشد. موفق باشید!
+            <p style="margin-bottom: 14px;" dir="rtl">
+                به <strong>CitizenTest</strong> (وب‌سایت <strong>discovercanadatest.com</strong>) خوش آمدید. این صفحه تمرین اصلی است: <strong>۱۰۰ آزمون</strong> نمونه با <strong>۲۰ سوال</strong> در هر آزمون — الگوی نزدیک به آزمون رسمی شهروندی کانادا، بر اساس کتاب <strong>Discover Canada</strong>.
+            </p>
+            <h3 style="font-size: 1.05em; margin: 16px 0 8px; color: #1e3c72;" dir="rtl">زبان و پاسخ‌ها</h3>
+            <ul style="margin: 0 0 14px 18px; line-height: 1.7;" dir="rtl">
+                <li>با دکمه‌های <strong>En</strong> / <strong>Fr</strong> حالت نمایش را بین «انگلیسی + فارسی» و «فرانسه + فارسی» عوض کنید.</li>
+                <li>پس از کلیک روی هر گزینه، فوراً <strong style="color:#198754;">سبز</strong> (درست) یا <strong style="color:#c00;">قرمز</strong> (غلط) می‌بینید؛ جابجایی بین سوالات با «قبلی / بعدی» یا از فهرست آزمون بالای صفحه.</li>
+                <li><strong>زمان‌سنج</strong> مثل فضای آزمون است؛ در پایان آزمون نمره و جدول پاسخ‌ها نمایش داده می‌شود.</li>
+            </ul>
+            <h3 style="font-size: 1.05em; margin: 16px 0 8px; color: #1e3c72;" dir="rtl">رایگان و اشتراک (صفحهٔ اصلی)</h3>
+            <p style="margin-bottom: 12px;" dir="rtl">
+                <strong>Test1 تا Test5</strong> در همین صفحه رایگان است. برای <strong>Test6 تا Test100</strong> و باز کردن کامل بانک <strong>۴۱۴ سوال</strong>، باید اشتراک یک‌ماهه فعال باشد؛ جزئیات و پرداخت از همان بخش اشتراک روی همین صفحه انجام می‌شود.
+            </p>
+            <h3 style="font-size: 1.05em; margin: 16px 0 8px; color: #1e3c72;" dir="rtl">سایر بخش‌های مفید</h3>
+            <ul style="margin: 0 0 14px 18px; line-height: 1.7;" dir="rtl">
+                <li><strong>خلاصه Discover Canada</strong> و لینک‌های <strong>۴۱۴ سوال</strong>، <strong>۵۷۱ سوال</strong> و <strong>آزمون‌های دسته‌بندی‌شده</strong> روی همان صفحهٔ اصلی هستند.</li>
+                <li>می‌توانید از منوی <strong>دکمهٔ قرمز</strong> (گوشه صفحه): <strong>درباره سایت</strong>، این راهنما، <strong>حمایت مالی</strong> و <strong>پیشنهادات</strong>.</li>
+                <li>در همان منو گزینهٔ نصب <strong>PWA</strong> (نصب مثل اپ) در نوار پایین صفحه هم راهنما دارد.</li>
+            </ul>
+            <p style="margin-top: 14px; font-size: 0.9em; color: #555; line-height: 1.65;" dir="rtl">
+                این سایت ابزار آموزشی است و جایگزین منابع رسمی <strong>IRCC</strong> نیست؛ برای قوانین و تاریخ به‌روز آزمون، همیشه به سایت مهاجرت کانادا مراجعه کنید.
+            </p>
+            <p style="margin-top: 16px; padding-top: 14px; border-top: 1px solid #e2e8f0; font-size: 0.92em; line-height: 1.65; color: #444; direction: ltr; text-align: left;">
+                <strong>English:</strong> Main page — 100 practice tests (20 questions each), En/Fr + Persian, instant green/red feedback, timer, score summary. Tests 1–5 are free; Test6–100 and full <strong>414-question</strong> bank need an active subscription. Use the red menu for <strong>About</strong>, this help, support, and suggestions. Content is based on <em>Discover Canada</em>; always verify with official IRCC materials.
             </p>
         </div>
     </div>
@@ -4540,6 +4576,9 @@
             <button class="suggestions-modal-close" onclick="closeSuggestionsModal()">×</button>
             <h3>💬 پیشنهادات و نظرات</h3>
             <h3 style="font-size: 1.2em; margin-top: 5px; color: #7f8c8d; font-weight: 500;">Suggestions & Feedback</h3>
+            <p style="margin-top: 10px; font-size: 0.95em; color: #444; text-align: center;" dir="rtl">
+                <strong>کورش مقدسی</strong> <span dir="ltr" style="font-weight: 600;">Kourosh Moghadasi</span>
+            </p>
             <p>
                 به این آدرس پیشنهاد خودتون رو ارسال کنید
             </p>
@@ -4549,12 +4588,19 @@
             <div class="suggestions-email-box">
                 <span class="suggestions-email-label">ایمیل / Email</span>
                 <div class="suggestions-email-value">
-                    <a href="mailto:koroush.mog@gmail.com">koroush.mog@gmail.com</a>
+                    <a href="mailto:Koroush.mog@gmail.com">Koroush.mog@gmail.com</a>
                 </div>
-                <button class="suggestions-modal-copy-btn" onclick="copyToClipboard('koroush.mog@gmail.com', this)">
+                <button class="suggestions-modal-copy-btn" onclick="copyToClipboard('Koroush.mog@gmail.com', this)">
                     کپی / Copy
                 </button>
             </div>
+            <p style="margin-top: 18px; font-size: 0.92em; line-height: 1.65; color: #444; text-align: center;" dir="rtl">
+                تلگرام: <a href="https://t.me/Kouroshmoghadasi" target="_blank" rel="noopener" style="color: #1e3c72; font-weight: 600;">t.me/Kouroshmoghadasi</a>
+                — واتساپ روی خط <span dir="ltr" style="font-weight: 700;">514-476-7079</span>
+            </p>
+            <p style="margin-top: 6px; font-size: 0.88em; color: #555; text-align: center; direction: ltr;">
+                Telegram: <a href="https://t.me/Kouroshmoghadasi" target="_blank" rel="noopener">@Kouroshmoghadasi</a> · WhatsApp: 514-476-7079
+            </p>
         </div>
     </div>
     

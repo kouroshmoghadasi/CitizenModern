@@ -5,10 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="{{ url_for('static', filename='images/logo.png') }}" type="image/png">
     <link rel="apple-touch-icon" href="{{ url_for('static', filename='images/logo.png') }}">
-    <meta property="og:image" content="{{ request.url_root.rstrip('/') }}{{ url_for('static', filename='images/citizenship-how-canadians-govern-thumbnail.png') }}">
     <title>How Canadians Govern Themselves | آزمون شهروندی – چگونه کانادایی‌ها حکومت می‌کنند</title>
     <meta name="description" content="سوالات فصل How Canadians Govern Themselves آزمون شهروندی کانادا با ترجمه فارسی؛ سه سوال اول رایگان.">
-    <link rel="canonical" href="{{ request.host_url.rstrip('/') }}/citizenship-how-canadians-govern-themselves">
+    {% set seo_title = "How Canadians Govern Themselves | آزمون شهروندی کانادا" %}
+    {% set seo_description = "سوالات فصل How Canadians Govern Themselves آزمون شهروندی کانادا با ترجمه فارسی؛ سه سوال اول رایگان. Discover Canada." %}
+    {% set seo_image = "images/citizenship-how-canadians-govern-thumbnail.png" %}
+    {% set seo_path = "/citizenship-how-canadians-govern-themselves" %}
+    {% include '_seo_head_social.html' %}
     {% include 'pwa_meta.html' %}
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }

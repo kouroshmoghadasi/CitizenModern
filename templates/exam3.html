@@ -5,10 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <link rel="icon" href="{{ url_for('static', filename='images/logo.png') }}" type="image/png">
     <link rel="apple-touch-icon" href="{{ url_for('static', filename='images/logo.png') }}">
-    <meta property="og:image" content="{{ request.url_root.rstrip('/') }}{{ url_for('static', filename='images/exam3-thumbnail.png') }}">
     <title>Exam3 — Canada's History (part 2) | آزمون نمونه ۳</title>
     <meta name="description" content="Exam3: Canada's History — second sample quiz; English/French + Persian; first five questions free.">
-    <link rel="canonical" href="{{ request.host_url.rstrip('/') }}/exam3">
+    {% set seo_title = "Exam3 — Canada's History (part 2) | آزمون نمونه ۳" %}
+    {% set seo_description = "Exam3: Canada's History — second sample quiz; English/French + Persian; first five questions free." %}
+    {% set seo_image = "images/exam3-thumbnail.png" %}
+    {% set seo_path = "/exam3" %}
+    {% include '_seo_head_social.html' %}
     {% include 'pwa_meta.html' %}
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }

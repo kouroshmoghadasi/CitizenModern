@@ -5,10 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="{{ url_for('static', filename='images/logo.png') }}" type="image/png">
     <link rel="apple-touch-icon" href="{{ url_for('static', filename='images/logo.png') }}">
-    <meta property="og:image" content="{{ request.url_root.rstrip('/') }}{{ url_for('static', filename='images/citizenship-canadian-symbols-thumbnail.png') }}">
     <title>Canadian Symbols | آزمون شهروندی – نمادهای کانادا</title>
     <meta name="description" content="سوالات فصل Canadian Symbols (Chapter 8) آزمون شهروندی کانادا با ترجمه فارسی؛ پنج سوال اول رایگان.">
-    <link rel="canonical" href="{{ request.host_url.rstrip('/') }}/citizenship-canadian-symbols">
+    {% set seo_title = "Canadian Symbols | آزمون شهروندی کانادا – فصل ۸" %}
+    {% set seo_description = "سوالات فصل Canadian Symbols آزمون شهروندی کانادا با ترجمه فارسی؛ پنج سوال اول رایگان. Discover Canada." %}
+    {% set seo_image = "images/citizenship-canadian-symbols-thumbnail.png" %}
+    {% set seo_path = "/citizenship-canadian-symbols" %}
+    {% include '_seo_head_social.html' %}
     {% include 'pwa_meta.html' %}
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }

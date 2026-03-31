@@ -4,9 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <link rel="icon" href="{{ url_for('static', filename='images/logo.png') }}" type="image/png">
-    <title>لیست قبولی افراد از 25 ژانویه 2026 | Citizen</title>
-    <meta name="description" content="لیست قبولی افراد از تاریخ 25 ژانویه 2026 تا کنون.">
-    <link rel="canonical" href="{{ request.host_url.rstrip('/') }}/citizenship-exam-report">
+    <link rel="apple-touch-icon" href="{{ url_for('static', filename='images/logo.png') }}">
+    <title>لیست قبولی آزمون شهروندی | discovercanadatest.com</title>
+    <meta name="description" content="لیست قبولی شرکت‌کنندگان آزمون شهروندی از ۲۵ ژانویه ۲۰۲۶؛ به‌روزرسانی در CitizenTest.">
+    <meta name="robots" content="index, follow">
+    {% set seo_title = "لیست قبولی آزمون شهروندی کانادا | CitizenTest" %}
+    {% set seo_description = "لیست قبولی شرکت‌کنندگان از ۲۵ ژانویه ۲۰۲۶؛ آزمون تمرینی شهروندی discovercanadatest.com." %}
+    {% set seo_image = "images/logo.png" %}
+    {% set seo_path = "/citizenship-exam-report" %}
+    {% set seo_og_type = "website" %}
+    {% include '_seo_head_social.html' %}
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {

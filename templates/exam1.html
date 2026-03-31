@@ -5,10 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <link rel="icon" href="{{ url_for('static', filename='images/logo.png') }}" type="image/png">
     <link rel="apple-touch-icon" href="{{ url_for('static', filename='images/logo.png') }}">
-    <meta property="og:image" content="{{ request.url_root.rstrip('/') }}{{ url_for('static', filename='images/exam1-thumbnail.png') }}">
     <title>Exam1 — Rights & Responsibilities | آزمون نمونه ۱</title>
     <meta name="description" content="Exam1: چندگزینه‌ای Rights and Responsibilities بر اساس سند نمونه؛ انگلیسی/فرانسه + فارسی؛ پنج سوال اول رایگان.">
-    <link rel="canonical" href="{{ request.host_url.rstrip('/') }}/exam1">
+    {% set seo_title = "Exam1 — Rights & Responsibilities | آزمون نمونه ۱" %}
+    {% set seo_description = "Exam1: چندگزینه‌ای Rights and Responsibilities بر اساس سند نمونه؛ انگلیسی/فرانسه + فارسی؛ پنج سوال اول رایگان." %}
+    {% set seo_image = "images/exam1-thumbnail.png" %}
+    {% set seo_path = "/exam1" %}
+    {% include '_seo_head_social.html' %}
     {% include 'pwa_meta.html' %}
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }

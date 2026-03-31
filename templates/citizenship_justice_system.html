@@ -5,10 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="{{ url_for('static', filename='images/logo.png') }}" type="image/png">
     <link rel="apple-touch-icon" href="{{ url_for('static', filename='images/logo.png') }}">
-    <meta property="og:image" content="{{ request.url_root.rstrip('/') }}{{ url_for('static', filename='images/citizenship-justice-system-thumbnail.png') }}">
     <title>The Justice System | آزمون شهروندی – نظام قضایی</title>
     <meta name="description" content="سوالات بخش The Justice System (Chapter 7) آزمون شهروندی کانادا با ترجمه فارسی؛ پنج سوال اول رایگان.">
-    <link rel="canonical" href="{{ request.host_url.rstrip('/') }}/citizenship-justice-system">
+    {% set seo_title = "The Justice System | آزمون شهروندی کانادا – فصل ۷" %}
+    {% set seo_description = "سوالات بخش The Justice System آزمون شهروندی کانادا با ترجمه فارسی؛ پنج سوال اول رایگان. Discover Canada." %}
+    {% set seo_image = "images/citizenship-justice-system-thumbnail.png" %}
+    {% set seo_path = "/citizenship-justice-system" %}
+    {% include '_seo_head_social.html' %}
     {% include 'pwa_meta.html' %}
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }

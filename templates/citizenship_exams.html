@@ -5,9 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <link rel="icon" href="{{ url_for('static', filename='images/logo.png') }}" type="image/png">
     <link rel="apple-touch-icon" href="{{ url_for('static', filename='images/logo.png') }}">
-    <title>آزمون‌های نمونه | Sample Exams — Citizen</title>
-    <meta name="description" content="فهرست آزمون‌های نمونه: Introduction، Rights، Who We Are، Canada's History، Govern، Federal Elections، Justice، Canadian Symbols، Modern Canada، Exam1–3 و بعدی‌ها برای تمرین شهروندی کانادا.">
-    <link rel="canonical" href="{{ request.host_url.rstrip('/') }}/citizenship-exams">
+    <title>آزمون‌های نمونه شهروندی کانادا | Sample Exams — discovercanadatest.com</title>
+    <meta name="description" content="فهرست آزمون‌های نمونه: Introduction، Rights، Who We Are، Canada's History، Govern، Federal Elections، Justice، Canadian Symbols، Modern Canada، Exam1–3 برای تمرین شهروندی کانادا بر اساس Discover Canada.">
+    <meta name="keywords" content="discovercanadatest.com, CitizenTest, آزمون‌های نمونه شهروندی, citizenship sample exams, liste examens citoyenneté, Discover Canada practice">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    {% set seo_title = "آزمون‌های نمونه شهروندی کانادا | Sample Exams — CitizenTest" %}
+    {% set seo_description = "فهرست آزمون‌های نمونه بر اساس فصل‌های Discover Canada: Introduction تا Modern Canada و Exam1–3. فارسی، انگلیسی و فرانسه." %}
+    {% set seo_image = "images/citizenship-introduction-thumbnail.png" %}
+    {% set seo_path = "/citizenship-exams" %}
+    {% set seo_og_type = "website" %}
+    {% include '_seo_head_social.html' %}
     {% include 'pwa_meta.html' %}
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }

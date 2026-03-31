@@ -1,0 +1,19 @@
+{# نیاز: seo_title، seo_description؛ اختیاری: seo_image (مسیر زیر static)، seo_path (مثل /exam1)، seo_og_type (پیش‌فرض article) #}
+{% set _img = seo_image|default('images/logo.png') %}
+{% set _p = seo_path|default(request.path) %}
+{% set _url = seo_base_url() ~ (_p if _p != '/' else '/') %}
+<link rel="canonical" href="{{ _url }}">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="{{ seo_og_type|default('article') }}">
+<meta property="og:title" content="{{ seo_title }}">
+<meta property="og:description" content="{{ seo_description }}">
+<meta property="og:url" content="{{ _url }}">
+<meta property="og:image" content="{{ seo_base_url() }}{{ url_for('static', filename=_img) }}">
+<meta property="og:locale" content="fa_IR">
+<meta property="og:locale:alternate" content="en_CA">
+<meta property="og:locale:alternate" content="fr_CA">
+<meta property="og:site_name" content="CitizenTest · discovercanadatest.com">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ seo_title }}">
+<meta name="twitter:description" content="{{ seo_description }}">
+<meta name="twitter:image" content="{{ seo_base_url() }}{{ url_for('static', filename=_img) }}">

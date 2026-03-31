@@ -5,10 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="{{ url_for('static', filename='images/logo.png') }}" type="image/png">
     <link rel="apple-touch-icon" href="{{ url_for('static', filename='images/logo.png') }}">
-    <meta property="og:image" content="{{ request.url_root.rstrip('/') }}{{ url_for('static', filename='images/citizenship-rights-responsibilities-thumbnail.png') }}">
     <title>Rights and Responsibilities of Citizenship | آزمون شهروندی – حقوق و مسئولیت‌ها</title>
-    <meta name="description" content="سوالات فصل ۱ (Rights and Responsibilities of Citizenship) آزمون شهروندی کانادا با ترجمه فارسی.">
-    <link rel="canonical" href="{{ request.host_url.rstrip('/') }}/citizenship-rights-responsibilities">
+    <meta name="description" content="سوالات فصل ۱ (Rights and Responsibilities of Citizenship) آزمون شهروندی کانادا با ترجمه فارسی؛ پنج سوال اول رایگان.">
+    {% set seo_title = "Rights and Responsibilities of Citizenship | آزمون شهروندی – فصل ۱" %}
+    {% set seo_description = "سوالات فصل ۱ (Rights and Responsibilities) آزمون شهروندی کانادا با ترجمه فارسی؛ پنج سوال اول رایگان. Discover Canada." %}
+    {% set seo_image = "images/citizenship-rights-responsibilities-thumbnail.png" %}
+    {% set seo_path = "/citizenship-rights-responsibilities" %}
+    {% include '_seo_head_social.html' %}
     {% include 'pwa_meta.html' %}
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }

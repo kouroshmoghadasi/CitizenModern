@@ -494,6 +494,13 @@ def book_summary():
     log_visitor('/book_summary.html')
     return render_template('book_summary.html')
 
+
+@app.route('/about')
+def about():
+    """About the site — educational notice and contact"""
+    log_visitor('/about')
+    return render_template('about.html')
+
 # Cache for 414/571 questions (loaded once per process, no disk read per request)
 _cache_414 = None
 _cache_571 = None
@@ -1750,9 +1757,7 @@ def google_verification():
 @app.route('/manifest.webmanifest')
 def webapp_manifest():
     """Web App Manifest for PWA (Add to Home Screen / نصب اپ)."""
-    base = request.url_root.rstrip('/')
-    if request.headers.get('X-Forwarded-Proto') == 'https' and base.startswith('http://'):
-        base = 'https://' + base[7:]
+    base = _seo_base_url()
     manifest = {
         'id': base + '/',
         'name': 'آزمون شهروندی کانادا | CitizenTest',
@@ -1784,12 +1789,20 @@ def _seo_base_url():
     return url
 
 
+@app.context_processor
+def inject_seo_base_url():
+    """همهٔ قالب‌ها: {{ seo_base_url() }} برای canonical و og:image مطلق با HTTPS پشت پروکسی."""
+    return dict(seo_base_url=_seo_base_url)
+
+
 @app.route('/robots.txt')
 def robots_txt():
     """Serve robots.txt for search engines with dynamic sitemap URL"""
     base = _seo_base_url()
     body = f'''User-agent: *
 Allow: /
+Disallow: /admin
+Disallow: /api/
 
 Sitemap: {base}/sitemap.xml
 '''
@@ -1803,6 +1816,7 @@ def sitemap():
     lastmod = datetime.now(timezone.utc).strftime('%Y-%m-%d')
     pages = [
         ('/', 'daily', '1.0'),
+        ('/about', 'monthly', '0.6'),
         ('/book_summary.html', 'weekly', '0.9'),
         ('/citizenship-414', 'weekly', '0.9'),
         ('/citizenship-571', 'weekly', '0.9'),
@@ -1819,6 +1833,7 @@ def sitemap():
         ('/exam1', 'weekly', '0.85'),
         ('/exam2', 'weekly', '0.85'),
         ('/exam3', 'weekly', '0.85'),
+        ('/citizenship-exam-report', 'weekly', '0.55'),
     ]
     xml = '''<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
