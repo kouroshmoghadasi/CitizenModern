@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request, render_template, send_from_directory, redirect, session
+from flask import Flask, jsonify, request, render_template, send_from_directory, redirect, session, abort
 from flask_cors import CORS
 import psycopg2
 from psycopg2.extras import RealDictCursor
@@ -1748,10 +1748,23 @@ def discover_pdf():
     """Serve the Discover Canada PDF file (cache set in after_request)."""
     return send_from_directory(os.path.dirname(os.path.abspath(__file__)), 'discover.pdf')
 
+def _google_search_console_verify_file(filename):
+    """فایل HTML دانلودی گوگل باید کنار app.py باشد؛ نام دقیق همان چیزی است که Search Console می‌دهد."""
+    root = os.path.dirname(os.path.abspath(__file__))
+    path = os.path.join(root, filename)
+    if not os.path.isfile(path):
+        abort(404)
+    return send_from_directory(root, filename, mimetype='text/html; charset=utf-8')
+
+
 @app.route('/googlee38c49b065f08d79.html')
-def google_verification():
-    """Serve Google Search Console verification file"""
-    return send_from_directory(os.path.dirname(os.path.abspath(__file__)), 'googlee38c49b065f08d79.html')
+def google_verification_legacy():
+    return _google_search_console_verify_file('googlee38c49b065f08d79.html')
+
+
+@app.route('/googlebd799b5068006263.html')
+def google_verification_bd799():
+    return _google_search_console_verify_file('googlebd799b5068006263.html')
 
 
 @app.route('/manifest.webmanifest')
