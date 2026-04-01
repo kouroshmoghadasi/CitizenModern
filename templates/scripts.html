@@ -150,7 +150,7 @@
         
         // Header Carousel Functionality - Simple Version
         let currentSlide = 0;
-        const totalSlides = 3; // اسلاید ۰: عنوان · اسلاید ۱: تیم شکور · اسلاید ۲: ثبت تبلیغ
+        const totalSlides = 4; // ۰ شکور · ۱ یکتا · ۲ عنوان · ۳ ثبت تبلیغ
         let carouselInterval;
         
         function goToSlide(slideIndex) {
@@ -903,104 +903,904 @@
                     }
                 ]
             },
-            // Test 4: Geography
+            // Test 4: Mock Test 4 (Medium) — 20 questions keyed to MyCanadianCitizenshipTest.ca style set
             {
                 questions: [
-                    { q: "Name the five regions of Canada.", q_fa: "پنج منطقه کانادا را نام ببرید.", q_fr: "Nommez les cinq régions du Canada.", options: ["Atlantic, Central, Prairie, West Coast, North", "East, West, North, South, Central", "Maritime, Ontario, Quebec, Prairies, BC", "None of the above"], options_fr: ["Atlantique, Centre, Prairies, Côte Ouest, Nord", "Est, Ouest, Nord, Sud, Centre", "Maritimes, Ontario, Québec, Prairies, CB", "Aucune de ces réponses"], correct: 0, page: 48, section: "Canada's Regions", book_text: "Canada has five distinct regions: Atlantic Region, Central Canada, Prairie Region, West Coast, and North." },
-                    { q: "Which region covers more than one-third of Canada?", q_fa: "کدام منطقه بیش از یک سوم کانادا را پوشش می‌دهد؟", q_fr: "Quelle région couvre plus d'un tiers du Canada?", options: ["Atlantic Region", "Central Canada", "Prairie Region", "Northern Territories"], options_fr: ["Région de l'Atlantique", "Canada central", "Région des Prairies", "Territoires du Nord"], correct: 3, page: 48, section: "Canada's Regions", book_text: "The Northern Territories cover more than one-third of Canada's land mass." },
-                    { q: "The mountain range located between Alberta and British Columbia is called:", q_fa: "رشته کوه واقع شده بین آلبرتا و بریتیش کلمبیا نامیده می‌شود:", q_fr: "La chaîne de montagnes entre l'Alberta et la Colombie-Britannique s'appelle :", options: ["Rocky Mountains", "Appalachian Mountains", "Laurentian Mountains", "Coast Mountains"], options_fr: ["Rocheuses", "Appalaches", "Laurentides", "Montagnes Côtières"], correct: 0, page: 48, section: "Canada's Regions", book_text: "The Rocky Mountains are located between Alberta and British Columbia." },
-                    { q: "What provinces are located in the Prairie Region?", q_fa: "کدام استان‌ها در منطقه Prairie قرار دارند؟", q_fr: "Quelles provinces se trouvent dans la région des Prairies?", options: ["Manitoba, Saskatchewan, Alberta", "Ontario, Quebec", "BC, Alberta", "Nova Scotia, PEI"], options_fr: ["Manitoba, Saskatchewan, Alberta", "Ontario, Québec", "CB, Alberta", "Nouvelle-Écosse, Î.-P.-É."], correct: 0, page: 48, section: "Canada's Regions", book_text: "The Prairie Region includes the provinces of Manitoba, Saskatchewan, and Alberta." },
-                    { q: "The St. Lawrence River is the major river in:", q_fa: "رودخانه سنت لارنس رودخانه اصلی در:", q_fr: "Le fleuve Saint-Laurent est le principal cours d'eau du :", options: ["Western Canada", "Central Canada", "Atlantic Canada", "Northern Canada"], options_fr: ["Ouest canadien", "Canada central", "Canada atlantique", "Nord du Canada"], correct: 1, page: 48, section: "Canada's Regions", book_text: "The St. Lawrence River is the major river in Central Canada." },
-                    { q: "The mineral rich rock formation in the northern part of Central Canada is called:", q_fa: "تشکیلات سنگی غنی از مواد معدنی در قسمت شمالی کانادای مرکزی نامیده می‌شود:", q_fr: "La formation rocheuse riche en minéraux dans le nord du Canada central s'appelle :", options: ["Rocky Mountains", "Canadian Shield", "Great Lakes", "Prairie"], options_fr: ["Rocheuses", "Bouclier canadien", "Grands Lacs", "Prairies"], correct: 1, page: 48, section: "Canada's Regions", book_text: "The Canadian Shield is a mineral-rich rock formation in the northern part of Central Canada." },
-                    { q: "The only Canadian territory which shares a border with another country is:", q_fa: "تنها قلمرو کانادایی که با کشور دیگری مرز مشترک دارد:", q_fr: "Le seul territoire canadien qui partage une frontière avec un autre pays est :", options: ["Yukon", "Northwest Territories", "Nunavut", "None"], options_fr: ["Yukon", "Territoires du Nord-Ouest", "Nunavut", "Aucun"], correct: 0, page: 48, section: "Canada's Regions", book_text: "Yukon is the only Canadian territory that shares a border with another country (the United States)." },
-                    { q: "What provinces are referred to as the Atlantic Provinces?", q_fa: "کدام استان‌ها به عنوان استان‌های آتلانتیک شناخته می‌شوند؟", q_fr: "Quelles provinces sont appelées les provinces de l'Atlantique?", options: ["Nova Scotia, New Brunswick, Prince Edward Island, Newfoundland and Labrador", "Quebec, Ontario", "Manitoba, Saskatchewan", "BC, Alberta"], options_fr: ["Nouvelle-Écosse, Nouveau-Brunswick, Île-du-Prince-Édouard, Terre-Neuve-et-Labrador", "Québec, Ontario", "Manitoba, Saskatchewan", "CB, Alberta"], correct: 0, page: 48, section: "Canada's Regions", book_text: "The Atlantic Provinces are Nova Scotia, New Brunswick, Prince Edward Island, and Newfoundland and Labrador." },
-                    { q: "The provinces of the Atlantic Region and their capital cities are:", q_fa: "استان‌های منطقه آتلانتیک و پایتخت‌های آن‌ها:", q_fr: "Les provinces de la région de l'Atlantique et leurs capitales sont :", options: ["Halifax, Fredericton, Charlottetown, St. John's", "Toronto, Quebec City", "Winnipeg, Regina", "Victoria, Edmonton"], options_fr: ["Halifax, Fredericton, Charlottetown, Saint-Jean", "Toronto, Québec", "Winnipeg, Regina", "Victoria, Edmonton"], correct: 0, page: 48, section: "Canada's Regions", book_text: "The Atlantic Region provinces and their capitals are: Nova Scotia (Halifax), New Brunswick (Fredericton), Prince Edward Island (Charlottetown), and Newfoundland and Labrador (St. John's)." },
-                    { q: "The territories and their capital cities are:", q_fa: "قلمروها و پایتخت‌های آن‌ها:", q_fr: "Les territoires et leurs capitales sont :", options: ["Whitehorse, Yellowknife, Iqaluit", "Toronto, Montreal, Vancouver", "Halifax, St. John's", "Winnipeg, Regina"], options_fr: ["Whitehorse, Yellowknife, Iqaluit", "Toronto, Montréal, Vancouver", "Halifax, Saint-Jean", "Winnipeg, Regina"], correct: 0, page: 48, section: "Canada's Regions", book_text: "The territories and their capitals are: Yukon (Whitehorse), Northwest Territories (Yellowknife), and Nunavut (Iqaluit)." },
-                    { q: "Which region is known as the industrial and manufacturing heartland of Canada?", q_fa: "کدام منطقه به عنوان قلب صنعتی و تولیدی کانادا شناخته می‌شود؟", q_fr: "Quelle région est connue comme le cœur industriel et manufacturier du Canada?", options: ["Atlantic Region", "Central Canada", "Prairie Region", "West Coast"], options_fr: ["Région de l'Atlantique", "Canada central", "Région des Prairies", "Côte Ouest"], correct: 1, page: 48, section: "Canada's Regions", book_text: "Central Canada is known as the industrial and manufacturing heartland of Canada." },
-                    { q: "What provinces are located in the Atlantic Region?", q_fa: "کدام استان‌ها در منطقه آتلانتیک قرار دارند؟", q_fr: "Quelles provinces se trouvent dans la région de l'Atlantique?", options: ["Nova Scotia, New Brunswick, PEI, Newfoundland and Labrador", "Ontario, Quebec", "Manitoba, Saskatchewan, Alberta", "BC"], options_fr: ["Nouvelle-Écosse, Nouveau-Brunswick, Î.-P.-É., Terre-Neuve-et-Labrador", "Ontario, Québec", "Manitoba, Saskatchewan, Alberta", "CB"], correct: 0, page: 48, section: "Canada's Regions", book_text: "The Atlantic Region includes Nova Scotia, New Brunswick, Prince Edward Island, and Newfoundland and Labrador." },
-                    { q: "What is the capital of Canada?", q_fa: "پایتخت کانادا چیست؟", q_fr: "Quelle est la capitale du Canada?", options: ["Toronto", "Montreal", "Ottawa", "Vancouver"], options_fr: ["Toronto", "Montréal", "Ottawa", "Vancouver"], correct: 2, page: 48, section: "Canada's Regions", book_text: "Ottawa is the capital of Canada." },
-                    { q: "Which province has the most bilingual Canadians?", q_fa: "کدام استان بیشترین کانادایی‌های دوزبانه را دارد؟", q_fr: "Quelle province compte le plus de Canadiens bilingues?", options: ["Ontario", "Quebec", "New Brunswick", "Manitoba"], options_fr: ["Ontario", "Québec", "Nouveau-Brunswick", "Manitoba"], correct: 1, page: 9, section: "Who We Are", book_text: "Quebec has the most bilingual Canadians." },
-                    { q: "Which province is one of the most productive agricultural regions in the world?", q_fa: "کدام استان یکی از مولدترین مناطق کشاورزی در جهان است؟", q_fr: "Quelle province est l'une des régions agricoles les plus productives au monde?", options: ["Ontario", "Saskatchewan", "Alberta", "Quebec"], options_fr: ["Ontario", "Saskatchewan", "Alberta", "Québec"], correct: 1, page: 48, section: "Canada's Regions", book_text: "Saskatchewan is one of the most productive agricultural regions in the world." },
-                    { q: "What is the Okanagan Valley famous for?", q_fa: "دره اوکاناگان به چه چیزی معروف است؟", q_fr: "Pour quoi la vallée de l'Okanagan est-elle connue?", options: ["Oil production", "Fruit orchards and vineyards", "Mining", "Fishing"], options_fr: ["Production pétrolière", "Vergers et vignobles", "Exploitation minière", "Pêche"], correct: 1, page: 48, section: "Canada's Regions", book_text: "The Okanagan Valley is famous for its fruit orchards and vineyards." },
-                    { q: "Where do the majority of Métis people live in Canada?", q_fa: "اکثریت مردم متی در کانادا کجا زندگی می‌کنند؟", q_fr: "Où vit la majorité des Métis au Canada?", options: ["Ontario", "Quebec", "Prairie Provinces", "BC"], options_fr: ["Ontario", "Québec", "Provinces des Prairies", "CB"], correct: 2, page: 8, section: "Who We Are", book_text: "The majority of Métis people live in the Prairie Provinces." },
-                    { q: "Why is the North sometimes called the 'Land of the Midnight Sun'?", q_fa: "چرا شمال گاهی اوقات 'سرزمین خورشید نیمه‌شب' نامیده می‌شود؟", q_fr: "Pourquoi le Nord est-il parfois appelé « pays du soleil de minuit »?", options: ["It's very hot", "The sun doesn't set in summer", "It's always dark", "There are many sunny days"], options_fr: ["Il fait très chaud", "Le soleil ne se couche pas en été", "Il fait toujours noir", "Il y a beaucoup de jours ensoleillés"], correct: 1, page: 48, section: "Canada's Regions", book_text: "The North is sometimes called the 'Land of the Midnight Sun' because the sun doesn't set in summer." },
-                    { q: "Which three minerals are still mined in the territories today?", q_fa: "کدام سه ماده معدنی امروزه هنوز در قلمروها استخراج می‌شوند؟", q_fr: "Quels trois minéraux sont encore extraits dans les territoires aujourd'hui?", options: ["Gold, silver, copper", "Gold, lead, zinc", "Diamonds, gold, zinc", "Oil, gas, coal"], options_fr: ["Or, argent, cuivre", "Or, plomb, zinc", "Diamants, or, zinc", "Pétrole, gaz, charbon"], correct: 2, page: 48, section: "Canada's Regions", book_text: "Diamonds, gold, and zinc are still mined in the territories today." },
-                    { q: "The five regions of Canada are Atlantic Region, __________, __________, West Coast and __________.", q_fa: "پنج منطقه کانادا عبارتند از: منطقه آتلانتیک، __________، __________، ساحل غربی و __________.", q_fr: "Les cinq régions du Canada sont : région de l'Atlantique, __________, __________, Côte Ouest et __________.", options: ["Central Canada, Prairie Region, North", "Ontario, Quebec, Territories", "East, West, North", "None of the above"], options_fr: ["Canada central, Région des Prairies, Nord", "Ontario, Québec, Territoires", "Est, Ouest, Nord", "Aucune de ces réponses"], correct: 0, page: 48, section: "Canada's Regions", book_text: "The five regions of Canada are Atlantic Region, Central Canada, Prairie Region, West Coast, and North." }
+                    {
+                        q: "Which Canadian province has the most official Indigenous languages?",
+                        q_fa: "کدام استان کانادا بیشترین زبان‌های رسمی بومی را دارد؟",
+                        q_fr: "Quelle province canadienne compte le plus de langues autochtones officielles?",
+                        options: ["British Columbia", "Quebec", "Ontario", "Manitoba"],
+                        options_fr: ["Colombie-Britannique", "Québec", "Ontario", "Manitoba"],
+                        correct: 0,
+                        page: 10,
+                        section: "Mock Test 4 (Medium)",
+                        book_text: "Practice set answer: British Columbia (keyed to mock test screenshot)."
+                    },
+                    {
+                        q: "Who was Canada's Prime Minister during World War II?",
+                        q_fa: "نخست‌وزیر کانادا در جنگ جهانی دوم کی بود؟",
+                        q_fr: "Qui était le premier ministre du Canada pendant la Seconde Guerre mondiale?",
+                        options: ["William Lyon Mackenzie King", "John Diefenbaker", "Lester B. Pearson", "Pierre Trudeau"],
+                        options_fr: ["William Lyon Mackenzie King", "John Diefenbaker", "Lester B. Pearson", "Pierre Trudeau"],
+                        correct: 0,
+                        page: 10,
+                        section: "Mock Test 4 (Medium)",
+                        book_text: "William Lyon Mackenzie King was Prime Minister for most of WWII."
+                    },
+                    {
+                        q: "What is Canada's official motto?",
+                        q_fa: "شعار رسمی کانادا چیست؟",
+                        q_fr: "Quelle est la devise officielle du Canada?",
+                        options: ["Unity in Diversity", "A Mari Usque Ad Mare", "True North Strong and Free", "In God We Trust"],
+                        options_fr: ["Unité dans la diversité", "A Mari Usque Ad Mare", "The True North strong and free", "In God We Trust"],
+                        correct: 1,
+                        page: 10,
+                        section: "Mock Test 4 (Medium)",
+                        book_text: "Canada's official motto is A Mari Usque Ad Mare (From Sea to Sea)."
+                    },
+                    {
+                        q: "Which Canadian province is the smallest by land area?",
+                        q_fa: "کدام استان کانادا از نظر مساحت خشکی کوچک‌ترین است؟",
+                        q_fr: "Quelle province canadienne a la plus petite superficie terrestre?",
+                        options: ["Prince Edward Island", "Nova Scotia", "New Brunswick", "Newfoundland and Labrador"],
+                        options_fr: ["Île-du-Prince-Édouard", "Nouvelle-Écosse", "Nouveau-Brunswick", "Terre-Neuve-et-Labrador"],
+                        correct: 0,
+                        page: 10,
+                        section: "Mock Test 4 (Medium)",
+                        book_text: "Prince Edward Island is Canada's smallest province by land area."
+                    },
+                    {
+                        q: "Who was Canada's first female Member of Parliament?",
+                        q_fa: "نخستین زن نمایندهٔ پارلمان کانادا کی بود؟",
+                        q_fr: "Qui a été la première femme députée au Parlement du Canada?",
+                        options: ["Kim Campbell", "Agnes Macphail", "Jeanne Sauvé", "Mary Simon"],
+                        options_fr: ["Kim Campbell", "Agnes Macphail", "Jeanne Sauvé", "Mary Simon"],
+                        correct: 1,
+                        page: 10,
+                        section: "Mock Test 4 (Medium)",
+                        book_text: "Agnes Macphail was the first woman elected to the House of Commons (1921)."
+                    },
+                    {
+                        q: "What is the purpose of the Canadian Charter of Rights and Freedoms?",
+                        q_fa: "هدف منشور حقوق و آزادی‌های کانادا چیست؟",
+                        q_fr: "Quel est l'objet de la Charte canadienne des droits et libertés?",
+                        options: ["To create new provinces", "To protect individual rights and freedoms", "To manage federal finances", "To regulate trade"],
+                        options_fr: ["Créer de nouvelles provinces", "Protéger les droits et libertés individuels", "Gérer les finances fédérales", "Réglementer le commerce"],
+                        correct: 1,
+                        page: 10,
+                        section: "Mock Test 4 (Medium)",
+                        book_text: "The Charter protects fundamental rights and freedoms in Canada."
+                    },
+                    {
+                        q: "Which Canadian city hosted the 1976 Summer Olympics?",
+                        q_fa: "کدام شهر کانادا میزبان المپیک تابستانی ۱۹۷۶ بود؟",
+                        q_fr: "Quelle ville canadienne a accueilli les Jeux olympiques d'été de 1976?",
+                        options: ["Vancouver", "Montreal", "Calgary", "Toronto"],
+                        options_fr: ["Vancouver", "Montréal", "Calgary", "Toronto"],
+                        correct: 1,
+                        page: 10,
+                        section: "Mock Test 4 (Medium)",
+                        book_text: "Montreal hosted the 1976 Summer Olympics."
+                    },
+                    {
+                        q: "What is the role of the Lieutenant Governor in a province?",
+                        q_fa: "نقش نایب‌السلطنه در یک استان چیست؟",
+                        q_fr: "Quel est le rôle du lieutenant-gouverneur dans une province?",
+                        options: ["Head of government", "Represents the Crown in the province", "Passes federal laws", "Elects the Premier"],
+                        options_fr: ["Chef du gouvernement", "Représente la Couronne dans la province", "Adopte les lois fédérales", "Élit le premier ministre provincial"],
+                        correct: 1,
+                        page: 10,
+                        section: "Mock Test 4 (Medium)",
+                        book_text: "The Lieutenant Governor represents the Crown at the provincial level."
+                    },
+                    {
+                        q: "Which Canadian territory is the largest by land area?",
+                        q_fa: "کدام قلمرو کانادا از نظر مساحت خشکی بزرگ‌ترین است؟",
+                        q_fr: "Quel territoire canadien a la plus grande superficie terrestre?",
+                        options: ["Yukon", "Northwest Territories", "Nunavut", "None, all are equal"],
+                        options_fr: ["Yukon", "Territoires du Nord-Ouest", "Nunavut", "Aucun, ils sont tous égaux"],
+                        correct: 2,
+                        page: 10,
+                        section: "Mock Test 4 (Medium)",
+                        book_text: "Nunavut is the largest territory by land area."
+                    },
+                    {
+                        q: "Who was the first Canadian Governor General of Caribbean descent?",
+                        q_fa: "نخستین فرماندار کل کانادا با تبار کارائیب کی بود؟",
+                        q_fr: "Qui a été le premier gouverneur général du Canada d'ascendance caribéenne?",
+                        options: ["Michaëlle Jean", "Jeanne Sauvé", "Mary Simon", "Adrienne Clarks"],
+                        options_fr: ["Michaëlle Jean", "Jeanne Sauvé", "Mary Simon", "Adrienne Clarks"],
+                        correct: 0,
+                        page: 10,
+                        section: "Mock Test 4 (Medium)",
+                        book_text: "Michaëlle Jean was Canada's first Black Governor General and of Haitian (Caribbean) origin."
+                    },
+                    {
+                        q: "Which Canadian province is nicknamed \"The Oil Capital of Canada\"?",
+                        q_fa: "کدام استان کانادا لقب «پایتخت نفتی کانادا» را دارد؟",
+                        q_fr: "Quelle province canadienne est surnommée la « capitale pétrolière du Canada »?",
+                        options: ["Alberta", "Saskatchewan", "Newfoundland and Labrador", "British Columbia"],
+                        options_fr: ["Alberta", "Saskatchewan", "Terre-Neuve-et-Labrador", "Colombie-Britannique"],
+                        correct: 0,
+                        page: 10,
+                        section: "Mock Test 4 (Medium)",
+                        book_text: "Alberta is often associated with Canada's oil industry."
+                    },
+                    {
+                        q: "Who has the power to dissolve Parliament in Canada?",
+                        q_fa: "در کانادا چه کسی اختیار انحلال پارلمان را دارد؟",
+                        q_fr: "Qui a le pouvoir de dissoudre le Parlement au Canada?",
+                        options: ["Prime Minister", "Governor General", "Chief Justice", "Speaker of the House"],
+                        options_fr: ["Premier ministre", "Gouverneur général", "Juge en chef", "Président de la Chambre des communes"],
+                        correct: 1,
+                        page: 10,
+                        section: "Mock Test 4 (Medium)",
+                        book_text: "On the advice of the Prime Minister, the Governor General dissolves Parliament for an election."
+                    },
+                    {
+                        q: "What is Canada's official national summer sport?",
+                        q_fa: "ورزش رسمی تابستانی ملی کانادا چیست؟",
+                        q_fr: "Quel est le sport national d'été officiel du Canada?",
+                        options: ["Ice Hockey", "Lacrosse", "Basketball", "Soccer"],
+                        options_fr: ["Hockey sur glace", "Crosse", "Basket-ball", "Soccer"],
+                        correct: 1,
+                        page: 10,
+                        section: "Mock Test 4 (Medium)",
+                        book_text: "Lacrosse is Canada's official summer sport; ice hockey is the official winter sport."
+                    },
+                    {
+                        q: "Which Canadian province is home to the Bay of Fundy?",
+                        q_fa: "خلیج فاندی در کدام استان/استان‌های کانادا قرار دارد؟",
+                        q_fr: "Quelle province canadienne abrite la baie de Fundy?",
+                        options: ["Nova Scotia and New Brunswick", "Quebec", "Newfoundland and Labrador", "Prince Edward Island"],
+                        options_fr: ["Nouvelle-Écosse et Nouveau-Brunswick", "Québec", "Terre-Neuve-et-Labrador", "Île-du-Prince-Édouard"],
+                        correct: 0,
+                        page: 10,
+                        section: "Mock Test 4 (Medium)",
+                        book_text: "The Bay of Fundy lies between Nova Scotia and New Brunswick."
+                    },
+                    {
+                        q: "Who is responsible for interpreting the Constitution in Canada?",
+                        q_fa: "در کانادا تفسیر قانون اساسی بر عهدهٔ کیست؟",
+                        q_fr: "Qui est responsable d'interpréter la Constitution au Canada?",
+                        options: ["Prime Minister", "Supreme Court of Canada", "Governor General", "Parliament"],
+                        options_fr: ["Premier ministre", "Cour suprême du Canada", "Gouverneur général", "Parlement"],
+                        correct: 1,
+                        page: 10,
+                        section: "Mock Test 4 (Medium)",
+                        book_text: "The courts, ultimately the Supreme Court of Canada, interpret the Constitution."
+                    },
+                    {
+                        q: "Which Canadian city is known as the 'City of Saints'?",
+                        q_fa: "کدام شهر کانادا «شهر قدیسان» نامیده می‌شود؟",
+                        q_fr: "Quelle ville canadienne est connue comme la « ville aux cent clochers » (City of Saints)?",
+                        options: ["Quebec City", "Montreal", "Toronto", "Ottawa"],
+                        options_fr: ["Ville de Québec", "Montréal", "Toronto", "Ottawa"],
+                        correct: 1,
+                        page: 10,
+                        section: "Mock Test 4 (Medium)",
+                        book_text: "Montreal has been nicknamed the City of Saints (many churches)."
+                    },
+                    {
+                        q: "Who led the Red River Rebellion?",
+                        q_fa: "شورش رودخانهٔ سرخ را چه کسی رهبری کرد؟",
+                        q_fr: "Qui a dirigé la rébellion de la rivière Rouge?",
+                        options: ["Louis Riel", "John A. Macdonald", "Gabriel Dumont", "Pierre Trudeau"],
+                        options_fr: ["Louis Riel", "John A. Macdonald", "Gabriel Dumont", "Pierre Trudeau"],
+                        correct: 0,
+                        page: 10,
+                        section: "Mock Test 4 (Medium)",
+                        book_text: "Louis Riel led the Red River Resistance (1869–70)."
+                    },
+                    {
+                        q: "Which Canadian province has the most national parks?",
+                        q_fa: "کدام استان کانادا بیشترین پارک‌های ملی را دارد؟",
+                        q_fr: "Quelle province canadienne compte le plus de parcs nationaux?",
+                        options: ["British Columbia", "Alberta", "Quebec", "Ontario"],
+                        options_fr: ["Colombie-Britannique", "Alberta", "Québec", "Ontario"],
+                        correct: 0,
+                        page: 10,
+                        section: "Mock Test 4 (Medium)",
+                        book_text: "Practice set answer: British Columbia (keyed to mock test screenshot)."
+                    },
+                    {
+                        q: "Who is the current Speaker of the House of Commons responsible for presiding over debates?",
+                        q_fa: "رئیس فعلی مجلس عوام که مناظبات را اداره می‌کند کیست؟",
+                        q_fr: "Qui est le président de la Chambre des communes qui préside les débats?",
+                        options: ["Prime Minister", "Governor General", "Speaker of the House", "Chief Justice"],
+                        options_fr: ["Premier ministre", "Gouverneur général", "Président de la Chambre des communes", "Juge en chef"],
+                        correct: 2,
+                        page: 10,
+                        section: "Mock Test 4 (Medium)",
+                        book_text: "The Speaker of the House presides over debates; the person holding the role changes over time."
+                    },
+                    {
+                        q: "Which Canadian province's economy relies heavily on forestry, mining, and fisheries?",
+                        q_fa: "اقتصاد کدام استان کانادا به شدت بر جنگل‌داری، معدن و شیلات تکیه دارد؟",
+                        q_fr: "De quelle province l'économie dépend-elle fortement de la foresterie, des mines et de la pêche?",
+                        options: ["British Columbia", "Alberta", "Manitoba", "Nova Scotia"],
+                        options_fr: ["Colombie-Britannique", "Alberta", "Manitoba", "Nouvelle-Écosse"],
+                        correct: 0,
+                        page: 10,
+                        section: "Mock Test 4 (Medium)",
+                        book_text: "British Columbia's economy includes significant forestry, mining, and fisheries sectors."
+                    }
                 ]
             },
-            // Test 5: History - Confederation and Modern Canada
+            // Test 5: Mock Test 5 (Medium) — 20 questions keyed to MyCanadianCitizenshipTest.ca style set
             {
                 questions: [
-                    { q: "When did Canada become a country?", q_fa: "کانادا چه زمانی به یک کشور تبدیل شد؟", q_fr: "Quand le Canada est-il devenu un pays?", options: ["1867", "1776", "1901", "1982"], options_fr: ["1867", "1776", "1901", "1982"], correct: 0, page: 18, section: "Canada's History" },
-                    { q: "When did the British North America Act come into effect?", q_fa: "قانون آمریکای شمالی بریتانیا چه زمانی به اجرا درآمد؟", q_fr: "Quand l'Acte de l'Amérique du Nord britannique est-il entré en vigueur?", options: ["July 1, 1867", "July 4, 1867", "January 1, 1867", "December 31, 1867"], options_fr: ["1er juillet 1867", "4 juillet 1867", "1er janvier 1867", "31 décembre 1867"], correct: 0, page: 25, section: "Canada's History", book_text: "The British North America Act came into effect on July 1, 1867, creating the Dominion of Canada." },
-                    { q: "When is Canada Day?", q_fa: "روز کانادا چه زمانی است؟", q_fr: "Quand est la fête du Canada?", options: ["June 1", "July 1", "August 1", "September 1"], options_fr: ["1er juin", "1er juillet", "1er août", "1er septembre"], correct: 1, page: 25, section: "Canada's History", book_text: "Canada Day is celebrated on July 1st, the anniversary of Confederation." },
-                    { q: "What happened at the Battle of the Plains of Abraham?", q_fa: "در نبرد دشت‌های آبراهام چه اتفاقی افتاد؟", q_fr: "Que s'est-il passé à la bataille des plaines d'Abraham?", options: ["British defeated French", "French defeated British", "It was a draw", "Americans invaded"], options_fr: ["Les Britanniques ont vaincu les Français", "Les Français ont vaincu les Britanniques", "Match nul", "Invasion américaine"], correct: 0, page: 19, section: "Canada's History", book_text: "At the Battle of the Plains of Abraham in 1759, the British defeated the French forces, leading to British control of New France." },
-                    { q: "Who was Sir Louis-Hippolyte La Fontaine?", q_fa: "سر لوئی-هیپولیت لافونتن چه کسی بود؟", q_fr: "Qui était Sir Louis-Hippolyte La Fontaine?", options: ["First Prime Minister", "A leader of responsible government", "A war hero", "First Governor General"], options_fr: ["Premier ministre", "Un chef du gouvernement responsable", "Un héros de guerre", "Premier gouverneur général"], correct: 1, page: 20, section: "Canada's History", book_text: "Sir Louis-Hippolyte La Fontaine was a leader of responsible government in Canada." },
-                    { q: "What is the significance of the discovery of insulin by Sir Frederick Banting and Charles Best?", q_fa: "اهمیت کشف انسولین توسط سر فردریک بانتیگ و چارلز بست چیست؟", q_fr: "Quelle est l'importance de la découverte de l'insuline par Sir Frederick Banting et Charles Best?", options: ["Cured diabetes", "Saved millions of lives worldwide", "Won Nobel Prize", "All of the above"], options_fr: ["A guéri le diabète", "A sauvé des millions de vies dans le monde", "Prix Nobel", "Toutes ces réponses"], correct: 3, page: 35, section: "Modern Canada", book_text: "The discovery of insulin by Sir Frederick Banting and Charles Best saved millions of lives worldwide and won the Nobel Prize." },
-                    { q: "Who was General Sir Arthur Currie?", q_fa: "ژنرال سر آرتور کری چه کسی بود؟", q_fr: "Qui était le général Sir Arthur Currie?", options: ["First Prime Minister", "Canada's greatest soldier", "First Governor General", "A famous explorer"], options_fr: ["Premier ministre", "Le plus grand soldat du Canada", "Premier gouverneur général", "Un explorateur célèbre"], correct: 1, page: 32, section: "Canada's History", book_text: "General Sir Arthur Currie was Canada's greatest soldier and led Canadian forces in the First World War." },
-                    { q: "Approximately how many Canadians served in the First World War?", q_fa: "تقریباً چند کانادایی در جنگ جهانی اول خدمت کردند؟", q_fr: "Approximativement combien de Canadiens ont servi pendant la Première Guerre mondiale?", options: ["100,000", "500,000", "More than 600,000", "1 million"], options_fr: ["100 000", "500 000", "Plus de 600 000", "1 million"], correct: 2, page: 32, section: "Canada's History", book_text: "More than 600,000 Canadians served in the First World War." },
-                    { q: "When is Remembrance Day celebrated?", q_fa: "روز یادبود چه زمانی جشن گرفته می‌شود؟", q_fr: "Quand le Jour du Souvenir est-il célébré?", options: ["November 11", "November 1", "December 11", "January 11"], options_fr: ["11 novembre", "1er novembre", "11 décembre", "11 janvier"], correct: 0, page: 33, section: "Canada's History", book_text: "Remembrance Day is celebrated on November 11 to honour those who served and died in wars." },
-                    { q: "When was Canada's first financial institution opened?", q_fa: "اولین مؤسسه مالی کانادا چه زمانی افتتاح شد؟", q_fr: "Quand la première institution financière du Canada a-t-elle été ouverte?", options: ["1817", "1867", "1900", "1920"], options_fr: ["1817", "1867", "1900", "1920"], correct: 0, page: 22, section: "Canada's History", book_text: "Canada's first financial institution, the Bank of Montreal, was opened in 1817." },
-                    { q: "Who was the first person to draw a map of Canada's east coast?", q_fa: "اولین کسی که نقشه ساحل شرقی کانادا را ترسیم کرد چه کسی بود؟", q_fr: "Qui a été le premier à dessiner une carte de la côte est du Canada?", options: ["John Cabot", "Jacques Cartier", "Samuel de Champlain", "Henry Hudson"], options_fr: ["John Cabot", "Jacques Cartier", "Samuel de Champlain", "Henry Hudson"], correct: 0, page: 18, section: "Canada's History", book_text: "John Cabot was the first person to draw a map of Canada's east coast in 1497." },
-                    { q: "True or False: In 1813, Government House and the Parliament Buildings were accidentally burned.", q_fa: "درست یا غلط: در سال 1813، خانه دولت و ساختمان‌های پارلمان به طور تصادفی سوزانده شدند.", q_fr: "Vrai ou faux : En 1813, la résidence du gouverneur et les édifices du Parlement ont été accidentellement brûlés.", options: ["True", "False"], options_fr: ["Vrai", "Faux"], correct: 1, page: 21, section: "Canada's History", book_text: "In 1813, Government House and the Parliament Buildings were burned by American forces during the War of 1812, not accidentally." },
-                    { q: "Who renamed the colony 'Province of Quebec'?", q_fa: "چه کسی مستعمره را 'استان کبک' نامگذاری مجدد کرد؟", q_fr: "Qui a renommé la colonie « Province de Québec »?", options: ["British in 1763", "French in 1763", "Canadians in 1867", "Americans"], options_fr: ["Les Britanniques en 1763", "Les Français en 1763", "Les Canadiens en 1867", "Les Américains"], correct: 0, page: 19, section: "Canada's History", book_text: "The British renamed the colony 'Province of Quebec' in 1763 after the Treaty of Paris." },
-                    { q: "What was the Underground Railroad?", q_fa: "راه‌آهن زیرزمینی چه بود؟", q_fr: "Qu'était le chemin de fer clandestin?", options: ["A secret railway", "A network helping slaves escape to freedom", "A transportation system", "A mining operation"], options_fr: ["Un chemin de fer secret", "Un réseau aidant les esclaves à fuir vers la liberté", "Un système de transport", "Une exploitation minière"], correct: 1, page: 22, section: "Canada's History", book_text: "The Underground Railroad was a network of secret routes and safe houses that helped slaves escape to freedom in Canada." },
-                    { q: "In which year did the British Parliament ban the purchase and sale of slaves?", q_fa: "در کدام سال پارلمان بریتانیا خرید و فروش برده را ممنوع کرد؟", q_fr: "En quelle année le Parlement britannique a-t-il interdit l'achat et la vente d'esclaves?", options: ["1776", "1793", "1807", "1833"], options_fr: ["1776", "1793", "1807", "1833"], correct: 2, page: 22, section: "Canada's History", book_text: "The British Parliament banned the purchase and sale of slaves in 1807." },
-                    { q: "Who was the first leader of a responsible government in Canada in 1849?", q_fa: "اولین رهبر دولت مسئول در کانادا در سال 1849 چه کسی بود؟", q_fr: "Qui a été le premier chef d'un gouvernement responsable au Canada en 1849?", options: ["Sir John A. Macdonald", "Louis-Hippolyte La Fontaine", "Robert Baldwin", "Both La Fontaine and Baldwin"], options_fr: ["Sir John A. Macdonald", "Louis-Hippolyte La Fontaine", "Robert Baldwin", "La Fontaine et Baldwin"], correct: 3, page: 20, section: "Canada's History", book_text: "Louis-Hippolyte La Fontaine and Robert Baldwin were the first leaders of responsible government in Canada in 1849." },
-                    { q: "Who recommended merging Upper and Lower Canada and giving them responsible government?", q_fa: "چه کسی ادغام کانادای علیا و سفلی و اعطای دولت مسئول به آن‌ها را توصیه کرد؟", q_fr: "Qui a recommandé la fusion du Haut et du Bas-Canada et l'instauration du gouvernement responsable?", options: ["Lord Durham", "Lord Elgin", "Governor Simcoe", "None of the above"], options_fr: ["Lord Durham", "Lord Elgin", "Gouverneur Simcoe", "Aucune de ces réponses"], correct: 0, page: 20, section: "Canada's History", book_text: "Lord Durham recommended merging Upper and Lower Canada and giving them responsible government." },
-                    { q: "Who were the 'Group of Seven' in Canadian history?", q_fa: "'گروه هفت' در تاریخ کانادا چه کسانی بودند؟", q_fr: "Qui étaient le « Groupe des Sept » dans l'histoire canadienne?", options: ["Seven Fathers of Confederation", "Famous Canadian artists", "Seven provinces", "Seven territories"], options_fr: ["Sept Pères de la Confédération", "Artistes canadiens célèbres", "Sept provinces", "Sept territoires"], correct: 1, page: 35, section: "Modern Canada", book_text: "The Group of Seven were famous Canadian artists who painted the Canadian landscape in the early 20th century." },
-                    { q: "Who is known as the 'Father of Manitoba' and a defender of Métis rights?", q_fa: "چه کسی به عنوان 'پدر مانیتوبا' و مدافع حقوق متی‌ها شناخته می‌شود؟", q_fr: "Qui est connu comme le « père du Manitoba » et défenseur des droits des Métis?", options: ["Sir John A. Macdonald", "Louis Riel", "Gabriel Dumont", "None of the above"], options_fr: ["Sir John A. Macdonald", "Louis Riel", "Gabriel Dumont", "Aucune de ces réponses"], correct: 1, page: 28, section: "Canada's History", book_text: "Louis Riel is known as the 'Father of Manitoba' and was a defender of Métis rights." },
-                    { q: "Marshall McLuhan and Harold Innis were:", q_fa: "مارشال مکلوهان و هارولد اینیس بودند:", q_fr: "Marshall McLuhan et Harold Innis étaient :", options: ["Politicians", "Famous Canadian thinkers and scholars", "Artists", "Explorers"], options_fr: ["Hommes politiques", "Penseurs et universitaires canadiens célèbres", "Artistes", "Explorateurs"], correct: 1, page: 35, section: "Modern Canada", book_text: "Marshall McLuhan and Harold Innis were famous Canadian thinkers and scholars who made important contributions to communication theory." }
+                    {
+                        q: "What is the primary responsibility of the Senate in Canada?",
+                        q_fa: "مسئولیت اصلی سنای کانادا چیست؟",
+                        q_fr: "Quelle est la responsabilité principale du Sénat du Canada?",
+                        options: ["Pass budgets only", "Review and suggest changes to laws", "Elect the Prime Minister", "Manage provincial affairs"],
+                        options_fr: ["Adopter uniquement les budgets", "Examiner les projets de loi et proposer des modifications", "Élire le premier ministre", "Gérer les affaires provinciales"],
+                        correct: 1,
+                        page: 10,
+                        section: "Mock Test 5 (Medium)",
+                        book_text: "The Senate reviews legislation and may propose amendments (sober second thought)."
+                    },
+                    {
+                        q: "Which Canadian province is known for its Celtic and Acadian heritage?",
+                        q_fa: "کدام استان کانادا به میراث سلتی و آکادیان معروف است؟",
+                        q_fr: "Quelle province canadienne est connue pour son patrimoine celtique et acadien?",
+                        options: ["Nova Scotia", "Ontario", "Alberta", "Manitoba"],
+                        options_fr: ["Nouvelle-Écosse", "Ontario", "Alberta", "Manitoba"],
+                        correct: 0,
+                        page: 10,
+                        section: "Mock Test 5 (Medium)",
+                        book_text: "Nova Scotia has strong Celtic and Acadian cultural heritage."
+                    },
+                    {
+                        q: "Who is considered the Father of Confederation for Canada?",
+                        q_fa: "پدر اتحاد فدراسیون کانادا چه کسی محسوب می‌شود؟",
+                        q_fr: "Qui est considéré comme le père de la Confédération pour le Canada?",
+                        options: ["John A. Macdonald", "Louis Riel", "William Lyon Mackenzie King", "Pierre Trudeau"],
+                        options_fr: ["John A. Macdonald", "Louis Riel", "William Lyon Mackenzie King", "Pierre Trudeau"],
+                        correct: 0,
+                        page: 10,
+                        section: "Mock Test 5 (Medium)",
+                        book_text: "Sir John A. Macdonald was a leading Father of Confederation and Canada's first Prime Minister."
+                    },
+                    {
+                        q: "Which Canadian city is home to the Hockey Hall of Fame?",
+                        q_fa: "تالار مشاهیر هاکی در کدام شهر کاناداست؟",
+                        q_fr: "Quelle ville canadienne abrite le Temple de la renommée du hockey?",
+                        options: ["Toronto", "Montreal", "Vancouver", "Ottawa"],
+                        options_fr: ["Toronto", "Montréal", "Vancouver", "Ottawa"],
+                        correct: 0,
+                        page: 10,
+                        section: "Mock Test 5 (Medium)",
+                        book_text: "The Hockey Hall of Fame is in Toronto."
+                    },
+                    {
+                        q: "What year did Canada adopt the Maple Leaf as its national flag?",
+                        q_fa: "کانادا در چه سالی پرچم برگ افرا را به عنوان پرچم ملی پذیرفت؟",
+                        q_fr: "En quelle année le Canada a-t-il adopté la feuille d'érable comme drapeau national?",
+                        options: ["1867", "1921", "1965", "1982"],
+                        options_fr: ["1867", "1921", "1965", "1982"],
+                        correct: 2,
+                        page: 10,
+                        section: "Mock Test 5 (Medium)",
+                        book_text: "Canada's maple leaf flag was adopted on February 15, 1965."
+                    },
+                    {
+                        q: "Which Canadian territory has a majority Inuit population?",
+                        q_fa: "کدام قلمرو کانادا اکثریت جمعیت اینویت دارد؟",
+                        q_fr: "Quel territoire canadien compte une majorité de population inuite?",
+                        options: ["Yukon", "Northwest Territories", "Nunavut", "Labrador"],
+                        options_fr: ["Yukon", "Territoires du Nord-Ouest", "Nunavut", "Labrador"],
+                        correct: 2,
+                        page: 10,
+                        section: "Mock Test 5 (Medium)",
+                        book_text: "Nunavut has a majority Inuit population."
+                    },
+                    {
+                        q: "Which province was the last to join Canadian Confederation?",
+                        q_fa: "کدام استان آخرین استانی بود که به اتحادیه فدرال کانادا پیوست؟",
+                        q_fr: "Quelle province a été la dernière à se joindre à la Confédération canadienne?",
+                        options: ["Newfoundland and Labrador", "British Columbia", "Prince Edward Island", "Manitoba"],
+                        options_fr: ["Terre-Neuve-et-Labrador", "Colombie-Britannique", "Île-du-Prince-Édouard", "Manitoba"],
+                        correct: 0,
+                        page: 10,
+                        section: "Mock Test 5 (Medium)",
+                        book_text: "Newfoundland and Labrador joined Confederation in 1949, last among the provinces."
+                    },
+                    {
+                        q: "What is the primary purpose of Elections Canada?",
+                        q_fa: "هدف اصلی انتخابات کانادا (Elections Canada) چیست؟",
+                        q_fr: "Quel est le rôle principal d'Élections Canada?",
+                        options: ["Oversee trade agreements", "Manage federal elections and referenda", "Advise the Prime Minister", "Create laws"],
+                        options_fr: ["Superviser les accords commerciaux", "Organiser les élections fédérales et les référendums", "Conseiller le premier ministre", "Créer les lois"],
+                        correct: 1,
+                        page: 10,
+                        section: "Mock Test 5 (Medium)",
+                        book_text: "Elections Canada administers federal elections and referendums."
+                    },
+                    {
+                        q: "Who was the first Canadian woman in space?",
+                        q_fa: "نخستین زن کانادایی در فضا کی بود؟",
+                        q_fr: "Qui a été la première Canadienne dans l'espace?",
+                        options: ["Julie Payette", "Roberta Bondar", "Marc Garneau", "Chris Hadfield"],
+                        options_fr: ["Julie Payette", "Roberta Bondar", "Marc Garneau", "Chris Hadfield"],
+                        correct: 1,
+                        page: 10,
+                        section: "Mock Test 5 (Medium)",
+                        book_text: "Dr. Roberta Bondar flew on the Space Shuttle in 1992."
+                    },
+                    {
+                        q: "Which Canadian province has the largest French-speaking population?",
+                        q_fa: "کدام استان کانادا بیشترین جمعیت فرانسه‌زبان را دارد؟",
+                        q_fr: "Quelle province canadienne compte la plus grande population francophone?",
+                        options: ["Quebec", "New Brunswick", "Ontario", "Manitoba"],
+                        options_fr: ["Québec", "Nouveau-Brunswick", "Ontario", "Manitoba"],
+                        correct: 0,
+                        page: 10,
+                        section: "Mock Test 5 (Medium)",
+                        book_text: "Quebec has by far the largest French-speaking population in Canada."
+                    },
+                    {
+                        q: "Who can call a federal election in Canada?",
+                        q_fa: "در کانادا چه کسی می‌تواند انتخابات فدرال را اعلام کند؟",
+                        q_fr: "Qui peut déclencher une élection fédérale au Canada?",
+                        options: ["Prime Minister", "Governor General", "Chief Justice", "Senate"],
+                        options_fr: ["Premier ministre", "Gouverneur général", "Juge en chef", "Sénat"],
+                        correct: 1,
+                        page: 10,
+                        section: "Mock Test 5 (Medium)",
+                        book_text: "The Governor General, on the advice of the Prime Minister, dissolves Parliament and issues the writs for an election."
+                    },
+                    {
+                        q: "Which Canadian city is known for the CN Tower?",
+                        q_fa: "کدام شهر کانادا به برج سی‌ان معروف است؟",
+                        q_fr: "Quelle ville canadienne est connue pour la Tour CN?",
+                        options: ["Toronto", "Vancouver", "Ottawa", "Calgary"],
+                        options_fr: ["Toronto", "Vancouver", "Ottawa", "Calgary"],
+                        correct: 0,
+                        page: 10,
+                        section: "Mock Test 5 (Medium)",
+                        book_text: "The CN Tower is in Toronto."
+                    },
+                    {
+                        q: "Which Canadian province is the leading producer of maple syrup?",
+                        q_fa: "کدام استان کانادا بزرگ‌ترین تولیدکنندهٔ شربت افراست؟",
+                        q_fr: "Quelle province canadienne est le principal producteur de sirop d'érable?",
+                        options: ["Quebec", "Ontario", "New Brunswick", "Nova Scotia"],
+                        options_fr: ["Québec", "Ontario", "Nouveau-Brunswick", "Nouvelle-Écosse"],
+                        correct: 0,
+                        page: 10,
+                        section: "Mock Test 5 (Medium)",
+                        book_text: "Quebec produces most of the world's maple syrup."
+                    },
+                    {
+                        q: "Who represents the Queen at the federal level in Canada?",
+                        q_fa: "در کانادا چه کسی ملکه را در سطح فدرال نمایندگی می‌کند؟",
+                        q_fr: "Qui représente la Reine au niveau fédéral au Canada?",
+                        options: ["Prime Minister", "Governor General", "Chief Justice", "Speaker of the House"],
+                        options_fr: ["Premier ministre", "Gouverneur général", "Juge en chef", "Président de la Chambre des communes"],
+                        correct: 1,
+                        page: 10,
+                        section: "Mock Test 5 (Medium)",
+                        book_text: "The Governor General represents the Sovereign in Canada at the federal level."
+                    },
+                    {
+                        q: "Which major Canadian river flows into the Hudson Bay?",
+                        q_fa: "کدام رود بزرگ کانادا به خلیج هادسون می‌ریزد؟",
+                        q_fr: "Quel grand fleuve canadien se jette dans la baie d'Hudson?",
+                        options: ["Mackenzie River", "Nelson River", "Fraser River", "St. Lawrence River"],
+                        options_fr: ["Fleuve Mackenzie", "Fleuve Nelson", "Fleuve Fraser", "Fleuve Saint-Laurent"],
+                        correct: 1,
+                        page: 10,
+                        section: "Mock Test 5 (Medium)",
+                        book_text: "The Nelson River flows into Hudson Bay (practice set keyed to mock test)."
+                    },
+                    {
+                        q: "Who was the Canadian Prime Minister during the 1967 Centennial?",
+                        q_fa: "نخست‌وزیر کانادا در جشن صدسالهٔ ۱۹۶۷ کی بود؟",
+                        q_fr: "Qui était le premier ministre du Canada lors du centenaire de 1967?",
+                        options: ["Lester B. Pearson", "John Diefenbaker", "Pierre Trudeau", "Louis St. Laurent"],
+                        options_fr: ["Lester B. Pearson", "John Diefenbaker", "Pierre Trudeau", "Louis St. Laurent"],
+                        correct: 0,
+                        page: 10,
+                        section: "Mock Test 5 (Medium)",
+                        book_text: "Lester B. Pearson was Prime Minister during Canada's Centennial year (1967)."
+                    },
+                    {
+                        q: "Which Canadian province is nicknamed \"Canada's Ocean Playground\"?",
+                        q_fa: "کدام استان کانادا لقب «زمین بازی اقیانوس کانادا» را دارد؟",
+                        q_fr: "Quelle province canadienne est surnommée la « cour de récréation océanique du Canada »?",
+                        options: ["Nova Scotia", "Newfoundland and Labrador", "British Columbia", "New Brunswick"],
+                        options_fr: ["Nouvelle-Écosse", "Terre-Neuve-et-Labrador", "Colombie-Britannique", "Nouveau-Brunswick"],
+                        correct: 0,
+                        page: 10,
+                        section: "Mock Test 5 (Medium)",
+                        book_text: "Nova Scotia's licence plates have used the slogan Canada's Ocean Playground."
+                    },
+                    {
+                        q: "Who is the Canadian official responsible for monetary policy?",
+                        q_fa: "کدام مقام کانادایی مسئول سیاست پولی است؟",
+                        q_fr: "Quel responsable canadien est chargé de la politique monétaire?",
+                        options: ["Minister of Finance", "Governor of the Bank of Canada", "Prime Minister", "Auditor General"],
+                        options_fr: ["Ministre des Finances", "Gouverneur de la Banque du Canada", "Premier ministre", "Vérificateur général"],
+                        correct: 1,
+                        page: 10,
+                        section: "Mock Test 5 (Medium)",
+                        book_text: "The Bank of Canada, led by the Governor, conducts monetary policy."
+                    },
+                    {
+                        q: "Which Canadian city hosts the annual Calgary Stampede?",
+                        q_fa: "کدام شهر کانادا میزبان جشنوارهٔ سالانهٔ کالگری استمپید است؟",
+                        q_fr: "Quelle ville canadienne accueille le Stampede de Calgary chaque année?",
+                        options: ["Calgary", "Edmonton", "Vancouver", "Winnipeg"],
+                        options_fr: ["Calgary", "Edmonton", "Vancouver", "Winnipeg"],
+                        correct: 0,
+                        page: 10,
+                        section: "Mock Test 5 (Medium)",
+                        book_text: "The Calgary Stampede is held in Calgary, Alberta."
+                    },
+                    {
+                        q: "Who was Canada's first Indigenous Governor General?",
+                        q_fa: "نخستین فرماندار کل بومی کانادا کی بود؟",
+                        q_fr: "Qui a été le premier gouverneur général autochtone du Canada?",
+                        options: ["Mary Simon", "Michaëlle Jean", "Adrienne Clarkson", "Jeanne Sauvé"],
+                        options_fr: ["Mary Simon", "Michaëlle Jean", "Adrienne Clarkson", "Jeanne Sauvé"],
+                        correct: 0,
+                        page: 10,
+                        section: "Mock Test 5 (Medium)",
+                        book_text: "Mary Simon became Canada's first Indigenous Governor General in 2021."
+                    }
                 ]
             },
-            // Test 6: Rights, Freedoms and Responsibilities
+            // Test 6: Mock Test 3 (Medium) — 20 questions keyed to MyCanadianCitizenshipTest.ca style set
             {
                 questions: [
-                    { q: "Name four (4) fundamental freedoms that Canadians enjoy.", q_fa: "چهار آزادی بنیادی که کانادایی‌ها از آن برخوردارند را نام ببرید.", q_fr: "Nommez quatre libertés fondamentales dont jouissent les Canadiens.", options: ["Freedom of conscience and religion, Freedom of thought, belief, opinion and expression, Freedom of peaceful assembly, Freedom of association", "Freedom to work, Freedom to travel, Freedom to vote, Freedom to own property", "Freedom from taxes, Freedom from military service, Freedom from jury duty", "None of the above"], options_fr: ["Liberté de conscience et de religion, Liberté de pensée, de croyance, d'opinion et d'expression, Liberté de réunion et d'association pacifiques", "Liberté de travailler, voyager, voter, posséder", "Exemption d'impôts, de service militaire, de jury", "Aucune de ces réponses"], correct: 0 },
-                    { q: "What is meant by the equality of women and men?", q_fa: "برابری زنان و مردان به چه معناست؟", q_fr: "Que signifie l'égalité entre les femmes et les hommes?", options: ["Men and women are equal under the law", "Same opportunities and responsibilities", "Equal pay for equal work", "All of the above"], options_fr: ["Les hommes et les femmes sont égaux devant la loi", "Mêmes chances et responsabilités", "À travail égal, salaire égal", "Toutes ces réponses"], correct: 3 },
-                    { q: "What are some examples of taking responsibility for yourself and your family?", q_fa: "چند نمونه از مسئولیت‌پذیری برای خود و خانواده‌تان چیست؟", q_fr: "Quels sont des exemples d'assumer ses responsabilités envers soi-même et sa famille?", options: ["Getting a job, Taking care of one's family, Working hard", "Paying taxes, Voting, Serving on jury", "Obeying laws, Respecting others", "All of the above"], options_fr: ["Avoir un emploi, S'occuper de sa famille, Travailler dur", "Payer des impôts, Voter, Siéger à un jury", "Obéir aux lois, Respecter les autres", "Toutes ces réponses"], correct: 0 },
-                    { q: "True or False: No treaty or other rights or freedoms of Aboriginal peoples will be negatively affected by the rights granted by the Canadian Charter.", q_fa: "درست یا غلط: هیچ معاهده یا حقوق یا آزادی‌های دیگر بومیان تحت تأثیر منفی حقوق اعطا شده توسط منشور کانادا قرار نخواهد گرفت.", q_fr: "Vrai ou faux : Aucun traité ni droits ou libertés des peuples autochtones ne seront affectés négativement par les droits accordés par la Charte canadienne.", options: ["True", "False"], options_fr: ["Vrai", "Faux"], correct: 0 },
-                    { q: "Which of the following responsibilities comes with becoming a Canadian citizen?", q_fa: "کدام یک از مسئولیت‌های زیر با تبدیل شدن به شهروند کانادایی همراه است؟", q_fr: "Laquelle des responsabilités suivantes accompagne la citoyenneté canadienne?", options: ["Voting in elections", "Obeying the law", "Taking responsibility for oneself and family", "All of the above"], options_fr: ["Voter aux élections", "Obéir aux lois", "Assumer ses responsabilités envers soi et sa famille", "Toutes ces réponses"], correct: 3 },
-                    { q: "What is a great way to make acquaintances, create contacts, and learn useful skills?", q_fa: "راه عالی برای آشنایی، ایجاد ارتباط و یادگیری مهارت‌های مفید چیست؟", q_fr: "Quelle est une excellente façon de faire des connaissances, créer des contacts et apprendre des compétences utiles?", options: ["Working", "Volunteering", "Studying", "Traveling"], options_fr: ["Travailler", "Bénévolat", "Étudier", "Voyager"], correct: 1 },
-                    { q: "What is Canada's most recognized and respected symbol?", q_fa: "شناخته‌شده‌ترین و محترم‌ترین نماد کانادا چیست؟", q_fr: "Quel est le symbole du Canada le plus reconnu et respecté?", options: ["The beaver", "The maple leaf", "The moose", "The flag"], options_fr: ["Le castor", "La feuille d'érable", "L'orignal", "Le drapeau"], correct: 1 },
-                    { q: "Name two Canadian symbols.", q_fa: "دو نماد کانادایی را نام ببرید.", q_fr: "Nommez deux symboles canadiens.", options: ["Maple leaf, Beaver", "Flag, Anthem", "Maple leaf, Flag", "All of the above"], options_fr: ["Feuille d'érable, Castor", "Drapeau, Hymne", "Feuille d'érable, Drapeau", "Toutes ces réponses"], correct: 3 },
-                    { q: "What are the first two lines of Canada's national anthem?", q_fa: "دو خط اول سرود ملی کانادا چیست؟", q_fr: "Quelles sont les deux premières lignes de l'hymne national du Canada?", options: ["O Canada! Our home and native land! True patriot love in all of us command", "O Canada, land of the free, home of the brave", "God save the Queen, long live the King", "None of the above"], options_fr: ["Ô Canada! Terre de nos aïeux! Ton front est ceint de fleurons glorieux", "Ô Canada, pays de liberté", "God save the Queen", "Aucune de ces réponses"], correct: 0 },
-                    { q: "Which legal documents protect the rights of Canadians regarding official languages?", q_fa: "کدام اسناد قانونی حقوق کانادایی‌ها را در مورد زبان‌های رسمی محافظت می‌کنند؟", q_fr: "Quels documents juridiques protègent les droits des Canadiens concernant les langues officielles?", options: ["Charter of Rights and Freedoms", "Official Languages Act", "Both Charter and Official Languages Act", "Constitution only"], options_fr: ["Charte des droits et libertés", "Loi sur les langues officielles", "La Charte et la Loi sur les langues officielles", "Constitution seulement"], correct: 2 },
-                    { q: "Who circled the globe in a wheelchair to raise funds for spinal cord research?", q_fa: "چه کسی با ویلچر دور دنیا را گشت تا برای تحقیقات آسیب نخاعی کمک مالی جمع کند؟", q_fr: "Qui a fait le tour du monde en fauteuil roulant pour amasser des fonds pour la recherche sur la moelle épinière?", options: ["Terry Fox", "Rick Hansen", "Wayne Gretzky", "None of the above"], options_fr: ["Terry Fox", "Rick Hansen", "Wayne Gretzky", "Aucune de ces réponses"], correct: 1, page: 40, section: "Modern Canada", book_text: "Rick Hansen circled the globe in a wheelchair to raise funds for spinal cord research." },
-                    { q: "Which of the following is a non-Canadian NOT allowed to do?", q_fa: "کدام یک از موارد زیر کاری است که یک غیرکانادایی مجاز به انجام آن نیست؟", q_fr: "Lequel des actes suivants un non-Canadien n'est-il PAS autorisé à faire?", options: ["Work in Canada", "Study in Canada", "Vote in federal elections", "Visit Canada"], options_fr: ["Travailler au Canada", "Étudier au Canada", "Voter aux élections fédérales", "Visiter le Canada"], correct: 2, page: 45, section: "Federal Elections", book_text: "Only Canadian citizens who are 18 years of age or older are entitled to vote in federal elections." },
-                    { q: "In Canada's justice system what does presumption of innocence mean?", q_fa: "در سیستم عدالت کانادا، فرض بر بی‌گناهی به چه معناست؟", q_fr: "Dans le système de justice du Canada, que signifie la présomption d'innocence?", options: ["Everyone is innocent until proven guilty", "Everyone is guilty until proven innocent", "Some people are presumed guilty", "None of the above"], options_fr: ["Toute personne est innocente jusqu'à preuve du contraire", "Toute personne est coupable jusqu'à preuve du contraire", "Certaines personnes sont présumées coupables", "Aucune de ces réponses"], correct: 0, page: 46, section: "The Justice System", book_text: "In Canada's justice system, everyone is innocent until proven guilty. This is called presumption of innocence." },
-                    { q: "What do you mark on a federal election ballot?", q_fa: "روی برگه رأی فدرال چه چیزی علامت می‌زنید؟", q_fr: "Que marquez-vous sur un bulletin de vote fédéral?", options: ["An X", "A checkmark", "The candidate's name", "The party name"], options_fr: ["Un X", "Une coche", "Le nom du candidat", "Le nom du parti"], correct: 0, page: 45, section: "Federal Elections", book_text: "On a federal election ballot, you mark an X next to the name of your chosen candidate." },
-                    { q: "Which party is the Official Opposition at the federal level?", q_fa: "کدام حزب اپوزیسیون رسمی در سطح فدرال است؟", q_fr: "Quel parti forme l'Opposition officielle au niveau fédéral?", options: ["The party with the second most seats", "The largest party", "The party chosen by the PM", "None of the above"], options_fr: ["Le parti avec le deuxième plus grand nombre de sièges", "Le plus grand parti", "Le parti choisi par le PM", "Aucune de ces réponses"], correct: 0, page: 44, section: "How Canadians Govern Themselves", book_text: "The Official Opposition at the federal level is the party with the second most seats in the House of Commons." },
-                    { q: "Who is your member of Parliament?", q_fa: "عضو پارلمان شما کیست؟", q_fr: "Qui est votre député?", options: ["The Prime Minister", "The person elected in your riding", "The Premier", "The Mayor"], options_fr: ["Le Premier ministre", "La personne élue dans votre circonscription", "Le Premier", "Le maire"], correct: 1, page: 42, section: "How Canadians Govern Themselves", book_text: "Your member of Parliament is the person elected in your riding (electoral district) to represent you in the House of Commons." },
-                    { q: "What do you call the Sovereign's representative in the provinces?", q_fa: "نماینده حاکم در استان‌ها را چه می‌نامند؟", q_fr: "Comment appelle-t-on le représentant du souverain dans les provinces?", options: ["Governor General", "Lieutenant Governor", "Premier", "Mayor"], options_fr: ["Gouverneur général", "Lieutenant-gouverneur", "Premier ministre provincial", "Maire"], correct: 1, page: 41, section: "How Canadians Govern Themselves", book_text: "The Sovereign's representative in the provinces is called the Lieutenant Governor." },
-                    { q: "Which level of government in Canada passes laws known as 'by-laws'?", q_fa: "کدام سطح دولت در کانادا قوانینی به نام 'by-laws' تصویب می‌کند؟", q_fr: "Quel ordre de gouvernement au Canada adopte des lois appelées « règlements municipaux »?", options: ["Federal", "Provincial", "Municipal", "All of them"], options_fr: ["Fédéral", "Provincial", "Municipal", "Tous"], correct: 2, page: 41, section: "How Canadians Govern Themselves", book_text: "Municipal governments pass laws known as 'by-laws' to regulate local matters." },
-                    { q: "Who is exempt from the language requirement for Canadian citizenship?", q_fa: "چه کسانی از الزام زبان برای شهروندی کانادا معاف هستند؟", q_fr: "Qui est exempté de l'exigence linguistique pour la citoyenneté canadienne?", options: ["People under 18", "People over 55", "People over 65", "People over 54"], options_fr: ["Personnes de moins de 18 ans", "Personnes de 55 ans ou plus", "Personnes de 65 ans ou plus", "Personnes de 54 ans ou plus"], correct: 1, page: 16, section: "Rights and Responsibilities of Citizenship", book_text: "People who are 55 years of age or older are exempt from the language requirement for Canadian citizenship." },
-                    { q: "Who were the founding peoples of Canada?", q_fa: "مردمان بنیان‌گذار کانادا چه کسانی بودند؟", q_fr: "Qui étaient les peuples fondateurs du Canada?", options: ["Aboriginal, French, British", "French, British, American", "Aboriginal, French, British, and other groups", "Only Aboriginal peoples"], options_fr: ["Autochtones, Français, Britanniques", "Français, Britanniques, Américains", "Autochtones, Français, Britanniques et autres", "Seulement les Autochtones"], correct: 0, page: 8, section: "Who We Are", book_text: "The founding peoples of Canada are Aboriginal peoples, French, and British." }
+                    {
+                        q: "Which Canadian city is home to the headquarters of the Royal Canadian Mounted Police?",
+                        q_fa: "دفتر مرکزی پلیس سوارهٔ سلطنتی کانادا (RCMP) در کدام شهر است؟",
+                        q_fr: "Quelle ville canadienne abrite le siège de la Gendarmerie royale du Canada?",
+                        options: ["Vancouver", "Ottawa", "Regina", "Toronto"],
+                        options_fr: ["Vancouver", "Ottawa", "Regina", "Toronto"],
+                        correct: 2,
+                        page: 10,
+                        section: "Mock Test 3 (Medium)",
+                        book_text: "The RCMP headquarters is in Regina, Saskatchewan."
+                    },
+                    {
+                        q: "Which Canadian river is the longest entirely within Canada?",
+                        q_fa: "کدام رود کانادا به‌طور کامل در داخل کانادا طولانی‌ترین است؟",
+                        q_fr: "Quel fleuve canadien est le plus long entièrement au Canada?",
+                        options: ["Mackenzie River", "St. Lawrence River", "Fraser River", "Ottawa River"],
+                        options_fr: ["Fleuve Mackenzie", "Fleuve Saint-Laurent", "Fleuve Fraser", "Rivière des Outaouais"],
+                        correct: 0,
+                        page: 10,
+                        section: "Mock Test 3 (Medium)",
+                        book_text: "The Mackenzie River is the longest river system entirely in Canada."
+                    },
+                    {
+                        q: "Who is responsible for leading the Cabinet in Canada?",
+                        q_fa: "رهبری کابینه در کانادا بر عهدهٔ کیست؟",
+                        q_fr: "Qui est responsable de diriger le Cabinet au Canada?",
+                        options: ["Governor General", "Prime Minister", "Chief Justice", "Senate Speaker"],
+                        options_fr: ["Gouverneur général", "Premier ministre", "Juge en chef", "Président du Sénat"],
+                        correct: 1,
+                        page: 10,
+                        section: "Mock Test 3 (Medium)",
+                        book_text: "The Prime Minister leads the Cabinet."
+                    },
+                    {
+                        q: "Which Canadian province is nicknamed \"The Land of 100,000 Lakes\"?",
+                        q_fa: "کدام استان کانادا لقب «سرزمین ۱۰۰٬۰۰۰ دریاچه» را دارد؟",
+                        q_fr: "Quelle province canadienne est surnommée le « pays des 100 000 lacs »?",
+                        options: ["Alberta", "Manitoba", "Ontario", "Saskatchewan"],
+                        options_fr: ["Alberta", "Manitoba", "Ontario", "Saskatchewan"],
+                        correct: 1,
+                        page: 10,
+                        section: "Mock Test 3 (Medium)",
+                        book_text: "Manitoba is known as the land of 100,000 lakes."
+                    },
+                    {
+                        q: "Who was Canada's first female Governor General?",
+                        q_fa: "نخستین فرماندار کل زن کانادا کی بود؟",
+                        q_fr: "Qui a été la première femme gouverneure générale du Canada?",
+                        options: ["Jeanne Sauvé", "Michaëlle Jean", "Mary Simon", "Kim Campbell"],
+                        options_fr: ["Jeanne Sauvé", "Michaëlle Jean", "Mary Simon", "Kim Campbell"],
+                        correct: 0,
+                        page: 10,
+                        section: "Mock Test 3 (Medium)",
+                        book_text: "Jeanne Sauvé was the first woman to serve as Governor General (1984–1990)."
+                    },
+                    {
+                        q: "Which Canadian province has the highest population?",
+                        q_fa: "کدام استان کانادا بیشترین جمعیت را دارد؟",
+                        q_fr: "Quelle province canadienne a la plus grande population?",
+                        options: ["Quebec", "Ontario", "British Columbia", "Alberta"],
+                        options_fr: ["Québec", "Ontario", "Colombie-Britannique", "Alberta"],
+                        correct: 1,
+                        page: 10,
+                        section: "Mock Test 3 (Medium)",
+                        book_text: "Ontario is Canada's most populous province."
+                    },
+                    {
+                        q: "What is the name of Canada's federal lower house?",
+                        q_fa: "نام مجلس سفلای فدرال کانادا چیست؟",
+                        q_fr: "Quel est le nom de la chambre basse fédérale du Canada?",
+                        options: ["Senate", "House of Commons", "Parliament", "National Assembly"],
+                        options_fr: ["Sénat", "Chambre des communes", "Parlement", "Assemblée nationale"],
+                        correct: 1,
+                        page: 10,
+                        section: "Mock Test 3 (Medium)",
+                        book_text: "The elected lower house is the House of Commons."
+                    },
+                    {
+                        q: "Which Canadian province has the only official bilingual status at the provincial level?",
+                        q_fa: "کدام استان کانادا تنها وضعیت رسمی دوزبانه در سطح استانی را دارد؟",
+                        q_fr: "Quelle province canadienne est la seule officiellement bilingue au niveau provincial?",
+                        options: ["Quebec", "New Brunswick", "Manitoba", "Ontario"],
+                        options_fr: ["Québec", "Nouveau-Brunswick", "Manitoba", "Ontario"],
+                        correct: 1,
+                        page: 10,
+                        section: "Mock Test 3 (Medium)",
+                        book_text: "New Brunswick is Canada's only officially bilingual province."
+                    },
+                    {
+                        q: "Which Canadian territory was created in 1999?",
+                        q_fa: "کدام قلمرو کانادا در ۱۹۹۹ ایجاد شد؟",
+                        q_fr: "Quel territoire canadien a été créé en 1999?",
+                        options: ["Yukon", "Northwest Territories", "Nunavut", "Labrador"],
+                        options_fr: ["Yukon", "Territoires du Nord-Ouest", "Nunavut", "Labrador"],
+                        correct: 2,
+                        page: 10,
+                        section: "Mock Test 3 (Medium)",
+                        book_text: "Nunavut became a territory on April 1, 1999."
+                    },
+                    {
+                        q: "What is the purpose of the \"Oath of Citizenship\"?",
+                        q_fa: "هدف «سوگند شهروندی» چیست؟",
+                        q_fr: "Quel est l'objet du serment de citoyenneté?",
+                        options: ["To elect the Prime Minister", "To pledge loyalty to Canada", "To vote in elections", "To apply for a passport"],
+                        options_fr: ["Élire le premier ministre", "Jurer fidélité au Canada", "Voter aux élections", "Demander un passeport"],
+                        correct: 1,
+                        page: 10,
+                        section: "Mock Test 3 (Medium)",
+                        book_text: "The Oath of Citizenship is a pledge of loyalty to Canada and its values."
+                    },
+                    {
+                        q: "Which Canadian province is home to the Canadian Rockies?",
+                        q_fa: "رشته‌کوه‌های راکی کانادا در کدام استان قرار دارد؟",
+                        q_fr: "Dans quelle province se trouvent les Rocheuses canadiennes?",
+                        options: ["Alberta and British Columbia", "Manitoba and Saskatchewan", "Quebec and Ontario", "Nova Scotia and New Brunswick"],
+                        options_fr: ["Alberta et Colombie-Britannique", "Manitoba et Saskatchewan", "Québec et Ontario", "Nouvelle-Écosse et Nouveau-Brunswick"],
+                        correct: 0,
+                        page: 10,
+                        section: "Mock Test 3 (Medium)",
+                        book_text: "The Canadian Rockies run through Alberta and British Columbia."
+                    },
+                    {
+                        q: "Who was the first Prime Minister of Canada?",
+                        q_fa: "نخستین نخست‌وزیر کانادا کی بود؟",
+                        q_fr: "Qui a été le premier premier ministre du Canada?",
+                        options: ["John A. Macdonald", "George-Étienne Cartier", "Wilfrid Laurier", "William Lyon Mackenzie King"],
+                        options_fr: ["John A. Macdonald", "George-Étienne Cartier", "Wilfrid Laurier", "William Lyon Mackenzie King"],
+                        correct: 0,
+                        page: 10,
+                        section: "Mock Test 3 (Medium)",
+                        book_text: "Sir John A. Macdonald was Canada's first Prime Minister."
+                    },
+                    {
+                        q: "Which Canadian city is the capital of Saskatchewan?",
+                        q_fa: "پایتخت استان ساسکاچوان کدام شهر است؟",
+                        q_fr: "Quelle ville est la capitale de la Saskatchewan?",
+                        options: ["Regina", "Saskatoon", "Edmonton", "Winnipeg"],
+                        options_fr: ["Regina", "Saskatoon", "Edmonton", "Winnipeg"],
+                        correct: 0,
+                        page: 10,
+                        section: "Mock Test 3 (Medium)",
+                        book_text: "Regina is the capital of Saskatchewan."
+                    },
+                    {
+                        q: "What is the term for Canada's head of state?",
+                        q_fa: "اصطلاح رایج برای رئیس کشور (پادشاه/ملکه) کانادا چیست؟",
+                        q_fr: "Comment appelle-t-on le chef d'État du Canada?",
+                        options: ["Prime Minister", "Governor General", "Monarch", "Chief Justice"],
+                        options_fr: ["Premier ministre", "Gouverneur général", "Monarque", "Juge en chef"],
+                        correct: 2,
+                        page: 10,
+                        section: "Mock Test 3 (Medium)",
+                        book_text: "Canada's head of state is the Monarch (King or Queen of Canada)."
+                    },
+                    {
+                        q: "Which Canadian province is famous for its polar bear population?",
+                        q_fa: "کدام استان کانادا به جمعیت خرس قطبی معروف است؟",
+                        q_fr: "Quelle province canadienne est connue pour ses ours polaires?",
+                        options: ["Manitoba", "Alberta", "British Columbia", "Yukon"],
+                        options_fr: ["Manitoba", "Alberta", "Colombie-Britannique", "Yukon"],
+                        correct: 0,
+                        page: 10,
+                        section: "Mock Test 3 (Medium)",
+                        book_text: "Churchill, Manitoba is famous for polar bears (practice set keyed to mock test)."
+                    },
+                    {
+                        q: "Who was the first Canadian to win a Nobel Prize?",
+                        q_fa: "نخستین کانادایی برندهٔ جایزهٔ نوبل کی بود؟",
+                        q_fr: "Qui a été le premier Canadien à recevoir un prix Nobel?",
+                        options: ["Frederick Banting", "Lester B. Pearson", "Alice Munro", "Wayne Gretzky"],
+                        options_fr: ["Frederick Banting", "Lester B. Pearson", "Alice Munro", "Wayne Gretzky"],
+                        correct: 0,
+                        page: 10,
+                        section: "Mock Test 3 (Medium)",
+                        book_text: "Sir Frederick Banting shared the 1923 Nobel Prize in Physiology or Medicine for insulin."
+                    },
+                    {
+                        q: "Which province was the first to join Confederation after 1867?",
+                        q_fa: "پس از ۱۸۶۷ کدام استان نخستین پیوست به اتحادیه بود؟",
+                        q_fr: "Quelle province a été la première à se joindre à la Confédération après 1867?",
+                        options: ["Manitoba", "British Columbia", "Prince Edward Island", "Newfoundland and Labrador"],
+                        options_fr: ["Manitoba", "Colombie-Britannique", "Île-du-Prince-Édouard", "Terre-Neuve-et-Labrador"],
+                        correct: 0,
+                        page: 10,
+                        section: "Mock Test 3 (Medium)",
+                        book_text: "Manitoba joined Confederation in 1870."
+                    },
+                    {
+                        q: "What is Canada's primary national winter sport?",
+                        q_fa: "ورزش زمستانی ملی اصلی کانادا چیست؟",
+                        q_fr: "Quel est le sport national d'hiver principal du Canada?",
+                        options: ["Lacrosse", "Ice Hockey", "Curling", "Skiing"],
+                        options_fr: ["Crosse", "Hockey sur glace", "Curling", "Ski"],
+                        correct: 1,
+                        page: 10,
+                        section: "Mock Test 3 (Medium)",
+                        book_text: "Ice hockey is Canada's official winter sport."
+                    },
+                    {
+                        q: "Which Canadian city is famous for the Rideau Canal?",
+                        q_fa: "کدام شهر کانادا به کانال ریدو معروف است؟",
+                        q_fr: "Quelle ville canadienne est célèbre pour le canal Rideau?",
+                        options: ["Ottawa", "Toronto", "Montreal", "Quebec City"],
+                        options_fr: ["Ottawa", "Toronto", "Montréal", "Ville de Québec"],
+                        correct: 0,
+                        page: 10,
+                        section: "Mock Test 3 (Medium)",
+                        book_text: "The Rideau Canal runs through Ottawa."
+                    },
+                    {
+                        q: "Who was the first Canadian astronaut to go to space?",
+                        q_fa: "نخستین فضانورد کانادایی که به فضا رفت کی بود؟",
+                        q_fr: "Qui a été le premier astronaute canadien dans l'espace?",
+                        options: ["Marc Garneau", "Chris Hadfield", "Roberta Bondar", "Julie Payette"],
+                        options_fr: ["Marc Garneau", "Chris Hadfield", "Roberta Bondar", "Julie Payette"],
+                        correct: 0,
+                        page: 10,
+                        section: "Mock Test 3 (Medium)",
+                        book_text: "Marc Garneau flew aboard the Space Shuttle in 1984."
+                    }
                 ]
             },
-            // Test 7: Quebec and French Canada
+            // Test 7: Mock Test 2 (Medium) — 20 questions keyed to MyCanadianCitizenshipTest.ca style set
             {
                 questions: [
-                    { q: "Which three industries are important to Quebec's economy today?", q_fa: "کدام سه صنعت برای اقتصاد کبک امروز مهم هستند؟", q_fr: "Quelles sont les trois industries importantes pour l'économie du Québec aujourd'hui?", options: ["Forestry, energy, pulp and paper", "Mining, manufacturing, technology", "Aerospace, information technology, biotechnology", "All of the above"], options_fr: ["Foresterie, énergie, pâtes et papiers", "Mines, fabrication, technologie", "Aérospatiale, technologies de l'information, biotechnologie", "Toutes ces réponses"], correct: 3 },
-                    { q: "Which political party is in power in Quebec?", q_fa: "کدام حزب سیاسی در کبک در قدرت است؟", q_fr: "Quel parti politique est au pouvoir au Québec?", options: ["This changes with elections", "Always Liberal", "Always Parti Québécois", "Always Conservative"], options_fr: ["Cela change avec les élections", "Toujours libéral", "Toujours Parti québécois", "Toujours conservateur"], correct: 0 },
-                    { q: "What is 'La Francophonie'?", q_fa: "'La Francophonie' چیست؟", q_fr: "Qu'est-ce que la Francophonie?", options: ["Quebec language law", "International organization of French-speaking nations", "French community in Canada only", "A French colony"], options_fr: ["Loi sur la langue au Québec", "Organisation internationale des pays francophones", "Communauté francophone au Canada seulement", "Une colonie française"], correct: 1 },
-                    { q: "When did the House of Commons recognize that the Quebecois form a nation within a united Canada?", q_fa: "مجلس عوام چه زمانی به رسمیت شناخت که کبکی‌ها یک ملت در یک کانادای متحد تشکیل می‌دهند؟", q_fr: "Quand la Chambre des communes a-t-elle reconnu que les Québécois forment une nation au sein d'un Canada uni?", options: ["1982", "1995", "2006", "2010"], options_fr: ["1982", "1995", "2006", "2010"], correct: 2 },
-                    { q: "True or False: French and English do not have equal status in Parliament and throughout the government.", q_fa: "درست یا غلط: فرانسوی و انگلیسی در پارلمان و سراسر دولت وضعیت برابر ندارند.", q_fr: "Vrai ou faux : Le français et l'anglais n'ont pas un statut égal au Parlement et dans l'ensemble du gouvernement.", options: ["True", "False"], options_fr: ["Vrai", "Faux"], correct: 1 },
-                    { q: "Which province has the most bilingual Canadians?", q_fa: "کدام استان بیشترین کانادایی‌های دو زبانه را دارد؟", q_fr: "Quelle province compte le plus de Canadiens bilingues?", options: ["Ontario", "Quebec", "New Brunswick", "Manitoba"], options_fr: ["Ontario", "Québec", "Nouveau-Brunswick", "Manitoba"], correct: 1, page: 30, section: "Quebec", book_text: "Quebec has the most bilingual Canadians, with French and English both widely spoken." },
-                    { q: "Who renamed the colony 'Province of Quebec'?", q_fa: "چه کسی مستعمره را 'استان کبک' نامگذاری مجدد کرد؟", q_fr: "Qui a renommé la colonie « Province de Québec »?", options: ["British in 1763", "French", "Canadians", "Americans"], options_fr: ["Les Britanniques en 1763", "Les Français", "Les Canadiens", "Les Américains"], correct: 0 },
-                    { q: "What happened at the Battle of the Plains of Abraham?", q_fa: "در نبرد دشت‌های آبراهام چه اتفاقی افتاد؟", q_fr: "Que s'est-il passé à la bataille des plaines d'Abraham?", options: ["British defeated French forces", "French won", "It was a draw", "Americans invaded"], options_fr: ["Les Britanniques ont vaincu les Français", "Les Français ont gagné", "Match nul", "Invasion américaine"], correct: 0 },
-                    { q: "Who passed the Quebec Act of 1774?", q_fa: "چه کسی قانون کبک 1774 را تصویب کرد؟", q_fr: "Qui a adopté l'Acte de Québec de 1774?", options: ["French Parliament", "British Parliament", "Quebec Assembly", "None of the above"], options_fr: ["Parlement français", "Parlement britannique", "Assemblée du Québec", "Aucune de ces réponses"], correct: 1 },
-                    { q: "Which Act granted, for the first time in Canada, legislative assemblies elected by the people?", q_fa: "کدام قانون برای اولین بار در کانادا، مجامع قانونگذاری منتخب مردم را اعطا کرد؟", q_fr: "Quelle loi a accordé pour la première fois au Canada des assemblées législatives élues par le peuple?", options: ["Quebec Act of 1774", "Constitutional Act of 1791", "British North America Act", "Charter of Rights"], options_fr: ["Acte de Québec de 1774", "Acte constitutionnel de 1791", "Acte de l'Amérique du Nord britannique", "Charte des droits"], correct: 1 },
-                    { q: "Who was Sir Louis-Hippolyte La Fontaine?", q_fa: "سر لوئی-هیپولیت لافونتن چه کسی بود؟", q_fr: "Qui était Sir Louis-Hippolyte La Fontaine?", options: ["First Prime Minister", "A leader of responsible government in Canada", "A war hero", "First Governor General"], options_fr: ["Premier ministre", "Un chef du gouvernement responsable au Canada", "Un héros de guerre", "Premier gouverneur général"], correct: 1 },
-                    { q: "Who recommended merging Upper and Lower Canada and giving them responsible government?", q_fa: "چه کسی ادغام کانادای علیا و سفلی و اعطای دولت مسئول به آن‌ها را توصیه کرد؟", q_fr: "Qui a recommandé la fusion du Haut et du Bas-Canada et l'instauration du gouvernement responsable?", options: ["Lord Durham", "Lord Elgin", "Governor Simcoe", "Prime Minister"], options_fr: ["Lord Durham", "Lord Elgin", "Gouverneur Simcoe", "Premier ministre"], correct: 0 },
-                    { q: "What does 'responsible government' mean?", q_fa: "'دولت مسئول' به چه معناست؟", q_fr: "Que signifie « gouvernement responsable »?", options: ["Government responsible to the people through Parliament", "Government that makes good decisions", "Government with many responsibilities", "Elected government"], options_fr: ["Gouvernement responsable devant le peuple par le Parlement", "Gouvernement qui prend de bonnes décisions", "Gouvernement avec de nombreuses responsabilités", "Gouvernement élu"], correct: 0 },
-                    { q: "When did English settlement begin in Canada?", q_fa: "استعمار انگلیسی در کانادا چه زمانی آغاز شد؟", q_fr: "Quand la colonisation anglaise a-t-elle commencé au Canada?", options: ["1497 with John Cabot", "1608 with Champlain", "1763", "1867"], options_fr: ["1497 avec John Cabot", "1608 avec Champlain", "1763", "1867"], correct: 0 },
-                    { q: "Who established the first European settlements?", q_fa: "چه کسی اولین سکونتگاه‌های اروپایی را تأسیس کرد؟", q_fr: "Qui a établi les premières colonies européennes?", options: ["John Cabot, Jacques Cartier, Samuel de Champlain", "Only French", "Only British", "Americans"], options_fr: ["John Cabot, Jacques Cartier, Samuel de Champlain", "Seulement les Français", "Seulement les Britanniques", "Les Américains"], correct: 0 },
-                    { q: "What is a fundamental characteristic of the Canadian heritage and identity?", q_fa: "ویژگی اساسی میراث و هویت کانادایی چیست؟", q_fr: "Quelle est une caractéristique fondamentale du patrimoine et de l'identité canadienne?", options: ["Multiculturalism", "Bilingualism", "Both multiculturalism and bilingualism", "Monarchy"], options_fr: ["Le multiculturalisme", "Le bilinguisme", "Le multiculturalisme et le bilinguisme", "La monarchie"], correct: 2 },
-                    { q: "Canadians work hard to respect:", q_fa: "کانادایی‌ها برای احترام به چه چیزهایی تلاش می‌کنند؟", q_fr: "Les Canadiens s'efforcent de respecter :", options: ["Individual rights", "Collective rights", "Both individual and collective rights", "Only federal rights"], options_fr: ["Les droits individuels", "Les droits collectifs", "Les droits individuels et collectifs", "Seulement les droits fédéraux"], correct: 2 },
-                    { q: "Which legal documents protect the rights of Canadians regarding official languages?", q_fa: "کدام اسناد قانونی حقوق کانادایی‌ها را در مورد زبان‌های رسمی محافظت می‌کنند؟", q_fr: "Quels documents juridiques protègent les droits des Canadiens concernant les langues officielles?", options: ["Charter of Rights and Freedoms", "Official Languages Act", "Both", "Constitution only"], options_fr: ["Charte des droits et libertés", "Loi sur les langues officielles", "Les deux", "Constitution seulement"], correct: 2 },
-                    { q: "What are the three main groups of Aboriginal peoples?", q_fa: "سه گروه اصلی بومیان چه کسانی هستند؟", q_fr: "Quels sont les trois principaux groupes de peuples autochtones?", options: ["First Nations, Métis, Inuit", "Indians, Métis, Eskimos", "Tribes, Nations, Communities", "None of the above"], options_fr: ["Premières Nations, Métis, Inuit", "Indiens, Métis, Esquimaux", "Tribus, Nations, Communautés", "Aucune de ces réponses"], correct: 0 },
-                    { q: "Where do the majority of Métis people live in Canada?", q_fa: "اکثریت مردم متی در کانادا کجا زندگی می‌کنند؟", q_fr: "Où vit la majorité des Métis au Canada?", options: ["Ontario", "Quebec", "Prairie Provinces", "BC"], options_fr: ["Ontario", "Québec", "Provinces des Prairies", "CB"], correct: 2 }
+                    {
+                        q: "What is the largest freshwater lake entirely in Canada?",
+                        q_fa: "بزرگ‌ترین دریاچهٔ آب شیرین کاملاً داخل کانادا کدام است؟",
+                        q_fr: "Quel est le plus grand lac d'eau douce entièrement au Canada?",
+                        options: ["Great Bear Lake", "Lake Superior", "Lake Ontario", "Great Slave Lake"],
+                        options_fr: ["Grand lac de l'Ours", "Lac Supérieur", "Lac Ontario", "Grand lac des Esclaves"],
+                        correct: 0,
+                        page: 10,
+                        section: "Mock Test 2 (Medium)",
+                        book_text: "Great Bear Lake in the Northwest Territories is the largest lake entirely in Canada."
+                    },
+                    {
+                        q: "Who was the first female Prime Minister of Canada?",
+                        q_fa: "نخستین نخست‌وزیر زن کانادا کی بود؟",
+                        q_fr: "Qui a été la première femme premier ministre du Canada?",
+                        options: ["Kim Campbell", "Agnes Macphail", "Jeanne Sauvé", "Beverley McLachlin"],
+                        options_fr: ["Kim Campbell", "Agnes Macphail", "Jeanne Sauvé", "Beverley McLachlin"],
+                        correct: 0,
+                        page: 10,
+                        section: "Mock Test 2 (Medium)",
+                        book_text: "Kim Campbell served as Prime Minister in 1993."
+                    },
+                    {
+                        q: "What year was the Constitution Act, which includes the Charter of Rights and Freedoms, passed?",
+                        q_fa: "قانون اساسی که شامل منشور حقوق و آزادی‌هاست در چه سالی تصویب شد؟",
+                        q_fr: "En quelle année la Loi constitutionnelle incluant la Charte des droits et libertés a-t-elle été adoptée?",
+                        options: ["1867", "1982", "1905", "1967"],
+                        options_fr: ["1867", "1982", "1905", "1967"],
+                        correct: 1,
+                        page: 10,
+                        section: "Mock Test 2 (Medium)",
+                        book_text: "The Constitution Act, 1982 patriated the constitution and included the Charter."
+                    },
+                    {
+                        q: "Which Canadian province is the only one to have a unicameral legislature?",
+                        q_fa: "کدام استان کانادا تنها استانی است که قوهٔ مقننهٔ تک‌مجلسی دارد؟",
+                        q_fr: "Quelle province canadienne est la seule à avoir une législature unicamérale?",
+                        options: ["Alberta", "Quebec", "Ontario", "Manitoba"],
+                        options_fr: ["Alberta", "Québec", "Ontario", "Manitoba"],
+                        correct: 1,
+                        page: 10,
+                        section: "Mock Test 2 (Medium)",
+                        book_text: "Practice set answer: Quebec (keyed to mock test screenshot)."
+                    },
+                    {
+                        q: "Which explorer is credited with mapping much of the Canadian Arctic?",
+                        q_fa: "کدام کاشف به نقشه‌برداری بخش زیادی از اقیانوس منجمد شمالی کانادا نسبت داده می‌شود؟",
+                        q_fr: "Quel explorateur est crédité pour avoir cartographié une grande partie de l'Arctique canadien?",
+                        options: ["John Cabot", "Henry Hudson", "Samuel de Champlain", "Sir John Franklin"],
+                        options_fr: ["John Cabot", "Henry Hudson", "Samuel de Champlain", "Sir John Franklin"],
+                        correct: 1,
+                        page: 10,
+                        section: "Mock Test 2 (Medium)",
+                        book_text: "Henry Hudson explored Hudson Bay and surrounding areas."
+                    },
+                    {
+                        q: "Which Canadian province has the most lakes?",
+                        q_fa: "کدام استان کانادا بیشترین دریاچه را دارد؟",
+                        q_fr: "Quelle province canadienne compte le plus de lacs?",
+                        options: ["Ontario", "Manitoba", "Quebec", "British Columbia"],
+                        options_fr: ["Ontario", "Manitoba", "Québec", "Colombie-Britannique"],
+                        correct: 0,
+                        page: 10,
+                        section: "Mock Test 2 (Medium)",
+                        book_text: "Practice set answer: Ontario (keyed to mock test screenshot)."
+                    },
+                    {
+                        q: "Who is responsible for appointing Supreme Court judges in Canada?",
+                        q_fa: "در کانادا انتصاب قضات دیوان عالی بر عهدهٔ کیست؟",
+                        q_fr: "Qui est responsable de nommer les juges de la Cour suprême au Canada?",
+                        options: ["Prime Minister", "Governor General", "Parliament", "Chief Justice"],
+                        options_fr: ["Premier ministre", "Gouverneur général", "Parlement", "Juge en chef"],
+                        correct: 1,
+                        page: 10,
+                        section: "Mock Test 2 (Medium)",
+                        book_text: "The Governor General appoints Supreme Court judges on the advice of the Prime Minister."
+                    },
+                    {
+                        q: "Which province is the only one with a majority of French-speaking population?",
+                        q_fa: "کدام استان تنها استانی است که اکثریت جمعیت آن فرانسه‌زبان است؟",
+                        q_fr: "Quelle province est la seule où la majorité de la population est francophone?",
+                        options: ["Quebec", "New Brunswick", "Manitoba", "Ontario"],
+                        options_fr: ["Québec", "Nouveau-Brunswick", "Manitoba", "Ontario"],
+                        correct: 0,
+                        page: 10,
+                        section: "Mock Test 2 (Medium)",
+                        book_text: "Quebec is the only province with a majority French-speaking population."
+                    },
+                    {
+                        q: "What is Canada's oldest national park?",
+                        q_fa: "قدیمی‌ترین پارک ملی کانادا کدام است؟",
+                        q_fr: "Quel est le plus ancien parc national du Canada?",
+                        options: ["Jasper National Park", "Banff National Park", "Yoho National Park", "Fundy National Park"],
+                        options_fr: ["Parc national Jasper", "Parc national Banff", "Parc national Yoho", "Parc national Fundy"],
+                        correct: 1,
+                        page: 10,
+                        section: "Mock Test 2 (Medium)",
+                        book_text: "Banff National Park, established in 1885, is Canada's first national park."
+                    },
+                    {
+                        q: "What is the term for Canada's head of government?",
+                        q_fa: "اصطلاح رایج برای رئیس دولت کانادا چیست؟",
+                        q_fr: "Comment appelle-t-on le chef du gouvernement du Canada?",
+                        options: ["Governor General", "Prime Minister", "Chief Justice", "Premier"],
+                        options_fr: ["Gouverneur général", "Premier ministre", "Juge en chef", "Premier ministre provincial"],
+                        correct: 1,
+                        page: 10,
+                        section: "Mock Test 2 (Medium)",
+                        book_text: "The Prime Minister is the head of government."
+                    },
+                    {
+                        q: "Which province joined Confederation last?",
+                        q_fa: "کدام استان آخرین بار به اتحادیه پیوست؟",
+                        q_fr: "Quelle province s'est jointe à la Confédération en dernier?",
+                        options: ["Newfoundland and Labrador", "Alberta", "Saskatchewan", "British Columbia"],
+                        options_fr: ["Terre-Neuve-et-Labrador", "Alberta", "Saskatchewan", "Colombie-Britannique"],
+                        correct: 0,
+                        page: 10,
+                        section: "Mock Test 2 (Medium)",
+                        book_text: "Newfoundland and Labrador joined in 1949."
+                    },
+                    {
+                        q: "What is the main purpose of the Governor General's Speech from the Throne?",
+                        q_fa: "هدف اصلی نطق تخت توسط فرماندار کل چیست؟",
+                        q_fr: "Quel est le rôle principal du discours du Trône du gouverneur général?",
+                        options: ["Announce laws passed by Parliament", "Outline the government's agenda", "Appoint Cabinet ministers", "Dissolve Parliament"],
+                        options_fr: ["Annoncer les lois adoptées par le Parlement", "Présenter le programme du gouvernement", "Nommer les ministres", "Dissoudre le Parlement"],
+                        correct: 1,
+                        page: 10,
+                        section: "Mock Test 2 (Medium)",
+                        book_text: "The Speech from the Throne opens a session of Parliament and outlines the government's plans."
+                    },
+                    {
+                        q: "Which Canadian territory has the highest population?",
+                        q_fa: "کدام قلمرو کانادا بیشترین جمعیت را دارد؟",
+                        q_fr: "Quel territoire canadien a la plus grande population?",
+                        options: ["Yukon", "Northwest Territories", "Nunavut", "None, they are equal"],
+                        options_fr: ["Yukon", "Territoires du Nord-Ouest", "Nunavut", "Aucun, ils sont égaux"],
+                        correct: 0,
+                        page: 10,
+                        section: "Mock Test 2 (Medium)",
+                        book_text: "Practice set answer: Yukon (keyed to mock test screenshot)."
+                    },
+                    {
+                        q: "Who was the first Indigenous person elected to the Canadian House of Commons?",
+                        q_fa: "نخستین فرد بومی انتخاب‌شده به مجلس عوام کانادا کی بود؟",
+                        q_fr: "Qui a été la première personne autochtone élue à la Chambre des communes?",
+                        options: ["Louis Riel", "Elijah Harper", "Pierre Delorme", "John Norquay"],
+                        options_fr: ["Louis Riel", "Elijah Harper", "Pierre Delorme", "John Norquay"],
+                        correct: 2,
+                        page: 10,
+                        section: "Mock Test 2 (Medium)",
+                        book_text: "Practice set answer: Pierre Delorme (keyed to mock test screenshot)."
+                    },
+                    {
+                        q: "What is the primary function of the Senate in Canada?",
+                        q_fa: "کارکرد اصلی سنای کانادا چیست؟",
+                        q_fr: "Quelle est la fonction principale du Sénat au Canada?",
+                        options: ["Create new taxes", "Represent regions and review legislation", "Elect the Prime Minister", "Manage provincial affairs"],
+                        options_fr: ["Créer de nouveaux impôts", "Représenter les régions et étudier les lois", "Élire le premier ministre", "Gérer les affaires provinciales"],
+                        correct: 1,
+                        page: 10,
+                        section: "Mock Test 2 (Medium)",
+                        book_text: "The Senate represents regional interests and provides sober second thought on bills."
+                    },
+                    {
+                        q: "Which Canadian city hosted Expo 67?",
+                        q_fa: "کدام شهر کانادا میزبان اکسپو ۶۷ بود؟",
+                        q_fr: "Quelle ville canadienne a accueilli Expo 67?",
+                        options: ["Toronto", "Montreal", "Vancouver", "Ottawa"],
+                        options_fr: ["Toronto", "Montréal", "Vancouver", "Ottawa"],
+                        correct: 1,
+                        page: 10,
+                        section: "Mock Test 2 (Medium)",
+                        book_text: "Montreal hosted Expo 67."
+                    },
+                    {
+                        q: "Who signs federal bills into law in Canada?",
+                        q_fa: "در کانادا قوانین فدرال را چه کسی امضا می‌کند تا به قانون تبدیل شوند؟",
+                        q_fr: "Qui sanctionne les projets de loi fédéraux au Canada?",
+                        options: ["Prime Minister", "Governor General", "Chief Justice", "Senate Speaker"],
+                        options_fr: ["Premier ministre", "Gouverneur général", "Juge en chef", "Président du Sénat"],
+                        correct: 1,
+                        page: 10,
+                        section: "Mock Test 2 (Medium)",
+                        book_text: "Royal Assent is given by the Governor General (as the Crown's representative)."
+                    },
+                    {
+                        q: "Which province is known for the Viking settlement at L'Anse aux Meadows?",
+                        q_fa: "کدام استان به سکونتگاه وایکینگ‌ها در لانس او میدوز معروف است؟",
+                        q_fr: "Quelle province est connue pour le site viking de l'Anse aux Meadows?",
+                        options: ["Newfoundland and Labrador", "Nova Scotia", "Prince Edward Island", "Quebec"],
+                        options_fr: ["Terre-Neuve-et-Labrador", "Nouvelle-Écosse", "Île-du-Prince-Édouard", "Québec"],
+                        correct: 0,
+                        page: 10,
+                        section: "Mock Test 2 (Medium)",
+                        book_text: "L'Anse aux Meadows is a UNESCO site in Newfoundland and Labrador."
+                    },
+                    {
+                        q: "What is Canada's primary legislative body called?",
+                        q_fa: "نهاد قانونگذاری اصلی کانادا چه نام دارد؟",
+                        q_fr: "Comment s'appelle l'organe législatif principal du Canada?",
+                        options: ["Parliament", "Congress", "Senate", "House of Lords"],
+                        options_fr: ["Parlement", "Congrès", "Sénat", "Chambre des lords"],
+                        correct: 0,
+                        page: 10,
+                        section: "Mock Test 2 (Medium)",
+                        book_text: "Canada's Parliament consists of the Monarch, Senate, and House of Commons."
+                    },
+                    {
+                        q: "Who was the first Canadian Governor General of Indigenous descent?",
+                        q_fa: "نخستین فرماندار کل کانادا با تبار بومی کی بود؟",
+                        q_fr: "Qui a été le premier gouverneur général canadien d'ascendance autochtone?",
+                        options: ["Mary Simon", "Michaëlle Jean", "Georges Vanier", "Roland Michener"],
+                        options_fr: ["Mary Simon", "Michaëlle Jean", "Georges Vanier", "Roland Michener"],
+                        correct: 0,
+                        page: 10,
+                        section: "Mock Test 2 (Medium)",
+                        book_text: "Mary Simon became Governor General in 2021."
+                    }
                 ]
             },
             // Test 8: Economy and Industry

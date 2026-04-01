@@ -51,8 +51,25 @@
         <div class="main-content">
             <div class="header">
                 <div class="header-carousel">
-                    <!-- Slide 1: فقط عنوان — اسلاید مستقل -->
-                    <div class="header-slide header-slide-title-only active" id="slide0">
+                    <!-- Slide 1: تبلیغ — تیم شکور -->
+                    <div class="header-slide header-slide-ad active" id="slide0">
+                        <div class="slide-visitor-text">Visitors : <span class="visitor-count-value">0</span></div>
+                        <a href="#ads-section" class="header-slide-ad-link" title="تیم شکور · Équipe Shakour · مشاوره املاک">
+                            <picture>
+                                <source media="(max-width: 768px)" srcset="{{ url_for('static', filename='images/shakour-hero-mobile.png') }}">
+                                <img src="{{ url_for('static', filename='images/shakour-hero-desktop.png') }}" alt="تیم شکور · Équipe Shakour · مشاوره تخصصی املاک · 514-730-3909" class="header-slide-ad-img">
+                            </picture>
+                        </a>
+                    </div>
+                    <!-- Slide 2: تبلیغ — خاطره تحویلداری یکتا -->
+                    <div class="header-slide header-slide-ad" id="slide1">
+                        <div class="slide-visitor-text">Visitors : <span class="visitor-count-value">0</span></div>
+                        <a href="#ads-section" class="header-slide-ad-link" title="خاطره تحویلداری یکتا · مترجم رسمی کبک، آلبرتا و ایران · Commissioner of Oaths">
+                            <img src="{{ url_for('static', filename='images/header-slide-khatereh-yekta.png') }}" alt="خاطره تحویلداری یکتا — مترجم رسمی؛ 514-675-0694، 438-390-0694، khaterehyekta@yahoo.ca؛ ترجمه رسمی و خدمات مرتبط، حتی در روزهای تعطیل" class="header-slide-ad-img" width="1024" height="153" loading="lazy">
+                        </a>
+                    </div>
+                    <!-- Slide 3: عنوان سایت -->
+                    <div class="header-slide header-slide-title-only" id="slide2">
                         <div class="slide-visitor-text">Visitors : <span class="visitor-count-value">0</span></div>
                         <div class="header-title-standalone">
                             <h1 class="header-h1">
@@ -63,18 +80,8 @@
                             <p class="header-title-en">Canadian Citizenship Practice Test</p>
                         </div>
                     </div>
-                    <!-- Slide 2: فقط بنر تیم شکور — اسلاید مستقل (دسکتاپ و موبایل تصاویر جدا) -->
-                    <div class="header-slide header-slide-ad" id="slide1">
-                        <div class="slide-visitor-text">Visitors : <span class="visitor-count-value">0</span></div>
-                        <a href="#ads-section" class="header-slide-ad-link" title="تیم شکور · Équipe Shakour · مشاوره املاک">
-                            <picture>
-                                <source media="(max-width: 768px)" srcset="{{ url_for('static', filename='images/shakour-hero-mobile.png') }}">
-                                <img src="{{ url_for('static', filename='images/shakour-hero-desktop.png') }}" alt="تیم شکور · Équipe Shakour · مشاوره تخصصی املاک · 514-730-3909" class="header-slide-ad-img">
-                            </picture>
-                        </a>
-                    </div>
-                    <!-- Slide 3: ثبت تبلیغ — طراحی مدرن با آیکون صورتی و کارت شیشه‌ای -->
-                    <div class="header-slide header-slide-ad-registration" id="slide2">
+                    <!-- Slide 4: ثبت تبلیغ -->
+                    <div class="header-slide header-slide-ad-registration" id="slide3">
                         <div class="slide-visitor-text">Visitors : <span class="visitor-count-value">0</span></div>
                         <div class="header-slide-ad-registration-box" onclick="openAdRegistrationModal()" role="button" tabindex="0" title="برای ثبت تبلیغ کلیک کنید">
                             <h3 class="header-slide-ad-registration-title">برای ثبت تبلیغ تماس بگیرید</h3>
@@ -87,9 +94,10 @@
                         </div>
                     </div>
                     <div class="header-carousel-indicators">
-                        <div class="header-indicator active" onclick="goToSlide(0)" aria-label="اسلاید ۱"></div>
-                        <div class="header-indicator" onclick="goToSlide(1)" aria-label="اسلاید ۲"></div>
-                        <div class="header-indicator" onclick="goToSlide(2)" aria-label="اسلاید ۳"></div>
+                        <div class="header-indicator active" onclick="goToSlide(0)" aria-label="اسلاید ۱ — تیم شکور"></div>
+                        <div class="header-indicator" onclick="goToSlide(1)" aria-label="اسلاید ۲ — خاطره تحویلداری یکتا"></div>
+                        <div class="header-indicator" onclick="goToSlide(2)" aria-label="اسلاید ۳ — عنوان"></div>
+                        <div class="header-indicator" onclick="goToSlide(3)" aria-label="اسلاید ۴ — ثبت تبلیغ"></div>
                     </div>
                 </div>
             </div>
