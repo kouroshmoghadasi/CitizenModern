@@ -45,6 +45,14 @@
         .reset-password-display { padding: 10px 12px; font-family: monospace; font-size: 1.1rem; width: 220px; margin-left: 8px; border-radius: 6px; border: 1px solid #ccc; }
         .payments-summary { margin-top: 14px; padding: 12px 14px; background: #e8f4fc; border-radius: 8px; font-size: 0.95rem; color: #1e3c72; border: 1px solid #b8d4e8; }
         .payments-summary .sep { margin: 0 10px; color: #94a3b8; }
+        .table-pager { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 14px; padding-top: 12px; border-top: 1px solid #eee; font-size: 0.9rem; color: #475569; }
+        .table-pager .pager-meta { font-weight: 600; color: #1e3c72; }
+        .table-pager .pager-info { margin-inline-start: auto; }
+        .table-filter-row { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 10px; margin-bottom: 14px; }
+        .table-filter-row .f { display: flex; flex-direction: column; gap: 4px; flex: 1; min-width: 200px; max-width: 420px; }
+        .table-filter-row label { font-size: 0.85rem; font-weight: 600; color: #555; }
+        .table-filter-row input[type="search"] { padding: 10px 12px; border: 1px solid #ccc; border-radius: 8px; width: 100%; font: inherit; }
+        .table-filter-hint { font-size: 0.8rem; color: #64748b; margin-top: 4px; }
     </style>
 </head>
 <body>
@@ -221,6 +229,13 @@
         <h2>درخواست‌های دسترسی (موبایل افرادی که «خیر» زدند)</h2>
         <div class="card-body">
             <p style="font-size: 0.85rem; color: #666; margin-bottom: 12px;">این افراد شماره موبایل خود را ثبت کرده‌اند؛ کد کاربری آن‌ها همان شماره است. پس از واریز، کاربر را با همین موبایل اضافه و {{ subscription_price }} دلار (کل بسته) ثبت کنید.</p>
+            <div class="table-filter-row">
+                <div class="f">
+                    <label for="pendingGridFilter">فیلتر ردیف‌ها</label>
+                    <input type="search" id="pendingGridFilter" placeholder="موبایل یا تاریخ درخواست…" autocomplete="off">
+                </div>
+            </div>
+            <p class="table-filter-hint" style="margin-bottom: 10px;">متن خالی = همهٔ ردیف‌ها؛ با تایپ، ردیف‌های هم‌خوان با صفحه‌بندی نمایش داده می‌شوند.</p>
             <table id="pendingTable">
                 <thead>
                     <tr>
@@ -230,6 +245,7 @@
                 </thead>
                 <tbody></tbody>
             </table>
+            <div id="pendingPager" class="table-pager" aria-label="صفحه‌بندی درخواست‌ها"></div>
         </div>
     </div>
 
@@ -249,6 +265,13 @@
         <h2>لیست کاربران و وضعیت اشتراک</h2>
         <div class="card-body">
             <div id="usersMsg"></div>
+            <div class="table-filter-row">
+                <div class="f">
+                    <label for="usersGridFilter">فیلتر ردیف‌ها</label>
+                    <input type="search" id="usersGridFilter" placeholder="موبایل، نام، شهر، انقضا، یادداشت، شناسه…" autocomplete="off">
+                </div>
+            </div>
+            <p class="table-filter-hint" style="margin-bottom: 10px;">جستجو در ستون‌های جدول (شامل تاریخ‌ها و نمره)؛ اعداد فارسی و انگلیسی هر دو پشتیبانی می‌شوند.</p>
             <table id="usersTable">
                 <thead>
                     <tr>
@@ -266,12 +289,20 @@
                 </thead>
                 <tbody></tbody>
             </table>
+            <div id="usersPager" class="table-pager" aria-label="صفحه‌بندی کاربران"></div>
         </div>
     </div>
 
     <div class="card">
         <h2>آخرین پرداخت‌ها</h2>
         <div class="card-body">
+            <div class="table-filter-row">
+                <div class="f">
+                    <label for="paymentsGridFilter">فیلتر ردیف‌ها</label>
+                    <input type="search" id="paymentsGridFilter" placeholder="نام، موبایل، مبلغ، تاریخ، کد واریز…" autocomplete="off">
+                </div>
+            </div>
+            <p class="table-filter-hint" style="margin-bottom: 10px;">فقط نمایش جدول فیلتر می‌شود؛ جمع مبلغ و آمار پایین بر اساس همهٔ پرداخت‌های بارگذاری‌شده از سرور است.</p>
             <table id="paymentsTable">
                 <thead>
                     <tr>
@@ -285,6 +316,7 @@
                 </thead>
                 <tbody></tbody>
             </table>
+            <div id="paymentsPager" class="table-pager" aria-label="صفحه‌بندی پرداخت‌ها"></div>
             <p id="paymentsSummary" class="payments-summary" style="display: none;" aria-live="polite"></p>
             <p class="payments-summary-hint" style="margin-top: 8px; font-size: 0.8rem; color: #64748b;">خلاصه بر اساس همین جدول است (حداکثر ۲۰۰ پرداخت اخیر از سرور).</p>
         </div>
@@ -382,20 +414,154 @@
                 return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
             }
 
-            function loadUsers() {
-                fetch('/admin/api/users').then(function(r) { return r.json(); }).then(function(data) {
-                    if (!data.success) {
-                        showMsg('usersMsg', data.error || 'خطا', true);
-                        return;
+            function paymentDisplayName(p) {
+                var fn = (p.first_name != null && p.first_name !== '') ? String(p.first_name).trim() : '';
+                var ln = (p.last_name != null && p.last_name !== '') ? String(p.last_name).trim() : '';
+                if (fn && ln) return fn + ' ' + ln;
+                if (fn && !ln) {
+                    var parts = fn.split(/\s+/).filter(Boolean);
+                    if (parts.length >= 2) return parts[0] + ' ' + parts.slice(1).join(' ');
+                    return fn;
+                }
+                if (!fn && ln) return ln;
+                return '';
+            }
+
+            var PAGE_SIZE = 5;
+            var cachedUsers = [];
+            var usersPage = 1;
+            var cachedPayments = [];
+            var paymentsPage = 1;
+            var cachedPending = [];
+            var pendingPage = 1;
+
+            function totalPagesFor(n) {
+                return Math.max(1, Math.ceil(Math.max(0, n) / PAGE_SIZE));
+            }
+            function clampPage(page, total) {
+                var tp = totalPagesFor(total);
+                return Math.min(Math.max(1, page), tp);
+            }
+            function renderTablePager(el, total, page, setPage) {
+                if (!el) return;
+                page = clampPage(page, total);
+                var tp = totalPagesFor(total);
+                var start = total === 0 ? 0 : (page - 1) * PAGE_SIZE + 1;
+                var end = Math.min(page * PAGE_SIZE, total);
+                if (total === 0) {
+                    el.innerHTML = '<span class="pager-info">رکوردی نیست</span>';
+                    return;
+                }
+                el.innerHTML =
+                    '<span class="pager-info">' + start + '–' + end + ' از ' + total + '</span>' +
+                    '<button type="button" class="btn btn-sm btn-outline pager-prev"' + (page <= 1 ? ' disabled' : '') + '>قبلی</button>' +
+                    '<span class="pager-meta">صفحه ' + page + ' از ' + tp + '</span>' +
+                    '<button type="button" class="btn btn-sm btn-outline pager-next"' + (page >= tp ? ' disabled' : '') + '>بعدی</button>';
+                var prev = el.querySelector('.pager-prev');
+                var next = el.querySelector('.pager-next');
+                if (prev && !prev.disabled) prev.onclick = function() { setPage(page - 1); };
+                if (next && !next.disabled) next.onclick = function() { setPage(page + 1); };
+            }
+
+            function normDigitsForFilter(s) {
+                var t = String(s == null ? '' : s);
+                var fa = '۰۱۲۳۴۵۶۷۸۹';
+                var ar = '٠١٢٣٤٥٦٧٨٩';
+                return t.replace(/[۰-۹]/g, function(c) {
+                    var i = fa.indexOf(c);
+                    return i >= 0 ? String(i) : c;
+                }).replace(/[٠-٩]/g, function(c) {
+                    var i = ar.indexOf(c);
+                    return i >= 0 ? String(i) : c;
+                });
+            }
+            function gridFilterNorm(s) {
+                return normDigitsForFilter(String(s == null ? '' : s).toLowerCase());
+            }
+            function rowMatchesGridFilter(hayParts, queryRaw) {
+                var q = gridFilterNorm(queryRaw || '').trim();
+                if (!q) return true;
+                var hay = gridFilterNorm(hayParts.join(' '));
+                return hay.indexOf(q) !== -1;
+            }
+            function getFilteredUsers() {
+                var inp = document.getElementById('usersGridFilter');
+                var q = inp ? inp.value : '';
+                if (!gridFilterNorm(q).trim()) return cachedUsers;
+                return cachedUsers.filter(function(u) {
+                    var exp = u.tests_expiry || u.questions_414_expiry || '';
+                    var parts = [u.id, u.mobile, u.first_name, u.last_name, u.citizenship_city, u.notes, exp,
+                        isoDateOnly(u.citizenship_apply_date), isoDateOnly(u.citizenship_exam_date), u.citizenship_exam_score];
+                    return rowMatchesGridFilter(parts, q);
+                });
+            }
+            function getFilteredPayments() {
+                var inp = document.getElementById('paymentsGridFilter');
+                var q = inp ? inp.value : '';
+                if (!gridFilterNorm(q).trim()) return cachedPayments;
+                return cachedPayments.filter(function(p) {
+                    var nm = paymentDisplayName(p);
+                    var parts = [p.id, p.user_id, p.amount, p.payment_date, p.payment_reference, p.notes, p.mobile, nm];
+                    return rowMatchesGridFilter(parts, q);
+                });
+            }
+            function getFilteredPending() {
+                var inp = document.getElementById('pendingGridFilter');
+                var q = inp ? inp.value : '';
+                if (!gridFilterNorm(q).trim()) return cachedPending;
+                return cachedPending.filter(function(row) {
+                    return rowMatchesGridFilter([row.mobile, row.created_at], q);
+                });
+            }
+
+            function populateUserSelects(users) {
+                var sel = document.getElementById('payUserId');
+                if (!sel) return;
+                sel.innerHTML = '<option value="">-- انتخاب کاربر --</option>';
+                var setExpirySel = document.getElementById('setExpiryUserId');
+                if (setExpirySel) setExpirySel.innerHTML = '<option value="">-- انتخاب کاربر --</option>';
+                var changePwSel = document.getElementById('changeUserPasswordUserId');
+                if (changePwSel) changePwSel.innerHTML = '<option value="">-- انتخاب کاربر --</option>';
+                users.forEach(function(u) {
+                    var nameStr = [u.first_name, u.last_name].filter(Boolean).join(' ') || '—';
+                    var opt = document.createElement('option');
+                    opt.value = u.id;
+                    opt.setAttribute('data-first-name', u.first_name || '');
+                    opt.setAttribute('data-last-name', u.last_name || '');
+                    opt.textContent = (u.first_name || u.last_name ? (nameStr + ' — ') : '') + u.mobile + ' (#' + u.id + ')';
+                    sel.appendChild(opt);
+                    if (setExpirySel) {
+                        var opt2 = document.createElement('option');
+                        opt2.value = u.id;
+                        opt2.textContent = u.mobile + ' (#' + u.id + ')';
+                        setExpirySel.appendChild(opt2);
                     }
-                    var tbody = document.querySelector('#usersTable tbody');
-                    var sel = document.getElementById('payUserId');
-                    if (!tbody || !sel) return;
-                    tbody.innerHTML = '';
-                    sel.innerHTML = '<option value="">-- انتخاب کاربر --</option>';
-                    var setExpirySel = document.getElementById('setExpiryUserId');
-                    if (setExpirySel) setExpirySel.innerHTML = '<option value="">-- انتخاب کاربر --</option>';
-                    data.users.forEach(function(u) {
+                    if (changePwSel) {
+                        var opt3 = document.createElement('option');
+                        opt3.value = u.id;
+                        opt3.textContent = u.mobile + ' (#' + u.id + ')';
+                        changePwSel.appendChild(opt3);
+                    }
+                });
+                if (!sel._payChangeBound) {
+                    sel._payChangeBound = true;
+                    sel.addEventListener('change', function() {
+                        var opt = this.options[this.selectedIndex];
+                        if (!opt || !opt.value) return;
+                        document.getElementById('payFirstName').value = opt.getAttribute('data-first-name') || '';
+                        document.getElementById('payLastName').value = opt.getAttribute('data-last-name') || '';
+                    });
+                }
+            }
+
+            function renderUsersTable() {
+                var tbody = document.querySelector('#usersTable tbody');
+                if (!tbody) return;
+                var filteredUsers = getFilteredUsers();
+                usersPage = clampPage(usersPage, filteredUsers.length);
+                tbody.innerHTML = '';
+                var slice = filteredUsers.slice((usersPage - 1) * PAGE_SIZE, usersPage * PAGE_SIZE);
+                slice.forEach(function(u) {
                         var exp = u.tests_expiry || u.questions_414_expiry || '—';
                         var expBadge = exp !== '—' ? (new Date(exp) >= new Date() ? '<span class="badge active">' + exp + '</span>' : '<span class="badge expired">' + exp + '</span>') : '<span class="badge none">ندارد</span>';
                         var nameStr = [u.first_name, u.last_name].filter(Boolean).join(' ') || '—';
@@ -418,31 +584,6 @@
                             '<button type="button" class="btn btn-sm btn-danger delete-user-btn" data-user-id="' + u.id + '"' + delDisabled + ' title="' + escAttr(delTitle) + '">حذف</button>' +
                             '</td>';
                         tbody.appendChild(tr);
-                        var opt = document.createElement('option');
-                        opt.value = u.id;
-                        opt.setAttribute('data-first-name', u.first_name || '');
-                        opt.setAttribute('data-last-name', u.last_name || '');
-                        opt.textContent = (u.first_name || u.last_name ? (nameStr + ' — ') : '') + u.mobile + ' (#' + u.id + ')';
-                        sel.appendChild(opt);
-                        if (setExpirySel) {
-                            var opt2 = document.createElement('option');
-                            opt2.value = u.id;
-                            opt2.textContent = u.mobile + ' (#' + u.id + ')';
-                            setExpirySel.appendChild(opt2);
-                        }
-                        var changePwSel = document.getElementById('changeUserPasswordUserId');
-                        if (changePwSel) {
-                            var opt3 = document.createElement('option');
-                            opt3.value = u.id;
-                            opt3.textContent = u.mobile + ' (#' + u.id + ')';
-                            changePwSel.appendChild(opt3);
-                        }
-                    });
-                    document.getElementById('payUserId').addEventListener('change', function() {
-                        var opt = this.options[this.selectedIndex];
-                        if (!opt || !opt.value) return;
-                        document.getElementById('payFirstName').value = opt.getAttribute('data-first-name') || '';
-                        document.getElementById('payLastName').value = opt.getAttribute('data-last-name') || '';
                     });
                     tbody.querySelectorAll('.change-user-pw-btn').forEach(function(btn) {
                         btn.addEventListener('click', function() {
@@ -507,6 +648,22 @@
                             });
                         }
                     });
+                renderTablePager(document.getElementById('usersPager'), filteredUsers.length, usersPage, function(p) {
+                    usersPage = p;
+                    renderUsersTable();
+                });
+            }
+
+            function loadUsers() {
+                fetch('/admin/api/users').then(function(r) { return r.json(); }).then(function(data) {
+                    if (!data.success) {
+                        showMsg('usersMsg', data.error || 'خطا', true);
+                        return;
+                    }
+                    cachedUsers = data.users || [];
+                    populateUserSelects(cachedUsers);
+                    usersPage = clampPage(usersPage, getFilteredUsers().length);
+                    renderUsersTable();
                 }).catch(function() { showMsg('usersMsg', 'خطا در بارگذاری', true); });
             }
 
@@ -773,95 +930,113 @@
             var setExpiryDateEl = document.getElementById('setExpiryDate');
             if (setExpiryDateEl) setExpiryDateEl.value = today;
 
+            function renderPaymentsTable() {
+                var tbody = document.querySelector('#paymentsTable tbody');
+                if (!tbody) return;
+                var filteredPay = getFilteredPayments();
+                paymentsPage = clampPage(paymentsPage, filteredPay.length);
+                tbody.innerHTML = '';
+                var slice = filteredPay.slice((paymentsPage - 1) * PAGE_SIZE, paymentsPage * PAGE_SIZE);
+                slice.forEach(function(p) {
+                    var namePart = paymentDisplayName(p);
+                    var userDisplay = namePart ? (namePart.replace(/</g, '&lt;') + ' (' + (p.mobile || '').replace(/</g, '&lt;') + ')') : (p.mobile || '#' + p.user_id).replace(/</g, '&lt;');
+                    var tr = document.createElement('tr');
+                    tr.innerHTML = '<td>' + userDisplay + '</td><td>' + p.amount + ' $</td><td>' + (p.payment_date || '') + '</td><td>' + (p.payment_reference || '—').replace(/</g, '&lt;') + '</td>' +
+                        '<td><button type="button" class="btn btn-sm btn-outline edit-pay-btn" data-pay-id="' + p.id + '">ویرایش</button></td>' +
+                        '<td><button type="button" class="btn btn-sm btn-danger delete-pay-btn" data-pay-id="' + p.id + '">حذف</button></td>';
+                    tbody.appendChild(tr);
+                });
+                tbody.querySelectorAll('.edit-pay-btn').forEach(function(btn) {
+                    btn.addEventListener('click', function() {
+                        var id = this.getAttribute('data-pay-id');
+                        fetch('/admin/api/payments/' + id)
+                            .then(function(r) { return r.json(); })
+                            .then(function(data) {
+                                if (!data.success || !data.payment) { alert(data.error || 'خطا'); return; }
+                                var pay = data.payment;
+                                document.getElementById('editPayAmount').value = pay.amount || '';
+                                document.getElementById('editPayDate').value = (pay.payment_date || '').slice(0, 10);
+                                document.getElementById('editPayRef').value = pay.payment_reference || '';
+                                document.getElementById('editPayNotes').value = pay.notes || '';
+                                document.getElementById('editPaymentMsg').innerHTML = '';
+                                var modal = document.getElementById('editPaymentModal');
+                                modal.setAttribute('data-edit-pay-id', id);
+                                modal.style.display = 'flex';
+                            }).catch(function() { alert('خطا در ارتباط'); });
+                    });
+                });
+                tbody.querySelectorAll('.delete-pay-btn').forEach(function(btn) {
+                    btn.addEventListener('click', function() {
+                        var id = this.getAttribute('data-pay-id');
+                        if (!confirm('این پرداخت حذف شود؟ (اشتراک خودکار برگشت داده نمی‌شود؛ در صورت نیاز از «تنظیم انقضا» استفاده کنید.)')) return;
+                        fetch('/admin/api/payments/' + id, { method: 'DELETE' })
+                            .then(function(r) { return r.json(); }).then(function(data) {
+                                if (data.success) { loadPayments(); loadUsers(); }
+                                else alert(data.error || 'خطا');
+                            }).catch(function() { alert('خطا در ارتباط'); });
+                    });
+                });
+                renderTablePager(document.getElementById('paymentsPager'), filteredPay.length, paymentsPage, function(p) {
+                    paymentsPage = p;
+                    renderPaymentsTable();
+                });
+            }
+
             function loadPayments() {
                 fetch('/admin/api/payments').then(function(r) { return r.json(); }).then(function(data) {
                     var sumElPre = document.getElementById('paymentsSummary');
                     if (!data.success) {
                         if (sumElPre) { sumElPre.style.display = 'none'; sumElPre.innerHTML = ''; }
+                        cachedPayments = [];
+                        renderPaymentsTable();
                         return;
                     }
-                    var tbody = document.querySelector('#paymentsTable tbody');
-                    if (!tbody) return;
-                    tbody.innerHTML = '';
+                    cachedPayments = data.payments || [];
+                    paymentsPage = clampPage(paymentsPage, getFilteredPayments().length);
                     var sumEl = document.getElementById('paymentsSummary');
                     var totalAmount = 0;
                     var uniqueUserIds = new Set();
-                    function paymentDisplayName(p) {
-                        var fn = (p.first_name != null && p.first_name !== '') ? String(p.first_name).trim() : '';
-                        var ln = (p.last_name != null && p.last_name !== '') ? String(p.last_name).trim() : '';
-                        if (fn && ln) return fn + ' ' + ln;
-                        if (fn && !ln) {
-                            var parts = fn.split(/\s+/).filter(Boolean);
-                            if (parts.length >= 2) return parts[0] + ' ' + parts.slice(1).join(' ');
-                            return fn;
-                        }
-                        if (!fn && ln) return ln;
-                        return '';
-                    }
-                    data.payments.forEach(function(p) {
+                    cachedPayments.forEach(function(p) {
                         var amt = parseInt(p.amount, 10);
                         if (!isNaN(amt)) totalAmount += amt;
                         if (p.user_id != null && p.user_id !== '') uniqueUserIds.add(Number(p.user_id));
-                        var namePart = paymentDisplayName(p);
-                        var userDisplay = namePart ? (namePart.replace(/</g, '&lt;') + ' (' + (p.mobile || '').replace(/</g, '&lt;') + ')') : (p.mobile || '#' + p.user_id).replace(/</g, '&lt;');
-                        var tr = document.createElement('tr');
-                        tr.innerHTML = '<td>' + userDisplay + '</td><td>' + p.amount + ' $</td><td>' + (p.payment_date || '') + '</td><td>' + (p.payment_reference || '—').replace(/</g, '&lt;') + '</td>' +
-                            '<td><button type="button" class="btn btn-sm btn-outline edit-pay-btn" data-pay-id="' + p.id + '">ویرایش</button></td>' +
-                            '<td><button type="button" class="btn btn-sm btn-danger delete-pay-btn" data-pay-id="' + p.id + '">حذف</button></td>';
-                        tbody.appendChild(tr);
                     });
                     if (sumEl) {
-                        var nPay = data.payments.length;
+                        var nPay = cachedPayments.length;
                         var nPeople = uniqueUserIds.size;
                         sumEl.style.display = 'block';
                         sumEl.innerHTML = '<strong>جمع مبلغ:</strong> ' + totalAmount + ' $' +
                             '<span class="sep">|</span><strong>تعداد نفر (پرداخت‌کنندهٔ یکتا):</strong> ' + nPeople + ' نفر' +
                             '<span class="sep">|</span><strong>تعداد پرداخت ثبت‌شده:</strong> ' + nPay;
                     }
-                    tbody.querySelectorAll('.edit-pay-btn').forEach(function(btn) {
-                        btn.addEventListener('click', function() {
-                            var id = this.getAttribute('data-pay-id');
-                            fetch('/admin/api/payments/' + id)
-                                .then(function(r) { return r.json(); })
-                                .then(function(data) {
-                                    if (!data.success || !data.payment) { alert(data.error || 'خطا'); return; }
-                                    var pay = data.payment;
-                                    document.getElementById('editPayAmount').value = pay.amount || '';
-                                    document.getElementById('editPayDate').value = (pay.payment_date || '').slice(0, 10);
-                                    document.getElementById('editPayRef').value = pay.payment_reference || '';
-                                    document.getElementById('editPayNotes').value = pay.notes || '';
-                                    document.getElementById('editPaymentMsg').innerHTML = '';
-                                    var modal = document.getElementById('editPaymentModal');
-                                    modal.setAttribute('data-edit-pay-id', id);
-                                    modal.style.display = 'flex';
-                                }).catch(function() { alert('خطا در ارتباط'); });
-                        });
-                    });
-                    tbody.querySelectorAll('.delete-pay-btn').forEach(function(btn) {
-                        btn.addEventListener('click', function() {
-                            var id = this.getAttribute('data-pay-id');
-                            if (!confirm('این پرداخت حذف شود؟ (اشتراک خودکار برگشت داده نمی‌شود؛ در صورت نیاز از «تنظیم انقضا» استفاده کنید.)')) return;
-                            fetch('/admin/api/payments/' + id, { method: 'DELETE' })
-                                .then(function(r) { return r.json(); }).then(function(data) {
-                                    if (data.success) { loadPayments(); loadUsers(); }
-                                    else alert(data.error || 'خطا');
-                                }).catch(function() { alert('خطا در ارتباط'); });
-                        });
-                    });
+                    renderPaymentsTable();
+                });
+            }
+
+            function renderPendingTable() {
+                var tbody = document.querySelector('#pendingTable tbody');
+                if (!tbody) return;
+                var filteredPen = getFilteredPending();
+                pendingPage = clampPage(pendingPage, filteredPen.length);
+                tbody.innerHTML = '';
+                var slice = filteredPen.slice((pendingPage - 1) * PAGE_SIZE, pendingPage * PAGE_SIZE);
+                slice.forEach(function(row) {
+                    var tr = document.createElement('tr');
+                    tr.innerHTML = '<td>' + (row.mobile || '').replace(/</g, '&lt;') + '</td><td>' + (row.created_at || '—').replace(/</g, '&lt;') + '</td>';
+                    tbody.appendChild(tr);
+                });
+                renderTablePager(document.getElementById('pendingPager'), filteredPen.length, pendingPage, function(p) {
+                    pendingPage = p;
+                    renderPendingTable();
                 });
             }
 
             function loadPendingRequests() {
                 fetch('/admin/api/pending-requests').then(function(r) { return r.json(); }).then(function(data) {
                     if (!data.success) return;
-                    var tbody = document.querySelector('#pendingTable tbody');
-                    if (!tbody) return;
-                    tbody.innerHTML = '';
-                    data.pending.forEach(function(row) {
-                        var tr = document.createElement('tr');
-                        tr.innerHTML = '<td>' + (row.mobile || '').replace(/</g, '&lt;') + '</td><td>' + (row.created_at || '—').replace(/</g, '&lt;') + '</td>';
-                        tbody.appendChild(tr);
-                    });
+                    cachedPending = data.pending || [];
+                    pendingPage = clampPage(pendingPage, getFilteredPending().length);
+                    renderPendingTable();
                 });
             }
 
@@ -875,6 +1050,27 @@
                     }
                 }).catch(function() {});
             }
+            function bindGridFilterInput(id, onInput) {
+                var el = document.getElementById(id);
+                if (!el) return;
+                el.addEventListener('input', onInput);
+                el.addEventListener('search', function() {
+                    if (el.value === '') onInput();
+                });
+            }
+            bindGridFilterInput('usersGridFilter', function() {
+                usersPage = 1;
+                renderUsersTable();
+            });
+            bindGridFilterInput('paymentsGridFilter', function() {
+                paymentsPage = 1;
+                renderPaymentsTable();
+            });
+            bindGridFilterInput('pendingGridFilter', function() {
+                pendingPage = 1;
+                renderPendingTable();
+            });
+
             loadUsers();
             loadPayments();
             loadPendingRequests();
