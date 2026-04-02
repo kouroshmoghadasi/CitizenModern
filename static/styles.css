@@ -2165,6 +2165,12 @@
             border-radius: 8px;
             box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
         }
+        /* اسلاید خاطره یکتا: بنر عریض موبایل/تبلت — کمی ارتفاع بیشتر از سایر تبلیغات */
+        @media (max-width: 1024px) {
+            .header-slide-khatereh-img {
+                max-height: min(200px, 48vw);
+            }
+        }
         
         /* اسلاید سوم هیرو: ثبت تبلیغ — کارت شیشه‌ای، آیکون صورتی، ظاهر مدرن */
         .header-slide-ad-registration {

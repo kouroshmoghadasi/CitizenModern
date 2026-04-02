@@ -440,7 +440,7 @@
     "expl_fr": ""
   },
   {
-    "q": "From where does the name Canada come?",
+    "q": "From where does the name \"Canada\" come?",
     "q_fa": "نام \"کانادا\" از کجا آمده است.",
     "options": [
       "From \"Kanata\", the Huron-Iroquois word for village",
@@ -480,6 +480,28 @@
       "L'orignal",
       "L'ours",
       "Le huard"
+    ],
+    "expl_fr": ""
+  },
+  {
+    "q": "What is Canada's most recognized and respected symbol?",
+    "q_fa": "شناخته‌شده‌ترین و محترم‌ترین نماد کانادا چیست؟",
+    "options": [
+      "The beaver",
+      "The maple leaf",
+      "The moose",
+      "The Mountie"
+    ],
+    "correct": 1,
+    "page": 0,
+    "section": "571 Question For Citizenship Test",
+    "book_text": "The maple leaf is Canada's most recognized and respected symbol.",
+    "q_fr": "Quel est le symbole du Canada le plus reconnu et respecté?",
+    "options_fr": [
+      "Le castor",
+      "La feuille d'érable",
+      "L'orignal",
+      "La Gendarmerie royale"
     ],
     "expl_fr": ""
   },
@@ -2530,50 +2552,6 @@
     "expl_fr": ""
   },
   {
-    "q": "Which political party is in power in Ontario",
-    "q_fa": "کدام حزب سیاسی در انتاریو در قدرت است",
-    "options": [
-      "Liberal Party",
-      "Conservative Party",
-      "NDP",
-      "Green Party"
-    ],
-    "correct": 0,
-    "page": 0,
-    "section": "571 Question For Citizenship Test",
-    "book_text": "",
-    "q_fr": "Quel parti politique est au pouvoir en Ontario",
-    "options_fr": [
-      "Parti libéral",
-      "Parti conservateur",
-      "NPD",
-      "Parti vert"
-    ],
-    "expl_fr": ""
-  },
-  {
-    "q": "What is the name of the Royal Anthem of Canada?",
-    "q_fa": "نام سرود سلطنتی کانادا چیست؟",
-    "options": [
-      "Great Canada",
-      "O Canada",
-      "God Save the Queen (or King)",
-      "Oh Canada"
-    ],
-    "correct": 2,
-    "page": 0,
-    "section": "571 Question For Citizenship Test",
-    "book_text": "The Royal Anthem of Canada is God Save the Queen (or King).",
-    "q_fr": "Quel est le nom de l'hymne royal du Canada ?",
-    "options_fr": [
-      "Grand Canada",
-      "Ô Canada",
-      "God Save the Queen (or King) / Que Dieu sauve la Reine (ou le Roi)",
-      "Oh Canada"
-    ],
-    "expl_fr": "L'hymne royal du Canada est God Save the Queen (ou King)."
-  },
-  {
     "q": "Which region of Canada is known for its fertile agricultural land and energy resources",
     "q_fa": "کدام منطقه از کانادا به دلیل زمین های کشاورزی حاصلخیز و منابع انرژی شناخته شده است",
     "options": [
@@ -2750,28 +2728,6 @@
     "expl_fr": ""
   },
   {
-    "q": "What do you call the Sovereign’s representative in the provinces",
-    "q_fa": "شما به نماینده حاکمیت در استان ها چه می گویید؟",
-    "options": [
-      "Lieutenant-Governor",
-      "Governor General",
-      "Premier",
-      "Mayor"
-    ],
-    "correct": 0,
-    "page": 0,
-    "section": "571 Question For Citizenship Test",
-    "book_text": "",
-    "q_fr": "Comment appelle-t-on le représentant du Souverain en province ?",
-    "options_fr": [
-      "Lieutenant-gouverneur",
-      "Gouverneur général",
-      "Premier ministre provincial",
-      "Maire"
-    ],
-    "expl_fr": ""
-  },
-  {
     "q": "-Which region covers more than one-third of Canada",
     "q_fa": "-کدام منطقه بیش از یک سوم کانادا را پوشش می دهد",
     "options": [
@@ -2838,72 +2794,6 @@
     "expl_fr": ""
   },
   {
-    "q": "Name two responsibilities of the federal government.",
-    "q_fa": "دو مسئولیت دولت فدرال را نام ببرید.",
-    "options": [
-      "National defence and foreign policy",
-      "Health and Education",
-      "Municipal policing",
-      "Driver licences"
-    ],
-    "correct": 0,
-    "page": 0,
-    "section": "571 Question For Citizenship Test",
-    "book_text": "",
-    "q_fr": "Nommez deux responsabilités du gouvernement fédéral.",
-    "options_fr": [
-      "Défense nationale et politique étrangère",
-      "Santé et éducation",
-      "Police municipale",
-      "Permis de conduire"
-    ],
-    "expl_fr": ""
-  },
-  {
-    "q": "What was the Women’s Suffrage Movement?",
-    "q_fa": "جنبش حق رای زنان چه بود؟",
-    "options": [
-      "The effort by women to achieve the right to vote",
-      "The right to work",
-      "The right to own property",
-      "The right to run for office"
-    ],
-    "correct": 0,
-    "page": 0,
-    "section": "571 Question For Citizenship Test",
-    "book_text": "",
-    "q_fr": "Qu’est-ce que le mouvement pour le droit de vote des femmes ?",
-    "options_fr": [
-      "L'effort des femmes pour obtenir le droit de vote",
-      "Le droit de travailler",
-      "Le droit de posséder",
-      "Le droit de se présenter"
-    ],
-    "expl_fr": ""
-  },
-  {
-    "q": "Who have major responsibilities on First Nations reserves",
-    "q_fa": "کسانی که مسئولیت های عمده ای در ذخایر اولین ملل دارند",
-    "options": [
-      "Band chiefs and councillors",
-      "The federal government only",
-      "The provincial premier",
-      "The RCMP only"
-    ],
-    "correct": 0,
-    "page": 0,
-    "section": "571 Question For Citizenship Test",
-    "book_text": "",
-    "q_fr": "Qui ont des responsabilités importantes dans les réserves des Premières Nations",
-    "options_fr": [
-      "Les chefs et conseillers de bande",
-      "Le gouvernement fédéral uniquement",
-      "Le premier ministre provincial",
-      "La GRC uniquement"
-    ],
-    "expl_fr": ""
-  },
-  {
     "q": "How is the Prime Minister chosen The leader of the party with the most elected representatives becomes the Prime Minister",
     "q_fa": "نخست وزیر چگونه انتخاب می شود رهبر حزبی که بیشترین نماینده را دارد نخست وزیر می شود",
     "options": [
@@ -2922,28 +2812,6 @@
       "Élu directement par le peuple",
       "Nommé par la Reine",
       "Choisi par le Sénat"
-    ],
-    "expl_fr": ""
-  },
-  {
-    "q": "What did the Canadian Pacific Railway symbolize?",
-    "q_fa": "راه آهن کانادا اقیانوس آرام نماد چه بود؟",
-    "options": [
-      "Unity",
-      "Trade",
-      "Independence",
-      "Wealth"
-    ],
-    "correct": 0,
-    "page": 0,
-    "section": "571 Question For Citizenship Test",
-    "book_text": "",
-    "q_fr": "Que symbolisait le chemin de fer Canadien Pacifique?",
-    "options_fr": [
-      "Unité",
-      "Commerce",
-      "Indépendance",
-      "Richesse"
     ],
     "expl_fr": ""
   },
@@ -3102,72 +2970,6 @@
     "expl_fr": ""
   },
   {
-    "q": "What are the territories of Northern Canada and their capital cities? Yukon Territory (Whitehorse), Northwest Territories (Yellowknife), and Nunavut",
-    "q_fa": "قلمروهای شمال کانادا و پایتخت آن کدامند؟ قلمرو یوکان (وایت هورس)، مناطق شمال غربی (یلونایف) و نوناووت",
-    "options": [
-      "Yukon (Whitehorse), Northwest Territories (Yellowknife), Nunavut (Iqaluit)",
-      "Ontario, Quebec, Manitoba",
-      "BC, Alberta, Saskatchewan",
-      "Nova Scotia, NB, PEI"
-    ],
-    "correct": 0,
-    "page": 0,
-    "section": "571 Question For Citizenship Test",
-    "book_text": "",
-    "q_fr": "Quels sont les territoires du Nord canadien et leurs capitales ? Territoire du Yukon (Whitehorse), Territoires du Nord-Ouest (Yellowknife) et Nunavut",
-    "options_fr": [
-      "Yukon (Whitehorse), Territoires du Nord-Ouest (Yellowknife), Nunavut (Iqaluit)",
-      "Ontario, Québec, Manitoba",
-      "C.-B., Alberta, Saskatchewan",
-      "N.-É., N.-B., Î.-P.-É."
-    ],
-    "expl_fr": ""
-  },
-  {
-    "q": "What is the highest military honor a Canadian can receive?",
-    "q_fa": "بالاترین افتخار نظامی که یک کانادایی می تواند دریافت کند چیست؟",
-    "options": [
-      "Victoria Cross",
-      "Order of Canada",
-      "Medal of Bravery",
-      "Star of Courage"
-    ],
-    "correct": 0,
-    "page": 0,
-    "section": "571 Question For Citizenship Test",
-    "book_text": "",
-    "q_fr": "Quelle est la plus haute distinction militaire qu’un Canadien puisse recevoir ?",
-    "options_fr": [
-      "Croix de Victoria",
-      "Ordre du Canada",
-      "Médaille de la bravoure",
-      "Étoile du courage"
-    ],
-    "expl_fr": ""
-  },
-  {
-    "q": "Who is the Queen’s representative in Canada?",
-    "q_fa": "نماینده ملکه در کانادا کیست؟",
-    "options": [
-      "The Governor General",
-      "The Prime Minister",
-      "The Premier",
-      "The Lieutenant Governor"
-    ],
-    "correct": 0,
-    "page": 0,
-    "section": "571 Question For Citizenship Test",
-    "book_text": "",
-    "q_fr": "Qui est le représentant de la Reine au Canada ?",
-    "options_fr": [
-      "Le gouverneur général",
-      "Le Premier ministre",
-      "Le premier ministre provincial",
-      "Le lieutenant-gouverneur"
-    ],
-    "expl_fr": ""
-  },
-  {
     "q": "Who had played an important part in building the Canadian Pacific Railway (CPR)",
     "q_fa": "چه کسی نقش مهمی در ساخت راه‌آهن کانادایی اقیانوس آرام (CPR) داشت.",
     "options": [
@@ -3190,28 +2992,6 @@
     "expl_fr": ""
   },
   {
-    "q": "What three oceans border Canada",
-    "q_fa": "چه سه اقیانوس با کانادا هم مرز هستند",
-    "options": [
-      "Atlantic, Arctic and Pacific",
-      "Atlantic, Indian and Pacific",
-      "Arctic, Indian and Pacific",
-      "Atlantic, Pacific and Southern"
-    ],
-    "correct": 0,
-    "page": 0,
-    "section": "571 Question For Citizenship Test",
-    "book_text": "",
-    "q_fr": "Quels sont les trois océans qui bordent le Canada",
-    "options_fr": [
-      "Atlantique, Arctique et Pacifique",
-      "Atlantique, Indien et Pacifique",
-      "Arctique, Indien et Pacifique",
-      "Atlantique, Pacifique et Austral"
-    ],
-    "expl_fr": ""
-  },
-  {
     "q": ". Which provinces first formed Confederation Nova Scotia, New Brunswick and the Province of Canada",
     "q_fa": ". کدام استان ها برای اولین بار کنفدراسیون نوا اسکوشیا، نیوبرانزویک و استان کانادا را تشکیل دادند.",
     "options": [
@@ -3230,28 +3010,6 @@
       "Les 10 provinces",
       "Ontario et Québec seulement",
       "C.-B. et Alberta"
-    ],
-    "expl_fr": ""
-  },
-  {
-    "q": "Which province is the only officially bilingual province",
-    "q_fa": "کدام استان تنها استان دوزبانه رسمی است",
-    "options": [
-      "New Brunswick",
-      "Quebec",
-      "Ontario",
-      "Manitoba"
-    ],
-    "correct": 0,
-    "page": 0,
-    "section": "571 Question For Citizenship Test",
-    "book_text": "",
-    "q_fr": "Quelle province est la seule province officiellement bilingue",
-    "options_fr": [
-      "Nouveau-Brunswick",
-      "Québec",
-      "Ontario",
-      "Manitoba"
     ],
     "expl_fr": ""
   },
@@ -3300,28 +3058,6 @@
     "expl_fr": ""
   },
   {
-    "q": "In the 1960s, Quebec experienced an era of rapid change. What is this called",
-    "q_fa": "در دهه 1960، کبک دوران تغییرات سریع را تجربه کرد. اسم این چیه",
-    "options": [
-      "The Quiet Revolution",
-      "The October Crisis",
-      "Confederation",
-      "The Great Depression"
-    ],
-    "correct": 0,
-    "page": 0,
-    "section": "571 Question For Citizenship Test",
-    "book_text": "",
-    "q_fr": "Dans les années 1960, le Québec connaît une époque de changements rapides. Comment ça s'appelle",
-    "options_fr": [
-      "La Révolution tranquille",
-      "La crise d'octobre",
-      "La Confédération",
-      "La Grande Dépression"
-    ],
-    "expl_fr": ""
-  },
-  {
     "q": "On what date did Nunavut become a territory",
     "q_fa": "در چه تاریخی نوناووت به یک قلمرو تبدیل شد",
     "options": [
@@ -3340,50 +3076,6 @@
       "1er juillet 1867",
       "1er janvier 2000",
       "1er avril 1982"
-    ],
-    "expl_fr": ""
-  },
-  {
-    "q": "Give an example of where English and French have equal status in Canada.",
-    "q_fa": "مثالی بزنید که در آن زبان انگلیسی و فرانسه در کانادا دارای موقعیت برابر هستند.",
-    "options": [
-      "In the Parliament of Canada",
-      "Only in Quebec schools",
-      "Only in federal courts",
-      "Only in New Brunswick"
-    ],
-    "correct": 0,
-    "page": 0,
-    "section": "571 Question For Citizenship Test",
-    "book_text": "",
-    "q_fr": "Donnez un exemple de cas où l’anglais et le français ont un statut égal au Canada.",
-    "options_fr": [
-      "Au Parlement du Canada",
-      "Uniquement dans les écoles du Québec",
-      "Uniquement dans les tribunaux fédéraux",
-      "Uniquement au Nouveau-Brunswick"
-    ],
-    "expl_fr": ""
-  },
-  {
-    "q": "Who was the first leader of a responsible government in the Canadas in 1849",
-    "q_fa": "چه کسی اولین رهبر یک دولت مسئول در کانادا در سال 1849 بود",
-    "options": [
-      "The government must resign if it loses a confidence vote in the assembly",
-      "The Queen rules directly",
-      "The PM is elected by the people",
-      "The Senate approves all laws"
-    ],
-    "correct": 0,
-    "page": 0,
-    "section": "571 Question For Citizenship Test",
-    "book_text": "",
-    "q_fr": "Qui fut le premier chef d'un gouvernement responsable au Canada en 1849",
-    "options_fr": [
-      "Le gouvernement doit démissionner s'il perd un vote de confiance à l'assemblée",
-      "La Reine gouverne directement",
-      "Le PM est élu par le peuple",
-      "Le Sénat approuve toutes les lois"
     ],
     "expl_fr": ""
   },
@@ -3564,28 +3256,6 @@
     "expl_fr": ""
   },
   {
-    "q": "Why is trade with other countries important to Canada? It enhances our economy and raises our standard of living.",
-    "q_fa": "چرا تجارت با سایر کشورها برای کانادا مهم است؟ اقتصاد ما را تقویت می کند و استاندارد زندگی ما را بالا می برد.",
-    "options": [
-      "It creates jobs and supports our standard of living",
-      "It is not important",
-      "Only for the USA",
-      "Only for Europe"
-    ],
-    "correct": 0,
-    "page": 0,
-    "section": "571 Question For Citizenship Test",
-    "book_text": "",
-    "q_fr": "Pourquoi le commerce avec d’autres pays est-il important pour le Canada ? Cela renforce notre économie et élève notre niveau de vie.",
-    "options_fr": [
-      "Cela crée des emplois et soutient notre niveau de vie",
-      "Ce n'est pas important",
-      "Seulement pour les É.-U.",
-      "Seulement pour l'Europe"
-    ],
-    "expl_fr": ""
-  },
-  {
     "q": "List four rights Canadian citizens have. Right to challenge unlawful detention, vote, apply for a Canadian passport, enter and leave",
     "q_fa": "چهار حقوقی که شهروندان کانادا دارند را فهرست کنید. حق اعتراض به بازداشت غیرقانونی، رای دادن، درخواست پاسپورت کانادایی، ورود و خروج",
     "options": [
@@ -3704,7 +3374,7 @@
       "Atlantic, Central, Prairie, West Coast and North",
       "West, Central, East, Prairies and Territories"
     ],
-    "correct": 0,
+    "correct": 2,
     "page": 0,
     "section": "571 Question For Citizenship Test",
     "book_text": "",
@@ -3743,11 +3413,10 @@
     "q": "What are the provinces of Central Canada and their capital cities?",
     "q_fa": "استان های مرکز کانادا و شهرهای پایتخت آن کدامند؟",
     "options": [
-      "Manitoba (Winnipeg) and Ontario (Regin",
-      "Quebec (Quebec City) and Prince Edward Island (Charlottetown)",
       "Ontario (Toronto) and Quebec (Quebec City)",
-      "Saskatchewan (Regin",
-      "and Manitoba (Winnipeg)"
+      "Manitoba (Winnipeg) and Saskatchewan (Regina)",
+      "Nova Scotia (Halifax) and New Brunswick (Fredericton)",
+      "Alberta (Edmonton) and British Columbia (Victoria)"
     ],
     "correct": 0,
     "page": 0,
@@ -3755,11 +3424,10 @@
     "book_text": "",
     "q_fr": "Quelles sont les provinces du centre du Canada et leurs capitales ?",
     "options_fr": [
-      "Manitoba (Winnipeg) et Ontario (Regin",
-      "Québec (Ville de Québec) et Île-du-Prince-Édouard (Charlottetown)",
-      "Ontario (Toronto) et Québec (Québec)",
-      "Saskatchewan (Regin",
-      "et au Manitoba (Winnipeg)"
+      "Ontario (Toronto) et Québec (Ville de Québec)",
+      "Manitoba (Winnipeg) et Saskatchewan (Regina)",
+      "Nouvelle-Écosse (Halifax) et Nouveau-Brunswick (Fredericton)",
+      "Alberta (Edmonton) et Colombie-Britannique (Victoria)"
     ],
     "expl_fr": ""
   },
@@ -3767,10 +3435,10 @@
     "q": "What are the provinces of the Atlantic region and their capital cities?",
     "q_fa": "استان های منطقه آتلانتیک و شهرهای پایتخت آنها کدامند؟",
     "options": [
-      "Nova Scotia (Halifax), New Brunswick (Fredericton), Prince Edward Island (Charlottetown) and Quebec (Quebec City)",
-      "Newfoundland and Labrador (St. John’s), Nova Scotia (Halifax), New Brunswick (Fredericton) and Prince Edward Island (Charlottetown)",
-      "Newfoundland and Labrador (St. Johns), Nova Scotia (Halifax), New Brunswick (Fredericton) and Quebec (Quebec City)",
-      "Nova Scotia (Halifax), New Brunswick (Fredericton), Quebec (Quebec City) and Ontario (Toronto)"
+      "Newfoundland and Labrador (St. John's), Nova Scotia (Halifax), New Brunswick (Fredericton), Prince Edward Island (Charlottetown)",
+      "Nova Scotia (Halifax), New Brunswick (Fredericton), Prince Edward Island (Charlottetown) only",
+      "Quebec (Quebec City), Ontario (Toronto), Nova Scotia (Halifax), New Brunswick (Fredericton)",
+      "British Columbia (Victoria), Alberta (Edmonton), Manitoba (Winnipeg), Saskatchewan (Regina)"
     ],
     "correct": 0,
     "page": 0,
@@ -3778,10 +3446,10 @@
     "book_text": "",
     "q_fr": "Quelles sont les provinces de la région de l’Atlantique et leurs capitales ?",
     "options_fr": [
-      "Nouvelle-Écosse (Halifax), Nouveau-Brunswick (Fredericton), Île-du-Prince-Édouard (Charlottetown) et Québec (Ville de Québec)",
-      "Terre-Neuve-et-Labrador (St. John's), Nouvelle-Écosse (Halifax), Nouveau-Brunswick (Fredericton) et Île-du-Prince-Édouard (Charlottetown)",
-      "Terre-Neuve-et-Labrador (St. Johns), Nouvelle-Écosse (Halifax), Nouveau-Brunswick (Fredericton) et Québec (Ville de Québec)",
-      "Nouvelle-Écosse (Halifax), Nouveau-Brunswick (Fredericton), Québec (Québec) et Ontario (Toronto)"
+      "Terre-Neuve-et-Labrador (St. John's), Nouvelle-Écosse (Halifax), Nouveau-Brunswick (Fredericton), Île-du-Prince-Édouard (Charlottetown)",
+      "Nouvelle-Écosse (Halifax), Nouveau-Brunswick (Fredericton), Île-du-Prince-Édouard (Charlottetown) seulement",
+      "Québec (Ville de Québec), Ontario (Toronto), Nouvelle-Écosse (Halifax), Nouveau-Brunswick (Fredericton)",
+      "Colombie-Britannique (Victoria), Alberta (Edmonton), Manitoba (Winnipeg), Saskatchewan (Regina)"
     ],
     "expl_fr": ""
   },
@@ -3789,65 +3457,21 @@
     "q": "What are the territories of Northern Canada and their capital cities?",
     "q_fa": "قلمروهای شمال کانادا و پایتخت آن کدامند؟",
     "options": [
-      "Alaska (Juneau) and Yukon Territory (Whitehorse)",
+      "Alaska (Juneau) and Yukon (Whitehorse)",
       "Northwest Territories (Yellowknife) and Alaska (Juneau)",
-      "Northwest Territories (Yellowknife)",
-      "Yukon Territory (Whitehorse), Northwest Territories (Yellowknife) and Nunavut (Iqaluit)"
+      "Northwest Territories (Yellowknife) only",
+      "Yukon (Whitehorse), Northwest Territories (Yellowknife) and Nunavut (Iqaluit)"
     ],
-    "correct": 0,
+    "correct": 3,
     "page": 0,
     "section": "571 Question For Citizenship Test",
     "book_text": "",
     "q_fr": "Quels sont les territoires du Nord canadien et leurs capitales ?",
     "options_fr": [
-      "Alaska (Juneau) et Territoire du Yukon (Whitehorse)",
+      "Alaska (Juneau) et Yukon (Whitehorse)",
       "Territoires du Nord-Ouest (Yellowknife) et Alaska (Juneau)",
-      "Territoires du Nord-Ouest (Yellowknife)",
-      "Territoire du Yukon (Whitehorse), Territoires du Nord-Ouest (Yellowknife) et Nunavut (Iqaluit)"
-    ],
-    "expl_fr": ""
-  },
-  {
-    "q": "What is a major river in Quebec?",
-    "q_fa": "رودخانه اصلی کبک چیست؟",
-    "options": [
-      "Fraser River",
-      "St. Lawrence River",
-      "Niagara",
-      "Hudson’s Bay"
-    ],
-    "correct": 0,
-    "page": 0,
-    "section": "571 Question For Citizenship Test",
-    "book_text": "",
-    "q_fr": "Qu'est-ce qu'un fleuve majeur au Québec ?",
-    "options_fr": [
-      "Fleuve Fraser",
-      "Fleuve Saint-Laurent",
-      "Niagara",
-      "La Baie d'Hudson"
-    ],
-    "expl_fr": ""
-  },
-  {
-    "q": "Which province is the only officially bilingual province?",
-    "q_fa": "کدام استان تنها استان دو زبانه است؟",
-    "options": [
-      "New Brunswick",
-      "Quebec",
-      "Ontario",
-      "Prince Edward Island"
-    ],
-    "correct": 0,
-    "page": 0,
-    "section": "571 Question For Citizenship Test",
-    "book_text": "",
-    "q_fr": "Quelle province est la seule province officiellement bilingue ?",
-    "options_fr": [
-      "Nouveau-Brunswick",
-      "Québec",
-      "Ontario",
-      "Île-du-Prince-Édouard"
+      "Territoires du Nord-Ouest (Yellowknife) seulement",
+      "Yukon (Whitehorse), Territoires du Nord-Ouest (Yellowknife) et Nunavut (Iqaluit)"
     ],
     "expl_fr": ""
   },
@@ -4088,9 +3712,9 @@
       "Nova Scotia",
       "Prince Edward Island",
       "Yukon Territory",
-      "Newfoundland and Labrador Canada’s Economy/ Canada’s Regions Pages 42 & 45"
+      "Newfoundland and Labrador"
     ],
-    "correct": 0,
+    "correct": 1,
     "page": 0,
     "section": "571 Question For Citizenship Test",
     "book_text": "",
@@ -4099,163 +3723,7 @@
       "Nouvelle-Écosse",
       "Île-du-Prince-Édouard",
       "Territoire du Yukon",
-      "Terre-Neuve-et-Labrador Économie du Canada/Régions du Canada Pages 42 et 45"
-    ],
-    "expl_fr": ""
-  },
-  {
-    "q": "In what industry do most Canadians work?",
-    "q_fa": "بیشتر کانادایی ها در چه صنعتی کار می کنند؟",
-    "options": [
-      "Natural resources",
-      "Tourism",
-      "Services",
-      "Manufacturing"
-    ],
-    "correct": 2,
-    "page": 0,
-    "section": "571 Question For Citizenship Test",
-    "book_text": "",
-    "q_fr": "Dans quel secteur travaillent la plupart des Canadiens?",
-    "options_fr": [
-      "Ressources naturelles",
-      "Tourisme",
-      "Services",
-      "Fabrication"
-    ],
-    "expl_fr": ""
-  },
-  {
-    "q": "What are the three main types of industry in Canada?",
-    "q_fa": "سه نوع صنعت اصلی در کانادا چیست؟",
-    "options": [
-      "Natural resources, tourism, and service industries",
-      "Tourism, services, and manufacturing",
-      "Natural resources, tourism and manufacturing",
-      "Natural resources, manufacturing and services"
-    ],
-    "correct": 0,
-    "page": 0,
-    "section": "571 Question For Citizenship Test",
-    "book_text": "",
-    "q_fr": "Quels sont les trois principaux types d’industries au Canada?",
-    "options_fr": [
-      "Industries des ressources naturelles, du tourisme et des services",
-      "Tourisme, services et industrie manufacturière",
-      "Ressources naturelles, tourisme et fabrication",
-      "Ressources naturelles, fabrication et services"
-    ],
-    "expl_fr": ""
-  },
-  {
-    "q": "What country is Canada’s largest trading partner?",
-    "q_fa": "بزرگترین شریک تجاری کانادا کدام کشور است؟",
-    "options": [
-      "Mexico",
-      "United States of America",
-      "China",
-      "Japan"
-    ],
-    "correct": 0,
-    "page": 0,
-    "section": "571 Question For Citizenship Test",
-    "book_text": "",
-    "q_fr": "Quel pays est le plus grand partenaire commercial du Canada ?",
-    "options_fr": [
-      "Mexique",
-      "les états-unis d'Amérique",
-      "Chine",
-      "Japon"
-    ],
-    "expl_fr": ""
-  },
-  {
-    "q": "In which region do more than half of the people in Canada live?",
-    "q_fa": "بیش از نیمی از مردم کانادا در کدام منطقه زندگی می کنند؟",
-    "options": [
-      "Central Canada",
-      "Prairies",
-      "Atlantic Canada",
-      "Northern Canada"
-    ],
-    "correct": 0,
-    "page": 0,
-    "section": "571 Question For Citizenship Test",
-    "book_text": "",
-    "q_fr": "Dans quelle région vit plus de la moitié de la population canadienne?",
-    "options_fr": [
-      "Centre du Canada",
-      "Prairies",
-      "Canada atlantique",
-      "Nord canadien"
-    ],
-    "expl_fr": ""
-  },
-  {
-    "q": "Name the five regions of Canada.",
-    "q_fa": "پنج منطقه کانادا را نام ببرید.",
-    "options": [
-      "Midwest, North, South, East, Central",
-      "Maritimes, Ontario, Quebec, Prairies, British Columbia",
-      "Atlantic , Central, Prairie, West Coast and North",
-      "West, Central, East, Prairies and Territories"
-    ],
-    "correct": 0,
-    "page": 0,
-    "section": "571 Question For Citizenship Test",
-    "book_text": "",
-    "q_fr": "Nommez les cinq régions du Canada.",
-    "options_fr": [
-      "Midwest, Nord, Sud, Est, Centre",
-      "Maritimes, Ontario, Québec, Prairies, Colombie-Britannique",
-      "Atlantique, Centre, Prairies, Côte Ouest et Nord",
-      "Ouest, Centre, Est, Prairies et Territoires"
-    ],
-    "expl_fr": ""
-  },
-  {
-    "q": "What are the Prairie Provinces and their capital cities?",
-    "q_fa": "استان های پریری و شهرهای پایتخت آنها کدامند؟",
-    "options": [
-      "Manitoba (Winnipeg), Saskatchewan (Regina), Alberta (Edmonton)",
-      "Ontario (Toronto), Quebec (Quebec City)",
-      "BC (Victoria), Alberta (Edmonton)",
-      "Nova Scotia (Halifax), NB (Fredericton)"
-    ],
-    "correct": 0,
-    "page": 0,
-    "section": "571 Question For Citizenship Test",
-    "book_text": "",
-    "q_fr": "Que sont les provinces des Prairies et leurs capitales ?",
-    "options_fr": [
-      "Manitoba (Winnipeg), Saskatchewan (Regina), Alberta (Edmonton)",
-      "Ontario (Toronto), Québec (Québec)",
-      "C.-B. (Victoria), Alberta (Edmonton)",
-      "N.-É. (Halifax), N.-B. (Fredericton)"
-    ],
-    "expl_fr": ""
-  },
-  {
-    "q": "What are the provinces of Central Canada and their capital cities?",
-    "q_fa": "استان های مرکز کانادا و شهرهای پایتخت آن کدامند؟",
-    "options": [
-      "Manitoba (Winnipeg) and Ontario (Regin",
-      "Quebec (Quebec City) and Prince Edward Island (Charlottetown)",
-      "Ontario (Toronto) and Quebec (Quebec City)",
-      "Saskatchewan (Regin",
-      "and Manitoba (Winnipeg)"
-    ],
-    "correct": 0,
-    "page": 0,
-    "section": "571 Question For Citizenship Test",
-    "book_text": "",
-    "q_fr": "Quelles sont les provinces du centre du Canada et leurs capitales ?",
-    "options_fr": [
-      "Manitoba (Winnipeg) et Ontario (Regin",
-      "Québec (Ville de Québec) et Île-du-Prince-Édouard (Charlottetown)",
-      "Ontario (Toronto) et Québec (Québec)",
-      "Saskatchewan (Regin",
-      "et au Manitoba (Winnipeg)"
+      "Terre-Neuve-et-Labrador"
     ],
     "expl_fr": ""
   },
@@ -4282,284 +3750,6 @@
     "expl_fr": ""
   },
   {
-    "q": "What are the territories of Northern Canada and their capital cities?",
-    "q_fa": "قلمروهای شمال کانادا و پایتخت آن کدامند؟",
-    "options": [
-      "Alaska (Juneau) and Yukon Territory (Whitehorse)",
-      "Northwest Territories (Yellowknife) and Alaska (Juneau)",
-      "Northwest Territories (Yellowknife)",
-      "Yukon Territory (Whitehorse), Northwest Territories (Yellowknife) and Nunavut (Iqaluit)"
-    ],
-    "correct": 0,
-    "page": 0,
-    "section": "571 Question For Citizenship Test",
-    "book_text": "",
-    "q_fr": "Quels sont les territoires du Nord canadien et leurs capitales ?",
-    "options_fr": [
-      "Alaska (Juneau) et Territoire du Yukon (Whitehorse)",
-      "Territoires du Nord-Ouest (Yellowknife) et Alaska (Juneau)",
-      "Territoires du Nord-Ouest (Yellowknife)",
-      "Territoire du Yukon (Whitehorse), Territoires du Nord-Ouest (Yellowknife) et Nunavut (Iqaluit)"
-    ],
-    "expl_fr": ""
-  },
-  {
-    "q": "What is a major river in Quebec?",
-    "q_fa": "رودخانه اصلی کبک چیست؟",
-    "options": [
-      "Fraser River",
-      "St. Lawrence River",
-      "Niagara",
-      "Hudson’s Bay"
-    ],
-    "correct": 0,
-    "page": 0,
-    "section": "571 Question For Citizenship Test",
-    "book_text": "",
-    "q_fr": "Qu'est-ce qu'un fleuve majeur au Québec ?",
-    "options_fr": [
-      "Fleuve Fraser",
-      "Fleuve Saint-Laurent",
-      "Niagara",
-      "La Baie d'Hudson"
-    ],
-    "expl_fr": ""
-  },
-  {
-    "q": "Which province is the only officially bilingual province?",
-    "q_fa": "کدام استان تنها استان دو زبانه است؟",
-    "options": [
-      "New Brunswick",
-      "Quebec",
-      "Ontario",
-      "Prince Edward Island"
-    ],
-    "correct": 0,
-    "page": 0,
-    "section": "571 Question For Citizenship Test",
-    "book_text": "",
-    "q_fr": "Quelle province est la seule province officiellement bilingue ?",
-    "options_fr": [
-      "Nouveau-Brunswick",
-      "Québec",
-      "Ontario",
-      "Île-du-Prince-Édouard"
-    ],
-    "expl_fr": ""
-  },
-  {
-    "q": "Which region of Canada is known for both its fertile agriculture land and valuable energy resources?",
-    "q_fa": "کدام منطقه از کانادا به خاطر زمین های کشاورزی حاصلخیز و منابع انرژی ارزشمندش شناخته شده است؟",
-    "options": [
-      "British Columbia",
-      "Prairie Provinces",
-      "Ontario",
-      "Manitoba"
-    ],
-    "correct": 0,
-    "page": 0,
-    "section": "571 Question For Citizenship Test",
-    "book_text": "",
-    "q_fr": "Quelle région du Canada est connue à la fois pour ses terres agricoles fertiles et ses précieuses ressources énergétiques ?",
-    "options_fr": [
-      "Colombie-Britannique",
-      "Provinces des Prairies",
-      "Ontario",
-      "Manitoba"
-    ],
-    "expl_fr": ""
-  },
-  {
-    "q": "Which province is Canada’s major producer of oil and gas?",
-    "q_fa": "کدام استان تولید کننده عمده نفت و گاز کانادا است؟",
-    "options": [
-      "British Columbia",
-      "Alberta",
-      "Manitoba",
-      "Ontario"
-    ],
-    "correct": 0,
-    "page": 0,
-    "section": "571 Question For Citizenship Test",
-    "book_text": "",
-    "q_fr": "Quelle province est le principal producteur de pétrole et de gaz du Canada ?",
-    "options_fr": [
-      "Colombie-Britannique",
-      "Alberta",
-      "Manitoba",
-      "Ontario"
-    ],
-    "expl_fr": ""
-  },
-  {
-    "q": "Who represents the majority population in Nunavut?",
-    "q_fa": "چه کسی اکثریت جمعیت نوناووت را نمایندگی می کند؟",
-    "options": [
-      "Métis",
-      "Inuit",
-      "Acadian",
-      "First Nations"
-    ],
-    "correct": 0,
-    "page": 0,
-    "section": "571 Question For Citizenship Test",
-    "book_text": "",
-    "q_fr": "Qui représente la population majoritaire au Nunavut?",
-    "options_fr": [
-      "Métis",
-      "Inuits",
-      "Acadien",
-      "Premières Nations"
-    ],
-    "expl_fr": ""
-  },
-  {
-    "q": "Why is the North, sometimes, called the “Land of the Midnight Sun”?",
-    "q_fa": "چرا شمال گاهی اوقات \"سرزمین خورشید نیمه شب\" نامیده می شود؟",
-    "options": [
-      "Daylight can last up to 24 hours in fall",
-      "Daylight can last up to 24 hours in winter",
-      "Daylight can last up to 24 hours in summer",
-      "Daylight can last up to 24 hours in spring"
-    ],
-    "correct": 0,
-    "page": 0,
-    "section": "571 Question For Citizenship Test",
-    "book_text": "",
-    "q_fr": "Pourquoi le Nord est-il parfois appelé le « Pays du soleil de minuit » ?",
-    "options_fr": [
-      "La lumière du jour peut durer jusqu'à 24 heures en automne",
-      "La lumière du jour peut durer jusqu'à 24 heures en hiver",
-      "La lumière du jour peut durer jusqu'à 24 heures en été",
-      "La lumière du jour peut durer jusqu'à 24 heures au printemps"
-    ],
-    "expl_fr": ""
-  },
-  {
-    "q": "What animal is a symbol of Canada’s North?",
-    "q_fa": "نماد شمال کانادا کدام حیوان است؟",
-    "options": [
-      "The caribou",
-      "The moose",
-      "The polar bear",
-      "The beaver"
-    ],
-    "correct": 0,
-    "page": 0,
-    "section": "571 Question For Citizenship Test",
-    "book_text": "",
-    "q_fr": "Quel animal est un symbole du Nord canadien?",
-    "options_fr": [
-      "Le caribou",
-      "L'orignal",
-      "L'ours polaire",
-      "Le castor"
-    ],
-    "expl_fr": ""
-  },
-  {
-    "q": "Canada is the second largest country on earth – 10 million square kilometres",
-    "q_fa": "کانادا دومین کشور بزرگ روی زمین است - 10 میلیون کیلومتر مربع",
-    "options": [
-      "True",
-      "False",
-      "Third largest",
-      "Fourth largest"
-    ],
-    "correct": 0,
-    "page": 0,
-    "section": "571 Question For Citizenship Test",
-    "book_text": "",
-    "q_fr": "Le Canada est le deuxième plus grand pays au monde – 10 millions de kilomètres carrés",
-    "options_fr": [
-      "Vrai",
-      "Faux",
-      "Troisième",
-      "Quatrième"
-    ],
-    "expl_fr": ""
-  },
-  {
-    "q": "Nova Scotia is the most populous Atlantic Province",
-    "q_fa": "نوا اسکوشیا پرجمعیت ترین استان اقیانوس اطلس است",
-    "options": [
-      "Nova Scotia",
-      "New Brunswick",
-      "Newfoundland and Labrador",
-      "PEI"
-    ],
-    "correct": 0,
-    "page": 0,
-    "section": "571 Question For Citizenship Test",
-    "book_text": "",
-    "q_fr": "La Nouvelle-Écosse est la province de l'Atlantique la plus peuplée",
-    "options_fr": [
-      "Nouvelle-Écosse",
-      "Nouveau-Brunswick",
-      "Terre-Neuve-et-Labrador",
-      "Î.-P.-É."
-    ],
-    "expl_fr": ""
-  },
-  {
-    "q": "Saskatchewan was once known as the “breadbasket of the world”",
-    "q_fa": "ساسکاچوان زمانی به عنوان \"سبد نان جهان\" شناخته می شد.",
-    "options": [
-      "Saskatchewan",
-      "Manitoba",
-      "Alberta",
-      "Ontario"
-    ],
-    "correct": 0,
-    "page": 0,
-    "section": "571 Question For Citizenship Test",
-    "book_text": "",
-    "q_fr": "La Saskatchewan était autrefois connue comme le « grenier du monde »",
-    "options_fr": [
-      "Saskatchewan",
-      "Manitoba",
-      "Alberta",
-      "Ontario"
-    ],
-    "expl_fr": ""
-  },
-  {
-    "q": "Nunavut holds the record for the coldest temperature ever recorded in Canada (-63°)",
-    "q_fa": "نوناووت رکورد سردترین دمای ثبت شده در کانادا (63- درجه) را دارد.",
-    "options": [
-      "True",
-      "False"
-    ],
-    "correct": 0,
-    "page": 0,
-    "section": "571 Question For Citizenship Test",
-    "book_text": "",
-    "q_fr": "Le Nunavut détient le record de la température la plus froide jamais enregistrée au Canada (-63°)",
-    "options_fr": [
-      "Vrai",
-      "Faux"
-    ],
-    "expl_fr": ""
-  },
-  {
-    "q": "Toronto is the capital city of Canada",
-    "q_fa": "تورنتو پایتخت کشور کانادا است",
-    "options": [
-      "True",
-      "False"
-    ],
-    "correct": 1,
-    "page": 0,
-    "section": "571 Question For Citizenship Test",
-    "book_text": "",
-    "q_fr": "Toronto est la capitale du Canada",
-    "options_fr": [
-      "Vrai",
-      "Faux"
-    ],
-    "expl_fr": ""
-  },
-  {
     "q": ". Canada is divided in 10 regions",
     "q_fa": ". کانادا به 10 منطقه تقسیم شده است",
     "options": [
@@ -4574,28 +3764,6 @@
     "options_fr": [
       "Vrai",
       "Faux"
-    ],
-    "expl_fr": ""
-  },
-  {
-    "q": "Which province in Canada is the smallest in land size?",
-    "q_fa": "کدام استان در کانادا از نظر مساحت کوچکترین است؟",
-    "options": [
-      "Nova Scotia",
-      "Prince Edward Island",
-      "Yukon Territory",
-      "Newfoundland and Labrador Canada’s Economy"
-    ],
-    "correct": 0,
-    "page": 0,
-    "section": "571 Question For Citizenship Test",
-    "book_text": "",
-    "q_fr": "Quelle province du Canada est la plus petite en superficie ?",
-    "options_fr": [
-      "Nouvelle-Écosse",
-      "Île-du-Prince-Édouard",
-      "Territoire du Yukon",
-      "Terre-Neuve-et-Labrador L’économie du Canada"
     ],
     "expl_fr": ""
   },
@@ -4666,28 +3834,6 @@
     "expl_fr": ""
   },
   {
-    "q": "In what industry do most Canadians work?",
-    "q_fa": "بیشتر کانادایی ها در چه صنعتی کار می کنند؟",
-    "options": [
-      "Natural resources",
-      "Information Technology",
-      "Service",
-      "Manufacturing"
-    ],
-    "correct": 2,
-    "page": 0,
-    "section": "571 Question For Citizenship Test",
-    "book_text": "",
-    "q_fr": "Dans quel secteur travaillent la plupart des Canadiens?",
-    "options_fr": [
-      "Ressources naturelles",
-      "Informatique",
-      "Service",
-      "Fabrication"
-    ],
-    "expl_fr": ""
-  },
-  {
     "q": "What is the meaning of the phrase \"the world’s longest undefended border\"?",
     "q_fa": "معنی عبارت \"طولانی ترین مرز بدون دفاع جهان\" چیست؟",
     "options": [
@@ -4710,28 +3856,6 @@
     "expl_fr": ""
   },
   {
-    "q": "What are the three main types of industry in Canada?",
-    "q_fa": "سه نوع صنعت اصلی در کانادا چیست؟",
-    "options": [
-      "Natural resources, tourism and IT",
-      "Tourism, services and manufacturing",
-      "Natural resources, tourism and service industries",
-      "Natural resources, manufacturing and services"
-    ],
-    "correct": 0,
-    "page": 0,
-    "section": "571 Question For Citizenship Test",
-    "book_text": "",
-    "q_fr": "Quels sont les trois principaux types d’industries au Canada?",
-    "options_fr": [
-      "Ressources naturelles, tourisme et informatique",
-      "Tourisme, services et industrie manufacturière",
-      "Industries des ressources naturelles, du tourisme et des services",
-      "Ressources naturelles, fabrication et services"
-    ],
-    "expl_fr": ""
-  },
-  {
     "q": "Which country is Canada's largest trading partner?",
     "q_fa": "بزرگترین شریک تجاری کانادا کدام کشور است؟",
     "options": [
@@ -4750,28 +3874,6 @@
       "La Chine",
       "Le Royaume-Uni",
       "Le Mexique"
-    ],
-    "expl_fr": ""
-  },
-  {
-    "q": "From where does the name “Canada” come?",
-    "q_fa": "نام \"کانادا\" از کجا آمده است؟",
-    "options": [
-      "From Kanata, the Huron-Iroquois word for village",
-      "From Latin",
-      "From a French explorer",
-      "From the British Crown"
-    ],
-    "correct": 0,
-    "page": 0,
-    "section": "571 Question For Citizenship Test",
-    "book_text": "",
-    "q_fr": "D’où vient le nom « Canada » ?",
-    "options_fr": [
-      "De Kanata, mot huron-iroquois pour village",
-      "Du latin",
-      "D'un explorateur français",
-      "De la Couronne britannique"
     ],
     "expl_fr": ""
   },
@@ -4904,28 +4006,6 @@
       "Nouvelle-Écosse et Nouveau-Brunswick",
       "Manitoba et C.-B.",
       "Alberta et Saskatchewan"
-    ],
-    "expl_fr": ""
-  },
-  {
-    "q": "When did the name “Canada” become official?",
-    "q_fa": "از چه زمانی نام \"کانادا\" رسمی شد؟",
-    "options": [
-      "1867",
-      "1791",
-      "1840",
-      "1982"
-    ],
-    "correct": 0,
-    "page": 0,
-    "section": "571 Question For Citizenship Test",
-    "book_text": "",
-    "q_fr": "Quand le nom « Canada » est-il devenu officiel ?",
-    "options_fr": [
-      "1867",
-      "1791",
-      "1840",
-      "1982"
     ],
     "expl_fr": ""
   },
@@ -5084,28 +4164,6 @@
     "expl_fr": ""
   },
   {
-    "q": "What is the meaning of the Remembrance Day poppy?",
-    "q_fa": "منظور از خشخاش روز بزرگداشت چیست؟",
-    "options": [
-      "To remember the sacrifice of Canadians who served or died in wars",
-      "To celebrate Canada Day",
-      "To honour the monarch",
-      "To mark summer"
-    ],
-    "correct": 0,
-    "page": 0,
-    "section": "571 Question For Citizenship Test",
-    "book_text": "",
-    "q_fr": "Quelle est la signification du coquelicot du jour du Souvenir ?",
-    "options_fr": [
-      "Se souvenir du sacrifice des Canadiens qui ont servi ou sont morts dans les guerres",
-      "Célébrer la fête du Canada",
-      "Honorer le monarque",
-      "Marquer l'été"
-    ],
-    "expl_fr": ""
-  },
-  {
     "q": "Which provinces first formed Confederation?",
     "q_fa": "کدام استان ها برای اولین بار کنفدراسیون را تشکیل دادند؟",
     "options": [
@@ -5146,50 +4204,6 @@
       "Les ingénieurs britanniques uniquement",
       "Les investisseurs américains",
       "Les guides des Premières Nations uniquement"
-    ],
-    "expl_fr": ""
-  },
-  {
-    "q": "Who is General Sir Arthur Currie?",
-    "q_fa": "ژنرال سر آرتور کوری کیست؟",
-    "options": [
-      "Canada's greatest soldier in the First World War",
-      "A Father of Confederation",
-      "The first Governor General",
-      "A Prime Minister"
-    ],
-    "correct": 0,
-    "page": 0,
-    "section": "571 Question For Citizenship Test",
-    "book_text": "",
-    "q_fr": "Qui est le général Sir Arthur Currie ?",
-    "options_fr": [
-      "Le plus grand soldat canadien de la Première Guerre mondiale",
-      "Un Père de la Confédération",
-      "Le premier gouverneur général",
-      "Un premier ministre"
-    ],
-    "expl_fr": ""
-  },
-  {
-    "q": "Who was the first Prime Minister of Canada?",
-    "q_fa": "اولین نخست وزیر کانادا چه کسی بود؟",
-    "options": [
-      "Sir John A. Macdonald",
-      "Sir Wilfrid Laurier",
-      "Alexander Mackenzie",
-      "Sir Robert Borden"
-    ],
-    "correct": 0,
-    "page": 0,
-    "section": "571 Question For Citizenship Test",
-    "book_text": "",
-    "q_fr": "Qui a été le premier premier ministre du Canada ?",
-    "options_fr": [
-      "Sir John A. Macdonald",
-      "Sir Wilfrid Laurier",
-      "Alexander Mackenzie",
-      "Sir Robert Borden"
     ],
     "expl_fr": ""
   },
@@ -5256,28 +4270,6 @@
       "Fédéral et municipal",
       "Provincial et municipal",
       "Provincial et territorial"
-    ],
-    "expl_fr": ""
-  },
-  {
-    "q": "What was the Women’s Suffrage Movement?",
-    "q_fa": "جنبش حق رای زنان چه بود؟",
-    "options": [
-      "The effort by women to achieve the right to vote",
-      "The effort by women to participate in military service",
-      "An unsuccessful movement to get husbands to do housework",
-      "The effort by women to be in Parliament e)"
-    ],
-    "correct": 0,
-    "page": 0,
-    "section": "571 Question For Citizenship Test",
-    "book_text": "",
-    "q_fr": "Qu’est-ce que le mouvement pour le droit de vote des femmes ?",
-    "options_fr": [
-      "L’effort des femmes pour obtenir le droit de vote",
-      "L'effort des femmes pour participer au service militaire",
-      "Un mouvement infructueux pour inciter les maris à faire le ménage",
-      "L'effort des femmes pour siéger au Parlement e)"
     ],
     "expl_fr": ""
   },
@@ -5700,28 +4692,6 @@
     "expl_fr": ""
   },
   {
-    "q": "Which province in Canada is the smallest in land size?",
-    "q_fa": "کدام استان در کانادا از نظر مساحت کوچکترین است؟",
-    "options": [
-      "Ontario",
-      "Prince Edward Island",
-      "Alberta",
-      "Newfoundland and Labrador"
-    ],
-    "correct": 1,
-    "page": 0,
-    "section": "571 Question For Citizenship Test",
-    "book_text": "",
-    "q_fr": "Quelle province du Canada est la plus petite en superficie ?",
-    "options_fr": [
-      "Ontario",
-      "Île-du-Prince-Édouard",
-      "Alberta",
-      "Terre-Neuve et Labrador"
-    ],
-    "expl_fr": ""
-  },
-  {
     "q": "Where out of the following do more half the people in Canada live?",
     "q_fa": "نیمی از مردم کانادا در کدام قسمت از موارد زیر زندگی می کنند؟",
     "options": [
@@ -5796,7 +4766,7 @@
       "French as first language",
       "German as first language"
     ],
-    "correct": 0,
+    "correct": 2,
     "page": 0,
     "section": "571 Question For Citizenship Test",
     "book_text": "",
@@ -5942,138 +4912,6 @@
     "expl_fr": ""
   },
   {
-    "q": "In which region do more than half of the people in Canada live?",
-    "q_fa": "بیش از نیمی از مردم کانادا در کدام منطقه زندگی می کنند؟",
-    "options": [
-      "Central Canada (Ontario and Quebec)",
-      "The Prairies",
-      "Atlantic Canada",
-      "The West"
-    ],
-    "correct": 0,
-    "page": 0,
-    "section": "571 Question For Citizenship Test",
-    "book_text": "",
-    "q_fr": "Dans quelle région vit plus de la moitié de la population canadienne?",
-    "options_fr": [
-      "Le Centre du Canada (Ontario et Québec)",
-      "Les Prairies",
-      "Le Canada atlantique",
-      "L'Ouest"
-    ],
-    "expl_fr": ""
-  },
-  {
-    "q": "Name the five regions of Canada.",
-    "q_fa": "پنج منطقه کانادا را نام ببرید.",
-    "options": [
-      "Midwest, North, South, East, Central",
-      "Maritimes, Ontario, Quebec, Prairies, British Columbia",
-      "Atlantic , Central, Prairie, West Coast and North",
-      "West, Central, East, Prairies and Territories"
-    ],
-    "correct": 2,
-    "page": 0,
-    "section": "571 Question For Citizenship Test",
-    "book_text": "",
-    "q_fr": "Nommez les cinq régions du Canada.",
-    "options_fr": [
-      "Midwest, Nord, Sud, Est, Centre",
-      "Maritimes, Ontario, Québec, Prairies, Colombie-Britannique",
-      "Atlantique, Centre, Prairies, Côte Ouest et Nord",
-      "Ouest, Centre, Est, Prairies et Territoires"
-    ],
-    "expl_fr": ""
-  },
-  {
-    "q": "What are the Prairie Provinces and their capital cities?",
-    "q_fa": "استان های پریری و شهرهای پایتخت آنها کدامند؟",
-    "options": [
-      "Manitoba (Winnipeg), Saskatchewan (Regina), Alberta (Edmonton)",
-      "Ontario (Toronto), Quebec (Quebec City)",
-      "BC (Victoria), Alberta (Edmonton)",
-      "Nova Scotia (Halifax), NB (Fredericton)"
-    ],
-    "correct": 0,
-    "page": 0,
-    "section": "571 Question For Citizenship Test",
-    "book_text": "",
-    "q_fr": "Que sont les provinces des Prairies et leurs capitales ?",
-    "options_fr": [
-      "Manitoba (Winnipeg), Saskatchewan (Regina), Alberta (Edmonton)",
-      "Ontario (Toronto), Québec (Québec)",
-      "C.-B. (Victoria), Alberta (Edmonton)",
-      "N.-É. (Halifax), N.-B. (Fredericton)"
-    ],
-    "expl_fr": ""
-  },
-  {
-    "q": "What are the provinces of Central Canada and their capital cities?",
-    "q_fa": "استان های مرکز کانادا و شهرهای پایتخت آن کدامند؟",
-    "options": [
-      "Ontario (Toronto) and Quebec (Quebec City)",
-      "Manitoba (Winnipeg) and Saskatchewan (Regina)",
-      "Nova Scotia (Halifax) and New Brunswick (Fredericton)",
-      "Alberta (Edmonton) and BC (Victoria)"
-    ],
-    "correct": 0,
-    "page": 0,
-    "section": "571 Question For Citizenship Test",
-    "book_text": "",
-    "q_fr": "Quelles sont les provinces du centre du Canada et leurs capitales ?",
-    "options_fr": [
-      "Ontario (Toronto) et Québec (Québec)",
-      "Manitoba (Winnipeg) et Saskatchewan (Regina)",
-      "Nouvelle-Écosse (Halifax) et Nouveau-Brunswick (Fredericton)",
-      "Alberta (Edmonton) et C.-B. (Victoria)"
-    ],
-    "expl_fr": ""
-  },
-  {
-    "q": "What are the provinces of the Atlantic region and their capital cities?",
-    "q_fa": "استان های منطقه آتلانتیک و شهرهای پایتخت آنها کدامند؟",
-    "options": [
-      "Nova Scotia (Halifax), New Brunswick (Fredericton), Prince Edward Island (Charlottetown) and Quebec (Quebec City)",
-      "Newfoundland and Labrador (St. John’s ), Nova Scotia (Halifax), New Brunswick (Fredericton) and Prince Edward Island (Charlottetown)",
-      "Newfoundland and Labrador (St. Johns), Nova Scotia (Halifax), New Brunswick (Fredericton) and Quebec (Quebec City)",
-      "Nova Scotia (Halifax), New Brunswick (Fredericton), Quebec (Quebec City) and Ontario (Toronto)"
-    ],
-    "correct": 0,
-    "page": 0,
-    "section": "571 Question For Citizenship Test",
-    "book_text": "",
-    "q_fr": "Quelles sont les provinces de la région de l’Atlantique et leurs capitales ?",
-    "options_fr": [
-      "Nouvelle-Écosse (Halifax), Nouveau-Brunswick (Fredericton), Île-du-Prince-Édouard (Charlottetown) et Québec (Ville de Québec)",
-      "Terre-Neuve-et-Labrador (St. John's), Nouvelle-Écosse (Halifax), Nouveau-Brunswick (Fredericton) et Île-du-Prince-Édouard (Charlottetown)",
-      "Terre-Neuve-et-Labrador (St. Johns), Nouvelle-Écosse (Halifax), Nouveau-Brunswick (Fredericton) et Québec (Ville de Québec)",
-      "Nouvelle-Écosse (Halifax), Nouveau-Brunswick (Fredericton), Québec (Québec) et Ontario (Toronto)"
-    ],
-    "expl_fr": ""
-  },
-  {
-    "q": "What are the territories of Northern Canada and their capital cities?",
-    "q_fa": "قلمروهای شمال کانادا و پایتخت آن کدامند؟",
-    "options": [
-      "Alaska (Juneau) and Yukon Territory (Whitehorse)",
-      "Northwest Territories (Yellowknife) and Alaska (Juneau)",
-      "Northwest Territories (Yellowknife)",
-      "Yukon Territory (Whitehorse), Northwest Territories (Yellowknife) and Nunavut (Iqaluit)"
-    ],
-    "correct": 0,
-    "page": 0,
-    "section": "571 Question For Citizenship Test",
-    "book_text": "",
-    "q_fr": "Quels sont les territoires du Nord canadien et leurs capitales ?",
-    "options_fr": [
-      "Alaska (Juneau) et Territoire du Yukon (Whitehorse)",
-      "Territoires du Nord-Ouest (Yellowknife) et Alaska (Juneau)",
-      "Territoires du Nord-Ouest (Yellowknife)",
-      "Territoire du Yukon (Whitehorse), Territoires du Nord-Ouest (Yellowknife) et Nunavut (Iqaluit)"
-    ],
-    "expl_fr": ""
-  },
-  {
     "q": "7. What is a major river in Quebec?",
     "q_fa": "7. رودخانه اصلی در کبک چیست؟",
     "options": [
@@ -6206,7 +5044,7 @@
     "expl_fr": ""
   },
   {
-    "q": "16. Saskatchewan was once known as the “breadbasket of the world”",
+    "q": "16. Saskatchewan was once known as the \"breadbasket of the world\"",
     "q_fa": "16. ساسکاچوان زمانی به عنوان \"سبد نان جهان\" شناخته می شد.",
     "options": [
       "Saskatchewan",
@@ -6260,68 +5098,6 @@
     "options_fr": [
       "Vrai",
       "Faux"
-    ],
-    "expl_fr": ""
-  },
-  {
-    "q": "Canada is divided in 10 regions",
-    "q_fa": "کانادا به 10 منطقه تقسیم شده است",
-    "options": [
-      "True",
-      "False"
-    ],
-    "correct": 1,
-    "page": 0,
-    "section": "571 Question For Citizenship Test",
-    "book_text": "",
-    "q_fr": "Le Canada est divisé en 10 régions",
-    "options_fr": [
-      "Vrai",
-      "Faux"
-    ],
-    "expl_fr": ""
-  },
-  {
-    "q": "Which province in Canada is the smallest in land size?",
-    "q_fa": "کدام استان در کانادا از نظر مساحت کوچکترین استان است؟",
-    "options": [
-      "Nova Scotia",
-      "Prince Edward Island",
-      "Yukon Territory",
-      "Newfoundland and Labrador Canada’s Regions Page 45"
-    ],
-    "correct": 1,
-    "page": 0,
-    "section": "571 Question For Citizenship Test",
-    "book_text": "",
-    "q_fr": "Quelle province du Canada est la plus petite en termes de superficie?",
-    "options_fr": [
-      "Nouvelle-Écosse",
-      "Île-du-Prince-Édouard",
-      "Territoire du Yukon",
-      "Terre-Neuve-et-Labrador Les régions du Canada Page 45"
-    ],
-    "expl_fr": ""
-  },
-  {
-    "q": "In which region do more than half of the people in Canada live?",
-    "q_fa": "بیش از نیمی از مردم کانادا در کدام منطقه زندگی می کنند؟",
-    "options": [
-      "Central Canada",
-      "Prairies",
-      "Atlantic Canada",
-      "Northern Canada"
-    ],
-    "correct": 0,
-    "page": 0,
-    "section": "571 Question For Citizenship Test",
-    "book_text": "",
-    "q_fr": "Dans quelle région vit plus de la moitié de la population canadienne?",
-    "options_fr": [
-      "Centre du Canada",
-      "Prairies",
-      "Canada atlantique",
-      "Nord canadien"
     ],
     "expl_fr": ""
   },
@@ -6438,50 +5214,6 @@
     "expl_fr": ""
   },
   {
-    "q": "7. What is a major river in Quebec?",
-    "q_fa": "7. رودخانه اصلی در کبک چیست؟",
-    "options": [
-      "Fraser River",
-      "St. Lawrence River",
-      "Niagara",
-      "Hudson’s Bay"
-    ],
-    "correct": 0,
-    "page": 0,
-    "section": "571 Question For Citizenship Test",
-    "book_text": "",
-    "q_fr": "7. Qu'est-ce qu'un fleuve majeur au Québec ?",
-    "options_fr": [
-      "Fleuve Fraser",
-      "Fleuve Saint-Laurent",
-      "Niagara",
-      "La Baie d'Hudson"
-    ],
-    "expl_fr": ""
-  },
-  {
-    "q": "8. Which province is the only officially bilingual province?",
-    "q_fa": "8. تنها استان دو زبانه کدام استان است؟",
-    "options": [
-      "New Brunswick",
-      "Quebec",
-      "Ontario",
-      "Prince Edward Island"
-    ],
-    "correct": 0,
-    "page": 0,
-    "section": "571 Question For Citizenship Test",
-    "book_text": "",
-    "q_fr": "8. Quelle province est la seule province officiellement bilingue ?",
-    "options_fr": [
-      "Nouveau-Brunswick",
-      "Québec",
-      "Ontario",
-      "Île-du-Prince-Édouard"
-    ],
-    "expl_fr": ""
-  },
-  {
     "q": "9. Which region of Canada is known for both its fertile agriculture land and valuable energy resources?",
     "q_fa": "9. کدام منطقه از کانادا به خاطر زمین های کشاورزی حاصلخیز و منابع انرژی ارزشمندش شناخته شده است؟",
     "options": [
@@ -6490,7 +5222,7 @@
       "Ontario",
       "Manitoba"
     ],
-    "correct": 0,
+    "correct": 1,
     "page": 0,
     "section": "571 Question For Citizenship Test",
     "book_text": "",
@@ -6548,94 +5280,6 @@
     "expl_fr": ""
   },
   {
-    "q": "12. Why is the North, sometimes, called the “Land of the Midnight Sun”?",
-    "q_fa": "12. چرا شمال گاهی اوقات \"سرزمین خورشید نیمه شب\" نامیده می شود؟",
-    "options": [
-      "Daylight can last up to 24 hours in fall",
-      "Daylight can last up to 24 hours in winter",
-      "Daylight can last up to 24 hours in summer",
-      "Daylight can last up to 24 hours in spring"
-    ],
-    "correct": 0,
-    "page": 0,
-    "section": "571 Question For Citizenship Test",
-    "book_text": "",
-    "q_fr": "12. Pourquoi le Nord est-il parfois appelé le « Pays du soleil de minuit » ?",
-    "options_fr": [
-      "La lumière du jour peut durer jusqu'à 24 heures en automne",
-      "La lumière du jour peut durer jusqu'à 24 heures en hiver",
-      "La lumière du jour peut durer jusqu'à 24 heures en été",
-      "La lumière du jour peut durer jusqu'à 24 heures au printemps"
-    ],
-    "expl_fr": ""
-  },
-  {
-    "q": "13. What animal is a symbol of Canada’s North?",
-    "q_fa": "13. نماد شمال کانادا کدام حیوان است؟",
-    "options": [
-      "The caribou",
-      "The moose",
-      "The polar bear",
-      "The beaver"
-    ],
-    "correct": 0,
-    "page": 0,
-    "section": "571 Question For Citizenship Test",
-    "book_text": "",
-    "q_fr": "13. Quel animal est un symbole du Nord canadien?",
-    "options_fr": [
-      "Le caribou",
-      "L'orignal",
-      "L'ours polaire",
-      "Le castor"
-    ],
-    "expl_fr": ""
-  },
-  {
-    "q": "14. Canada is the second largest country on earth – 10 million square kilometres",
-    "q_fa": "14. کانادا دومین کشور بزرگ روی زمین است – 10 میلیون کیلومتر مربع",
-    "options": [
-      "True",
-      "False",
-      "Third largest",
-      "Fourth largest"
-    ],
-    "correct": 0,
-    "page": 0,
-    "section": "571 Question For Citizenship Test",
-    "book_text": "",
-    "q_fr": "14. Le Canada est le deuxième plus grand pays du monde – 10 millions de kilomètres carrés",
-    "options_fr": [
-      "Vrai",
-      "Faux",
-      "Troisième",
-      "Quatrième"
-    ],
-    "expl_fr": ""
-  },
-  {
-    "q": "15. Nova Scotia is the most populous Atlantic Province",
-    "q_fa": "15. نوا اسکوشیا پرجمعیت ترین استان اقیانوس اطلس است",
-    "options": [
-      "Nova Scotia",
-      "New Brunswick",
-      "Newfoundland and Labrador",
-      "PEI"
-    ],
-    "correct": 0,
-    "page": 0,
-    "section": "571 Question For Citizenship Test",
-    "book_text": "",
-    "q_fr": "15. La Nouvelle-Écosse est la province de l'Atlantique la plus peuplée",
-    "options_fr": [
-      "Nouvelle-Écosse",
-      "Nouveau-Brunswick",
-      "Terre-Neuve-et-Labrador",
-      "Î.-P.-É."
-    ],
-    "expl_fr": ""
-  },
-  {
     "q": "16. Saskatchewan was once known as the “breadbasket of the world”",
     "q_fa": "16. ساسکاچوان زمانی به عنوان \"سبد نان جهان\" شناخته می شد.",
     "options": [
@@ -6676,64 +5320,6 @@
     "expl_fr": ""
   },
   {
-    "q": "18. Toronto is the capital city of Canada",
-    "q_fa": "18. تورنتو پایتخت کانادا است",
-    "options": [
-      "True",
-      "False"
-    ],
-    "correct": 1,
-    "page": 0,
-    "section": "571 Question For Citizenship Test",
-    "book_text": "",
-    "q_fr": "18. Toronto est la capitale du Canada",
-    "options_fr": [
-      "Vrai",
-      "Faux"
-    ],
-    "expl_fr": ""
-  },
-  {
-    "q": "Canada is divided in 10 regions",
-    "q_fa": "کانادا به 10 منطقه تقسیم شده است",
-    "options": [
-      "True",
-      "False"
-    ],
-    "correct": 1,
-    "page": 0,
-    "section": "571 Question For Citizenship Test",
-    "book_text": "",
-    "q_fr": "Le Canada est divisé en 10 régions",
-    "options_fr": [
-      "Vrai",
-      "Faux"
-    ],
-    "expl_fr": ""
-  },
-  {
-    "q": "Which province in Canada is the smallest in land size?",
-    "q_fa": "کدام استان در کانادا از نظر مساحت کوچکترین استان است؟",
-    "options": [
-      "Nova Scotia",
-      "Prince Edward Island",
-      "Yukon Territory",
-      "Newfoundland and Labrador Canadian Symbols"
-    ],
-    "correct": 1,
-    "page": 0,
-    "section": "571 Question For Citizenship Test",
-    "book_text": "",
-    "q_fr": "Quelle province du Canada est la plus petite en termes de superficie?",
-    "options_fr": [
-      "Nouvelle-Écosse",
-      "Île-du-Prince-Édouard",
-      "Territoire du Yukon",
-      "Symboles canadiens de Terre-Neuve-et-Labrador"
-    ],
-    "expl_fr": ""
-  },
-  {
     "q": "What is celebrated on April 9?",
     "q_fa": "چه چیزی در 9 آوریل جشن گرفته می شود؟",
     "options": [
@@ -6742,7 +5328,7 @@
       "Vimy Day",
       "Boxing Day"
     ],
-    "correct": 0,
+    "correct": 2,
     "page": 0,
     "section": "571 Question For Citizenship Test",
     "book_text": "",
@@ -6764,7 +5350,7 @@
       "1952",
       "1988"
     ],
-    "correct": 0,
+    "correct": 2,
     "page": 0,
     "section": "571 Question For Citizenship Test",
     "book_text": "",
@@ -6852,7 +5438,7 @@
       "A Canadian showing conspicuous bravery or self sacrifice",
       "Best Innovation of the year"
     ],
-    "correct": 0,
+    "correct": 2,
     "page": 0,
     "section": "571 Question For Citizenship Test",
     "book_text": "",
@@ -7067,7 +5653,7 @@
     "q": "The arms that can be seen on dollar bills contain symbols of what?",
     "q_fa": "بازوهایی که روی اسکناس‌های دلار دیده می‌شوند نمادهای چیست؟",
     "options": [
-      "All answers correct",
+      "England, France, Scotland and Ireland",
       "Scotland and Ireland",
       "Red maple leaves",
       "England and France"
@@ -7078,32 +5664,10 @@
     "book_text": "",
     "q_fr": "Les armoiries que l’on peut voir sur les billets d’un dollar contiennent des symboles de quoi ?",
     "options_fr": [
-      "Toutes les réponses sont correctes",
-      "Ecosse et Irlande",
-      "Feuilles d'érable rouge",
+      "Angleterre, France, Écosse et Irlande",
+      "Écosse et Irlande",
+      "Feuilles d'érable rouges",
       "Angleterre et France"
-    ],
-    "expl_fr": ""
-  },
-  {
-    "q": "The arms that can be seen on dollar bills contain symbols of what?",
-    "q_fa": "بازوهایی که روی اسکناس‌های دلار دیده می‌شوند نمادهای چیست؟",
-    "options": [
-      "Scotland and Ireland",
-      "Red maple leaves",
-      "England and France",
-      "All answers correct"
-    ],
-    "correct": 0,
-    "page": 0,
-    "section": "571 Question For Citizenship Test",
-    "book_text": "",
-    "q_fr": "Les armoiries que l’on peut voir sur les billets d’un dollar contiennent des symboles de quoi ?",
-    "options_fr": [
-      "Ecosse et Irlande",
-      "Feuilles d'érable rouge",
-      "Angleterre et France",
-      "Toutes les réponses sont correctes"
     ],
     "expl_fr": ""
   },
@@ -7170,28 +5734,6 @@
       "Ô Canada, nous veillons sur toi",
       "Le véritable amour patriotique dans tous tes fils commande",
       "Dieu garde notre terre glorieuse et libre ! Élections fédérales Page 30"
-    ],
-    "expl_fr": ""
-  },
-  {
-    "q": "Which federal political party is in power?",
-    "q_fa": "کدام حزب سیاسی فدرال در قدرت است؟",
-    "options": [
-      "Liberal Party",
-      "Conservative Party",
-      "NDP",
-      "Green Party"
-    ],
-    "correct": 0,
-    "page": 0,
-    "section": "571 Question For Citizenship Test",
-    "book_text": "",
-    "q_fr": "Quel parti politique fédéral est au pouvoir ?",
-    "options_fr": [
-      "Parti libéral",
-      "Parti conservateur",
-      "NPD",
-      "Parti vert"
     ],
     "expl_fr": ""
   },
@@ -7292,7 +5834,7 @@
       "Education",
       "Natural Resources"
     ],
-    "correct": 0,
+    "correct": 1,
     "page": 0,
     "section": "571 Question For Citizenship Test",
     "book_text": "",
@@ -7752,28 +6294,6 @@
     "expl_fr": ""
   },
   {
-    "q": "Who was the first Prime Minister of Canada?",
-    "q_fa": "اولین نخست وزیر کانادا چه کسی بود؟",
-    "options": [
-      "Sir John A. Macdonald",
-      "Sir Guy Carleton",
-      "Sir Louis-Hippolyte La Fontaine",
-      "Sir Isaac Brock"
-    ],
-    "correct": 0,
-    "page": 0,
-    "section": "571 Question For Citizenship Test",
-    "book_text": "",
-    "q_fr": "Qui a été le premier premier ministre du Canada ?",
-    "options_fr": [
-      "Sir John A. Macdonald",
-      "Sir Guy Carleton",
-      "Sir Louis-Hippolyte La Fontaine",
-      "Sir Isaac Brock"
-    ],
-    "expl_fr": ""
-  },
-  {
     "q": "What did the Suffrage movement achieve?",
     "q_fa": "جنبش حق رأی چه دستاوردی داشت؟",
     "options": [
@@ -8114,7 +6634,7 @@
       "Australia",
       "Asia"
     ],
-    "correct": 0,
+    "correct": 3,
     "page": 0,
     "section": "571 Question For Citizenship Test",
     "book_text": "",
@@ -8150,28 +6670,6 @@
     "expl_fr": ""
   },
   {
-    "q": "What is celebrated on April 9?",
-    "q_fa": "چه چیزی در 9 آوریل جشن گرفته می شود؟",
-    "options": [
-      "Vimy Day",
-      "Boxing Day",
-      "Family Day",
-      "Thanksgiving Day"
-    ],
-    "correct": 0,
-    "page": 0,
-    "section": "571 Question For Citizenship Test",
-    "book_text": "",
-    "q_fr": "Que fête-t-on le 9 avril ?",
-    "options_fr": [
-      "Journée de Vimy",
-      "Le lendemain de Noël",
-      "Journée de la famille",
-      "Jour de Thanksgiving"
-    ],
-    "expl_fr": ""
-  },
-  {
     "q": "The people from which country played a significant role in building of the Canadian Pacific Railway?",
     "q_fa": "مردم کدام کشور نقش مهمی در ساخت راه‌آهن کانادا در اقیانوس آرام داشتند؟",
     "options": [
@@ -8190,28 +6688,6 @@
       "France",
       "Italie",
       "Chine"
-    ],
-    "expl_fr": ""
-  },
-  {
-    "q": "Who is General Sir Arthur Currie?",
-    "q_fa": "ژنرال سر آرتور کوری کیست؟",
-    "options": [
-      "The greatest military leader of the Métis",
-      "Canada's greatest soldier in the First World War",
-      "A person who started the “marathon of hope”",
-      "An explorer of western Canada"
-    ],
-    "correct": 0,
-    "page": 0,
-    "section": "571 Question For Citizenship Test",
-    "book_text": "",
-    "q_fr": "Qui est le général Sir Arthur Currie ?",
-    "options_fr": [
-      "Le plus grand chef militaire des Métis",
-      "Le plus grand soldat canadien de la Première Guerre mondiale",
-      "Celui qui a lancé le « marathon de l’espoir »",
-      "Un explorateur de l'Ouest canadien"
     ],
     "expl_fr": ""
   },
@@ -8994,28 +7470,6 @@
     "expl_fr": ""
   },
   {
-    "q": "What is the role of the opposition parties?",
-    "q_fa": "نقش احزاب مخالف چیست؟",
-    "options": [
-      "Running the federal government departments",
-      "Peacefully oppose or try to improve government proposals",
-      "Run the government as long as they have the support or confidence of majority of the MPs",
-      "Make important decisions about how the country is to be governed"
-    ],
-    "correct": 0,
-    "page": 0,
-    "section": "571 Question For Citizenship Test",
-    "book_text": "",
-    "q_fr": "Quel est le rôle des partis d’opposition ?",
-    "options_fr": [
-      "Diriger les ministères fédéraux",
-      "S'opposer pacifiquement ou tenter d'améliorer les propositions du gouvernement",
-      "Diriger le gouvernement tant qu’il a le soutien ou la confiance de la majorité des députés",
-      "Prendre des décisions importantes sur la façon dont le pays doit être gouverné"
-    ],
-    "expl_fr": ""
-  },
-  {
     "q": "What are the three parts of Parliament?",
     "q_fa": "سه بخش مجلس چیست؟",
     "options": [
@@ -9024,7 +7478,7 @@
       "Sovereign, House of Commons and MPs",
       "Sovereign, House of Commons and Senate"
     ],
-    "correct": 0,
+    "correct": 3,
     "page": 0,
     "section": "571 Question For Citizenship Test",
     "book_text": "",
@@ -9166,28 +7620,6 @@
       "Défense nationale et politique étrangère",
       "Soins de santé et éducation",
       "Défense nationale et lutte contre les incendies"
-    ],
-    "expl_fr": ""
-  },
-  {
-    "q": "Which of the following is the responsibility of federal government?",
-    "q_fa": "کدام یک از موارد زیر بر عهده دولت فدرال است؟",
-    "options": [
-      "Currency",
-      "Highways",
-      "Health",
-      "Education"
-    ],
-    "correct": 0,
-    "page": 0,
-    "section": "571 Question For Citizenship Test",
-    "book_text": "",
-    "q_fr": "Parmi les responsabilités suivantes, lesquelles relèvent du gouvernement fédéral ?",
-    "options_fr": [
-      "Devise",
-      "Autoroutes",
-      "Santé",
-      "Éducation"
     ],
     "expl_fr": ""
   },
@@ -9458,28 +7890,6 @@
     "expl_fr": ""
   },
   {
-    "q": "How is the Prime Minister chosen?",
-    "q_fa": "نخست وزیر چگونه انتخاب می شود؟",
-    "options": [
-      "The leader of the party with the most elected representatives becomes the Prime Minister",
-      "The Prime Minister is chosen by the Senate",
-      "The Prime Minister is chosen by the Members of Provincial Parliament",
-      "The Prime Minister is chosen by the Members of Parliament"
-    ],
-    "correct": 0,
-    "page": 0,
-    "section": "571 Question For Citizenship Test",
-    "book_text": "",
-    "q_fr": "Comment est choisi le Premier ministre ?",
-    "options_fr": [
-      "Le chef du parti ayant le plus d’élus devient Premier ministre",
-      "Le Premier ministre est choisi par le Sénat",
-      "Le Premier ministre est choisi par les députés provinciaux",
-      "Le Premier ministre est choisi par les députés"
-    ],
-    "expl_fr": ""
-  },
-  {
     "q": "What is the tenure of the Governor General?",
     "q_fa": "مدت تصدی فرماندار کل چیست؟",
     "options": [
@@ -9498,28 +7908,6 @@
       "5 ans",
       "4 ans",
       "6 ans"
-    ],
-    "expl_fr": ""
-  },
-  {
-    "q": "What are the three levels of government in Canada?",
-    "q_fa": "سه سطح دولت در کانادا کدام است؟",
-    "options": [
-      "Federal, provincial, county",
-      "Federal, provincial, rural",
-      "Federal, provincial or territorial, municipal",
-      "Federal, state, city"
-    ],
-    "correct": 0,
-    "page": 0,
-    "section": "571 Question For Citizenship Test",
-    "book_text": "",
-    "q_fr": "Quels sont les trois niveaux de gouvernement au Canada?",
-    "options_fr": [
-      "Fédéral, provincial, comté",
-      "Fédéral, provincial, rural",
-      "Fédéral, provincial ou territorial, municipal",
-      "Fédéral, état, ville"
     ],
     "expl_fr": ""
   },
@@ -9674,28 +8062,6 @@
       "Ils sont nommés sur l'avis du gouverneur général",
       "Ils sont élus par le peuple",
       "Ils sont nommés sur avis du Premier ministre"
-    ],
-    "expl_fr": ""
-  },
-  {
-    "q": "What are the three parts of Parliament?",
-    "q_fa": "سه بخش مجلس چیست؟",
-    "options": [
-      "The Queen, House of Commons, Senate",
-      "Prime Minister, House of Commons, Senate",
-      "The Prime Minister, Premiers, House of Commons",
-      "The Queen, Governor General, Prime Minister"
-    ],
-    "correct": 0,
-    "page": 0,
-    "section": "571 Question For Citizenship Test",
-    "book_text": "",
-    "q_fr": "Quelles sont les trois parties du Parlement ?",
-    "options_fr": [
-      "La Reine, la Chambre des communes, le Sénat",
-      "Premier ministre, Chambre des communes, Sénat",
-      "Le premier ministre, les premiers ministres, la Chambre des communes",
-      "La Reine, gouverneure générale, premier ministre"
     ],
     "expl_fr": ""
   },
@@ -10030,28 +8396,6 @@
     "expl_fr": ""
   },
   {
-    "q": "Who is the Queen’s representative in Canada?",
-    "q_fa": "نماینده ملکه در کانادا کیست؟",
-    "options": [
-      "Prime Minister of Canada",
-      "Premier",
-      "Her Majesty Queen Elizabeth II",
-      "Governor General of Canada"
-    ],
-    "correct": 0,
-    "page": 0,
-    "section": "571 Question For Citizenship Test",
-    "book_text": "",
-    "q_fr": "Qui est le représentant de la Reine au Canada ?",
-    "options_fr": [
-      "Premier ministre du Canada",
-      "Premier",
-      "Sa Majesté la reine Elizabeth II",
-      "Gouverneur général du Canada"
-    ],
-    "expl_fr": ""
-  },
-  {
     "q": "Who is Canada’s head of government?",
     "q_fa": "رئیس دولت کانادا کیست؟",
     "options": [
@@ -10092,50 +8436,6 @@
       "Questions d'intérêt national",
       "Questions d’intérêt international",
       "Questions d'intérêt provincial"
-    ],
-    "expl_fr": ""
-  },
-  {
-    "q": "What are the three parts of Parliament?",
-    "q_fa": "سه بخش مجلس چیست؟",
-    "options": [
-      "Police, Senate and House of Commons",
-      "Sovereign, Premier and House of Commons",
-      "Sovereign, Senate and House of Parliament",
-      "Sovereign, Senate and House of Commons"
-    ],
-    "correct": 0,
-    "page": 0,
-    "section": "571 Question For Citizenship Test",
-    "book_text": "",
-    "q_fr": "Quelles sont les trois parties du Parlement ?",
-    "options_fr": [
-      "Police, Sénat et Chambre des communes",
-      "Souverain, premier ministre et Chambre des communes",
-      "Souverain, Sénat et Chambre du Parlement",
-      "Souverain, Sénat et Chambre des communes"
-    ],
-    "expl_fr": ""
-  },
-  {
-    "q": "Who is Canada’s Head of State?",
-    "q_fa": "رئیس دولت کانادا کیست؟",
-    "options": [
-      "Governor General of Canada",
-      "Her Majesty Queen Elizabeth II",
-      "Prime Minister",
-      "Lieutenant Governor"
-    ],
-    "correct": 0,
-    "page": 0,
-    "section": "571 Question For Citizenship Test",
-    "book_text": "",
-    "q_fr": "Qui est le chef de l’État du Canada ?",
-    "options_fr": [
-      "Gouverneur général du Canada",
-      "Sa Majesté la reine Elizabeth II",
-      "Premier ministre",
-      "Lieutenant-gouverneur"
     ],
     "expl_fr": ""
   },
@@ -10382,28 +8682,6 @@
     "expl_fr": ""
   },
   {
-    "q": "Who invented the worldwide system of standard time zones?",
-    "q_fa": "چه کسی سیستم جهانی مناطق زمانی استاندارد را اختراع کرد؟",
-    "options": [
-      "Sir Sandford Fleming",
-      "Joseph-Armand Bombardier",
-      "Alexander Graham Bell",
-      "Reginald Fessenden"
-    ],
-    "correct": 0,
-    "page": 0,
-    "section": "571 Question For Citizenship Test",
-    "book_text": "",
-    "q_fr": "Qui a inventé le système mondial de fuseaux horaires standard ?",
-    "options_fr": [
-      "Sir Sandford Fleming",
-      "Joseph Armand Bombardier",
-      "Alexandre Graham Bell",
-      "Réginald Fessenden"
-    ],
-    "expl_fr": ""
-  },
-  {
     "q": "Which of the following was invented by Alexander Graham Bell?",
     "q_fa": "کدام یک از موارد زیر توسط الکساندر گراهام بل اختراع شد؟",
     "options": [
@@ -10598,28 +8876,6 @@
       "Kenojuak Ashevak, Jean-Paul Riopelle, Luis-Philippe Hébert",
       "John Polanyi, Donovan Bailey, Kenojuak Ashevak",
       "Luis-Philippe Hébert, Réginald Fessenden, Jean-Paul Riopelle"
-    ],
-    "expl_fr": ""
-  },
-  {
-    "q": "What is the significance of the Quebec Act of 1774?",
-    "q_fa": "اهمیت قانون کبک 1774 چیست؟",
-    "options": [
-      "The birth of Canada",
-      "Peace, Order and Good Government",
-      "Divided the Province of Quebec into Upper Canada",
-      "Canada's tolerance towards all religions was affected"
-    ],
-    "correct": 3,
-    "page": 0,
-    "section": "571 Question For Citizenship Test",
-    "book_text": "",
-    "q_fr": "Quelle est la signification de l’Acte de Québec de 1774 ?",
-    "options_fr": [
-      "La naissance du Canada",
-      "Paix, ordre et bon gouvernement",
-      "Divisé la province de Québec en Haut-Canada",
-      "La tolérance du Canada envers toutes les religions a été affectée"
     ],
     "expl_fr": ""
   },
@@ -11548,28 +9804,6 @@
     "expl_fr": ""
   },
   {
-    "q": "The ancestors of aboriginals are believed to have migrated from which of the following?",
-    "q_fa": "اعتقاد بر این است که اجداد بومیان از کدام یک از موارد زیر مهاجرت کرده اند؟",
-    "options": [
-      "America",
-      "Europe",
-      "Asia",
-      "Australia"
-    ],
-    "correct": 0,
-    "page": 0,
-    "section": "571 Question For Citizenship Test",
-    "book_text": "",
-    "q_fr": "On pense que les ancêtres des autochtones ont émigré de laquelle des régions suivantes ?",
-    "options_fr": [
-      "Amérique",
-      "Europe",
-      "Asie",
-      "Australie"
-    ],
-    "expl_fr": ""
-  },
-  {
     "q": "Which of the following are three founder people of Canada?",
     "q_fa": "کدام یک از افراد زیر سه بنیانگذار کانادا هستند؟",
     "options": [
@@ -11614,50 +9848,6 @@
     "expl_fr": ""
   },
   {
-    "q": "When did the British North America Act come into effect?",
-    "q_fa": "قانون آمریکای شمالی بریتانیا از چه زمانی اجرایی شد؟",
-    "options": [
-      "1905",
-      "1867",
-      "1871",
-      "1898"
-    ],
-    "correct": 0,
-    "page": 0,
-    "section": "571 Question For Citizenship Test",
-    "book_text": "",
-    "q_fr": "Quand l’Acte de l’Amérique du Nord britannique est-il entré en vigueur ?",
-    "options_fr": [
-      "1905",
-      "1867",
-      "1871",
-      "1898"
-    ],
-    "expl_fr": ""
-  },
-  {
-    "q": "Who was the first person to draw a map of Canada’s east coast?",
-    "q_fa": "اولین کسی که نقشه ساحل شرقی کانادا را ترسیم کرد چه کسی بود؟",
-    "options": [
-      "Jean Talon",
-      "John Cabot",
-      "Count Frontenac",
-      "Jacques Cartier"
-    ],
-    "correct": 0,
-    "page": 0,
-    "section": "571 Question For Citizenship Test",
-    "book_text": "",
-    "q_fr": "Qui a été la première personne à dessiner une carte de la côte est du Canada ?",
-    "options_fr": [
-      "Jean-Talon",
-      "Jean Cabot",
-      "Comte Frontenac",
-      "Jacques Cartier"
-    ],
-    "expl_fr": ""
-  },
-  {
     "q": "Which of the following was a key phrase in Canada’s original constitutional document in 1867, the British North America Act?",
     "q_fa": "کدام یک از موارد زیر یک عبارت کلیدی در سند اصلی قانون اساسی کانادا در سال 1867، قانون آمریکای شمالی بریتانیا بود؟",
     "options": [
@@ -11676,50 +9866,6 @@
       "Commerce et communications",
       "Paix, ordre et bon gouvernement",
       "Discipline, éducation et bon public"
-    ],
-    "expl_fr": ""
-  },
-  {
-    "q": "More than three-quarters in Quebec speak which language?",
-    "q_fa": "بیش از سه چهارم در کبک به کدام زبان صحبت می کنند؟",
-    "options": [
-      "French as first language",
-      "English as first language",
-      "German as first language",
-      "French as second language"
-    ],
-    "correct": 0,
-    "page": 0,
-    "section": "571 Question For Citizenship Test",
-    "book_text": "",
-    "q_fr": "Plus des trois quarts des Québécois parlent quelle langue ?",
-    "options_fr": [
-      "Le français comme langue première",
-      "L'anglais comme langue première",
-      "L'allemand comme première langue",
-      "Le français comme langue seconde"
-    ],
-    "expl_fr": ""
-  },
-  {
-    "q": "Where did most immigrants have come from since 1970s?",
-    "q_fa": "بیشتر مهاجران از دهه 1970 از کجا آمده اند؟",
-    "options": [
-      "France",
-      "Asia",
-      "England",
-      "USA"
-    ],
-    "correct": 0,
-    "page": 0,
-    "section": "571 Question For Citizenship Test",
-    "book_text": "",
-    "q_fr": "D’où viennent la plupart des immigrants depuis les années 1970 ?",
-    "options_fr": [
-      "France",
-      "Asie",
-      "Angleterre",
-      "USA"
     ],
     "expl_fr": ""
   },
@@ -11966,50 +10112,6 @@
     "expl_fr": ""
   },
   {
-    "q": "What part of the Constitution legally protects the basic rights and freedoms of all Canadians?",
-    "q_fa": "کدام بخش از قانون اساسی از حقوق و آزادی های اساسی همه کانادایی ها حمایت می کند؟",
-    "options": [
-      "The British Charter of Rights and Freedoms",
-      "The Canadian Charter of Rights",
-      "The Canadian Charter of Freedoms",
-      "The Canadian Charter of Rights and Freedoms"
-    ],
-    "correct": 0,
-    "page": 0,
-    "section": "571 Question For Citizenship Test",
-    "book_text": "",
-    "q_fr": "Quelle partie de la Constitution protège légalement les droits et libertés fondamentaux de tous les Canadiens ?",
-    "options_fr": [
-      "La Charte britannique des droits et libertés",
-      "La Charte canadienne des droits",
-      "La Charte canadienne des libertés",
-      "La Charte canadienne des droits et libertés"
-    ],
-    "expl_fr": ""
-  },
-  {
-    "q": "When did the Canadian Charter of Rights and Freedoms become part of the Canadian Constitution?",
-    "q_fa": "چه زمانی منشور حقوق و آزادی های کانادا بخشی از قانون اساسی کانادا شد؟",
-    "options": [
-      "1867",
-      "1905",
-      "1982",
-      "1878"
-    ],
-    "correct": 0,
-    "page": 0,
-    "section": "571 Question For Citizenship Test",
-    "book_text": "",
-    "q_fr": "Quand la Charte canadienne des droits et libertés est-elle devenue partie intégrante de la Constitution canadienne ?",
-    "options_fr": [
-      "1867",
-      "1905",
-      "1982",
-      "1878"
-    ],
-    "expl_fr": ""
-  },
-  {
     "q": "Name two fundamental freedoms protected by the Canadian Charter of Rights",
     "q_fa": "دو آزادی اساسی که توسط منشور حقوق کانادا محافظت می شود را نام ببرید",
     "options": [
@@ -12144,28 +10246,6 @@
       "Engagement d'être fidèle à la Reine",
       "Promesse d'observer les lois du Canada",
       "Remplir ses devoirs en tant que citoyen canadien"
-    ],
-    "expl_fr": ""
-  },
-  {
-    "q": "From where does the name \"Canada\" come?",
-    "q_fa": "نام \"کانادا\" از کجا آمده است؟",
-    "options": [
-      "From the Inuit word meaning country",
-      "From the French word meaning joining.",
-      "From the Métis word meaning rivers",
-      "From \"kanata\", the Huron-Iroquois word for village"
-    ],
-    "correct": 0,
-    "page": 0,
-    "section": "571 Question For Citizenship Test",
-    "book_text": "",
-    "q_fr": "D'où vient le nom « Canada » ?",
-    "options_fr": [
-      "Du mot inuit signifiant pays",
-      "Du mot français signifiant rejoindre.",
-      "Du mot métis signifiant rivières.",
-      "De « kanata », le mot huron-iroquois signifiant village"
     ],
     "expl_fr": ""
   },

@@ -65,7 +65,10 @@
                     <div class="header-slide header-slide-ad" id="slide1">
                         <div class="slide-visitor-text">Visitors : <span class="visitor-count-value">0</span></div>
                         <a href="#ads-section" class="header-slide-ad-link" title="خاطره تحویلداری یکتا · مترجم رسمی کبک، آلبرتا و ایران · Commissioner of Oaths">
-                            <img src="{{ url_for('static', filename='images/header-slide-khatereh-yekta.png') }}" alt="خاطره تحویلداری یکتا — مترجم رسمی؛ 514-675-0694، 438-390-0694، khaterehyekta@yahoo.ca؛ ترجمه رسمی و خدمات مرتبط، حتی در روزهای تعطیل" class="header-slide-ad-img" width="1024" height="153" loading="lazy">
+                            <picture>
+                                <source media="(max-width: 1024px)" srcset="{{ url_for('static', filename='images/header-slide-khatereh-yekta-mobile.png') }}">
+                                <img src="{{ url_for('static', filename='images/header-slide-khatereh-yekta.png') }}" alt="خاطره تحویلداری یکتا — مترجم رسمی؛ 514-675-0694، 438-390-0694، khaterehyekta@yahoo.ca؛ ترجمه رسمی و خدمات مرتبط، حتی در روزهای تعطیل" class="header-slide-ad-img header-slide-khatereh-img" width="1024" height="153" loading="lazy">
+                            </picture>
                         </a>
                     </div>
                     <!-- Slide 3: عنوان سایت -->

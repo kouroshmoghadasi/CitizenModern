@@ -1226,7 +1226,7 @@ def citizenship_571():
     if has_access:
         questions = all_questions
         show_paywall = False
-        max_question_571 = 571
+        max_question_571 = len(all_questions)
     else:
         questions = all_questions[:21] if len(all_questions) >= 21 else all_questions
         show_paywall = True
@@ -1236,6 +1236,7 @@ def citizenship_571():
         questions=questions,
         show_paywall=show_paywall,
         max_question_571=max_question_571,
+        citizenship_571_total=len(all_questions),
     ))
     resp.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
     resp.headers['Pragma'] = 'no-cache'
