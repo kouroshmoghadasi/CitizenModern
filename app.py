@@ -1795,12 +1795,58 @@ def webapp_manifest():
     return jsonify(manifest), 200, {'Content-Type': 'application/manifest+json; charset=utf-8'}
 
 
+def _resolved_seo_canonical_base():
+    """اگر باید canonical ثابت باشد، https://... بدون اسلش آخر؛ وگرنه رشتهٔ خالی.
+
+    ۱) متغیر محیطی SEO_CANONICAL_BASE (اختیاری، برای دامنهٔ دیگر یا staging)
+    ۲) وگرنه اگر Host همان دامنهٔ production است → https://discovercanadatest.com
+       (نیازی به تنظیم AWS نیست)
+    """
+    env = (os.getenv('SEO_CANONICAL_BASE') or '').strip().rstrip('/')
+    if env:
+        return env
+    host = (request.host or '').split(':')[0].lower()
+    if host in ('discovercanadatest.com', 'www.discovercanadatest.com'):
+        return 'https://discovercanadatest.com'
+    return ''
+
+
 def _seo_base_url():
-    """Base URL for SEO (robots, sitemap). Prefer HTTPS when behind proxy."""
+    """Base URL for canonical, og:url, sitemap, manifest."""
+    fixed = _resolved_seo_canonical_base()
+    if fixed:
+        return fixed
     url = request.host_url.rstrip('/')
     if request.headers.get('X-Forwarded-Proto') == 'https' and url.startswith('http://'):
         url = 'https://' + url[7:]
     return url
+
+
+@app.before_request
+def _enforce_canonical_host_redirect():
+    """با پایهٔ canonical ثابت، Host غیرهم‌راستا (مثلاً www در حالی که apex استاندارد است) → 301."""
+    fixed = _resolved_seo_canonical_base()
+    if not fixed:
+        return None
+    try:
+        from urllib.parse import urlparse
+
+        parsed = urlparse(fixed if '://' in fixed else f'https://{fixed}')
+        canonical_host = (parsed.netloc or '').split(':')[0].lower()
+    except Exception:
+        return None
+    if not canonical_host:
+        return None
+    path = request.path or '/'
+    if path.startswith('/static/'):
+        return None
+    req_host = (request.host or '').split(':')[0].lower()
+    if not req_host or req_host == canonical_host:
+        return None
+    suffix = request.full_path
+    if not suffix.startswith('/'):
+        suffix = '/' + suffix
+    return redirect(fixed + suffix, code=301)
 
 
 @app.context_processor

@@ -1,6 +1,10 @@
 """
 Database Configuration
 برای امنیت بهتر، می‌توانید از environment variables استفاده کنید
+
+SEO: برای discovercanadatest.com معمولاً نیازی به متغیر نیست (در app.py خودکار ست می‌شود).
+فقط اگر دامنهٔ دیگری یا staging دارید، در سرور بگذارید، مثال:
+  SEO_CANONICAL_BASE=https://example.com
 """
 import os
 
