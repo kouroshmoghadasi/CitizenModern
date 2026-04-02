@@ -1776,7 +1776,7 @@ def webapp_manifest():
         'id': base + '/',
         'name': 'آزمون شهروندی کانادا | CitizenTest',
         'short_name': 'CitizenTest',
-        'description': 'آزمون تمرینی رایگان شهروندی کانادا به فارسی، انگلیسی و فرانسه. ۴۱۴ و ۵۷۱ سوال، Discover Canada.',
+        'description': 'آزمون تمرینی شهروندی کانادا به فارسی، انگلیسی و فرانسه. ۴۱۴ و ۵۷۱ سوال، Discover Canada.',
         'start_url': base + '/',
         'scope': base + '/',
         'display': 'standalone',
