@@ -1857,7 +1857,7 @@ def _enforce_canonical_host_redirect():
 def inject_seo_base_url():
     """همهٔ قالب‌ها: {{ seo_base_url() }} برای canonical و og:image مطلق با HTTPS پشت پروکسی."""
     # با زیاد کردن این عدد بعد از دیپلوی، URL تصویر OG عوض می‌شود و تلگرام/واتساپ گاهی پیش‌نمایش را دوباره می‌کشند.
-    return dict(seo_base_url=_seo_base_url, og_preview_version=os.getenv('OG_PREVIEW_VERSION', '5'))
+    return dict(seo_base_url=_seo_base_url, og_preview_version=os.getenv('OG_PREVIEW_VERSION', '6'))
 
 
 @app.route('/robots.txt')
