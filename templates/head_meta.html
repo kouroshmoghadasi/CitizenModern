@@ -15,14 +15,14 @@
     <meta property="og:title" content="آزمون شهروندی کانادا | تمرین به فارسی و انگلیسی">
     <meta property="og:description" content="آزمون تمرینی شهروندی کانادا. ۱۰۰ تست، ۴۱۴ و ۵۷۱ سوال، خلاصه Discover Canada. آماده‌سازی برای آزمون شهروندی.">
     <meta property="og:url" content="{{ seo_base_url() }}/">
-    <meta property="og:image" content="{{ seo_base_url() }}{{ url_for('static', filename='images/logo.png') }}">
+    <meta property="og:image" content="{{ seo_base_url() }}{{ url_for('static', filename='images/logo.png') }}?v={{ og_preview_version }}">
     <meta property="og:image:alt" content="CitizenTest — آزمون تمرینی شهروندی کانادا">
     <meta property="og:locale" content="fa_IR">
     <meta property="og:locale:alternate" content="en_CA">
     <meta property="og:locale:alternate" content="fr_CA">
     <meta property="og:site_name" content="CitizenTest · discovercanadatest.com">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="{{ seo_base_url() }}{{ url_for('static', filename='images/logo.png') }}">
+    <meta name="twitter:image" content="{{ seo_base_url() }}{{ url_for('static', filename='images/logo.png') }}?v={{ og_preview_version }}">
     <meta name="twitter:title" content="آزمون شهروندی کانادا | تمرین به فارسی و انگلیسی">
     <meta name="twitter:description" content="آزمون تمرینی شهروندی کانادا. ۱۰۰ تست، سوالات ۴۱۴ و ۵۷۱، خلاصه Discover Canada.">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
@@ -46,7 +46,7 @@
         ],
         "logo": {
           "@type": "ImageObject",
-          "url": "{{ seo_base_url() }}{{ url_for('static', filename='images/logo.png') }}"
+          "url": "{{ seo_base_url() }}{{ url_for('static', filename='images/logo.png') }}?v={{ og_preview_version }}"
         }
       },
       "potentialAction": {

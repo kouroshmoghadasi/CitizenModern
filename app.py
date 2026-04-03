@@ -485,8 +485,12 @@ def add_cache_headers(response):
 
 @app.route('/')
 def index():
-    """Serve the main HTML page"""
-    return render_template('canadian_citizenship.html')
+    """Serve the main HTML page (no long-lived HTML cache — تلگرام/OG باید متاهای به‌روز بگیرند)."""
+    resp = app.make_response(render_template('canadian_citizenship.html'))
+    resp.headers['Cache-Control'] = 'no-cache, must-revalidate'
+    resp.headers['Pragma'] = 'no-cache'
+    resp.headers['Expires'] = '0'
+    return resp
 
 @app.route('/book_summary.html')
 def book_summary():
@@ -1852,7 +1856,8 @@ def _enforce_canonical_host_redirect():
 @app.context_processor
 def inject_seo_base_url():
     """همهٔ قالب‌ها: {{ seo_base_url() }} برای canonical و og:image مطلق با HTTPS پشت پروکسی."""
-    return dict(seo_base_url=_seo_base_url)
+    # با زیاد کردن این عدد بعد از دیپلوی، URL تصویر OG عوض می‌شود و تلگرام/واتساپ گاهی پیش‌نمایش را دوباره می‌کشند.
+    return dict(seo_base_url=_seo_base_url, og_preview_version=os.getenv('OG_PREVIEW_VERSION', '5'))
 
 
 @app.route('/robots.txt')
