@@ -1268,5 +1268,255 @@
     "expl_fr": "En 1701.",
     "page": 0,
     "section": "Citizenship practice (571 bank — batch 8)"
+  },
+  {
+    "q": "What was the major trade present between French and Aboriginals in the late 18th Century?",
+    "q_fa": "مهم‌ترین تجارت بین فرانسوی‌ها و بومیان در اواخر قرن هجدهم چه بود؟",
+    "options": ["Oil", "Fur", "Wheat", "Coal"],
+    "correct": 1,
+    "book_text": "The French and Aboriginal people collaborated in the vast fur-trade economy.",
+    "q_fr": "Quel était le principal commerce entre les Français et les Autochtones à la fin du XVIIIe siècle ?",
+    "options_fr": ["Pétrole", "Fourrure", "Blé", "Charbon"],
+    "expl_fr": "Une vaste économie de traite des fourrures.",
+    "page": 0,
+    "section": "Citizenship practice (571 bank — batch 9)"
+  },
+  {
+    "q": "When did the first European settlement in the North of Florida establish?",
+    "q_fa": "نخستین سکونتگاه اروپایی شمال فلوریدا در چه سالی برپا شد؟",
+    "options": ["1607", "1604", "1650", "1670"],
+    "correct": 1,
+    "book_text": "In 1604, the first European settlement north of Florida was established by French explorers Pierre de Monts and Samuel de Champlain.",
+    "q_fr": "Quand la première colonie européenne au nord de la Floride a-t-elle été fondée ?",
+    "options_fr": ["1607", "1604", "1650", "1670"],
+    "expl_fr": "En 1604, par Pierre Du Gua de Monts et Samuel de Champlain.",
+    "page": 0,
+    "section": "Citizenship practice (571 bank — batch 9)"
+  },
+  {
+    "q": "The First European settlement was established by which French explorers?",
+    "q_fa": "نخستین سکونتگاه اروپایی را کدام کاشفان فرانسوی برپا کردند؟",
+    "options": [
+      "Pierre de Monts",
+      "Jacques Cartier",
+      "Samuel de Champlain",
+      "Both A & C"
+    ],
+    "correct": 3,
+    "book_text": "In 1604, the first European settlement north of Florida was established by French explorers Pierre de Monts and Samuel de Champlain.",
+    "q_fr": "Quels explorateurs français ont fondé la première colonie européenne ?",
+    "options_fr": [
+      "Pierre Du Gua de Monts",
+      "Jacques Cartier",
+      "Samuel de Champlain",
+      "À la fois A et C"
+    ],
+    "expl_fr": "Pierre de Monts et Samuel de Champlain.",
+    "page": 0,
+    "section": "Citizenship practice (571 bank — batch 9)"
+  },
+  {
+    "q": "In 1670, King Charles II of England granted the Hudson's Bay Company exclusive trading rights over the watershed draining into Hudson Bay. Then, for the next 100 years, the company competed with which traders?",
+    "q_fa": "در ۱۶۷۰ چارلز دوم به کمپانی خلیج هادسون انحصار داد؛ صد سال بعد با بازرگانان کجا رقابت می‌کرد؟",
+    "options": [
+      "Montreal-based",
+      "Vancouver-based",
+      "New Brunswick-based",
+      "Quebec-based"
+    ],
+    "correct": 0,
+    "book_text": "In 1670, King Charles II of England granted the Hudson's Bay Company exclusive trading rights over the watershed draining into Hudson Bay. For the next 100 years the Company competed with Montreal-based traders.",
+    "q_fr": "Pendant 100 ans, la Compagnie de la baie d'Hudson a rivalisé avec des marchands basés où ?",
+    "options_fr": ["à Montréal", "à Vancouver", "au Nouveau-Brunswick", "à Québec"],
+    "expl_fr": "Avec les marchands montréalais.",
+    "page": 0,
+    "section": "Citizenship practice (571 bank — batch 9)"
+  },
+  {
+    "q": "In 1670 who granted the Hudson's Bay company exclusive trading rights?",
+    "q_fa": "در ۱۶۷۰ چه کسی به کمپانی خلیج هادسون حق انحصار تجارت داد؟",
+    "options": [
+      "King Charles I",
+      "King Charles II",
+      "Queen Elizabeth II",
+      "Queen Victoria"
+    ],
+    "correct": 1,
+    "book_text": "In 1670, King Charles II of England granted the Hudson's Bay Company exclusive trading rights.",
+    "q_fr": "En 1670, qui a accordé à la Compagnie de la baie d'Hudson des droits exclusifs ?",
+    "options_fr": [
+      "Charles Ier",
+      "Charles II",
+      "Élisabeth II",
+      "Victoria"
+    ],
+    "expl_fr": "Charles II d'Angleterre.",
+    "page": 0,
+    "section": "Citizenship practice (571 bank — batch 9)"
+  },
+  {
+    "q": "In which battle did the British defeat the French at Quebec City, ending the rule of the French Empire?",
+    "q_fa": "بریتانیا فرانسه را در کدام نبرد در کبک شکست داد و پایان امپراتوری فرانسه در آمریکا رقم خورد؟",
+    "options": [
+      "Battle of Plains of Abraham",
+      "James Bay",
+      "Boer War",
+      "First World War"
+    ],
+    "correct": 0,
+    "book_text": "In 1759, the British defeated the French in the Battle of the Plains of Abraham at Québec City.",
+    "q_fr": "Dans quelle bataille les Britanniques ont-ils vaincu les Français à Québec ?",
+    "options_fr": [
+      "Bataille des Plaines d'Abraham",
+      "Baie James",
+      "Guerre des Boers",
+      "Première Guerre mondiale"
+    ],
+    "expl_fr": "Bataille des Plaines d'Abraham en 1759.",
+    "page": 0,
+    "section": "Citizenship practice (571 bank — batch 9)"
+  },
+  {
+    "q": "The French-speaking Catholic people, who strove to preserve their way of life in the English-speaking Protestant-ruled British Empire are known as",
+    "q_fa": "کاتولیک‌های فرانسه‌زبان که می‌خواستند سبک زندگی‌شان را در امپراتوری پروتستانت انگلیسی‌زبان حفظ کنند، چه نامیده می‌شدند؟",
+    "options": ["Canadiens", "Habitants", "Both", "None of above"],
+    "correct": 2,
+    "book_text": "The French-speaking Catholic people, known as habitants or Canadiens, strove to preserve their way of life in the English-speaking, Protestant-ruled British Empire.",
+    "q_fr": "Comment appelait-on les catholiques francophones qui voulaient préserver leur mode de vie ?",
+    "options_fr": ["Canadiens", "Habitants", "Les deux", "Aucune de ces réponses"],
+    "expl_fr": "Habitants ou Canadiens.",
+    "page": 0,
+    "section": "Citizenship practice (571 bank — batch 9)"
+  },
+  {
+    "q": "Following the Battle of the Plains of Abraham at Québec City, the British renamed the colony as?",
+    "q_fa": "پس از نبرد دشت آبراهام، بریتانیا مستعمره را چه نامید؟",
+    "options": ["Ontario", "Prairie Province", "Province of Quebec", "New Brunswick"],
+    "correct": 2,
+    "book_text": "After the Battle of the Plains of Abraham at Québec City, Great Britain renamed the colony the 'Province of Quebec.'",
+    "q_fr": "Après les Plaines d'Abraham, la Grande-Bretagne a renommé la colonie",
+    "options_fr": ["Ontario", "Province des Prairies", "Province de Québec", "Nouveau-Brunswick"],
+    "expl_fr": "« Province of Quebec ».",
+    "page": 0,
+    "section": "Citizenship practice (571 bank — batch 9)"
+  },
+  {
+    "q": "The British Parliament passed the Quebec act in 1774 which restored the system of law based on",
+    "q_fa": "پارلمان بریتانیا قانون کبک ۱۷۷۴ را گذراند و نظام حقوقی را بر پایهٔ چه چیزی بازگرداند؟",
+    "options": [
+      "French Civil Law",
+      "British Criminal Law",
+      "Both A & B",
+      "Equality Law"
+    ],
+    "correct": 2,
+    "book_text": "The Quebec Act restored French civil law while maintaining British criminal law.",
+    "q_fr": "Le Quebec Act de 1774 a rétabli un système juridique fondé sur",
+    "options_fr": [
+      "le droit civil français",
+      "la common law pénale britannique",
+      "à la fois A et B",
+      "le droit de l'égalité"
+    ],
+    "expl_fr": "Droit civil français et droit pénal britannique.",
+    "page": 0,
+    "section": "Citizenship practice (571 bank — batch 9)"
+  },
+  {
+    "q": "What benefits did the Quebec act 1774 give to the Catholic people?",
+    "q_fa": "قانون کبک ۱۷۷۴ چه مزایایی به کاتولیک‌ها داد؟",
+    "options": [
+      "Religious Freedom",
+      "They can rule the British Empire",
+      "They can hold the Public Offices",
+      "Both A & C"
+    ],
+    "correct": 3,
+    "book_text": "The Quebec Act accommodated the principles of British institutions to the reality of the province. It allowed religious freedom for Catholics and permitted them to hold public office, a practice not then allowed in Britain.",
+    "q_fr": "Quels avantages le Quebec Act de 1774 a-t-il offerts aux catholiques ?",
+    "options_fr": [
+      "Liberté religieuse",
+      "Ils pouvaient gouverner l'Empire britannique",
+      "Ils pouvaient occuper des fonctions publiques",
+      "À la fois A et C"
+    ],
+    "expl_fr": "Liberté religieuse et accès aux fonctions publiques.",
+    "page": 0,
+    "section": "Citizenship practice (571 bank — batch 9)"
+  },
+  {
+    "q": "For which purpose did the British Parliament pass the Quebec Act of 1774?",
+    "q_fa": "پارلمان بریتانیا قانون کبک ۱۷۷۴ را با چه هدفی تصویب کرد؟",
+    "options": [
+      "To better govern the English catholic majority",
+      "To better govern the French Roman Catholic Majority",
+      "To better govern the immigrants and armed forces",
+      "To better govern the non-official language speakers"
+    ],
+    "correct": 1,
+    "book_text": "To better govern the French Roman Catholic majority, the British Parliament passed the Quebec Act of 1774.",
+    "q_fr": "Pourquoi le Parlement britannique a-t-il adopté le Quebec Act de 1774 ?",
+    "options_fr": [
+      "Mieux gouverner la majorité catholique anglaise",
+      "Mieux gouverner la majorité catholique romaine française",
+      "Mieux gouverner les immigrants et les forces armées",
+      "Mieux gouverner les locuteurs de langues non officielles"
+    ],
+    "expl_fr": "Pour mieux gouverner la majorité catholique française.",
+    "page": 0,
+    "section": "Citizenship practice (571 bank — batch 9)"
+  },
+  {
+    "q": "More than 40,000 people loyal to the Crown fled the oppression of the American Revolution to settle in Nova Scotia and Quebec and were declared as",
+    "q_fa": "بیش از ۴۰ هزار نفر وفادار به تاج که از انقلاب آمریکا گریختند و در نوا اسکوشیا و کبک ساکن شدند، چه نامیده شدند؟",
+    "options": ["Traitors", "Loyalist", "Independent", "Enemies"],
+    "correct": 1,
+    "book_text": "More than 40,000 people loyal to the Crown, called 'Loyalists,' fled the oppression of the American Revolution to settle in Nova Scotia and Quebec.",
+    "q_fr": "Comment appelait-on les plus de 40 000 personnes fidèles à la Couronne venues au Canada après la Révolution américaine ?",
+    "options_fr": ["Traîtres", "Loyalistes", "Indépendants", "Ennemis"],
+    "expl_fr": "Les Loyalistes.",
+    "page": 0,
+    "section": "Citizenship practice (571 bank — batch 9)"
+  },
+  {
+    "q": "In 1792, some black Nova Scotians, who were given poor land, moved on to established Freetown, called",
+    "q_fa": "در ۱۷۹۲ برخی نواسکوشایی‌های سیاه‌پوست که زمین بد گرفته بودند، فری‌تاون را در کجا بنیاد نهادند؟",
+    "options": ["Sierra Leone", "Montreal", "Vancouver", "Boston"],
+    "correct": 0,
+    "book_text": "In turn, in 1792, some black Nova Scotians, who were given poor land, moved on to establish Freetown, Sierra Leone (West Africa).",
+    "q_fr": "En 1792, certains Néo-Écossais noirs ont fondé Freetown où ?",
+    "options_fr": ["Sierra Leone", "Montréal", "Vancouver", "Boston"],
+    "expl_fr": "À Freetown, Sierra Leone.",
+    "page": 0,
+    "section": "Citizenship practice (571 bank — batch 9)"
+  },
+  {
+    "q": "In 1776, 13 British Colonies in the south of Quebec declared independence and formed",
+    "q_fa": "در ۱۷۷۶ سیزده مستعمرهٔ بریتانیا جنوب کبک استقلال اعلام کردند و چه تشکیل دادند؟",
+    "options": ["United States", "South America", "England", "Independent Territory"],
+    "correct": 0,
+    "book_text": "In 1776, the 13 British colonies to the south of Quebec declared independence and formed the United States.",
+    "q_fr": "En 1776, les 13 colonies britanniques au sud du Québec ont formé",
+    "options_fr": [
+      "les États-Unis",
+      "l'Amérique du Sud",
+      "l'Angleterre",
+      "un territoire indépendant"
+    ],
+    "expl_fr": "Les États-Unis d'Amérique.",
+    "page": 0,
+    "section": "Citizenship practice (571 bank — batch 9)"
+  },
+  {
+    "q": "Joseph Brant led thousands of which Loyalist Mohawks to Canada?",
+    "q_fa": "جوزف برانت هزاران مهاجر وفادار موهاوک از کدام گروه را به کانادا آورد؟",
+    "options": ["German", "Indian", "Korean", "Australian"],
+    "correct": 1,
+    "book_text": "Joseph Brant led thousands of Loyalist Mohawk-Indians into Canada.",
+    "q_fr": "Joseph Brant a conduit au Canada des milliers de Mohawks loyalistes d'origine",
+    "options_fr": ["allemande", "amérindienne", "coréenne", "australienne"],
+    "expl_fr": "Mohawks amérindiens (loyalistes).",
+    "page": 0,
+    "section": "Citizenship practice (571 bank — batch 9)"
   }
 ]
