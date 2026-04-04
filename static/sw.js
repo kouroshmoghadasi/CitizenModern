@@ -2,7 +2,7 @@
  * CitizenTest PWA Service Worker
  * Caches main pages and static assets for offline / Add to Home Screen.
  */
-const CACHE_NAME = 'citizentest-v2';
+const CACHE_NAME = 'citizentest-v4';
 const URLS = [
   '/',
   '/book_summary.html',
@@ -44,14 +44,20 @@ self.addEventListener('fetch', function (event) {
   event.respondWith(
     caches.match(event.request).then(function (cached) {
       if (cached) return cached;
-      return fetch(event.request).then(function (res) {
-        if (!res || res.status !== 200 || res.type !== 'basic') return res;
-        var clone = res.clone();
-        caches.open(CACHE_NAME).then(function (cache) {
-          cache.put(event.request, clone);
+      return fetch(event.request)
+        .then(function (res) {
+          if (!res || res.status !== 200 || res.type !== 'basic') return res;
+          var clone = res.clone();
+          caches.open(CACHE_NAME).then(function (cache) {
+            cache.put(event.request, clone);
+          });
+          return res;
+        })
+        .catch(function () {
+          return caches.match('/').then(function (fallback) {
+            return fallback || Response.error();
+          });
         });
-        return res;
-      });
     })
   );
 });

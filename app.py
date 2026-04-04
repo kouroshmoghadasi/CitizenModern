@@ -1232,9 +1232,14 @@ def citizenship_571():
         show_paywall = False
         max_question_571 = len(all_questions)
     else:
-        questions = all_questions[:21] if len(all_questions) >= 21 else all_questions
-        show_paywall = True
-        max_question_571 = 22
+        if len(all_questions) <= 21:
+            questions = all_questions
+            show_paywall = False
+            max_question_571 = len(all_questions)
+        else:
+            questions = all_questions[:21]
+            show_paywall = True
+            max_question_571 = 22
     resp = app.make_response(render_template(
         'citizenship_571.html',
         questions=questions,
