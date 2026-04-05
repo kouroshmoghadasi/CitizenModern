@@ -53,6 +53,22 @@
         .table-filter-row label { font-size: 0.85rem; font-weight: 600; color: #555; }
         .table-filter-row input[type="search"] { padding: 10px 12px; border: 1px solid #ccc; border-radius: 8px; width: 100%; font: inherit; }
         .table-filter-hint { font-size: 0.8rem; color: #64748b; margin-top: 4px; }
+        .cell-muted { color: #94a3b8; }
+        .active-sub-hint { font-size: 0.85rem; color: #666; margin-bottom: 12px; }
+        table.active-subscribers-table tbody tr:nth-child(odd) { background: #fff; }
+        table.active-subscribers-table tbody tr:nth-child(even) { background: #f1f5f9; }
+        table.active-subscribers-table tbody tr:hover { background: #e2e8f0 !important; }
+        table.active-subscribers-table th, table.active-subscribers-table td { border-bottom: 1px solid #e2e8f0; }
+        .days-visual { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; min-width: 160px; max-width: 280px; }
+        .days-visual-num { font-weight: 700; font-variant-numeric: tabular-nums; min-width: 2.25em; color: #1e293b; }
+        .days-bar-track { flex: 1; min-width: 72px; height: 12px; background: #e2e8f0; border-radius: 999px; overflow: hidden; border: 1px solid #cbd5e1; }
+        .days-bar-fill { height: 100%; border-radius: 999px; transition: width 0.3s ease; }
+        .days-bar-fill.tier-ok { background: linear-gradient(90deg, #4ade80, #16a34a); }
+        .days-bar-fill.tier-caution { background: linear-gradient(90deg, #facc15, #ca8a04); }
+        .days-bar-fill.tier-warning { background: linear-gradient(90deg, #fb923c, #ea580c); }
+        .days-bar-fill.tier-critical { background: linear-gradient(90deg, #f87171, #dc2626); }
+        .days-bar-fill.tier-muted { background: #94a3b8; width: 0 !important; min-width: 0; }
+        .row-num-cell { color: #64748b; font-weight: 600; font-variant-numeric: tabular-nums; width: 3rem; }
     </style>
 </head>
 <body>
@@ -62,6 +78,52 @@
             <a href="{{ url_for('admin_visitor_activity') }}" target="_blank" rel="noopener noreferrer" class="btn-outline" style="text-decoration: none; display: inline-block;">👥 حضور و فعالیت بازدیدکنندگان</a>
             <a href="{{ url_for('admin_exam_visitor_stats') }}" target="_blank" rel="noopener noreferrer" class="btn-outline" style="text-decoration: none; display: inline-block;">📊 آمار بازدید آزمون‌های نمونه</a>
             <a href="{{ url_for('admin_logout') }}">خروج</a>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>اشتراک‌های فعال (هنوز منقضی نشده) <span style="font-weight: 600; color: #64748b; font-size: 0.95rem;">— {{ active_subscription_users|length }} نفر</span></h2>
+        <div class="card-body">
+            {% if active_subscription_users %}
+            <p class="active-sub-hint">مرتب‌شده از نزدیک‌ترین انقضا. تاریخ انقضا برای کل بسته (آزمون‌های نمونه و ۴۱۴) یکی است. <strong>۰</strong> روز یعنی امروز آخرین روز. نوار سبز/زرد/نارنجی/قرمز بر اساس فوریت باقی‌مانده است؛ طول نوار تا سقف ۳۰ روز مقیاس شده (بیش از ۳۰ روز = نوار پر).</p>
+            <div style="overflow-x: auto;">
+                <table class="active-subscribers-table">
+                    <thead>
+                        <tr>
+                            <th>ردیف</th>
+                            <th>موبایل</th>
+                            <th>نام و نام خانوادگی</th>
+                            <th>تاریخ انقضا</th>
+                            <th>روز تا انقضا</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for u in active_subscription_users %}
+                        <tr>
+                            <td class="row-num-cell">{{ loop.index }}</td>
+                            <td dir="ltr">{{ u.mobile }}</td>
+                            <td>{% set _nm = ((u.first_name or '') ~ ' ' ~ (u.last_name or ''))|trim %}{{ _nm or '—' }}</td>
+                            <td dir="ltr">{% if u.subscription_expiry %}{{ u.subscription_expiry }}{% else %}<span class="cell-muted">—</span>{% endif %}</td>
+                            <td>
+                                {% if u.days_remaining is not none %}
+                                <div class="days-visual" title="{{ u.days_remaining }} روز مانده تا انقضا">
+                                    <span class="days-visual-num">{{ u.days_remaining }}</span>
+                                    <div class="days-bar-track" aria-hidden="true">
+                                        <div class="days-bar-fill tier-{{ u.days_tier }}" style="width: {{ u.days_bar_pct }}%;"></div>
+                                    </div>
+                                </div>
+                                {% else %}
+                                <span class="cell-muted">—</span>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% else %}
+            <p style="color: #64748b;">کاربری با اشتراک فعال (تاریخ انقضا از امروز به بعد) ثبت نشده یا اتصال به پایگاه داده برقرار نیست.</p>
+            {% endif %}
         </div>
     </div>
 

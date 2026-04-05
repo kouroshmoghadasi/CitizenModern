@@ -7,6 +7,7 @@
     <link rel="apple-touch-icon" href="{{ url_for('static', filename='images/logo.png') }}">
     <title>لیست قبولی آزمون شهروندی | discovercanadatest.com</title>
     <meta name="description" content="لیست قبولی شرکت‌کنندگان آزمون شهروندی از ۲۵ ژانویه ۲۰۲۶؛ به‌روزرسانی در CitizenTest.">
+    {% include '_seo_meta_keywords_brand.html' %}
     <meta name="robots" content="index, follow">
     {% set seo_title = "لیست قبولی آزمون شهروندی کانادا | CitizenTest" %}
     {% set seo_description = "لیست قبولی شرکت‌کنندگان از ۲۵ ژانویه ۲۰۲۶؛ آزمون تمرینی شهروندی discovercanadatest.com." %}
@@ -63,6 +64,19 @@
             margin-bottom: 0;
             line-height: 1.4;
         }
+        .report-intro {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: clamp(16px, 4vw, 22px);
+            margin-bottom: 20px;
+            line-height: 1.75;
+            color: var(--text);
+            box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+        }
+        .report-intro p { margin: 0 0 12px; }
+        .report-intro p:last-child { margin-bottom: 0; }
+        .report-intro a { color: var(--accent); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
         @media (max-width: 640px) {
             body {
                 padding: max(12px, env(safe-area-inset-top, 0px)) max(12px, env(safe-area-inset-right, 0px)) max(20px, env(safe-area-inset-bottom, 0px)) max(12px, env(safe-area-inset-left, 0px));
@@ -103,6 +117,14 @@
         <div class="report-page-header">
             <h1>گزارش قبولی و فهرست انتظار امتحان</h1>
         </div>
+        <article class="report-intro" lang="fa">
+            <p>
+                این صفحه در <strong>CitizenTest</strong> (<a href="{{ url_for('index') }}">discovercanadatest.com</a>) یک <strong>گزارش داوطلبانه و آموزشی</strong> است: نام شرکت‌کنندگان در جلسات تمرینی یا آزمون‌های مرتبط با <strong>آزمون شهروندی کانادا</strong> و کتاب <strong>Discover Canada</strong> اینجا ثبت می‌شود تا انگیزهٔ یادگیری و تجربهٔ جمعی دیده شود. این فهرست <strong>رسمی IRCC نیست</strong> و جایگزین نتیجهٔ رسمی مهاجرت نمی‌شود.
+            </p>
+            <p>
+                برای آمادگی آزمون می‌توانید از <a href="{{ url_for('citizenship_414') }}">بانک ۴۱۴ سوال</a>، <a href="{{ url_for('citizenship_571') }}">۵۷۱ سوال</a>، <a href="{{ url_for('citizenship_exams') }}">آزمون‌های فصلی</a> و <a href="{{ url_for('book_summary') }}">خلاصهٔ کتاب</a> استفاده کنید.
+            </p>
+        </article>
         {% include 'citizenship_exam_report_include.html' %}
     </div>
 </body>

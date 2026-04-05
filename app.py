@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request, render_template, send_from_directory, redirect, session, abort
+from flask import Flask, jsonify, request, render_template, send_from_directory, redirect, session, abort, url_for
 from flask_cors import CORS
 import psycopg2
 from psycopg2.extras import RealDictCursor
@@ -477,8 +477,8 @@ def add_cache_headers(response):
     if path.startswith('/static/'):
         # Static files (images, CSS, JS): cache 1 year (use versioned filenames if you change them)
         response.headers['Cache-Control'] = 'public, max-age=31536000, immutable'
-    elif path in ('/discover.pdf', '/robots.txt', '/sitemap.xml'):
-        # PDF and SEO files: cache 1 day
+    elif path in ('/discover.pdf', '/robots.txt', '/sitemap.xml', '/site-map'):
+        # PDF و فایل‌های SEO / نقشهٔ سایت: کش ۱ روز
         response.headers['Cache-Control'] = 'public, max-age=86400'
     return response
 
@@ -497,6 +497,18 @@ def book_summary():
     """Serve the book summary page"""
     log_visitor('/book_summary.html')
     return render_template('book_summary.html')
+
+
+@app.route('/book_summary')
+def book_summary_short_url():
+    """یک URL کانونیکال: جلوگیری از نسخهٔ تکراری بدون .html در گوگل."""
+    return redirect(url_for('book_summary'), code=301)
+
+
+@app.route('/index.html')
+def index_html_alias():
+    """نسخهٔ تکراری رایج صفحهٔ اصلی → یک کانونیکال."""
+    return redirect(url_for('index'), code=301)
 
 
 @app.route('/about')
@@ -1213,7 +1225,7 @@ def _load_canadian_symbols_questions():
 
 @app.route('/citizenship-571')
 def citizenship_571():
-    """۵۷۱ سوال — سوالات ۱–۷۱ رایگان؛ از ۷۲ به بعد با اشتراک (همان نام کاربری ۴۱۴)."""
+    """۵۷۱ سوال — ۲۱ سوال اول رایگان؛ ادامه با اشتراک (همان سشن ۴۱۴)."""
     log_visitor('/citizenship-571')
     all_questions = _load_571_questions()
     today = _today()
@@ -1378,6 +1390,9 @@ def citizenship_categorized_tests():
     resp.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
     resp.headers['Pragma'] = 'no-cache'
     resp.headers['Expires'] = '0'
+    # تقویت canonical برای GSC (همراه با <link rel="canonical"> در قالب)
+    base = _seo_base_url().rstrip('/')
+    resp.headers['Link'] = f'<{base}/citizenship-exams>; rel="canonical"'
     return resp
 
 
@@ -1879,36 +1894,50 @@ Sitemap: {base}/sitemap.xml
     return body, 200, {'Content-Type': 'text/plain; charset=utf-8'}
 
 
+# یک منبع برای sitemap.xml و صفحهٔ HTML /site-map (لینک داخلی و خزیدن گوگل)
+_SITEMAP_PAGE_DEFS = [
+    {'path': '/', 'changefreq': 'daily', 'priority': '1.0', 'label_fa': 'صفحهٔ اصلی — ۱۰۰ تست تمرینی', 'label_en': 'Home'},
+    {'path': '/site-map', 'changefreq': 'monthly', 'priority': '0.55', 'label_fa': 'نقشهٔ سایت (فهرست همهٔ صفحات)', 'label_en': 'HTML sitemap'},
+    {'path': '/about', 'changefreq': 'monthly', 'priority': '0.6', 'label_fa': 'دربارهٔ سایت و تماس', 'label_en': 'About'},
+    {'path': '/book_summary.html', 'changefreq': 'weekly', 'priority': '0.9', 'label_fa': 'خلاصهٔ کتاب Discover Canada (سه زبان)', 'label_en': 'Book summary'},
+    {'path': '/citizenship-414', 'changefreq': 'weekly', 'priority': '0.9', 'label_fa': '۴۱۴ سوال شهروندی', 'label_en': '414 questions'},
+    {'path': '/citizenship-571', 'changefreq': 'weekly', 'priority': '0.9', 'label_fa': '۵۷۱ سوال شهروندی', 'label_en': '571 questions'},
+    {'path': '/citizenship-exams', 'changefreq': 'weekly', 'priority': '0.85', 'label_fa': 'فهرست آزمون‌های نمونه (فصل‌به‌فصل)', 'label_en': 'Sample exams index'},
+    {'path': '/citizenship-introduction', 'changefreq': 'weekly', 'priority': '0.85', 'label_fa': 'آزمون Introduction', 'label_en': 'Introduction'},
+    {'path': '/citizenship-rights-responsibilities', 'changefreq': 'weekly', 'priority': '0.85', 'label_fa': 'آزمون Rights and Responsibilities', 'label_en': 'Rights & responsibilities'},
+    {'path': '/citizenship-who-we-are', 'changefreq': 'weekly', 'priority': '0.85', 'label_fa': 'آزمون Who We Are', 'label_en': 'Who we are'},
+    {'path': '/citizenship-canadas-history', 'changefreq': 'weekly', 'priority': '0.85', 'label_fa': "آزمون Canada's History", 'label_en': "Canada's history"},
+    {'path': '/citizenship-how-canadians-govern-themselves', 'changefreq': 'weekly', 'priority': '0.85', 'label_fa': 'آزمون How Canadians Govern', 'label_en': 'How Canadians govern'},
+    {'path': '/citizenship-federal-elections', 'changefreq': 'weekly', 'priority': '0.85', 'label_fa': 'آزمون Federal Elections', 'label_en': 'Federal elections'},
+    {'path': '/citizenship-canadian-symbols', 'changefreq': 'weekly', 'priority': '0.85', 'label_fa': 'آزمون Canadian Symbols', 'label_en': 'Canadian symbols'},
+    {'path': '/citizenship-justice-system', 'changefreq': 'weekly', 'priority': '0.85', 'label_fa': 'آزمون Justice System', 'label_en': 'Justice system'},
+    {'path': '/citizenship-modern-canada', 'changefreq': 'weekly', 'priority': '0.85', 'label_fa': 'آزمون Modern Canada', 'label_en': 'Modern Canada'},
+    {'path': '/exam1', 'changefreq': 'weekly', 'priority': '0.85', 'label_fa': 'Exam1 — Rights & Responsibilities', 'label_en': 'Exam 1'},
+    {'path': '/exam2', 'changefreq': 'weekly', 'priority': '0.85', 'label_fa': "Exam2 — Canada's History", 'label_en': 'Exam 2'},
+    {'path': '/exam3', 'changefreq': 'weekly', 'priority': '0.85', 'label_fa': "Exam3 — Canada's History (نمونهٔ دوم)", 'label_en': 'Exam 3'},
+    {'path': '/citizenship-exam-report', 'changefreq': 'weekly', 'priority': '0.55', 'label_fa': 'لیست قبولی آزمون شهروندی', 'label_en': 'Exam pass list'},
+]
+
+
+@app.route('/site-map')
+def html_site_map():
+    """نقشهٔ سایت HTML — لینک داخلی برای خزنده‌ها و کاربران (مکمل sitemap.xml)."""
+    log_visitor('/site-map')
+    return render_template('site_map.html', site_map_pages=_SITEMAP_PAGE_DEFS)
+
+
 @app.route('/sitemap.xml')
 def sitemap():
     """Serve sitemap.xml for SEO with lastmod for crawlers"""
     base = _seo_base_url()
     lastmod = datetime.now(timezone.utc).strftime('%Y-%m-%d')
-    pages = [
-        ('/', 'daily', '1.0'),
-        ('/about', 'monthly', '0.6'),
-        ('/book_summary.html', 'weekly', '0.9'),
-        ('/citizenship-414', 'weekly', '0.9'),
-        ('/citizenship-571', 'weekly', '0.9'),
-        ('/citizenship-exams', 'weekly', '0.85'),
-        ('/citizenship-introduction', 'weekly', '0.85'),
-        ('/citizenship-rights-responsibilities', 'weekly', '0.85'),
-        ('/citizenship-who-we-are', 'weekly', '0.85'),
-        ('/citizenship-canadas-history', 'weekly', '0.85'),
-        ('/citizenship-how-canadians-govern-themselves', 'weekly', '0.85'),
-        ('/citizenship-federal-elections', 'weekly', '0.85'),
-        ('/citizenship-canadian-symbols', 'weekly', '0.85'),
-        ('/citizenship-justice-system', 'weekly', '0.85'),
-        ('/citizenship-modern-canada', 'weekly', '0.85'),
-        ('/exam1', 'weekly', '0.85'),
-        ('/exam2', 'weekly', '0.85'),
-        ('/exam3', 'weekly', '0.85'),
-        ('/citizenship-exam-report', 'weekly', '0.55'),
-    ]
     xml = '''<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 '''
-    for path, changefreq, priority in pages:
+    for entry in _SITEMAP_PAGE_DEFS:
+        path = entry['path']
+        changefreq = entry['changefreq']
+        priority = entry['priority']
         xml += f'''  <url>
     <loc>{base}{path}</loc>
     <lastmod>{lastmod}</lastmod>
@@ -2548,10 +2577,112 @@ def admin_logout():
     session.pop('admin_username', None)
     return redirect('/admin')
 
+
+def _subscription_expiry_as_date(expiry_val):
+    if expiry_val is None:
+        return None
+    if isinstance(expiry_val, datetime):
+        return expiry_val.date()
+    return expiry_val
+
+
+def _days_until_expiry(expiry_val, today):
+    """تعداد روز از امروز تا تاریخ انقضا (همان روز انقضا → ۰)."""
+    d = _subscription_expiry_as_date(expiry_val)
+    if d is None:
+        return None
+    return (d - today).days
+
+
+def _admin_days_bar_percent(days_remaining):
+    """عرض نوار نسبی: ۳۰ روز = ۱۰۰٪؛ بیشتر همان ۱۰۰٪؛ حداقل ~۶٪ برای دیده شدن."""
+    if days_remaining is None or days_remaining < 0:
+        return 0
+    capped = min(int(days_remaining), 30)
+    pct = int(round(100 * capped / 30))
+    return min(100, max(6, pct))
+
+
+def _admin_days_expiry_tier(days_remaining):
+    """کلاس رنگی نوار: critical / warning / caution / ok."""
+    if days_remaining is None:
+        return 'muted'
+    if days_remaining <= 3:
+        return 'critical'
+    if days_remaining <= 7:
+        return 'warning'
+    if days_remaining <= 14:
+        return 'caution'
+    return 'ok'
+
+
+def _fetch_active_subscription_users_for_admin():
+    """
+    کاربرانی که حداقل یک ردیف اشتراک فعال با انقضا >= امروز دارند.
+    تاریخ انقضای واحد (هر دو بسته معمولاً یکی است؛ MAX از ردیف‌های فعال).
+    """
+    today = _today()
+    rows_out = []
+    conn = get_db_connection()
+    if not conn:
+        return rows_out
+    try:
+        cur = conn.cursor(cursor_factory=RealDictCursor)
+        _ensure_subscription_users_citizenship_columns(cur)
+        conn.commit()
+        cur.execute(
+            """
+            SELECT u.id, u.mobile, u.first_name, u.last_name,
+                   (SELECT MAX(expiry_date) FROM subscription_subscriptions
+                    WHERE user_id = u.id AND status = 'active' AND expiry_date >= %s) AS subscription_expiry
+            FROM subscription_users u
+            WHERE EXISTS (
+                SELECT 1 FROM subscription_subscriptions s
+                WHERE s.user_id = u.id AND s.status = 'active' AND s.expiry_date >= %s
+            )
+            ORDER BY (
+                SELECT MIN(s.expiry_date) FROM subscription_subscriptions s
+                WHERE s.user_id = u.id AND s.status = 'active' AND s.expiry_date >= %s
+            ) ASC NULLS LAST, u.id DESC
+            """,
+            (today, today, today),
+        )
+        for r in cur.fetchall():
+            exp = r.get('subscription_expiry')
+            days_left = _days_until_expiry(exp, today)
+            rows_out.append(
+                {
+                    'id': r['id'],
+                    'mobile': r['mobile'],
+                    'first_name': r.get('first_name') or '',
+                    'last_name': r.get('last_name') or '',
+                    'subscription_expiry': exp.isoformat()
+                    if exp is not None and hasattr(exp, 'isoformat')
+                    else None,
+                    'days_remaining': days_left,
+                    'days_bar_pct': _admin_days_bar_percent(days_left),
+                    'days_tier': _admin_days_expiry_tier(days_left),
+                }
+            )
+        cur.close()
+    except Exception as ex:
+        print(f"admin active subscribers: {ex}")
+    finally:
+        try:
+            conn.close()
+        except Exception:
+            pass
+    return rows_out
+
+
 @app.route('/admin/dashboard')
 @_admin_required
 def admin_dashboard():
-    return render_template('admin_dashboard.html')
+    active_subscription_users = _fetch_active_subscription_users_for_admin()
+    return render_template(
+        'admin_dashboard.html',
+        active_subscription_users=active_subscription_users,
+    )
 
 
 @app.route('/admin/exam-visitor-stats')

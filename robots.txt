@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://citizentest.invoisky.com/sitemap.xml
+# در سرور production معمولاً Flask مسیر /robots.txt را پویا سرو می‌کند (Sitemap با دامنهٔ فعلی).
+# دامنهٔ اصلی: https://discovercanadatest.com
+Sitemap: https://discovercanadatest.com/sitemap.xml

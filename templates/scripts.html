@@ -5438,6 +5438,32 @@
         
         // Make filterAds available globally
         window.filterAds = filterAds;
+        
+        /** Hide category filter buttons that have no .ad-tile with matching data-category */
+        function pruneEmptyAdCategoryButtons() {
+            var section = document.getElementById('ads-section');
+            if (!section) return;
+            var tiles = section.querySelectorAll('.ads-grid .ad-tile[data-category]');
+            var used = new Set();
+            for (var i = 0; i < tiles.length; i++) {
+                var c = tiles[i].getAttribute('data-category');
+                if (c) used.add(c);
+            }
+            var buttons = section.querySelectorAll('.category-btn[data-category]');
+            var activeHidden = false;
+            for (var j = 0; j < buttons.length; j++) {
+                var btn = buttons[j];
+                var cat = btn.getAttribute('data-category');
+                if (cat === 'all') continue;
+                if (!used.has(cat)) {
+                    if (btn.classList.contains('active')) activeHidden = true;
+                    btn.style.display = 'none';
+                    btn.setAttribute('aria-hidden', 'true');
+                }
+            }
+            if (activeHidden) filterAds('all');
+        }
+        document.addEventListener('DOMContentLoaded', pruneEmptyAdCategoryButtons);
     </script>
     
     <!-- دکمه بازگردانی آگهی — وقتی بنر با × بسته شد، ظاهر می‌شود -->
@@ -5451,15 +5477,11 @@
                 <div class="ad-sticky-ticker" aria-hidden="true">
                     <span class="ad-sticky-item">🏠 مشاورین املاک · Real Estate Consultants · خرید و فروش و اجاره ملک</span>
                     <span class="ad-sticky-sep">◆</span>
-                    <span class="ad-sticky-item">متین تیره دست · مشاور املاک · خرید و فروش مسکن</span>
-                    <span class="ad-sticky-sep">◆</span>
-                    <span class="ad-sticky-item">🔧 New York Garage · صافکاری · نقاشی · مکانیکی · تعمیرگاه خودرو</span>
+                    <span class="ad-sticky-item">🏠 مشاورین املاک · Real Estate Consultants · خرید و فروش و اجاره ملک</span>
                     <span class="ad-sticky-sep">◆</span>
                     <span class="ad-sticky-item">🏠 مشاورین املاک · Real Estate Consultants · خرید و فروش و اجاره ملک</span>
                     <span class="ad-sticky-sep">◆</span>
-                    <span class="ad-sticky-item">متین تیره دست · مشاور املاک · خرید و فروش مسکن</span>
-                    <span class="ad-sticky-sep">◆</span>
-                    <span class="ad-sticky-item">🔧 New York Garage · صافکاری · نقاشی · مکانیکی · تعمیرگاه خودرو</span>
+                    <span class="ad-sticky-item">🏠 مشاورین املاک · Real Estate Consultants · خرید و فروش و اجاره ملک</span>
                 </div>
             </div>
         </a>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <link rel="icon" href="{{ url_for('static', filename='images/logo.png') }}" type="image/png">
+    <link rel="apple-touch-icon" href="{{ url_for('static', filename='images/logo.png') }}">
+    <title>نقشهٔ سایت | CitizenTest — discovercanadatest.com</title>
+    <meta name="description" content="فهرست همهٔ صفحات عمومی CitizenTest برای آزمون شهروندی کانادا: تست اصلی، ۴۱۴ و ۵۷۱ سوال، خلاصه Discover Canada، آزمون‌های فصلی و Exam1–3 — برای موتورهای جستجو و بازدیدکنندگان.">
+    {% include '_seo_meta_keywords_brand.html' %}
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    {% set seo_title = "نقشهٔ سایت | CitizenTest — آزمون شهروندی کانادا" %}
+    {% set seo_description = "فهرست لینک‌های عمومی سایت: صفحه اصلی، بانک سوالات، خلاصه کتاب Discover Canada و آزمون‌های نمونه." %}
+    {% set seo_image = "images/logo.png" %}
+    {% set seo_path = "/site-map" %}
+    {% set seo_og_type = "website" %}
+    {% include '_seo_head_social.html' %}
+    {% include 'pwa_meta.html' %}
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: Tahoma, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            min-height: 100vh;
+            min-height: 100dvh;
+            padding: max(16px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) max(24px, env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px));
+            line-height: 1.75;
+            color: #1a1a1a;
+        }
+        .wrap { max-width: 640px; margin: 0 auto; width: 100%; }
+        .back-bar { margin-bottom: 18px; }
+        .back-btn {
+            display: inline-block; padding: 12px 18px; min-height: 48px; line-height: 1.3;
+            background: linear-gradient(135deg, #1e3c72 0%, #2c5282 100%); color: #fff;
+            text-decoration: none; border-radius: 10px; font-weight: 600;
+            -webkit-tap-highlight-color: transparent; touch-action: manipulation;
+        }
+        .back-btn:hover { opacity: 0.92; }
+        .page-header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2c5282 100%);
+            color: #fff; padding: 24px 20px; border-radius: 16px; margin-bottom: 20px;
+            text-align: center; box-shadow: 0 8px 24px rgba(30,60,114,0.25);
+        }
+        .page-header h1 { font-size: clamp(1.1rem, 4vw, 1.35rem); margin-bottom: 8px; font-weight: 700; }
+        .page-header .sub { opacity: 0.95; font-size: 0.88rem; }
+        .card {
+            background: #fff; border-radius: 14px; padding: 20px 18px; margin-bottom: 14px;
+            border: 1px solid rgba(30, 60, 114, 0.1);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+        }
+        .card p.intro { margin-bottom: 14px; color: #2c3e50; font-size: 0.95rem; }
+        .site-map-list { list-style: none; }
+        .site-map-list li {
+            border-bottom: 1px solid rgba(30, 60, 114, 0.08);
+            padding: 10px 0;
+        }
+        .site-map-list li:last-child { border-bottom: none; }
+        .site-map-list a {
+            color: #1e3c72; font-weight: 600; text-decoration: none;
+        }
+        .site-map-list a:hover { text-decoration: underline; }
+        .site-map-list .en {
+            display: block; direction: ltr; text-align: left;
+            font-size: 0.82rem; color: #5a6c7d; margin-top: 4px; font-weight: 500;
+        }
+        .footer-note { text-align: center; margin-top: 18px; font-size: 0.85rem; color: #666; }
+        .footer-note a { color: #1e3c72; font-weight: 600; }
+    </style>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "CitizenTest — نقشهٔ سایت",
+      "description": "Public pages for Canadian citizenship practice on discovercanadatest.com",
+      "numberOfItems": {{ site_map_pages|length }},
+      "itemListElement": [
+        {% for p in site_map_pages %}
+        {"@type": "ListItem", "position": {{ loop.index }}, "name": {{ p.label_fa|tojson }}, "url": {{ (seo_base_url() ~ p.path)|tojson }}}{% if not loop.last %},{% endif %}
+
+        {% endfor %}
+      ]
+    }
+    </script>
+</head>
+<body>
+    <div class="wrap">
+        <div class="back-bar">
+            <a href="{{ url_for('index') }}" class="back-btn">← بازگشت به صفحهٔ اصلی</a>
+        </div>
+        <header class="page-header">
+            <h1>نقشهٔ سایت</h1>
+            <p class="sub">CitizenTest · discovercanadatest.com — فهرست صفحات برای خزنده‌ها و کاربران</p>
+        </header>
+        <section class="card">
+            <p class="intro">این صفحه همهٔ آدرس‌های مهم سایت را به‌صورت لینک معمولی HTML فهرست می‌کند تا موتورهای جستجو و کاربران راحت‌تر به بخش‌های مختلف برسند. نسخهٔ ماشینی برای گوگل: <a href="{{ url_for('sitemap') }}">sitemap.xml</a></p>
+            <ul class="site-map-list">
+                {% for p in site_map_pages %}
+                <li>
+                    <a href="{{ p.path }}">{{ p.label_fa }}</a>
+                    <span class="en">{{ p.label_en }}</span>
+                </li>
+                {% endfor %}
+            </ul>
+        </section>
+        <p class="footer-note"><a href="{{ url_for('about') }}">دربارهٔ سایت</a> · <a href="{{ seo_base_url() }}/robots.txt">robots.txt</a></p>
+    </div>
+</body>
+</html>
