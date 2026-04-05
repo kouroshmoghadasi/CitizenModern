@@ -1518,5 +1518,843 @@
     "expl_fr": "Mohawks amérindiens (loyalistes).",
     "page": 0,
     "section": "Citizenship practice (571 bank — batch 9)"
+  },
+  {
+    "q": "Which of the following Constitutional act divided Quebec into Upper and Lower Canada?",
+    "q_fa": "کدام قانون اساسی استان کبک را به کانادای علیا و سفلا تقسیم کرد؟",
+    "options": [
+      "Constitutional Act of 1719",
+      "Constitutional Act of 1790",
+      "Constitutional Act of 1791",
+      "Constitutional Act of 1780"
+    ],
+    "correct": 2,
+    "book_text": "The Constitutional Act of 1791 divided the Province of Quebec into Upper Canada (later Ontario) and Lower Canada (later Quebec).",
+    "q_fr": "Quel acte constitutionnel a divisé le Québec en Haut-Canada et Bas-Canada ?",
+    "options_fr": [
+      "Acte constitutionnel de 1719",
+      "Acte constitutionnel de 1790",
+      "Acte constitutionnel de 1791",
+      "Acte constitutionnel de 1780"
+    ],
+    "expl_fr": "L'Acte constitutionnel de 1791.",
+    "page": 0,
+    "section": "Citizenship practice (571 bank — batch 10)"
+  },
+  {
+    "q": "In 1608 Champlain built a fortress at which city?",
+    "q_fa": "در ۱۶۰۸ شامپلن دژی در کدام شهر ساخت؟",
+    "options": ["Vancouver", "White Horse", "Quebec City", "Montreal"],
+    "correct": 2,
+    "book_text": "In 1608 Champlain built a fortress at what is now Québec City.",
+    "q_fr": "En 1608, Champlain a bâti une forteresse à quelle ville ?",
+    "options_fr": ["Vancouver", "Whitehorse", "Ville de Québec", "Montréal"],
+    "expl_fr": "À Québec.",
+    "page": 0,
+    "section": "Citizenship practice (571 bank — batch 10)"
+  },
+  {
+    "q": "In which year did the Constitutional act pass by the British Parliament?",
+    "q_fa": "قانون اساسی در کدام سال توسط پارلمان بریتانیا تصویب شد؟",
+    "options": ["1791", "1781", "1771", "1761"],
+    "correct": 0,
+    "book_text": "The Constitutional act was passed by the British parliament in 1791.",
+    "q_fr": "En quelle année le Parlement britannique a-t-il adopté l'acte constitutionnel ?",
+    "options_fr": ["1791", "1781", "1771", "1761"],
+    "expl_fr": "En 1791.",
+    "page": 0,
+    "section": "Citizenship practice (571 bank — batch 10)"
+  },
+  {
+    "q": "The Atlantic Colonies and upper and lower Canada were collectively called",
+    "q_fa": "مستعمرات آتلانتیک به‌همراه کانادای علیا و سفلا مجموعاً چه نامیده می‌شدند؟",
+    "options": ["British Canada", "British North America", "Greater Canada", "Northern States"],
+    "correct": 1,
+    "book_text": "The Atlantic colonies and the upper and lower Canada were known collectively as British North America.",
+    "q_fr": "Comment appelait-on collectivement les colonies de l'Atlantique et le Haut- et Bas-Canada ?",
+    "options_fr": [
+      "British Canada",
+      "Amérique du Nord britannique",
+      "Greater Canada",
+      "Northern States"
+    ],
+    "expl_fr": "British North America.",
+    "page": 0,
+    "section": "Citizenship practice (571 bank — batch 10)"
+  },
+  {
+    "q": "In which part of Canada was the first representative assembly elected in 1758?",
+    "q_fa": "نخستین مجلس نمایندگان در ۱۷۵۸ در کدام بخش کانادا انتخاب شد؟",
+    "options": [
+      "Prince Edward Island",
+      "New Brunswick",
+      "Nova Scotia",
+      "Newfoundland"
+    ],
+    "correct": 2,
+    "book_text": "The first representative assembly was elected in Halifax, Nova Scotia, in 1758.",
+    "q_fr": "Où la première assemblée représentative a-t-elle été élue en 1758 ?",
+    "options_fr": [
+      "Île-du-Prince-Édouard",
+      "Nouveau-Brunswick",
+      "Nouvelle-Écosse",
+      "Terre-Neuve"
+    ],
+    "expl_fr": "À Halifax, Nouvelle-Écosse.",
+    "page": 0,
+    "section": "Citizenship practice (571 bank — batch 10)"
+  },
+  {
+    "q": "The name \"Canada\" became official in which year?",
+    "q_fa": "نام «کانادا» در کدام سال رسمی شد؟",
+    "options": ["1791", "1781", "1771", "1761"],
+    "correct": 0,
+    "book_text": "The name \"Canada\" became official in 1791.",
+    "q_fr": "En quelle année le nom « Canada » est-il devenu officiel ?",
+    "options_fr": ["1791", "1781", "1771", "1761"],
+    "expl_fr": "En 1791.",
+    "page": 0,
+    "section": "Citizenship practice (571 bank — batch 10)"
+  },
+  {
+    "q": "Which of the following was the first-ever province to move towards abolition of slavery in 1793?",
+    "q_fa": "کدام استان در ۱۷۹۳ نخستین بود که به سوی لغو برده‌داری حرکت کرد؟",
+    "options": [
+      "Lower Canada (Current Quebec)",
+      "Upper Canada (Currently Ontario)",
+      "Newfoundland",
+      "United States"
+    ],
+    "correct": 1,
+    "book_text": "In 1793, Upper Canada, led by Lieutenant Governor John Graves Simcoe, a Loyalist military officer, became the first province in the Empire to move toward abolition.",
+    "q_fr": "Quelle province a été la première à aller vers l'abolition de l'esclavage en 1793 ?",
+    "options_fr": [
+      "Bas-Canada (Québec actuel)",
+      "Haut-Canada (Ontario actuel)",
+      "Terre-Neuve",
+      "États-Unis"
+    ],
+    "expl_fr": "Le Haut-Canada sous John Graves Simcoe.",
+    "page": 0,
+    "section": "Citizenship practice (571 bank — batch 10)"
+  },
+  {
+    "q": "Who was the founder of The City of York (now Toronto)?",
+    "q_fa": "بنیان‌گذار شهر یورک (تورنتوی کنونی) کی بود؟",
+    "options": [
+      "Governor John Graves Simcoe",
+      "Mary Ann Shad Cary",
+      "Laura Secord",
+      "HMS Shannon"
+    ],
+    "correct": 0,
+    "book_text": "Lieutenant-Colonel John Graves Simcoe was Upper Canada's first Lieutenant Governor and founder of the City of York (now Toronto).",
+    "q_fr": "Qui a fondé la ville de York (maintenant Toronto) ?",
+    "options_fr": [
+      "John Graves Simcoe (gouverneur)",
+      "Mary Ann Shad Cary",
+      "Laura Secord",
+      "HMS Shannon"
+    ],
+    "expl_fr": "John Graves Simcoe.",
+    "page": 0,
+    "section": "Citizenship practice (571 bank — batch 10)"
+  },
+  {
+    "q": "When did slavery become totally abolished throughout the British empire?",
+    "q_fa": "برده‌داری در سراسر امپراتوری بریتانیا در کدام سال به‌طور کامل لغو شد؟",
+    "options": ["1700", "1793", "1807", "1833"],
+    "correct": 3,
+    "book_text": "In 1807, the British Parliament prohibited the buying and selling of slaves, and in 1833 abolished slavery throughout the Empire.",
+    "q_fr": "En quelle année l'esclavage a-t-il été totalement aboli dans l'Empire britannique ?",
+    "options_fr": ["1700", "1793", "1807", "1833"],
+    "expl_fr": "Abolition en 1833 (interdiction du commerce en 1807).",
+    "page": 0,
+    "section": "Citizenship practice (571 bank — batch 10)"
+  },
+  {
+    "q": "Via which Underground pathway did thousands of slaves escape from the United States, follow \"the North Star\" and settled in Canada?",
+    "q_fa": "هزاران برده از ایالات متحده از کدام مسیر زیرزمینی فرار کردند، «ستارهٔ شمال» را دنبال کردند و در کانادا ساکن شدند؟",
+    "options": ["Pipeline", "Railroad", "Sewerage", "Tunnels"],
+    "correct": 1,
+    "book_text": "Thousands of slaves escaped from the United States, followed \"the North Star\" and settled in Canada via the Underground Railroad, a Christian anti-slavery network.",
+    "q_fr": "Par quel « chemin souterrain » des milliers d'esclaves ont-ils fui vers le Canada en suivant l'étoile du Nord ?",
+    "options_fr": ["Pipeline", "Chemin de fer clandestin (Underground Railroad)", "Égouts", "Tunnels"],
+    "expl_fr": "Le Underground Railroad, réseau antiesclavagiste.",
+    "page": 0,
+    "section": "Citizenship practice (571 bank — batch 10)"
+  },
+  {
+    "q": "When did the first financial institutions open in Canada?",
+    "q_fa": "نخستین مؤسسات مالی در کانادا کی باز شدند؟",
+    "options": [
+      "In late 17th and early 18th Centuries",
+      "In late 16th and early 17th Centuries",
+      "In late 18th and early 19th Centuries",
+      "In late 19th and early 20th Centuries"
+    ],
+    "correct": 2,
+    "book_text": "The first financial institutions opened in the late 18th and early 19th centuries.",
+    "q_fr": "Quand les premières institutions financières ont-elles ouvert au Canada ?",
+    "options_fr": [
+      "Fin XVIIe – début XVIIIe siècle",
+      "Fin XVIe – début XVIIe siècle",
+      "Fin XVIIIe – début XIXe siècle",
+      "Fin XIXe – début XXe siècle"
+    ],
+    "expl_fr": "Fin du XVIIIe et début du XIXe siècle.",
+    "page": 0,
+    "section": "Citizenship practice (571 bank — batch 11)"
+  },
+  {
+    "q": "For centuries Canada's economy was based on which trade?",
+    "q_fa": "اقتصاد کانادا قرن‌ها بر پایهٔ کدام تجارت بود؟",
+    "options": [
+      "Oil",
+      "Waepons",
+      "Natural Resources such as Fur, Timber, Fish etc",
+      "Slaves"
+    ],
+    "correct": 2,
+    "book_text": "For centuries Canada's economy was based mainly on farming and on exporting natural resources.",
+    "q_fr": "Pendant des siècles, l'économie du Canada reposait surtout sur quel commerce ?",
+    "options_fr": [
+      "Pétrole",
+      "Armes (orthographe source)",
+      "Ressources naturelles : fourrure, bois, poisson, etc.",
+      "Esclaves"
+    ],
+    "expl_fr": "Ressources naturelles et agriculture.",
+    "page": 0,
+    "section": "Citizenship practice (571 bank — batch 11)"
+  },
+  {
+    "q": "Who was the First Member of the Canadian Corps born in Ukraine (not born in the British Empire) to be awarded the Victoria Cross?",
+    "q_fa": "نخستین عضو سپاه کانادا متولد اوکراین (خارج از امپراتوری بریتانیا) که صلیب ویکتوریا گرفت کی بود؟",
+    "options": [
+      "Able Seaman William Hall",
+      "Corporal Filip Konowal",
+      "Lieutenant Alexander Robert Dunn",
+      "Captain Paul Triquet of Cabano"
+    ],
+    "correct": 1,
+    "book_text": "Corporal Filip Konowal, born in Ukraine, showed exceptional courage in the Battle of Hill 70 in 1917, and became the first member of the Canadian Corps not born in the British Empire to be awarded the V.C.",
+    "q_fr": "Qui fut le premier membre du Corps canadien né en Ukraine à recevoir la Croix de Victoria ?",
+    "options_fr": [
+      "Matelot William Hall",
+      "Caporal Filip Konowal",
+      "Lieutenant Alexander Robert Dunn",
+      "Capitaine Paul Triquet de Cabano"
+    ],
+    "expl_fr": "Filip Konowal, bataille de la côte 70 (1917).",
+    "page": 0,
+    "section": "Citizenship practice (571 bank — batch 11)"
+  },
+  {
+    "q": "Victoria Day is celebrated on the",
+    "q_fa": "روز ویکتوریا در چه روزی برگزار می‌شود؟",
+    "options": [
+      "Wednesday preceding June 25",
+      "Tuesday preceding May 25",
+      "Monday preceding May 25",
+      "Thursday preceding July 25"
+    ],
+    "correct": 2,
+    "book_text": "Victoria Day : Monday preceding May 25 (Sovereign's birthday)",
+    "q_fr": "Le Victoria Day est célébré le",
+    "options_fr": [
+      "mercredi précédant le 25 juin",
+      "mardi précédant le 25 mai",
+      "lundi précédant le 25 mai",
+      "jeudi précédant le 25 juillet"
+    ],
+    "expl_fr": "Lundi précédant le 25 mai.",
+    "page": 0,
+    "section": "Citizenship practice (571 bank — batch 11)"
+  },
+  {
+    "q": "When were the first companies in Canada formed?",
+    "q_fa": "نخستین شرکت‌ها در کانادا در چه دوره‌ای شکل گرفتند؟",
+    "options": [
+      "During French and German regimes",
+      "During French and British regimes",
+      "During German and British regimes",
+      "None of these"
+    ],
+    "correct": 1,
+    "book_text": "The first companies in Canada were formed during the French and British regimes and competed for the fur trade.",
+    "q_fr": "Quand les premières compagnies au Canada ont-elles été formées ?",
+    "options_fr": [
+      "Sous les régimes français et allemand",
+      "Sous les régimes français et britannique",
+      "Sous les régimes allemand et britannique",
+      "Aucune de ces réponses"
+    ],
+    "expl_fr": "Régimes français et britannique ; traite des fourrures.",
+    "page": 0,
+    "section": "Citizenship practice (571 bank — batch 11)"
+  },
+  {
+    "q": "The cities of the northwest like Edmonton, Langley, and Victoria, these cities were all started as",
+    "q_fa": "شهرهای شمال‌غرب مثل ادمونتون، لنگلی و ویکتوریا همه به‌عنوان چه چیزی آغاز شدند؟",
+    "options": [
+      "Army Bases",
+      "Army Bases",
+      "Trading Posts",
+      "Religious Settlement"
+    ],
+    "correct": 2,
+    "book_text": "The Hudson's Bay Company, with French, British and Aboriginal employees, came to dominate the trade in the northwest from Fort Garry (Winnipeg) and Fort Edmonton to Fort Langley (near Vancouver) and Fort Victoria—trading posts that later became cities.",
+    "q_fr": "Edmonton, Langley et Victoria ont d'abord été fondées comme",
+    "options_fr": [
+      "Bases militaires",
+      "Bases militaires",
+      "Comptoirs commerciaux",
+      "Colonie religieuse"
+    ],
+    "expl_fr": "Anciens comptoirs de la traite (HBC).",
+    "page": 0,
+    "section": "Citizenship practice (571 bank — batch 11)"
+  },
+  {
+    "q": "In which year did the 'The Montreal Stock Exchange' open?",
+    "q_fa": "بورس اوراق بهادار مونترال در کدام سال گشایش یافت؟",
+    "options": ["1832", "1832", "1877", "1807"],
+    "correct": 1,
+    "book_text": "The Montreal Stock Exchange opened in 1832.",
+    "q_fr": "En quelle année la Bourse de Montréal a-t-elle ouvert ?",
+    "options_fr": ["1832", "1832", "1877", "1807"],
+    "expl_fr": "En 1832.",
+    "page": 0,
+    "section": "Citizenship practice (571 bank — batch 11)"
+  },
+  {
+    "q": "The first ever companies in Canada competed for which trade?",
+    "q_fa": "نخستین شرکت‌های کانادا برای کدام تجارت رقابت می‌کردند؟",
+    "options": ["Fur", "Oil", "Fish", "Weapons"],
+    "correct": 0,
+    "book_text": "The first companies in Canada were formed during the French and British regimes and competed for the fur trade.",
+    "q_fr": "Les toutes premières compagnies au Canada rivalisaient pour quelle traite ?",
+    "options_fr": ["Fourrure", "Pétrole", "Poisson", "Armes"],
+    "expl_fr": "La traite des fourrures.",
+    "page": 0,
+    "section": "Citizenship practice (571 bank — batch 11)"
+  },
+  {
+    "q": "How many American invaders did Lieutenant-Colonel Charles de Salaberry and 460 soldiers, mostly French Canadians, manage to turn back at Châteauguay, south of Montreal in 1813?",
+    "q_fa": "سرهنگ دوم شارل دو سالابری و ۴۶۰ سرباز (اغلب فرانسوی‌کانادایی) در ۱۸۱۳ در شاتوگو چند مهاجم آمریکایی را عقب راندند؟",
+    "options": ["4000", "5000", "6000", "7000"],
+    "correct": 0,
+    "book_text": "In 1813, Lieutenant-Colonel Charles de Salaberry and 460 soldiers, mostly French Canadians, turned back 4,000 American invaders at Châteauguay, south of Montreal.",
+    "q_fr": "Combien d'envahisseurs américains Salaberry et 460 soldats ont-ils repoussés à Châteauguay en 1813 ?",
+    "options_fr": ["4000", "5000", "6000", "7000"],
+    "expl_fr": "4 000 envahisseurs.",
+    "page": 0,
+    "section": "Citizenship practice (571 bank — batch 11)"
+  },
+  {
+    "q": "What was the purpose of the War of 1812?",
+    "q_fa": "هدف جنگ ۱۸۱۲ چه بود؟",
+    "options": [
+      "To Conquer USA",
+      "For the Canada to remain independent of USA",
+      "Political Issues",
+      "Natural Resources"
+    ],
+    "correct": 1,
+    "book_text": "The present-day Canada-U.S.A. border is partly an outcome of the War of 1812, which ensured that Canada would remain independent of the United States.",
+    "q_fr": "Quel était le but de la guerre de 1812 (selon cette banque) ?",
+    "options_fr": [
+      "Conquérir les États-Unis",
+      "Que le Canada demeure indépendant des États-Unis",
+      "Questions politiques",
+      "Ressources naturelles"
+    ],
+    "expl_fr": "Indépendance du Canada par rapport aux États-Unis.",
+    "page": 0,
+    "section": "Citizenship practice (571 bank — batch 11)"
+  },
+  {
+    "q": "Where did the Americans burn the Government House and the Parliament Buildings in 1813?",
+    "q_fa": "آمریکایی‌ها در ۱۸۱۳ خانهٔ دولت و ساختمان پارلمان را در کجا به آتش کشیدند؟",
+    "options": ["New Brunswick", "Ontario", "Quebec", "York"],
+    "correct": 3,
+    "book_text": "In 1813 the Americans burned the Government House and the Parliament Buildings in York (now Toronto).",
+    "q_fr": "Où les Américains ont-ils incendié le Government House et le Parlement en 1813 ?",
+    "options_fr": ["Nouveau-Brunswick", "Ontario", "Québec", "York"],
+    "expl_fr": "À York (maintenant Toronto).",
+    "page": 0,
+    "section": "Citizenship practice (571 bank — batch 12)"
+  },
+  {
+    "q": "When did the United States launch an invasion in revenge for the British interference with their shipping?",
+    "q_fa": "ایالات متحده به انتقام از دخالت بریتانیا در کشتیرانی‌اش در کدام سال به تهاجم پرداخت؟",
+    "options": ["1832", "1812", "1870", "1807"],
+    "correct": 1,
+    "book_text": "After the defeat of Napoleon Bonaparte's fleet in the Battle of Trafalgar (1805), the Royal Navy ruled the waves. The British Empire, which included Canada, fought to resist Bonaparte's bid to dominate Europe. This led to American resentment at British interference with their shipping. Believing it would be easy to conquer Canada, the United States launched an invasion in June 1812.",
+    "q_fr": "Quand les États-Unis ont-ils lancé une invasion pour se venger de l'ingérence britannique dans leur navigation ?",
+    "options_fr": ["1832", "1812", "1870", "1807"],
+    "expl_fr": "En juin 1812.",
+    "page": 0,
+    "section": "Citizenship practice (571 bank — batch 12)"
+  },
+  {
+    "q": "Which nation helped Canada in the war against America in 1812?",
+    "q_fa": "کدام کشور در جنگ علیه آمریکا در ۱۸۱۲ به کانادا کمک کرد؟",
+    "options": ["British", "German", "Japan", "India"],
+    "correct": 0,
+    "book_text": "By 1814, the American attempt to conquer Canada had failed. The British paid for a costly Canadian Defense system.",
+    "q_fr": "Quelle nation a aidé le Canada dans la guerre contre l'Amérique en 1812 ?",
+    "options_fr": ["Britanniques", "Allemands", "Japon", "Inde"],
+    "expl_fr": "Les Britanniques.",
+    "page": 0,
+    "section": "Citizenship practice (571 bank — batch 12)"
+  },
+  {
+    "q": "According to Lord Durham, in which Culture did Canadians have to assimilate in order to achieve the quickest way to progress?",
+    "q_fa": "به‌گفتهٔ لرد دارهم، کانادایی‌ها برای سریع‌ترین پیشرفت باید در کدام فرهنگ ذوب می‌شدند؟",
+    "options": ["English Speaking", "French Speaking", "German Speaking", "British"],
+    "correct": 0,
+    "book_text": "Lord Durham said that the quickest way for the Canadians to achieve progress was to assimilate into English-speaking Protestant culture.",
+    "q_fr": "Selon Lord Durham, dans quelle culture les Canadiens devaient-ils s'assimiler pour progresser le plus vite ?",
+    "options_fr": [
+      "Culture anglophone",
+      "Culture francophone",
+      "Culture germanophone",
+      "Culture britannique"
+    ],
+    "expl_fr": "Culture anglophone protestante.",
+    "page": 0,
+    "section": "Citizenship practice (571 bank — batch 12)"
+  },
+  {
+    "q": "Lord Durham, an English reformer sent to report on the rebellions, recommended that Upper and Lower Canada be merged and given",
+    "q_fa": "لرد دارهم پیشنهاد کرد کانادای علیا و سفلا ادغام شوند و چه نوع حکومتی داشته باشند؟",
+    "options": [
+      "Responsible Government",
+      "Separate Government",
+      "Natural Resoures",
+      "Rebellion Force"
+    ],
+    "correct": 0,
+    "book_text": "Lord Durham, an English reformer sent to report on the rebellions, recommended that Upper and Lower Canada be merged and given responsible government powers. This meant the ministers of the Crown must have the support of a majority of the elected representatives in order to govern.",
+    "q_fr": "Lord Durham a recommandé de fusionner le Haut- et le Bas-Canada et de leur accorder",
+    "options_fr": [
+      "un gouvernement responsable",
+      "des gouvernements séparés",
+      "Ressources naturelles (faute dans la source : Resoures)",
+      "une force de rébellion"
+    ],
+    "expl_fr": "Gouvernement responsable.",
+    "page": 0,
+    "section": "Citizenship practice (571 bank — batch 12)"
+  },
+  {
+    "q": "When did the armed rebellion occur in the area outside Montreal and in Toronto?",
+    "q_fa": "شورش مسلحانه در حومهٔ مونترال و تورنتو در چه سال‌هایی بود؟",
+    "options": ["1807 - 1808", "1817 - 1818", "1837 - 1838", "1877 - 1878"],
+    "correct": 2,
+    "book_text": "Armed rebellions occurred in 1837–38 in the area outside Montreal and in Toronto.",
+    "q_fr": "Quand les rébellions armées ont-elles eu lieu près de Montréal et à Toronto ?",
+    "options_fr": ["1807-1808", "1817-1818", "1837-1838", "1877-1878"],
+    "expl_fr": "En 1837-1838.",
+    "page": 0,
+    "section": "Citizenship practice (571 bank — batch 12)"
+  },
+  {
+    "q": "Out of the following people, who became the first head of a responsible government in Canada?",
+    "q_fa": "کدام‌یک نخستین رئیس یک دولت مسئول در کانادا شد؟",
+    "options": [
+      "Sir louis-Hippolyte La Fontaine",
+      "Sir George-Etienne Cartier",
+      "Sir Étienne-Paschal Taché",
+      "Lieutenant James FitzGibbon"
+    ],
+    "correct": 0,
+    "book_text": "La Fontaine, a champion of democracy and French language rights, became the first leader of a responsible government in the Canada in 1849.",
+    "q_fr": "Parmi ces personnes, qui est devenu le premier chef d'un gouvernement responsable au Canada ?",
+    "options_fr": [
+      "Sir Louis-Hippolyte La Fontaine",
+      "Sir George-Étienne Cartier",
+      "Sir Étienne-Paschal Taché",
+      "Lieutenant James FitzGibbon"
+    ],
+    "expl_fr": "La Fontaine, en 1849.",
+    "page": 0,
+    "section": "Citizenship practice (571 bank — batch 12)"
+  },
+  {
+    "q": "In 1840 Upper and Lower Canada were united as the",
+    "q_fa": "در ۱۸۴۰ کانادای علیا و سفلا با چه نامی متحد شدند؟",
+    "options": [
+      "Province of Canada",
+      "Province of Germany",
+      "Province of United States",
+      "Province of Korea"
+    ],
+    "correct": 0,
+    "book_text": "In 1840, Upper and Lower Canada were united as the Province of Canada.",
+    "q_fr": "En 1840, le Haut- et le Bas-Canada ont été unis sous le nom de",
+    "options_fr": [
+      "Province du Canada",
+      "Province d'Allemagne",
+      "Province des États-Unis",
+      "Province de Corée"
+    ],
+    "expl_fr": "Province du Canada.",
+    "page": 0,
+    "section": "Citizenship practice (571 bank — batch 12)"
+  },
+  {
+    "q": "Which was the first British North American colony to attain full responsible government in 1847-1848?",
+    "q_fa": "کدام مستعمرهٔ بریتانیا در آمریکای شمالی نخستین بود که در ۱۸۴۷–۱۸۴۸ به حکومت مسئول کامل رسید؟",
+    "options": ["Newfoundland", "Nova Scotia", "Green Land", "Vancouver"],
+    "correct": 1,
+    "book_text": "The first British North American colony to attain full responsible government was Nova Scotia in 1847–48.",
+    "q_fr": "Quelle a été la première colonie de l'Amérique du Nord britannique à obtenir un gouvernement pleinement responsable en 1847-1848 ?",
+    "options_fr": ["Terre-Neuve", "Nouvelle-Écosse", "Green Land", "Vancouver"],
+    "expl_fr": "La Nouvelle-Écosse.",
+    "page": 0,
+    "section": "Citizenship practice (571 bank — batch 12)"
+  },
+  {
+    "q": "Ontario, Quebec together with New Brunswick and Nova Scotia formed a new country called",
+    "q_fa": "انتاریو، کبک به‌همراه نیوبرانزویک و نوا اسکوشیا کشور جدیدی به نام چه بنیاد نهادند؟",
+    "options": ["Dominion of Canada", "Florida", "Germany", "None of these"],
+    "correct": 0,
+    "book_text": "The old Province of Canada was split into two new provinces: Ontario and Quebec, which, together with New Brunswick and Nova Scotia, formed the new country called the Dominion of Canada.",
+    "q_fr": "L'Ontario, le Québec, le N.-B. et la N.-É. ont formé un nouveau pays appelé",
+    "options_fr": [
+      "le Dominion du Canada",
+      "Floride",
+      "Allemagne",
+      "Aucune de ces réponses"
+    ],
+    "expl_fr": "Le Dominion du Canada.",
+    "page": 0,
+    "section": "Citizenship practice (571 bank — batch 13)"
+  },
+  {
+    "q": "Every year 1st July is officially celebrated as?",
+    "q_fa": "هر سال یکم ژوئیه رسماً به‌عنوان چه مناسبتی جشن گرفته می‌شود؟",
+    "options": ["Canada Day", "Freedom Day", "Independence Day", "Constitutional Day"],
+    "correct": 0,
+    "book_text": "Until 1982, July 1 was celebrated as 'Dominion Day' to commemorate the day that Canada became a self-governing Dominion. Today it is officially known as Canada Day.",
+    "q_fr": "Chaque année, le 1er juillet est officiellement célébré comme",
+    "options_fr": [
+      "Fête du Canada",
+      "Jour de la liberté",
+      "Jour de l'indépendance",
+      "Jour constitutionnel"
+    ],
+    "expl_fr": "Fête du Canada (anciennement Dominion Day).",
+    "page": 0,
+    "section": "Citizenship practice (571 bank — batch 13)"
+  },
+  {
+    "q": "When did Nunavut become part of the Dominion of Canada?",
+    "q_fa": "نوناووت چه زمانی بخشی از دومینیون کانادا شد؟",
+    "options": ["1995", "1996", "1998", "1999"],
+    "correct": 3,
+    "book_text": "Nunavut on April 1, 1999 became part of Dominion of Canada.",
+    "q_fr": "Quand le Nunavut est-il devenu partie du Dominion du Canada ?",
+    "options_fr": ["1995", "1996", "1998", "1999"],
+    "expl_fr": "Le 1er avril 1999.",
+    "page": 0,
+    "section": "Citizenship practice (571 bank — batch 13)"
+  },
+  {
+    "q": "From 1864 to 1867, representatives of Nova Scotia, New Brunswick, and the Province of Canada with British support worked together to establish a new country. What do we call these men?",
+    "q_fa": "از ۱۸۶۴ تا ۱۸۶۷ نمایندگان نوا اسکوشیا، نیوبرانزویک و استان کبک با حمایت بریتانیا برای تأسیس کشور جدید همکاری کردند. این مردان را چه می‌نامند؟",
+    "options": [
+      "Fathers of Canada",
+      "Fathers of Confederation",
+      "None of these",
+      "None of these"
+    ],
+    "correct": 1,
+    "book_text": "From 1864 to 1867, representatives of Nova Scotia, New Brunswick and the Province of Canada, with British support, worked together to establish a new country. These men are known as the Fathers of Confederation.",
+    "q_fr": "Comment appelle-t-on ces hommes qui ont fondé le nouveau pays (1864-1867) ?",
+    "options_fr": [
+      "Pères du Canada",
+      "Pères de la Confédération",
+      "Aucune de ces réponses",
+      "Aucune de ces réponses"
+    ],
+    "expl_fr": "Pères de la Confédération.",
+    "page": 0,
+    "section": "Citizenship practice (571 bank — batch 13)"
+  },
+  {
+    "q": "Which act did the British Parliament pass in 1867?",
+    "q_fa": "پارلمان بریتانیا در ۱۸۶۷ کدام قانون را تصویب کرد؟",
+    "options": [
+      "Constitutional Act",
+      "British North America Act",
+      "Both",
+      "None of these"
+    ],
+    "correct": 1,
+    "book_text": "The British Parliament passed the British North America Act in 1867.",
+    "q_fr": "Quelle loi le Parlement britannique a-t-il adoptée en 1867 ?",
+    "options_fr": [
+      "Acte constitutionnel",
+      "British North America Act",
+      "Les deux",
+      "Aucune de ces réponses"
+    ],
+    "expl_fr": "Le British North America Act.",
+    "page": 0,
+    "section": "Citizenship practice (571 bank — batch 13)"
+  },
+  {
+    "q": "What system of Government was created by 'The Fathers of Confederation'?",
+    "q_fa": "پدران کنفدراسیون چه نظام حکومتی ایجاد کردند؟",
+    "options": ["Federal", "Provincial", "Both", "None"],
+    "correct": 2,
+    "book_text": "Fathers of Confederation created two levels of government: federal and provincial.",
+    "q_fr": "Quel système de gouvernement les Pères de la Confédération ont-ils créé ?",
+    "options_fr": ["Fédéral", "Provincial", "Les deux", "Aucun"],
+    "expl_fr": "Fédéral et provincial.",
+    "page": 0,
+    "section": "Citizenship practice (571 bank — batch 13)"
+  },
+  {
+    "q": "When did Sir Leonard Tilley, an elected official and Father of the Confederation from New Brunswick, suggest the term Dominion of Canada?",
+    "q_fa": "سر لئونارد تیلی، مقام منتخب و پدر کنفدراسیون از نیوبرانزویک، اصطلاح «دومینیون کانادا» را در چه سالی پیشنهاد کرد؟",
+    "options": ["1864", "1791", "1867", "1862"],
+    "correct": 0,
+    "book_text": "Sir Leonard Tilley, an elected official and Father of Confederation from New Brunswick, suggested the term Dominion of Canada in 1864.",
+    "q_fr": "Quand Sir Leonard Tilley (N.-B.) a-t-il suggéré l'expression « Dominion du Canada » ?",
+    "options_fr": ["1864", "1791", "1867", "1862"],
+    "expl_fr": "En 1864.",
+    "page": 0,
+    "section": "Citizenship practice (571 bank — batch 13)"
+  },
+  {
+    "q": "Sir Leonard Tilley was inspired by which Psalm in the Bible which refers to 'dominion from sea to sea and from the river to the ends of the earth.'?",
+    "q_fa": "سر لئونارد تیلی از کدام مزمور کتاب مقدس الهام گرفت که به «سلطنت از دریا تا دریا» اشاره دارد؟",
+    "options": ["84", "96", "72", "60"],
+    "correct": 2,
+    "book_text": "Sir Leonard Tilley was inspired by Psalm 72 in the Bible which refers to 'dominion from sea to sea and from the river to the ends of the earth.'",
+    "q_fr": "De quel psaume Sir Leonard Tilley s'est-il inspiré pour « dominion from sea to sea » ?",
+    "options_fr": ["84", "96", "72", "60"],
+    "expl_fr": "Psaume 72.",
+    "page": 0,
+    "section": "Citizenship practice (571 bank — batch 13)"
+  },
+  {
+    "q": "Which of the following is the first Prime Minister of Canada?",
+    "q_fa": "کدام‌یک نخست‌وزیر اول کانادا بود؟",
+    "options": [
+      "Sir George Etienne Cartier",
+      "Sir John Alexander Macdonald",
+      "Sir Sam Steele",
+      "Fort Garry"
+    ],
+    "correct": 1,
+    "book_text": "In 1867, Sir John Alexander Macdonald, a Father of Confederation, became Canada's first Prime Minister.",
+    "q_fr": "Qui a été le premier premier ministre du Canada ?",
+    "options_fr": [
+      "Sir George-Étienne Cartier",
+      "Sir John Alexander Macdonald",
+      "Sir Sam Steele",
+      "Fort Garry"
+    ],
+    "expl_fr": "Sir John A. Macdonald.",
+    "page": 0,
+    "section": "Citizenship practice (571 bank — batch 13)"
+  },
+  {
+    "q": "The Parliament has recognized January 11 as?",
+    "q_fa": "پارلمان ۱۱ ژانویه را به‌عنوان چه روزی به رسمیت شناخته است؟",
+    "options": [
+      "Dominion Day",
+      "Independence Day",
+      "Sir John Alexander Macdonald Day",
+      "Canada Day"
+    ],
+    "correct": 2,
+    "book_text": "Parliament has recognized January 11 as Sir John A. Macdonald Day.",
+    "q_fr": "Le Parlement a reconnu le 11 janvier comme",
+    "options_fr": [
+      "Dominion Day",
+      "Jour de l'indépendance",
+      "Jour Sir John A. Macdonald",
+      "Fête du Canada"
+    ],
+    "expl_fr": "Jour Sir John A. Macdonald.",
+    "page": 0,
+    "section": "Citizenship practice (571 bank — batch 13)"
+  },
+  {
+    "q": "When was Sir John Alexander Macdonald born in Scotland?",
+    "q_fa": "سر جان الکساندر مک‌دونالد در اسکاتلند در چه تاریخی به دنیا آمد؟",
+    "options": [
+      "Dominion Day",
+      "Independence Day",
+      "January 11, 1815",
+      "Canada Day"
+    ],
+    "correct": 2,
+    "book_text": "Sir John Alexander Macdonald was born in Scotland on January 11, 1815. In 1867 he became Canada's first Prime Minister.",
+    "q_fr": "Quand Sir John A. Macdonald est-il né en Écosse ?",
+    "options_fr": [
+      "Dominion Day",
+      "Jour de l'indépendance",
+      "11 janvier 1815",
+      "Fête du Canada"
+    ],
+    "expl_fr": "Le 11 janvier 1815.",
+    "page": 0,
+    "section": "Citizenship practice (571 bank — batch 14)"
+  },
+  {
+    "q": "Whose portrait is present on the 10$ bill?",
+    "q_fa": "تصویر چه کسی روی اسکناس ۱۰ دلاری است؟",
+    "options": [
+      "Sir John Alexander Macdonald",
+      "Sir George Etienne Cartier",
+      "Sir Sam Steele",
+      "The Beaver"
+    ],
+    "correct": 0,
+    "book_text": "Sir John Alexander Macdonald's portrait is present on 10$ bill.",
+    "q_fr": "Quel portrait figure sur le billet de 10 $ ?",
+    "options_fr": [
+      "Sir John Alexander Macdonald",
+      "Sir George-Étienne Cartier",
+      "Sir Sam Steele",
+      "Le castor"
+    ],
+    "expl_fr": "Sir John A. Macdonald.",
+    "page": 0,
+    "section": "Citizenship practice (571 bank — batch 14)"
+  },
+  {
+    "q": "Who led Quebec into Confederation and helped negotiate the entry of the Northwest Territories, Manitoba and British Columbia into Canada?",
+    "q_fa": "چه کسی کبک را به کنفدراسیون آورد و به پیوستن سرزمین‌های شمال‌غرب، مانیتوبا و بریتیش کلمبیا کمک کرد؟",
+    "options": [
+      "Sir George Etienne Cartier",
+      "Sir John Alexander Macdonald",
+      "Sir Sam Steele",
+      "Fort Garry"
+    ],
+    "correct": 0,
+    "book_text": "Cartier led Quebec into Confederation and helped negotiate the entry of the Northwest Territories, Manitoba and British Columbia into Canada.",
+    "q_fr": "Qui a mené le Québec à la Confédération et négocié l'entrée de l'Ouest ?",
+    "options_fr": [
+      "Sir George-Étienne Cartier",
+      "Sir John Alexander Macdonald",
+      "Sir Sam Steele",
+      "Fort Garry"
+    ],
+    "expl_fr": "George-Étienne Cartier.",
+    "page": 0,
+    "section": "Citizenship practice (571 bank — batch 14)"
+  },
+  {
+    "q": "When did Canada take over the vast northwest region from the Hudson's Bay Company?",
+    "q_fa": "کانادا منطقهٔ عظیم شمال‌غرب را از کمپانی خلیج هادسون در چه سالی تحویل گرفت؟",
+    "options": ["1879", "1869", "1859", "1849"],
+    "correct": 1,
+    "book_text": "Canada took over the vast northwest region from the Hudson's Bay Company in 1869.",
+    "q_fr": "Quand le Canada a-t-il pris le contrôle du Nord-Ouest à la Compagnie de la Baie d'Hudson ?",
+    "options_fr": ["1879", "1869", "1859", "1849"],
+    "expl_fr": "En 1869.",
+    "page": 0,
+    "section": "Citizenship practice (571 bank — batch 14)"
+  },
+  {
+    "q": "When did Prime Minister Macdonald established the North West Mounted Police (NWMP) to help pacify the northwest?",
+    "q_fa": "نخست‌وزیر مک‌دونالد پلیس سوارهٔ شمال‌غرب (NWMP) را برای آرام‌سازی شمال‌غرب در چه سالی بنیاد نهاد؟",
+    "options": ["1873", "1893", "1883", "1882"],
+    "correct": 0,
+    "book_text": "After the first Métis uprising, Prime Minister Macdonald established the North West Mounted Police (NWMP) in 1873.",
+    "q_fr": "Quand Macdonald a-t-il créé la Police à cheval du Nord-Ouest (NWMP) ?",
+    "options_fr": ["1873", "1893", "1883", "1882"],
+    "expl_fr": "En 1873.",
+    "page": 0,
+    "section": "Citizenship practice (571 bank — batch 14)"
+  },
+  {
+    "q": "Riel is seen by many as a Hero and is known as",
+    "q_fa": "ریل بسیاری او را قهرمان می‌دانند و به‌عنوان چه شناخته می‌شود؟",
+    "options": [
+      "Defender of Metis rights",
+      "Father of Manitoba",
+      "Father of Confederation",
+      "Both A & B"
+    ],
+    "correct": 3,
+    "book_text": "Louis Riel is seen by many as a hero, a defender of Métis rights and the father of Manitoba.",
+    "q_fr": "Louis Riel est souvent vu comme un héros et comme",
+    "options_fr": [
+      "défenseur des droits métis",
+      "père du Manitoba",
+      "père de la Confédération",
+      "à la fois A et B"
+    ],
+    "expl_fr": "Défenseur des Métis et père du Manitoba.",
+    "page": 0,
+    "section": "Citizenship practice (571 bank — batch 14)"
+  },
+  {
+    "q": "Today, The Royal Canadian Mounted Police (RCMP) is considered as which force of Canada?",
+    "q_fa": "امروز پلیس سوارهٔ سلطنتی کانادا (RCMP) چه نوع نیرویی محسوب می‌شود؟",
+    "options": [
+      "Municipal Force",
+      "National Police Force",
+      "International Police Force",
+      "International Police Force"
+    ],
+    "correct": 1,
+    "book_text": "Today, the Royal Canadian Mounted Police (RCMP or \"the Mounties\") are the national police force and one of Canada's best-known symbols.",
+    "q_fr": "Aujourd'hui, la GRC est considérée comme quelle force ?",
+    "options_fr": [
+      "police municipale",
+      "police nationale",
+      "police internationale",
+      "police internationale"
+    ],
+    "expl_fr": "Police nationale (les Mounties).",
+    "page": 0,
+    "section": "Citizenship practice (571 bank — batch 14)"
+  },
+  {
+    "q": "When Canada took over the vast northwest region from the Hudson's Bay Company in 1869, which group of peoples of the Red River were not consulted?",
+    "q_fa": "وقتی در ۱۸۶۹ کانادا شمال‌غرب را از HBC گرفت، کدام گروه از مردم رود سرخ مشورت نشدند؟",
+    "options": ["Sioux", "Iroquois", "Metis", "Indians"],
+    "correct": 2,
+    "book_text": "Canada took over the vast northwest region from the Hudson's Bay Company in 1869; the 12,000 Métis of the Red River were not consulted.",
+    "q_fr": "En 1869, quel peuple de la rivière Rouge n'a pas été consulté ?",
+    "options_fr": ["Sioux", "Iroquois", "Métis", "Indiens"],
+    "expl_fr": "Les Métis (environ 12 000).",
+    "page": 0,
+    "section": "Citizenship practice (571 bank — batch 14)"
+  },
+  {
+    "q": "In 1871 who decided to join Canada after Ottawa promised to build a railway to the west coast?",
+    "q_fa": "در ۱۸۷۱ پس از وعدهٔ اتاوا برای ساخت راه‌آهن به سواحل غرب، کجا تصمیم به پیوستن به کانادا گرفت؟",
+    "options": ["Germany", "British Columbia", "Green Land", "None of these"],
+    "correct": 1,
+    "book_text": "British Columbia joined Canada in 1871 after Ottawa promised to build a railway to the West Coast.",
+    "q_fr": "Qui a rejoint le Canada en 1871 après la promesse d'un chemin de fer vers le Pacifique ?",
+    "options_fr": ["Allemagne", "Colombie-Britannique", "Green Land", "Aucune de ces réponses"],
+    "expl_fr": "La Colombie-Britannique.",
+    "page": 0,
+    "section": "Citizenship practice (571 bank — batch 14)"
+  },
+  {
+    "q": "Who financed the Project of Railway to the west coast which was built by the European and Chinese laborers?",
+    "q_fa": "پروژهٔ راه‌آهن به سواحل غرب را که کارگران اروپایی و چینی ساختند، چه کسانی تأمین مالی کردند؟",
+    "options": ["British", "German", "American", "Both A & C"],
+    "correct": 3,
+    "book_text": "The Railway project was financed by British and American investors and built by both European and Chinese labor.",
+    "q_fr": "Qui a financié le chemin de fer vers le Pacifique construit par des travailleurs européens et chinois ?",
+    "options_fr": ["Britanniques", "Allemands", "Américains", "À la fois A et C"],
+    "expl_fr": "Investisseurs britanniques et américains.",
+    "page": 0,
+    "section": "Citizenship practice (571 bank — batch 14)"
   }
 ]
