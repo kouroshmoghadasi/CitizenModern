@@ -5279,7 +5279,8 @@
 
             .ads-grid {
                 grid-template-columns: 1fr;
-                gap: 4px; /* Reduced from 12px to save space */
+                gap: 40px; /* فاصلهٔ بین تبلیغات موبایل */
+                row-gap: 40px;
             }
             
             .ad-tile {
@@ -5470,6 +5471,11 @@
             .ad-tile[style*="padding: 12px"],
             .ad-tile[style*="padding:12px"] {
                 padding: 6px !important;
+            }
+
+            /* بنر شکور روی دسکتاپ margin-bottom منفی دارد؛ روی موبایل به کارت بعدی می‌چسبد */
+            .ad-tile-shakour-card .shakour-card-banner-wrap {
+                margin-bottom: 0 !important;
             }
             
             /* Fix empty space: directly override last child */
@@ -5987,7 +5993,8 @@
             
             .ads-grid {
                 grid-template-columns: 1fr;
-                gap: 3px; /* Increased from 1px for better separation, but still minimal */
+                gap: 36px;
+                row-gap: 36px;
             }
             
             .ad-tile {
@@ -6664,7 +6671,8 @@
             
             .ads-grid {
                 grid-template-columns: 1fr;
-                gap: 3px; /* Reduced from 10px to save space */
+                gap: 32px;
+                row-gap: 32px;
             }
             
             .ad-tile {
