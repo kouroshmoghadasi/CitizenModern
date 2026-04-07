@@ -1768,10 +1768,17 @@ def citizenship_modern_canada():
     )
 
 
+# Official IRCC study guide PDF — use as HTTP canonical for our mirror to avoid GSC "duplicate without user-selected canonical".
+_IRCC_DISCOVER_CANADA_PDF = 'https://www.canada.ca/content/dam/ircc/migration/ircc/english/pdf/pub/discover.pdf'
+
+
 @app.route('/discover.pdf')
 def discover_pdf():
-    """Serve the Discover Canada PDF file (cache set in after_request)."""
-    return send_from_directory(os.path.dirname(os.path.abspath(__file__)), 'discover.pdf')
+    """Serve the Discover Canada PDF (mirror). Canonical header points to IRCC — same document, preferred URL for indexing."""
+    root = os.path.dirname(os.path.abspath(__file__))
+    resp = send_from_directory(root, 'discover.pdf')
+    resp.headers['Link'] = f'<{_IRCC_DISCOVER_CANADA_PDF}>; rel="canonical"'
+    return resp
 
 def _google_search_console_verify_file(filename):
     """فایل HTML دانلودی گوگل باید کنار app.py باشد؛ نام دقیق همان چیزی است که Search Console می‌دهد."""
