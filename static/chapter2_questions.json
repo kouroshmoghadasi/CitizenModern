@@ -66,9 +66,9 @@
     ]
   },
   {
-    "q": "Name three beliefs that have enabled Canadians to build a prosperous society (from Atlantic to Pacific to the Arctic)?",
-    "q_fa": "سه باوری که به کانادایی‌ها امکان ساختن جامعه‌ای مرفه داده نام ببرید.",
-    "q_fr": "Nommez trois croyances qui ont permis aux Canadiens de bâtir une société prospère.",
+    "q": "Name three beliefs that have enabled Canadians to build a prosperous society in a rugged environment?",
+    "q_fa": "سه باوری که به کانادایی‌ها امکان ساختن جامعه‌ای مرفه در محیطی سخت داده نام ببرید.",
+    "q_fr": "Nommez trois croyances qui ont permis aux Canadiens de bâtir une société prospère dans un milieu exigeant.",
     "options": [
       "Ordered liberty, enterprise and buying houses",
       "Enterprise, hard work and driving cars",
@@ -267,7 +267,7 @@
       "Des années 1800 jusqu'aux années 1980",
       "Des années 1700 jusqu'aux années 1970"
     ],
-    "correct": 0,
+    "correct": 2,
     "options_fa": [
       "از اوایل دههٔ ۱۹۰۰ تا دههٔ ۱۹۸۰",
       "از دههٔ ۱۷۰۰ تا دههٔ ۱۹۸۰",
@@ -339,7 +339,7 @@
       "Environ un tiers",
       "100 %"
     ],
-    "correct": 2,
+    "correct": 1,
     "options_fa": [
       "حدود دو سوم",
       "حدود نیمی",
