@@ -1,0 +1,75 @@
+{
+  "source_note_fa": "متن رویدادها مطابق راهنمای رسمی IRCC، Discover Canada، تهیه شده است.",
+  "source_note_en": "Event descriptions follow the official IRCC study guide, Discover Canada.",
+  "source_note_fr": "Les descriptions suivent le guide d'études officiel d'IRCC, Découvrir le Canada.",
+  "groups": [
+    {
+      "id": "g1",
+      "title_fa": "کاوش، فرانسهٔ نو و جنگ برای قاره",
+      "title_en": "Exploration, New France & struggle for the continent",
+      "title_fr": "Exploration, la Nouvelle-France et la lutte pour le continent",
+      "events": [
+        {"year": "1497", "en": "John Cabot was the first to draw a map of Canada's East Coast (Atlantic seaboard).", "fa": "جان کابوت نخستین کسی بود که نقشهٔ ساحل شرقی / اقیانوس اطلس کانادا را ترسیم کرد.", "fr": "John Cabot a été le premier à dresser une carte de la côte Est du Canada (Atlantique)."},
+        {"year": "1534–1542", "en": "Jacques Cartier made three voyages across the Atlantic, claiming the land for King Francis I of France.", "fa": "ژاک کارتیه سه سفر فراآتلانتیک کرد و سرزمین را برای فرانسه مطالبه نمود.", "fr": "Jacques Cartier a fait trois voyages sur l'Atlantique et a revendiqué les terres pour le roi François Ier."},
+        {"year": "1604", "en": "The first European settlement north of Florida was established by French explorers Pierre de Monts and Samuel de Champlain (St. Croix, then Port-Royal in Acadia).", "fa": "نخستین سکونتگاه اروپایی شمال فلوریدا توسط پیر دو مون و ساموئل دو شامپلن (سنت کروا، سپس پورت‌رویال در آکادی) برپا شد.", "fr": "Les explorateurs français Pierre de Monts et Samuel de Champlain ont fondé la première colonie européenne au nord de la Floride (Ste-Croix, puis Port-Royal en Acadie)."},
+        {"year": "1608", "en": "Samuel de Champlain built a fortress at what is now Québec City.", "fa": "شامپلن دژی در محل امروزی شهر کبک بنا کرد.", "fr": "Samuel de Champlain a bâti un fort à l'emplacement de l'actuelle ville de Québec."},
+        {"year": "1670", "en": "King Charles II of England granted the Hudson's Bay Company exclusive trading rights over the watershed draining into Hudson Bay.", "fa": "چارلز دوم انگلیس به کمپانی خلیج هادسون حق انحصاری تجارت در حوضهٔ آبریز خلیج هادسون اعطا کرد.", "fr": "Charles II a accordé à la Compagnie de la Baie d'Hudson l'exclusivité du commerce sur le bassin versant de la baie d'Hudson."},
+        {"year": "1701", "en": "The French and the Iroquois made peace (often called the Great Peace of Montreal).", "fa": "صلح بین فرانسوی‌ها و ایروکوئی‌ها (صلح بزرگ مونترال).", "fr": "Les Français et les Iroquois ont conclu la paix (grande paix de Montréal)."},
+        {"year": "1758", "en": "The first representative assembly was elected in Halifax, Nova Scotia.", "fa": "نخستین مجمع نماینده‌ها در هلیفکس، نوا اسکوشیا، برگزیده شد.", "fr": "La première assemblée représentative a été élue à Halifax (Nouvelle-Écosse)."},
+        {"year": "1759", "en": "The British defeated the French in the Battle of the Plains of Abraham at Québec City.", "fa": "بریتانیا فرانسه را در نبرد دشت ابراهام در کبک شکست داد.", "fr": "Les Britanniques ont vaincu les Français à la bataille des Plaines d'Abraham à Québec."},
+        {"year": "1763", "en": "The Treaty of Paris ended French rule in Canada; the Royal Proclamation set important Crown policy on Aboriginal lands and governance.", "fa": "معاهدهٔ پاریس؛ اعلامیهٔ سلطنتی ۱۷۶۳ سیاست تاج دربارهٔ سرزمین‌های بومی را پایه‌گذاری کرد.", "fr": "Le traité de Paris a mis fin à la domination française ; la Proclamation royale de 1763 a posé les règles de la Couronne sur les terres autochtones."},
+        {"year": "1774", "en": "The Quebec Act restored French civil law while maintaining British criminal law and expanded rights for French-speaking Catholics.", "fa": "قانون کبک: حقوق مدنی فرانسوی و حقوق کیفری بریتانیا.", "fr": "L'Acte de Québec a rétabli le droit civil français tout en conservant le droit criminel britannique."},
+        {"year": "1776", "en": "The 13 British colonies to the south declared independence and formed the United States.", "fa": "سیزده مستعمره استقلال اعلام کردند و ایالات متحده تشکیل شد.", "fr": "Les Treize colonies britanniques du sud ont déclaré leur indépendance et formé les États-Unis."},
+        {"year": "1791", "en": "The Constitutional Act divided the Province of Quebec into Upper Canada and Lower Canada and created elected assemblies.", "fa": "قانون اساسی: تقسیم به اپر کانادا و لور کانادا و ایجاد مجالس منتخب.", "fr": "L'Acte constitutionnel a divisé la province de Québec en Haut-Canada et Bas-Canada et créé des assemblées élues."},
+        {"year": "1793", "en": "Upper Canada became the first province in the Empire to move toward abolition of slavery.", "fa": "اپر کانادا نخستین استان امپراتوری در مسیر لغو برده‌داری.", "fr": "Le Haut-Canada a été la première province de l'Empire à amorcer l'abolition de l'esclavage."},
+        {"year": "1812", "en": "The War of 1812 began; the United States invaded Canada but was defeated, with First Nations and British forces.", "fa": "جنگ ۱۸۱۲؛ حملهٔ آمریکا به کانادا شکست خورد.", "fr": "Guerre de 1812 : les États-Unis envahissent le Canada mais sont repoussés, avec les Premières Nations et les Britanniques."}
+      ]
+    },
+    {
+      "id": "g2",
+      "title_fa": "اقتصاد، دولت مسئول و کنفدراسیون",
+      "title_en": "Economy, responsible government & Confederation",
+      "title_fr": "Économie, gouvernement responsable et Confédération",
+      "events": [
+        {"year": "1832", "en": "The Montreal Stock Exchange opened.", "fa": "بورس اوراق بهادار مونترال گشایش یافت.", "fr": "Ouverture de la Bourse de Montréal."},
+        {"year": "1847–1848", "en": "Nova Scotia became the first British North American colony to attain full responsible government.", "fa": "نوا اسکوشیا نخستین مستعمره با دولت مسئول کامل شد.", "fr": "La Nouvelle-Écosse est devenue la première colonie de l'Amérique du Nord britannique à obtenir un gouvernement entièrement responsable."},
+        {"year": "1867", "en": "July 1: Confederation. The British North America Act created the Dominion of Canada (Ontario, Quebec, New Brunswick, Nova Scotia).", "fa": "۱ جولای: کنفدراسیون و قانون آمریکای شمالی بریتانیا؛ دومینیون کانادا.", "fr": "1er juillet : Confédération. L'Acte de l'Amérique du Nord britannique crée le Dominion du Canada (Ontario, Québec, N.-B., N.-É.)."},
+        {"year": "1873", "en": "The North-West Mounted Police (NWMP) was established; predecessor of the RCMP.", "fa": "پلیس سوارهٔ شمال‌غرب (NWMP)، پیش‌درآمد RCMP.", "fr": "Création de la Police à cheval du Nord-Ouest (GRC), ancêtre de la GRC."},
+        {"year": "1885", "en": "The Canadian Pacific Railway was completed with the driving of the Last Spike (Nov. 7, 1885).", "fa": "اتمام راه‌آهن CPR با میخ پایانی (۷ نوامبر ۱۸۸۵).", "fr": "Achèvement du chemin de fer Canadien Pacifique avec le dernier crampon (7 nov. 1885)."}
+      ]
+    },
+    {
+      "id": "g3",
+      "title_fa": "قرن بیستم تا پیوستن نیوفاندلند",
+      "title_en": "The 20th century to Newfoundland joining Canada",
+      "title_fr": "Le XXe siècle jusqu'à l'adhésion de Terre-Neuve",
+      "events": [
+        {"year": "1891", "en": "Basketball was invented by Canadian James Naismith.", "fa": "اختراع بسکتبال توسط جیمز نِیسمِس کانادایی.", "fr": "Le basket-ball est inventé par le Canadien James Naismith (1891)."},
+        {"year": "1914", "en": "The First World War began; Ottawa formed the Canadian Expeditionary Force.", "fa": "آغاز جنگ جهانی اول؛ تشکیل نیروی اعزامی کانادا.", "fr": "Début de la Première Guerre mondiale ; Ottawa crée le Corps expéditionnaire canadien."},
+        {"year": "1917", "en": "The Battle of Vimy Ridge: the Canadian Corps captured the ridge (April 9–12).", "fa": "نبرد ویمی ریج؛ سپاه کانادا تپه را فتح کرد.", "fr": "Bataille de la crête de Vimy : le Corps canadien s'empare de la crête (9–12 avril)."},
+        {"year": "1918", "en": "Most Canadian female citizens aged 21 and over were granted the right to vote in federal elections.", "fa": "رأی فدرال برای بیشتر زنان کانادایی ۲۱ سال به بالا.", "fr": "La plupart des citoyennes canadiennes de 21 ans et plus obtiennent le droit de vote fédéral."},
+        {"year": "1921", "en": "Agnes Macphail became the first woman elected to the House of Commons.", "fa": "اگنس مک‌فیل نخستین زن نمایندهٔ مجلس عوام شد.", "fr": "Agnes Macphail devient la première femme élue à la Chambre des communes."},
+        {"year": "1934", "en": "The Bank of Canada was created as Canada's central bank.", "fa": "تأسیس بانک مرکزی کانادا.", "fr": "Création de la Banque du Canada, banque centrale du pays."},
+        {"year": "1939", "en": "The Second World War began; Canada joined the Allied war effort.", "fa": "آغاز جنگ جهانی دوم؛ پیوستن کانادا به متفقین.", "fr": "Début de la Seconde Guerre mondiale ; le Canada rejoint l'effort des Alliés."},
+        {"year": "1944", "en": "D-Day, June 6: Canadian troops stormed and captured Juno Beach in Normandy.", "fa": "روز دی ۶ ژوئن: فتح ساحل جونو توسط نیروهای کانادایی.", "fr": "Jour J, 6 juin : les troupes canadiennes s'emparent de la plage Juno en Normandie."},
+        {"year": "1947", "en": "Oil was discovered at Leduc, Alberta, helping launch Canada's modern energy industry.", "fa": "کشف نفت در لدوک، آلبرتا؛ آغاز صنعت انرژی مدرن.", "fr": "Découverte de pétrole à Leduc (Alberta), amorce de l'industrie énergétique moderne."},
+        {"year": "1949", "en": "Newfoundland and Labrador joined Confederation.", "fa": "پیوستن نیوفاندلند و لابرادور به کنفدراسیون.", "fr": "Terre-Neuve-et-Labrador entre dans la Confédération."}
+      ]
+    },
+    {
+      "id": "g4",
+      "title_fa": "جامعه، نمادها و قانون اساسی",
+      "title_en": "Society, symbols & the Constitution",
+      "title_fr": "Société, symboles et Constitution",
+      "events": [
+        {"year": "1960", "en": "Aboriginal people were granted the right to vote in federal elections.", "fa": "اعطای حق رأی فدرال به مردم بومی.", "fr": "Les Autochtones obtiennent le droit de vote aux élections fédérales."},
+        {"year": "1965", "en": "The new Canadian flag (maple leaf) was raised for the first time.", "fa": "برافراشتن نخستین بار پرچم برگ افرا.", "fr": "Premier hissage du nouveau drapeau canadien à la feuille d'érable."},
+        {"year": "1969", "en": "Parliament passed the Official Languages Act (French and English in the federal government and institutions).", "fa": "قانون زبان‌های رسمی؛ برابری خدمات فرانسه و انگلیسی در حکومت فدرال.", "fr": "Adoption de la Loi sur les langues officielles (français et anglais au gouvernement fédéral)."},
+        {"year": "1980", "en": "The first Quebec sovereignty referendum; O Canada was proclaimed as the national anthem.", "fa": "نخستین همه‌پرسی حاکمیت کبک؛ اعلام سرود ملی اُ کانادا.", "fr": "Premier référendum sur la souveraineté du Québec ; Ô Canada proclamé hymne national."},
+        {"year": "1982", "en": "The Constitution was patriated; the Constitution Act, 1982, including the Canadian Charter of Rights and Freedoms, came into effect.", "fa": "استقلال قانون اساسی؛ قانون اساسی ۱۹۸۲ و منشور حقوق و آزادی‌ها.", "fr": "Rapatriement de la Constitution ; Loi constitutionnelle de 1982 et Charte des droits et libertés."},
+        {"year": "1999", "en": "The territory of Nunavut was created.", "fa": "ایجاد قلمرو نوناووت.", "fr": "Création du territoire du Nunavut."},
+        {"year": "2008", "en": "The Prime Minister delivered a formal apology in Parliament for the residential school system.", "fa": "عذرخواهی رسمی نخست‌وزیر از بابت مدارس شبانه‌روزی بومیان.", "fr": "Le premier ministre présente des excuses officielles au Parlement pour les pensionnats autochtones."}
+      ]
+    }
+  ]
+}

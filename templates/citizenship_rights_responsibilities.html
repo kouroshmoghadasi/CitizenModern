@@ -6,10 +6,10 @@
     <link rel="icon" href="{{ url_for('static', filename='images/logo.png') }}" type="image/png">
     <link rel="apple-touch-icon" href="{{ url_for('static', filename='images/logo.png') }}">
     <title>Rights and Responsibilities of Citizenship | آزمون شهروندی – حقوق و مسئولیت‌ها</title>
-    <meta name="description" content="سوالات فصل ۱ (Rights and Responsibilities of Citizenship) آزمون شهروندی کانادا با ترجمه فارسی؛ پنج سوال اول رایگان.">
+    <meta name="description" content="سوالات فصل ۱ (Rights and Responsibilities of Citizenship) آزمون شهروندی کانادا با ترجمه فارسی.">
     {% include '_seo_meta_keywords_brand.html' %}
     {% set seo_title = "Rights and Responsibilities of Citizenship | آزمون شهروندی – فصل ۱" %}
-    {% set seo_description = "سوالات فصل ۱ (Rights and Responsibilities) آزمون شهروندی کانادا با ترجمه فارسی؛ پنج سوال اول رایگان. Discover Canada." %}
+    {% set seo_description = "سوالات فصل ۱ (Rights and Responsibilities) آزمون شهروندی کانادا با ترجمه فارسی. Discover Canada." %}
     {% set seo_image = "images/citizenship-rights-responsibilities-thumbnail.png" %}
     {% set seo_path = "/citizenship-rights-responsibilities" %}
     {% include '_seo_head_social.html' %}
@@ -74,7 +74,8 @@
         .theme-btn[aria-pressed="true"] { border-color: #1e3c72; box-shadow: 0 0 0 2px rgba(30,60,114,0.35); background: linear-gradient(135deg, #e8eef5 0%, #dce4ed 100%); }
         body.theme-dark .theme-btn[aria-pressed="true"] { border-color: #7cb3f5; box-shadow: 0 0 0 2px rgba(124,179,245,0.4); background: linear-gradient(135deg, #3d4a5c 0%, #2d3748 100%); }
         .go-to-q-wrap { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-        .go-to-q-wrap input[type="number"] { width: 72px; padding: 8px 10px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.95rem; background: var(--card-bg); color: var(--text); }
+        .go-to-q-wrap input[type="number"] { width: 72px; padding: 8px 10px; border: 2px solid var(--option-border); border-radius: 8px; font-size: 0.95rem; background: var(--option-bg); color: var(--text); box-shadow: inset 0 1px 3px rgba(0,0,0,0.06); }
+        body.theme-dark .go-to-q-wrap input[type="number"] { box-shadow: inset 0 1px 3px rgba(0,0,0,0.22); }
         .go-to-q-wrap .go-to-q-btn { padding: 8px 14px; border-radius: 8px; border: 1px solid var(--accent); background: var(--accent); color: #fff; font-weight: 600; font-size: 0.9rem; cursor: pointer; }
         .questions-one-by-one .q-card { display: none; }
         .questions-one-by-one .q-card.current { display: block; }
@@ -196,7 +197,7 @@
         <div class="q-card paywall-as-q3" id="q3">
             <div class="paywall-ch1" style="padding: 0; margin: 0; border: none; max-width: none;">
                 <h2 style="margin-bottom: 12px; color: var(--accent);">دسترسی به سوالات ۳ تا {{ max_question_ch1 }}</h2>
-                <p style="margin-bottom: 16px;">سوالات ۱ تا ۲ رایگان است. برای مشاهده همهٔ {{ max_question_ch1 }} سوال Rights and Responsibilities، همان اشتراک (کد کاربری و رمز) مربوط به ۴۱۴ سوال کافی است.</p>
+                <p style="margin-bottom: 16px;">برای مشاهده همهٔ {{ max_question_ch1 }} سوال Rights and Responsibilities، همان اشتراک (کد کاربری و رمز) مربوط به ۴۱۴ سوال کافی است.</p>
                 <p style="margin-bottom: 14px;"><strong>ورود (در صورت داشتن کد و رمز):</strong></p>
                 <input type="text" id="paywallCh1Mobile" placeholder="کد کاربری (شماره موبایل)" style="width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid var(--border); border-radius: 10px; background: var(--card-bg); color: var(--text);">
                 <input type="password" id="paywallCh1Password" placeholder="کلمه عبور" style="width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid var(--border); border-radius: 10px; background: var(--card-bg); color: var(--text);">

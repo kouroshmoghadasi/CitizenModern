@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="{{ url_for('static', filename='images/logo.png') }}" type="image/png">
     <link rel="apple-touch-icon" href="{{ url_for('static', filename='images/logo.png') }}">
-    <title>Who We Are | آزمون شهروندی – ما چه کسانی هستیم</title>
-    <meta name="description" content="سوالات فصل ۲ (Who We Are) آزمون شهروندی کانادا با ترجمه فارسی. Discover Canada.">
+    <title>Canada's Economy | آزمون شهروندی – اقتصاد کانادا</title>
+    <meta name="description" content="سوالات فصل Canada's Economy (Chapter 9) آزمون شهروندی کانادا با ترجمه فارسی.">
     {% include '_seo_meta_keywords_brand.html' %}
-    {% set seo_title = "Who We Are | آزمون شهروندی کانادا – فصل ۲" %}
-    {% set seo_description = "سوالات فصل ۲ (Who We Are) آزمون شهروندی کانادا با ترجمه فارسی." %}
-    {% set seo_image = "images/citizenship-who-we-are-thumbnail.png" %}
-    {% set seo_path = "/citizenship-who-we-are" %}
+    {% set seo_title = "Canada's Economy | آزمون شهروندی کانادا – فصل ۹" %}
+    {% set seo_description = "سوالات فصل Canada's Economy آزمون شهروندی کانادا با ترجمه فارسی. Discover Canada." %}
+    {% set seo_image = "images/citizenship-canada-economy-thumbnail.png" %}
+    {% set seo_path = "/citizenship-canadas-economy" %}
     {% include '_seo_head_social.html' %}
     {% include 'pwa_meta.html' %}
     <style>
@@ -79,14 +79,12 @@
         .go-to-q-wrap .go-to-q-btn { padding: 8px 14px; border-radius: 8px; border: 1px solid var(--accent); background: var(--accent); color: #fff; font-weight: 600; font-size: 0.9rem; cursor: pointer; }
         .questions-one-by-one .q-card { display: none; }
         .questions-one-by-one .q-card.current { display: block; }
-        .q-nav-bar-ch2 { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px; margin-bottom: 20px; padding: 14px 18px; background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.06); }
-        .q-nav-bar-ch2 .q-nav-current { flex: 1 1 auto; min-width: 0; text-align: center; font-weight: 700; color: var(--accent); font-size: 1.05em; }
-        .q-nav-bar-ch2 .q-nav-btn { padding: 10px 20px; border-radius: 10px; border: 2px solid var(--accent); background: var(--accent); color: #fff; font-weight: 600; cursor: pointer; transition: opacity 0.2s; }
-        .q-nav-bar-ch2 .q-nav-btn:hover:not(:disabled) { opacity: 0.9; }
-        .q-nav-bar-ch2 .q-nav-btn:disabled { opacity: 0.5; cursor: not-allowed; }
-        .q-nav-bar-ch2 .q-nav-btn.btn-prev { background: var(--card-bg); color: var(--accent); }
-        .page-header { background: var(--header-bg); color: var(--header-text); padding: 28px 24px; border-radius: 16px; margin-bottom: 24px; text-align: center; box-shadow: 0 8px 24px rgba(30,60,114,0.25); }
-        .page-header h1 { font-size: 1.6em; margin-bottom: 8px; }
+        .q-nav-bar-sym { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px; margin-bottom: 20px; padding: 14px 18px; background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.06); }
+        .q-nav-bar-sym .q-nav-current { flex: 1 1 auto; min-width: 0; text-align: center; font-weight: 700; color: var(--accent); font-size: 1.05em; }
+        .q-nav-bar-sym .q-nav-btn { padding: 10px 20px; border-radius: 10px; border: 2px solid var(--accent); background: var(--accent); color: #fff; font-weight: 600; cursor: pointer; transition: opacity 0.2s; }
+        .q-nav-bar-sym .q-nav-btn:hover:not(:disabled) { opacity: 0.9; }
+        .q-nav-bar-sym .q-nav-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+        .q-nav-bar-sym .q-nav-btn.btn-prev { background: var(--card-bg); color: var(--accent); }
         .back-bar { margin-bottom: 12px; text-align: right; }
         .back-bar.ch1-top-nav { display: flex; flex-wrap: wrap; gap: 10px; justify-content: space-between; align-items: center; text-align: initial; }
         .back-btn { display: inline-block; padding: 10px 20px; background: var(--accent); color: #fff; text-decoration: none; border-radius: 10px; font-weight: 600; }
@@ -98,6 +96,7 @@
             .back-bar.ch1-top-nav { flex-direction: column; align-items: stretch; text-align: center; }
             .back-bar.ch1-top-nav .back-btn { width: 100%; text-align: center; box-sizing: border-box; }
         }
+        .section-lead { text-align: center; color: var(--text-muted); font-size: 0.95em; margin: 0 0 18px; }
         .q-card { background: var(--card-bg); border-radius: 14px; padding: 22px 24px; margin-bottom: 20px; box-shadow: 0 4px 16px rgba(0,0,0,0.06); border: 1px solid var(--border); }
         .q-num { font-weight: 800; color: var(--accent); font-size: 1em; margin-bottom: 12px; }
         .q-text-fa { font-size: 1.15em; font-weight: 700; color: var(--accent); margin-bottom: 10px; text-align: right; direction: rtl; }
@@ -116,6 +115,8 @@
         body.theme-dark .lang-mode-btn[aria-pressed="true"] { border-color: #7cb3f5; box-shadow: 0 0 0 2px rgba(124,179,245,0.35); }
         .q-num-badge { display: inline-flex; align-items: center; justify-content: center; min-width: 2rem; height: 1.75rem; padding: 0 0.5rem; background: linear-gradient(135deg, #1e3c72 0%, #2c5282 100%); color: #fff; border-radius: 8px; font-weight: 700; font-size: 0.9em; margin-right: 0.6rem; }
         .block-fa .q-num-badge { margin-right: 0; margin-left: 0.6rem; }
+        body.theme-dark .q-options-list li.option-correct { background: #1a3d1c; border-color: #28a745; color: #b8e0ba; }
+        body.theme-dark .q-options-list li.option-wrong { background: #3d1a1a; border-color: #dc3545; color: #f8b4b8; }
     </style>
 </head>
 <body>
@@ -129,29 +130,30 @@
         {% if exam_section_views is not none %}
         <p class="exam-visit-count-ch1" role="status">بازدید ثبت‌شده از بخش آزمون‌های نمونه: <strong>{{ exam_section_views }}</strong></p>
         {% endif %}
+        <p class="section-lead">اقتصاد کانادا (Canada's Economy) — Chapter 9.</p>
         <div class="tool-bar">
             <div class="group theme-toggle-wrap">
-                <button type="button" class="lang-mode-btn" id="langModeEn" aria-pressed="true">English + فارسی</button>
-                <button type="button" class="lang-mode-btn" id="langModeFr" aria-pressed="false">Français + فارسی</button>
+                <button type="button" class="lang-mode-btn" id="langModeEnEcon" aria-pressed="true">English + فارسی</button>
+                <button type="button" class="lang-mode-btn" id="langModeFrEcon" aria-pressed="false">Français + فارسی</button>
             </div>
             <div class="group go-to-q-wrap">
-                <label for="goToQuestionCh2" class="theme-label" style="margin: 0;">سوال</label>
-                <input type="number" id="goToQuestionCh2" min="1" max="{{ max_question_ch2 }}" placeholder="1–{{ max_question_ch2 }}" aria-label="Question number">
-                <button type="button" class="go-to-q-btn" id="goToQuestionBtnCh2">برو</button>
+                <label for="goToQuestionEcon" class="theme-label" style="margin: 0;">سوال</label>
+                <input type="number" id="goToQuestionEcon" min="1" max="{{ max_question_econ }}" placeholder="1–{{ max_question_econ }}" aria-label="Question number">
+                <button type="button" class="go-to-q-btn" id="goToQuestionBtnEcon">برو</button>
             </div>
             <div class="group theme-toggle-wrap">
                 <span class="theme-label">Theme:</span>
-                <button type="button" class="theme-btn theme-light" id="themeLight" title="روشن / Light" aria-pressed="true">☀️</button>
-                <button type="button" class="theme-btn theme-dark" id="themeDark" title="تاریک / Dark" aria-pressed="false">🌙</button>
+                <button type="button" class="theme-btn theme-light" id="themeLightEcon" title="روشن / Light" aria-pressed="true">☀️</button>
+                <button type="button" class="theme-btn theme-dark" id="themeDarkEcon" title="تاریک / Dark" aria-pressed="false">🌙</button>
             </div>
         </div>
-        <div id="q-nav-bar-ch2" class="q-nav-bar-ch2" data-max-question="{{ max_visible_ch2 }}">
-            <button type="button" class="q-nav-btn btn-prev" id="qPrevCh2" aria-label="سوال قبلی">← سوال قبلی</button>
-            <span class="q-nav-current" role="status" aria-live="polite" dir="ltr">Question <span id="currentQNumCh2">1</span> of {{ max_visible_ch2 }}</span>
-            <button type="button" class="q-nav-btn" id="qNextCh2" aria-label="سوال بعدی">سوال بعدی →</button>
+        <div id="q-nav-bar-econ" class="q-nav-bar-sym" data-max-question="{{ max_visible_econ }}">
+            <button type="button" class="q-nav-btn btn-prev" id="qPrevEcon" aria-label="سوال قبلی">← سوال قبلی</button>
+            <span class="q-nav-current" role="status" aria-live="polite" dir="ltr">Question <span id="currentQNumEcon">1</span> of {{ max_visible_econ }}</span>
+            <button type="button" class="q-nav-btn" id="qNextEcon" aria-label="سوال بعدی">سوال بعدی →</button>
         </div>
-        <div id="questions-container-ch2" class="questions-one-by-one">
-        {% for q in questions %}
+        <div id="questions-container-econ" class="questions-one-by-one">
+        {% for q in econ_questions %}
         <div class="q-card" id="q{{ loop.index }}">
             <div class="q-text-fa" style="margin-bottom: 10px;">
                 <div class="block-en lang-block-en"><span class="q-num-badge">{{ loop.index }}</span> {{ q.q|e }}</div>
@@ -170,7 +172,7 @@
                 <div class="lang-block-fr" style="display: none;">
                     <ul class="q-options-list">
                         {% for opt in (q.options_fr or q.options_en) %}
-                        <li class="q-option-clickable" data-option-index="{{ loop.index0 }}" role="button" tabindex="0"><span class="q-option-letter">{{ ['A','B','C','D'][loop.index0] }}.</span> {{ opt|e }}</li>
+                        <li class="q-option-clickable" data-option-index="{{ loop.index0 }}" role="button" tabindex="0"><span class="q-option-letter">{{ ['A','B','C','D'][loop.index0] if loop.index0 < 4 else loop.index0 + 1 }}.</span> {{ opt|e }}</li>
                         {% endfor %}
                     </ul>
                 </div>
@@ -193,16 +195,16 @@
             {% endif %}
         </div>
         {% endfor %}
-        {% if show_paywall %}
-        <div class="q-card paywall-as-q3" id="q3">
-            <div class="paywall-ch2" style="padding: 0; margin: 0; border: none; max-width: none;">
-                <h2 style="margin-bottom: 12px; color: var(--accent);">دسترسی به سوالات ۳ تا {{ max_question_ch2 }}</h2>
-                <p style="margin-bottom: 16px;">برای مشاهده همهٔ {{ max_question_ch2 }} سوال Who We Are، همان اشتراک (کد کاربری و رمز) مربوط به ۴۱۴ سوال کافی است.</p>
+        {% if show_paywall_econ %}
+        <div class="q-card paywall-as-q6" id="q6">
+            <div class="paywall-econ" style="padding: 0; margin: 0; border: none; max-width: none;">
+                <h2 style="margin-bottom: 12px; color: var(--accent);">دسترسی به سوالات ۶ تا {{ max_question_econ }}</h2>
+                <p style="margin-bottom: 16px;">برای مشاهدهٔ همهٔ {{ max_question_econ }} سوال Canada's Economy، همان اشتراک (کد کاربری و رمز) مربوط به ۴۱۴ سوال کافی است.</p>
                 <p style="margin-bottom: 14px;"><strong>ورود (در صورت داشتن کد و رمز):</strong></p>
-                <input type="text" id="paywallCh2Mobile" placeholder="کد کاربری (شماره موبایل)" style="width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid var(--border); border-radius: 10px; background: var(--card-bg); color: var(--text);">
-                <input type="password" id="paywallCh2Password" placeholder="کلمه عبور" style="width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid var(--border); border-radius: 10px; background: var(--card-bg); color: var(--text);">
-                <p id="paywallCh2Error" class="subscription-error" style="display: none; color: #c00; margin-bottom: 8px;"></p>
-                <button type="button" id="paywallCh2LoginBtn" style="padding: 12px 24px; background: var(--accent); color: #fff; border: none; border-radius: 10px; cursor: pointer; font-weight: 600;">ورود و مشاهده همه سوالات</button>
+                <input type="text" id="paywallEconMobile" placeholder="کد کاربری (شماره موبایل)" style="width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid var(--border); border-radius: 10px; background: var(--card-bg); color: var(--text);">
+                <input type="password" id="paywallEconPassword" placeholder="کلمه عبور" style="width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid var(--border); border-radius: 10px; background: var(--card-bg); color: var(--text);">
+                <p id="paywallEconError" class="subscription-error" style="display: none; color: #c00; margin-bottom: 8px;"></p>
+                <button type="button" id="paywallEconLoginBtn" style="padding: 12px 24px; background: var(--accent); color: #fff; border: none; border-radius: 10px; cursor: pointer; font-weight: 600;">ورود و مشاهده همه سوالات</button>
             </div>
         </div>
         {% endif %}
@@ -215,11 +217,11 @@
     <script>
         (function() {
             var themeKey = 'citizenship571_theme';
-            var langModeKey = 'citizenship_ch2_lang_mode';
-            var themeLight = document.getElementById('themeLight');
-            var themeDark = document.getElementById('themeDark');
-            var langModeEn = document.getElementById('langModeEn');
-            var langModeFr = document.getElementById('langModeFr');
+            var langModeKey = 'citizenship_economy_lang_mode';
+            var themeLight = document.getElementById('themeLightEcon');
+            var themeDark = document.getElementById('themeDarkEcon');
+            var langModeEn = document.getElementById('langModeEnEcon');
+            var langModeFr = document.getElementById('langModeFrEcon');
             function applyTheme(val) {
                 if (val === 'dark') { document.body.classList.add('theme-dark'); if (themeLight) themeLight.setAttribute('aria-pressed', 'false'); if (themeDark) themeDark.setAttribute('aria-pressed', 'true'); }
                 else { document.body.classList.remove('theme-dark'); if (themeLight) themeLight.setAttribute('aria-pressed', 'true'); if (themeDark) themeDark.setAttribute('aria-pressed', 'false'); }
@@ -240,15 +242,15 @@
             if (langModeEn) langModeEn.addEventListener('click', function() { localStorage.setItem(langModeKey, 'en'); applyLangMode('en'); });
             if (langModeFr) langModeFr.addEventListener('click', function() { localStorage.setItem(langModeKey, 'fr'); applyLangMode('fr'); });
 
-            var goInput = document.getElementById('goToQuestionCh2');
-            var goBtn = document.getElementById('goToQuestionBtnCh2');
-            var container = document.getElementById('questions-container-ch2');
-            var navBar = document.getElementById('q-nav-bar-ch2');
-            var qPrevBtn = document.getElementById('qPrevCh2');
-            var qNextBtn = document.getElementById('qNextCh2');
-            var currentQNumEl = document.getElementById('currentQNumCh2');
+            var goInput = document.getElementById('goToQuestionEcon');
+            var goBtn = document.getElementById('goToQuestionBtnEcon');
+            var container = document.getElementById('questions-container-econ');
+            var navBar = document.getElementById('q-nav-bar-econ');
+            var qPrevBtn = document.getElementById('qPrevEcon');
+            var qNextBtn = document.getElementById('qNextEcon');
+            var currentQNumEl = document.getElementById('currentQNumEcon');
             var current = 1;
-            var maxQ = {{ max_question_ch2 }};
+            var maxQ = {{ max_question_econ }};
             if (navBar && navBar.getAttribute('data-max-question')) maxQ = parseInt(navBar.getAttribute('data-max-question'), 10) || maxQ;
 
             function showQ(n) {
@@ -277,14 +279,14 @@
             if (goBtn) goBtn.addEventListener('click', goToQ);
             if (goInput) goInput.addEventListener('keydown', function(e) { if (e.key === 'Enter') { e.preventDefault(); goToQ(); } });
         })();
-        {% if show_paywall %}
+        {% if show_paywall_econ %}
         (function() {
-            var btn = document.getElementById('paywallCh2LoginBtn');
+            var btn = document.getElementById('paywallEconLoginBtn');
             if (!btn) return;
             btn.addEventListener('click', function() {
-                var mobile = (document.getElementById('paywallCh2Mobile').value || '').trim();
-                var password = document.getElementById('paywallCh2Password').value || '';
-                var errEl = document.getElementById('paywallCh2Error');
+                var mobile = (document.getElementById('paywallEconMobile').value || '').trim();
+                var password = document.getElementById('paywallEconPassword').value || '';
+                var errEl = document.getElementById('paywallEconError');
                 errEl.style.display = 'none';
                 errEl.textContent = '';
                 if (!mobile || !password) {
@@ -305,7 +307,7 @@
         })();
         {% endif %}
         (function() {
-            document.querySelectorAll('#questions-container-ch2 .q-options-mcq').forEach(function(container) {
+            document.querySelectorAll('#questions-container-econ .q-options-mcq').forEach(function(container) {
                 var correctIdx = parseInt(container.getAttribute('data-correct'), 10);
                 if (correctIdx < 0) return;
                 var allLists = container.querySelectorAll('.q-options-list ul');

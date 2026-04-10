@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{{ url_for('static', filename='images/logo.png') }}" type="image/png">
+    <link rel="apple-touch-icon" href="{{ url_for('static', filename='images/logo.png') }}">
+    <title>خط زمانی تاریخ کانادا | Canadian history timeline — Discover Canada</title>
+    <meta name="description" content="رویدادهای کلیدی تاریخ کانادا — فارسی، انگلیسی و فرانسوی؛ مطابق Discover Canada.">
+    {% include '_seo_meta_keywords_brand.html' %}
+    {% set seo_title = "خط زمانی تاریخ کانادا | Timeline — Discover Canada" %}
+    {% set seo_description = "رویدادهای تاریخ کانادا به سه زبان؛ مطالعه مطابق IRCC." %}
+    {% set seo_image = "images/citizenship-canadas-history-thumbnail.png" %}
+    {% set seo_path = "/canadian-history-timeline" %}
+    {% include '_seo_head_social.html' %}
+    {% include 'pwa_meta.html' %}
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            --card-bg: #fff;
+            --text: #1a1a1a;
+            --text-muted: #444;
+            --accent: #1e3c72;
+            --accent-light: #2c5282;
+            --border: rgba(30,60,114,0.08);
+            --option-bg: #f8f9fa;
+            --option-border: #e9ecef;
+        }
+        body.theme-dark {
+            --bg: linear-gradient(135deg, #1a1d24 0%, #0f1115 100%);
+            --card-bg: #252830;
+            --text: #e8eaed;
+            --text-muted: #b0b4b8;
+            --accent: #7cb3f5;
+            --accent-light: #90c5f7;
+            --border: rgba(255,255,255,0.1);
+            --option-bg: #2d323c;
+            --option-border: rgba(255,255,255,0.12);
+        }
+        body {
+            font-family: Tahoma, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.7;
+            color: var(--text);
+            -webkit-user-select: none;
+            user-select: none;
+            -webkit-touch-callout: none;
+        }
+        input, textarea {
+            -webkit-user-select: text;
+            user-select: text;
+        }
+        .wrap { max-width: 900px; margin: 0 auto; }
+        .tool-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 20px; padding: 14px 18px; background: var(--card-bg); border-radius: 12px; border: 1px solid var(--border); box-shadow: 0 2px 10px rgba(0,0,0,0.06); }
+        body.theme-dark .tool-bar { box-shadow: 0 2px 10px rgba(0,0,0,0.3); }
+        .tool-bar .group { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+        .theme-toggle-wrap { display: flex; align-items: center; gap: 6px; }
+        .theme-label { font-weight: 600; color: var(--text); font-size: 0.95em; }
+        .theme-btn { width: 44px; height: 44px; border-radius: 12px; border: 2px solid var(--border); background: var(--card-bg); font-size: 1.35em; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s; }
+        .theme-btn:hover { transform: scale(1.08); box-shadow: 0 4px 12px rgba(0,0,0,0.12); }
+        .theme-btn[aria-pressed="true"] { border-color: #1e3c72; box-shadow: 0 0 0 2px rgba(30,60,114,0.35); background: linear-gradient(135deg, #e8eef5 0%, #dce4ed 100%); }
+        body.theme-dark .theme-btn[aria-pressed="true"] { border-color: #7cb3f5; box-shadow: 0 0 0 2px rgba(124,179,245,0.4); background: linear-gradient(135deg, #3d4a5c 0%, #2d3748 100%); }
+        .back-bar { margin-bottom: 12px; text-align: right; }
+        .back-bar.ch1-top-nav { display: flex; flex-wrap: wrap; gap: 10px; justify-content: space-between; align-items: center; text-align: initial; }
+        .back-btn { display: inline-block; padding: 10px 20px; background: var(--accent); color: #fff; text-decoration: none; border-radius: 10px; font-weight: 600; }
+        .back-btn:hover { background: var(--accent-light); }
+        .exam-visit-count-ch1 { margin: 0 0 14px; text-align: center; font-size: 0.92em; font-weight: 600; color: var(--text); line-height: 1.45; }
+        .exam-visit-count-ch1 strong { color: #c62828; font-weight: 800; }
+        body.theme-dark .exam-visit-count-ch1 strong { color: #ff8a80; }
+        .section-lead { text-align: center; color: var(--text-muted); font-size: 0.95em; margin: 0 0 18px; }
+        @media (max-width: 520px) {
+            .back-bar.ch1-top-nav { flex-direction: column; align-items: stretch; text-align: center; }
+            .back-bar.ch1-top-nav .back-btn { width: 100%; text-align: center; box-sizing: border-box; }
+        }
+        .q-card { background: var(--card-bg); border-radius: 14px; padding: 22px 24px; margin-bottom: 20px; box-shadow: 0 4px 16px rgba(0,0,0,0.06); border: 1px solid var(--border); }
+        body.theme-dark .q-card { box-shadow: 0 4px 16px rgba(0,0,0,0.25); }
+        .block-en { direction: ltr; text-align: left; margin-bottom: 10px; padding: 10px 12px; background: rgba(30,60,114,0.06); border-radius: 10px; border-left: 3px solid var(--accent); }
+        .block-fa { direction: rtl; text-align: right; margin-bottom: 10px; padding: 10px 12px; background: rgba(241,196,15,0.12); border-radius: 10px; border-right: 3px solid #f1c40f; }
+        .block-fr { direction: ltr; text-align: left; margin-bottom: 10px; padding: 10px 12px; background: rgba(0,82,147,0.08); border-radius: 10px; border-left: 3px solid #005293; }
+        .lang-mode-btn { padding: 10px 18px; border-radius: 10px; border: 2px solid var(--border); background: var(--card-bg); color: var(--text); font-weight: 600; cursor: pointer; -webkit-appearance: none; appearance: none; font-size: clamp(0.78rem, 2.8vw, 0.95rem); }
+        .lang-mode-btn[aria-pressed="true"] { border-color: #1e3c72; background: linear-gradient(135deg, #2c5282 0%, #1e3c72 100%); color: #fff; box-shadow: 0 0 0 2px rgba(30,60,114,0.25); }
+        body.theme-dark .lang-mode-btn[aria-pressed="true"] { border-color: #7cb3f5; box-shadow: 0 0 0 2px rgba(124,179,245,0.35); }
+        .table-wrap-tl { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+        table.tl-table { width: 100%; border-collapse: separate; border-spacing: 0; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; background: var(--card-bg); }
+        .tl-table thead th { position: sticky; top: 0; background: linear-gradient(180deg, rgba(30,60,114,0.05) 0%, rgba(30,60,114,0.02) 100%); color: var(--text); text-align: right; font-size: 0.9rem; padding: 12px 12px; border-bottom: 1px solid var(--border); }
+        body.theme-dark .tl-table thead th { background: linear-gradient(180deg, rgba(124,179,245,0.12) 0%, rgba(124,179,245,0.06) 100%); }
+        .tl-table thead th.th-year { text-align: left; direction: ltr; }
+        .tl-table thead th + th { border-right: 1px solid var(--border); }
+        .tl-table tbody td { vertical-align: top; padding: 12px 12px; border-bottom: 1px solid var(--border); }
+        .tl-table tbody td + td { border-right: 1px solid var(--border); }
+        .tl-table tbody tr:last-child td { border-bottom: none; }
+        .tl-table tbody tr:nth-child(even) td { background: rgba(30,60,114,0.03); }
+        body.theme-dark .tl-table tbody tr:nth-child(even) td { background: rgba(124,179,245,0.07); }
+        .tl-table tbody tr:hover td { background: rgba(30,60,114,0.06); }
+        body.theme-dark .tl-table tbody tr:hover td { background: rgba(124,179,245,0.12); }
+        .tl-table td.tl-year { width: 96px; direction: ltr; text-align: left; font-weight: 800; color: var(--accent); font-variant-numeric: tabular-nums; white-space: nowrap; }
+        .tl-txt { margin: 0; padding: 0; background: transparent; border: 0; font-size: 0.98rem; line-height: 1.8; color: var(--text); }
+        .tl-txt-en, .tl-txt-fr { direction: ltr; text-align: left; }
+        .tl-txt-fa { direction: rtl; text-align: right; }
+        .footer-links { margin-top: 20px; text-align: center; font-size: 0.88rem; }
+        .footer-links a { color: var(--accent); font-weight: 600; text-decoration: none; }
+        .footer-links a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <script>try{var t=localStorage.getItem('citizenship571_theme');if(t==='dark')document.body.classList.add('theme-dark');}catch(e){}</script>
+    {% include 'content_protection.html' %}
+    <div class="wrap">
+        <div class="back-bar ch1-top-nav">
+            <a href="{{ url_for('citizenship_exams') }}" class="back-btn">← همهٔ آزمون‌ها / All exams</a>
+            <a href="/" class="back-btn" style="background:var(--card-bg);color:var(--accent);border:2px solid var(--accent);">خانه / Home</a>
+        </div>
+        {% if exam_section_views is not none %}
+        <p class="exam-visit-count-ch1" role="status">بازدید ثبت‌شده از بخش آزمون‌های نمونه: <strong>{{ exam_section_views }}</strong></p>
+        {% endif %}
+        <p class="section-lead">خط زمانی تاریخ کانادا — مطالعهٔ Discover Canada (IRCC) / Key events study page</p>
+
+        <div class="tool-bar">
+            <div class="group theme-toggle-wrap">
+                <button type="button" class="lang-mode-btn" id="langModeEnTl" aria-pressed="true">English + فارسی</button>
+                <button type="button" class="lang-mode-btn" id="langModeFrTl" aria-pressed="false">Français + فارسی</button>
+            </div>
+            <div class="group theme-toggle-wrap">
+                <span class="theme-label">Theme:</span>
+                <button type="button" class="theme-btn theme-light" id="themeLightTl" title="روشن / Light" aria-pressed="true">☀️</button>
+                <button type="button" class="theme-btn theme-dark" id="themeDarkTl" title="تاریک / Dark" aria-pressed="false">🌙</button>
+            </div>
+        </div>
+
+        <div class="q-card">
+            <div class="table-wrap-tl" role="region" aria-label="Timeline table" tabindex="0">
+                <table class="tl-table">
+                    <thead>
+                        <tr>
+                            <th class="th-year">Year</th>
+                            <th>English / Français</th>
+                            <th>فارسی</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% set ns = namespace(i=0) %}
+                        {% for g in timeline.groups %}
+                        {% for item in g.events %}
+                        {% set ns.i = ns.i + 1 %}
+                        <tr class="timeline-row-tl" id="tl-e{{ ns.i }}">
+                            <td class="tl-year">{{ item.year }}</td>
+                            <td>
+                                <div class="lang-block-en tl-txt tl-txt-en">{{ item.en }}</div>
+                                <div class="lang-block-fr tl-txt tl-txt-fr" style="display: none;">{{ item.fr }}</div>
+                            </td>
+                            <td>
+                                <div class="tl-txt tl-txt-fa">{{ item.fa }}</div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="footer-links">
+            <a href="{{ url_for('citizenship_canadas_history') }}">آزمون Canada's History</a>
+            &nbsp;·&nbsp;
+            <a href="{{ url_for('book_summary') }}">خلاصه کتاب</a>
+            &nbsp;·&nbsp;
+            <a href="{{ url_for('citizenship_exams') }}">فهرست آزمون‌ها</a>
+        </div>
+
+        <div class="back-bar" style="margin-top: 24px;">
+            <a href="/" class="back-btn">← بازگشت به صفحه اصلی / Back to Home</a>
+        </div>
+    </div>
+    <script>
+        (function () {
+            var themeKey = 'citizenship571_theme';
+            var langModeKey = 'citizenship_timeline_lang_mode';
+            var themeLight = document.getElementById('themeLightTl');
+            var themeDark = document.getElementById('themeDarkTl');
+            var langModeEn = document.getElementById('langModeEnTl');
+            var langModeFr = document.getElementById('langModeFrTl');
+            function applyTheme(val) {
+                if (val === 'dark') {
+                    document.body.classList.add('theme-dark');
+                    if (themeLight) themeLight.setAttribute('aria-pressed', 'false');
+                    if (themeDark) themeDark.setAttribute('aria-pressed', 'true');
+                } else {
+                    document.body.classList.remove('theme-dark');
+                    if (themeLight) themeLight.setAttribute('aria-pressed', 'true');
+                    if (themeDark) themeDark.setAttribute('aria-pressed', 'false');
+                }
+            }
+            function applyLangMode(mode) {
+                var showEn = mode === 'en';
+                document.querySelectorAll('.lang-block-en').forEach(function (el) { el.style.display = showEn ? '' : 'none'; });
+                document.querySelectorAll('.lang-block-fr').forEach(function (el) { el.style.display = showEn ? 'none' : ''; });
+                if (langModeEn) langModeEn.setAttribute('aria-pressed', showEn ? 'true' : 'false');
+                if (langModeFr) langModeFr.setAttribute('aria-pressed', showEn ? 'false' : 'true');
+                try { localStorage.setItem(langModeKey, mode); } catch (e) {}
+            }
+            var savedTheme = localStorage.getItem(themeKey) || 'light';
+            var savedMode = localStorage.getItem(langModeKey) || 'en';
+            applyTheme(savedTheme);
+            applyLangMode(savedMode === 'fr' ? 'fr' : 'en');
+            if (themeLight) themeLight.addEventListener('click', function () { localStorage.setItem(themeKey, 'light'); applyTheme('light'); });
+            if (themeDark) themeDark.addEventListener('click', function () { localStorage.setItem(themeKey, 'dark'); applyTheme('dark'); });
+            if (langModeEn) langModeEn.addEventListener('click', function () { applyLangMode('en'); });
+            if (langModeFr) langModeFr.addEventListener('click', function () { applyLangMode('fr'); });
+        })();
+    </script>
+</body>
+</html>

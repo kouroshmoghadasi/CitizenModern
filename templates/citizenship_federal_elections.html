@@ -6,10 +6,10 @@
     <link rel="icon" href="{{ url_for('static', filename='images/logo.png') }}" type="image/png">
     <link rel="apple-touch-icon" href="{{ url_for('static', filename='images/logo.png') }}">
     <title>Federal Elections | آزمون شهروندی – انتخابات فدرال</title>
-    <meta name="description" content="سوالات فصل Federal Elections (Chapter 6) آزمون شهروندی کانادا با ترجمه فارسی؛ پنج سوال اول رایگان.">
+    <meta name="description" content="سوالات فصل Federal Elections (Chapter 6) آزمون شهروندی کانادا با ترجمه فارسی.">
     {% include '_seo_meta_keywords_brand.html' %}
     {% set seo_title = "Federal Elections | آزمون شهروندی کانادا – فصل ۶" %}
-    {% set seo_description = "سوالات فصل Federal Elections آزمون شهروندی کانادا با ترجمه فارسی؛ پنج سوال اول رایگان. Discover Canada." %}
+    {% set seo_description = "سوالات فصل Federal Elections آزمون شهروندی کانادا با ترجمه فارسی. Discover Canada." %}
     {% set seo_image = "images/citizenship-federal-elections-thumbnail.png" %}
     {% set seo_path = "/citizenship-federal-elections" %}
     {% include '_seo_head_social.html' %}
@@ -74,7 +74,8 @@
         .theme-btn[aria-pressed="true"] { border-color: #1e3c72; box-shadow: 0 0 0 2px rgba(30,60,114,0.35); background: linear-gradient(135deg, #e8eef5 0%, #dce4ed 100%); }
         body.theme-dark .theme-btn[aria-pressed="true"] { border-color: #7cb3f5; box-shadow: 0 0 0 2px rgba(124,179,245,0.4); background: linear-gradient(135deg, #3d4a5c 0%, #2d3748 100%); }
         .go-to-q-wrap { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-        .go-to-q-wrap input[type="number"] { width: 72px; padding: 8px 10px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.95rem; background: var(--card-bg); color: var(--text); }
+        .go-to-q-wrap input[type="number"] { width: 72px; padding: 8px 10px; border: 2px solid var(--option-border); border-radius: 8px; font-size: 0.95rem; background: var(--option-bg); color: var(--text); box-shadow: inset 0 1px 3px rgba(0,0,0,0.06); }
+        body.theme-dark .go-to-q-wrap input[type="number"] { box-shadow: inset 0 1px 3px rgba(0,0,0,0.22); }
         .go-to-q-wrap .go-to-q-btn { padding: 8px 14px; border-radius: 8px; border: 1px solid var(--accent); background: var(--accent); color: #fff; font-weight: 600; font-size: 0.9rem; cursor: pointer; }
         .questions-one-by-one .q-card { display: none; }
         .questions-one-by-one .q-card.current { display: block; }
@@ -127,7 +128,7 @@
         {% if exam_section_views is not none %}
         <p class="exam-visit-count-ch1" role="status">بازدید ثبت‌شده از بخش آزمون‌های نمونه: <strong>{{ exam_section_views }}</strong></p>
         {% endif %}
-        <p class="section-lead">انتخابات فدرال — Chapter 6؛ پنج سوال اول رایگان.</p>
+        <p class="section-lead">انتخابات فدرال — Chapter 6.</p>
         <div class="tool-bar">
             <div class="group theme-toggle-wrap">
                 <button type="button" class="lang-mode-btn" id="langModeEnFe" aria-pressed="true">English + فارسی</button>
@@ -196,7 +197,7 @@
         <div class="q-card paywall-as-q6" id="q6">
             <div class="paywall-fe" style="padding: 0; margin: 0; border: none; max-width: none;">
                 <h2 style="margin-bottom: 12px; color: var(--accent);">دسترسی به سوالات ۶ تا {{ max_question_fe }}</h2>
-                <p style="margin-bottom: 16px;">سوالات ۱ تا ۵ رایگان است. برای مشاهدهٔ همهٔ {{ max_question_fe }} سوال Federal Elections، همان اشتراک (کد کاربری و رمز) مربوط به ۴۱۴ سوال کافی است.</p>
+                <p style="margin-bottom: 16px;">برای مشاهدهٔ همهٔ {{ max_question_fe }} سوال Federal Elections، همان اشتراک (کد کاربری و رمز) مربوط به ۴۱۴ سوال کافی است.</p>
                 <p style="margin-bottom: 14px;"><strong>ورود (در صورت داشتن کد و رمز):</strong></p>
                 <input type="text" id="paywallFeMobile" placeholder="کد کاربری (شماره موبایل)" style="width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid var(--border); border-radius: 10px; background: var(--card-bg); color: var(--text);">
                 <input type="password" id="paywallFePassword" placeholder="کلمه عبور" style="width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid var(--border); border-radius: 10px; background: var(--card-bg); color: var(--text);">

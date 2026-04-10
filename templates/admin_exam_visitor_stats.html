@@ -38,7 +38,7 @@
         }
         .card-table h2 { font-size: 1.05rem; color: #1e3c72; margin-bottom: 14px; }
         .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-        table.stats { width: 100%; border-collapse: collapse; font-size: 0.82rem; min-width: 1100px; }
+        table.stats { width: 100%; border-collapse: collapse; font-size: 0.82rem; min-width: 1260px; }
         table.stats th, table.stats td { padding: 10px 8px; text-align: center; border: 1px solid #e2e8f0; }
         table.stats th { background: #e0f2fe; color: #0c4a6e; font-weight: 700; white-space: nowrap; }
         table.stats td:first-child, table.stats th:first-child { text-align: right; font-weight: 600; }
@@ -68,6 +68,8 @@
         <a href="{{ url_for('citizenship_how_canadians_govern_themselves') }}" target="_blank" rel="noopener">Govern</a><span class="sep">+</span>
         <a href="{{ url_for('citizenship_federal_elections') }}" target="_blank" rel="noopener">Federal Elections</a><span class="sep">+</span>
         <a href="{{ url_for('citizenship_canadian_symbols') }}" target="_blank" rel="noopener">Canadian Symbols</a><span class="sep">+</span>
+        <a href="{{ url_for('citizenship_canadas_economy') }}" target="_blank" rel="noopener">Canada's Economy</a><span class="sep">+</span>
+        <a href="{{ url_for('citizenship_canadas_regions') }}" target="_blank" rel="noopener">Canada's Regions</a><span class="sep">+</span>
         <a href="{{ url_for('citizenship_justice_system') }}" target="_blank" rel="noopener">Justice</a><span class="sep">+</span>
         <a href="{{ url_for('citizenship_modern_canada') }}" target="_blank" rel="noopener">Modern Canada</a><span class="sep">+</span>
         <a href="{{ url_for('citizenship_exams') }}" target="_blank" rel="noopener">آزمون‌های نمونه (فهرست)</a><span class="sep">+</span>
@@ -97,6 +99,8 @@
                         <th>Govern</th>
                         <th>Federal Elections</th>
                         <th>Canadian Symbols</th>
+                        <th>Canada's Economy</th>
+                        <th>Canada's Regions</th>
                         <th>Justice</th>
                         <th>Modern Canada</th>
                         <th>Exam1</th>
@@ -145,6 +149,8 @@
                         ' &nbsp;|&nbsp; <strong>citizenship-how-canadians-govern-themselves:</strong> ' + (ex.hits_citizenship_how_canadians_govern != null ? ex.hits_citizenship_how_canadians_govern : 0) +
                         ' &nbsp;|&nbsp; <strong>citizenship-federal-elections:</strong> ' + (ex.hits_citizenship_federal_elections != null ? ex.hits_citizenship_federal_elections : 0) +
                         ' &nbsp;|&nbsp; <strong>citizenship-canadian-symbols:</strong> ' + (ex.hits_citizenship_canadian_symbols != null ? ex.hits_citizenship_canadian_symbols : 0) +
+                        ' &nbsp;|&nbsp; <strong>citizenship-canadas-economy:</strong> ' + (ex.hits_citizenship_canadas_economy != null ? ex.hits_citizenship_canadas_economy : 0) +
+                        ' &nbsp;|&nbsp; <strong>citizenship-canadas-regions:</strong> ' + (ex.hits_citizenship_canadas_regions != null ? ex.hits_citizenship_canadas_regions : 0) +
                         ' &nbsp;|&nbsp; <strong>citizenship-justice-system:</strong> ' + (ex.hits_citizenship_justice != null ? ex.hits_citizenship_justice : 0) +
                         ' &nbsp;|&nbsp; <strong>citizenship-modern-canada:</strong> ' + (ex.hits_citizenship_modern_canada != null ? ex.hits_citizenship_modern_canada : 0) +
                         ' &nbsp;|&nbsp; <strong>exam1:</strong> ' + (ex.hits_exam1 != null ? ex.hits_exam1 : 0) +
@@ -165,14 +171,16 @@
                         var gov = row.govern_hits != null ? row.govern_hits : 0;
                         var fed = row.federal_elections_hits != null ? row.federal_elections_hits : 0;
                         var sym = row.canadian_symbols_hits != null ? row.canadian_symbols_hits : 0;
+                        var econ = row.canadas_economy_hits != null ? row.canadas_economy_hits : 0;
+                        var reg = row.canadas_regions_hits != null ? row.canadas_regions_hits : 0;
                         var justice = row.justice_hits != null ? row.justice_hits : 0;
                         var modern = row.modern_canada_hits != null ? row.modern_canada_hits : 0;
                         var e1 = row.exam1_hits != null ? row.exam1_hits : 0;
                         var e2 = row.exam2_hits != null ? row.exam2_hits : 0;
                         var e3 = row.exam3_hits != null ? row.exam3_hits : 0;
-                        var sum = h + intro + rights + who + hist + gov + fed + sym + justice + modern + e1 + e2 + e3;
+                        var sum = h + intro + rights + who + hist + gov + fed + sym + econ + reg + justice + modern + e1 + e2 + e3;
                         var tr = document.createElement('tr');
-                        tr.innerHTML = '<td>' + (row.day || '').replace(/</g, '&lt;') + '</td><td>' + h + '</td><td>' + intro + '</td><td>' + rights + '</td><td>' + who + '</td><td>' + hist + '</td><td>' + gov + '</td><td>' + fed + '</td><td>' + sym + '</td><td>' + justice + '</td><td>' + modern + '</td><td>' + e1 + '</td><td>' + e2 + '</td><td>' + e3 + '</td><td>' + sum + '</td>';
+                        tr.innerHTML = '<td>' + (row.day || '').replace(/</g, '&lt;') + '</td><td>' + h + '</td><td>' + intro + '</td><td>' + rights + '</td><td>' + who + '</td><td>' + hist + '</td><td>' + gov + '</td><td>' + fed + '</td><td>' + sym + '</td><td>' + econ + '</td><td>' + reg + '</td><td>' + justice + '</td><td>' + modern + '</td><td>' + e1 + '</td><td>' + e2 + '</td><td>' + e3 + '</td><td>' + sum + '</td>';
                         tbody.appendChild(tr);
                     });
                 }

@@ -6,10 +6,10 @@
     <link rel="icon" href="{{ url_for('static', filename='images/logo.png') }}" type="image/png">
     <link rel="apple-touch-icon" href="{{ url_for('static', filename='images/logo.png') }}">
     <title>آزمون‌های نمونه شهروندی کانادا | Sample Exams — discovercanadatest.com</title>
-    <meta name="description" content="فهرست آزمون‌های نمونه شهروندی کانادا: Introduction، Rights، Who We Are، Canada's History، How Canadians Govern، Federal Elections، Justice، Symbols، Modern Canada، Exam1–Exam3 — تمرین چندزبانه مطابق فصل‌های Discover Canada و آمادگی IRCC.">
+    <meta name="description" content="فهرست آزمون‌های نمونه شهروندی کانادا: Introduction، Rights، Who We Are، Canada's History، صفحهٔ خط زمانی تاریخ (مطالعه)، Economy، Regions، Govern، Elections، Justice، Symbols، Modern Canada، Exam1–Exam3 — مطابق Discover Canada و IRCC.">
     <meta name="keywords" content="discovercanadatest.com, CitizenTest, آزمون‌های نمونه شهروندی, فهرست آزمون شهروندی, تمرین فصلی Discover Canada, IRCC sample tests, citizenship sample exams, practice by chapter, liste examens citoyenneté, examens blancs citoyenneté, Discover Canada practice, Introduction citizenship, Rights and Responsibilities quiz, Exam 1 2 3 citizenship, کورش مقدسی, کورش, مقدسی, Kourosh Moghadasi, Kouroshmoghadasi, KANA Soft System, شهروندی کانادا, امتحان شهروندی کانادا, شهروندی, سیتیزن شیپی کانادا, امتحان سیتیزن شیپی کانادا, Discover Canada, DiscoverCanada, خلاصه کتاب DiscoverCanada, کتاب شهروندی کانادا, نمونه سوال امتحان شهروندی کانادا, نمونه تست امتحان شهروندی کانادا, نمونه آزمون شهروندی کانادا, ترجمه کتاب شهروندی کانادا, خاطره تحویلداری یکتا, Khatereh Tahvildari-Yekta">
     {% set seo_title = "آزمون‌های نمونه شهروندی کانادا | Sample Exams — CitizenTest" %}
-    {% set seo_description = "فهرست آزمون‌های نمونه شهروندی کانادا مطابق فصل‌های Discover Canada و آمادگی IRCC — Introduction تا Modern Canada و Exam1–Exam3؛ فارسی، انگلیسی و فرانسه." %}
+    {% set seo_description = "فهرست آزمون‌های نمونه شهروندی کانادا مطابق Discover Canada — شامل صفحهٔ خط زمانی تاریخ (مطالعه)، فصل‌های Economy و Regions، و Exam1–Exam3؛ چندزبانه." %}
     {% set seo_image = "images/citizenship-introduction-thumbnail.png" %}
     {% set seo_path = "/citizenship-exams" %}
     {% set seo_og_type = "website" %}
@@ -173,6 +173,39 @@
                     <div class="exam-card-body">
                         <h2>Canada's History</h2>
                         <p>Chapter 3 — Indigenous history, European contact, and Confederation (Discover Canada)</p>
+                    </div>
+                </a>
+            </article>
+            <article class="exam-card" id="canadian-history-timeline-study">
+                <a href="{{ url_for('canadian_history_timeline') }}">
+                    <div class="exam-card-img-wrap">
+                    <img src="{{ url_for('static', filename='images/canada-history-timeline-hero.png') }}" alt="Key events in Canadian history — illustrated timeline, study page" width="320" height="180" loading="lazy">
+                    </div>
+                    <div class="exam-card-body">
+                        <h2>Key events in Canadian history</h2>
+                        <p>Bilingual study page with search — text from the official IRCC guide (Discover Canada)</p>
+                    </div>
+                </a>
+            </article>
+            <article class="exam-card" id="canadas-economy-exam">
+                <a href="{{ url_for('citizenship_canadas_economy') }}">
+                    <div class="exam-card-img-wrap">
+                    <img src="{{ url_for('static', filename='images/citizenship-canada-economy-thumbnail.png') }}" alt="Canada's Economy — trade, Parliament, CN Tower, services and resources (Discover Canada Chapter 9)" width="320" height="213" loading="lazy">
+                    </div>
+                    <div class="exam-card-body">
+                        <h2>Canada's Economy</h2>
+                        <p>Chapter 9 — trade with the United States, NAFTA, industries, and the G8 (Discover Canada)</p>
+                    </div>
+                </a>
+            </article>
+            <article class="exam-card" id="canadas-regions-exam">
+                <a href="{{ url_for('citizenship_canadas_regions') }}">
+                    <div class="exam-card-img-wrap">
+                    <img src="{{ url_for('static', filename='images/citizenship-canada-regions-thumbnail.png') }}" alt="Canada's Regions — provinces, territories, capitals, Atlantic to Pacific (Discover Canada Chapter 10)" width="320" height="213" loading="lazy">
+                    </div>
+                    <div class="exam-card-body">
+                        <h2>Canada's Regions</h2>
+                        <p>Chapter 10 — provinces and territories, capitals, geography, and Atlantic Canada (Discover Canada)</p>
                     </div>
                 </a>
             </article>

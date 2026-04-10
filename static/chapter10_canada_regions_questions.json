@@ -1,0 +1,1352 @@
+[
+  {
+    "q": "In terms of size, how does Canada rank?",
+    "q_fa": "از نظر مساحت، کانادا در چه رتبه‌ای در جهان قرار دارد؟",
+    "q_fr": "Comment le Canada se classe-t-il en superficie?",
+    "options": [
+      "Second largest country on earth",
+      "First largest country on earth",
+      "Third largest country on earth",
+      "Fourth largest country on earth"
+    ],
+    "options_fr": [
+      "Second largest country on earth",
+      "First largest country on earth",
+      "Third largest country on earth",
+      "Fourth largest country on earth"
+    ],
+    "options_fa": [
+      "دومین کشور بزرگ جهان",
+      "بزرگ‌ترین کشور جهان",
+      "سومین کشور بزرگ جهان",
+      "چهارمین کشور بزرگ جهان"
+    ],
+    "correct": 0,
+    "page": 44,
+    "section": "Canada's Regions",
+    "book_text": "Canada is the world's second-largest country in total area."
+  },
+  {
+    "q": "Which oceans line Canada's frontiers?",
+    "q_fa": "کدام اقیانوس‌ها مرزهای کانادا را دربر می‌گیرند؟",
+    "q_fr": "Quels océans bordent le Canada?",
+    "options": [
+      "Pacific Ocean, Atlantic Ocean and Southern Ocean",
+      "Atlantic Ocean and Pacific Ocean",
+      "Pacific Ocean, Atlantic Ocean and Arctic Ocean",
+      "Pacific Ocean and Arctic Ocean"
+    ],
+    "options_fr": [
+      "Océan Pacifique, Atlantique et Austral",
+      "Océans Atlantique et Pacifique",
+      "Océans Pacifique, Atlantique et Arctique",
+      "Océans Pacifique et Arctique"
+    ],
+    "options_fa": [
+      "اقیانوس آرام، اقیانوس اطلس و اقیانوس جنوبی",
+      "اقیانوس اطلس و اقیانوس آرام",
+      "اقیانوس آرام، اقیانوس اطلس و اقیانوس شمالگان",
+      "اقیانوس آرام و اقیانوس شمالگان"
+    ],
+    "correct": 2,
+    "page": 44,
+    "section": "Canada's Regions",
+    "book_text": "Canada borders the Pacific, Atlantic and Arctic oceans."
+  },
+  {
+    "q": "Which country lies on Canada's southern border?",
+    "q_fa": "کدام کشور در جنوب کانادا قرار دارد؟",
+    "q_fr": "Quel pays est situé à la frontière sud du Canada?",
+    "options": [
+      "Mexico",
+      "U.S.A.",
+      "Central America",
+      "Washington"
+    ],
+    "options_fr": [
+      "Mexico",
+      "U.S.A.",
+      "Central America",
+      "Washington"
+    ],
+    "options_fa": [
+      "مکزیک",
+      "ایالات متحدهٔ آمریکا",
+      "آمریکای مرکزی",
+      "واشینگتن"
+    ],
+    "correct": 1,
+    "page": 44,
+    "section": "Canada's Regions",
+    "book_text": "The United States of America (U.S.A.) is Canada's southern neighbour."
+  },
+  {
+    "q": "What are the regions of Canada?",
+    "q_fa": "نواحی (مناطق) کانادا کدامند؟",
+    "q_fr": "Quelles sont les grandes régions du Canada?",
+    "options": [
+      "Atlantic Provinces, Central Canada, Prairie Provinces, West Coast and Northern Territories",
+      "South Provinces, Northern Canada, West Provinces, East Provinces, and Central Territories",
+      "Ontario, Quebec, Prairie Provinces and Central Canada",
+      "Atlantic Provinces, Central Canada, Prairie Provinces, and West Coast"
+    ],
+    "options_fr": [
+      "Atlantic Provinces, Central Canada, Prairie Provinces, West Coast and Northern Territories",
+      "South Provinces, Northern Canada, West Provinces, East Provinces, and Central Territories",
+      "Ontario, Quebec, Prairie Provinces and Central Canada",
+      "Atlantic Provinces, Central Canada, Prairie Provinces, and West Coast"
+    ],
+    "options_fa": [
+      "استان‌های آتلانتیک، کانادای مرکزی، استان‌های دشت، ساحل غربی و سرزمین‌های شمالی",
+      "استان‌های جنوبی، کانادای شمالی، غرب، شرق و سرزمین‌های مرکزی",
+      "انتاریو، کبک، دشت‌ها و کانادای مرکزی",
+      "استان‌های آتلانتیک، کانادای مرکزی، دشت‌ها و ساحل غربی"
+    ],
+    "correct": 0,
+    "page": 44,
+    "section": "Canada's Regions",
+    "book_text": "Canada is often described in regions: Atlantic, Central Canada, the Prairies, the West Coast and the North."
+  },
+  {
+    "q": "What is Canada's national capital?",
+    "q_fa": "پایتخت ملی کانادا کجاست؟",
+    "q_fr": "Quelle est la capitale nationale du Canada?",
+    "options": [
+      "Ottawa",
+      "Toronto",
+      "Vancouver",
+      "Montreal"
+    ],
+    "options_fr": [
+      "Ottawa",
+      "Toronto",
+      "Vancouver",
+      "Montreal"
+    ],
+    "options_fa": [
+      "اتاوا",
+      "تورنتو",
+      "ونکوور",
+      "مونترال"
+    ],
+    "correct": 0,
+    "page": 44,
+    "section": "Canada's Regions",
+    "book_text": "Ottawa is Canada's capital city."
+  },
+  {
+    "q": "When was Ottawa chosen as the capital of Canada?",
+    "q_fa": "اتاوا در چه زمانی به‌عنوان پایتخت کانادا برگزیده شد؟",
+    "q_fr": "En quelle année Ottawa a-t-elle été choisie comme capitale?",
+    "options": [
+      "1757",
+      "1957",
+      "1857",
+      "1657"
+    ],
+    "options_fr": [
+      "1757",
+      "1957",
+      "1857",
+      "1657"
+    ],
+    "options_fa": [
+      "۱۷۵۷",
+      "۱۹۵۷",
+      "۱۸۵۷",
+      "۱۶۵۷"
+    ],
+    "correct": 2,
+    "page": 44,
+    "section": "Canada's Regions",
+    "book_text": "Queen Victoria chose Ottawa as the capital of the Province of Canada in 1857."
+  },
+  {
+    "q": "In terms of size, how does Ottawa's metropolitan area rank in Canada?",
+    "q_fa": "منطقهٔ شهری اتاوا از نظر وسعت در کانادا چندم است؟",
+    "q_fr": "Comment la région métropolitaine d'Ottawa se classe-t-elle par taille au Canada?",
+    "options": [
+      "Fourth largest metropolitan area",
+      "Largest metropolitan area",
+      "Second largest metropolitan area",
+      "Third largest metropolitan area"
+    ],
+    "options_fr": [
+      "Fourth largest metropolitan area",
+      "Largest metropolitan area",
+      "Second largest metropolitan area",
+      "Third largest metropolitan area"
+    ],
+    "options_fa": [
+      "چهارمین ناحیهٔ شهری بزرگ",
+      "بزرگ‌ترین ناحیهٔ شهری",
+      "دومین ناحیهٔ شهری بزرگ",
+      "سومین ناحیهٔ شهری بزرگ"
+    ],
+    "correct": 0,
+    "page": 44,
+    "section": "Canada's Regions",
+    "book_text": "The Ottawa metropolitan area is among Canada's largest urban regions (often cited as fourth)."
+  },
+  {
+    "q": "How many provinces and territories are there in Canada?",
+    "q_fa": "کانادا چند استان و چند قلمرو دارد؟",
+    "q_fr": "Combien de provinces et de territoires compte le Canada?",
+    "options": [
+      "Ten provinces and four territories",
+      "Nine provinces and three territories",
+      "Ten provinces and three territories",
+      "Eight provinces and five territories"
+    ],
+    "options_fr": [
+      "Ten provinces and four territories",
+      "Nine provinces and three territories",
+      "Ten provinces and three territories",
+      "Eight provinces and five territories"
+    ],
+    "options_fa": [
+      "ده استان و چهار قلمرو",
+      "نه استان و سه قلمرو",
+      "ده استان و سه قلمرو",
+      "هشت استان و پنج قلمرو"
+    ],
+    "correct": 2,
+    "page": 44,
+    "section": "Canada's Regions",
+    "book_text": "Canada has ten provinces and three territories."
+  },
+  {
+    "q": "In Canada, each province and territory has its own capital city.",
+    "q_fa": "در کانادا هر استان و قلمرو پایتخت مخصوص خود را دارد.",
+    "q_fr": "Au Canada, chaque province et territoire a sa propre capitale.",
+    "options": [
+      "True",
+      "False",
+      "Only provinces have capitals",
+      "Only territories have capitals"
+    ],
+    "options_fr": [
+      "Vrai",
+      "Faux",
+      "Seules les provinces ont une capitale",
+      "Seuls les territoires ont une capitale"
+    ],
+    "options_fa": [
+      "درست",
+      "نادرست",
+      "فقط استان‌ها پایتخت دارند",
+      "فقط قلمروها پایتخت دارند"
+    ],
+    "correct": 0,
+    "page": 44,
+    "section": "Canada's Regions",
+    "book_text": "Each province and territory has its own capital city."
+  },
+  {
+    "q": "What is the population of Canada?",
+    "q_fa": "جمعیت کانادا چقدر است؟",
+    "q_fr": "Quelle est la population du Canada?",
+    "options": [
+      "About 42 million people",
+      "About 34 million people",
+      "About 18 million people",
+      "About 68 million people"
+    ],
+    "options_fr": [
+      "About 42 million people",
+      "About 34 million people",
+      "About 18 million people",
+      "About 68 million people"
+    ],
+    "options_fa": [
+      "حدود ۴۲ میلیون نفر",
+      "حدود ۳۴ میلیون نفر",
+      "حدود ۱۸ میلیون نفر",
+      "حدود ۶۸ میلیون نفر"
+    ],
+    "correct": 1,
+    "page": 44,
+    "section": "Canada's Regions",
+    "book_text": "Discover Canada study materials have cited a population of about 34 million (figures change over time)."
+  },
+  {
+    "q": "Where do the majority of Canadians live?",
+    "q_fa": "اکثر کانادایی‌ها کجا زندگی می‌کنند؟",
+    "q_fr": "Où vit la majorité des Canadiens?",
+    "options": [
+      "In rural areas",
+      "In small towns",
+      "In cities",
+      "Along the East Coast"
+    ],
+    "options_fr": [
+      "In rural areas",
+      "In small towns",
+      "In cities",
+      "Along the East Coast"
+    ],
+    "options_fa": [
+      "در مناطق روستایی",
+      "در شهرهای کوچک",
+      "در شهرها",
+      "در امتداد سواحل شرقی"
+    ],
+    "correct": 2,
+    "page": 44,
+    "section": "Canada's Regions",
+    "book_text": "The majority of Canadians live in urban areas (cities)."
+  },
+  {
+    "q": "Which of the following defines Central Canada?",
+    "q_fa": "کدام گزینه «کانادای مرکزی» را تعریف می‌کند؟",
+    "q_fr": "Laquelle des propositions suivantes définit le Canada central?",
+    "options": [
+      "Quebec and Ontario",
+      "Quebec and Manitoba",
+      "Ontario and Saskatchewan",
+      "Manitoba and Saskatchewan"
+    ],
+    "options_fr": [
+      "Quebec and Ontario",
+      "Quebec and Manitoba",
+      "Ontario and Saskatchewan",
+      "Manitoba and Saskatchewan"
+    ],
+    "options_fa": [
+      "کبک و انتاریو",
+      "کبک و مانیتوبا",
+      "انتاریو و ساسکاچوان",
+      "مانیتوبا و ساسکاچوان"
+    ],
+    "correct": 0,
+    "page": 45,
+    "section": "Canada's Regions",
+    "book_text": "Central Canada consists of Quebec and Ontario."
+  },
+  {
+    "q": "Which of the following are Prairie Provinces?",
+    "q_fa": "کدام‌ها «استان‌های دشت» (Prairie Provinces) هستند؟",
+    "q_fr": "Lesquelles sont les provinces des Prairies?",
+    "options": [
+      "Manitoba, Saskatchewan and Alberta",
+      "Saskatchewan, Alberta and Nova Scotia",
+      "Ontario, Manitoba and Alberta",
+      "Manitoba, Ontario and Saskatchewan"
+    ],
+    "options_fr": [
+      "Manitoba, Saskatchewan and Alberta",
+      "Saskatchewan, Alberta and Nova Scotia",
+      "Ontario, Manitoba and Alberta",
+      "Manitoba, Ontario and Saskatchewan"
+    ],
+    "options_fa": [
+      "مانیتوبا، ساسکاچوان و آلبرتا",
+      "ساسکاچوان، آلبرتا و نوا اسکوشیا",
+      "انتاریو، مانیتوبا و آلبرتا",
+      "مانیتوبا، انتاریو و ساسکاچوان"
+    ],
+    "correct": 0,
+    "page": 45,
+    "section": "Canada's Regions",
+    "book_text": "The Prairie Provinces are Manitoba, Saskatchewan and Alberta."
+  },
+  {
+    "q": "Which of the following is a West Coast Province?",
+    "q_fa": "کدام یک استان ساحل غربی است؟",
+    "q_fr": "Laquelle est une province de la côte Ouest?",
+    "options": [
+      "Nunavut",
+      "Nova Scotia",
+      "British Columbia",
+      "Alberta"
+    ],
+    "options_fr": [
+      "Nunavut",
+      "Nova Scotia",
+      "British Columbia",
+      "Alberta"
+    ],
+    "options_fa": [
+      "نوناووت",
+      "نوا اسکوشیا",
+      "بریتیش کلمبیا",
+      "آلبرتا"
+    ],
+    "correct": 2,
+    "page": 45,
+    "section": "Canada's Regions",
+    "book_text": "British Columbia is Canada's Pacific/West Coast province."
+  },
+  {
+    "q": "Which of the following defines Northern Canada?",
+    "q_fa": "کدام گزینه «شمال کانادا» را تعریف می‌کند؟",
+    "q_fr": "Laquelle définit le Nord du Canada?",
+    "options": [
+      "Nunavut, Northwest Territories and Yukon",
+      "Nunavut and Northwest Territories",
+      "Northwest Territories and Yukon",
+      "Nunavut, Northwest Territories and Newfoundland"
+    ],
+    "options_fr": [
+      "Nunavut, Northwest Territories and Yukon",
+      "Nunavut and Northwest Territories",
+      "Northwest Territories and Yukon",
+      "Nunavut, Northwest Territories and Newfoundland"
+    ],
+    "options_fa": [
+      "نوناووت، سرزمین‌های شمال غرب و یوکان",
+      "نوناووت و سرزمین‌های شمال غرب",
+      "سرزمین‌های شمال غرب و یوکان",
+      "نوناووت، شمال‌غرب و نیوفاندلند و لابرادور"
+    ],
+    "correct": 0,
+    "page": 45,
+    "section": "Canada's Regions",
+    "book_text": "Northern Canada comprises Nunavut, the Northwest Territories and Yukon."
+  },
+  {
+    "q": "What is the capital of Newfoundland and Labrador?",
+    "q_fa": "پایتخت نیوفاندلند و لابرادور کجاست؟",
+    "q_fr": "Quelle est la capitale de Terre-Neuve-et-Labrador?",
+    "options": [
+      "St. John's",
+      "Charlottetown",
+      "Halifax",
+      "Fredericton"
+    ],
+    "options_fr": [
+      "St. John's",
+      "Charlottetown",
+      "Halifax",
+      "Fredericton"
+    ],
+    "options_fa": [
+      "سنت جانز",
+      "شارلوت‌تاون",
+      "هلیفکس",
+      "فردریکتون"
+    ],
+    "correct": 0,
+    "page": 45,
+    "section": "Canada's Regions",
+    "book_text": "The capital of Newfoundland and Labrador is St. John's."
+  },
+  {
+    "q": "What is the capital of New Brunswick?",
+    "q_fa": "پایتخت نیوبرانزویک کجاست؟",
+    "q_fr": "Quelle est la capitale du Nouveau-Brunswick?",
+    "options": [
+      "Halifax",
+      "Fredericton",
+      "Winnipeg",
+      "Regina"
+    ],
+    "options_fr": [
+      "Halifax",
+      "Fredericton",
+      "Winnipeg",
+      "Regina"
+    ],
+    "options_fa": [
+      "هلیفکس",
+      "فردریکتون",
+      "وینیپگ",
+      "رجاینا"
+    ],
+    "correct": 1,
+    "page": 45,
+    "section": "Canada's Regions",
+    "book_text": "The capital of New Brunswick is Fredericton."
+  },
+  {
+    "q": "What is the capital of Quebec?",
+    "q_fa": "پایتخت کبک کجاست؟",
+    "q_fr": "Quelle est la capitale du Québec?",
+    "options": [
+      "Quebec City",
+      "Montreal",
+      "Saint-Jean",
+      "Chicoutimi"
+    ],
+    "options_fr": [
+      "Quebec City",
+      "Montreal",
+      "Saint-Jean",
+      "Chicoutimi"
+    ],
+    "options_fa": [
+      "شهر کبک",
+      "مونترال",
+      "سن ژان",
+      "شیکوتیمی"
+    ],
+    "correct": 0,
+    "page": 45,
+    "section": "Canada's Regions",
+    "book_text": "The capital of Quebec is Québec City."
+  },
+  {
+    "q": "What is the capital of Ontario?",
+    "q_fa": "پایتخت انتاریو کجاست؟",
+    "q_fr": "Quelle est la capitale de l'Ontario?",
+    "options": [
+      "Ottawa",
+      "Toronto",
+      "Kingston",
+      "Mississauga"
+    ],
+    "options_fr": [
+      "Ottawa",
+      "Toronto",
+      "Kingston",
+      "Mississauga"
+    ],
+    "options_fa": [
+      "اتاوا",
+      "تورنتو",
+      "کینگستون",
+      "میسیساگا"
+    ],
+    "correct": 1,
+    "page": 45,
+    "section": "Canada's Regions",
+    "book_text": "The capital of Ontario is Toronto."
+  },
+  {
+    "q": "What is the capital of Manitoba?",
+    "q_fa": "پایتخت مانیتوبا کجاست؟",
+    "q_fr": "Quelle est la capitale du Manitoba?",
+    "options": [
+      "Regina",
+      "Edmonton",
+      "Winnipeg",
+      "Calgary"
+    ],
+    "options_fr": [
+      "Regina",
+      "Edmonton",
+      "Winnipeg",
+      "Calgary"
+    ],
+    "options_fa": [
+      "رجاینا",
+      "ادمونتون",
+      "وینیپگ",
+      "کلگری"
+    ],
+    "correct": 2,
+    "page": 45,
+    "section": "Canada's Regions",
+    "book_text": "The capital of Manitoba is Winnipeg."
+  },
+  {
+    "q": "What is the capital of Alberta?",
+    "q_fa": "پایتخت آلبرتا کجاست؟",
+    "q_fr": "Quelle est la capitale de l'Alberta?",
+    "options": [
+      "Calgary",
+      "Edmonton",
+      "Red Deer",
+      "Regina"
+    ],
+    "options_fr": [
+      "Calgary",
+      "Edmonton",
+      "Red Deer",
+      "Regina"
+    ],
+    "options_fa": [
+      "کلگری",
+      "ادمونتون",
+      "رد دیر",
+      "رجاینا"
+    ],
+    "correct": 1,
+    "page": 45,
+    "section": "Canada's Regions",
+    "book_text": "The capital of Alberta is Edmonton."
+  },
+  {
+    "q": "What is the capital of British Columbia?",
+    "q_fa": "پایتخت بریتیش کلمبیا کجاست؟",
+    "q_fr": "Quelle est la capitale de la Colombie-Britannique?",
+    "options": [
+      "Vancouver",
+      "Victoria",
+      "Calgary",
+      "Edmonton"
+    ],
+    "options_fr": [
+      "Vancouver",
+      "Victoria",
+      "Calgary",
+      "Edmonton"
+    ],
+    "options_fa": [
+      "ونکوور",
+      "ویکتوریا",
+      "کلگری",
+      "ادمونتون"
+    ],
+    "correct": 1,
+    "page": 45,
+    "section": "Canada's Regions",
+    "book_text": "The capital of British Columbia is Victoria."
+  },
+  {
+    "q": "What is the capital of the Northwest Territories?",
+    "q_fa": "پایتخت سرزمین‌های شمال غرب کجاست؟",
+    "q_fr": "Quelle est la capitale des Territoires du Nord-Ouest?",
+    "options": [
+      "Whitehorse",
+      "Edmonton",
+      "Yellowknife",
+      "Iqaluit"
+    ],
+    "options_fr": [
+      "Whitehorse",
+      "Edmonton",
+      "Yellowknife",
+      "Iqaluit"
+    ],
+    "options_fa": [
+      "وایت‌هورس",
+      "ادمونتون",
+      "یلو نایف",
+      "ایکالویت"
+    ],
+    "correct": 2,
+    "page": 45,
+    "section": "Canada's Regions",
+    "book_text": "The capital of the Northwest Territories is Yellowknife."
+  },
+  {
+    "q": "What is the capital of the Yukon?",
+    "q_fa": "پایتخت یوکان کجاست؟",
+    "q_fr": "Quelle est la capitale du Yukon?",
+    "options": [
+      "Yellowknife",
+      "Iqaluit",
+      "Whitehorse",
+      "Edmonton"
+    ],
+    "options_fr": [
+      "Yellowknife",
+      "Iqaluit",
+      "Whitehorse",
+      "Edmonton"
+    ],
+    "options_fa": [
+      "یلو نایف",
+      "ایکالویت",
+      "وایت‌هورس",
+      "ادمونتون"
+    ],
+    "correct": 2,
+    "page": 45,
+    "section": "Canada's Regions",
+    "book_text": "The capital of Yukon is Whitehorse."
+  },
+  {
+    "q": "Which of the following does not border British Columbia?",
+    "q_fa": "کدام با بریتیش کلمبیا هم‌مرز نیست؟",
+    "q_fr": "Laquelle ne borde pas la Colombie-Britannique?",
+    "options": [
+      "Saskatchewan",
+      "Yukon",
+      "Alberta",
+      "Northwest Territories"
+    ],
+    "options_fr": [
+      "Saskatchewan",
+      "Yukon",
+      "Alberta",
+      "Northwest Territories"
+    ],
+    "options_fa": [
+      "ساسکاچوان",
+      "یوکان",
+      "آلبرتا",
+      "سرزمین‌های شمال غرب"
+    ],
+    "correct": 0,
+    "page": 45,
+    "section": "Canada's Regions",
+    "book_text": "British Columbia borders Yukon, the Northwest Territories, Alberta, the Pacific and Alaska (U.S.A.); it does not border Saskatchewan."
+  },
+  {
+    "q": "Which of the following does not border Alberta?",
+    "q_fa": "کدام با آلبرتا هم‌مرز نیست؟",
+    "q_fr": "Laquelle ne borde pas l'Alberta?",
+    "options": [
+      "British Columbia",
+      "Manitoba",
+      "Saskatchewan",
+      "Northwest Territories"
+    ],
+    "options_fr": [
+      "British Columbia",
+      "Manitoba",
+      "Saskatchewan",
+      "Northwest Territories"
+    ],
+    "options_fa": [
+      "بریتیش کلمبیا",
+      "مانیتوبا",
+      "ساسکاچوان",
+      "سرزمین‌های شمال غرب"
+    ],
+    "correct": 1,
+    "page": 45,
+    "section": "Canada's Regions",
+    "book_text": "Alberta borders British Columbia, Saskatchewan, the Northwest Territories and the U.S.A.; it does not border Manitoba."
+  },
+  {
+    "q": "Which of the following does not border the Northwest Territories?",
+    "q_fa": "کدام با سرزمین‌های شمال‌غرب هم‌مرز نیست؟",
+    "q_fr": "Laquelle ne borde pas les Territoires du Nord-Ouest?",
+    "options": [
+      "Yukon",
+      "Ontario",
+      "Nunavut",
+      "Alberta"
+    ],
+    "options_fr": [
+      "Yukon",
+      "Ontario",
+      "Nunavut",
+      "Alberta"
+    ],
+    "options_fa": [
+      "یوکان",
+      "انتاریو",
+      "نوناووت",
+      "آلبرتا"
+    ],
+    "correct": 1,
+    "page": 45,
+    "section": "Canada's Regions",
+    "book_text": "The Northwest Territories border Yukon, British Columbia, Alberta, Saskatchewan and Nunavut; Ontario does not border the NWT."
+  },
+  {
+    "q": "Which of the following does not border Manitoba?",
+    "q_fa": "کدام با مانیتوبا هم‌مرز نیست؟",
+    "q_fr": "Laquelle ne borde pas le Manitoba?",
+    "options": [
+      "Quebec",
+      "Saskatchewan",
+      "Ontario",
+      "U.S.A."
+    ],
+    "options_fr": [
+      "Quebec",
+      "Saskatchewan",
+      "Ontario",
+      "U.S.A."
+    ],
+    "options_fa": [
+      "کبک",
+      "ساسکاچوان",
+      "انتاریو",
+      "ایالات متحده"
+    ],
+    "correct": 0,
+    "page": 45,
+    "section": "Canada's Regions",
+    "book_text": "Manitoba borders Saskatchewan, Ontario, Nunavut and the U.S.A.; it does not border Quebec."
+  },
+  {
+    "q": "Which of the following does not border Ontario?",
+    "q_fa": "کدام با انتاریو هم‌مرز نیست؟",
+    "q_fr": "Laquelle ne borde pas l'Ontario?",
+    "options": [
+      "Nova Scotia",
+      "Manitoba",
+      "Quebec",
+      "Hudson Bay"
+    ],
+    "options_fr": [
+      "Nova Scotia",
+      "Manitoba",
+      "Quebec",
+      "Hudson Bay"
+    ],
+    "options_fa": [
+      "نوا اسکوشیا",
+      "مانیتوبا",
+      "کبک",
+      "خلیج هادسون"
+    ],
+    "correct": 0,
+    "page": 45,
+    "section": "Canada's Regions",
+    "book_text": "Ontario borders Manitoba, Quebec, Hudson Bay and the U.S.A.; Nova Scotia does not border Ontario."
+  },
+  {
+    "q": "Which of the following does not border Quebec?",
+    "q_fa": "کدام با کبک هم‌مرز نیست؟",
+    "q_fr": "Laquelle ne borde pas le Québec?",
+    "options": [
+      "Ontario",
+      "New Brunswick",
+      "Nova Scotia",
+      "Atlantic Ocean"
+    ],
+    "options_fr": [
+      "Ontario",
+      "New Brunswick",
+      "Nova Scotia",
+      "Atlantic Ocean"
+    ],
+    "options_fa": [
+      "انتاریو",
+      "نیوبرانزویک",
+      "نوا اسکوشیا",
+      "اقیانوس اطلس"
+    ],
+    "correct": 2,
+    "page": 45,
+    "section": "Canada's Regions",
+    "book_text": "Quebec borders Ontario, New Brunswick, Newfoundland and Labrador and the U.S.A.; Nova Scotia does not share a land border with Quebec."
+  },
+  {
+    "q": "Which of the following does not border New Brunswick?",
+    "q_fa": "کدام با نیوبرانزویک هم‌مرز نیست؟",
+    "q_fr": "Laquelle ne borde pas le Nouveau-Brunswick?",
+    "options": [
+      "Nova Scotia",
+      "Prince Edward Island",
+      "Quebec",
+      "Atlantic Ocean"
+    ],
+    "options_fr": [
+      "Nova Scotia",
+      "Prince Edward Island",
+      "Quebec",
+      "Atlantic Ocean"
+    ],
+    "options_fa": [
+      "نوا اسکوشیا",
+      "جزیرهٔ پرنس ادوارد",
+      "کبک",
+      "اقیانوس اطلس"
+    ],
+    "correct": 1,
+    "page": 45,
+    "section": "Canada's Regions",
+    "book_text": "New Brunswick borders Nova Scotia, Quebec and the U.S.A.; Prince Edward Island is linked by bridge but is not a land neighbour in the same sense as the distractors used in many practice tests."
+  },
+  {
+    "q": "Which of the following borders Nova Scotia?",
+    "q_fa": "کدام با نوا اسکوشیا هم‌مرز است؟",
+    "q_fr": "Laquelle borde la Nouvelle-Écosse?",
+    "options": [
+      "New Brunswick",
+      "Quebec",
+      "Prince Edward Island",
+      "Ontario"
+    ],
+    "options_fr": [
+      "New Brunswick",
+      "Quebec",
+      "Prince Edward Island",
+      "Ontario"
+    ],
+    "options_fa": [
+      "نیوبرانزویک",
+      "کبک",
+      "جزیرهٔ پرنس ادوارد",
+      "انتاریو"
+    ],
+    "correct": 0,
+    "page": 45,
+    "section": "Canada's Regions",
+    "book_text": "Nova Scotia borders New Brunswick."
+  },
+  {
+    "q": "Which of the following borders Newfoundland and Labrador?",
+    "q_fa": "کدام با نیوفاندلند و لابرادور هم‌مرز است؟",
+    "q_fr": "Laquelle borde Terre-Neuve-et-Labrador?",
+    "options": [
+      "Quebec",
+      "Nova Scotia",
+      "New Brunswick",
+      "Ontario"
+    ],
+    "options_fr": [
+      "Quebec",
+      "Nova Scotia",
+      "New Brunswick",
+      "Ontario"
+    ],
+    "options_fa": [
+      "کبک",
+      "نوا اسکوشیا",
+      "نیوبرانزویک",
+      "انتاریو"
+    ],
+    "correct": 0,
+    "page": 45,
+    "section": "Canada's Regions",
+    "book_text": "Newfoundland and Labrador borders Quebec (Labrador)."
+  },
+  {
+    "q": "Which of the following provinces/territories borders the Pacific Ocean?",
+    "q_fa": "کدام استان/قلمرو به اقیانوس آرام می‌رسد؟",
+    "q_fr": "Laquelle borde l'océan Pacifique?",
+    "options": [
+      "Quebec",
+      "British Columbia",
+      "Northwest Territories",
+      "Alberta"
+    ],
+    "options_fr": [
+      "Quebec",
+      "British Columbia",
+      "Northwest Territories",
+      "Alberta"
+    ],
+    "options_fa": [
+      "کبک",
+      "بریتیش کلمبیا",
+      "سرزمین‌های شمال غرب",
+      "آلبرتا"
+    ],
+    "correct": 1,
+    "page": 45,
+    "section": "Canada's Regions",
+    "book_text": "British Columbia borders the Pacific Ocean."
+  },
+  {
+    "q": "Which of the following provinces/territories does not border the U.S.A.?",
+    "q_fa": "کدام استان/قلمرو با ایالات متحده هم‌مرز نیست؟",
+    "q_fr": "Laquelle ne borde pas les États-Unis?",
+    "options": [
+      "Quebec",
+      "British Columbia",
+      "Nunavut",
+      "Alberta"
+    ],
+    "options_fr": [
+      "Quebec",
+      "British Columbia",
+      "Nunavut",
+      "Alberta"
+    ],
+    "options_fa": [
+      "کبک",
+      "بریتیش کلمبیا",
+      "نوناووت",
+      "آلبرتا"
+    ],
+    "correct": 2,
+    "page": 45,
+    "section": "Canada's Regions",
+    "book_text": "Nunavut has no land border with the contiguous United States (practice-test framing)."
+  },
+  {
+    "q": "Which of the following provinces/territories borders with the Atlantic Ocean?",
+    "q_fa": "کدام به اقیانوس اطلس می‌رسد؟",
+    "q_fr": "Laquelle borde l'océan Atlantique?",
+    "options": [
+      "Newfoundland and Labrador",
+      "British Columbia",
+      "Manitoba",
+      "Ontario"
+    ],
+    "options_fr": [
+      "Newfoundland and Labrador",
+      "British Columbia",
+      "Manitoba",
+      "Ontario"
+    ],
+    "options_fa": [
+      "نیوفاندلند و لابرادور",
+      "بریتیش کلمبیا",
+      "مانیتوبا",
+      "انتاریو"
+    ],
+    "correct": 0,
+    "page": 45,
+    "section": "Canada's Regions",
+    "book_text": "Newfoundland and Labrador borders the Atlantic Ocean."
+  },
+  {
+    "q": "Which of the following provinces/territories borders the Arctic Ocean?",
+    "q_fa": "کدام به اقیانوس شمالگان می‌رسد؟",
+    "q_fr": "Laquelle borde l'océan Arctique?",
+    "options": [
+      "Nunavut",
+      "Manitoba",
+      "Ontario",
+      "Newfoundland and Labrador"
+    ],
+    "options_fr": [
+      "Nunavut",
+      "Manitoba",
+      "Ontario",
+      "Newfoundland and Labrador"
+    ],
+    "options_fa": [
+      "نوناووت",
+      "مانیتوبا",
+      "انتاریو",
+      "نیوفاندلند و لابرادور"
+    ],
+    "correct": 0,
+    "page": 45,
+    "section": "Canada's Regions",
+    "book_text": "Nunavut includes extensive Arctic coastline."
+  },
+  {
+    "q": "Which province has its own time zone?",
+    "q_fa": "کدام استان منطقهٔ زمانی مخصوص خود را دارد؟",
+    "q_fr": "Quelle province a son propre fuseau horaire?",
+    "options": [
+      "Nunavut",
+      "Yukon",
+      "Newfoundland and Labrador",
+      "Prince Edward Island"
+    ],
+    "options_fr": [
+      "Nunavut",
+      "Yukon",
+      "Newfoundland and Labrador",
+      "Prince Edward Island"
+    ],
+    "options_fa": [
+      "نوناووت",
+      "یوکان",
+      "نیوفاندلند و لابرادور",
+      "جزیرهٔ پرنس ادوارد"
+    ],
+    "correct": 2,
+    "page": 46,
+    "section": "Canada's Regions",
+    "book_text": "Newfoundland and Labrador has its own time zone (Newfoundland Time)."
+  },
+  {
+    "q": "What is the oldest colony of the British Empire?",
+    "q_fa": "قدیمی‌ترین مستعمرهٔ امپراتوری بریتانیا کدام است؟",
+    "q_fr": "Quelle est la plus ancienne colonie de l'Empire britannique (selon le guide)?",
+    "options": [
+      "Prince Edward Island",
+      "Newfoundland and Labrador",
+      "Nova Scotia",
+      "New Brunswick"
+    ],
+    "options_fr": [
+      "Prince Edward Island",
+      "Newfoundland and Labrador",
+      "Nova Scotia",
+      "New Brunswick"
+    ],
+    "options_fa": [
+      "جزیرهٔ پرنس ادوارد",
+      "نیوفاندلند و لابرادور",
+      "نوا اسکوشیا",
+      "نیوبرانزویک"
+    ],
+    "correct": 1,
+    "page": 46,
+    "section": "Canada's Regions",
+    "book_text": "Newfoundland and Labrador was the oldest colony of the British Empire in what is now Canada."
+  },
+  {
+    "q": "Which province has long been known for its fisheries, coastal fishing villages and distinct culture?",
+    "q_fa": "کدام استان به ماهیگیری، روستاهای ساحلی و فرهنگ متمایز شهرت دارد؟",
+    "q_fr": "Quelle province est réputée pour ses pêcheries et villages côtiers?",
+    "options": [
+      "Newfoundland and Labrador",
+      "Nova Scotia",
+      "New Brunswick",
+      "British Columbia"
+    ],
+    "options_fr": [
+      "Newfoundland and Labrador",
+      "Nova Scotia",
+      "New Brunswick",
+      "British Columbia"
+    ],
+    "options_fa": [
+      "نیوفاندلند و لابرادور",
+      "نوا اسکوشیا",
+      "نیوبرانزویک",
+      "بریتیش کلمبیا"
+    ],
+    "correct": 0,
+    "page": 46,
+    "section": "Canada's Regions",
+    "book_text": "Newfoundland and Labrador is known for fisheries, coastal communities and distinct culture."
+  },
+  {
+    "q": "What does P.E.I. stand for?",
+    "q_fa": "مخفف P.E.I. چیست؟",
+    "q_fr": "Que signifie « P.E.I. »?",
+    "options": [
+      "Prince Edward Island",
+      "Prince Edmond Island",
+      "Port Edward Island",
+      "Prince Edgar Island"
+    ],
+    "options_fr": [
+      "Prince Edward Island",
+      "Prince Edmond Island",
+      "Port Edward Island",
+      "Prince Edgar Island"
+    ],
+    "options_fa": [
+      "جزیرهٔ پرنس ادوارد",
+      "جزیرهٔ پرنس ادموند",
+      "بندر ادوارد",
+      "جزیرهٔ پرنس ادگار"
+    ],
+    "correct": 0,
+    "page": 46,
+    "section": "Canada's Regions",
+    "book_text": "P.E.I. stands for Prince Edward Island."
+  },
+  {
+    "q": "What is Canada's smallest province?",
+    "q_fa": "کوچک‌ترین استان کانادا کدام است؟",
+    "q_fr": "Quelle est la plus petite province du Canada?",
+    "options": [
+      "Nunavut",
+      "Prince Edward Island",
+      "Saskatchewan",
+      "Nova Scotia"
+    ],
+    "options_fr": [
+      "Nunavut",
+      "Prince Edward Island",
+      "Saskatchewan",
+      "Nova Scotia"
+    ],
+    "options_fa": [
+      "نوناووت",
+      "جزیرهٔ پرنس ادوارد",
+      "ساسکاچوان",
+      "نوا اسکوشیا"
+    ],
+    "correct": 1,
+    "page": 46,
+    "section": "Canada's Regions",
+    "book_text": "Prince Edward Island is Canada's smallest province (by land area)."
+  },
+  {
+    "q": "In Canada, where can you find one of the longest continuous multispan bridges in the world?",
+    "q_fa": "یکی از درازترین پل‌های چندپلّهٔ جهان در کانادا کجاست؟",
+    "q_fr": "Où trouve-t-on l'un des plus longs ponts à travées continues au Canada?",
+    "options": [
+      "Prince Edward Island",
+      "Quebec",
+      "Nova Scotia",
+      "Ontario"
+    ],
+    "options_fr": [
+      "Prince Edward Island",
+      "Quebec",
+      "Nova Scotia",
+      "Ontario"
+    ],
+    "options_fa": [
+      "جزیرهٔ پرنس ادوارد",
+      "کبک",
+      "نوا اسکوشیا",
+      "انتاریو"
+    ],
+    "correct": 0,
+    "page": 46,
+    "section": "Canada's Regions",
+    "book_text": "The Confederation Bridge links Prince Edward Island to the mainland."
+  },
+  {
+    "q": "In Canada, where can you find Celtic and Gaelic traditions?",
+    "q_fa": "سنت‌های سلتی و گیلیک در کانادا بیشتر کجا یافت می‌شود؟",
+    "q_fr": "Où trouve-t-on des traditions celtiques et gaéliques?",
+    "options": [
+      "Newfoundland and Labrador",
+      "Saskatchewan",
+      "Nova Scotia",
+      "Prince Edward Island"
+    ],
+    "options_fr": [
+      "Newfoundland and Labrador",
+      "Saskatchewan",
+      "Nova Scotia",
+      "Prince Edward Island"
+    ],
+    "options_fa": [
+      "نیوفاندلند و لابرادور",
+      "ساسکاچوان",
+      "نوا اسکوشیا",
+      "جزیرهٔ پرنس ادوارد"
+    ],
+    "correct": 2,
+    "page": 46,
+    "section": "Canada's Regions",
+    "book_text": "Nova Scotia has strong Celtic and Gaelic cultural traditions."
+  },
+  {
+    "q": "Where is Canada's largest naval base?",
+    "q_fa": "بزرگ‌ترین پایگاه دریایی کانادا کجاست؟",
+    "q_fr": "Où se trouve la plus grande base navale du Canada?",
+    "options": [
+      "Nova Scotia",
+      "Vancouver",
+      "New Brunswick",
+      "Ontario"
+    ],
+    "options_fr": [
+      "Nova Scotia",
+      "Vancouver",
+      "New Brunswick",
+      "Ontario"
+    ],
+    "options_fa": [
+      "نوا اسکوشیا",
+      "ونکوور",
+      "نیوبرانزویک",
+      "انتاریو"
+    ],
+    "correct": 0,
+    "page": 46,
+    "section": "Canada's Regions",
+    "book_text": "Canada's largest naval base is in Halifax, Nova Scotia."
+  },
+  {
+    "q": "Where is Canada's largest east coast port?",
+    "q_fa": "بزرگ‌ترین بندر ساحل شرقی کانادا کجاست؟",
+    "q_fr": "Où se trouve le plus grand port de la côte Est du Canada?",
+    "options": [
+      "Charlottetown",
+      "St. John's",
+      "Halifax",
+      "Fredericton"
+    ],
+    "options_fr": [
+      "Charlottetown",
+      "St. John's",
+      "Halifax",
+      "Fredericton"
+    ],
+    "options_fa": [
+      "شارلوت‌تاون",
+      "سنت جانز",
+      "هلیفکس",
+      "فردریکتون"
+    ],
+    "correct": 2,
+    "page": 46,
+    "section": "Canada's Regions",
+    "book_text": "Halifax is a major Atlantic port and Canada's largest east coast port."
+  },
+  {
+    "q": "In Canada, where can you find the world's highest tides?",
+    "q_fa": "بلندترین جزر و مد جهان در کانادا کجاست؟",
+    "q_fr": "Où trouve-t-on les plus grandes marées du monde?",
+    "options": [
+      "Prince Edward Island",
+      "Quebec",
+      "Nova Scotia",
+      "British Columbia"
+    ],
+    "options_fr": [
+      "Prince Edward Island",
+      "Quebec",
+      "Nova Scotia",
+      "British Columbia"
+    ],
+    "options_fa": [
+      "جزیرهٔ پرنس ادوارد",
+      "کبک",
+      "نوا اسکوشیا",
+      "بریتیش کلمبیا"
+    ],
+    "correct": 2,
+    "page": 46,
+    "section": "Canada's Regions",
+    "book_text": "The Bay of Fundy in Nova Scotia has the world's highest tides."
+  },
+  {
+    "q": "Which province has the second largest river system on North America's Atlantic coastline?",
+    "q_fa": "کدام استان دومین سیستم رودخانه‌ای بزرگ در سواحل اطلس آمریکای شمالی را دارد؟",
+    "q_fr": "Quelle province a le deuxième plus grand réseau fluvial sur la côte atlantique?",
+    "options": [
+      "Quebec",
+      "Nova Scotia",
+      "New Brunswick",
+      "Newfoundland and Labrador"
+    ],
+    "options_fr": [
+      "Quebec",
+      "Nova Scotia",
+      "New Brunswick",
+      "Newfoundland and Labrador"
+    ],
+    "options_fa": [
+      "کبک",
+      "نوا اسکوشیا",
+      "نیوبرانزویک",
+      "نیوفاندلند و لابرادور"
+    ],
+    "correct": 2,
+    "page": 46,
+    "section": "Canada's Regions",
+    "book_text": "New Brunswick's Saint John River system is often cited in study materials in this context."
+  },
+  {
+    "q": "Which city is the principal Francophone Acadian centre in Canada?",
+    "q_fa": "کدام شهر مرکز اصلی آکادیان فرانسوی‌زبان در کاناداست؟",
+    "q_fr": "Quelle ville est le principal centre acadien francophone?",
+    "options": [
+      "Moncton",
+      "Quebec City",
+      "Montreal",
+      "Charlottetown"
+    ],
+    "options_fr": [
+      "Moncton",
+      "Quebec City",
+      "Montreal",
+      "Charlottetown"
+    ],
+    "options_fa": [
+      "مانکتون",
+      "شهر کبک",
+      "مونترال",
+      "شارلوت‌تاون"
+    ],
+    "correct": 0,
+    "page": 47,
+    "section": "Canada's Regions",
+    "book_text": "Moncton, New Brunswick, is a major Francophone Acadian centre."
+  },
+  {
+    "q": "Which province is the only officially bilingual province?",
+    "q_fa": "کدام استان تنها استان رسمی دوزبانه است؟",
+    "q_fr": "Quelle province est la seule province officiellement bilingue?",
+    "options": [
+      "Quebec",
+      "New Brunswick",
+      "Nova Scotia",
+      "Ontario"
+    ],
+    "options_fr": [
+      "Quebec",
+      "New Brunswick",
+      "Nova Scotia",
+      "Ontario"
+    ],
+    "options_fa": [
+      "کبک",
+      "نیوبرانزویک",
+      "نوا اسکوشیا",
+      "انتاریو"
+    ],
+    "correct": 1,
+    "page": 47,
+    "section": "Canada's Regions",
+    "book_text": "New Brunswick is Canada's only officially bilingual province."
+  }
+]

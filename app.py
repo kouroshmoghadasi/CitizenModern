@@ -435,7 +435,7 @@ def _visitor_exclude_sql():
 
 
 def _count_exam_section_visits():
-    """تعداد بازدیدهای ثبت‌شده برای بخش آزمون‌های نمونه (فهرست + Introduction + Rights + Who We Are + Canada's History + Govern + Federal Elections + Canadian Symbols + Justice + Modern Canada + Exam1–3) از visitor_log."""
+    """تعداد بازدیدهای ثبت‌شده برای بخش آزمون‌های نمونه (فهرست + Introduction + Rights + Who We Are + Canada's History + Govern + Federal Elections + Canadian Symbols + Canada's Economy + Canada's Regions + Justice + Modern Canada + Exam1–3) از visitor_log."""
     try:
         conn = get_db_connection()
         if not conn:
@@ -445,7 +445,7 @@ def _count_exam_section_visits():
         cur.execute(
             """
             SELECT COUNT(*) FROM visitor_log
-            WHERE page_visited IN ('/citizenship-exams', '/citizenship-introduction', '/citizenship-rights-responsibilities', '/citizenship-who-we-are', '/citizenship-canadas-history', '/citizenship-how-canadians-govern-themselves', '/citizenship-federal-elections', '/citizenship-canadian-symbols', '/citizenship-justice-system', '/citizenship-modern-canada', '/exam1', '/exam2', '/exam3')
+            WHERE page_visited IN ('/citizenship-exams', '/citizenship-introduction', '/citizenship-rights-responsibilities', '/citizenship-who-we-are', '/citizenship-canadas-history', '/citizenship-how-canadians-govern-themselves', '/citizenship-federal-elections', '/citizenship-canadian-symbols', '/citizenship-canadas-economy', '/citizenship-canadas-regions', '/citizenship-justice-system', '/citizenship-modern-canada', '/exam1', '/exam2', '/exam3')
             """
             + exclude_sql,
             exclude_params,
@@ -505,6 +505,35 @@ def book_summary_short_url():
     return redirect(url_for('book_summary'), code=301)
 
 
+_canada_history_timeline_cache = None
+
+
+def _load_canada_history_timeline():
+    global _canada_history_timeline_cache
+    if _canada_history_timeline_cache is None:
+        path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static', 'data', 'canada_history_timeline.json')
+        with open(path, encoding='utf-8') as f:
+            _canada_history_timeline_cache = json.load(f)
+    return _canada_history_timeline_cache
+
+
+@app.route('/canadian-history-timeline')
+def canadian_history_timeline():
+    """صفحهٔ مطالعه: خط زمانی رویدادهای کلیدی تاریخ کانادا (Discover Canada)."""
+    log_visitor('/canadian-history-timeline')
+    data = _load_canada_history_timeline()
+    return render_template(
+        'canadian_history_timeline.html',
+        timeline=data,
+        exam_section_views=_count_exam_section_visits(),
+    )
+
+
+@app.route('/canadian-history-timeline.html')
+def canadian_history_timeline_html_alias():
+    return redirect(url_for('canadian_history_timeline'), code=301)
+
+
 @app.route('/index.html')
 def index_html_alias():
     """نسخهٔ تکراری رایج صفحهٔ اصلی → یک کانونیکال."""
@@ -529,6 +558,8 @@ _cache_govern = None
 _cache_federal_elections = None
 _cache_justice = None
 _cache_canadian_symbols = None
+_cache_canada_economy = None
+_cache_canada_regions = None
 _cache_exam1 = None
 _cache_exam2 = None
 _cache_exam3 = None
@@ -1223,6 +1254,68 @@ def _load_canadian_symbols_questions():
     return _cache_canadian_symbols
 
 
+def _load_canada_economy_questions():
+    """Load Chapter 9 / Canada's Economy questions (same shape as Canadian Symbols JSON)."""
+    global _cache_canada_economy
+    if _cache_canada_economy is not None:
+        return _cache_canada_economy
+    base = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static')
+    path = os.path.join(base, 'chapter9_canada_economy_questions.json')
+    try:
+        if os.path.isfile(path):
+            with open(path, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+            en_to_fa = _build_en_to_fa_option_map()
+            for q in data:
+                q.setdefault('q_fa', q.get('q', ''))
+                q.setdefault('q_fr', q.get('q', ''))
+                opts = q.get('options', [])
+                q.setdefault('options_fr', opts)
+                q['options_en'] = opts
+                opts_fa = q.get('options_fa')
+                if opts_fa and len(opts_fa) == len(opts):
+                    q['options_fa'] = opts_fa
+                else:
+                    q['options_fa'] = [_fa_lookup(en_to_fa, e) for e in opts]
+            _cache_canada_economy = data
+            return _cache_canada_economy
+    except Exception:
+        pass
+    _cache_canada_economy = []
+    return _cache_canada_economy
+
+
+def _load_canada_regions_questions():
+    """Load Chapter 10 / Canada's Regions questions (same shape as Economy JSON)."""
+    global _cache_canada_regions
+    if _cache_canada_regions is not None:
+        return _cache_canada_regions
+    base = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static')
+    path = os.path.join(base, 'chapter10_canada_regions_questions.json')
+    try:
+        if os.path.isfile(path):
+            with open(path, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+            en_to_fa = _build_en_to_fa_option_map()
+            for q in data:
+                q.setdefault('q_fa', q.get('q', ''))
+                q.setdefault('q_fr', q.get('q', ''))
+                opts = q.get('options', [])
+                q.setdefault('options_fr', opts)
+                q['options_en'] = opts
+                opts_fa = q.get('options_fa')
+                if opts_fa and len(opts_fa) == len(opts):
+                    q['options_fa'] = opts_fa
+                else:
+                    q['options_fa'] = [_fa_lookup(en_to_fa, e) for e in opts]
+            _cache_canada_regions = data
+            return _cache_canada_regions
+    except Exception:
+        pass
+    _cache_canada_regions = []
+    return _cache_canada_regions
+
+
 @app.route('/citizenship-571')
 def citizenship_571():
     """۵۷۱ سوال — ۲۱ سوال اول رایگان؛ ادامه با اشتراک (همان سشن ۴۱۴)."""
@@ -1768,6 +1861,96 @@ def citizenship_modern_canada():
     )
 
 
+@app.route('/citizenship-canadas-economy')
+def citizenship_canadas_economy():
+    """Canada's Economy (Chapter 9) — پنج سوال اول رایگان؛ از ششم با اشتراک ۴۱۴."""
+    log_visitor('/citizenship-canadas-economy')
+    all_econ = _load_canada_economy_questions()
+    n_econ = len(all_econ)
+    today = _today()
+    has_access = False
+    if session.get('sub_414_expiry'):
+        try:
+            exp = session['sub_414_expiry']
+            if isinstance(exp, str):
+                exp = date.fromisoformat(exp)
+            if exp >= today:
+                has_access = True
+        except Exception:
+            pass
+    if has_access:
+        econ_questions = all_econ
+        show_paywall_econ = False
+        max_visible_econ = n_econ
+    elif n_econ <= 5:
+        econ_questions = all_econ
+        show_paywall_econ = False
+        max_visible_econ = n_econ
+    else:
+        econ_questions = all_econ[:5]
+        show_paywall_econ = True
+        max_visible_econ = 6
+    resp = app.make_response(
+        render_template(
+            'citizenship_canadas_economy.html',
+            econ_questions=econ_questions,
+            max_question_econ=n_econ,
+            max_visible_econ=max_visible_econ,
+            show_paywall_econ=show_paywall_econ,
+            exam_section_views=_count_exam_section_visits(),
+        )
+    )
+    resp.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
+    resp.headers['Pragma'] = 'no-cache'
+    resp.headers['Expires'] = '0'
+    return resp
+
+
+@app.route('/citizenship-canadas-regions')
+def citizenship_canadas_regions():
+    """Canada's Regions (Chapter 10) — پنج سوال اول رایگان؛ از ششم با اشتراک ۴۱۴."""
+    log_visitor('/citizenship-canadas-regions')
+    all_reg = _load_canada_regions_questions()
+    n_reg = len(all_reg)
+    today = _today()
+    has_access = False
+    if session.get('sub_414_expiry'):
+        try:
+            exp = session['sub_414_expiry']
+            if isinstance(exp, str):
+                exp = date.fromisoformat(exp)
+            if exp >= today:
+                has_access = True
+        except Exception:
+            pass
+    if has_access:
+        reg_questions = all_reg
+        show_paywall_reg = False
+        max_visible_reg = n_reg
+    elif n_reg <= 5:
+        reg_questions = all_reg
+        show_paywall_reg = False
+        max_visible_reg = n_reg
+    else:
+        reg_questions = all_reg[:5]
+        show_paywall_reg = True
+        max_visible_reg = 6
+    resp = app.make_response(
+        render_template(
+            'citizenship_canadas_regions.html',
+            reg_questions=reg_questions,
+            max_question_reg=n_reg,
+            max_visible_reg=max_visible_reg,
+            show_paywall_reg=show_paywall_reg,
+            exam_section_views=_count_exam_section_visits(),
+        )
+    )
+    resp.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
+    resp.headers['Pragma'] = 'no-cache'
+    resp.headers['Expires'] = '0'
+    return resp
+
+
 # Official IRCC study guide PDF — use as HTTP canonical for our mirror to avoid GSC "duplicate without user-selected canonical".
 _IRCC_DISCOVER_CANADA_PDF = 'https://www.canada.ca/content/dam/ircc/migration/ircc/english/pdf/pub/discover.pdf'
 
@@ -1907,6 +2090,7 @@ _SITEMAP_PAGE_DEFS = [
     {'path': '/site-map', 'changefreq': 'monthly', 'priority': '0.55', 'label_fa': 'نقشهٔ سایت (فهرست همهٔ صفحات)', 'label_en': 'HTML sitemap'},
     {'path': '/about', 'changefreq': 'monthly', 'priority': '0.6', 'label_fa': 'دربارهٔ سایت و تماس', 'label_en': 'About'},
     {'path': '/book_summary.html', 'changefreq': 'weekly', 'priority': '0.9', 'label_fa': 'خلاصهٔ کتاب Discover Canada (سه زبان)', 'label_en': 'Book summary'},
+    {'path': '/canadian-history-timeline', 'changefreq': 'monthly', 'priority': '0.82', 'label_fa': 'خط زمانی تاریخ کانادا (Discover Canada)', 'label_en': 'Canadian history timeline (study page)'},
     {'path': '/citizenship-414', 'changefreq': 'weekly', 'priority': '0.9', 'label_fa': '۴۱۴ سوال شهروندی', 'label_en': '414 questions'},
     {'path': '/citizenship-571', 'changefreq': 'weekly', 'priority': '0.9', 'label_fa': '۵۷۱ سوال شهروندی', 'label_en': '571 questions'},
     {'path': '/citizenship-exams', 'changefreq': 'weekly', 'priority': '0.85', 'label_fa': 'فهرست آزمون‌های نمونه (فصل‌به‌فصل)', 'label_en': 'Sample exams index'},
@@ -1917,6 +2101,8 @@ _SITEMAP_PAGE_DEFS = [
     {'path': '/citizenship-how-canadians-govern-themselves', 'changefreq': 'weekly', 'priority': '0.85', 'label_fa': 'آزمون How Canadians Govern', 'label_en': 'How Canadians govern'},
     {'path': '/citizenship-federal-elections', 'changefreq': 'weekly', 'priority': '0.85', 'label_fa': 'آزمون Federal Elections', 'label_en': 'Federal elections'},
     {'path': '/citizenship-canadian-symbols', 'changefreq': 'weekly', 'priority': '0.85', 'label_fa': 'آزمون Canadian Symbols', 'label_en': 'Canadian symbols'},
+    {'path': '/citizenship-canadas-economy', 'changefreq': 'weekly', 'priority': '0.85', 'label_fa': "آزمون Canada's Economy", 'label_en': "Canada's economy"},
+    {'path': '/citizenship-canadas-regions', 'changefreq': 'weekly', 'priority': '0.85', 'label_fa': "آزمون Canada's Regions", 'label_en': "Canada's regions"},
     {'path': '/citizenship-justice-system', 'changefreq': 'weekly', 'priority': '0.85', 'label_fa': 'آزمون Justice System', 'label_en': 'Justice system'},
     {'path': '/citizenship-modern-canada', 'changefreq': 'weekly', 'priority': '0.85', 'label_fa': 'آزمون Modern Canada', 'label_en': 'Modern Canada'},
     {'path': '/exam1', 'changefreq': 'weekly', 'priority': '0.85', 'label_fa': 'Exam1 — Rights & Responsibilities', 'label_en': 'Exam 1'},
@@ -2887,7 +3073,7 @@ def admin_api_visitor_dashboard():
                 SELECT COUNT(*) AS total_hits,
                        COUNT(DISTINCT ip_address) AS unique_ips
                 FROM visitor_log
-                WHERE page_visited IN ('/citizenship-exams', '/citizenship-introduction', '/citizenship-rights-responsibilities', '/citizenship-who-we-are', '/citizenship-canadas-history', '/citizenship-how-canadians-govern-themselves', '/citizenship-federal-elections', '/citizenship-canadian-symbols', '/citizenship-justice-system', '/citizenship-modern-canada', '/exam1', '/exam2', '/exam3')
+                WHERE page_visited IN ('/citizenship-exams', '/citizenship-introduction', '/citizenship-rights-responsibilities', '/citizenship-who-we-are', '/citizenship-canadas-history', '/citizenship-how-canadians-govern-themselves', '/citizenship-federal-elections', '/citizenship-canadian-symbols', '/citizenship-canadas-economy', '/citizenship-canadas-regions', '/citizenship-justice-system', '/citizenship-modern-canada', '/exam1', '/exam2', '/exam3')
                 """
                 + exclude_sql,
                 exclude_params,
@@ -2897,7 +3083,7 @@ def admin_api_visitor_dashboard():
                 """
                 SELECT page_visited, COUNT(*) AS cnt
                 FROM visitor_log
-                WHERE page_visited IN ('/citizenship-exams', '/citizenship-introduction', '/citizenship-rights-responsibilities', '/citizenship-who-we-are', '/citizenship-canadas-history', '/citizenship-how-canadians-govern-themselves', '/citizenship-federal-elections', '/citizenship-canadian-symbols', '/citizenship-justice-system', '/citizenship-modern-canada', '/exam1', '/exam2', '/exam3')
+                WHERE page_visited IN ('/citizenship-exams', '/citizenship-introduction', '/citizenship-rights-responsibilities', '/citizenship-who-we-are', '/citizenship-canadas-history', '/citizenship-how-canadians-govern-themselves', '/citizenship-federal-elections', '/citizenship-canadian-symbols', '/citizenship-canadas-economy', '/citizenship-canadas-regions', '/citizenship-justice-system', '/citizenship-modern-canada', '/exam1', '/exam2', '/exam3')
                 """
                 + exclude_sql
                 + """
@@ -2917,13 +3103,15 @@ def admin_api_visitor_dashboard():
                        SUM(CASE WHEN page_visited = '/citizenship-how-canadians-govern-themselves' THEN 1 ELSE 0 END) AS govern_hits,
                        SUM(CASE WHEN page_visited = '/citizenship-federal-elections' THEN 1 ELSE 0 END) AS federal_elections_hits,
                        SUM(CASE WHEN page_visited = '/citizenship-canadian-symbols' THEN 1 ELSE 0 END) AS canadian_symbols_hits,
+                       SUM(CASE WHEN page_visited = '/citizenship-canadas-economy' THEN 1 ELSE 0 END) AS canadas_economy_hits,
+                       SUM(CASE WHEN page_visited = '/citizenship-canadas-regions' THEN 1 ELSE 0 END) AS canadas_regions_hits,
                        SUM(CASE WHEN page_visited = '/citizenship-justice-system' THEN 1 ELSE 0 END) AS justice_hits,
                        SUM(CASE WHEN page_visited = '/citizenship-modern-canada' THEN 1 ELSE 0 END) AS modern_canada_hits,
                        SUM(CASE WHEN page_visited = '/exam1' THEN 1 ELSE 0 END) AS exam1_hits,
                        SUM(CASE WHEN page_visited = '/exam2' THEN 1 ELSE 0 END) AS exam2_hits,
                        SUM(CASE WHEN page_visited = '/exam3' THEN 1 ELSE 0 END) AS exam3_hits
                 FROM visitor_log
-                WHERE page_visited IN ('/citizenship-exams', '/citizenship-introduction', '/citizenship-rights-responsibilities', '/citizenship-who-we-are', '/citizenship-canadas-history', '/citizenship-how-canadians-govern-themselves', '/citizenship-federal-elections', '/citizenship-canadian-symbols', '/citizenship-justice-system', '/citizenship-modern-canada', '/exam1', '/exam2', '/exam3')
+                WHERE page_visited IN ('/citizenship-exams', '/citizenship-introduction', '/citizenship-rights-responsibilities', '/citizenship-who-we-are', '/citizenship-canadas-history', '/citizenship-how-canadians-govern-themselves', '/citizenship-federal-elections', '/citizenship-canadian-symbols', '/citizenship-canadas-economy', '/citizenship-canadas-regions', '/citizenship-justice-system', '/citizenship-modern-canada', '/exam1', '/exam2', '/exam3')
                   AND access_time >= CURRENT_DATE - INTERVAL '30 days'
                 """
                 + exclude_sql
@@ -2947,6 +3135,8 @@ def admin_api_visitor_dashboard():
                 er["govern_hits"] = int(er["govern_hits"] or 0)
                 er["federal_elections_hits"] = int(er["federal_elections_hits"] or 0)
                 er["canadian_symbols_hits"] = int(er["canadian_symbols_hits"] or 0)
+                er["canadas_economy_hits"] = int(er["canadas_economy_hits"] or 0)
+                er["canadas_regions_hits"] = int(er["canadas_regions_hits"] or 0)
                 er["justice_hits"] = int(er["justice_hits"] or 0)
                 er["modern_canada_hits"] = int(er["modern_canada_hits"] or 0)
                 er["exam1_hits"] = int(er["exam1_hits"] or 0)
@@ -2963,6 +3153,8 @@ def admin_api_visitor_dashboard():
                 "hits_citizenship_how_canadians_govern": int(by_page.get("/citizenship-how-canadians-govern-themselves", 0)),
                 "hits_citizenship_federal_elections": int(by_page.get("/citizenship-federal-elections", 0)),
                 "hits_citizenship_canadian_symbols": int(by_page.get("/citizenship-canadian-symbols", 0)),
+                "hits_citizenship_canadas_economy": int(by_page.get("/citizenship-canadas-economy", 0)),
+                "hits_citizenship_canadas_regions": int(by_page.get("/citizenship-canadas-regions", 0)),
                 "hits_citizenship_justice": int(by_page.get("/citizenship-justice-system", 0)),
                 "hits_citizenship_modern_canada": int(by_page.get("/citizenship-modern-canada", 0)),
                 "hits_exam1": int(by_page.get("/exam1", 0)),
