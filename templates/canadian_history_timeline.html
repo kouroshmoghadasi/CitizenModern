@@ -42,7 +42,9 @@
             font-family: Tahoma, 'Segoe UI', Roboto, sans-serif;
             background: var(--bg);
             min-height: 100vh;
-            padding: 20px;
+            min-height: 100dvh;
+            padding: 20px max(20px, env(safe-area-inset-right)) max(20px, env(safe-area-inset-bottom)) max(20px, env(safe-area-inset-left));
+            padding-top: max(20px, env(safe-area-inset-top));
             line-height: 1.7;
             color: var(--text);
             -webkit-user-select: none;
@@ -53,13 +55,13 @@
             -webkit-user-select: text;
             user-select: text;
         }
-        .wrap { max-width: 900px; margin: 0 auto; }
+        .wrap { max-width: 900px; margin: 0 auto; width: 100%; }
         .tool-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 20px; padding: 14px 18px; background: var(--card-bg); border-radius: 12px; border: 1px solid var(--border); box-shadow: 0 2px 10px rgba(0,0,0,0.06); }
         body.theme-dark .tool-bar { box-shadow: 0 2px 10px rgba(0,0,0,0.3); }
         .tool-bar .group { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
         .theme-toggle-wrap { display: flex; align-items: center; gap: 6px; }
         .theme-label { font-weight: 600; color: var(--text); font-size: 0.95em; }
-        .theme-btn { width: 44px; height: 44px; border-radius: 12px; border: 2px solid var(--border); background: var(--card-bg); font-size: 1.35em; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s; }
+        .theme-btn { width: 44px; height: 44px; border-radius: 12px; border: 2px solid var(--border); background: var(--card-bg); font-size: 1.35em; cursor: pointer; touch-action: manipulation; transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s; }
         .theme-btn:hover { transform: scale(1.08); box-shadow: 0 4px 12px rgba(0,0,0,0.12); }
         .theme-btn[aria-pressed="true"] { border-color: #1e3c72; box-shadow: 0 0 0 2px rgba(30,60,114,0.35); background: linear-gradient(135deg, #e8eef5 0%, #dce4ed 100%); }
         body.theme-dark .theme-btn[aria-pressed="true"] { border-color: #7cb3f5; box-shadow: 0 0 0 2px rgba(124,179,245,0.4); background: linear-gradient(135deg, #3d4a5c 0%, #2d3748 100%); }
@@ -77,10 +79,7 @@
         }
         .q-card { background: var(--card-bg); border-radius: 14px; padding: 22px 24px; margin-bottom: 20px; box-shadow: 0 4px 16px rgba(0,0,0,0.06); border: 1px solid var(--border); }
         body.theme-dark .q-card { box-shadow: 0 4px 16px rgba(0,0,0,0.25); }
-        .block-en { direction: ltr; text-align: left; margin-bottom: 10px; padding: 10px 12px; background: rgba(30,60,114,0.06); border-radius: 10px; border-left: 3px solid var(--accent); }
-        .block-fa { direction: rtl; text-align: right; margin-bottom: 10px; padding: 10px 12px; background: rgba(241,196,15,0.12); border-radius: 10px; border-right: 3px solid #f1c40f; }
-        .block-fr { direction: ltr; text-align: left; margin-bottom: 10px; padding: 10px 12px; background: rgba(0,82,147,0.08); border-radius: 10px; border-left: 3px solid #005293; }
-        .lang-mode-btn { padding: 10px 18px; border-radius: 10px; border: 2px solid var(--border); background: var(--card-bg); color: var(--text); font-weight: 600; cursor: pointer; -webkit-appearance: none; appearance: none; font-size: clamp(0.78rem, 2.8vw, 0.95rem); }
+        .lang-mode-btn { padding: 10px 18px; min-height: 44px; border-radius: 10px; border: 2px solid var(--border); background: var(--card-bg); color: var(--text); font-weight: 600; cursor: pointer; -webkit-appearance: none; appearance: none; font-size: clamp(0.78rem, 2.8vw, 0.95rem); touch-action: manipulation; }
         .lang-mode-btn[aria-pressed="true"] { border-color: #1e3c72; background: linear-gradient(135deg, #2c5282 0%, #1e3c72 100%); color: #fff; box-shadow: 0 0 0 2px rgba(30,60,114,0.25); }
         body.theme-dark .lang-mode-btn[aria-pressed="true"] { border-color: #7cb3f5; box-shadow: 0 0 0 2px rgba(124,179,245,0.35); }
         .table-wrap-tl { overflow-x: auto; -webkit-overflow-scrolling: touch; }
@@ -97,12 +96,57 @@
         .tl-table tbody tr:hover td { background: rgba(30,60,114,0.06); }
         body.theme-dark .tl-table tbody tr:hover td { background: rgba(124,179,245,0.12); }
         .tl-table td.tl-year { width: 96px; direction: ltr; text-align: left; font-weight: 800; color: var(--accent); font-variant-numeric: tabular-nums; white-space: nowrap; }
-        .tl-txt { margin: 0; padding: 0; background: transparent; border: 0; font-size: 0.98rem; line-height: 1.8; color: var(--text); }
+        .tl-txt { margin: 0; padding: 0; background: transparent; border: 0; font-size: clamp(0.95rem, 2.5vw, 1rem); line-height: 1.75; color: var(--text); overflow-wrap: anywhere; word-break: break-word; }
         .tl-txt-en, .tl-txt-fr { direction: ltr; text-align: left; }
         .tl-txt-fa { direction: rtl; text-align: right; }
-        .footer-links { margin-top: 20px; text-align: center; font-size: 0.88rem; }
+        .footer-links { margin-top: 20px; text-align: center; font-size: 0.88rem; display: flex; flex-wrap: wrap; gap: 8px 12px; justify-content: center; align-items: center; }
         .footer-links a { color: var(--accent); font-weight: 600; text-decoration: none; }
         .footer-links a:hover { text-decoration: underline; }
+
+        /* تبلت: جدول فشرده‌تر ولی همان سه ستون */
+        @media (max-width: 1024px) and (min-width: 721px) {
+            body { padding: 16px max(14px, env(safe-area-inset-right)) 18px max(14px, env(safe-area-inset-left)); padding-top: max(16px, env(safe-area-inset-top)); }
+            .q-card { padding: 16px 14px; }
+            .tl-table thead th, .tl-table tbody td { padding: 10px 10px; font-size: 0.9rem; }
+            .tl-table td.tl-year { width: 80px; font-size: 0.88rem; }
+        }
+
+        /* موبایل: هر رویداد یک «کارت» عمودی با برچسب، بدون فشردگی جدول */
+        @media (max-width: 720px) {
+            body { padding: 12px max(10px, env(safe-area-inset-right)) 14px max(10px, env(safe-area-inset-left)); padding-top: max(12px, env(safe-area-inset-top)); }
+            .section-lead { font-size: 0.88rem; padding: 0 2px; line-height: 1.55; }
+            .exam-visit-count-ch1 { font-size: 0.85rem; padding: 0 4px; }
+            .tool-bar { flex-direction: column; align-items: stretch; gap: 12px; padding: 12px 14px; margin-bottom: 14px; }
+            .tool-bar .group { justify-content: center; flex-wrap: wrap; }
+            .tool-bar .group.theme-toggle-wrap:first-of-type { flex-direction: column; }
+            .tool-bar .group.theme-toggle-wrap:first-of-type .lang-mode-btn { flex: 1 1 auto; min-width: 0; }
+            .q-card { padding: 12px 10px; margin-bottom: 14px; border-radius: 12px; }
+            .table-wrap-tl { overflow-x: visible; margin: 0 -2px; }
+            table.tl-table { border-radius: 10px; }
+            .tl-table thead { display: none; }
+            .tl-table tbody { display: block; }
+            .tl-table tbody tr { display: block; border: 1px solid var(--border); border-radius: 12px; margin-bottom: 10px; overflow: hidden; background: var(--card-bg); box-shadow: 0 1px 4px rgba(0,0,0,0.05); }
+            body.theme-dark .tl-table tbody tr { box-shadow: 0 1px 6px rgba(0,0,0,0.25); }
+            .tl-table tbody tr:last-child { margin-bottom: 0; }
+            .tl-table tbody td { display: block; width: 100% !important; border: 0 !important; border-bottom: 1px solid var(--border) !important; padding: 10px 12px !important; vertical-align: top; }
+            .tl-table tbody td:last-child { border-bottom: 0 !important; }
+            .tl-table tbody td::before { content: attr(data-label); display: block; font-size: 0.72rem; font-weight: 700; color: var(--text-muted); margin-bottom: 6px; letter-spacing: 0.02em; }
+            .tl-table tbody tr:nth-child(even) td { background: transparent !important; }
+            .tl-table tbody tr:nth-child(even) { background: rgba(30,60,114,0.035); }
+            body.theme-dark .tl-table tbody tr:nth-child(even) { background: rgba(124,179,245,0.09); }
+            .tl-table tbody tr:hover td { background: transparent !important; }
+            .tl-table tbody tr:hover { box-shadow: 0 2px 10px rgba(30,60,114,0.12); }
+            body.theme-dark .tl-table tbody tr:hover { box-shadow: 0 2px 12px rgba(0,0,0,0.35); }
+            .tl-table td.tl-year { white-space: normal; font-size: 1rem; }
+            .tl-txt { font-size: 1rem; line-height: 1.7; }
+            .back-btn { padding: 12px 16px; min-height: 44px; display: flex; align-items: center; justify-content: center; touch-action: manipulation; }
+        }
+
+        /* خیلی باریک: فونت کمی کوچک‌تر برای جلوگیری از overflow افقی */
+        @media (max-width: 360px) {
+            .tl-txt { font-size: 0.94rem; }
+            .lang-mode-btn { font-size: 0.8rem; padding: 10px 12px; }
+        }
     </style>
 </head>
 <body>
@@ -146,12 +190,12 @@
                         {% for item in g.events %}
                         {% set ns.i = ns.i + 1 %}
                         <tr class="timeline-row-tl" id="tl-e{{ ns.i }}">
-                            <td class="tl-year">{{ item.year }}</td>
-                            <td>
+                            <td class="tl-year" data-label="سال / Year">{{ item.year }}</td>
+                            <td data-label="متن (انگلیسی یا فرانسوی)">
                                 <div class="lang-block-en tl-txt tl-txt-en">{{ item.en }}</div>
                                 <div class="lang-block-fr tl-txt tl-txt-fr" style="display: none;">{{ item.fr }}</div>
                             </td>
-                            <td>
+                            <td data-label="فارسی">
                                 <div class="tl-txt tl-txt-fa">{{ item.fa }}</div>
                             </td>
                         </tr>
