@@ -162,10 +162,10 @@
       "Le drapeau personnel de Sa Majesté",
       "Le drapeau des armoiries royales"
     ],
-    "correct": 2,
+    "correct": 1,
     "page": 38,
     "section": "Canadian Symbols",
-    "book_text": "Her Majesty's personal Flag is the official Royal Flag of Canada."
+    "book_text": "The Union Jack is the official Royal Flag."
   },
   {
     "q": "Who first adopted the maple leaf as a symbol in Canada?",
@@ -582,10 +582,10 @@
       "Le castor a été adopté comme mascotte par les premiers pionniers",
       "Le castor a été adopté comme mascotte par les Autochtones"
     ],
-    "correct": 0,
+    "correct": 1,
     "page": 39,
     "section": "Canadian Symbols",
-    "book_text": "The beaver was adopted as a symbol of the fur trade in general."
+    "book_text": "The beaver was adopted centuries ago as a symbol of the Hudson's Bay Company (and the fur trade shaped by companies such as the HBC)."
   },
   {
     "q": "What are Anglophones?",
