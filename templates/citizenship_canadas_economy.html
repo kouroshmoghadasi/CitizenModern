@@ -130,7 +130,9 @@
         {% if exam_section_views is not none %}
         <p class="exam-visit-count-ch1" role="status">بازدید ثبت‌شده از بخش آزمون‌های نمونه: <strong>{{ exam_section_views }}</strong></p>
         {% endif %}
-        <p class="section-lead">اقتصاد کانادا (Canada's Economy) — Chapter 9.</p>
+        {% set header_title_en = "Canada's Economy" %}
+        {% set header_subtitle_fa = "اقتصاد کانادا — فصل ۹ (Discover Canada)" %}
+        {% include '_exam_page_header.html' %}
         <div class="tool-bar">
             <div class="group theme-toggle-wrap">
                 <button type="button" class="lang-mode-btn" id="langModeEnEcon" aria-pressed="true">English + فارسی</button>

@@ -129,6 +129,9 @@
         {% if exam_section_views is not none %}
         <p class="exam-visit-count-ch1" role="status">بازدید ثبت‌شده از بخش آزمون‌های نمونه: <strong>{{ exam_section_views }}</strong></p>
         {% endif %}
+        {% set header_title_en = "Who We Are" %}
+        {% set header_subtitle_fa = "چه کسی هستیم — فصل ۲ (Discover Canada)" %}
+        {% include '_exam_page_header.html' %}
         <div class="tool-bar">
             <div class="group theme-toggle-wrap">
                 <button type="button" class="lang-mode-btn" id="langModeEn" aria-pressed="true">English + فارسی</button>

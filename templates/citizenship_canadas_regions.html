@@ -97,6 +97,8 @@
             .back-bar.ch1-top-nav .back-btn { width: 100%; text-align: center; box-sizing: border-box; }
         }
         .section-lead { text-align: center; color: var(--text-muted); font-size: 0.95em; margin: 0 0 18px; }
+        .page-header { background: var(--header-bg); color: var(--header-text); padding: 28px 24px; border-radius: 16px; margin-bottom: 24px; text-align: center; box-shadow: 0 8px 24px rgba(30,60,114,0.25); }
+        .page-header h1 { font-size: 1.6em; margin-bottom: 8px; }
         .q-card { background: var(--card-bg); border-radius: 14px; padding: 22px 24px; margin-bottom: 20px; box-shadow: 0 4px 16px rgba(0,0,0,0.06); border: 1px solid var(--border); }
         .q-num { font-weight: 800; color: var(--accent); font-size: 1em; margin-bottom: 12px; }
         .q-text-fa { font-size: 1.15em; font-weight: 700; color: var(--accent); margin-bottom: 10px; text-align: right; direction: rtl; }
@@ -130,7 +132,9 @@
         {% if exam_section_views is not none %}
         <p class="exam-visit-count-ch1" role="status">بازدید ثبت‌شده از بخش آزمون‌های نمونه: <strong>{{ exam_section_views }}</strong></p>
         {% endif %}
-        <p class="section-lead">مناطق کانادا (Canada's Regions) — Chapter 10.</p>
+        {% set header_title_en = "Canada's Regions" %}
+        {% set header_subtitle_fa = "مناطق کانادا — فصل ۱۰ (Discover Canada)" %}
+        {% include '_exam_page_header.html' %}
         <div class="tool-bar">
             <div class="group theme-toggle-wrap">
                 <button type="button" class="lang-mode-btn" id="langModeEnReg" aria-pressed="true">English + فارسی</button>

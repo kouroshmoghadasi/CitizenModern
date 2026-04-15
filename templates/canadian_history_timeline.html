@@ -21,6 +21,8 @@
             --card-bg: #fff;
             --text: #1a1a1a;
             --text-muted: #444;
+            --header-bg: linear-gradient(135deg, #1e3c72 0%, #2c5282 100%);
+            --header-text: #fff;
             --accent: #1e3c72;
             --accent-light: #2c5282;
             --border: rgba(30,60,114,0.08);
@@ -32,6 +34,8 @@
             --card-bg: #252830;
             --text: #e8eaed;
             --text-muted: #b0b4b8;
+            --header-bg: linear-gradient(135deg, #2d3748 0%, #1e3c72 100%);
+            --header-text: #fff;
             --accent: #7cb3f5;
             --accent-light: #90c5f7;
             --border: rgba(255,255,255,0.1);
@@ -103,6 +107,17 @@
         .footer-links a { color: var(--accent); font-weight: 600; text-decoration: none; }
         .footer-links a:hover { text-decoration: underline; }
 
+        /* Grid: people & achievements (below timeline years) */
+        .people-grid-wrap { margin-top: 18px; }
+        .people-grid-head { margin: 0 0 10px; text-align: center; }
+        .people-grid-head h2 { font-size: clamp(1.05rem, 4vw, 1.25rem); color: var(--accent); margin-bottom: 6px; }
+        .people-grid-head p { color: var(--text-muted); font-size: 0.92rem; }
+        .people-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr)); gap: 12px; }
+        .person-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 14px; padding: 14px 14px; box-shadow: 0 2px 10px rgba(0,0,0,0.06); }
+        body.theme-dark .person-card { box-shadow: 0 2px 10px rgba(0,0,0,0.28); }
+        .person-name { font-weight: 800; color: var(--accent); font-size: 1.02rem; margin-bottom: 8px; line-height: 1.35; }
+        .person-desc { color: var(--text); opacity: 0.92; font-size: 0.95rem; line-height: 1.65; overflow-wrap: anywhere; word-break: break-word; }
+
         /* تبلت: جدول فشرده‌تر ولی همان سه ستون */
         @media (max-width: 1024px) and (min-width: 721px) {
             body { padding: 16px max(14px, env(safe-area-inset-right)) 18px max(14px, env(safe-area-inset-left)); padding-top: max(16px, env(safe-area-inset-top)); }
@@ -160,6 +175,9 @@
         {% if exam_section_views is not none %}
         <p class="exam-visit-count-ch1" role="status">بازدید ثبت‌شده از بخش آزمون‌های نمونه: <strong>{{ exam_section_views }}</strong></p>
         {% endif %}
+        {% set header_title_en = "Canadian History — Key Events" %}
+        {% set header_subtitle_fa = "خط زمانی تاریخ کانادا + چهره‌ها و دستاوردهای مهم (Discover Canada / IRCC)" %}
+        {% include '_exam_page_header.html' %}
         <p class="section-lead">خط زمانی تاریخ کانادا — مطالعهٔ Discover Canada (IRCC) / Key events study page</p>
 
         <div class="tool-bar">
@@ -203,6 +221,58 @@
                         {% endfor %}
                     </tbody>
                 </table>
+            </div>
+        </div>
+
+        {% set notable_people = [
+            {"name": "Jacques Cartier", "desc": "Made three voyages across the Atlantic, claiming the land for King Francis I of France between 1534 and 1542."},
+            {"name": "John Graves Simcoe", "desc": "A Loyalist military officer. Led Upper Canada to move toward abolition."},
+            {"name": "Lieutenant Governor Lord Durham", "desc": "Recommended that Upper and Lower Canada be merged and given responsible government."},
+            {"name": "Sir Louis-Hippolyte La Fontaine, Robert Baldwin, Joseph Howe", "desc": "Worked with British governors toward responsible government."},
+            {"name": "Sir Leonard Tilley", "desc": "An elected official and Father of Confederation from New Brunswick; suggested the term Dominion of Canada in 1864."},
+            {"name": "Sir John Alexander Macdonald", "desc": "A Father of Confederation; became Canada's first Prime Minister. His portrait is on the $10 bill."},
+            {"name": "Sir George-Étienne Cartier", "desc": "Key architect of Confederation from Quebec. Led Quebec into Confederation and helped negotiate the entry of the Northwest Territories, Manitoba and British Columbia into Canada."},
+            {"name": "Louis Riel", "desc": "A Canadian politician, a founder of the province of Manitoba, and a political leader of the Métis people."},
+            {"name": "Sir Wilfrid Laurier", "desc": "The first French Canadian prime minister since Confederation; encouraged immigration to the West. His portrait is on the $5 bill."},
+            {"name": "Sir Arthur Currie", "desc": "A reserve officer; became one of Canada's greatest soldiers."},
+            {"name": "Sir Sam Steele", "desc": "A great frontier hero, Mounted Policeman and soldier of the Queen."},
+            {"name": "Agnes Macphail", "desc": "A farmer and teacher; became the first woman MP."},
+            {"name": "Donovan Bailey", "desc": "World record sprinter and double Olympic gold medallist in 1996."},
+            {"name": "Chantal Petitclerc", "desc": "World champion wheelchair racer and Paralympic gold medalist."},
+            {"name": "Wayne Gretzky", "desc": "One of the greatest hockey players of all time; played for the Edmonton Oilers from 1979 to 1988."},
+            {"name": "Terry Fox", "desc": "A British Columbian who lost his right leg to cancer at 18; began the 'Marathon of Hope' to raise money for cancer research."},
+            {"name": "Rick Hansen", "desc": "A British Columbian who circled the globe in a wheelchair to raise funds for spinal cord research."},
+            {"name": "Gerhard Herzberg, John Polanyi, Sidney Altman, Richard E. Taylor, Michael Smith, Bertram Brockhouse", "desc": "Nobel Prize-winning scientists."},
+            {"name": "Alexander Graham Bell", "desc": "Had the idea of the telephone at his summer house in Canada."},
+            {"name": "Joseph-Armand Bombardier", "desc": "Invented the snowmobile, a light-weight winter vehicle."},
+            {"name": "Sir Sandford Fleming", "desc": "Invented the worldwide system of standard time zones."},
+            {"name": "Matthew Evans and Henry Woodward", "desc": "Together invented the first electric light bulb; later sold the patent to Thomas Edison."},
+            {"name": "Reginald Fessenden", "desc": "Contributed to the invention of radio; sent the first wireless voice message in the world."},
+            {"name": "Dr. Wilder Penfield", "desc": "Pioneering brain surgeon at McGill University in Montreal; known as 'the greatest living Canadian.'"},
+            {"name": "Dr. John A. Hopps", "desc": "Invented the first cardiac pacemaker, used today to save lives of people with heart disorders."},
+            {"name": "SPAR Aerospace / National Research Council", "desc": "Invented the Canadarm, a robotic arm used in outer space."},
+            {"name": "Mike Lazaridis and Jim Balsillie", "desc": "Founders of Research in Motion (RIM), known for its invention: the BlackBerry."},
+            {"name": "Sir Frederick Banting and Charles Best", "desc": "Discovered insulin, a hormone to treat diabetes that has saved millions of lives worldwide."},
+            {"name": "Lieutenant Alexander Roberts Dunn", "desc": "Born in present-day Toronto; first Canadian awarded the Victoria Cross (Balaclava, 1854)."},
+            {"name": "Able Seaman William Hall of Horton", "desc": "Nova Scotia; first Black man awarded the Victoria Cross for his role in the Siege of Lucknow (1857)."},
+            {"name": "Corporal Filip Konowal", "desc": "Born in Ukraine; awarded the Victoria Cross for courage at the Battle of Hill 70 (1917)."},
+            {"name": "Billy Bishop", "desc": "Flying ace; earned the Victoria Cross during the First World War; later an honorary Air Marshal of the RCAF."},
+            {"name": "Paul Triquet", "desc": "Earned the Victoria Cross leading the attack on Casa Berardi in Italy (1943)."},
+            {"name": "Lieutenant Robert Hampton Gray", "desc": "Navy pilot from Trail, B.C.; last Canadian to receive the Victoria Cross (August 1945)."}
+        ] %}
+
+        <div class="people-grid-wrap">
+            <div class="people-grid-head">
+                <h2>چهره‌ها و دستاوردهای مهم</h2>
+                <p>در ادامهٔ «سال‌های مهم» — برای مرور سریع نام‌ها و نقش‌ها</p>
+            </div>
+            <div class="people-grid" role="list" aria-label="Notable people and achievements">
+                {% for p in notable_people %}
+                <div class="person-card" role="listitem">
+                    <div class="person-name">{{ p.name }}</div>
+                    <div class="person-desc">{{ p.desc }}</div>
+                </div>
+                {% endfor %}
             </div>
         </div>
 

@@ -6,6 +6,8 @@ import os
 import re
 import json
 import random
+from collections import defaultdict
+from difflib import SequenceMatcher
 import string
 import ipaddress
 from datetime import datetime, timezone, date, timedelta
@@ -558,6 +560,7 @@ _cache_govern = None
 _cache_federal_elections = None
 _cache_justice = None
 _cache_canadian_symbols = None
+_cache_federal_questions_226 = None
 _cache_canada_economy = None
 _cache_canada_regions = None
 _cache_exam1 = None
@@ -735,6 +738,155 @@ def _build_en_to_fr_option_map():
             en_to_fr[kn] = en_to_fr[k]
     _cache_en_to_fr = en_to_fr
     return en_to_fr
+
+
+_cache_en_to_fa_question_map = None
+_cache_en_to_fr_question_map = None
+
+
+def _build_en_to_fa_question_map():
+    """نگاشت متن انگلیسی سؤال → فارسی از ۴۱۴، ۵۷۱، question_bank و فصل‌ها."""
+    global _cache_en_to_fa_question_map
+    if _cache_en_to_fa_question_map is not None:
+        return _cache_en_to_fa_question_map
+    m = {}
+    static_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static')
+
+    def add_from_list(data):
+        if not isinstance(data, list):
+            return
+        for item in data:
+            if not isinstance(item, dict):
+                continue
+            q_en = (item.get('q') or item.get('q_en') or '').strip()
+            q_fa = (item.get('q_fa') or '').strip()
+            if q_en and q_fa:
+                m[q_en] = q_fa
+
+    try:
+        add_from_list(_load_414_questions())
+    except Exception:
+        pass
+    # برای ۲۲۶ فدرال، منبع اصلی ترجمه‌ها ۵۷۱ و ۴۱۴ است؛ اسکن همهٔ فصل‌ها/بانک بزرگ باعث کندی و تایم‌اوت می‌شود.
+    for fn in (
+        'citizenship_571_questions.json',
+    ):
+        path = os.path.join(static_dir, fn)
+        if not os.path.isfile(path):
+            continue
+        try:
+            with open(path, encoding='utf-8') as f:
+                add_from_list(json.load(f))
+        except Exception:
+            pass
+    # نسخه‌های پشتیبان ۵۷۱ (سؤال‌های حذف‌شده از فایل اصلی) فقط جاهای خالی را پر می‌کنند.
+    for legacy_fn in (
+        'citizenship_571_questions.json.bak_before_user_batches_20260327',
+        'citizenship_571_questions.json.before_replace_20260327',
+    ):
+        leg_path = os.path.join(static_dir, legacy_fn)
+        if not os.path.isfile(leg_path):
+            continue
+        try:
+            with open(leg_path, encoding='utf-8') as lf:
+                leg_data = json.load(lf)
+            if not isinstance(leg_data, list):
+                continue
+            for item in leg_data:
+                if not isinstance(item, dict):
+                    continue
+                q_en = (item.get('q') or item.get('q_en') or '').strip()
+                q_fa = (item.get('q_fa') or '').strip()
+                if q_en and q_fa and q_en not in m:
+                    m[q_en] = q_fa
+        except Exception:
+            pass
+    for k in list(m.keys()):
+        low = k.lower()
+        if low not in m:
+            m[low] = m[k]
+        kn = k.replace('\u2019', "'").replace('\u2018', "'")
+        if kn and kn not in m:
+            m[kn] = m[k]
+    _cache_en_to_fa_question_map = m
+    return m
+
+
+def _build_en_to_fr_question_map():
+    """نگاشت متن انگلیسی سؤال → فرانسوی از ۴۱۴، ۵۷۱ و فایل‌های دارای q_fr."""
+    global _cache_en_to_fr_question_map
+    if _cache_en_to_fr_question_map is not None:
+        return _cache_en_to_fr_question_map
+    m = {}
+    static_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static')
+
+    def add_from_list(data):
+        if not isinstance(data, list):
+            return
+        for item in data:
+            if not isinstance(item, dict):
+                continue
+            q_en = (item.get('q') or item.get('q_en') or '').strip()
+            q_fr = (item.get('q_fr') or '').strip()
+            if not q_en or not q_fr:
+                continue
+            if q_fr.lower() == q_en.lower():
+                continue
+            m[q_en] = q_fr
+
+    try:
+        add_from_list(_load_414_questions())
+    except Exception:
+        pass
+    for fn in (
+        'citizenship_571_questions.json',
+        'chapter1_questions.json',
+        'chapter2_questions.json',
+        'chapter3_questions.json',
+        'chapter4_questions.json',
+        'introduction_questions.json',
+        'question_bank.json',
+    ):
+        path = os.path.join(static_dir, fn)
+        if not os.path.isfile(path):
+            continue
+        try:
+            with open(path, encoding='utf-8') as f:
+                add_from_list(json.load(f))
+        except Exception:
+            pass
+    for legacy_fn in (
+        'citizenship_571_questions.json.bak_before_user_batches_20260327',
+        'citizenship_571_questions.json.before_replace_20260327',
+    ):
+        leg_path = os.path.join(static_dir, legacy_fn)
+        if not os.path.isfile(leg_path):
+            continue
+        try:
+            with open(leg_path, encoding='utf-8') as lf:
+                leg_data = json.load(lf)
+            if not isinstance(leg_data, list):
+                continue
+            for item in leg_data:
+                if not isinstance(item, dict):
+                    continue
+                q_en = (item.get('q') or item.get('q_en') or '').strip()
+                q_fr = (item.get('q_fr') or '').strip()
+                if not q_en or not q_fr or q_fr.lower() == q_en.lower():
+                    continue
+                if q_en not in m:
+                    m[q_en] = q_fr
+        except Exception:
+            pass
+    for k in list(m.keys()):
+        low = k.lower()
+        if low not in m:
+            m[low] = m[k]
+        kn = k.replace('\u2019', "'").replace('\u2018', "'")
+        if kn and kn not in m:
+            m[kn] = m[k]
+    _cache_en_to_fr_question_map = m
+    return m
 
 
 def _option_string_lookup(mapping, text):
@@ -1128,6 +1280,707 @@ def _load_chapter4_questions():
         pass
     _cache_chapter4 = []
     return _cache_chapter4
+
+
+def _federal226_normalize_stem(s):
+    """یکسان‌سازی برای تطبیق نزدیک متن فایل ۲۲۶ با کلیدهای بانک (فاصله، علامت، اعداد به‌صورت کلمه)."""
+    if not s:
+        return ''
+    t = s.strip().lower()
+    t = re.sub(r'\s+', ' ', t)
+    t = t.replace('\u2019', "'").replace('\u2018', "'")
+    for word, digit in (
+        ('ten', '10'), ('nine', '9'), ('eight', '8'), ('seven', '7'),
+        ('six', '6'), ('five', '5'), ('four', '4'), ('three', '3'),
+        ('two', '2'), ('one', '1'),
+    ):
+        t = re.sub(rf'\b{word}\b', digit, t)
+    # غلط املایی رایج در برخی نسخه‌های متن ۲۲۶
+    t = re.sub(r'\bthe\s+part\s+in\s+power\b', 'the party in power', t)
+    t = t.rstrip('?.! :;')
+    return t
+
+
+def _federal226_build_norm_q_map(en_map):
+    """ایندکس نرمال‌شدهٔ سؤال → ترجمه (اولین تطبیق برنده است)."""
+    out = {}
+    if not en_map:
+        return out
+    for k, v in en_map.items():
+        if not k or not v:
+            continue
+        nk = _federal226_normalize_stem(k)
+        if nk and nk not in out:
+            out[nk] = v
+    return out
+
+
+def _federal226_lookup_q_fa(en_map, stem, norm_index=None):
+    """q_fa را با چند شکل متنی و ایندکس نرمال‌شده روی نگاشت بانک جستجو می‌کند."""
+    if not stem:
+        return ''
+    stem = stem.strip()
+    seen = set()
+    variants = []
+
+    def add(x):
+        x = (x or '').strip()
+        if x and x not in seen:
+            seen.add(x)
+            variants.append(x)
+
+    add(stem)
+    add(stem.rstrip('?').rstrip('.').strip())
+    three_digit = re.sub(r'\bthree\b', '3', stem, flags=re.IGNORECASE)
+    add(three_digit)
+    add(three_digit.rstrip('?').rstrip('.').strip())
+
+    for cand in variants:
+        res = _fa_lookup(en_map, cand)
+        cn = cand.replace('\u2019', "'").replace('\u2018', "'").strip().lower()
+        rn = (res or '').replace('\u2019', "'").replace('\u2018', "'").strip().lower()
+        if rn and rn != cn:
+            return res
+    if norm_index:
+        tried = set()
+        for cand in variants:
+            nk = _federal226_normalize_stem(cand)
+            if not nk or nk in tried:
+                continue
+            tried.add(nk)
+            res = norm_index.get(nk)
+            if not res:
+                continue
+            cn = cand.replace('\u2019', "'").replace('\u2018', "'").strip().lower()
+            rn = res.replace('\u2019', "'").replace('\u2018', "'").strip().lower()
+            if rn and rn != cn:
+                return res
+    return ''
+
+
+def _federal226_lookup_q_fr(en_map, stem, norm_index=None):
+    """مثل q_fa برای متن فرانسوی سؤال."""
+    if not stem:
+        return ''
+    stem = stem.strip()
+    seen = set()
+    variants = []
+
+    def add(x):
+        x = (x or '').strip()
+        if x and x not in seen:
+            seen.add(x)
+            variants.append(x)
+
+    add(stem)
+    add(stem.rstrip('?').rstrip('.').strip())
+    three_digit = re.sub(r'\bthree\b', '3', stem, flags=re.IGNORECASE)
+    add(three_digit)
+    add(three_digit.rstrip('?').rstrip('.').strip())
+
+    for cand in variants:
+        res = _fr_lookup(en_map, cand)
+        cn = cand.replace('\u2019', "'").replace('\u2018', "'").strip().lower()
+        rn = (res or '').replace('\u2019', "'").replace('\u2018', "'").strip().lower()
+        if rn and rn != cn:
+            return res
+    if norm_index:
+        tried = set()
+        for cand in variants:
+            nk = _federal226_normalize_stem(cand)
+            if not nk or nk in tried:
+                continue
+            tried.add(nk)
+            res = norm_index.get(nk)
+            if not res:
+                continue
+            cn = cand.replace('\u2019', "'").replace('\u2018', "'").strip().lower()
+            rn = res.replace('\u2019', "'").replace('\u2018', "'").strip().lower()
+            if rn and rn != cn:
+                return res
+    return ''
+
+
+def _federal226_fuzzy_match_q_fr(norm_pairs, stem, min_ratio=0.91):
+    """تکمیل q_fr برای سؤالات ملی وقتی نگاشت مستقیم نبود."""
+    stem_n = _federal226_normalize_stem(stem)
+    if not stem_n:
+        return ''
+    best_v = ''
+    best_r = 0.0
+    for nk, v in norm_pairs:
+        if not nk:
+            continue
+        r = SequenceMatcher(None, stem_n, nk).ratio()
+        if r > best_r:
+            best_r = r
+            best_v = v
+    if best_r >= min_ratio and best_v:
+        return best_v
+    return ''
+
+
+_cache_federal226_option_bank_index = None
+_cache_federal226_combined_indexes = None
+_cache_federal226_fr_opt_fuzzy = None
+
+
+def _federal226_build_combined_option_indexes():
+    """یک‌بار خواندن JSONها؛ سه ایندکس: q_fa از گزینه‌ها، ردیف کامل بانک، جفت‌های EN→FR برای فازی گزینه."""
+    global _cache_federal226_combined_indexes, _cache_federal226_option_q_fa_index, _cache_federal226_option_bank_index, _cache_federal226_fr_opt_fuzzy
+    if _cache_federal226_combined_indexes is not None:
+        return _cache_federal226_combined_indexes
+    static_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static')
+    by_fa = {}
+    by_bank = {}
+    fr_rows = []
+
+    def add_item(item):
+        if not isinstance(item, dict):
+            return
+        q_en = (item.get('q') or item.get('q_en') or '').strip()
+        q_fa = (item.get('q_fa') or '').strip()
+        opts_en = item.get('options_en') or item.get('options') or []
+        opts_fr = item.get('options_fr') or []
+        if len(opts_en) < 2:
+            return
+        normed = [_federal226_norm_option_text(x) for x in opts_en]
+        if not all(normed):
+            return
+        fs = frozenset(normed)
+        if len(fs) < len(normed):
+            return
+        if q_fa:
+            by_fa.setdefault(fs, []).append((q_en, q_fa))
+        if len(opts_fr) == len(opts_en):
+            diff_opts = 0
+            for a, b in zip(opts_en, opts_fr):
+                if (a or '').strip() and (b or '').strip() and (a or '').strip().lower() != (b or '').strip().lower():
+                    diff_opts += 1
+            if diff_opts > 0:
+                q_fr = (item.get('q_fr') or '').strip()
+                by_bank.setdefault(fs, []).append({
+                    'q_en': q_en,
+                    'q_fr': q_fr,
+                    'options_fr': list(opts_fr),
+                })
+            for a, b in zip(opts_en, opts_fr):
+                if (a or '').strip().lower() == (b or '').strip().lower():
+                    continue
+                na = _federal226_norm_option_text(a)
+                if na:
+                    fr_rows.append((na, b))
+
+    def add_from_list(data):
+        if not isinstance(data, list):
+            return
+        for it in data:
+            add_item(it)
+
+    try:
+        add_from_list(_load_414_questions())
+    except Exception:
+        pass
+    for fn in (
+        'question_bank.json',
+        'citizenship_571_questions.json',
+        'introduction_questions.json',
+        'chapter1_questions.json',
+        'chapter2_questions.json',
+        'chapter3_questions.json',
+        'chapter4_questions.json',
+    ):
+        path = os.path.join(static_dir, fn)
+        if not os.path.isfile(path):
+            continue
+        try:
+            with open(path, encoding='utf-8') as f:
+                add_from_list(json.load(f))
+        except Exception:
+            pass
+    for legacy_fn in (
+        'citizenship_571_questions.json.bak_before_user_batches_20260327',
+        'citizenship_571_questions.json.before_replace_20260327',
+    ):
+        leg_path = os.path.join(static_dir, legacy_fn)
+        if not os.path.isfile(leg_path):
+            continue
+        try:
+            with open(leg_path, encoding='utf-8') as lf:
+                add_from_list(json.load(lf))
+        except Exception:
+            pass
+    exact_map = {}
+    for na, fr in fr_rows:
+        if na and na not in exact_map:
+            exact_map[na] = fr
+    by_bucket = defaultdict(list)
+    for na, fr in exact_map.items():
+        by_bucket[len(na) // 28].append((na, fr))
+    fuzzy_cached = (exact_map, by_bucket)
+    triple = (by_fa, by_bank, fuzzy_cached)
+    _cache_federal226_combined_indexes = triple
+    _cache_federal226_option_q_fa_index = by_fa
+    _cache_federal226_option_bank_index = by_bank
+    _cache_federal226_fr_opt_fuzzy = fuzzy_cached
+    return triple
+
+
+def _build_federal226_option_set_bank_index():
+    return _federal226_build_combined_option_indexes()[1]
+
+
+def _federal226_resolve_bank_row(by_fs, fs, stem):
+    if not fs or not by_fs:
+        return None
+    rows = by_fs.get(fs)
+    if not rows:
+        return None
+    if len(rows) == 1:
+        return rows[0]
+    stem_n = _federal226_normalize_stem(stem)
+    best = None
+    best_sc = 0.0
+    for row in rows:
+        sn = _federal226_normalize_stem(row.get('q_en') or '')
+        if not stem_n or not sn:
+            continue
+        sc = SequenceMatcher(None, stem_n, sn).ratio()
+        if sc > best_sc:
+            best_sc = sc
+            best = row
+    if best_sc >= 0.5 and best:
+        return best
+    return rows[0]
+
+
+def _federal226_provincial_template_fr(stem):
+    """سؤالات استانی: متن فرانسوی الگویی (مثل فارسی)."""
+    if not stem:
+        return ''
+    s = stem.strip().replace('\u2019', "'").replace('\u2018', "'")
+    s = re.sub(r'\s+', ' ', s)
+    s = s.rstrip(' \t?.!:;')
+
+    def _p(m):
+        t = (m.group(1) or '').strip().rstrip('.')
+        if t.lower().startswith('the '):
+            t = t[4:].strip()
+        return t
+
+    rules = (
+        (r'(?is)^What is the capital city of (?:the )?(.+)$', lambda m: f'Quelle est la capitale de {_p(m)} ?'),
+        (r'(?is)^What is the name of the leader of the Opposition in (.+)$', lambda m: f'Quel est le nom du chef de l’opposition en {_p(m)} ?'),
+        (r'(?is)^What is the name of the Lieutenant-Governor of (.+)$', lambda m: f'Quel est le nom du lieutenant-gouverneur de {_p(m)} ?'),
+        (r'(?is)^What is the name of the Premier of (.+)$', lambda m: f'Quel est le nom du premier ministre de {_p(m)} ?'),
+        (r'(?is)^What is the name of the Commissioner of (.+)$', lambda m: f'Quel est le nom du commissaire de {_p(m)} ?'),
+        (r'(?is)^Which political party is in power in (.+)$', lambda m: f'Quel parti politique est au pouvoir en {_p(m)} ?'),
+        (r'(?is)^What three industries are important to (.+)\'s economy today$', lambda m: f'Quelles sont les trois industries importantes pour l’économie de {_p(m)} aujourd’hui ?'),
+        (r'(?is)^Which three natural resources are important to (.+)\'s economy today$', lambda m: f'Quelles sont les trois ressources naturelles importantes pour l’économie de {_p(m)} aujourd’hui ?'),
+        (r'(?is)^What is the name of the Mayor of Richmond, British Columbia$', lambda m: 'Quel est le nom du maire de Richmond (Colombie-Britannique) ?'),
+        (r'(?is)^Name the federal electoral districts in Richmond, British Columbia$', lambda m: 'Nommez les circonscriptions électorales fédérales de Richmond (C.-B.).'),
+        (r'(?is)^Name the members of Parliament for Richmond, British Columbia and the parties they belong to .+$', lambda m: 'Nommez les députés fédéraux de Richmond et les partis auxquels ils appartiennent.'),
+        (r'(?is)^Name the Members of the Legislative Assembly for Richmond, British Columbia and the parties they belong to .+$', lambda m: 'Nommez les députés à l’Assemblée législative de Richmond et les partis auxquels ils appartiennent.'),
+        (r'(?is)^Name three city councillors for Richmond, British Columbia$', lambda m: 'Nommez trois conseillers municipaux de Richmond (C.-B.).'),
+        (r'(?is)^Why is British Columbia known as Canada\'s Pacific Gateway$', lambda m: 'Pourquoi la Colombie-Britannique est-elle connue comme la porte du Pacifique du Canada ?'),
+        (r'(?is)^Why is British Columbia known as Canadas Pacific Gateway$', lambda m: 'Pourquoi la Colombie-Britannique est-elle connue comme la porte du Pacifique du Canada ?'),
+    )
+    for pat, fmt in rules:
+        m = re.match(pat, s)
+        if m:
+            try:
+                return fmt(m)
+            except Exception:
+                continue
+    return ''
+
+
+def _build_federal226_fr_option_fuzzy_list():
+    return _federal226_build_combined_option_indexes()[2]
+
+
+def _federal226_fuzzy_fr_option(cached, oen, min_ratio=0.86):
+    exact_map, by_bucket = cached
+    on = _federal226_norm_option_text(oen)
+    if not on or len(on) < 18:
+        return ''
+    if on in exact_map:
+        return exact_map[on]
+    bi = len(on) // 28
+    cand = []
+    for k in (bi - 1, bi, bi + 1):
+        cand.extend(by_bucket.get(k, ()))
+    best_fr = ''
+    best_r = 0.0
+    for na, fr in cand:
+        r = SequenceMatcher(None, on, na).ratio()
+        if r > best_r:
+            best_r = r
+            best_fr = fr
+    return best_fr if best_r >= min_ratio else ''
+
+
+def _federal226_q_fa_patch_lookup(patch, stem, patch_norm=None):
+    """ترجمهٔ دستی از static/federal_questions_226_q_fa_patch.json (کلید = متن دقیق سؤال در فایل ۲۲۶)."""
+    if not stem or not patch:
+        return ''
+    s = stem.strip()
+    if s in patch:
+        return patch[s]
+    t = s.rstrip('?').rstrip('.').strip()
+    if t in patch:
+        return patch[t]
+    td = re.sub(r'\bthree\b', '3', s, flags=re.IGNORECASE)
+    if td in patch:
+        return patch[td]
+    td = td.rstrip('?').rstrip('.').strip()
+    if td in patch:
+        return patch[td]
+    if patch_norm:
+        nn = _federal226_normalize_stem(s)
+        if nn in patch_norm:
+            return patch_norm[nn]
+    return ''
+
+
+_cache_federal226_option_q_fa_index = None
+
+
+def _federal226_norm_option_text(o):
+    """متن گزینه را برای امضای مجموعهٔ گزینه‌ها نرمال می‌کند."""
+    if not o:
+        return ''
+    t = str(o).strip().lower()
+    t = re.sub(r'\s*\(\s*correct answer\s*\)\s*', '', t, flags=re.IGNORECASE).strip()
+    t = re.sub(r'\s+', ' ', t)
+    t = t.replace('\u2019', "'").replace('\u2018', "'")
+    t = t.rstrip('.!? ')
+    return t
+
+
+def _build_federal226_option_set_q_fa_index():
+    return _federal226_build_combined_option_indexes()[0]
+
+
+def _federal226_resolve_q_fa_by_options(by_fs, fs, stem):
+    if not fs or not by_fs:
+        return ''
+    cands = by_fs.get(fs)
+    if not cands:
+        return ''
+    if len(cands) == 1:
+        return cands[0][1]
+    stem_n = _federal226_normalize_stem(stem)
+    best_fa = ''
+    best_sc = 0.0
+    for q_en, q_fa in cands:
+        sn = _federal226_normalize_stem(q_en)
+        if not stem_n or not sn:
+            continue
+        sc = SequenceMatcher(None, stem_n, sn).ratio()
+        if sc > best_sc:
+            best_sc = sc
+            best_fa = q_fa
+    if best_sc >= 0.5 and best_fa:
+        return best_fa
+    return ''
+
+
+def _federal226_unique_norm_fa_pairs(en_map):
+    """یک (نرمال‌شده، q_fa) به ازای هر شکل انگلیسی یکتا برای تطبیق فازی."""
+    by_nk = {}
+    for k, v in en_map.items():
+        if not k or not v:
+            continue
+        nk = _federal226_normalize_stem(k)
+        if nk and nk not in by_nk:
+            by_nk[nk] = v
+    return list(by_nk.items())
+
+
+def _federal226_fuzzy_match_q_fa(norm_pairs, stem, min_ratio=0.91):
+    """آخرین تلاش برای سؤالات ملی وقتی متن یا گزینه با بانک اختلاف جزئی دارد."""
+    stem_n = _federal226_normalize_stem(stem)
+    if not stem_n:
+        return ''
+    best_v = ''
+    best_r = 0.0
+    for nk, v in norm_pairs:
+        if not nk:
+            continue
+        r = SequenceMatcher(None, stem_n, nk).ratio()
+        if r > best_r:
+            best_r = r
+            best_v = v
+    if best_r >= min_ratio and best_v:
+        return best_v
+    return ''
+
+
+def _federal226_provincial_template_fa(stem):
+    """برای سؤالات استانی (معمولاً خارج بانک ملی) ترجمهٔ الگویی قابل‌فهم."""
+    if not stem:
+        return ''
+    s = stem.strip().replace('\u2019', "'").replace('\u2018', "'")
+    s = re.sub(r'\s+', ' ', s)
+    s = s.rstrip(' \t?.!:;')
+
+    def _p(m):
+        t = (m.group(1) or '').strip().rstrip('.')
+        if t.lower().startswith('the '):
+            t = t[4:].strip()
+        return t
+
+    rules = (
+        (
+            r'(?is)^What is the capital city of (?:the )?(.+)$',
+            lambda m: f'پایتخت {_p(m)} کدام شهر است؟',
+        ),
+        (
+            r'(?is)^What is the name of the leader of the Opposition in (.+)$',
+            lambda m: f'نام رهبر اپوزسیون در {_p(m)} چیست؟',
+        ),
+        (
+            r'(?is)^What is the name of the Lieutenant-Governor of (.+)$',
+            lambda m: f'نام فرماندار کل {_p(m)} چیست؟',
+        ),
+        (
+            r'(?is)^What is the name of the Premier of (.+)$',
+            lambda m: f'نام نخست‌وزیر {_p(m)} چیست؟',
+        ),
+        (
+            r'(?is)^What is the name of the Commissioner of (.+)$',
+            lambda m: f'نام کمیسیونر {_p(m)} چیست؟',
+        ),
+        (
+            r'(?is)^Which political party is in power in (.+)$',
+            lambda m: f'کدام حزب در {_p(m)} در قدرت است؟',
+        ),
+        (
+            r'(?is)^What three industries are important to (.+)\'s economy today$',
+            lambda m: f'سه صنعت مهم در اقتصاد امروز {_p(m)} کدامند؟',
+        ),
+        (
+            r'(?is)^Which three natural resources are important to (.+)\'s economy today$',
+            lambda m: f'سه منبع طبیعی مهم در اقتصاد امروز {_p(m)} کدامند؟',
+        ),
+        (
+            r'(?is)^What is the name of the Mayor of Richmond, British Columbia$',
+            lambda m: 'نام شهردار ریچموند در بریتیش کلمبیا چیست؟',
+        ),
+        (
+            r'(?is)^Name the federal electoral districts in Richmond, British Columbia$',
+            lambda m: 'نام حوزه‌های انتخابیاتی فدرال ریچموند در بریتیش کلمبیا را بگویید.',
+        ),
+        (
+            r'(?is)^Name the members of Parliament for Richmond, British Columbia and the parties they belong to .+$',
+            lambda m: 'نام نمایندگان پارلمان فدرال ریچموند و احزابشان چیست؟',
+        ),
+        (
+            r'(?is)^Name the Members of the Legislative Assembly for Richmond, British Columbia and the parties they belong to .+$',
+            lambda m: 'نام نمایندگان مجلس قانونگذاری ریچموند و احزابشان چیست؟',
+        ),
+        (
+            r'(?is)^Name three city councillors for Richmond, British Columbia$',
+            lambda m: 'نام سه عضو شورای شهر ریچموند در بریتیش کلمبیا را بگویید.',
+        ),
+        (
+            r'(?is)^Why is British Columbia known as Canada\'s Pacific Gateway$',
+            lambda m: 'چرا بریتیش کلمبیا به‌عنوان دروازهٔ اقیانوس آرام کانادا شناخته می‌شود؟',
+        ),
+        (
+            r'(?is)^Why is British Columbia known as Canadas Pacific Gateway$',
+            lambda m: 'چرا بریتیش کلمبیا به‌عنوان دروازهٔ اقیانوس آرام کانادا شناخته می‌شود؟',
+        ),
+    )
+    for pat, fmt in rules:
+        m = re.match(pat, s)
+        if m:
+            try:
+                return fmt(m)
+            except Exception:
+                continue
+    return ''
+
+
+def _load_federal_questions_226():
+    """Load the 226 Federal Questions from a plain-text file and cache.
+
+    File format: numbered questions + indented options; correct option contains '(correct answer)'.
+    Returns: list[{ "num", "q", "q_fa", "q_fr", "options_en", "options_fr", "correct" }]
+    """
+    global _cache_federal_questions_226
+    if _cache_federal_questions_226 is not None:
+        return _cache_federal_questions_226
+
+    base = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static')
+    path = os.path.join(base, 'federal_questions_226.txt')
+
+    try:
+        if not os.path.isfile(path):
+            _cache_federal_questions_226 = []
+            return _cache_federal_questions_226
+
+        with open(path, 'r', encoding='utf-8') as f:
+            raw_lines = [ln.rstrip('\n') for ln in f]
+
+        questions = []
+        cur = None
+
+        def _flush():
+            nonlocal cur
+            if not cur:
+                return
+            # Only keep questions that have at least 2 options.
+            if cur.get('q') and len(cur.get('options', [])) >= 2:
+                if cur.get('correct') is None:
+                    cur['correct'] = -1
+                # Normalize to the same shape as other chapter templates.
+                cur['q_fa'] = cur.get('q_fa') or ''
+                cur['q_fr'] = cur.get('q_fr') or cur.get('q') or ''
+                cur['options_en'] = list(cur.get('options', []))
+                cur['options_fr'] = list(cur.get('options_fr') or cur.get('options', []))
+                questions.append(cur)
+            cur = None
+
+        for ln in raw_lines:
+            s = ln.strip()
+            if not s:
+                continue
+
+            # Ignore title line
+            if s.lower() == "226 federal questions":
+                continue
+
+            # New question line: "123. Question text"
+            m = re.match(r'^(\d{1,3})\.\s+(.*)$', s)
+            if m:
+                _flush()
+                cur = {
+                    'num': int(m.group(1)),
+                    'q': m.group(2).strip(),
+                    'options': [],
+                    'correct': None,
+                }
+                continue
+
+            # Skip section headers like "Provincial Questions"
+            if re.match(r'^(provincial questions)\s*$', s, flags=re.IGNORECASE):
+                continue
+
+            # Options are lines that are not question headers. Treat as option text.
+            if cur is None:
+                continue
+
+            opt = s
+            is_correct = False
+            if '(correct answer)' in opt.lower():
+                # Remove marker (case-insensitive)
+                opt = re.sub(r'\s*\(\s*correct answer\s*\)\s*', '', opt, flags=re.IGNORECASE).strip()
+                is_correct = True
+
+            cur['options'].append(opt)
+            if is_correct:
+                cur['correct'] = len(cur['options']) - 1
+
+        _flush()
+        en_to_fa_q = _build_en_to_fa_question_map()
+        en_to_fr_q = _build_en_to_fr_question_map()
+        en_to_fr_opt = _build_en_to_fr_option_map()
+        q_fa_patch = {}
+        patch_path = os.path.join(base, 'federal_questions_226_q_fa_patch.json')
+        try:
+            if os.path.isfile(patch_path):
+                with open(patch_path, 'r', encoding='utf-8') as pf:
+                    raw_patch = json.load(pf)
+                if isinstance(raw_patch, dict):
+                    for pk, pv in raw_patch.items():
+                        if pk and pv and isinstance(pk, str) and isinstance(pv, str) and not pk.strip().startswith('_'):
+                            q_fa_patch[pk.strip()] = pv.strip()
+        except Exception:
+            pass
+        norm_q_fa = _federal226_build_norm_q_map(en_to_fa_q)
+        norm_q_fr = _federal226_build_norm_q_map(en_to_fr_q)
+        patch_norm = {}
+        for pk, pv in q_fa_patch.items():
+            nn = _federal226_normalize_stem(pk)
+            if nn and nn not in patch_norm:
+                patch_norm[nn] = pv
+        for q in questions:
+            stem = (q.get('q') or '').strip()
+            q_fa = _federal226_q_fa_patch_lookup(q_fa_patch, stem, patch_norm) if stem else ''
+            if not q_fa:
+                q_fa = _federal226_lookup_q_fa(en_to_fa_q, stem, norm_q_fa)
+            # اگر ترجمه‌ای در بانک نباشد، lookup همان انگلیسی را برمی‌گرداند؛ در بلوک RTL خراب دیده می‌شود.
+            stem_n = stem.replace('\u2019', "'").replace('\u2018', "'")
+            fa_n = (q_fa or '').replace('\u2019', "'").replace('\u2018', "'")
+            if stem and fa_n.strip().lower() == stem_n.strip().lower():
+                q['q_fa'] = ''
+            else:
+                q['q_fa'] = q_fa
+            q['q_fr'] = _federal226_lookup_q_fr(en_to_fr_q, stem, norm_q_fr)
+            opts_en = q.get('options_en') or []
+            q['options_fr'] = [_fr_lookup(en_to_fr_opt, o) for o in opts_en]
+        # نکتهٔ عملکرد: ساخت ایندکس‌های سنگین/تطبیق فازی گزینه‌ها برای این صفحه باعث کندی شدید و تایم‌اوت می‌شود.
+        # برای باز شدن سریع صفحه، فقط از نگاشت‌های مستقیم سؤال/گزینه استفاده می‌کنیم؛ موارد خاص را با patch تکمیل می‌کنیم.
+        # سؤالات استانی (از شمارهٔ ۱۴۷) معمولاً در بانک ملی q_fa ندارند؛ تطبیق فازی فقط برای ملی تا اشتباه بین استان‌ها نشود.
+        norm_pairs = _federal226_unique_norm_fa_pairs(en_to_fa_q)
+        for q in questions:
+            if (q.get('q_fa') or '').strip():
+                continue
+            n = q.get('num') or 0
+            if n >= 147:
+                continue
+            stem = (q.get('q') or '').strip()
+            q_fa = _federal226_fuzzy_match_q_fa(norm_pairs, stem, 0.91)
+            if not q_fa:
+                continue
+            stem_n = stem.replace('\u2019', "'").replace('\u2018', "'")
+            fa_n = (q_fa or '').replace('\u2019', "'").replace('\u2018', "'")
+            if stem and fa_n.strip().lower() == stem_n.strip().lower():
+                continue
+            q['q_fa'] = q_fa
+        for q in questions:
+            if (q.get('q_fa') or '').strip():
+                continue
+            if (q.get('num') or 0) < 147:
+                continue
+            stem = (q.get('q') or '').strip()
+            q_fa = _federal226_provincial_template_fa(stem)
+            if q_fa:
+                q['q_fa'] = q_fa
+        # --- فرانسوی: الگوی استانی + پر کردن گزینه با نگاشت مستقیم ---
+        for q in questions:
+            if (q.get('num') or 0) < 147:
+                continue
+            stem = (q.get('q') or '').strip()
+            qfr = (q.get('q_fr') or '').strip()
+            if qfr and qfr.lower() != stem.lower():
+                continue
+            hit = _federal226_provincial_template_fr(stem)
+            if hit:
+                q['q_fr'] = hit
+        for q in questions:
+            opts_en = q.get('options_en') or []
+            if not opts_en:
+                continue
+            ofr = list(q.get('options_fr') or [])
+            if len(ofr) < len(opts_en):
+                ofr = ofr + [opts_en[i] for i in range(len(ofr), len(opts_en))]
+            ofr = ofr[: len(opts_en)]
+            for i, oen in enumerate(opts_en):
+                oen_s = (oen or '').strip()
+                cur = (ofr[i] if i < len(ofr) else '') or ''
+                if oen_s and cur.strip().lower() == oen_s.lower():
+                    alt = _fr_lookup(en_to_fr_opt, oen)
+                    if alt.strip().lower() != oen_s.lower():
+                        ofr[i] = alt
+            q['options_fr'] = ofr
+        _cache_federal_questions_226 = questions
+        return _cache_federal_questions_226
+    except Exception:
+        _cache_federal_questions_226 = []
+        return _cache_federal_questions_226
 
 
 def _load_govern_questions():
@@ -1861,6 +2714,19 @@ def citizenship_modern_canada():
     )
 
 
+@app.route('/federal-questions-226')
+def federal_questions_226():
+    """A single page that lists the 226 Federal Questions."""
+    log_visitor('/federal-questions-226')
+    questions = _load_federal_questions_226()
+    return render_template(
+        'federal_questions_226.html',
+        questions=questions,
+        total=len(questions),
+        exam_section_views=_count_exam_section_visits(),
+    )
+
+
 @app.route('/citizenship-canadas-economy')
 def citizenship_canadas_economy():
     """Canada's Economy (Chapter 9) — پنج سوال اول رایگان؛ از ششم با اشتراک ۴۱۴."""
@@ -2019,7 +2885,10 @@ def _resolved_seo_canonical_base():
     env = (os.getenv('SEO_CANONICAL_BASE') or '').strip().rstrip('/')
     if env:
         return env
-    host = (request.host or '').split(':')[0].lower()
+    # پشت پروکسی/لودبالانسر ممکن است request.host داخلی باشد؛ برای OG/preview دامنهٔ واقعی را از X-Forwarded-Host بگیر.
+    fwd_host = (request.headers.get('X-Forwarded-Host') or '').split(',')[0].strip()
+    host_raw = fwd_host or (request.host or '')
+    host = host_raw.split(':')[0].lower()
     if host in ('discovercanadatest.com', 'www.discovercanadatest.com'):
         return 'https://discovercanadatest.com'
     return ''
@@ -2030,10 +2899,12 @@ def _seo_base_url():
     fixed = _resolved_seo_canonical_base()
     if fixed:
         return fixed
-    url = request.host_url.rstrip('/')
-    if request.headers.get('X-Forwarded-Proto') == 'https' and url.startswith('http://'):
-        url = 'https://' + url[7:]
-    return url
+    # ساخت base URL با احترام به هدرهای پروکسی (برای اینکه OG image با دامنهٔ عمومی ساخته شود)
+    proto = (request.headers.get('X-Forwarded-Proto') or request.scheme or 'http').split(',')[0].strip()
+    host = (request.headers.get('X-Forwarded-Host') or request.host or '').split(',')[0].strip()
+    if not host:
+        return request.host_url.rstrip('/')
+    return f'{proto}://{host}'.rstrip('/')
 
 
 @app.before_request

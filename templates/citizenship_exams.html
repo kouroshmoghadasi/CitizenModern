@@ -76,12 +76,20 @@
             background: var(--card-bg); border-radius: 16px; border: 1px solid var(--border);
             overflow: hidden; box-shadow: 0 4px 16px rgba(0,0,0,0.07);
             transition: transform 0.2s, box-shadow 0.2s;
+            position: relative;
         }
         body.theme-dark .exam-card { box-shadow: 0 4px 20px rgba(0,0,0,0.35); }
         @media (hover: hover) {
             .exam-card:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(30,60,114,0.15); }
         }
-        .exam-card a { text-decoration: none; color: inherit; display: block; }
+        .exam-card a {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+            pointer-events: auto;
+        }
         .exam-card-img-wrap {
             display: flex;
             align-items: center;
@@ -264,6 +272,18 @@
                     </div>
                 </a>
             </article>
+            <article class="exam-card" id="federal-questions-226">
+                <a href="{{ url_for('federal_questions_226') }}">
+                    <div class="exam-card-img-wrap">
+                    <img src="{{ url_for('static', filename='images/citizenship-federal-elections-thumbnail.png') }}" alt="226 Federal Questions — full set with answers highlighted" width="320" height="213" loading="lazy">
+                    </div>
+                    <div class="exam-card-body">
+                        <h2>226 Federal Questions</h2>
+                        <p>Full list (single page) — with the correct answer highlighted</p>
+                        <span class="exam-badge">NEW</span>
+                    </div>
+                </a>
+            </article>
             <article class="exam-card">
                 <a href="{{ url_for('exam1') }}">
                     <div class="exam-card-img-wrap">
@@ -299,5 +319,24 @@
             </article>
         </div>
     </div>
+    <script>
+      (function () {
+        // برخی مرورگرهای درون‌برنامه‌ای (in-app) گاهی کلیک روی کارت‌های بزرگ را درست پاس نمی‌دهند.
+        // این handler ناوبری را قطعی می‌کند بدون اینکه سایر صفحات تغییر کنند.
+        function goFromCard(ev) {
+          var card = ev.currentTarget;
+          var a = card && card.querySelector && card.querySelector('a[href]');
+          if (!a) return;
+          // اگر خود لینک کلیک شد، اجازه بده رفتار طبیعی انجام شود.
+          if (ev.target && ev.target.closest && ev.target.closest('a')) return;
+          window.location.href = a.href;
+        }
+        document.querySelectorAll('.exam-card').forEach(function (card) {
+          // قابل‌کلیک کردن کل کارت (به جز خود <a> که خودش لینک است)
+          card.addEventListener('click', goFromCard);
+          card.addEventListener('touchend', goFromCard, { passive: true });
+        });
+      })();
+    </script>
 </body>
 </html>

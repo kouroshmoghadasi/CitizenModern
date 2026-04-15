@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="{{ url_for('static', filename='images/logo.png') }}" type="image/png">
     <link rel="apple-touch-icon" href="{{ url_for('static', filename='images/logo.png') }}">
-    <title>Modern Canada | آزمون شهروندی – کانادای مدرن</title>
-    <meta name="description" content="سوالات فصل ۴ (Modern Canada) آزمون شهروندی کانادا با ترجمه فارسی. Discover Canada.">
+    <title>226 Federal Questions | آزمون شهروندی</title>
+    <meta name="description" content="226 Federal Questions — one-by-one quiz format with answer checking.">
     {% include '_seo_meta_keywords_brand.html' %}
-    {% set seo_title = "Modern Canada | آزمون شهروندی کانادا – فصل ۴" %}
-    {% set seo_description = "سوالات فصل Modern Canada آزمون شهروندی کانادا با ترجمه فارسی." %}
-    {% set seo_image = "images/citizenship-modern-canada-thumbnail.png" %}
-    {% set seo_path = "/citizenship-modern-canada" %}
+    {% set seo_title = "226 Federal Questions | آزمون شهروندی" %}
+    {% set seo_description = "226 Federal Questions — one-by-one quiz format with answer checking." %}
+    {% set seo_image = "images/citizenship-federal-elections-thumbnail.png" %}
+    {% set seo_path = "/federal-questions-226" %}
     {% include '_seo_head_social.html' %}
     {% include 'pwa_meta.html' %}
     <style>
@@ -59,10 +59,7 @@
             user-select: none;
             -webkit-touch-callout: none;
         }
-        input, textarea {
-            -webkit-user-select: text;
-            user-select: text;
-        }
+        input, textarea { -webkit-user-select: text; user-select: text; }
         .wrap { max-width: 900px; margin: 0 auto; }
         .tool-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 20px; padding: 14px 18px; background: var(--card-bg); border-radius: 12px; border: 1px solid var(--border); box-shadow: 0 2px 10px rgba(0,0,0,0.06); }
         body.theme-dark .tool-bar { box-shadow: 0 2px 10px rgba(0,0,0,0.3); }
@@ -77,14 +74,10 @@
         .go-to-q-wrap input[type="number"] { width: 72px; padding: 8px 10px; border: 2px solid var(--option-border); border-radius: 8px; font-size: 0.95rem; background: var(--option-bg); color: var(--text); box-shadow: inset 0 1px 3px rgba(0,0,0,0.06); }
         body.theme-dark .go-to-q-wrap input[type="number"] { box-shadow: inset 0 1px 3px rgba(0,0,0,0.22); }
         .go-to-q-wrap .go-to-q-btn { padding: 8px 14px; border-radius: 8px; border: 1px solid var(--accent); background: var(--accent); color: #fff; font-weight: 600; font-size: 0.9rem; cursor: pointer; }
-        .questions-one-by-one .q-card { display: none; }
-        .questions-one-by-one .q-card.current { display: block; }
-        .q-nav-bar-ch4 { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px; margin-bottom: 20px; padding: 14px 18px; background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.06); }
-        .q-nav-bar-ch4 .q-nav-current { flex: 1 1 auto; min-width: 0; text-align: center; font-weight: 700; color: var(--accent); font-size: 1.05em; }
-        .q-nav-bar-ch4 .q-nav-btn { padding: 10px 20px; border-radius: 10px; border: 2px solid var(--accent); background: var(--accent); color: #fff; font-weight: 600; cursor: pointer; transition: opacity 0.2s; }
-        .q-nav-bar-ch4 .q-nav-btn:hover:not(:disabled) { opacity: 0.9; }
-        .q-nav-bar-ch4 .q-nav-btn:disabled { opacity: 0.5; cursor: not-allowed; }
-        .q-nav-bar-ch4 .q-nav-btn.btn-prev { background: var(--card-bg); color: var(--accent); }
+        .lang-mode-btn { padding: 10px 18px; border-radius: 10px; border: 2px solid var(--border); background: var(--card-bg); color: var(--text); font-weight: 600; cursor: pointer; -webkit-appearance: none; appearance: none; }
+        .lang-mode-btn[aria-pressed="true"] { border-color: #1e3c72; background: linear-gradient(135deg, #2c5282 0%, #1e3c72 100%); color: #fff; box-shadow: 0 0 0 2px rgba(30,60,114,0.25); }
+        body.theme-dark .lang-mode-btn[aria-pressed="true"] { border-color: #7cb3f5; box-shadow: 0 0 0 2px rgba(124,179,245,0.35); }
+
         .page-header { background: var(--header-bg); color: var(--header-text); padding: 28px 24px; border-radius: 16px; margin-bottom: 24px; text-align: center; box-shadow: 0 8px 24px rgba(30,60,114,0.25); }
         .page-header h1 { font-size: 1.6em; margin-bottom: 8px; }
         .back-bar { margin-bottom: 12px; text-align: right; }
@@ -98,8 +91,11 @@
             .back-bar.ch1-top-nav { flex-direction: column; align-items: stretch; text-align: center; }
             .back-bar.ch1-top-nav .back-btn { width: 100%; text-align: center; box-sizing: border-box; }
         }
+
+        .questions-one-by-one .q-card { display: none; }
+        .questions-one-by-one .q-card.current { display: block; }
         .q-card { background: var(--card-bg); border-radius: 14px; padding: 22px 24px; margin-bottom: 20px; box-shadow: 0 4px 16px rgba(0,0,0,0.06); border: 1px solid var(--border); }
-        .q-num { font-weight: 800; color: var(--accent); font-size: 1em; margin-bottom: 12px; }
+        body.theme-dark .q-card { box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
         .q-text-fa { font-size: 1.15em; font-weight: 700; color: var(--accent); margin-bottom: 10px; text-align: right; direction: rtl; }
         .q-options-list { list-style: none; margin: 12px 0; }
         .q-options-list li { padding: 10px 14px; margin: 6px 0; background: var(--option-bg); border-radius: 10px; border: 1px solid var(--option-border); direction: ltr; text-align: left; }
@@ -109,13 +105,19 @@
         .q-options-list li.q-option-answered { cursor: default; }
         .q-option-letter { font-weight: 700; margin-right: 8px; color: var(--accent); }
         .block-en { direction: ltr; text-align: left; margin-bottom: 10px; padding: 10px 12px; background: rgba(30,60,114,0.06); border-radius: 10px; border-left: 3px solid var(--accent); }
-        .block-fa { direction: rtl; text-align: right; margin-bottom: 10px; padding: 10px 12px; background: rgba(241,196,15,0.12); border-radius: 10px; border-right: 3px solid #f1c40f; }
         .block-fr { direction: ltr; text-align: left; margin-bottom: 10px; padding: 10px 12px; background: rgba(0,82,147,0.08); border-radius: 10px; border-left: 3px solid #005293; }
-        .lang-mode-btn { padding: 10px 18px; border-radius: 10px; border: 2px solid var(--border); background: var(--card-bg); color: var(--text); font-weight: 600; cursor: pointer; -webkit-appearance: none; appearance: none; }
-        .lang-mode-btn[aria-pressed="true"] { border-color: #1e3c72; background: linear-gradient(135deg, #2c5282 0%, #1e3c72 100%); color: #fff; box-shadow: 0 0 0 2px rgba(30,60,114,0.25); }
-        body.theme-dark .lang-mode-btn[aria-pressed="true"] { border-color: #7cb3f5; box-shadow: 0 0 0 2px rgba(124,179,245,0.35); }
-        .q-num-badge { display: inline-flex; align-items: center; justify-content: center; min-width: 2rem; height: 1.75rem; padding: 0 0.5rem; background: linear-gradient(135deg, #1e3c72 0%, #2c5282 100%); color: #fff; border-radius: 8px; font-weight: 700; font-size: 0.9em; margin-right: 0.6rem; }
+        .block-fa { direction: rtl; text-align: right; margin-bottom: 10px; padding: 10px 12px; background: rgba(241,196,15,0.12); border-radius: 10px; border-right: 3px solid #f1c40f; color: var(--text); font-weight: 600; }
+        body.theme-dark .block-fa { color: var(--text); }
         .block-fa .q-num-badge { margin-right: 0; margin-left: 0.6rem; }
+        .lang-block-fr .q-option-letter { color: #005293; }
+        .q-num-badge { display: inline-flex; align-items: center; justify-content: center; min-width: 2rem; height: 1.75rem; padding: 0 0.5rem; background: linear-gradient(135deg, #1e3c72 0%, #2c5282 100%); color: #fff; border-radius: 8px; font-weight: 700; font-size: 0.9em; margin-right: 0.6rem; }
+
+        .q-nav-bar-ch4 { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px; margin-bottom: 20px; padding: 14px 18px; background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.06); }
+        .q-nav-bar-ch4 .q-nav-current { flex: 1 1 auto; min-width: 0; text-align: center; font-weight: 700; color: var(--accent); font-size: 1.05em; }
+        .q-nav-bar-ch4 .q-nav-btn { padding: 10px 20px; border-radius: 10px; border: 2px solid var(--accent); background: var(--accent); color: #fff; font-weight: 600; cursor: pointer; transition: opacity 0.2s; }
+        .q-nav-bar-ch4 .q-nav-btn:hover:not(:disabled) { opacity: 0.9; }
+        .q-nav-bar-ch4 .q-nav-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+        .q-nav-bar-ch4 .q-nav-btn.btn-prev { background: var(--card-bg); color: var(--accent); }
     </style>
 </head>
 <body>
@@ -129,95 +131,73 @@
         {% if exam_section_views is not none %}
         <p class="exam-visit-count-ch1" role="status">بازدید ثبت‌شده از بخش آزمون‌های نمونه: <strong>{{ exam_section_views }}</strong></p>
         {% endif %}
-        {% set header_title_en = "Modern Canada" %}
-        {% set header_subtitle_fa = "کانادای مدرن — فصل ۴ (Discover Canada)" %}
-        {% include '_exam_page_header.html' %}
+        <div class="page-header">
+            <h1>226 Federal Questions</h1>
+            <p>سوال‌ها تک‌به‌تک نمایش داده می‌شوند — گزینه را انتخاب کنید تا درست/غلط مشخص شود.</p>
+        </div>
+
         <div class="tool-bar">
             <div class="group theme-toggle-wrap">
                 <button type="button" class="lang-mode-btn" id="langModeEn" aria-pressed="true">English + فارسی</button>
                 <button type="button" class="lang-mode-btn" id="langModeFr" aria-pressed="false">Français + فارسی</button>
             </div>
             <div class="group go-to-q-wrap">
-                <label for="goToQuestionCh4" class="theme-label" style="margin: 0;">سوال</label>
-                <input type="number" id="goToQuestionCh4" min="1" max="{{ max_question_ch4 }}" placeholder="1–{{ max_question_ch4 }}" aria-label="Question number">
-                <button type="button" class="go-to-q-btn" id="goToQuestionBtnCh4">برو</button>
+                <label for="goToQuestion226" class="theme-label" style="margin: 0;">سوال</label>
+                <input id="goToQuestion226" type="number" min="1" max="{{ total }}" placeholder="1–{{ total }}" aria-label="Question number">
+                <button type="button" class="go-to-q-btn" id="goToQuestionBtn226">برو</button>
             </div>
             <div class="group theme-toggle-wrap">
                 <span class="theme-label">Theme:</span>
-                <button type="button" class="theme-btn theme-light" id="themeLight" title="روشن / Light" aria-pressed="true">☀️</button>
-                <button type="button" class="theme-btn theme-dark" id="themeDark" title="تاریک / Dark" aria-pressed="false">🌙</button>
+                <button type="button" class="theme-btn theme-light" id="themeLight" title="Light" aria-pressed="true">☀️</button>
+                <button type="button" class="theme-btn theme-dark" id="themeDark" title="Dark" aria-pressed="false">🌙</button>
             </div>
         </div>
-        <div id="q-nav-bar-ch4" class="q-nav-bar-ch4" data-max-question="{{ max_visible_ch4 }}">
-            <button type="button" class="q-nav-btn btn-prev" id="qPrevCh4" aria-label="سوال قبلی">← سوال قبلی</button>
-            <span class="q-nav-current" role="status" aria-live="polite" dir="ltr">Question <span id="currentQNumCh4">1</span> of {{ max_visible_ch4 }}</span>
-            <button type="button" class="q-nav-btn" id="qNextCh4" aria-label="سوال بعدی">سوال بعدی →</button>
+
+        <div id="q-nav-bar-226" class="q-nav-bar-ch4" data-max-question="{{ total }}">
+            <button type="button" class="q-nav-btn btn-prev" id="qPrev226" aria-label="سوال قبلی">← سوال قبلی</button>
+            <span class="q-nav-current" role="status" aria-live="polite" dir="ltr">Question <span id="currentQNum226">1</span> of {{ total }}</span>
+            <button type="button" class="q-nav-btn" id="qNext226" aria-label="سوال بعدی">سوال بعدی →</button>
         </div>
-        <div id="questions-container-ch4" class="questions-one-by-one">
-        {% for q in questions %}
-        <div class="q-card" id="q{{ loop.index }}">
-            <div class="q-text-fa" style="margin-bottom: 10px;">
-                <div class="block-en lang-block-en"><span class="q-num-badge">{{ loop.index }}</span> {{ q.q|e }}</div>
-                <div class="block-fr lang-block-fr" style="display: none;"><span class="q-num-badge">{{ loop.index }}</span> {{ (q.q_fr or q.q)|e }}</div>
-                <div class="block-fa"><span class="q-num-badge">{{ loop.index }}</span> {{ (q.q_fa or '')|e }}</div>
-            </div>
-            {% if q.options_en is defined and q.options_en|length >= 2 %}
-            <div class="q-options-list q-options-mcq" style="margin-top: 14px;" data-correct="{{ q.correct if q.correct is defined else -1 }}">
-                <div class="lang-block-en">
-                    <ul class="q-options-list">
-                        {% for opt in q.options_en %}
-                        <li class="q-option-clickable" data-option-index="{{ loop.index0 }}" role="button" tabindex="0"><span class="q-option-letter">{{ ['A','B','C','D'][loop.index0] if loop.index0 < 4 else loop.index0 + 1 }}.</span> {{ opt|e }}</li>
-                        {% endfor %}
-                    </ul>
+
+        <div id="questions-container-226" class="questions-one-by-one">
+            {% for q in questions %}
+            <div class="q-card" id="q{{ loop.index }}">
+                <div class="q-text-fa" style="margin-bottom: 10px;">
+                    <div class="block-en lang-block-en"><span class="q-num-badge">{{ loop.index }}</span> {{ q.q|e }}</div>
+                    <div class="block-fr lang-block-fr" style="display:none;"><span class="q-num-badge">{{ loop.index }}</span> {{ (q.q_fr or q.q)|e }}</div>
+                    {% if q.q_fa %}
+                    <div class="block-fa"><span class="q-num-badge">{{ loop.index }}</span> {{ q.q_fa|e }}</div>
+                    {% endif %}
                 </div>
-                <div class="lang-block-fr" style="display: none;">
-                    <ul class="q-options-list">
-                        {% for opt in (q.options_fr or q.options_en) %}
-                        <li class="q-option-clickable" data-option-index="{{ loop.index0 }}" role="button" tabindex="0"><span class="q-option-letter">{{ ['A','B','C','D'][loop.index0] }}.</span> {{ opt|e }}</li>
-                        {% endfor %}
-                    </ul>
+                <div class="q-options-list q-options-mcq" style="margin-top: 14px;" data-correct="{{ q.correct if q.correct is defined else -1 }}">
+                    <div class="lang-block-en">
+                        <ul class="q-options-list">
+                            {% for opt in q.options_en %}
+                            <li class="q-option-clickable" data-option-index="{{ loop.index0 }}" role="button" tabindex="0"><span class="q-option-letter">{{ ['A','B','C','D'][loop.index0] if loop.index0 < 4 else loop.index0 + 1 }}.</span> {{ opt|e }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="lang-block-fr" style="display: none;">
+                        <ul class="q-options-list">
+                            {% for opt in (q.options_fr or q.options_en) %}
+                            <li class="q-option-clickable" data-option-index="{{ loop.index0 }}" role="button" tabindex="0"><span class="q-option-letter">{{ ['A','B','C','D'][loop.index0] if loop.index0 < 4 else loop.index0 + 1 }}.</span> {{ opt|e }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
                 </div>
             </div>
-            {% else %}
-            <div class="lang-block-en">
-                <ul class="q-options-list">
-                    {% for opt in (q.options or q.options_en or []) %}
-                    <li{% if loop.index0 == q.correct %} class="option-correct"{% endif %}>{{ opt|e }}</li>
-                    {% endfor %}
-                </ul>
-            </div>
-            <div class="lang-block-fr" style="display: none;">
-                <ul class="q-options-list">
-                    {% for opt in (q.options_fr or q.options or q.options_en or []) %}
-                    <li{% if loop.index0 == q.correct %} class="option-correct"{% endif %}>{{ opt|e }}</li>
-                    {% endfor %}
-                </ul>
-            </div>
-            {% endif %}
+            {% endfor %}
         </div>
-        {% endfor %}
-        {% if show_paywall %}
-        <div class="q-card paywall-as-q3" id="q3">
-            <div class="paywall-ch4" style="padding: 0; margin: 0; border: none; max-width: none;">
-                <h2 style="margin-bottom: 12px; color: var(--accent);">دسترسی به سوالات ۳ تا {{ max_question_ch4 }}</h2>
-                <p style="margin-bottom: 16px;">برای مشاهده همهٔ {{ max_question_ch4 }} سوال Modern Canada، همان اشتراک (کد کاربری و رمز) مربوط به ۴۱۴ سوال کافی است.</p>
-                <p style="margin-bottom: 14px;"><strong>ورود (در صورت داشتن کد و رمز):</strong></p>
-                <input type="text" id="paywallCh4Mobile" placeholder="کد کاربری (شماره موبایل)" style="width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid var(--border); border-radius: 10px; background: var(--card-bg); color: var(--text);">
-                <input type="password" id="paywallCh4Password" placeholder="کلمه عبور" style="width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid var(--border); border-radius: 10px; background: var(--card-bg); color: var(--text);">
-                <p id="paywallCh4Error" class="subscription-error" style="display: none; color: #c00; margin-bottom: 8px;"></p>
-                <button type="button" id="paywallCh4LoginBtn" style="padding: 12px 24px; background: var(--accent); color: #fff; border: none; border-radius: 10px; cursor: pointer; font-weight: 600;">ورود و مشاهده همه سوالات</button>
-            </div>
-        </div>
-        {% endif %}
-        </div>
+
         <div class="back-bar" style="margin-top: 24px;">
-            <a href="/" class="back-btn">← بازگشت به صفحه اصلی / Back to Home</a>
+            <a href="{{ url_for('citizenship_exams') }}" class="back-btn">← بازگشت به صفحهٔ آزمون‌ها / Back to exams</a>
         </div>
     </div>
+
     <script>
         (function() {
             var themeKey = 'citizenship571_theme';
-            var langModeKey = 'citizenship_ch4_lang_mode';
+            var langModeKey = 'federal_226_lang_mode';
             var themeLight = document.getElementById('themeLight');
             var themeDark = document.getElementById('themeDark');
             var langModeEn = document.getElementById('langModeEn');
@@ -242,15 +222,15 @@
             if (langModeEn) langModeEn.addEventListener('click', function() { localStorage.setItem(langModeKey, 'en'); applyLangMode('en'); });
             if (langModeFr) langModeFr.addEventListener('click', function() { localStorage.setItem(langModeKey, 'fr'); applyLangMode('fr'); });
 
-            var goInput = document.getElementById('goToQuestionCh4');
-            var goBtn = document.getElementById('goToQuestionBtnCh4');
-            var container = document.getElementById('questions-container-ch4');
-            var navBar = document.getElementById('q-nav-bar-ch4');
-            var qPrevBtn = document.getElementById('qPrevCh4');
-            var qNextBtn = document.getElementById('qNextCh4');
-            var currentQNumEl = document.getElementById('currentQNumCh4');
+            var goInput = document.getElementById('goToQuestion226');
+            var goBtn = document.getElementById('goToQuestionBtn226');
+            var container = document.getElementById('questions-container-226');
+            var navBar = document.getElementById('q-nav-bar-226');
+            var qPrevBtn = document.getElementById('qPrev226');
+            var qNextBtn = document.getElementById('qNext226');
+            var currentQNumEl = document.getElementById('currentQNum226');
             var current = 1;
-            var maxQ = {{ max_question_ch4 }};
+            var maxQ = {{ total }};
             if (navBar && navBar.getAttribute('data-max-question')) maxQ = parseInt(navBar.getAttribute('data-max-question'), 10) || maxQ;
 
             function showQ(n) {
@@ -279,35 +259,8 @@
             if (goBtn) goBtn.addEventListener('click', goToQ);
             if (goInput) goInput.addEventListener('keydown', function(e) { if (e.key === 'Enter') { e.preventDefault(); goToQ(); } });
         })();
-        {% if show_paywall %}
         (function() {
-            var btn = document.getElementById('paywallCh4LoginBtn');
-            if (!btn) return;
-            btn.addEventListener('click', function() {
-                var mobile = (document.getElementById('paywallCh4Mobile').value || '').trim();
-                var password = document.getElementById('paywallCh4Password').value || '';
-                var errEl = document.getElementById('paywallCh4Error');
-                errEl.style.display = 'none';
-                errEl.textContent = '';
-                if (!mobile || !password) {
-                    errEl.textContent = 'کد کاربری و کلمه عبور الزامی است.';
-                    errEl.style.display = 'block';
-                    return;
-                }
-                fetch(window.location.origin + '/api/subscription/login', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    credentials: 'include',
-                    body: JSON.stringify({ mobile: mobile, password: password, section: 'questions_414' })
-                }).then(function(r) { return r.json(); }).then(function(data) {
-                    if (data && data.success) { window.location.reload(); }
-                    else { errEl.textContent = (data && data.error) ? data.error : 'خطا در ورود.'; errEl.style.display = 'block'; }
-                }).catch(function() { errEl.textContent = 'خطای اتصال.'; errEl.style.display = 'block'; });
-            });
-        })();
-        {% endif %}
-        (function() {
-            document.querySelectorAll('#questions-container-ch4 .q-options-mcq').forEach(function(container) {
+            document.querySelectorAll('#questions-container-226 .q-options-mcq').forEach(function(container) {
                 var correctIdx = parseInt(container.getAttribute('data-correct'), 10);
                 if (correctIdx < 0) return;
                 var allLists = container.querySelectorAll('.q-options-list ul');

@@ -128,7 +128,9 @@
         {% if exam_section_views is not none %}
         <p class="exam-visit-count-ch1" role="status">بازدید ثبت‌شده از بخش آزمون‌های نمونه: <strong>{{ exam_section_views }}</strong></p>
         {% endif %}
-        <p class="section-lead">تاریخ کانادا — Chapter 3.</p>
+        {% set header_title_en = "Canada's History" %}
+        {% set header_subtitle_fa = "تاریخ کانادا — فصل ۳ (Discover Canada)" %}
+        {% include '_exam_page_header.html' %}
         <div class="tool-bar">
             <div class="group theme-toggle-wrap">
                 <button type="button" class="lang-mode-btn" id="langModeEn" aria-pressed="true">English + فارسی</button>
