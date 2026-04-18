@@ -2945,7 +2945,7 @@
         const chapter6Questions = [
             { q: "What do Canadians vote for in a federal election?", q_fa: "کانادایی‌ها در انتخابات فدرال برای چه رأی می‌دهند؟", q_fr: "Pour quoi les Canadiens votent-ils lors d'une élection fédérale?", options: ["The Governor General they want to represent them in Canada", "The people they want to represent them in the House of Commons", "A person to become the Premier of Canada", "All candidates in their electoral district"], options_fr: ["Le gouverneur général qu'ils veulent pour les représenter", "Les personnes qu'ils veulent pour les représenter à la Chambre des communes", "Une personne pour devenir premier ministre du Canada", "Tous les candidats de leur circonscription"], correct: 1, page: 34, section: "Federal Elections", book_text: "Canadians vote for the people they want to represent them in the House of Commons." },
             { q: "What do the initials \"MP\" stand for in Canadian politics?", q_fa: "در سیاست کانادا «MP» مخفف چیست؟", q_fr: "Que signifient les initiales « député » (MP) en politique canadienne?", options: ["Member of Parliament", "Member of Politics", "Masters of Parliament", "Ministers of Parliaments"], options_fr: ["Député (Member of Parliament)", "Membre de la politique", "Maîtres du Parlement", "Ministres des Parlements"], correct: 0, page: 34, section: "Federal Elections", book_text: "MP stands for Member of Parliament." },
-            { q: "When must federal elections be held?", q_fa: "انتخابات فدرال هر چند وقت باید برگزار شود؟", q_fr: "À quelle fréquence les élections fédérales doivent-elles avoir lieu?", options: ["Every four years following the most recent general election", "Every five years following the most recent general election", "By order of the Queen", "By order of the Prime Minister"], options_fr: ["Tous les quatre ans après la dernière élection générale", "Tous les cinq ans après la dernière élection générale", "Sur ordre de la Reine", "Sur ordre du premier ministre"], correct: 1, page: 34, section: "Federal Elections", book_text: "Federal elections must be held at least every five years." },
+            { q: "When must federal elections be held?", q_fa: "انتخابات فدرال هر چند وقت باید برگزار شود؟", q_fr: "À quelle fréquence les élections fédérales doivent-elles avoir lieu?", options: ["Every four years following the most recent general election", "Every five years following the most recent general election", "By order of the Queen", "By order of the Prime Minister"], options_fr: ["Tous les quatre ans après la dernière élection générale", "Tous les cinq ans après la dernière élection générale", "Sur ordre de la Reine", "Sur ordre du premier ministre"], correct: 0, page: 34, section: "Federal Elections", book_text: "Under legislation passed by Parliament, federal elections must be held on the third Monday in October every four years following the most recent general election." },
             { q: "Into how many electoral districts is Canada divided?", q_fa: "کانادا به چند حوزهٔ انتخابیه تقسیم می‌شود؟", q_fr: "En combien de circonscriptions électorales le Canada est-il divisé?", options: ["308", "338", "350", "400"], options_fr: ["308", "338", "350", "400"], correct: 1, page: 34, section: "Federal Elections", book_text: "Canada is divided into electoral districts (ridings). The study guide states the House of Commons has 338 members, each elected from one riding; the number may change after redistribution." },
             { q: "What is an electoral district?", q_fa: "حوزهٔ انتخابیه چیست؟", q_fr: "Qu'est-ce qu'une circonscription électorale?", options: ["The building in which the voting poll is located", "A geographical area represented by a member of Parliament", "The area in which elections are held", "The government office in which you register for voting"], options_fr: ["Le bâtiment où se trouve le bureau de vote", "Une zone géographique représentée par un député", "La zone où les élections ont lieu", "Le bureau gouvernemental où vous vous inscrivez"], correct: 1, page: 34, section: "Federal Elections", book_text: "An electoral district is a geographical area represented by a member of Parliament." },
             { q: "Who do the citizens in each electoral district elect?", q_fa: "شهروندان هر حوزهٔ انتخابیه چه کسی را انتخاب می‌کنند؟", q_fr: "Qui les citoyens de chaque circonscription élisent-ils?", options: ["Member of Parliament", "Member of Politics", "Masters of Parliament", "Ministers of Parliaments"], options_fr: ["Un député", "Un membre de la politique", "Maîtres du Parlement", "Ministres des Parlements"], correct: 0, page: 34, section: "Federal Elections", book_text: "Citizens in each electoral district elect a Member of Parliament (MP)." },
@@ -4273,7 +4273,7 @@
 
         // تولید تست‌ها (بعد از تعریف allTests)
         let generatedTests = [];
-        let pendingTestIndex = null; // برای مودال اشتراک (از Test6 به بعد)
+        let pendingTestIndex = null; // برای مودال اشتراک (از Test4 به بعد)
         function initTests() {
             // تکمیل سوالات اصلی
             allTests.forEach(test => {
@@ -4376,7 +4376,7 @@
             }
         }
 
-        // انتخاب تست (Test1–Test5 بدون اشتراک؛ از Test6 به بعد نیاز به اشتراک دارد)
+        // انتخاب تست (Test1–Test3 بدون اشتراک؛ از Test4 به بعد نیاز به اشتراک دارد)
         function doSelectTest(testIndex) {
             currentTest = testIndex;
             userAnswers = [];
@@ -4462,7 +4462,7 @@
         }
         
         function selectTest(testIndex, skipSubscriptionCheck) {
-            if (testIndex >= 5 && skipSubscriptionCheck !== true) {
+            if (testIndex >= 3 && skipSubscriptionCheck !== true) {
                 fetch(API_BASE_URL + '/api/subscription/status', { credentials: 'include' })
                     .then(function(r) { return r.json(); })
                     .then(function(data) {
@@ -5666,7 +5666,7 @@
             </ul>
             <h3 style="font-size: 1.05em; margin: 16px 0 8px; color: #1e3c72;" dir="rtl">دسترسی بدون اشتراک و اشتراک (صفحهٔ اصلی)</h3>
             <p style="margin-bottom: 12px;" dir="rtl">
-                <strong>Test1 تا Test5</strong> در همین صفحه بدون نیاز به اشتراک است. برای <strong>Test6 تا Test100</strong> و باز کردن کامل بانک <strong>۴۱۴ سوال</strong>، باید اشتراک یک‌ماهه فعال باشد؛ جزئیات و پرداخت از همان بخش اشتراک روی همین صفحه انجام می‌شود.
+                <strong>Test1 تا Test3</strong> در همین صفحه بدون نیاز به اشتراک است. برای <strong>Test4 تا Test100</strong> و باز کردن کامل بانک <strong>۴۱۴ سوال</strong>، باید اشتراک یک‌ماهه فعال باشد؛ جزئیات و پرداخت از همان بخش اشتراک روی همین صفحه انجام می‌شود.
             </p>
             <h3 style="font-size: 1.05em; margin: 16px 0 8px; color: #1e3c72;" dir="rtl">سایر بخش‌های مفید</h3>
             <ul style="margin: 0 0 14px 18px; line-height: 1.7;" dir="rtl">
@@ -5678,7 +5678,7 @@
                 این سایت ابزار آموزشی است و جایگزین منابع رسمی <strong>IRCC</strong> نیست؛ برای قوانین و تاریخ به‌روز آزمون، همیشه به سایت مهاجرت کانادا مراجعه کنید.
             </p>
             <p style="margin-top: 16px; padding-top: 14px; border-top: 1px solid #e2e8f0; font-size: 0.92em; line-height: 1.65; color: #444; direction: ltr; text-align: left;">
-                <strong>English:</strong> Main page — 100 practice tests (20 questions each), En/Fr + Persian, instant green/red feedback, timer, score summary. Tests 1–5 need no subscription; Test6–100 and full <strong>414-question</strong> bank need an active subscription. Use the red menu for <strong>About</strong>, this help, support, and suggestions. Content is based on <em>Discover Canada</em>; always verify with official IRCC materials.
+                <strong>English:</strong> Main page — 100 practice tests (20 questions each), En/Fr + Persian, instant green/red feedback, timer, score summary. Tests 1–3 need no subscription; Test4–100 and full <strong>414-question</strong> bank need an active subscription. Use the red menu for <strong>About</strong>, this help, support, and suggestions. Content is based on <em>Discover Canada</em>; always verify with official IRCC materials.
             </p>
         </div>
     </div>

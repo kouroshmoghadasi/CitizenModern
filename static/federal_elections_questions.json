@@ -57,10 +57,10 @@
       "Sur ordre de la Reine",
       "Sur ordre du premier ministre"
     ],
-    "correct": 1,
+    "correct": 0,
     "page": 34,
     "section": "Federal Elections",
-    "book_text": "Federal elections must be held at least every five years."
+    "book_text": "Under legislation passed by Parliament, federal elections must be held on the third Monday in October every four years following the most recent general election."
   },
   {
     "q": "Into how many electoral districts is Canada divided?",

@@ -365,9 +365,9 @@ body {
   </div>
         {% endfor %}
         {% if show_paywall %}
-        <div class="q-card q-card-441 paywall-as-q25" id="q25">
+        <div class="q-card q-card-441 paywall-as-paywall-slot" id="q{{ max_question_414 }}">
             <div class="paywall-414" style="padding: 0; margin: 0; border: none; max-width: none;">
-                <h2 style="margin-bottom: 12px; color: var(--accent);">دسترسی به سوالات ۲۵ تا ۴۱۴</h2>
+                <h2 style="margin-bottom: 12px; color: var(--accent);">دسترسی به سوالات {{ citizenship_414_free_preview + 1 }} تا ۴۱۴</h2>
                 <p style="margin-bottom: 16px;">برای مشاهده همه ۴۱۴ سوال و دسترسی به تست‌ها، اشتراک یک‌ماهه <strong>{{ subscription_price }} دلار</strong> (کل بسته) لازم است. واریز به آدرس ایمیل زیر و ارسال کد واریز به همان ایمیل؛ پس از تأیید، کد کاربری و رمز برای شما ارسال می‌شود.</p>
                 <div class="paywall-414-email-block">
                     <span class="paywall-414-email-label">ایمیل:</span>

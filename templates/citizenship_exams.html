@@ -6,10 +6,10 @@
     <link rel="icon" href="{{ url_for('static', filename='images/logo.png') }}" type="image/png">
     <link rel="apple-touch-icon" href="{{ url_for('static', filename='images/logo.png') }}">
     <title>آزمون‌های نمونه شهروندی کانادا | Sample Exams — discovercanadatest.com</title>
-    <meta name="description" content="فهرست آزمون‌های نمونه شهروندی کانادا: Introduction، Rights، Who We Are، Canada's History، صفحهٔ خط زمانی تاریخ (مطالعه)، Economy، Regions، Govern، Elections، Justice، Symbols، Modern Canada، Exam1–Exam3 — مطابق Discover Canada و IRCC.">
+    <meta name="description" content="آزمون‌های Test نمونه: Exam1، Exam2، Exam3؛ به‌علاوهٔ تمرین فصل‌به‌فصل Discover Canada (Introduction تا Modern Canada)، خط زمانی تاریخ، و ۲۲۶ سوال فدرال — مطابق IRCC.">
     <meta name="keywords" content="discovercanadatest.com, CitizenTest, آزمون‌های نمونه شهروندی, فهرست آزمون شهروندی, تمرین فصلی Discover Canada, IRCC sample tests, citizenship sample exams, practice by chapter, liste examens citoyenneté, examens blancs citoyenneté, Discover Canada practice, Introduction citizenship, Rights and Responsibilities quiz, Exam 1 2 3 citizenship, کورش مقدسی, کورش, مقدسی, Kourosh Moghadasi, Kouroshmoghadasi, KANA Soft System, شهروندی کانادا, امتحان شهروندی کانادا, شهروندی, سیتیزن شیپی کانادا, امتحان سیتیزن شیپی کانادا, Discover Canada, DiscoverCanada, خلاصه کتاب DiscoverCanada, کتاب شهروندی کانادا, نمونه سوال امتحان شهروندی کانادا, نمونه تست امتحان شهروندی کانادا, نمونه آزمون شهروندی کانادا, ترجمه کتاب شهروندی کانادا, خاطره تحویلداری یکتا, Khatereh Tahvildari-Yekta">
     {% set seo_title = "آزمون‌های نمونه شهروندی کانادا | Sample Exams — CitizenTest" %}
-    {% set seo_description = "فهرست آزمون‌های نمونه شهروندی کانادا مطابق Discover Canada — شامل صفحهٔ خط زمانی تاریخ (مطالعه)، فصل‌های Economy و Regions، و Exam1–Exam3؛ چندزبانه." %}
+    {% set seo_description = "Test1، Test2، Test3 به‌عنوان آزمون‌های نمونه؛ به‌علاوهٔ فصل‌به‌فصل Discover Canada، خط زمانی، و ۲۲۶ فدرال — چندزبانه." %}
     {% set seo_image = "images/citizenship-introduction-thumbnail.png" %}
     {% set seo_path = "/citizenship-exams" %}
     {% set seo_og_type = "website" %}
@@ -117,6 +117,19 @@
         .exam-card-body p { font-size: clamp(0.85rem, 3.2vw, 0.9em); color: var(--text); opacity: 0.88; overflow-wrap: anywhere; }
         .exam-badge { display: inline-block; margin-top: 10px; font-size: 0.8em; font-weight: 700; padding: 4px 10px; border-radius: 8px; background: rgba(241,196,15,0.25); color: #b8860b; }
         body.theme-dark .exam-badge { color: #f1c40f; background: rgba(241,196,15,0.15); }
+
+        .exam-section-title {
+            font-size: clamp(1.05rem, 3.8vw, 1.2rem);
+            font-weight: 800;
+            color: var(--accent);
+            margin: 28px 0 14px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid rgba(30, 60, 114, 0.15);
+            text-align: right;
+            direction: rtl;
+        }
+        body.theme-dark .exam-section-title { border-bottom-color: rgba(124, 179, 245, 0.25); }
+        .exam-section-title:first-of-type { margin-top: 0; }
 
         @media (max-width: 520px) {
             body { padding: max(12px, env(safe-area-inset-top, 0px)) max(12px, env(safe-area-inset-right, 0px)) max(12px, env(safe-area-inset-bottom, 0px)) max(12px, env(safe-area-inset-left, 0px)); }
@@ -275,11 +288,11 @@
             <article class="exam-card" id="federal-questions-226">
                 <a href="{{ url_for('federal_questions_226') }}">
                     <div class="exam-card-img-wrap">
-                    <img src="{{ url_for('static', filename='images/citizenship-federal-elections-thumbnail.png') }}" alt="226 Federal Questions — full set with answers highlighted" width="320" height="213" loading="lazy">
+                    <img src="{{ url_for('static', filename='images/citizenship-federal-elections-thumbnail.png') }}" alt="226 Federal Questions — first 16 free, full set with 414 subscription" width="320" height="213" loading="lazy">
                     </div>
                     <div class="exam-card-body">
                         <h2>226 Federal Questions</h2>
-                        <p>Full list (single page) — with the correct answer highlighted</p>
+                        <p>Same subscription as 414/571: first 16 free, then paywall — correct answer highlighted</p>
                         <span class="exam-badge">NEW</span>
                     </div>
                 </a>

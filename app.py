@@ -548,6 +548,12 @@ def about():
     log_visitor('/about')
     return render_template('about.html')
 
+# تعداد سوالات رایگان قبل از paywall در /citizenship-414
+CITIZENSHIP_414_FREE_PREVIEW = 14
+
+# تعداد سوالات رایگان قبل از paywall در /federal-questions-226 (همان اشتراک sub_414)
+FEDERAL_226_FREE_PREVIEW = 16
+
 # Cache for 414/571 questions (loaded once per process, no disk read per request)
 _cache_414 = None
 _cache_571 = None
@@ -592,7 +598,7 @@ def _load_414_questions():
 
 @app.route('/citizenship-414')
 def citizenship_414():
-    """۴۱۴ سوال شهروندی — سوالات ۱–۲۴ رایگان؛ از ۲۵ به بعد با اشتراک."""
+    """۴۱۴ سوال شهروندی — سوالات ۱–۱۴ رایگان؛ از ۱۵ به بعد با اشتراک."""
     log_visitor('/citizenship-414')
     all_questions = _load_414_questions()
     today = _today()
@@ -606,20 +612,28 @@ def citizenship_414():
                 has_414 = True
         except Exception:
             pass
+    free_n = CITIZENSHIP_414_FREE_PREVIEW
     if has_414:
         questions = all_questions
         show_paywall = False
         max_question_414 = 414
+    elif len(all_questions) <= free_n:
+        questions = all_questions
+        show_paywall = False
+        max_question_414 = len(all_questions)
     else:
-        questions = all_questions[:24] if len(all_questions) >= 24 else all_questions
+        questions = all_questions[:free_n]
         show_paywall = True
-        max_question_414 = 25
-    resp = app.make_response(render_template(
-        'citizenship_414.html',
-        questions=questions,
-        show_paywall=show_paywall,
-        max_question_414=max_question_414,
-    ))
+        max_question_414 = free_n + 1
+    resp = app.make_response(
+        render_template(
+            'citizenship_414.html',
+            questions=questions,
+            show_paywall=show_paywall,
+            max_question_414=max_question_414,
+            citizenship_414_free_preview=free_n,
+        )
+    )
     resp.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
     resp.headers['Pragma'] = 'no-cache'
     resp.headers['Expires'] = '0'
@@ -2716,15 +2730,49 @@ def citizenship_modern_canada():
 
 @app.route('/federal-questions-226')
 def federal_questions_226():
-    """A single page that lists the 226 Federal Questions."""
+    """۲۲۶ Federal Questions — سوالات ۱–۱۶ رایگان؛ از ۱۷ به بعد با همان اشتراک sub_414."""
     log_visitor('/federal-questions-226')
-    questions = _load_federal_questions_226()
-    return render_template(
-        'federal_questions_226.html',
-        questions=questions,
-        total=len(questions),
-        exam_section_views=_count_exam_section_visits(),
+    all_q = _load_federal_questions_226()
+    n = len(all_q)
+    today = _today()
+    has_access = False
+    if session.get('sub_414_expiry'):
+        try:
+            exp = session['sub_414_expiry']
+            if isinstance(exp, str):
+                exp = date.fromisoformat(exp)
+            if exp >= today:
+                has_access = True
+        except Exception:
+            pass
+    free_n = FEDERAL_226_FREE_PREVIEW
+    if has_access:
+        questions = all_q
+        show_paywall_226 = False
+        max_question_226 = n
+    elif n <= free_n:
+        questions = all_q
+        show_paywall_226 = False
+        max_question_226 = n
+    else:
+        questions = all_q[:free_n]
+        show_paywall_226 = True
+        max_question_226 = free_n + 1
+    resp = app.make_response(
+        render_template(
+            'federal_questions_226.html',
+            questions=questions,
+            federal_226_total=n,
+            max_question_226=max_question_226,
+            show_paywall_226=show_paywall_226,
+            federal_226_free_preview=free_n,
+            exam_section_views=_count_exam_section_visits(),
+        )
     )
+    resp.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
+    resp.headers['Pragma'] = 'no-cache'
+    resp.headers['Expires'] = '0'
+    return resp
 
 
 @app.route('/citizenship-canadas-economy')

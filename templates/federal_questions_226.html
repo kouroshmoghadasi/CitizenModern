@@ -118,6 +118,19 @@
         .q-nav-bar-ch4 .q-nav-btn:hover:not(:disabled) { opacity: 0.9; }
         .q-nav-bar-ch4 .q-nav-btn:disabled { opacity: 0.5; cursor: not-allowed; }
         .q-nav-bar-ch4 .q-nav-btn.btn-prev { background: var(--card-bg); color: var(--accent); }
+        .paywall-414-email-block {
+            display: flex; align-items: center; flex-wrap: wrap; gap: 14px;
+            margin: 16px 0; padding: 18px 20px;
+            background: var(--expl-bg); border-radius: 12px; border: 1px solid var(--border);
+        }
+        .paywall-414-email-label { font-size: 1.15rem; font-weight: 700; color: var(--text); }
+        .paywall-414-email-value { font-size: 1.55rem; font-weight: 700; color: var(--accent); letter-spacing: 0.02em; }
+        .paywall-414-btn-copy {
+            padding: 12px 20px; background: var(--accent); color: #fff; border: none;
+            border-radius: 10px; font-weight: 700; cursor: pointer; font-size: 1.05rem;
+        }
+        .paywall-414-btn-copy:hover { opacity: 0.9; }
+        .paywall-414-btn-copy.copied { background: #28a745; }
     </style>
 </head>
 <body>
@@ -134,6 +147,9 @@
         <div class="page-header">
             <h1>226 Federal Questions</h1>
             <p>سوال‌ها تک‌به‌تک نمایش داده می‌شوند — گزینه را انتخاب کنید تا درست/غلط مشخص شود.</p>
+            {% if show_paywall_226 %}
+            <p style="margin-top: 12px; font-size: 0.95em; opacity: 0.95;">سوالات <strong>۱ تا {{ federal_226_free_preview }}</strong> رایگان؛ ادامه با همان اشتراک ۴۱۴/۵۷۱ (کد کاربری و رمز).</p>
+            {% endif %}
         </div>
 
         <div class="tool-bar">
@@ -143,7 +159,7 @@
             </div>
             <div class="group go-to-q-wrap">
                 <label for="goToQuestion226" class="theme-label" style="margin: 0;">سوال</label>
-                <input id="goToQuestion226" type="number" min="1" max="{{ total }}" placeholder="1–{{ total }}" aria-label="Question number">
+                <input id="goToQuestion226" type="number" min="1" max="{{ max_question_226 }}" placeholder="1–{{ max_question_226 }}" aria-label="Question number">
                 <button type="button" class="go-to-q-btn" id="goToQuestionBtn226">برو</button>
             </div>
             <div class="group theme-toggle-wrap">
@@ -153,9 +169,9 @@
             </div>
         </div>
 
-        <div id="q-nav-bar-226" class="q-nav-bar-ch4" data-max-question="{{ total }}">
+        <div id="q-nav-bar-226" class="q-nav-bar-ch4" data-max-question="{{ max_question_226 }}">
             <button type="button" class="q-nav-btn btn-prev" id="qPrev226" aria-label="سوال قبلی">← سوال قبلی</button>
-            <span class="q-nav-current" role="status" aria-live="polite" dir="ltr">Question <span id="currentQNum226">1</span> of {{ total }}</span>
+            <span class="q-nav-current" role="status" aria-live="polite" dir="ltr">Question <span id="currentQNum226">1</span> of {{ max_question_226 }}</span>
             <button type="button" class="q-nav-btn" id="qNext226" aria-label="سوال بعدی">سوال بعدی →</button>
         </div>
 
@@ -187,6 +203,24 @@
                 </div>
             </div>
             {% endfor %}
+        {% if show_paywall_226 %}
+        <div class="q-card paywall-as-paywall-slot" id="q{{ max_question_226 }}">
+            <div class="paywall-414" style="padding: 0; margin: 0; border: none; max-width: none;">
+                <h2 style="margin-bottom: 12px; color: var(--accent);">دسترسی به سوالات {{ federal_226_free_preview + 1 }} تا {{ federal_226_total }}</h2>
+                <p style="margin-bottom: 16px;">برای مشاهدهٔ همهٔ {{ federal_226_total }} سوال فدرال و دسترسی به بانک ۴۱۴ و ۵۷۱، همان اشتراک یک‌ماهه <strong>{{ subscription_price }} دلار</strong> (کل بسته) لازم است. واریز به آدرس ایمیل زیر و ارسال کد واریز به همان ایمیل؛ پس از تأیید، کد کاربری و رمز برای شما ارسال می‌شود.</p>
+                <div class="paywall-414-email-block">
+                    <span class="paywall-414-email-label">ایمیل:</span>
+                    <span class="paywall-414-email-value" id="paywall226EmailValue">Koroush.mog@gmail.com</span>
+                    <button type="button" class="paywall-414-btn-copy" id="paywall226EmailCopy" title="کپی">کپی</button>
+                </div>
+                <p style="margin-bottom: 14px;"><strong>ورود (در صورت داشتن کد و رمز):</strong></p>
+                <input type="text" id="paywall226Mobile" placeholder="کد کاربری (شماره موبایل)" style="width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid var(--border); border-radius: 10px; background: var(--card-bg); color: var(--text);">
+                <input type="password" id="paywall226Password" placeholder="کلمه عبور" style="width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid var(--border); border-radius: 10px; background: var(--card-bg); color: var(--text);">
+                <p id="paywall226Error" class="subscription-error" style="display: none; color: #c00; margin-bottom: 8px;"></p>
+                <button type="button" id="paywall226LoginBtn" style="padding: 12px 24px; background: var(--accent); color: #fff; border: none; border-radius: 10px; cursor: pointer; font-weight: 600;">ورود و مشاهده همه سوالات</button>
+            </div>
+        </div>
+        {% endif %}
         </div>
 
         <div class="back-bar" style="margin-top: 24px;">
@@ -230,7 +264,7 @@
             var qNextBtn = document.getElementById('qNext226');
             var currentQNumEl = document.getElementById('currentQNum226');
             var current = 1;
-            var maxQ = {{ total }};
+            var maxQ = {{ max_question_226 }};
             if (navBar && navBar.getAttribute('data-max-question')) maxQ = parseInt(navBar.getAttribute('data-max-question'), 10) || maxQ;
 
             function showQ(n) {
@@ -296,6 +330,81 @@
             });
         })();
     </script>
+    {% if show_paywall_226 %}
+    <script>
+        (function() {
+            var copyBtn = document.getElementById('paywall226EmailCopy');
+            var emailEl = document.getElementById('paywall226EmailValue');
+            if (copyBtn && emailEl) {
+                copyBtn.addEventListener('click', function() {
+                    var text = emailEl.textContent || '';
+                    if (!text) return;
+                    if (navigator.clipboard && navigator.clipboard.writeText) {
+                        navigator.clipboard.writeText(text).then(function() {
+                            copyBtn.textContent = 'کپی شد!';
+                            copyBtn.classList.add('copied');
+                            setTimeout(function() { copyBtn.textContent = 'کپی'; copyBtn.classList.remove('copied'); }, 2000);
+                        }).catch(function() {
+                            try {
+                                var r = document.createRange();
+                                r.selectNodeContents(emailEl);
+                                window.getSelection().removeAllRanges();
+                                window.getSelection().addRange(r);
+                                document.execCommand('copy');
+                                window.getSelection().removeAllRanges();
+                                copyBtn.textContent = 'کپی شد!';
+                                copyBtn.classList.add('copied');
+                                setTimeout(function() { copyBtn.textContent = 'کپی'; copyBtn.classList.remove('copied'); }, 2000);
+                            } catch (e) {}
+                        });
+                    } else {
+                        try {
+                            var r2 = document.createRange();
+                            r2.selectNodeContents(emailEl);
+                            window.getSelection().removeAllRanges();
+                            window.getSelection().addRange(r2);
+                            document.execCommand('copy');
+                            window.getSelection().removeAllRanges();
+                            copyBtn.textContent = 'کپی شد!';
+                            copyBtn.classList.add('copied');
+                            setTimeout(function() { copyBtn.textContent = 'کپی'; copyBtn.classList.remove('copied'); }, 2000);
+                        } catch (e) {}
+                    }
+                });
+            }
+            var btn = document.getElementById('paywall226LoginBtn');
+            if (!btn) return;
+            btn.addEventListener('click', function() {
+                var mobile = (document.getElementById('paywall226Mobile').value || '').trim();
+                var password = document.getElementById('paywall226Password').value || '';
+                var errEl = document.getElementById('paywall226Error');
+                errEl.style.display = 'none';
+                errEl.textContent = '';
+                if (!mobile || !password) {
+                    errEl.textContent = 'کد کاربری و کلمه عبور الزامی است.';
+                    errEl.style.display = 'block';
+                    return;
+                }
+                fetch(window.location.origin + '/api/subscription/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    credentials: 'include',
+                    body: JSON.stringify({ mobile: mobile, password: password, section: 'questions_414' })
+                }).then(function(r) { return r.json(); }).then(function(data) {
+                    if (data && data.success) {
+                        window.location.reload();
+                    } else {
+                        errEl.textContent = (data && data.error) ? data.error : 'خطا در ورود.';
+                        errEl.style.display = 'block';
+                    }
+                }).catch(function() {
+                    errEl.textContent = 'خطای اتصال.';
+                    errEl.style.display = 'block';
+                });
+            });
+        })();
+    </script>
+    {% endif %}
 </body>
 </html>
 
