@@ -575,7 +575,8 @@
             background: #f1c40f;
         }
         
-        .book-summary-section {
+        /* سایدبار دسکتاپ: کمی بالاتر برای چیدمان فشرده */
+        .right-sidebar .book-summary-section {
             margin-bottom: 24px;
             margin-top: -20px; /* Move box up */
             direction: rtl;
@@ -991,6 +992,71 @@
         
         .book-summary-toggle:hover .book-summary-link-icon {
             transform: scale(1.2) rotate(15deg);
+        }
+
+        /* دو دکمهٔ «خلاصهٔ کتاب ۱ / ۲» در یک ردیف (سایدبار و موبایل) */
+        .book-summary-dual .book-summary-dual-row {
+            display: flex;
+            flex-direction: row;
+            gap: 8px;
+            width: calc(100% + 40px);
+            margin-left: -20px;
+            margin-right: -20px;
+            box-sizing: border-box;
+            align-items: stretch;
+        }
+        .book-summary-dual .book-summary-link {
+            flex: 1 1 0;
+            min-width: 0;
+        }
+        .book-summary-dual .book-summary-toggle {
+            width: 100%;
+            margin-left: 0;
+            margin-right: 0;
+        }
+        .book-summary-dual .book-summary-toggle h3 {
+            font-size: 0.92em;
+            padding: 14px 10px;
+            line-height: 1.3;
+        }
+
+        /* موبایل: دو خلاصهٔ کتاب کنار هم (نوار موبایل و هر جایی که mobile-version است) */
+        .mobile-sidebar-sections .book-summary-dual .book-summary-dual-row,
+        .book-summary-section.mobile-version.book-summary-dual .book-summary-dual-row {
+            display: flex !important;
+            flex-direction: row !important;
+            flex-wrap: nowrap !important;
+            align-items: stretch;
+            width: 100% !important;
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+        }
+        .mobile-sidebar-sections .book-summary-dual .book-summary-link,
+        .book-summary-section.mobile-version.book-summary-dual .book-summary-link {
+            flex: 1 1 0% !important;
+            min-width: 0 !important;
+        }
+        .mobile-sidebar-sections .book-summary-dual .book-summary-toggle,
+        .book-summary-section.mobile-version.book-summary-dual .book-summary-toggle {
+            width: 100% !important;
+            max-width: 100%;
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+            box-sizing: border-box;
+        }
+
+        /* موبایل‌های کوچک: به‌جای دو ستون فشرده، دکمه‌ها زیر هم (بدون خط/شکست بد) */
+        @media (max-width: 420px) {
+            .mobile-sidebar-sections .book-summary-dual .book-summary-dual-row,
+            .book-summary-section.mobile-version.book-summary-dual .book-summary-dual-row {
+                flex-direction: column !important;
+                flex-wrap: wrap !important;
+                gap: 10px !important;
+            }
+            .mobile-sidebar-sections .book-summary-dual .book-summary-link,
+            .book-summary-section.mobile-version.book-summary-dual .book-summary-link {
+                flex: 1 1 auto !important;
+            }
         }
 
         /* باکس «تست بر اساس فصل کتاب»: حاشیهٔ گرادیانی درخشان (به‌جای زرد یکدست)، همهٔ اندازه‌ها */
@@ -4915,8 +4981,10 @@
             }
             
             .mobile-sidebar-sections {
-                display: block;
-                margin: 12px 8px;
+                display: flex;
+                flex-direction: column;
+                gap: 5px; /* فاصله یکسان بین همه دکمه‌ها */
+                margin: 6px 8px; /* slightly higher on mobile */
             }
             
             .book-link-section.mobile-version,
@@ -4925,8 +4993,20 @@
             .ad-registration-section.mobile-version,
             .classifieds-promo-section.mobile-version {
                 display: block;
-                margin-bottom: 4px;
+                margin: 0 !important; /* gap را کانتینر مدیریت می‌کند */
+                margin-top: 0 !important; /* prevent overlap from desktop negative margins */
                 direction: rtl;
+            }
+
+            /* خود دکمهٔ کتاب: کمی جمع‌وجورتر روی موبایل‌های کوچک */
+            .book-link {
+                min-height: 56px;
+                height: 56px;
+            }
+
+            /* فاصلهٔ استاندارد مثل بقیهٔ دکمه‌های موبایل */
+            .book-summary-section.mobile-version.book-summary-dual {
+                margin-top: 0 !important;
             }
             
             .classifieds-promo-section.mobile-version {
@@ -4975,6 +5055,35 @@
             .book-summary-toggle:active {
                 transform: scale(0.97);
                 box-shadow: 0 1px 5px rgba(30, 60, 114, 0.3);
+            }
+
+            .book-summary-dual .book-summary-dual-row {
+                display: flex !important;
+                flex-direction: row !important;
+                flex-wrap: nowrap !important;
+                width: 100%;
+                margin-left: 0;
+                margin-right: 0;
+                gap: 6px;
+                align-items: stretch;
+            }
+            .book-summary-dual .book-summary-link {
+                flex: 1 1 0% !important;
+                min-width: 0 !important;
+            }
+            .book-summary-dual .book-summary-toggle {
+                height: auto;
+                min-height: 60px;
+                padding: 10px 6px;
+                width: 100% !important;
+                max-width: 100%;
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+            }
+            .book-summary-dual .book-summary-toggle h3 {
+                font-size: 0.78em;
+                padding: 6px 2px;
+                line-height: 1.25;
             }
 
             .book-summary-link.book-summary-link--by-chapter .book-summary-toggle {
@@ -5735,7 +5844,9 @@
             }
             
             .mobile-sidebar-sections {
-                display: block;
+                display: flex;
+                flex-direction: column;
+                gap: 5px; /* فاصله یکسان بین همه دکمه‌های موبایل */
                 margin: 10px 6px;
             }
             
@@ -5745,7 +5856,7 @@
             .ad-registration-section.mobile-version,
             .classifieds-promo-section.mobile-version {
                 display: block;
-                margin-bottom: 4px;
+                margin: 0 !important; /* gap را کانتینر مدیریت می‌کند */
                 direction: rtl;
             }
             
@@ -5777,6 +5888,36 @@
                 justify-content: space-between;
                 align-items: center;
                 min-height: 44px;
+            }
+
+            .book-summary-dual .book-summary-dual-row {
+                display: flex !important;
+                flex-direction: row !important;
+                flex-wrap: nowrap !important;
+                width: 100%;
+                margin-left: 0;
+                margin-right: 0;
+                gap: 6px;
+                align-items: stretch;
+            }
+            .book-summary-dual .book-summary-link {
+                flex: 1 1 0% !important;
+                min-width: 0 !important;
+            }
+            .book-summary-dual .book-summary-toggle {
+                height: auto;
+                min-height: 44px;
+                justify-content: center;
+                padding: 8px 4px;
+                width: 100% !important;
+                max-width: 100%;
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+            }
+            .book-summary-dual .book-summary-toggle h3 {
+                font-size: 0.74em;
+                padding: 4px 2px;
+                line-height: 1.2;
             }
 
             .book-summary-link.book-summary-link--by-chapter .book-summary-toggle {
@@ -6328,7 +6469,9 @@
             }
             
             .mobile-sidebar-sections {
-                display: block;
+                display: flex;
+                flex-direction: column;
+                gap: 5px; /* فاصله یکسان بین همه دکمه‌های موبایل */
                 margin: 8px 4px;
             }
             
@@ -6338,7 +6481,7 @@
             .ad-registration-section.mobile-version,
             .classifieds-promo-section.mobile-version {
                 display: block;
-                margin-bottom: 3px;
+                margin: 0 !important; /* gap را کانتینر مدیریت می‌کند */
                 direction: rtl;
             }
             
@@ -6370,6 +6513,36 @@
                 justify-content: space-between;
                 align-items: center;
                 min-height: 42px;
+            }
+
+            .book-summary-dual .book-summary-dual-row {
+                display: flex !important;
+                flex-direction: row !important;
+                flex-wrap: nowrap !important;
+                width: 100%;
+                margin-left: 0;
+                margin-right: 0;
+                gap: 4px;
+                align-items: stretch;
+            }
+            .book-summary-dual .book-summary-link {
+                flex: 1 1 0% !important;
+                min-width: 0 !important;
+            }
+            .book-summary-dual .book-summary-toggle {
+                height: auto;
+                min-height: 42px;
+                justify-content: center;
+                padding: 6px 3px;
+                width: 100% !important;
+                max-width: 100%;
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+            }
+            .book-summary-dual .book-summary-toggle h3 {
+                font-size: 0.7em;
+                padding: 2px;
+                line-height: 1.15;
             }
 
             .book-summary-link.book-summary-link--by-chapter .book-summary-toggle {

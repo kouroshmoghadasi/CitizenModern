@@ -188,13 +188,20 @@
                     <a href="discover.pdf" target="_blank" class="book-link">📚 دانلود/مطالعه کتاب Discover Canada</a>
                 </div>
                 
-                <!-- Book Summary Link (Mobile) -->
-                <div class="book-summary-section mobile-version">
-                    <a href="/book_summary.html" class="book-summary-link" target="_blank">
-                        <div class="book-summary-toggle">
-                            <h3>📖  خلاصه کتاب Discover Canada</h3>
-                        </div>
-                    </a>
+                <!-- خلاصهٔ کتاب (موبایل): دو دکمه -->
+                <div class="book-summary-section mobile-version book-summary-dual">
+                    <div class="book-summary-dual-row">
+                        <a href="/book_summary.html" class="book-summary-link" target="_blank" rel="noopener noreferrer" title="خلاصهٔ کتاب ۱">
+                            <div class="book-summary-toggle">
+                                <h3>📖 خلاصهٔ کتاب ۱</h3>
+                            </div>
+                        </a>
+                        <a href="{{ url_for('book_summary_2') }}" class="book-summary-link book-summary-link--2" target="_blank" rel="noopener noreferrer" title="خلاصهٔ کتاب ۲">
+                            <div class="book-summary-toggle">
+                                <h3>📖 خلاصهٔ کتاب ۲</h3>
+                            </div>
+                        </a>
+                    </div>
                 </div>
                 
                 <!-- 414 & 571 Questions (Mobile) — همان کپشن دسکتاپ -->

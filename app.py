@@ -507,6 +507,41 @@ def book_summary_short_url():
     return redirect(url_for('book_summary'), code=301)
 
 
+@app.route('/book_summary_2.html')
+def book_summary_2():
+    """خلاصهٔ کتاب ۲ — فقط صفحه ۱ و ۲ رایگان؛ بقیه با اشتراک ۴۱۴/۵۷۱."""
+    log_visitor('/book_summary_2.html')
+    today = _today()
+    has_414 = False
+    if session.get('sub_414_expiry'):
+        try:
+            exp = session['sub_414_expiry']
+            if isinstance(exp, str):
+                exp = date.fromisoformat(exp)
+            if exp >= today:
+                has_414 = True
+        except Exception:
+            pass
+
+    resp = app.make_response(
+        render_template(
+            'book_summary_2.html',
+            can_view_book_summary_2_full=has_414,
+            show_paywall_book_summary_2=(not has_414),
+            book_summary_2_free_pages=2,
+        )
+    )
+    resp.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
+    resp.headers['Pragma'] = 'no-cache'
+    resp.headers['Expires'] = '0'
+    return resp
+
+
+@app.route('/book_summary_2')
+def book_summary_2_short_url():
+    return redirect(url_for('book_summary_2'), code=301)
+
+
 _canada_history_timeline_cache = None
 
 
@@ -3008,7 +3043,8 @@ _SITEMAP_PAGE_DEFS = [
     {'path': '/', 'changefreq': 'daily', 'priority': '1.0', 'label_fa': 'صفحهٔ اصلی — ۱۰۰ تست تمرینی', 'label_en': 'Home'},
     {'path': '/site-map', 'changefreq': 'monthly', 'priority': '0.55', 'label_fa': 'نقشهٔ سایت (فهرست همهٔ صفحات)', 'label_en': 'HTML sitemap'},
     {'path': '/about', 'changefreq': 'monthly', 'priority': '0.6', 'label_fa': 'دربارهٔ سایت و تماس', 'label_en': 'About'},
-    {'path': '/book_summary.html', 'changefreq': 'weekly', 'priority': '0.9', 'label_fa': 'خلاصهٔ کتاب Discover Canada (سه زبان)', 'label_en': 'Book summary'},
+    {'path': '/book_summary.html', 'changefreq': 'weekly', 'priority': '0.9', 'label_fa': 'خلاصهٔ کتاب ۱ (سه زبان)', 'label_en': 'Book summary'},
+    {'path': '/book_summary_2.html', 'changefreq': 'weekly', 'priority': '0.88', 'label_fa': 'خلاصهٔ کتاب ۲ (سه زبان)', 'label_en': 'Book summary 2'},
     {'path': '/canadian-history-timeline', 'changefreq': 'monthly', 'priority': '0.82', 'label_fa': 'خط زمانی تاریخ کانادا (Discover Canada)', 'label_en': 'Canadian history timeline (study page)'},
     {'path': '/citizenship-414', 'changefreq': 'weekly', 'priority': '0.9', 'label_fa': '۴۱۴ سوال شهروندی', 'label_en': '414 questions'},
     {'path': '/citizenship-571', 'changefreq': 'weekly', 'priority': '0.9', 'label_fa': '۵۷۱ سوال شهروندی', 'label_en': '571 questions'},
