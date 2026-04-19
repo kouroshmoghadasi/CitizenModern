@@ -453,6 +453,20 @@
         body[data-lang="fr-fa"] .header .lang-fr { margin-top: 8px; }
         .header .lang-fr { display: none; }
 
+        /* مخفی‌سازی اختیاری بخش فارسی (فقط در حالت‌های en-fa و fr-fa؛ پیش‌فرض: نمایش) */
+        body[data-show-fa="no"][data-lang="en-fa"] .summary-item-fa,
+        body[data-show-fa="no"][data-lang="fr-fa"] .summary-item-fa { display: none !important; }
+        body[data-show-fa="no"][data-lang="en-fa"] .summary-heading-fa,
+        body[data-show-fa="no"][data-lang="fr-fa"] .summary-heading-fa { display: none !important; }
+        body[data-show-fa="no"][data-lang="en-fa"] .highlight-box .lang-fa,
+        body[data-show-fa="no"][data-lang="fr-fa"] .highlight-box .lang-fa { display: none !important; }
+        body[data-show-fa="no"][data-lang="en-fa"] .back-btn-oneline .back-1l-fa,
+        body[data-show-fa="no"][data-lang="en-fa"] .back-btn-oneline .back-1l-sep { display: none !important; }
+        body[data-show-fa="no"][data-lang="en-fa"] .back-btn-oneline .back-1l-en { display: inline !important; }
+        body[data-show-fa="no"][data-lang="fr-fa"] .back-btn-oneline .back-1l-fa,
+        body[data-show-fa="no"][data-lang="fr-fa"] .back-btn-oneline .back-1l-sep { display: none !important; }
+        body[data-show-fa="no"][data-lang="fr-fa"] .back-btn-oneline .back-1l-fr { display: inline !important; }
+
         .tool-bar {
             display: flex;
             flex-wrap: wrap;
@@ -466,6 +480,10 @@
         }
         .tool-bar .group { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
         .tool-bar .theme-label { font-weight: 600; color: var(--bs-text); font-size: 0.95em; }
+        .tool-bar .theme-label-toolbar-fa {
+            direction: rtl;
+            unicode-bidi: isolate;
+        }
         .tool-bar .theme-btn {
             min-width: 44px;
             height: 44px;
@@ -485,6 +503,41 @@
         body.theme-dark .tool-bar .theme-btn[aria-pressed="true"] {
             border-color: var(--bs-accent);
             box-shadow: 0 0 0 2px rgba(124, 179, 245, 0.4);
+        }
+
+        .tool-bar .summary-fa-checkbox-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--bs-text);
+            font-size: 0.95em;
+            user-select: none;
+            min-height: 44px;
+            padding: 6px 14px;
+            border-radius: 12px;
+            border: 2px solid var(--bs-border);
+            background: var(--bs-container-bg);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .tool-bar .summary-fa-checkbox-label:hover { transform: scale(1.02); }
+        .tool-bar .summary-fa-checkbox-label:has(input:focus-visible) {
+            box-shadow: 0 0 0 2px rgba(30, 60, 114, 0.35);
+        }
+        body.theme-dark .tool-bar .summary-fa-checkbox-label:has(input:focus-visible) {
+            box-shadow: 0 0 0 2px rgba(124, 179, 245, 0.4);
+        }
+        .tool-bar .summary-fa-checkbox-label input[type="checkbox"] {
+            width: 1.25em;
+            height: 1.25em;
+            accent-color: var(--bs-accent, #1e3c72);
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+        .tool-bar .summary-fa-checkbox-caption {
+            direction: rtl;
+            unicode-bidi: isolate;
         }
 
         /* Tablet Styles */
@@ -801,9 +854,9 @@
         }
     </style>
 </head>
-<body data-lang="en-fa">
+<body data-lang="en-fa" data-show-fa="yes">
 {% include 'content_protection.html' %}
-    <script>try{var t=localStorage.getItem('book_summary_theme');if(t==='dark')document.body.classList.add('theme-dark');var L=localStorage.getItem('book_summary_lang');if(L==='en')L='en-fa';if(L==='fr')L='fr-fa';if(L==='fa')L='en-fa';if(L==='en-fa'||L==='fr-fa')document.body.setAttribute('data-lang',L);}catch(e){}</script>
+    <script>try{var t=localStorage.getItem('book_summary_theme');if(t==='dark')document.body.classList.add('theme-dark');var L=localStorage.getItem('book_summary_lang');if(L==='en')L='en-fa';if(L==='fr')L='fr-fa';if(L==='fa')L='en-fa';if(L==='en-fa'||L==='fr-fa')document.body.setAttribute('data-lang',L);var Sf=localStorage.getItem('book_summary_show_fa');document.body.setAttribute('data-show-fa',Sf==='no'?'no':'yes');}catch(e){}</script>
     <div class="container">
         <div class="header">
             <h1 class="header-book-summary-title">📖 خلاصه کامل کتاب Discover Canada</h1>
@@ -815,14 +868,21 @@
         </div>
         <div class="tool-bar">
             <div class="group theme-toggle-wrap">
-                <span class="theme-label theme-label-trilingual"><span class="theme-label-fa">زبان:</span><span class="theme-label-en">Language:</span><span class="theme-label-fr">Langue :</span></span>
-                <button type="button" class="theme-btn" id="langEnFa" title="انگلیسی و فارسی" aria-pressed="true">EN+FA</button>
-                <button type="button" class="theme-btn" id="langFrFa" title="فرانسه و فارسی" aria-pressed="false">FR+FA</button>
+                <span class="theme-label theme-label-toolbar-fa">زبان:</span>
+                <button type="button" class="theme-btn" id="langEnFa" title="نمایش انگلیسی همراه با فارسی" aria-pressed="true">EN+FA</button>
+                <button type="button" class="theme-btn" id="langFrFa" title="نمایش فرانسوی همراه با فارسی" aria-pressed="false">FR+FA</button>
             </div>
             <div class="group theme-toggle-wrap">
-                <span class="theme-label theme-label-trilingual"><span class="theme-label-fa">تم:</span><span class="theme-label-en">Theme:</span><span class="theme-label-fr">Thème :</span></span>
-                <button type="button" class="theme-btn" id="themeLight" title="روشن / Light" aria-pressed="true">☀️</button>
-                <button type="button" class="theme-btn" id="themeDark" title="تاریک / Dark" aria-pressed="false">🌙</button>
+                <label class="summary-fa-checkbox-label" title="با تیک زدن، متن و خلاصهٔ فارسی هم نمایش داده می‌شود؛ با برداشتن تیک، فقط انگلیسی یا فرانسوی می‌ماند.">
+                    <input type="checkbox" id="summaryShowFa" aria-label="نمایش بخش فارسی خلاصهٔ کتاب">
+                    <span class="summary-fa-checkbox-caption">نمایش بخش فارسی</span>
+                </label>
+            </div>
+            <script>try{var s=document.getElementById('summaryShowFa');if(s)s.checked=document.body.getAttribute('data-show-fa')!=='no';}catch(e){}</script>
+            <div class="group theme-toggle-wrap">
+                <span class="theme-label theme-label-toolbar-fa">تم:</span>
+                <button type="button" class="theme-btn" id="themeLight" title="تم روشن (حالت روز)" aria-pressed="true">☀️</button>
+                <button type="button" class="theme-btn" id="themeDark" title="تم تاریک (حالت شب)" aria-pressed="false">🌙</button>
             </div>
         </div>
 
@@ -3338,7 +3398,7 @@
     </div>
     <script>
 (function(){
-    var KEY_THEME = 'book_summary_theme', KEY_LANG = 'book_summary_lang';
+    var KEY_THEME = 'book_summary_theme', KEY_LANG = 'book_summary_lang', KEY_SHOW_FA = 'book_summary_show_fa';
     function theme(isDark){
         document.body.classList.toggle('theme-dark', !!isDark);
         try{ localStorage.setItem(KEY_THEME, isDark ? 'dark' : 'light'); }catch(e){}
@@ -3353,10 +3413,18 @@
         if(enFa){ enFa.setAttribute('aria-pressed', langCode === 'en-fa' ? 'true' : 'false'); }
         if(frFa){ frFa.setAttribute('aria-pressed', langCode === 'fr-fa' ? 'true' : 'false'); }
     }
+    function showFa(on){
+        var v = on ? 'yes' : 'no';
+        document.body.setAttribute('data-show-fa', v);
+        try{ localStorage.setItem(KEY_SHOW_FA, v); }catch(e){}
+        var cb = document.getElementById('summaryShowFa');
+        if(cb){ cb.checked = !!on; }
+    }
     document.getElementById('themeLight')&&document.getElementById('themeLight').addEventListener('click', function(){ theme(false); });
     document.getElementById('themeDark')&&document.getElementById('themeDark').addEventListener('click', function(){ theme(true); });
     document.getElementById('langEnFa')&&document.getElementById('langEnFa').addEventListener('click', function(){ lang('en-fa'); });
     document.getElementById('langFrFa')&&document.getElementById('langFrFa').addEventListener('click', function(){ lang('fr-fa'); });
+    document.getElementById('summaryShowFa')&&document.getElementById('summaryShowFa').addEventListener('change', function(){ showFa(this.checked); });
     var L0 = document.body.getAttribute('data-lang') || 'en-fa';
     var enFaBtn = document.getElementById('langEnFa'), frFaBtn = document.getElementById('langFrFa');
     if(enFaBtn) enFaBtn.setAttribute('aria-pressed', L0 === 'en-fa' ? 'true' : 'false');
@@ -3365,6 +3433,8 @@
     var lightBtn = document.getElementById('themeLight'), darkBtn = document.getElementById('themeDark');
     if(lightBtn) lightBtn.setAttribute('aria-pressed', isDark ? 'false' : 'true');
     if(darkBtn) darkBtn.setAttribute('aria-pressed', isDark ? 'true' : 'false');
+    var sf0 = document.body.getAttribute('data-show-fa') || 'yes';
+    showFa(sf0 !== 'no');
 })();
     </script>
 </body>
