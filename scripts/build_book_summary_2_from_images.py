@@ -2,7 +2,7 @@ import os
 import re
 from pathlib import Path
 
-from PIL import Image
+from PIL import Image, ImageEnhance, ImageOps
 import pytesseract
 from deep_translator import GoogleTranslator
 
@@ -38,9 +38,21 @@ def _ensure_tesseract_cmd() -> None:
 
 
 def _ocr_image(path: Path) -> str:
+    """
+    OCR با پیش‌پردازش سبک برای خطوط باریک‌تر و کنتراست بهتر (نزدیک‌تر به چیدمان اصل).
+    PSM 4 برای ستون واحد با اندازهٔ قلم متغیر معمولاً از PSM 6 پایدارتر است.
+    """
     img = Image.open(path)
     img = img.convert("L")
-    cfg = "--oem 3 --psm 6"
+    w, h = img.size
+    # تصاویر کوچک را کمی بزرگ می‌کنیم تا تشخیص حروف بهتر شود
+    if max(w, h) < 1600:
+        scale = 2
+        img = img.resize((w * scale, h * scale), Image.Resampling.LANCZOS)
+    img = ImageOps.autocontrast(img, cutoff=1)
+    img = ImageEnhance.Contrast(img).enhance(1.2)
+    img = ImageEnhance.Sharpness(img).enhance(1.08)
+    cfg = "--oem 3 --psm 4"
     text = pytesseract.image_to_string(img, lang="eng", config=cfg)
     text = text.replace("\r\n", "\n").replace("\r", "\n")
 

@@ -2,7 +2,7 @@
 <html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <link rel="icon" href="{{ url_for('static', filename='images/logo.png') }}" type="image/png">
     <link rel="apple-touch-icon" href="{{ url_for('static', filename='images/logo.png') }}">
     <meta property="og:image" content="{{ seo_base_url() }}{{ url_for('static', filename='images/logo.png') }}">
@@ -35,6 +35,11 @@
             box-sizing: border-box;
         }
 
+        html {
+            -webkit-text-size-adjust: 100%;
+            text-size-adjust: 100%;
+        }
+
         :root {
             --bs-bg: linear-gradient(135deg, #ffffff 0%, #f5f7fa 50%, #e8ecf1 100%);
             --bs-container-bg: #ffffff;
@@ -64,7 +69,11 @@
             font-family: Tahoma, 'Segoe UI', 'Roboto', 'Open Sans', Geneva, Verdana, sans-serif;
             background: var(--bs-bg);
             min-height: 100vh;
-            padding: 20px;
+            min-height: 100dvh;
+            padding-top: max(20px, env(safe-area-inset-top, 0px));
+            padding-right: max(20px, env(safe-area-inset-right, 0px));
+            padding-bottom: max(20px, env(safe-area-inset-bottom, 0px));
+            padding-left: max(20px, env(safe-area-inset-left, 0px));
             line-height: 1.8;
             position: relative;
             color: var(--bs-text);
@@ -90,6 +99,7 @@
         body.theme-dark::before { opacity: 0.3; }
 
         .container {
+            width: 100%;
             max-width: 1200px;
             margin: 0 auto;
             background: var(--bs-container-bg);
@@ -117,6 +127,12 @@
         @keyframes gradientShift {
             0%, 100% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .header {
+                animation: none;
+            }
         }
 
         .header h1 {
@@ -175,6 +191,8 @@
 
         .content {
             padding: 50px 40px;
+            min-width: 0;
+            max-width: 100%;
         }
 
         .summary-section {
@@ -185,14 +203,8 @@
             border-right: 6px solid #f1c40f;
             border-top: 3px solid var(--bs-accent);
             box-shadow: 0 6px 30px rgba(30, 60, 114, 0.1), 0 3px 12px rgba(30, 60, 114, 0.06);
-            transition: all 0.3s ease;
-        }
-
-        .summary-section:hover {
-            box-shadow: 
-                0 12px 40px rgba(30, 60, 114, 0.15),
-                0 6px 20px rgba(241, 196, 15, 0.2);
-            transform: translateY(-2px);
+            min-width: 0;
+            max-width: 100%;
         }
 
         .summary-section-title {
@@ -205,6 +217,8 @@
             display: flex;
             align-items: flex-start;
             gap: 12px;
+            flex-wrap: wrap;
+            min-width: 0;
         }
 
         .summary-section-title::before {
@@ -239,6 +253,10 @@
             line-height: 1.9;
             font-size: 1.02em;
             box-shadow: 0 6px 18px rgba(30, 60, 114, 0.06);
+            min-width: 0;
+            max-width: 100%;
+            overflow-wrap: break-word;
+            word-wrap: break-word;
         }
         body.theme-dark .summary-ocr-text {
             background: rgba(0, 0, 0, 0.22);
@@ -270,6 +288,22 @@
         .summary-ocr-text li {
             margin: 6px 0;
         }
+        .summary-ocr-text img,
+        .summary-ocr-text video {
+            max-width: 100%;
+            height: auto;
+        }
+        /* متن لیست خودش حرف یا شماره دارد؛ مارکر همان آیتم خاموش تا دو بار دیده نشود */
+        .summary-ocr-text-en .study-li-marker-in-body,
+        .summary-ocr-text-fr .study-li-marker-in-body,
+        .summary-ocr-text-fa .study-li-marker-in-body {
+            list-style-type: none;
+        }
+        .summary-ocr-text-en .study-list-marker-in-body,
+        .summary-ocr-text-fr .study-list-marker-in-body,
+        .summary-ocr-text-fa .study-list-marker-in-body {
+            list-style: none;
+        }
         .summary-ocr-text .ocr-marker {
             display: inline-block;
             min-width: 26px;
@@ -298,7 +332,14 @@
         }
         body.theme-dark .paywall-414-email-block { box-shadow: 0 2px 10px rgba(0,0,0,0.3); }
         .paywall-414-email-label { font-size: 1.05rem; font-weight: 700; color: var(--bs-text); }
-        .paywall-414-email-value { font-size: 1.35rem; font-weight: 800; color: var(--bs-accent); letter-spacing: 0.02em; }
+        .paywall-414-email-value {
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: var(--bs-accent);
+            letter-spacing: 0.02em;
+            overflow-wrap: anywhere;
+            word-break: break-word;
+        }
         .paywall-414-btn-copy {
             padding: 10px 16px;
             background: var(--bs-accent);
@@ -328,6 +369,1626 @@
             margin-top: 10px;
         }
 
+        /*
+          صفحات ۱–۳: یک گام‌اندازهٔ مشترک برای شبیه‌سازی برگهٔ مرجع
+          (لیست اصلی → الف → زیربخش؛ بدون جمع تصادفی em و px)
+        */
+        .summary-ocr-text.summary-ocr-text--page1-ref,
+        .summary-ocr-text.summary-ocr-text--page2-ref,
+        .summary-ocr-text.summary-ocr-text--page3-ref,
+        .summary-ocr-text.summary-ocr-text--page4-ref,
+        .summary-ocr-text.summary-ocr-text--page5-ref,
+        .summary-ocr-text.summary-ocr-text--page7-ref,
+        .summary-ocr-text.summary-ocr-text--page8-ref,
+        .summary-ocr-text.summary-ocr-text--page9-ref,
+        .summary-ocr-text.summary-ocr-text--page10-ref,
+        .summary-ocr-text.summary-ocr-text--page11-ref,
+        .summary-ocr-text.summary-ocr-text--page12-ref,
+        .summary-ocr-text.summary-ocr-text--page13-ref,
+        .summary-ocr-text.summary-ocr-text--page14-ref,
+        .summary-ocr-text.summary-ocr-text--page15-ref,
+        .summary-ocr-text.summary-ocr-text--page16-ref,
+        .summary-ocr-text.summary-ocr-text--page17-ref,
+        .summary-ocr-text.summary-ocr-text--page18-ref,
+        .summary-ocr-text.summary-ocr-text--page19-ref,
+        .summary-ocr-text.summary-ocr-text--page20-ref,
+        .summary-ocr-text.summary-ocr-text--page21-ref,
+        .summary-ocr-text.summary-ocr-text--page22-ref,
+        .summary-ocr-text.summary-ocr-text--page23-ref,
+        .summary-ocr-text.summary-ocr-text--page24-ref,
+        .summary-ocr-text.summary-ocr-text--study-ref,
+        .summary-ocr-text.summary-ocr-text--page25-ref,
+        .summary-ocr-text.summary-ocr-text--page26-ref,
+        .summary-ocr-text.summary-ocr-text--page27-ref,
+        .summary-ocr-text.summary-ocr-text--page28-ref,
+        .summary-ocr-text.summary-ocr-text--page29-ref,
+        .summary-ocr-text.summary-ocr-text--page30-ref,
+        .summary-ocr-text.summary-ocr-text--page31-ref,
+        .summary-ocr-text.summary-ocr-text--page32-ref,
+        .summary-ocr-text.summary-ocr-text--page33-ref,
+        .summary-ocr-text.summary-ocr-text--page34-ref,
+        .summary-ocr-text.summary-ocr-text--page35-ref {
+            line-height: 1.55;
+        }
+
+        /* خلاصهٔ ۲ صفحهٔ ۱ — قالب نوشتاری برگهٔ مرجع (لیست ۱–۵، مورب، آکولاد) */
+        .summary-ocr-text--page1-ref .study-intro-p em {
+            font-style: italic;
+        }
+        .summary-ocr-text--page1-ref .study-intro-p strong {
+            font-weight: 700;
+            font-style: italic;
+        }
+        .summary-ocr-text--page1-ref {
+            position: relative;
+            padding-bottom: 2.25rem;
+            --study-p1-main-gutter: 1.65rem;
+            --study-p1-sub-indent: 1.35em;
+            --study-p1-bracket-shift: 0.5rem;
+            --study-p1-bullet-gutter: calc(var(--study-p1-sub-indent) + 0.55rem);
+        }
+        .summary-ocr-text-fa.summary-ocr-text--page1-ref {
+            --study-p1-sub-indent: 1.1em;
+            --study-p1-bullet-gutter: calc(var(--study-p1-sub-indent) + 0.45rem);
+        }
+        .summary-ocr-text--page1-ref .study-ref-mainlist {
+            margin-top: 14px;
+            padding-inline-start: var(--study-p1-main-gutter);
+            list-style-position: outside;
+        }
+        .summary-ocr-text--page1-ref .study-ref-mainlist > li {
+            margin: 10px 0;
+            padding-inline-start: 0;
+        }
+        /* زیرلیست الف زیر آیتم‌های ۲، ۴، ۵؛ همان گام صفحهٔ ۲ (--study-outline-step) */
+        .summary-ocr-text--page1-ref .study-bracket-group .ocr-list,
+        .summary-ocr-text--page1-ref .study-ref-mainlist > li > ol.ocr-list {
+            margin-top: 8px;
+            padding-inline-start: var(--study-p1-sub-indent);
+            list-style-type: lower-alpha;
+            list-style-position: outside;
+        }
+        .summary-ocr-text--page1-ref .study-bracket-group {
+            margin-top: 8px;
+            margin-bottom: 4px;
+            margin-inline-start: var(--study-p1-bracket-shift);
+            padding-inline-end: 12px;
+            border-inline-end: 3px solid rgba(126, 184, 232, 0.75);
+            border-radius: 0 8px 8px 0;
+        }
+        body.theme-dark .summary-ocr-text--page1-ref .study-bracket-group {
+            border-inline-end-color: rgba(124, 179, 245, 0.45);
+        }
+        .summary-ocr-text--page1-ref .study-detail-lead {
+            margin-top: 18px;
+            margin-bottom: 14px;
+            line-height: 1.55;
+        }
+        .summary-ocr-text--page1-ref .study-charter-bullets {
+            margin: 0 0 18px;
+            padding-inline-start: var(--study-p1-bullet-gutter);
+            list-style-type: disc;
+            list-style-position: outside;
+        }
+        .summary-ocr-text--page1-ref .study-charter-bullets li {
+            margin: 14px 0;
+            line-height: 1.55;
+        }
+        .summary-ocr-text--page1-ref .study-page-foot {
+            position: absolute;
+            bottom: 10px;
+            inset-inline-end: 18px;
+            margin: 0;
+            font-size: 0.95rem;
+            opacity: 0.88;
+        }
+
+        /* خلاصهٔ ۲ صفحهٔ ۲ — ۶. تا ۱۱. ، عنوان وسط ، ۱- تا ۷- ، a → i → عدد */
+        .summary-ocr-text--page2-ref,
+        .summary-ocr-text--page3-ref,
+        .summary-ocr-text--page4-ref,
+        .summary-ocr-text--page5-ref,
+        .summary-ocr-text--page7-ref,
+        .summary-ocr-text--page8-ref,
+        .summary-ocr-text--page9-ref,
+        .summary-ocr-text--page10-ref,
+        .summary-ocr-text--page11-ref,
+        .summary-ocr-text--page12-ref,
+        .summary-ocr-text--page13-ref,
+        .summary-ocr-text--page14-ref,
+        .summary-ocr-text--page15-ref,
+        .summary-ocr-text--page16-ref,
+        .summary-ocr-text--page17-ref,
+        .summary-ocr-text--page18-ref,
+        .summary-ocr-text--page19-ref,
+        .summary-ocr-text--page20-ref,
+        .summary-ocr-text--page21-ref,
+        .summary-ocr-text--page22-ref,
+        .summary-ocr-text--page23-ref,
+        .summary-ocr-text--page24-ref,
+        .summary-ocr-text--page25-ref,
+        .summary-ocr-text--page26-ref,
+        .summary-ocr-text--page27-ref,
+        .summary-ocr-text--page28-ref,
+        .summary-ocr-text--page29-ref,
+        .summary-ocr-text--page30-ref,
+        .summary-ocr-text--page31-ref,
+        .summary-ocr-text--page32-ref,
+        .summary-ocr-text--page33-ref,
+        .summary-ocr-text--page34-ref,
+        .summary-ocr-text--page35-ref {
+            --study-outline-step: 1.35em;
+            --study-outline-step-fa-a: 1.1em;
+            --study-outline-step-fa-n: 1.35em;
+        }
+        .summary-ocr-text-en.summary-ocr-text--page2-ref,
+        .summary-ocr-text-fr.summary-ocr-text--page2-ref,
+        .summary-ocr-text-en.summary-ocr-text--page3-ref,
+        .summary-ocr-text-fr.summary-ocr-text--page3-ref,
+        .summary-ocr-text-en.summary-ocr-text--page4-ref,
+        .summary-ocr-text-fr.summary-ocr-text--page4-ref,
+        .summary-ocr-text-en.summary-ocr-text--page5-ref,
+        .summary-ocr-text-fr.summary-ocr-text--page5-ref,
+        .summary-ocr-text-en.summary-ocr-text--page7-ref,
+        .summary-ocr-text-fr.summary-ocr-text--page7-ref,
+        .summary-ocr-text-en.summary-ocr-text--page8-ref,
+        .summary-ocr-text-fr.summary-ocr-text--page8-ref,
+        .summary-ocr-text-en.summary-ocr-text--page9-ref,
+        .summary-ocr-text-fr.summary-ocr-text--page9-ref,
+        .summary-ocr-text-en.summary-ocr-text--page10-ref,
+        .summary-ocr-text-fr.summary-ocr-text--page10-ref,
+        .summary-ocr-text-en.summary-ocr-text--page11-ref,
+        .summary-ocr-text-fr.summary-ocr-text--page11-ref,
+        .summary-ocr-text-en.summary-ocr-text--page12-ref,
+        .summary-ocr-text-fr.summary-ocr-text--page12-ref,
+        .summary-ocr-text-en.summary-ocr-text--page13-ref,
+        .summary-ocr-text-fr.summary-ocr-text--page13-ref,
+        .summary-ocr-text-en.summary-ocr-text--page14-ref,
+        .summary-ocr-text-fr.summary-ocr-text--page14-ref,
+        .summary-ocr-text-en.summary-ocr-text--page15-ref,
+        .summary-ocr-text-fr.summary-ocr-text--page15-ref,
+        .summary-ocr-text-en.summary-ocr-text--page16-ref,
+        .summary-ocr-text-fr.summary-ocr-text--page16-ref,
+        .summary-ocr-text-en.summary-ocr-text--page17-ref,
+        .summary-ocr-text-fr.summary-ocr-text--page17-ref,
+        .summary-ocr-text-en.summary-ocr-text--page18-ref,
+        .summary-ocr-text-fr.summary-ocr-text--page18-ref,
+        .summary-ocr-text-en.summary-ocr-text--page19-ref,
+        .summary-ocr-text-fr.summary-ocr-text--page19-ref,
+        .summary-ocr-text-en.summary-ocr-text--page20-ref,
+        .summary-ocr-text-fr.summary-ocr-text--page20-ref,
+        .summary-ocr-text-en.summary-ocr-text--page21-ref,
+        .summary-ocr-text-fr.summary-ocr-text--page21-ref,
+        .summary-ocr-text-en.summary-ocr-text--page22-ref,
+        .summary-ocr-text-fr.summary-ocr-text--page22-ref,
+        .summary-ocr-text-en.summary-ocr-text--page23-ref,
+        .summary-ocr-text-fr.summary-ocr-text--page23-ref,
+        .summary-ocr-text-en.summary-ocr-text--page24-ref,
+        .summary-ocr-text-fr.summary-ocr-text--page24-ref,
+        .summary-ocr-text-en.summary-ocr-text--page25-ref,
+        .summary-ocr-text-fr.summary-ocr-text--page25-ref,
+        .summary-ocr-text-en.summary-ocr-text--page26-ref,
+        .summary-ocr-text-fr.summary-ocr-text--page26-ref,
+        .summary-ocr-text-en.summary-ocr-text--page27-ref,
+        .summary-ocr-text-fr.summary-ocr-text--page27-ref,
+        .summary-ocr-text-en.summary-ocr-text--page28-ref,
+        .summary-ocr-text-fr.summary-ocr-text--page28-ref,
+        .summary-ocr-text-en.summary-ocr-text--page29-ref,
+        .summary-ocr-text-fr.summary-ocr-text--page29-ref,
+        .summary-ocr-text-en.summary-ocr-text--page30-ref,
+        .summary-ocr-text-fr.summary-ocr-text--page30-ref,
+        .summary-ocr-text-en.summary-ocr-text--page31-ref,
+        .summary-ocr-text-fr.summary-ocr-text--page31-ref,
+        .summary-ocr-text-en.summary-ocr-text--page32-ref,
+        .summary-ocr-text-fr.summary-ocr-text--page32-ref,
+        .summary-ocr-text-en.summary-ocr-text--page33-ref,
+        .summary-ocr-text-fr.summary-ocr-text--page33-ref,
+        .summary-ocr-text-en.summary-ocr-text--page34-ref,
+        .summary-ocr-text-fr.summary-ocr-text--page34-ref,
+        .summary-ocr-text-en.summary-ocr-text--page35-ref,
+        .summary-ocr-text-fr.summary-ocr-text--page35-ref {
+            --study-o-a: var(--study-outline-step);
+            --study-o-i: var(--study-outline-step);
+            --study-o-n: var(--study-outline-step);
+        }
+        .summary-ocr-text-fa.summary-ocr-text--page2-ref,
+        .summary-ocr-text-fa.summary-ocr-text--page3-ref,
+        .summary-ocr-text-fa.summary-ocr-text--page4-ref,
+        .summary-ocr-text-fa.summary-ocr-text--page5-ref,
+        .summary-ocr-text-fa.summary-ocr-text--page7-ref,
+        .summary-ocr-text-fa.summary-ocr-text--page8-ref,
+        .summary-ocr-text-fa.summary-ocr-text--page9-ref,
+        .summary-ocr-text-fa.summary-ocr-text--page10-ref,
+        .summary-ocr-text-fa.summary-ocr-text--page11-ref,
+        .summary-ocr-text-fa.summary-ocr-text--page12-ref,
+        .summary-ocr-text-fa.summary-ocr-text--page13-ref,
+        .summary-ocr-text-fa.summary-ocr-text--page14-ref,
+        .summary-ocr-text-fa.summary-ocr-text--page15-ref,
+        .summary-ocr-text-fa.summary-ocr-text--page16-ref,
+        .summary-ocr-text-fa.summary-ocr-text--page17-ref,
+        .summary-ocr-text-fa.summary-ocr-text--page18-ref,
+        .summary-ocr-text-fa.summary-ocr-text--page19-ref,
+        .summary-ocr-text-fa.summary-ocr-text--page20-ref,
+        .summary-ocr-text-fa.summary-ocr-text--page21-ref,
+        .summary-ocr-text-fa.summary-ocr-text--page22-ref,
+        .summary-ocr-text-fa.summary-ocr-text--page23-ref,
+        .summary-ocr-text-fa.summary-ocr-text--page24-ref,
+        .summary-ocr-text-fa.summary-ocr-text--page25-ref,
+        .summary-ocr-text-fa.summary-ocr-text--page26-ref,
+        .summary-ocr-text-fa.summary-ocr-text--page27-ref,
+        .summary-ocr-text-fa.summary-ocr-text--page28-ref,
+        .summary-ocr-text-fa.summary-ocr-text--page29-ref,
+        .summary-ocr-text-fa.summary-ocr-text--page30-ref,
+        .summary-ocr-text-fa.summary-ocr-text--page31-ref,
+        .summary-ocr-text-fa.summary-ocr-text--page32-ref,
+        .summary-ocr-text-fa.summary-ocr-text--page33-ref,
+        .summary-ocr-text-fa.summary-ocr-text--page34-ref,
+        .summary-ocr-text-fa.summary-ocr-text--page35-ref {
+            --study-o-a: var(--study-outline-step-fa-a);
+            --study-o-i: var(--study-outline-step-fa-a);
+            --study-o-n: var(--study-outline-step-fa-n);
+        }
+        .summary-ocr-text--page2-ref {
+            position: relative;
+            padding-bottom: 2.25rem;
+            font-family: Arial, Helvetica, "Segoe UI", sans-serif;
+            --study-p2-num-gutter: 1.65rem;
+        }
+        .summary-ocr-text-fa.summary-ocr-text--page2-ref {
+            font-family: Tahoma, "Segoe UI", Arial, sans-serif;
+        }
+        .summary-ocr-text--page2-ref .study-p2-intro {
+            margin-bottom: 14px;
+        }
+        .summary-ocr-text--page2-ref .study-p2-dot-list {
+            margin: 12px 0 18px;
+            padding-inline-start: var(--study-p2-num-gutter);
+            list-style-type: decimal;
+            list-style-position: outside;
+        }
+        .summary-ocr-text--page2-ref .study-p2-dot-list > li {
+            margin: 14px 0;
+        }
+        .summary-ocr-text--page2-ref .study-p2-lawterms,
+        .summary-ocr-text--page4-ref .study-p2-lawterms {
+            color: #3d4a8f;
+        }
+        body.theme-dark .summary-ocr-text--page2-ref .study-p2-lawterms,
+        body.theme-dark .summary-ocr-text--page4-ref .study-p2-lawterms {
+            color: #9cb0f0;
+        }
+        .summary-ocr-text--page2-ref .study-p2-centered-heading,
+        .summary-ocr-text--page4-ref .study-p2-centered-heading,
+        .summary-ocr-text--page7-ref .study-p2-centered-heading,
+        .summary-ocr-text--page10-ref .study-p2-centered-heading,
+        .summary-ocr-text--page11-ref .study-p2-centered-heading,
+        .summary-ocr-text--page12-ref .study-p2-centered-heading,
+        .summary-ocr-text--page15-ref .study-p2-centered-heading,
+        .summary-ocr-text--page16-ref .study-p2-centered-heading,
+        .summary-ocr-text--page17-ref .study-p2-centered-heading,
+        .summary-ocr-text--page18-ref .study-p2-centered-heading,
+        .summary-ocr-text--page19-ref .study-p2-centered-heading,
+        .summary-ocr-text--page20-ref .study-p2-centered-heading,
+        .summary-ocr-text--page21-ref .study-p2-centered-heading,
+        .summary-ocr-text--page22-ref .study-p2-centered-heading,
+        .summary-ocr-text--page23-ref .study-p2-centered-heading,
+        .summary-ocr-text--page24-ref .study-p2-centered-heading,
+        .summary-ocr-text--page25-ref .study-p2-centered-heading,
+        .summary-ocr-text--page26-ref .study-p2-centered-heading,
+        .summary-ocr-text--page27-ref .study-p2-centered-heading,
+        .summary-ocr-text--page28-ref .study-p2-centered-heading {
+            text-align: center;
+            margin: 22px 0 14px;
+            font-size: 1.05rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: inherit;
+        }
+        .summary-ocr-text--page24-ref .study-p2-centered-heading {
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+        .summary-ocr-text--page26-ref .study-p2-centered-heading,
+        .summary-ocr-text--page27-ref .study-p2-centered-heading,
+        .summary-ocr-text--page28-ref .study-p2-centered-heading {
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+        .summary-ocr-text--page12-ref .study-p2-centered-heading:first-of-type {
+            margin-top: 0;
+        }
+        .summary-ocr-text--page2-ref .study-p2-dash-list,
+        .summary-ocr-text--page4-ref .study-p2-dash-list {
+            list-style: none;
+            margin: 10px 0 18px;
+            padding-inline-start: 0;
+            counter-reset: p2dash;
+        }
+        .summary-ocr-text--page2-ref .study-p2-dash-list > li,
+        .summary-ocr-text--page4-ref .study-p2-dash-list > li {
+            counter-increment: p2dash;
+            margin: 14px 0;
+            padding-inline-start: 0;
+        }
+        .summary-ocr-text--page2-ref .study-p2-dash-list > li::before,
+        .summary-ocr-text--page4-ref .study-p2-dash-list > li::before {
+            content: counter(p2dash) "- ";
+            font-weight: 700;
+        }
+        .summary-ocr-text--page2-ref .study-p2-sub-a,
+        .summary-ocr-text--page4-ref .study-p2-sub-a {
+            margin: 8px 0;
+            padding-inline-start: var(--study-o-a);
+            list-style-type: lower-alpha;
+            list-style-position: outside;
+        }
+        .summary-ocr-text--page2-ref .study-p2-sub-i,
+        .summary-ocr-text--page4-ref .study-p2-sub-i {
+            margin: 8px 0;
+            padding-inline-start: var(--study-o-i);
+            list-style-type: lower-roman;
+            list-style-position: outside;
+        }
+        .summary-ocr-text--page2-ref .study-p2-sub-num,
+        .summary-ocr-text--page4-ref .study-p2-sub-num {
+            margin: 6px 0;
+            padding-inline-start: var(--study-o-n);
+            list-style-type: decimal;
+            list-style-position: outside;
+        }
+        .summary-ocr-text--page2-ref .study-p2-sub-a li,
+        .summary-ocr-text--page2-ref .study-p2-sub-i li,
+        .summary-ocr-text--page2-ref .study-p2-sub-num li,
+        .summary-ocr-text--page4-ref .study-p2-sub-a li,
+        .summary-ocr-text--page4-ref .study-p2-sub-i li,
+        .summary-ocr-text--page4-ref .study-p2-sub-num li {
+            margin: 6px 0;
+        }
+        .summary-ocr-text-fa.summary-ocr-text--page2-ref .study-p2-sub-a,
+        .summary-ocr-text-fa.summary-ocr-text--page2-ref .study-p2-sub-i,
+        .summary-ocr-text-fa.summary-ocr-text--page4-ref .study-p2-sub-a,
+        .summary-ocr-text-fa.summary-ocr-text--page4-ref .study-p2-sub-i {
+            list-style: none;
+            padding-inline-start: var(--study-o-a);
+            list-style-position: outside;
+        }
+        /* اولین سطح a زیر شمارهٔ ۶–۱۱ و زیر ۱–۷ کمی عمیق‌تر تا مانند فهرست چندسطحی اصل دیده شود */
+        .summary-ocr-text--page2-ref .study-p2-dot-list > li > .study-p2-sub-a,
+        .summary-ocr-text--page2-ref .study-p2-dash-list > li > .study-p2-sub-a,
+        .summary-ocr-text--page4-ref .study-p2-dash-list > li > .study-p2-sub-a {
+            padding-inline-start: calc(var(--study-o-a) + 0.45rem);
+        }
+        .summary-ocr-text-fa.summary-ocr-text--page2-ref .study-p2-dot-list > li > .study-p2-sub-a,
+        .summary-ocr-text-fa.summary-ocr-text--page2-ref .study-p2-dash-list > li > .study-p2-sub-a,
+        .summary-ocr-text-fa.summary-ocr-text--page4-ref .study-p2-dash-list > li > .study-p2-sub-a {
+            padding-inline-start: calc(var(--study-o-a) + 0.38rem);
+        }
+        .summary-ocr-text-en.summary-ocr-text--page2-ref .study-p2-sub-a--body-markers,
+        .summary-ocr-text-fr.summary-ocr-text--page2-ref .study-p2-sub-a--body-markers,
+        .summary-ocr-text-en.summary-ocr-text--page2-ref .study-p2-sub-i--body-markers,
+        .summary-ocr-text-fr.summary-ocr-text--page2-ref .study-p2-sub-i--body-markers {
+            list-style: none;
+        }
+        .summary-ocr-text--page2-ref .study-page-foot {
+            position: absolute;
+            bottom: 10px;
+            inset-inline-end: 18px;
+            margin: 0;
+            font-size: 0.95rem;
+            opacity: 0.88;
+        }
+
+        /* خلاصهٔ ۲ صفحهٔ ۳ — هم‌تراز با انتهای صفحهٔ ۲ (همان زنجیرهٔ a → i → عدد و ۷- …) */
+        .summary-ocr-text--page3-ref {
+            position: relative;
+            padding-bottom: 2.25rem;
+            font-family: Arial, Helvetica, "Segoe UI", sans-serif;
+        }
+        .summary-ocr-text-fa.summary-ocr-text--page3-ref {
+            font-family: Tahoma, "Segoe UI", Arial, sans-serif;
+        }
+        /* خط «۲.» = همان عمق study-p2-sub-num زنجیرهٔ a→i→n صفحهٔ ۲ (یک منبع: --study-o-*) */
+        .summary-ocr-text--page3-ref .study-p3-continue-num {
+            margin: 0 0 12px;
+            padding-inline-start: calc(var(--study-o-a) + var(--study-o-i) + var(--study-o-n));
+            list-style-type: decimal;
+            list-style-position: outside;
+        }
+        .summary-ocr-text--page3-ref .study-p3-continue-num > li {
+            margin: 4px 0;
+            padding-inline-start: 0;
+        }
+        /* iii. متیس هم‌سطح i. و ii. زیر همان sub-i صفحهٔ قبل */
+        .summary-ocr-text--page3-ref .study-p3-cont-roman {
+            margin: 14px 0;
+            padding-inline-start: calc(var(--study-o-a) + var(--study-o-i));
+            list-style-type: lower-roman;
+            list-style-position: outside;
+        }
+        .summary-ocr-text-fa.summary-ocr-text--page3-ref .study-p3-cont-roman {
+            list-style: none;
+            padding-inline-start: calc(var(--study-o-a) + var(--study-o-i));
+        }
+        .summary-ocr-text--page3-ref .study-p3-cont-roman > li {
+            margin: 10px 0;
+        }
+        .summary-ocr-text--page3-ref .study-p3-cont-roman .study-p3-level-num {
+            margin: 10px 0 6px;
+            padding-inline-start: var(--study-o-n);
+            list-style-type: decimal;
+            list-style-position: outside;
+        }
+        .summary-ocr-text--page3-ref .study-p3-cont-roman .study-p3-level-num li {
+            margin: 8px 0;
+        }
+        /* ۸- و ۹- ادامهٔ study-p2-dash-list؛ زیرلیست a/i فرورفتگی بیشتر از بلوک iii و هم‌خوان با برگهٔ مرجع */
+        /* ۸-/۹- همان منطق فرورفتگی «۱–۷» صفحهٔ ۲؛ از --study-o-* نه مقادیر ثابت رندوم */
+        .summary-ocr-text--page3-ref .study-p3-major {
+            margin-top: 22px;
+            padding-inline-start: 0;
+            --study-p3-major-a-gap: calc(var(--study-o-a) + 0.48rem);
+            --study-p3-major-i-gap: calc(var(--study-o-i) + 0.52rem);
+        }
+        .summary-ocr-text-fa.summary-ocr-text--page3-ref .study-p3-major {
+            --study-p3-major-a-gap: calc(var(--study-o-a) + 0.36rem);
+            --study-p3-major-i-gap: calc(var(--study-o-i) + 0.42rem);
+        }
+        .summary-ocr-text--page3-ref .study-p3-major-head {
+            margin: 12px 0 8px;
+            padding-inline-start: 0;
+        }
+        .summary-ocr-text--page3-ref .study-p3-level-a {
+            margin: 8px 0 14px;
+            padding-inline-start: var(--study-o-a);
+            list-style-type: lower-alpha;
+            list-style-position: outside;
+        }
+        .summary-ocr-text-fa.summary-ocr-text--page3-ref .study-p3-level-a {
+            list-style: none;
+            padding-inline-start: var(--study-o-a);
+        }
+        .summary-ocr-text--page3-ref .study-p3-level-a > li {
+            margin: 12px 0;
+            padding-inline-start: 0;
+        }
+        .summary-ocr-text--page3-ref .study-p3-level-a .study-p3-level-i {
+            margin: 10px 0 8px;
+            padding-inline-start: var(--study-o-i);
+            list-style-type: lower-roman;
+            list-style-position: outside;
+        }
+        .summary-ocr-text-fa.summary-ocr-text--page3-ref .study-p3-level-a .study-p3-level-i {
+            list-style: none;
+            padding-inline-start: var(--study-o-i);
+        }
+        .summary-ocr-text--page3-ref .study-p3-major .study-p3-level-a {
+            margin: 4px 0 14px;
+            padding-inline-start: var(--study-p3-major-a-gap);
+        }
+        .summary-ocr-text-fa.summary-ocr-text--page3-ref .study-p3-major .study-p3-level-a {
+            padding-inline-start: var(--study-p3-major-a-gap);
+        }
+        .summary-ocr-text--page3-ref .study-p3-major .study-p3-level-a > li {
+            margin: 10px 0;
+            padding-inline-start: 0;
+        }
+        .summary-ocr-text--page3-ref .study-p3-major .study-p3-level-a .study-p3-level-i {
+            margin: 10px 0 10px;
+            padding-inline-start: var(--study-p3-major-i-gap);
+        }
+        .summary-ocr-text-fa.summary-ocr-text--page3-ref .study-p3-major .study-p3-level-a .study-p3-level-i {
+            padding-inline-start: var(--study-p3-major-i-gap);
+        }
+        .summary-ocr-text--page3-ref .study-p3-major .study-p3-level-i > li {
+            margin: 8px 0;
+        }
+        .summary-ocr-text-en.summary-ocr-text--page3-ref .study-p3-major .study-p3-level-i > li::marker,
+        .summary-ocr-text-fr.summary-ocr-text--page3-ref .study-p3-major .study-p3-level-i > li::marker {
+            font-weight: 700;
+        }
+        .summary-ocr-text--page3-ref .study-p3-level-i > li {
+            margin: 10px 0;
+        }
+        .summary-ocr-text--page3-ref .study-page-foot {
+            position: absolute;
+            bottom: 10px;
+            inset-inline-end: 18px;
+            margin: 0;
+            font-size: 0.95rem;
+            opacity: 0.88;
+        }
+
+        /* خلاصهٔ ۲ صفحهٔ ۴ — ادامهٔ g ، DIVERSITY / HISTORY ، خط تیره ، زیرلیست a/i ، ویژهٔ Vikings */
+        .summary-ocr-text--page4-ref {
+            position: relative;
+            padding-bottom: 2.25rem;
+            font-family: Arial, Helvetica, "Segoe UI", sans-serif;
+        }
+        .summary-ocr-text-fa.summary-ocr-text--page4-ref {
+            font-family: Tahoma, "Segoe UI", Arial, sans-serif;
+        }
+        /* مارکر مرورگر خاموش تا با متنِ «g. …» تکرار نشود */
+        .summary-ocr-text--page4-ref .study-p4-continue-g {
+            margin: 0 0 18px;
+            padding-inline-start: calc(var(--study-o-a) + 0.45rem);
+            list-style: none;
+        }
+        .summary-ocr-text-fa.summary-ocr-text--page4-ref .study-p2-dash-list .study-p2-sub-a {
+            list-style-type: lower-alpha;
+            list-style-position: outside;
+        }
+        .summary-ocr-text-fa.summary-ocr-text--page4-ref .study-p2-dash-list .study-p2-sub-i {
+            list-style-type: lower-roman;
+            list-style-position: outside;
+        }
+        .summary-ocr-text-fa.summary-ocr-text--page4-ref .study-p4-continue-g .study-p2-sub-i {
+            list-style-type: lower-roman;
+            list-style-position: outside;
+        }
+        .summary-ocr-text--page4-ref .study-p4-continue-g > li {
+            margin: 10px 0;
+            padding-inline-start: 0;
+        }
+        .summary-ocr-text--page4-ref .study-p4-continue-g .study-p2-sub-i {
+            margin-top: 8px;
+            padding-inline-start: calc(var(--study-o-i) + 0.2rem);
+        }
+        .summary-ocr-text-fa.summary-ocr-text--page4-ref .study-p4-continue-g .study-p2-sub-i {
+            padding-inline-start: calc(var(--study-o-i) + 0.15rem);
+        }
+        .summary-ocr-text-en.summary-ocr-text--page4-ref .study-p4-continue-g .study-p2-sub-i > li::marker,
+        .summary-ocr-text-fr.summary-ocr-text--page4-ref .study-p4-continue-g .study-p2-sub-i > li::marker {
+            font-weight: 700;
+        }
+        .summary-ocr-text--page4-ref .study-p4-history-dash > li > strong:first-child {
+            font-weight: 700;
+        }
+        .summary-ocr-text--page4-ref .study-p4-dash-nested-a > li > .study-p2-sub-a {
+            margin-top: 6px;
+        }
+        .summary-ocr-text--page4-ref .study-p4-dash-nested-a > li > .study-p2-sub-i {
+            margin-top: 6px;
+            padding-inline-start: calc(var(--study-o-i) + 0.35rem);
+        }
+        .summary-ocr-text-en.summary-ocr-text--page4-ref .study-p4-dash-nested-a .study-p2-sub-i > li::marker,
+        .summary-ocr-text-fr.summary-ocr-text--page4-ref .study-p4-dash-nested-a .study-p2-sub-i > li::marker {
+            font-weight: 700;
+        }
+        .summary-ocr-text--page4-ref .study-p4-inline-disc {
+            margin: 12px 0 4px;
+            padding-inline-start: calc(var(--study-o-a) + 0.55rem);
+            list-style-type: disc;
+            list-style-position: outside;
+        }
+        .summary-ocr-text--page4-ref .study-p4-inline-disc > li {
+            margin: 8px 0;
+        }
+        .summary-ocr-text--page4-ref .study-p4-lead-dash {
+            margin: 10px 0 8px;
+            padding-inline-start: calc(var(--study-o-a) + 0.48rem);
+            list-style: none;
+        }
+        .summary-ocr-text--page4-ref .study-p4-lead-dash::before {
+            content: "- ";
+            font-weight: 600;
+        }
+        .summary-ocr-text--page4-ref .study-p4-hollow-bullets {
+            margin: 4px 0 14px;
+            padding-inline-start: calc(var(--study-o-a) + 0.48rem + var(--study-o-i));
+            list-style-type: circle;
+            list-style-position: outside;
+        }
+        .summary-ocr-text--page4-ref .study-p4-hollow-bullets > li {
+            margin: 8px 0;
+        }
+        .summary-ocr-text--page4-ref .study-page-foot {
+            position: absolute;
+            bottom: 10px;
+            inset-inline-end: 18px;
+            margin: 0;
+            font-size: 0.95rem;
+            opacity: 0.88;
+        }
+
+        /* خلاصهٔ ۲ صفحهٔ ۵ — عناوین چپ‌خط و خط زیر ، bullet توخالی ، خط Cartier ، لیست الف–ه‍ */
+        .summary-ocr-text--page5-ref {
+            position: relative;
+            padding-bottom: 2.25rem;
+            font-family: Arial, Helvetica, "Segoe UI", sans-serif;
+        }
+        .summary-ocr-text-fa.summary-ocr-text--page5-ref {
+            font-family: Tahoma, "Segoe UI", Arial, sans-serif;
+        }
+        .summary-ocr-text--page5-ref .study-p5-section-head,
+        .summary-ocr-text--page7-ref .study-p5-section-head,
+        .summary-ocr-text--page8-ref .study-p5-section-head,
+        .summary-ocr-text--page9-ref .study-p5-section-head,
+        .summary-ocr-text--page10-ref .study-p5-section-head,
+        .summary-ocr-text--page11-ref .study-p5-section-head,
+        .summary-ocr-text--page12-ref .study-p5-section-head,
+        .summary-ocr-text--page13-ref .study-p5-section-head,
+        .summary-ocr-text--page14-ref .study-p5-section-head,
+        .summary-ocr-text--page15-ref .study-p5-section-head,
+        .summary-ocr-text--page16-ref .study-p5-section-head,
+        .summary-ocr-text--page17-ref .study-p5-section-head,
+        .summary-ocr-text--page18-ref .study-p5-section-head,
+        .summary-ocr-text--page19-ref .study-p5-section-head,
+        .summary-ocr-text--page20-ref .study-p5-section-head,
+        .summary-ocr-text--page21-ref .study-p5-section-head,
+        .summary-ocr-text--page22-ref .study-p5-section-head,
+        .summary-ocr-text--page23-ref .study-p5-section-head,
+        .summary-ocr-text--page24-ref .study-p5-section-head {
+            text-align: start;
+            margin: 22px 0 12px;
+            font-size: 1.05rem;
+            font-weight: 700;
+        }
+        .summary-ocr-text--page5-ref .study-p5-section-head:first-child,
+        .summary-ocr-text--page7-ref .study-p5-section-head:first-child,
+        .summary-ocr-text--page8-ref .study-p5-section-head:first-child,
+        .summary-ocr-text--page9-ref .study-p5-section-head:first-child,
+        .summary-ocr-text--page10-ref .study-p5-section-head:first-child,
+        .summary-ocr-text--page11-ref .study-p5-section-head:first-child,
+        .summary-ocr-text--page12-ref .study-p5-section-head:first-child,
+        .summary-ocr-text--page13-ref .study-p5-section-head:first-child,
+        .summary-ocr-text--page14-ref .study-p5-section-head:first-child,
+        .summary-ocr-text--page15-ref .study-p5-section-head:first-child,
+        .summary-ocr-text--page16-ref .study-p5-section-head:first-child,
+        .summary-ocr-text--page17-ref .study-p5-section-head:first-child,
+        .summary-ocr-text--page18-ref .study-p5-section-head:first-child,
+        .summary-ocr-text--page19-ref .study-p5-section-head:first-child,
+        .summary-ocr-text--page20-ref .study-p5-section-head:first-child,
+        .summary-ocr-text--page21-ref .study-p5-section-head:first-child,
+        .summary-ocr-text--page22-ref .study-p5-section-head:first-child,
+        .summary-ocr-text--page23-ref .study-p5-section-head:first-child,
+        .summary-ocr-text--page24-ref .study-p5-section-head:first-child {
+            margin-top: 0;
+        }
+        .summary-ocr-text--page7-ref .study-p5-section-head--allcaps,
+        .summary-ocr-text--page13-ref .study-p5-section-head--allcaps {
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+        .summary-ocr-text--page5-ref .study-p5-circle-list {
+            margin: 8px 0 18px;
+            padding-inline-start: calc(var(--study-o-a) + 0.42rem);
+            list-style-type: circle;
+            list-style-position: outside;
+        }
+        .summary-ocr-text--page5-ref .study-p5-circle-list > li {
+            margin: 10px 0;
+            padding-inline-start: 0.15em;
+        }
+        .summary-ocr-text--page5-ref .study-p5-cont-line {
+            margin: 8px 0 6px;
+            padding-inline-start: 1.35rem;
+            font-weight: 400;
+        }
+        .summary-ocr-text-fa.summary-ocr-text--page5-ref .study-p5-cont-line {
+            padding-inline-start: 1.25rem;
+        }
+        .summary-ocr-text--page5-ref .study-p5-cartier-dash {
+            margin: 14px 0 18px;
+            padding-inline-start: 0.15rem;
+        }
+        .summary-ocr-text--page5-ref .study-p5-cartier-dash::before {
+            content: "- ";
+            font-weight: 600;
+        }
+        .summary-ocr-text--page5-ref .study-p5-letter-list,
+        .summary-ocr-text--page7-ref .study-p5-letter-list,
+        .summary-ocr-text--page8-ref .study-p5-letter-list,
+        .summary-ocr-text--page9-ref .study-p5-letter-list,
+        .summary-ocr-text--page10-ref .study-p5-letter-list,
+        .summary-ocr-text--page11-ref .study-p5-letter-list,
+        .summary-ocr-text--page12-ref .study-p5-letter-list,
+        .summary-ocr-text--page13-ref .study-p5-letter-list,
+        .summary-ocr-text--page14-ref .study-p5-letter-list,
+        .summary-ocr-text--page15-ref .study-p5-letter-list,
+        .summary-ocr-text--page16-ref .study-p5-letter-list,
+        .summary-ocr-text--page17-ref .study-p5-letter-list,
+        .summary-ocr-text--page18-ref .study-p5-letter-list,
+        .summary-ocr-text--page19-ref .study-p5-letter-list,
+        .summary-ocr-text--page20-ref .study-p5-letter-list,
+        .summary-ocr-text--page21-ref .study-p5-letter-list,
+        .summary-ocr-text--page22-ref .study-p5-letter-list,
+        .summary-ocr-text--page23-ref .study-p5-letter-list,
+        .summary-ocr-text--page24-ref .study-p5-letter-list {
+            margin: 10px 0 22px;
+            padding-inline-start: calc(var(--study-o-a) + 0.52rem);
+        }
+        .summary-ocr-text--page5-ref .study-p5-letter-list > li,
+        .summary-ocr-text--page7-ref .study-p5-letter-list > li,
+        .summary-ocr-text--page8-ref .study-p5-letter-list > li,
+        .summary-ocr-text--page9-ref .study-p5-letter-list > li,
+        .summary-ocr-text--page10-ref .study-p5-letter-list > li,
+        .summary-ocr-text--page11-ref .study-p5-letter-list > li,
+        .summary-ocr-text--page12-ref .study-p5-letter-list > li,
+        .summary-ocr-text--page13-ref .study-p5-letter-list > li,
+        .summary-ocr-text--page14-ref .study-p5-letter-list > li,
+        .summary-ocr-text--page15-ref .study-p5-letter-list > li,
+        .summary-ocr-text--page16-ref .study-p5-letter-list > li,
+        .summary-ocr-text--page17-ref .study-p5-letter-list > li,
+        .summary-ocr-text--page18-ref .study-p5-letter-list > li,
+        .summary-ocr-text--page19-ref .study-p5-letter-list > li,
+        .summary-ocr-text--page20-ref .study-p5-letter-list > li,
+        .summary-ocr-text--page21-ref .study-p5-letter-list > li,
+        .summary-ocr-text--page22-ref .study-p5-letter-list > li,
+        .summary-ocr-text--page23-ref .study-p5-letter-list > li,
+        .summary-ocr-text--page24-ref .study-p5-letter-list > li {
+            margin: 12px 0;
+            padding-inline-start: 0;
+        }
+        .summary-ocr-text-fa.summary-ocr-text--page5-ref .study-p5-letter-list,
+        .summary-ocr-text-fa.summary-ocr-text--page7-ref .study-p5-letter-list,
+        .summary-ocr-text-fa.summary-ocr-text--page8-ref .study-p5-letter-list,
+        .summary-ocr-text-fa.summary-ocr-text--page9-ref .study-p5-letter-list,
+        .summary-ocr-text-fa.summary-ocr-text--page10-ref .study-p5-letter-list,
+        .summary-ocr-text-fa.summary-ocr-text--page11-ref .study-p5-letter-list,
+        .summary-ocr-text-fa.summary-ocr-text--page12-ref .study-p5-letter-list,
+        .summary-ocr-text-fa.summary-ocr-text--page13-ref .study-p5-letter-list,
+        .summary-ocr-text-fa.summary-ocr-text--page14-ref .study-p5-letter-list,
+        .summary-ocr-text-fa.summary-ocr-text--page15-ref .study-p5-letter-list,
+        .summary-ocr-text-fa.summary-ocr-text--page16-ref .study-p5-letter-list,
+        .summary-ocr-text-fa.summary-ocr-text--page17-ref .study-p5-letter-list,
+        .summary-ocr-text-fa.summary-ocr-text--page18-ref .study-p5-letter-list,
+        .summary-ocr-text-fa.summary-ocr-text--page19-ref .study-p5-letter-list,
+        .summary-ocr-text-fa.summary-ocr-text--page20-ref .study-p5-letter-list,
+        .summary-ocr-text-fa.summary-ocr-text--page21-ref .study-p5-letter-list,
+        .summary-ocr-text-fa.summary-ocr-text--page22-ref .study-p5-letter-list,
+        .summary-ocr-text-fa.summary-ocr-text--page23-ref .study-p5-letter-list,
+        .summary-ocr-text-fa.summary-ocr-text--page24-ref .study-p5-letter-list {
+            padding-inline-start: calc(var(--study-o-a) + 0.45rem);
+        }
+        /* صفحهٔ ۷ — لیست a) b) c) ؛ زیرلیست i. ii. ؛ اقتصاد ۱. ۲. ۳. */
+        .summary-ocr-text--page7-ref {
+            position: relative;
+            padding-bottom: 2.25rem;
+            font-family: Arial, Helvetica, "Segoe UI", sans-serif;
+        }
+        .summary-ocr-text-fa.summary-ocr-text--page7-ref {
+            font-family: Tahoma, "Segoe UI", Arial, sans-serif;
+        }
+        .summary-ocr-text--page7-ref .study-p7-list-paren {
+            list-style: none;
+            margin: 10px 0 22px;
+            padding-inline-start: calc(var(--study-o-a) + 0.35rem);
+            counter-reset: p7paren;
+        }
+        .summary-ocr-text--page7-ref .study-p7-list-paren > li {
+            counter-increment: p7paren;
+            margin: 12px 0;
+            padding-inline-start: 0;
+        }
+        .summary-ocr-text--page7-ref .study-p7-list-paren > li::before {
+            content: counter(p7paren, lower-alpha) ") ";
+            font-weight: 400;
+        }
+        .summary-ocr-text--page7-ref .study-p7-nested-roman {
+            margin: 10px 0 6px;
+            padding-inline-start: calc(var(--study-o-i) + 0.35rem);
+            list-style-type: lower-roman;
+            list-style-position: outside;
+        }
+        .summary-ocr-text--page7-ref .study-p7-nested-roman > li {
+            margin: 10px 0;
+        }
+        .summary-ocr-text-en.summary-ocr-text--page7-ref .study-p7-nested-roman > li::marker,
+        .summary-ocr-text-fr.summary-ocr-text--page7-ref .study-p7-nested-roman > li::marker {
+            font-weight: 700;
+        }
+        .summary-ocr-text--page7-ref .study-p7-economy-ol {
+            margin: 10px 0 22px;
+            padding-inline-start: calc(var(--study-o-a) + 0.55rem);
+            list-style-type: decimal;
+            list-style-position: outside;
+        }
+        .summary-ocr-text--page7-ref .study-p7-economy-ol > li {
+            margin: 12px 0;
+        }
+        .summary-ocr-text--page8-ref {
+            position: relative;
+            padding-bottom: 2.25rem;
+            font-family: Arial, Helvetica, "Segoe UI", sans-serif;
+        }
+        .summary-ocr-text-fa.summary-ocr-text--page8-ref {
+            font-family: Tahoma, "Segoe UI", Arial, sans-serif;
+        }
+        .summary-ocr-text--page8-ref .study-p5-letter-list > li {
+            margin: 14px 0;
+        }
+        .summary-ocr-text--page9-ref {
+            position: relative;
+            padding-bottom: 2.25rem;
+            font-family: Arial, Helvetica, "Segoe UI", sans-serif;
+        }
+        .summary-ocr-text-fa.summary-ocr-text--page9-ref {
+            font-family: Tahoma, "Segoe UI", Arial, sans-serif;
+        }
+        .summary-ocr-text--page9-ref .study-p5-letter-list > li {
+            margin: 14px 0;
+        }
+        /* پاراگراف زیر تیتر RESPONSIBLE GOVERNMENT — هم‌تراز با بلاک متن لیست */
+        .summary-ocr-text--page9-ref .study-p9-aligned-para {
+            margin: 12px 0 18px;
+            padding-inline-start: calc(var(--study-o-a) + 2.05rem);
+        }
+        .summary-ocr-text-fa.summary-ocr-text--page9-ref .study-p9-aligned-para {
+            padding-inline-start: calc(var(--study-o-a) + 1.85rem);
+        }
+        .summary-ocr-text--page5-ref .study-page-foot,
+        .summary-ocr-text--page7-ref .study-page-foot,
+        .summary-ocr-text--page8-ref .study-page-foot,
+        .summary-ocr-text--page9-ref .study-page-foot,
+        .summary-ocr-text--page10-ref .study-page-foot,
+        .summary-ocr-text--page11-ref .study-page-foot,
+        .summary-ocr-text--page12-ref .study-page-foot,
+        .summary-ocr-text--page13-ref .study-page-foot,
+        .summary-ocr-text--page14-ref .study-page-foot,
+        .summary-ocr-text--page15-ref .study-page-foot,
+        .summary-ocr-text--page16-ref .study-page-foot,
+        .summary-ocr-text--page17-ref .study-page-foot,
+        .summary-ocr-text--page18-ref .study-page-foot,
+        .summary-ocr-text--page19-ref .study-page-foot,
+        .summary-ocr-text--page20-ref .study-page-foot,
+        .summary-ocr-text--page21-ref .study-page-foot,
+        .summary-ocr-text--page22-ref .study-page-foot,
+        .summary-ocr-text--page23-ref .study-page-foot,
+        .summary-ocr-text--page24-ref .study-page-foot,
+        .summary-ocr-text--page25-ref .study-page-foot,
+        .summary-ocr-text--page26-ref .study-page-foot,
+        .summary-ocr-text--page27-ref .study-page-foot,
+        .summary-ocr-text--page28-ref .study-page-foot,
+        .summary-ocr-text--page29-ref .study-page-foot,
+        .summary-ocr-text--page30-ref .study-page-foot,
+        .summary-ocr-text--page31-ref .study-page-foot,
+        .summary-ocr-text--page32-ref .study-page-foot,
+        .summary-ocr-text--page33-ref .study-page-foot,
+        .summary-ocr-text--page34-ref .study-page-foot,
+        .summary-ocr-text--page35-ref .study-page-foot {
+            position: absolute;
+            bottom: 10px;
+            inset-inline-end: 18px;
+            margin: 0;
+            font-size: 0.95rem;
+            opacity: 0.88;
+        }
+        .summary-ocr-text--page10-ref,
+        .summary-ocr-text--page11-ref,
+        .summary-ocr-text--page12-ref,
+        .summary-ocr-text--page13-ref,
+        .summary-ocr-text--page14-ref,
+        .summary-ocr-text--page15-ref,
+        .summary-ocr-text--page16-ref,
+        .summary-ocr-text--page17-ref,
+        .summary-ocr-text--page18-ref,
+        .summary-ocr-text--page19-ref,
+        .summary-ocr-text--page20-ref,
+        .summary-ocr-text--page21-ref,
+        .summary-ocr-text--page22-ref,
+        .summary-ocr-text--page23-ref,
+        .summary-ocr-text--page24-ref {
+            position: relative;
+            padding-bottom: 2.25rem;
+            font-family: Arial, Helvetica, "Segoe UI", sans-serif;
+            --study-ref-gutter: 1.2rem;
+        }
+        .summary-ocr-text-fa.summary-ocr-text--page10-ref,
+        .summary-ocr-text-fa.summary-ocr-text--page11-ref,
+        .summary-ocr-text-fa.summary-ocr-text--page12-ref,
+        .summary-ocr-text-fa.summary-ocr-text--page13-ref,
+        .summary-ocr-text-fa.summary-ocr-text--page14-ref,
+        .summary-ocr-text-fa.summary-ocr-text--page15-ref,
+        .summary-ocr-text-fa.summary-ocr-text--page16-ref,
+        .summary-ocr-text-fa.summary-ocr-text--page17-ref,
+        .summary-ocr-text-fa.summary-ocr-text--page18-ref,
+        .summary-ocr-text-fa.summary-ocr-text--page19-ref,
+        .summary-ocr-text-fa.summary-ocr-text--page20-ref,
+        .summary-ocr-text-fa.summary-ocr-text--page21-ref,
+        .summary-ocr-text-fa.summary-ocr-text--page22-ref,
+        .summary-ocr-text-fa.summary-ocr-text--page23-ref,
+        .summary-ocr-text-fa.summary-ocr-text--page24-ref {
+            font-family: Tahoma, "Segoe UI", Arial, sans-serif;
+        }
+        .summary-ocr-text--page10-ref .study-p5-letter-list > li,
+        .summary-ocr-text--page11-ref .study-p5-letter-list > li,
+        .summary-ocr-text--page12-ref .study-p5-letter-list > li,
+        .summary-ocr-text--page13-ref .study-p5-letter-list > li,
+        .summary-ocr-text--page14-ref .study-p5-letter-list > li,
+        .summary-ocr-text--page15-ref .study-p5-letter-list > li,
+        .summary-ocr-text--page16-ref .study-p5-letter-list > li,
+        .summary-ocr-text--page17-ref .study-p5-letter-list > li,
+        .summary-ocr-text--page18-ref .study-p5-letter-list > li,
+        .summary-ocr-text--page19-ref .study-p5-letter-list > li,
+        .summary-ocr-text--page20-ref .study-p5-letter-list > li,
+        .summary-ocr-text--page21-ref .study-p5-letter-list > li,
+        .summary-ocr-text--page22-ref .study-p5-letter-list > li,
+        .summary-ocr-text--page23-ref .study-p5-letter-list > li,
+        .summary-ocr-text--page24-ref .study-p5-letter-list > li {
+            margin: 14px 0;
+        }
+        .summary-ocr-text--page15-ref ol.study-p15-nested,
+        .summary-ocr-text--page16-ref ol.study-p15-nested,
+        .summary-ocr-text--page19-ref ol.study-p15-nested,
+        .summary-ocr-text--page20-ref ol.study-p15-nested,
+        .summary-ocr-text--page21-ref ol.study-p15-nested,
+        .summary-ocr-text--page22-ref ol.study-p15-nested,
+        .summary-ocr-text--page23-ref ol.study-p15-nested,
+        .summary-ocr-text--page24-ref ol.study-p15-nested {
+            margin: 8px 0 4px;
+            padding-inline-start: calc(var(--study-o-a) + 0.85rem);
+            list-style: none;
+        }
+        .summary-ocr-text--page15-ref ol.study-p15-nested > li,
+        .summary-ocr-text--page16-ref ol.study-p15-nested > li,
+        .summary-ocr-text--page19-ref ol.study-p15-nested > li,
+        .summary-ocr-text--page20-ref ol.study-p15-nested > li,
+        .summary-ocr-text--page21-ref ol.study-p15-nested > li,
+        .summary-ocr-text--page22-ref ol.study-p15-nested > li,
+        .summary-ocr-text--page23-ref ol.study-p15-nested > li,
+        .summary-ocr-text--page24-ref ol.study-p15-nested > li {
+            margin: 10px 0;
+        }
+        .summary-ocr-text--page15-ref ol.study-p15-roman-list,
+        .summary-ocr-text--page16-ref ol.study-p15-roman-list {
+            margin: 8px 0 18px;
+            padding-inline-start: calc(var(--study-o-a) + 0.55rem);
+            list-style: none;
+        }
+        .summary-ocr-text--page15-ref ol.study-p15-roman-list > li,
+        .summary-ocr-text--page16-ref ol.study-p15-roman-list > li {
+            margin: 12px 0;
+        }
+        .summary-ocr-text--page16-ref .study-p16-franco u {
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+        .summary-ocr-text--page17-ref > p:first-of-type,
+        .summary-ocr-text--page18-ref > p:first-of-type,
+        .summary-ocr-text--page19-ref > p:first-of-type,
+        .summary-ocr-text--page20-ref > p:first-of-type,
+        .summary-ocr-text--page21-ref > p:first-of-type,
+        .summary-ocr-text--page22-ref > p:first-of-type,
+        .summary-ocr-text--page23-ref > p:first-of-type,
+        .summary-ocr-text--page24-ref > p:first-of-type {
+            margin: 0 0 12px;
+        }
+        .summary-ocr-text--page17-ref ul.study-p17-bullet-list,
+        .summary-ocr-text--page18-ref ul.study-p17-bullet-list,
+        .summary-ocr-text--page19-ref ul.study-p17-bullet-list,
+        .summary-ocr-text--page20-ref ul.study-p17-bullet-list,
+        .summary-ocr-text--page21-ref ul.study-p17-bullet-list,
+        .summary-ocr-text--page22-ref ul.study-p17-bullet-list,
+        .summary-ocr-text--page23-ref ul.study-p17-bullet-list,
+        .summary-ocr-text--page24-ref ul.study-p17-bullet-list {
+            list-style: none;
+            margin: 8px 0 14px;
+            padding-inline-start: var(--study-ref-gutter);
+        }
+        .summary-ocr-text--page17-ref ul.study-p17-bullet-list > li,
+        .summary-ocr-text--page18-ref ul.study-p17-bullet-list > li,
+        .summary-ocr-text--page19-ref ul.study-p17-bullet-list > li,
+        .summary-ocr-text--page20-ref ul.study-p17-bullet-list > li,
+        .summary-ocr-text--page21-ref ul.study-p17-bullet-list > li,
+        .summary-ocr-text--page22-ref ul.study-p17-bullet-list > li,
+        .summary-ocr-text--page23-ref ul.study-p17-bullet-list > li,
+        .summary-ocr-text--page24-ref ul.study-p17-bullet-list > li {
+            margin: 10px 0;
+            padding-inline-start: 0;
+        }
+        .summary-ocr-text--page17-ref ul.study-p17-bullet-list > li::before,
+        .summary-ocr-text--page18-ref ul.study-p17-bullet-list > li::before,
+        .summary-ocr-text--page19-ref ul.study-p17-bullet-list > li::before,
+        .summary-ocr-text--page20-ref ul.study-p17-bullet-list > li::before,
+        .summary-ocr-text--page21-ref ul.study-p17-bullet-list > li::before,
+        .summary-ocr-text--page22-ref ul.study-p17-bullet-list > li::before,
+        .summary-ocr-text--page23-ref ul.study-p17-bullet-list > li::before,
+        .summary-ocr-text--page24-ref ul.study-p17-bullet-list > li::before {
+            content: "- ";
+            font-weight: 600;
+        }
+        .summary-ocr-text--page18-ref ul.study-p18-star-list,
+        .summary-ocr-text--page19-ref ul.study-p18-star-list {
+            list-style: none;
+            margin: 8px 0 14px;
+            padding-inline-start: var(--study-ref-gutter);
+        }
+        .summary-ocr-text--page18-ref ul.study-p18-star-list > li,
+        .summary-ocr-text--page19-ref ul.study-p18-star-list > li {
+            margin: 10px 0;
+            padding-inline-start: 0;
+        }
+        .summary-ocr-text--page18-ref ul.study-p18-star-list > li::before,
+        .summary-ocr-text--page19-ref ul.study-p18-star-list > li::before {
+            content: "* ";
+            font-weight: 600;
+        }
+        .summary-ocr-text--page19-ref ol.study-p19-root-ol,
+        .summary-ocr-text--page20-ref ol.study-p19-root-ol,
+        .summary-ocr-text--page21-ref ol.study-p19-root-ol,
+        .summary-ocr-text--page22-ref ol.study-p19-root-ol,
+        .summary-ocr-text--page23-ref ol.study-p19-root-ol,
+        .summary-ocr-text--page24-ref ol.study-p19-root-ol {
+            margin: 10px 0 18px;
+            padding-inline-start: calc(var(--study-o-a) + 0.35rem);
+            list-style-type: decimal;
+            list-style-position: outside;
+        }
+        /* شماره داخل متن آیتم است؛ بدون این بلوک، list-style-type از قانون قبلی بر study-list-marker-in-body غلبه می‌کرد */
+        .summary-ocr-text--page19-ref ol.study-p19-root-ol.study-list-marker-in-body,
+        .summary-ocr-text--page20-ref ol.study-p19-root-ol.study-list-marker-in-body,
+        .summary-ocr-text--page21-ref ol.study-p19-root-ol.study-list-marker-in-body,
+        .summary-ocr-text--page22-ref ol.study-p19-root-ol.study-list-marker-in-body,
+        .summary-ocr-text--page23-ref ol.study-p19-root-ol.study-list-marker-in-body,
+        .summary-ocr-text--page24-ref ol.study-p19-root-ol.study-list-marker-in-body {
+            list-style: none;
+        }
+        .summary-ocr-text--page19-ref ol.study-p19-root-ol > li,
+        .summary-ocr-text--page20-ref ol.study-p19-root-ol > li,
+        .summary-ocr-text--page21-ref ol.study-p19-root-ol > li,
+        .summary-ocr-text--page22-ref ol.study-p19-root-ol > li,
+        .summary-ocr-text--page23-ref ol.study-p19-root-ol > li,
+        .summary-ocr-text--page24-ref ol.study-p19-root-ol > li {
+            margin: 14px 0;
+        }
+        .summary-ocr-text--page20-ref .study-p20-body-para,
+        .summary-ocr-text--page21-ref .study-p20-body-para,
+        .summary-ocr-text--page22-ref .study-p20-body-para,
+        .summary-ocr-text--page23-ref .study-p20-body-para,
+        .summary-ocr-text--page24-ref .study-p20-body-para {
+            margin: 12px 0;
+            line-height: 1.55;
+        }
+        .summary-ocr-text--page22-ref ol.study-p15-roman-list,
+        .summary-ocr-text--page23-ref ol.study-p15-roman-list {
+            margin: 8px 0 12px;
+            padding-inline-start: calc(var(--study-o-a) + 0.55rem);
+            list-style: none;
+        }
+        .summary-ocr-text--page22-ref ol.study-p15-roman-list > li,
+        .summary-ocr-text--page23-ref ol.study-p15-roman-list > li {
+            margin: 10px 0;
+        }
+        .summary-ocr-text--page21-ref .study-p22-note,
+        .summary-ocr-text--page22-ref .study-p22-note {
+            margin: 14px 0;
+            padding: 10px 12px;
+            font-size: 0.98rem;
+            font-style: italic;
+            line-height: 1.5;
+            border-inline-start: 3px solid rgba(126, 184, 232, 0.75);
+            background: rgba(126, 184, 232, 0.06);
+            border-radius: 0 8px 8px 0;
+        }
+        body.theme-dark .summary-ocr-text--page21-ref .study-p22-note,
+        body.theme-dark .summary-ocr-text--page22-ref .study-p22-note {
+            border-inline-start-color: rgba(124, 179, 245, 0.45);
+            background: rgba(124, 179, 245, 0.08);
+        }
+        .summary-ocr-text--page18-ref ol.study-p18-inline-num-ol {
+            margin: 10px 0 18px;
+            padding-inline-start: calc(var(--study-o-a) + 0.55rem);
+            list-style: none;
+        }
+        .summary-ocr-text--page18-ref ol.study-p18-inline-num-ol > li {
+            margin: 12px 0;
+        }
+        .summary-ocr-text--page16-ref .study-p16-changing-lead {
+            margin: 8px 0 12px;
+        }
+        .summary-ocr-text--page16-ref ul.study-p16-dash-list {
+            list-style: none;
+            margin: 6px 0 10px;
+            padding-inline-start: var(--study-ref-gutter);
+        }
+        .summary-ocr-text--page16-ref ul.study-p16-dash-list > li {
+            margin: 10px 0;
+            padding-inline-start: 0;
+        }
+        .summary-ocr-text--page16-ref ul.study-p16-dash-list > li::before {
+            content: "- ";
+            font-weight: 600;
+        }
+        .summary-ocr-text--page16-ref ul.study-p16-refugee-sub {
+            list-style: none;
+            margin: 6px 0 12px;
+            padding-inline-start: calc(var(--study-ref-gutter) + 0.75rem);
+        }
+        .summary-ocr-text--page16-ref ul.study-p16-refugee-sub > li {
+            margin: 8px 0;
+            padding-inline-start: 0;
+        }
+        .summary-ocr-text--page16-ref ul.study-p16-refugee-sub > li::before {
+            content: "- ";
+            font-weight: 600;
+        }
+        .summary-ocr-text--page14-ref .study-p14-red-poppy,
+        .summary-ocr-text--page14-ref .study-p14-red-poppy u {
+            color: #b01010;
+            font-weight: 700;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+        body.theme-dark .summary-ocr-text--page14-ref .study-p14-red-poppy,
+        body.theme-dark .summary-ocr-text--page14-ref .study-p14-red-poppy u {
+            color: #ff7a7a;
+        }
+        .summary-ocr-text--page14-ref ol.study-p14-ww2-nested {
+            margin: 8px 0 4px;
+            padding-inline-start: calc(var(--study-o-a) + 0.85rem);
+            list-style: none;
+        }
+        .summary-ocr-text--page14-ref ol.study-p14-ww2-nested > li {
+            margin: 10px 0;
+        }
+        .summary-ocr-text--page10-ref .study-p10-lead {
+            margin: 0 0 14px;
+        }
+        .summary-ocr-text--page10-ref .study-p9-aligned-para {
+            margin: 12px 0 18px;
+            padding-inline-start: calc(var(--study-o-a) + 2.05rem);
+        }
+        .summary-ocr-text-fa.summary-ocr-text--page10-ref .study-p9-aligned-para {
+            padding-inline-start: calc(var(--study-o-a) + 1.85rem);
+        }
+        .summary-ocr-text--page10-ref .study-ref-dash-list,
+        .summary-ocr-text--page11-ref .study-ref-dash-list {
+            list-style: none;
+            margin: 10px 0 14px;
+            padding-inline-start: var(--study-ref-gutter);
+        }
+        .summary-ocr-text--page10-ref .study-ref-dash-list > li,
+        .summary-ocr-text--page11-ref .study-ref-dash-list > li {
+            margin: 10px 0;
+            padding-inline-start: 0;
+        }
+        .summary-ocr-text--page10-ref .study-ref-dash-list > li::before,
+        .summary-ocr-text--page11-ref .study-ref-dash-list > li::before {
+            content: "- ";
+            font-weight: 600;
+        }
+        .summary-ocr-text--page11-ref .study-p11-expansion-lines {
+            margin: 6px 0 18px;
+        }
+        .summary-ocr-text--page11-ref .study-p11-expansion-lines > p {
+            margin: 7px 0;
+        }
+
+        /* صفحات ۱۲+ — قالب برگهٔ مرجع (تیتر وسط/چپ، خط تیره، لیست الفبایی و عددی تو در تو) */
+        .summary-ocr-text--study-ref,
+        .summary-ocr-text--page25-ref,
+        .summary-ocr-text--page26-ref,
+        .summary-ocr-text--page27-ref,
+        .summary-ocr-text--page28-ref,
+        .summary-ocr-text--page29-ref,
+        .summary-ocr-text--page30-ref,
+        .summary-ocr-text--page31-ref,
+        .summary-ocr-text--page32-ref,
+        .summary-ocr-text--page33-ref,
+        .summary-ocr-text--page34-ref,
+        .summary-ocr-text--page35-ref {
+            position: relative;
+            padding-bottom: 2.25rem;
+            font-family: Arial, Helvetica, "Segoe UI", sans-serif;
+            --study-ref-gutter: 1.2rem;
+            --study-ref-step: 1.35rem;
+        }
+        .summary-ocr-text-fa.summary-ocr-text--study-ref,
+        .summary-ocr-text-fa.summary-ocr-text--page25-ref,
+        .summary-ocr-text-fa.summary-ocr-text--page26-ref,
+        .summary-ocr-text-fa.summary-ocr-text--page27-ref,
+        .summary-ocr-text-fa.summary-ocr-text--page28-ref,
+        .summary-ocr-text-fa.summary-ocr-text--page29-ref,
+        .summary-ocr-text-fa.summary-ocr-text--page30-ref,
+        .summary-ocr-text-fa.summary-ocr-text--page31-ref,
+        .summary-ocr-text-fa.summary-ocr-text--page32-ref,
+        .summary-ocr-text-fa.summary-ocr-text--page33-ref,
+        .summary-ocr-text-fa.summary-ocr-text--page34-ref,
+        .summary-ocr-text-fa.summary-ocr-text--page35-ref {
+            font-family: Tahoma, "Segoe UI", Arial, sans-serif;
+        }
+        .summary-ocr-text--study-ref .study-ref-heading-center,
+        .summary-ocr-text--page25-ref .study-ref-heading-center,
+        .summary-ocr-text--page26-ref .study-ref-heading-center,
+        .summary-ocr-text--page27-ref .study-ref-heading-center,
+        .summary-ocr-text--page28-ref .study-ref-heading-center,
+        .summary-ocr-text--page29-ref .study-ref-heading-center,
+        .summary-ocr-text--page30-ref .study-ref-heading-center,
+        .summary-ocr-text--page31-ref .study-ref-heading-center,
+        .summary-ocr-text--page32-ref .study-ref-heading-center,
+        .summary-ocr-text--page33-ref .study-ref-heading-center,
+        .summary-ocr-text--page34-ref .study-ref-heading-center,
+        .summary-ocr-text--page35-ref .study-ref-heading-center {
+            text-align: center;
+            margin: 22px 0 14px;
+            font-size: 1.05rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+        .summary-ocr-text--study-ref .study-ref-heading-center:first-child,
+        .summary-ocr-text--page25-ref .study-ref-heading-center:first-child,
+        .summary-ocr-text--page26-ref .study-ref-heading-center:first-child,
+        .summary-ocr-text--page27-ref .study-ref-heading-center:first-child,
+        .summary-ocr-text--page28-ref .study-ref-heading-center:first-child,
+        .summary-ocr-text--page29-ref .study-ref-heading-center:first-child,
+        .summary-ocr-text--page30-ref .study-ref-heading-center:first-child,
+        .summary-ocr-text--page31-ref .study-ref-heading-center:first-child,
+        .summary-ocr-text--page32-ref .study-ref-heading-center:first-child,
+        .summary-ocr-text--page33-ref .study-ref-heading-center:first-child,
+        .summary-ocr-text--page34-ref .study-ref-heading-center:first-child,
+        .summary-ocr-text--page35-ref .study-ref-heading-center:first-child {
+            margin-top: 0;
+        }
+        .summary-ocr-text--study-ref .study-ref-heading-left-ul,
+        .summary-ocr-text--page25-ref .study-ref-heading-left-ul,
+        .summary-ocr-text--page26-ref .study-ref-heading-left-ul,
+        .summary-ocr-text--page27-ref .study-ref-heading-left-ul,
+        .summary-ocr-text--page28-ref .study-ref-heading-left-ul,
+        .summary-ocr-text--page29-ref .study-ref-heading-left-ul,
+        .summary-ocr-text--page30-ref .study-ref-heading-left-ul,
+        .summary-ocr-text--page31-ref .study-ref-heading-left-ul,
+        .summary-ocr-text--page32-ref .study-ref-heading-left-ul,
+        .summary-ocr-text--page33-ref .study-ref-heading-left-ul,
+        .summary-ocr-text--page34-ref .study-ref-heading-left-ul,
+        .summary-ocr-text--page35-ref .study-ref-heading-left-ul {
+            margin: 18px 0 10px;
+            font-size: 1.02rem;
+            font-weight: 700;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+            text-align: left;
+        }
+        .summary-ocr-text--study-ref .study-ref-heading-justice,
+        .summary-ocr-text--page25-ref .study-ref-heading-justice,
+        .summary-ocr-text--page26-ref .study-ref-heading-justice,
+        .summary-ocr-text--page27-ref .study-ref-heading-justice,
+        .summary-ocr-text--page28-ref .study-ref-heading-justice,
+        .summary-ocr-text--page29-ref .study-ref-heading-justice,
+        .summary-ocr-text--page30-ref .study-ref-heading-justice,
+        .summary-ocr-text--page31-ref .study-ref-heading-justice,
+        .summary-ocr-text--page32-ref .study-ref-heading-justice,
+        .summary-ocr-text--page33-ref .study-ref-heading-justice,
+        .summary-ocr-text--page34-ref .study-ref-heading-justice,
+        .summary-ocr-text--page35-ref .study-ref-heading-justice {
+            text-align: center;
+            margin: 22px 0 12px;
+            font-size: 1.05rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+        .summary-ocr-text--study-ref .study-ref-heading-economy,
+        .summary-ocr-text--page25-ref .study-ref-heading-economy,
+        .summary-ocr-text--page26-ref .study-ref-heading-economy,
+        .summary-ocr-text--page27-ref .study-ref-heading-economy,
+        .summary-ocr-text--page28-ref .study-ref-heading-economy,
+        .summary-ocr-text--page29-ref .study-ref-heading-economy,
+        .summary-ocr-text--page30-ref .study-ref-heading-economy,
+        .summary-ocr-text--page31-ref .study-ref-heading-economy,
+        .summary-ocr-text--page32-ref .study-ref-heading-economy,
+        .summary-ocr-text--page33-ref .study-ref-heading-economy,
+        .summary-ocr-text--page34-ref .study-ref-heading-economy,
+        .summary-ocr-text--page35-ref .study-ref-heading-economy {
+            text-align: center;
+            margin: 20px 0 14px;
+            font-size: 1.05rem;
+            font-weight: 700;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+        .summary-ocr-text--study-ref .study-ref-dash-list,
+        .summary-ocr-text--page25-ref .study-ref-dash-list,
+        .summary-ocr-text--page26-ref .study-ref-dash-list,
+        .summary-ocr-text--page27-ref .study-ref-dash-list,
+        .summary-ocr-text--page28-ref .study-ref-dash-list,
+        .summary-ocr-text--page29-ref .study-ref-dash-list,
+        .summary-ocr-text--page30-ref .study-ref-dash-list,
+        .summary-ocr-text--page31-ref .study-ref-dash-list,
+        .summary-ocr-text--page32-ref .study-ref-dash-list,
+        .summary-ocr-text--page33-ref .study-ref-dash-list,
+        .summary-ocr-text--page34-ref .study-ref-dash-list,
+        .summary-ocr-text--page35-ref .study-ref-dash-list {
+            list-style: none;
+            margin: 10px 0 14px;
+            padding-inline-start: var(--study-ref-gutter);
+        }
+        .summary-ocr-text--study-ref .study-ref-dash-list > li,
+        .summary-ocr-text--page25-ref .study-ref-dash-list > li,
+        .summary-ocr-text--page26-ref .study-ref-dash-list > li,
+        .summary-ocr-text--page27-ref .study-ref-dash-list > li,
+        .summary-ocr-text--page28-ref .study-ref-dash-list > li,
+        .summary-ocr-text--page29-ref .study-ref-dash-list > li,
+        .summary-ocr-text--page30-ref .study-ref-dash-list > li,
+        .summary-ocr-text--page31-ref .study-ref-dash-list > li,
+        .summary-ocr-text--page32-ref .study-ref-dash-list > li,
+        .summary-ocr-text--page33-ref .study-ref-dash-list > li,
+        .summary-ocr-text--page34-ref .study-ref-dash-list > li,
+        .summary-ocr-text--page35-ref .study-ref-dash-list > li {
+            margin: 10px 0;
+            padding-inline-start: 0;
+        }
+        .summary-ocr-text--study-ref .study-ref-dash-list > li::before,
+        .summary-ocr-text--page25-ref .study-ref-dash-list > li::before,
+        .summary-ocr-text--page26-ref .study-ref-dash-list > li::before,
+        .summary-ocr-text--page27-ref .study-ref-dash-list > li::before,
+        .summary-ocr-text--page28-ref .study-ref-dash-list > li::before,
+        .summary-ocr-text--page29-ref .study-ref-dash-list > li::before,
+        .summary-ocr-text--page30-ref .study-ref-dash-list > li::before,
+        .summary-ocr-text--page31-ref .study-ref-dash-list > li::before,
+        .summary-ocr-text--page32-ref .study-ref-dash-list > li::before,
+        .summary-ocr-text--page33-ref .study-ref-dash-list > li::before,
+        .summary-ocr-text--page34-ref .study-ref-dash-list > li::before,
+        .summary-ocr-text--page35-ref .study-ref-dash-list > li::before {
+            content: "- ";
+            font-weight: 600;
+        }
+        .summary-ocr-text--study-ref .study-ref-disc-list,
+        .summary-ocr-text--page25-ref .study-ref-disc-list,
+        .summary-ocr-text--page26-ref .study-ref-disc-list,
+        .summary-ocr-text--page27-ref .study-ref-disc-list,
+        .summary-ocr-text--page28-ref .study-ref-disc-list,
+        .summary-ocr-text--page29-ref .study-ref-disc-list,
+        .summary-ocr-text--page30-ref .study-ref-disc-list,
+        .summary-ocr-text--page31-ref .study-ref-disc-list,
+        .summary-ocr-text--page32-ref .study-ref-disc-list,
+        .summary-ocr-text--page33-ref .study-ref-disc-list,
+        .summary-ocr-text--page34-ref .study-ref-disc-list,
+        .summary-ocr-text--page35-ref .study-ref-disc-list {
+            margin: 10px 0 14px;
+            padding-inline-start: calc(var(--study-ref-gutter) + 0.55rem);
+            list-style-type: disc;
+            list-style-position: outside;
+        }
+        .summary-ocr-text--study-ref .study-ref-disc-list > li,
+        .summary-ocr-text--page25-ref .study-ref-disc-list > li,
+        .summary-ocr-text--page26-ref .study-ref-disc-list > li,
+        .summary-ocr-text--page27-ref .study-ref-disc-list > li,
+        .summary-ocr-text--page28-ref .study-ref-disc-list > li,
+        .summary-ocr-text--page29-ref .study-ref-disc-list > li,
+        .summary-ocr-text--page30-ref .study-ref-disc-list > li,
+        .summary-ocr-text--page31-ref .study-ref-disc-list > li,
+        .summary-ocr-text--page32-ref .study-ref-disc-list > li,
+        .summary-ocr-text--page33-ref .study-ref-disc-list > li,
+        .summary-ocr-text--page34-ref .study-ref-disc-list > li,
+        .summary-ocr-text--page35-ref .study-ref-disc-list > li {
+            margin: 10px 0;
+        }
+        .summary-ocr-text--study-ref .study-ref-ol-alpha,
+        .summary-ocr-text--page25-ref .study-ref-ol-alpha,
+        .summary-ocr-text--page26-ref .study-ref-ol-alpha,
+        .summary-ocr-text--page27-ref .study-ref-ol-alpha,
+        .summary-ocr-text--page28-ref .study-ref-ol-alpha,
+        .summary-ocr-text--page29-ref .study-ref-ol-alpha,
+        .summary-ocr-text--page30-ref .study-ref-ol-alpha,
+        .summary-ocr-text--page31-ref .study-ref-ol-alpha,
+        .summary-ocr-text--page32-ref .study-ref-ol-alpha,
+        .summary-ocr-text--page33-ref .study-ref-ol-alpha,
+        .summary-ocr-text--page34-ref .study-ref-ol-alpha,
+        .summary-ocr-text--page35-ref .study-ref-ol-alpha {
+            margin: 8px 0 16px;
+            padding-inline-start: calc(var(--study-ref-gutter) + 0.35rem);
+            list-style-type: lower-alpha;
+            list-style-position: outside;
+        }
+        .summary-ocr-text--study-ref .study-ref-ol-alpha > li,
+        .summary-ocr-text--page25-ref .study-ref-ol-alpha > li,
+        .summary-ocr-text--page26-ref .study-ref-ol-alpha > li,
+        .summary-ocr-text--page27-ref .study-ref-ol-alpha > li,
+        .summary-ocr-text--page28-ref .study-ref-ol-alpha > li,
+        .summary-ocr-text--page29-ref .study-ref-ol-alpha > li,
+        .summary-ocr-text--page30-ref .study-ref-ol-alpha > li,
+        .summary-ocr-text--page31-ref .study-ref-ol-alpha > li,
+        .summary-ocr-text--page32-ref .study-ref-ol-alpha > li,
+        .summary-ocr-text--page33-ref .study-ref-ol-alpha > li,
+        .summary-ocr-text--page34-ref .study-ref-ol-alpha > li,
+        .summary-ocr-text--page35-ref .study-ref-ol-alpha > li {
+            margin: 10px 0;
+        }
+        .summary-ocr-text--study-ref .study-ref-ol-alpha .study-ref-ol-alpha,
+        .summary-ocr-text--page25-ref .study-ref-ol-alpha .study-ref-ol-alpha,
+        .summary-ocr-text--page26-ref .study-ref-ol-alpha .study-ref-ol-alpha,
+        .summary-ocr-text--page27-ref .study-ref-ol-alpha .study-ref-ol-alpha,
+        .summary-ocr-text--page28-ref .study-ref-ol-alpha .study-ref-ol-alpha,
+        .summary-ocr-text--page29-ref .study-ref-ol-alpha .study-ref-ol-alpha,
+        .summary-ocr-text--page30-ref .study-ref-ol-alpha .study-ref-ol-alpha,
+        .summary-ocr-text--page31-ref .study-ref-ol-alpha .study-ref-ol-alpha,
+        .summary-ocr-text--page32-ref .study-ref-ol-alpha .study-ref-ol-alpha,
+        .summary-ocr-text--page33-ref .study-ref-ol-alpha .study-ref-ol-alpha,
+        .summary-ocr-text--page34-ref .study-ref-ol-alpha .study-ref-ol-alpha,
+        .summary-ocr-text--page35-ref .study-ref-ol-alpha .study-ref-ol-alpha {
+            margin: 8px 0;
+            padding-inline-start: var(--study-ref-step);
+        }
+        .summary-ocr-text--study-ref .study-ref-ol-num,
+        .summary-ocr-text--page25-ref .study-ref-ol-num,
+        .summary-ocr-text--page26-ref .study-ref-ol-num,
+        .summary-ocr-text--page27-ref .study-ref-ol-num,
+        .summary-ocr-text--page28-ref .study-ref-ol-num,
+        .summary-ocr-text--page29-ref .study-ref-ol-num,
+        .summary-ocr-text--page30-ref .study-ref-ol-num,
+        .summary-ocr-text--page31-ref .study-ref-ol-num,
+        .summary-ocr-text--page32-ref .study-ref-ol-num,
+        .summary-ocr-text--page33-ref .study-ref-ol-num,
+        .summary-ocr-text--page34-ref .study-ref-ol-num,
+        .summary-ocr-text--page35-ref .study-ref-ol-num {
+            margin: 8px 0;
+            padding-inline-start: var(--study-ref-step);
+            list-style-type: decimal;
+            list-style-position: outside;
+        }
+        .summary-ocr-text--study-ref .study-ref-ol-num > li,
+        .summary-ocr-text--page25-ref .study-ref-ol-num > li,
+        .summary-ocr-text--page26-ref .study-ref-ol-num > li,
+        .summary-ocr-text--page27-ref .study-ref-ol-num > li,
+        .summary-ocr-text--page28-ref .study-ref-ol-num > li,
+        .summary-ocr-text--page29-ref .study-ref-ol-num > li,
+        .summary-ocr-text--page30-ref .study-ref-ol-num > li,
+        .summary-ocr-text--page31-ref .study-ref-ol-num > li,
+        .summary-ocr-text--page32-ref .study-ref-ol-num > li,
+        .summary-ocr-text--page33-ref .study-ref-ol-num > li,
+        .summary-ocr-text--page34-ref .study-ref-ol-num > li,
+        .summary-ocr-text--page35-ref .study-ref-ol-num > li {
+            margin: 8px 0;
+        }
+        .summary-ocr-text--study-ref .study-ref-ol-roman,
+        .summary-ocr-text--page25-ref .study-ref-ol-roman,
+        .summary-ocr-text--page26-ref .study-ref-ol-roman,
+        .summary-ocr-text--page27-ref .study-ref-ol-roman,
+        .summary-ocr-text--page28-ref .study-ref-ol-roman,
+        .summary-ocr-text--page29-ref .study-ref-ol-roman,
+        .summary-ocr-text--page30-ref .study-ref-ol-roman,
+        .summary-ocr-text--page31-ref .study-ref-ol-roman,
+        .summary-ocr-text--page32-ref .study-ref-ol-roman,
+        .summary-ocr-text--page33-ref .study-ref-ol-roman,
+        .summary-ocr-text--page34-ref .study-ref-ol-roman,
+        .summary-ocr-text--page35-ref .study-ref-ol-roman {
+            margin: 8px 0;
+            padding-inline-start: var(--study-ref-step);
+            list-style-type: lower-roman;
+            list-style-position: outside;
+        }
+        .summary-ocr-text--study-ref .study-ref-ol-roman > li,
+        .summary-ocr-text--page25-ref .study-ref-ol-roman > li,
+        .summary-ocr-text--page26-ref .study-ref-ol-roman > li,
+        .summary-ocr-text--page27-ref .study-ref-ol-roman > li,
+        .summary-ocr-text--page28-ref .study-ref-ol-roman > li,
+        .summary-ocr-text--page29-ref .study-ref-ol-roman > li,
+        .summary-ocr-text--page30-ref .study-ref-ol-roman > li,
+        .summary-ocr-text--page31-ref .study-ref-ol-roman > li,
+        .summary-ocr-text--page32-ref .study-ref-ol-roman > li,
+        .summary-ocr-text--page33-ref .study-ref-ol-roman > li,
+        .summary-ocr-text--page34-ref .study-ref-ol-roman > li,
+        .summary-ocr-text--page35-ref .study-ref-ol-roman > li {
+            margin: 8px 0;
+        }
+        .summary-ocr-text--study-ref .study-ref-vote-head,
+        .summary-ocr-text--page25-ref .study-ref-vote-head,
+        .summary-ocr-text--page26-ref .study-ref-vote-head,
+        .summary-ocr-text--page27-ref .study-ref-vote-head,
+        .summary-ocr-text--page28-ref .study-ref-vote-head,
+        .summary-ocr-text--page29-ref .study-ref-vote-head,
+        .summary-ocr-text--page30-ref .study-ref-vote-head,
+        .summary-ocr-text--page31-ref .study-ref-vote-head,
+        .summary-ocr-text--page32-ref .study-ref-vote-head,
+        .summary-ocr-text--page33-ref .study-ref-vote-head,
+        .summary-ocr-text--page34-ref .study-ref-vote-head,
+        .summary-ocr-text--page35-ref .study-ref-vote-head {
+            margin: 18px 0 8px;
+            font-weight: 700;
+            text-decoration: underline;
+            font-size: 1.02rem;
+        }
+        .summary-ocr-text--study-ref .study-ref-symbol-title,
+        .summary-ocr-text--page25-ref .study-ref-symbol-title,
+        .summary-ocr-text--page26-ref .study-ref-symbol-title,
+        .summary-ocr-text--page27-ref .study-ref-symbol-title,
+        .summary-ocr-text--page28-ref .study-ref-symbol-title,
+        .summary-ocr-text--page29-ref .study-ref-symbol-title,
+        .summary-ocr-text--page30-ref .study-ref-symbol-title,
+        .summary-ocr-text--page31-ref .study-ref-symbol-title,
+        .summary-ocr-text--page32-ref .study-ref-symbol-title,
+        .summary-ocr-text--page33-ref .study-ref-symbol-title,
+        .summary-ocr-text--page34-ref .study-ref-symbol-title,
+        .summary-ocr-text--page35-ref .study-ref-symbol-title {
+            text-align: center;
+            margin: 0 0 18px;
+            font-weight: 700;
+            text-transform: uppercase;
+            text-decoration: underline;
+            font-size: 1.05rem;
+        }
+        .summary-ocr-text--study-ref .study-ref-letter-lead,
+        .summary-ocr-text--page25-ref .study-ref-letter-lead,
+        .summary-ocr-text--page26-ref .study-ref-letter-lead,
+        .summary-ocr-text--page27-ref .study-ref-letter-lead,
+        .summary-ocr-text--page28-ref .study-ref-letter-lead,
+        .summary-ocr-text--page29-ref .study-ref-letter-lead,
+        .summary-ocr-text--page30-ref .study-ref-letter-lead,
+        .summary-ocr-text--page31-ref .study-ref-letter-lead,
+        .summary-ocr-text--page32-ref .study-ref-letter-lead,
+        .summary-ocr-text--page33-ref .study-ref-letter-lead,
+        .summary-ocr-text--page34-ref .study-ref-letter-lead,
+        .summary-ocr-text--page35-ref .study-ref-letter-lead {
+            margin: 14px 0 8px;
+            font-weight: 700;
+        }
+        .summary-ocr-text--study-ref .study-ref-indent-block,
+        .summary-ocr-text--page25-ref .study-ref-indent-block,
+        .summary-ocr-text--page26-ref .study-ref-indent-block,
+        .summary-ocr-text--page27-ref .study-ref-indent-block,
+        .summary-ocr-text--page28-ref .study-ref-indent-block,
+        .summary-ocr-text--page29-ref .study-ref-indent-block,
+        .summary-ocr-text--page30-ref .study-ref-indent-block,
+        .summary-ocr-text--page31-ref .study-ref-indent-block,
+        .summary-ocr-text--page32-ref .study-ref-indent-block,
+        .summary-ocr-text--page33-ref .study-ref-indent-block,
+        .summary-ocr-text--page34-ref .study-ref-indent-block,
+        .summary-ocr-text--page35-ref .study-ref-indent-block {
+            margin: 8px 0;
+            padding-inline-start: calc(var(--study-ref-gutter) + var(--study-ref-step));
+        }
+        .summary-ocr-text--study-ref .study-ref-i-head,
+        .summary-ocr-text--page25-ref .study-ref-i-head,
+        .summary-ocr-text--page26-ref .study-ref-i-head,
+        .summary-ocr-text--page27-ref .study-ref-i-head,
+        .summary-ocr-text--page28-ref .study-ref-i-head,
+        .summary-ocr-text--page29-ref .study-ref-i-head,
+        .summary-ocr-text--page30-ref .study-ref-i-head,
+        .summary-ocr-text--page31-ref .study-ref-i-head,
+        .summary-ocr-text--page32-ref .study-ref-i-head,
+        .summary-ocr-text--page33-ref .study-ref-i-head,
+        .summary-ocr-text--page34-ref .study-ref-i-head,
+        .summary-ocr-text--page35-ref .study-ref-i-head {
+            margin: 14px 0 10px;
+            font-weight: 700;
+            padding-inline-start: 0.15rem;
+        }
+        .summary-ocr-text--study-ref .study-page-foot,
+        .summary-ocr-text--page25-ref .study-page-foot,
+        .summary-ocr-text--page26-ref .study-page-foot,
+        .summary-ocr-text--page27-ref .study-page-foot,
+        .summary-ocr-text--page28-ref .study-page-foot,
+        .summary-ocr-text--page29-ref .study-page-foot,
+        .summary-ocr-text--page30-ref .study-page-foot,
+        .summary-ocr-text--page31-ref .study-page-foot,
+        .summary-ocr-text--page32-ref .study-page-foot,
+        .summary-ocr-text--page33-ref .study-page-foot,
+        .summary-ocr-text--page34-ref .study-page-foot,
+        .summary-ocr-text--page35-ref .study-page-foot {
+            position: absolute;
+            bottom: 10px;
+            inset-inline-end: 18px;
+            margin: 0;
+            font-size: 0.95rem;
+            opacity: 0.88;
+        }
+        .summary-ocr-text--page29-ref mark.study-ref-book-highlight,
+        .summary-ocr-text--page30-ref mark.study-ref-book-highlight,
+        .summary-ocr-text--page31-ref mark.study-ref-book-highlight,
+        .summary-ocr-text--page32-ref mark.study-ref-book-highlight,
+        .summary-ocr-text--page33-ref mark.study-ref-book-highlight,
+        .summary-ocr-text--page34-ref mark.study-ref-book-highlight,
+        .summary-ocr-text--page35-ref mark.study-ref-book-highlight {
+            background: #fff59d;
+            color: inherit;
+            padding: 0 0.15em;
+            border-radius: 2px;
+        }
+        body.theme-dark .summary-ocr-text--page29-ref mark.study-ref-book-highlight,
+        body.theme-dark .summary-ocr-text--page30-ref mark.study-ref-book-highlight,
+        body.theme-dark .summary-ocr-text--page31-ref mark.study-ref-book-highlight,
+        body.theme-dark .summary-ocr-text--page32-ref mark.study-ref-book-highlight,
+        body.theme-dark .summary-ocr-text--page33-ref mark.study-ref-book-highlight,
+        body.theme-dark .summary-ocr-text--page34-ref mark.study-ref-book-highlight,
+        body.theme-dark .summary-ocr-text--page35-ref mark.study-ref-book-highlight {
+            background: #6d6518;
+            color: #faf8e8;
+        }
+
         /* عنوان بخش‌ها: همیشه فارسی + (انگلیسی یا فرانسه بسته به EN+FA / FR+FA) */
         .summary-title-stack {
             display: flex;
@@ -336,6 +1997,7 @@
             gap: 6px;
             flex: 1;
             min-width: 0;
+            overflow-wrap: break-word;
         }
         .summary-heading-fa {
             direction: rtl;
@@ -434,6 +2096,7 @@
             list-style: none;
             padding: 0;
             margin: 0;
+            min-width: 0;
         }
 
         .summary-list-item {
@@ -441,7 +2104,8 @@
             position: relative;
             line-height: 2;
             border-bottom: 1px solid #e8ecf0;
-            transition: all 0.3s ease;
+            min-width: 0;
+            max-width: 100%;
         }
 
         .summary-list-item:last-child {
@@ -457,10 +2121,12 @@
             font-size: 1.3em;
         }
 
-        .summary-list-item:hover {
-            background: var(--bs-highlight-bg);
-            padding-right: 10px;
-            border-right: 3px solid #f1c40f;
+        .summary-item-fa,
+        .summary-item-en,
+        .summary-item-fr {
+            min-width: 0;
+            max-width: 100%;
+            overflow-wrap: break-word;
         }
 
         .summary-item-fa {
@@ -638,10 +2304,24 @@
             unicode-bidi: isolate;
         }
 
+        /* دکمهٔ بازگشت چندزبانه — در عرض کم خط می‌شکند تا از صفحه بیرون نزند */
+        @media (max-width: 560px) {
+            .back-btn.back-btn-oneline {
+                white-space: normal;
+                flex-wrap: wrap;
+                justify-content: center;
+                text-align: center;
+                row-gap: 6px;
+            }
+        }
+
         /* Tablet Styles */
         @media (max-width: 968px) {
             body {
-                padding: 15px;
+                padding-top: max(15px, env(safe-area-inset-top, 0px));
+                padding-right: max(15px, env(safe-area-inset-right, 0px));
+                padding-bottom: max(15px, env(safe-area-inset-bottom, 0px));
+                padding-left: max(15px, env(safe-area-inset-left, 0px));
             }
             
             .container {
@@ -688,12 +2368,19 @@
             .summary-subsection-title {
                 font-size: 1.2em;
             }
+
+            .tool-bar {
+                padding-inline: max(14px, env(safe-area-inset-left, 0px)) max(14px, env(safe-area-inset-right, 0px));
+            }
         }
         
         /* Mobile Styles */
         @media (max-width: 768px) {
             body {
-                padding: 10px;
+                padding-top: max(10px, env(safe-area-inset-top, 0px));
+                padding-right: max(10px, env(safe-area-inset-right, 0px));
+                padding-bottom: max(10px, env(safe-area-inset-bottom, 0px));
+                padding-left: max(10px, env(safe-area-inset-left, 0px));
                 line-height: 1.6;
             }
             
@@ -789,12 +2476,27 @@
             .highlight-box strong {
                 font-size: 1.05em;
             }
+
+            .tool-bar {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 14px;
+                padding-inline: max(12px, env(safe-area-inset-left, 0px)) max(12px, env(safe-area-inset-right, 0px));
+            }
+
+            .tool-bar .group {
+                justify-content: center;
+                width: 100%;
+            }
         }
         
         /* Small Mobile Styles */
         @media (max-width: 600px) {
             body {
-                padding: 8px;
+                padding-top: max(8px, env(safe-area-inset-top, 0px));
+                padding-right: max(8px, env(safe-area-inset-right, 0px));
+                padding-bottom: max(8px, env(safe-area-inset-bottom, 0px));
+                padding-left: max(8px, env(safe-area-inset-left, 0px));
             }
             
             .header {
@@ -802,7 +2504,8 @@
             }
             
             .header h1 {
-                font-size: 1.4em;
+                font-size: clamp(1.15rem, 5vw, 1.4em);
+                word-break: break-word;
                 margin-bottom: 8px;
             }
             
@@ -871,7 +2574,10 @@
         /* Very Small Mobile Styles */
         @media (max-width: 400px) {
             body {
-                padding: 5px;
+                padding-top: max(5px, env(safe-area-inset-top, 0px));
+                padding-right: max(5px, env(safe-area-inset-right, 0px));
+                padding-bottom: max(5px, env(safe-area-inset-bottom, 0px));
+                padding-left: max(5px, env(safe-area-inset-left, 0px));
                 line-height: 1.5;
             }
             
