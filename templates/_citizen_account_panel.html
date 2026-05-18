@@ -1,0 +1,52 @@
+{# Topbar account popup — sign-in only (EN / FR). #}
+<link rel="stylesheet" href="{{ url_for('static', filename='citizen_account_panel.css') }}?v=20260519c" />
+<div id="acctPanelModal" class="subscription-modal acct-panel-modal" role="dialog" aria-modal="true" aria-labelledby="acctPanelTitle" dir="ltr" lang="en" hidden>
+  <div class="subscription-modal-backdrop" data-acct-close></div>
+  <div class="subscription-modal-box acct-panel-box" id="acctPanelBox" dir="ltr">
+    <h2 id="acctPanelTitle" class="subscription-modal-title siteLang">
+      <span class="acct-panel-title-default">
+        <span class="siteLang__en">Account</span>
+        <span class="siteLang__fr">Compte</span>
+      </span>
+      <span class="acct-panel-title-login" hidden>
+        <span class="siteLang__en">Sign in</span>
+        <span class="siteLang__fr">Connexion</span>
+      </span>
+    </h2>
+    <div id="acctPanelMember" class="acct-panel-member" hidden>
+      <p class="acct-panel-member__welcome siteLang">
+        <span class="siteLang__en">Your subscription is active.</span>
+        <span class="siteLang__fr">Votre abonnement est actif.</span>
+      </p>
+      <p class="acct-panel-member__row">
+        <span class="acct-panel-member__label siteLang"><span class="siteLang__en">Name:</span><span class="siteLang__fr">Nom&nbsp;:</span></span>
+        <strong id="acctPanelDisplayName" class="acct-panel-member__value"></strong>
+      </p>
+      <p class="acct-panel-member__row">
+        <span class="acct-panel-member__label siteLang"><span class="siteLang__en">Username:</span><span class="siteLang__fr">Nom d’utilisateur&nbsp;:</span></span>
+        <strong id="acctPanelUsername" class="acct-panel-member__value" dir="ltr"></strong>
+      </p>
+      <p id="acctPanelAccessUntil" class="acct-panel-access-until" dir="ltr"></p>
+      <div class="acct-panel-member__actions">
+        <button type="button" class="subscription-btn subscription-btn-submit siteLang" id="acctPanelMemberClose">
+          <span class="siteLang__en">Close</span>
+          <span class="siteLang__fr">Fermer</span>
+        </button>
+        <button type="button" class="subscription-btn subscription-btn-signout siteLang" id="acctPanelSignOut">
+          <span class="siteLang__en">Sign out</span>
+          <span class="siteLang__fr">Déconnexion</span>
+        </button>
+      </div>
+    </div>
+    <div id="acctPanelLogin" class="acct-panel-login" hidden>
+      <input type="text" id="acctPanelMobile" class="acct-login-input" autocomplete="username" dir="ltr" inputmode="tel" placeholder="Username">
+      <input type="password" id="acctPanelPassword" class="acct-login-input" autocomplete="current-password" placeholder="Password">
+      <p id="acctPanelLoginError" class="acct-login-error" hidden></p>
+      <div class="acct-login-actions">
+        <button type="button" class="acct-login-btn acct-login-btn--primary siteLang" id="acctPanelLoginBtn"><span class="siteLang__en">Sign in</span><span class="siteLang__fr">Connexion</span></button>
+        <button type="button" class="acct-login-btn acct-login-btn--ghost siteLang" id="acctPanelLoginBack"><span class="siteLang__en">Back</span><span class="siteLang__fr">Retour</span></button>
+      </div>
+    </div>
+    <button type="button" class="subscription-modal-close" id="acctPanelClose" aria-label="Close">&times;</button>
+  </div>
+</div>

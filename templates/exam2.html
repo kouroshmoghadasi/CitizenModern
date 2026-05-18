@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html dir="ltr">
 <head>
     <meta charset="UTF-8">
+    {% include '_citizen_site_data_site_lang_head.html' %}
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <link rel="icon" href="{{ url_for('static', filename='images/logo.png') }}" type="image/png">
     <link rel="apple-touch-icon" href="{{ url_for('static', filename='images/logo.png') }}">
@@ -14,6 +15,7 @@
     {% set seo_path = "/exam2" %}
     {% include '_seo_head_social.html' %}
     {% include 'pwa_meta.html' %}
+    {% include '_citizen_exam_subpage_head_assets.html' %}
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
@@ -65,12 +67,7 @@
         .tool-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 20px; padding: 14px 18px; background: var(--card-bg); border-radius: 12px; border: 1px solid var(--border); box-shadow: 0 2px 10px rgba(0,0,0,0.06); }
         body.theme-dark .tool-bar { box-shadow: 0 2px 10px rgba(0,0,0,0.3); }
         .tool-bar .group { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
-        .theme-toggle-wrap { display: flex; align-items: center; gap: 6px; }
         .theme-label { font-weight: 600; color: var(--text); font-size: 0.95em; }
-        .theme-btn { width: 44px; height: 44px; border-radius: 12px; border: 2px solid var(--border); background: var(--card-bg); font-size: 1.35em; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s; touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
-        .theme-btn:hover { transform: scale(1.08); box-shadow: 0 4px 12px rgba(0,0,0,0.12); }
-        .theme-btn[aria-pressed="true"] { border-color: #1e3c72; box-shadow: 0 0 0 2px rgba(30,60,114,0.35); background: linear-gradient(135deg, #e8eef5 0%, #dce4ed 100%); }
-        body.theme-dark .theme-btn[aria-pressed="true"] { border-color: #7cb3f5; box-shadow: 0 0 0 2px rgba(124,179,245,0.4); background: linear-gradient(135deg, #3d4a5c 0%, #2d3748 100%); }
         .go-to-q-wrap { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
         .go-to-q-wrap input[type="number"] { width: 72px; min-height: 48px; padding: 8px 10px; border: 2px solid var(--option-border); border-radius: 8px; font-size: 16px; background: var(--option-bg); color: var(--text); box-shadow: inset 0 1px 3px rgba(0,0,0,0.06); }
         body.theme-dark .go-to-q-wrap input[type="number"] { box-shadow: inset 0 1px 3px rgba(0,0,0,0.22); }
@@ -112,19 +109,10 @@
         .block-en { direction: ltr; text-align: left; margin-bottom: 10px; padding: 10px 12px; background: rgba(30,60,114,0.06); border-radius: 10px; border-left: 3px solid var(--accent); overflow-wrap: anywhere; word-break: break-word; }
         .block-fa { direction: rtl; text-align: right; margin-bottom: 10px; padding: 10px 12px; background: rgba(241,196,15,0.12); border-radius: 10px; border-right: 3px solid #f1c40f; overflow-wrap: anywhere; word-break: break-word; }
         .block-fr { direction: ltr; text-align: left; margin-bottom: 10px; padding: 10px 12px; background: rgba(0,82,147,0.08); border-radius: 10px; border-left: 3px solid #005293; overflow-wrap: anywhere; word-break: break-word; }
-        .lang-mode-btn {
-            padding: 12px 14px; min-height: 48px; border-radius: 10px; border: 2px solid var(--border);
-            background: var(--card-bg); color: var(--text); font-weight: 600; cursor: pointer;
-            -webkit-appearance: none; appearance: none; font-size: clamp(0.78rem, 2.8vw, 0.95rem);
-            flex: 1 1 auto; -webkit-tap-highlight-color: transparent; touch-action: manipulation;
-        }
-        .lang-mode-btn[aria-pressed="true"] { border-color: #1e3c72; background: linear-gradient(135deg, #2c5282 0%, #1e3c72 100%); color: #fff; box-shadow: 0 0 0 2px rgba(30,60,114,0.25); }
-        body.theme-dark .lang-mode-btn[aria-pressed="true"] { border-color: #7cb3f5; box-shadow: 0 0 0 2px rgba(124,179,245,0.35); }
         .q-num-badge { display: inline-flex; align-items: center; justify-content: center; min-width: 2rem; height: 1.75rem; padding: 0 0.5rem; background: linear-gradient(135deg, #1e3c72 0%, #2c5282 100%); color: #fff; border-radius: 8px; font-weight: 700; font-size: 0.9em; margin-right: 0.6rem; }
         .block-fa .q-num-badge { margin-right: 0; margin-left: 0.6rem; }
-        .exam-hero { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 20px; margin-bottom: 18px; }
-        .exam-hero img { width: min(100%, 320px); height: auto; border-radius: 14px; box-shadow: 0 8px 24px rgba(30,60,114,0.2); border: 1px solid var(--border); }
-        .exam-hero-text { text-align: center; flex: 1; min-width: 200px; }
+        .exam-hero { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0; margin-bottom: 0; }
+        .exam-hero-text { text-align: center; width: 100%; max-width: 42rem; margin: 0 auto; }
         .exam-hero-text h1 { font-size: 1.45em; margin-bottom: 6px; }
         .page-header .exam-visit-count {
             margin-top: 12px; font-size: clamp(0.82rem, 3vw, 0.92em); opacity: 0.96; line-height: 1.45;
@@ -147,30 +135,16 @@
             .exam-score-row { justify-content: center; width: 100%; }
             .go-to-q-wrap { justify-content: center; flex-wrap: wrap; }
             .page-header { padding: 18px 14px; }
-            .exam-hero { gap: 14px; }
+            .exam-hero { gap: 0; }
             .exam-hero-text { min-width: 0; }
             .exam-hero-text h1 { font-size: clamp(1.15rem, 5vw, 1.45em); }
             .q-card { padding: 18px 14px; }
-            #q-nav-bar-exam2.q-nav-bar-ch1 {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                gap: 10px;
-                align-items: stretch;
-            }
-            #q-nav-bar-exam2 .q-nav-current {
-                grid-column: 1 / -1;
-                text-align: center;
-                font-size: clamp(0.88rem, 3.8vw, 1.05em);
-                line-height: 1.35;
-            }
-            #q-nav-bar-exam2 .q-nav-btn { width: 100%; }
         }
 
         @media (max-width: 480px) {
             body { padding: max(12px, env(safe-area-inset-top, 0px)) max(10px, env(safe-area-inset-right, 0px)) max(12px, env(safe-area-inset-bottom, 0px)) max(10px, env(safe-area-inset-left, 0px)); }
             .back-bar.exam-top-nav { flex-direction: column; align-items: stretch; text-align: center; }
             .back-bar.exam-top-nav .back-btn { width: 100%; text-align: center; }
-            .lang-mode-btn { flex: 1 1 calc(50% - 4px); }
         }
 
         @media (min-width: 721px) {
@@ -183,51 +157,44 @@
             .back-bar.exam-footer-nav .back-btn { width: 100%; display: block; box-sizing: border-box; }
         }
     </style>
+{% set citizen_theme_profile = 'modern' %}
+{% include '_citizen_site_theme_head.html' %}
+{% include '_citizen_exam_subpage_shell_css_overrides.html' %}
 </head>
-<body>
-    <script>try{var t=localStorage.getItem('citizenship571_theme');if(t==='dark')document.body.classList.add('theme-dark');}catch(e){}</script>
-    {% include 'content_protection.html' %}
+<body class="citizenship-exam-subpage">
+    {% include '_citizen_exam_subpage_body_top.html' %}
     <div class="wrap">
-        <div class="back-bar exam-top-nav">
-            <a href="{{ url_for('citizenship_exams') }}" class="back-btn">← همهٔ آزمون‌ها / All exams</a>
-            <a href="/" class="back-btn" style="background:var(--card-bg);color:var(--accent);border:2px solid var(--accent);">خانه / Home</a>
-        </div>
         <div class="page-header">
             <div class="exam-hero">
-                <img src="{{ url_for('static', filename='images/exam2-thumbnail.png') }}" alt="History of Canada — Quiz Questions" width="320" height="180" loading="eager">
                 <div class="exam-hero-text">
                     <h1>Exam2</h1>
-                    <p style="opacity:0.95;font-size:0.95em;">History of Canada — نمونه سوال چندگزینه‌ای</p>
-                    {% if exam_section_views is not none %}
-                    <p class="exam-visit-count" role="status">بازدید ثبت‌شده از بخش آزمون نمونه: <strong>{{ exam_section_views }}</strong></p>
-                    {% endif %}
+                    {% set header_subtitle_fa = "History of Canada — نمونه سوال چندگزینه‌ای" %}
+                    {% set header_subtitle_en = "History of Canada — multiple-choice sample" %}
+                    {% set header_subtitle_fr = "Histoire du Canada — échantillon à choix multiples" %}
+                    {% include '_exam_header_subtitle_i18n.html' %}
+                    {% set exam_visit_count_class = 'exam-visit-count' %}
+                    {% include '_exam_section_visit_count.html' %}
                 </div>
             </div>
         </div>
+        <div class="exam-q-controls exam-q-controls--sample-test">
         <div class="tool-bar">
-            <div class="group theme-toggle-wrap">
-                <button type="button" class="lang-mode-btn" id="langModeEn" aria-pressed="true">English + فارسی</button>
-                <button type="button" class="lang-mode-btn" id="langModeFr" aria-pressed="false">Français + فارسی</button>
-            </div>
             <div class="group exam-score-row" aria-live="polite">
-                <span class="ok">✓ درست / Correct: <span id="examCorrectCount">0</span></span>
-                <span class="bad">✗ غلط / Incorrect: <span id="examWrongCount">0</span></span>
+                <span class="ok exam-score-pill"><span class="exam-score-pill__top"><span class="exam-score-pill__ic" aria-hidden="true">✓</span><strong id="examCorrectCount" class="exam-score-pill__n">0</strong></span><span class="exam-score-pill__cap siteLang siteLang--stack"><span class="siteLang__en">Correct</span><span class="siteLang__fr">Justes</span></span></span>
+                <span class="bad exam-score-pill"><span class="exam-score-pill__top"><span class="exam-score-pill__ic" aria-hidden="true">✗</span><strong id="examWrongCount" class="exam-score-pill__n">0</strong></span><span class="exam-score-pill__cap siteLang siteLang--stack"><span class="siteLang__en">Incorrect</span><span class="siteLang__fr">Erreurs</span></span></span>
             </div>
             <div class="group go-to-q-wrap">
                 <label for="goToQuestionExam2" class="theme-label" style="margin: 0;">سوال</label>
                 <input type="number" id="goToQuestionExam2" min="1" max="{{ max_visible_exam2 }}" placeholder="1–{{ max_visible_exam2 }}" aria-label="Question number">
                 <button type="button" class="go-to-q-btn" id="goToQuestionBtnExam2">برو</button>
             </div>
-            <div class="group theme-toggle-wrap">
-                <span class="theme-label">Theme:</span>
-                <button type="button" class="theme-btn theme-light" id="themeLight" title="روشن / Light" aria-pressed="true">☀️</button>
-                <button type="button" class="theme-btn theme-dark" id="themeDark" title="تاریک / Dark" aria-pressed="false">🌙</button>
-            </div>
+
         </div>
         <div id="q-nav-bar-exam2" class="q-nav-bar-ch1" data-max-question="{{ max_visible_exam2 }}">
             <button type="button" class="q-nav-btn btn-prev" id="qPrevExam2" aria-label="سوال قبلی">← سوال قبلی</button>
             <span class="q-nav-current" role="status" aria-live="polite" dir="ltr">Question <span id="currentQNumExam2">1</span> of {{ max_visible_exam2 }}</span>
             <button type="button" class="q-nav-btn" id="qNextExam2" aria-label="سوال بعدی">سوال بعدی →</button>
+        </div>
         </div>
         <div id="questions-container-exam2" class="questions-one-by-one">
         {% for q in questions %}
@@ -275,9 +242,8 @@
         {% if show_paywall %}
         <div class="q-card paywall-as-q6-exam2" id="q6">
             <div class="paywall-exam2" style="padding: 0; margin: 0; border: none; max-width: none;">
-                <h2 style="margin-bottom: 12px; color: var(--accent);">دسترسی به سوالات {{ free_count + 1 }} تا {{ max_question_exam2 }}</h2>
-                <p style="margin-bottom: 16px;">برای ادامهٔ Exam2 (تا {{ max_question_exam2 }} سوال)، همان اشتراک کد کاربری و رمز مربوط به بستهٔ ۴۱۴ سوال را وارد کنید.</p>
-                <p style="margin-bottom: 14px;"><strong>ورود:</strong></p>
+                {% include '_subscription_paywall_heading.html' %}
+                {% include '_subscription_paywall_login_lead.html' %}
                 <input type="text" id="paywallExam2Mobile" placeholder="کد کاربری (شماره موبایل)" style="width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid var(--border); border-radius: 10px; background: var(--card-bg); color: var(--text);">
                 <input type="password" id="paywallExam2Password" placeholder="کلمه عبور" style="width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid var(--border); border-radius: 10px; background: var(--card-bg); color: var(--text);">
                 <p id="paywallExam2Error" class="subscription-error" style="display: none; color: #c00; margin-bottom: 8px;"></p>
@@ -287,38 +253,47 @@
         {% endif %}
         </div>
 
-        <div class="back-bar exam-footer-nav" style="margin-top: 24px;">
-            <a href="/" class="back-btn">← بازگشت به صفحه اصلی / Back to Home</a>
-        </div>
     </div>
     <script>
         (function() {
             var themeKey = 'citizenship571_theme';
             var langModeKey = 'citizenship_exam2_lang_mode';
-            var themeLight = document.getElementById('themeLight');
-            var themeDark = document.getElementById('themeDark');
-            var langModeEn = document.getElementById('langModeEn');
-            var langModeFr = document.getElementById('langModeFr');
             function applyTheme(val) {
-                if (val === 'dark') { document.body.classList.add('theme-dark'); if (themeLight) themeLight.setAttribute('aria-pressed', 'false'); if (themeDark) themeDark.setAttribute('aria-pressed', 'true'); }
-                else { document.body.classList.remove('theme-dark'); if (themeLight) themeLight.setAttribute('aria-pressed', 'true'); if (themeDark) themeDark.setAttribute('aria-pressed', 'false'); }
+                if (val === 'dark') { document.body.classList.add('theme-dark'); }
+                else { document.body.classList.remove('theme-dark'); }
+                document.documentElement.setAttribute('data-theme', val === 'dark' ? 'dark' : 'light');
             }
             function applyLangMode(mode) {
                 var showEn = (mode === 'en');
                 document.querySelectorAll('.lang-block-en').forEach(function(el) { el.style.display = showEn ? '' : 'none'; });
                 document.querySelectorAll('.lang-block-fr').forEach(function(el) { el.style.display = showEn ? 'none' : ''; });
-                if (langModeEn) langModeEn.setAttribute('aria-pressed', showEn ? 'true' : 'false');
-                if (langModeFr) langModeFr.setAttribute('aria-pressed', showEn ? 'false' : 'true');
+                try {
+                    document.documentElement.setAttribute('data-site-lang', showEn ? 'en-fa' : 'fr-fa');
+                    document.documentElement.setAttribute('lang', showEn ? 'en' : 'fr');
+                    document.documentElement.setAttribute('dir', 'ltr');
+                } catch (e) {}
             }
-            var savedTheme = localStorage.getItem(themeKey) || 'light';
-            var savedMode = localStorage.getItem(langModeKey) || 'en';
+            var savedTheme = (function () {
+                try {
+                    var g = localStorage.getItem('citizenSiteTheme');
+                    if (g === 'dark' || g === 'light') return g === 'dark' ? 'dark' : 'light';
+                    g = localStorage.getItem('modernLandingTheme');
+                    if (g === 'dark' || g === 'light') return g === 'dark' ? 'dark' : 'light';
+                    var p = localStorage.getItem(themeKey);
+                    return (p === 'dark') ? 'dark' : 'light';
+                } catch (e) {
+                    return 'light';
+                }
+            })();
+            var savedMode = 'en';
+            try {
+                var sl = localStorage.getItem('citizenSiteLang');
+                if (sl === 'fr-fa') savedMode = 'fr';
+                else if (sl === 'en-fa') savedMode = 'en';
+                else if (localStorage.getItem(langModeKey) === 'fr') savedMode = 'fr';
+            } catch (e) {}
             applyTheme(savedTheme);
             applyLangMode(savedMode);
-            if (themeLight) themeLight.addEventListener('click', function() { localStorage.setItem(themeKey, 'light'); applyTheme('light'); });
-            if (themeDark) themeDark.addEventListener('click', function() { localStorage.setItem(themeKey, 'dark'); applyTheme('dark'); });
-            if (langModeEn) langModeEn.addEventListener('click', function() { localStorage.setItem(langModeKey, 'en'); applyLangMode('en'); });
-            if (langModeFr) langModeFr.addEventListener('click', function() { localStorage.setItem(langModeKey, 'fr'); applyLangMode('fr'); });
-
             var goInput = document.getElementById('goToQuestionExam2');
             var goBtn = document.getElementById('goToQuestionBtnExam2');
             var container = document.getElementById('questions-container-exam2');
@@ -429,5 +404,6 @@
             });
         })();
     </script>
+    {% include '_modern_site_topbar_scripts.html' %}
 </body>
 </html>

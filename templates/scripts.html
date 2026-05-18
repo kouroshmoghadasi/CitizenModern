@@ -150,7 +150,7 @@
         
         // Header Carousel Functionality - Simple Version
         let currentSlide = 0;
-        const totalSlides = 4; // ۰ شکور · ۱ یکتا · ۲ عنوان · ۳ ثبت تبلیغ
+        const totalSlides = 3; // ۰ شکور · ۱ یکتا · ۲ ثبت تبلیغ
         let carouselInterval;
         
         function goToSlide(slideIndex) {
@@ -3108,7 +3108,34 @@
         let correctCount = 0;
         let incorrectCount = 0;
 
-        let mainPageLangMode = 'en';
+        let mainPageLangMode = (function () {
+            try {
+                var v = document.documentElement.getAttribute('data-site-lang');
+                if (v !== 'en-fa' && v !== 'fr-fa') v = null;
+                if (!v) {
+                    v = localStorage.getItem('citizenSiteLang');
+                    if (v !== 'en-fa' && v !== 'fr-fa') v = localStorage.getItem('book_summary_lang');
+                    if (v !== 'en-fa' && v !== 'fr-fa') v = localStorage.getItem('book_summary_2_lang');
+                }
+                if (v === 'fr-fa') return 'fr';
+            } catch (e) {}
+            return 'en';
+        })();
+
+        function syncMainPageLangModeFromSitePrefs() {
+            try {
+                var v = document.documentElement.getAttribute('data-site-lang');
+                if (v !== 'en-fa' && v !== 'fr-fa') v = null;
+                if (!v) {
+                    v = localStorage.getItem('citizenSiteLang');
+                    if (v !== 'en-fa' && v !== 'fr-fa') v = localStorage.getItem('book_summary_lang');
+                    if (v !== 'en-fa' && v !== 'fr-fa') v = localStorage.getItem('book_summary_2_lang');
+                }
+                mainPageLangMode = v === 'fr-fa' ? 'fr' : 'en';
+            } catch (e2) {
+                mainPageLangMode = 'en';
+            }
+        }
 
         function setMainPageLangMode(mode) {
             mainPageLangMode = mode === 'fr' ? 'fr' : 'en';
@@ -4321,6 +4348,11 @@
             generatedTests.forEach(test => {
                 completeQuestions(test.questions);
             });
+
+            // صفحهٔ Mock (modern landing): فقط Test1 تا Test102 — همان تایمر و شمارندهٔ درست/غلط
+            if (typeof window !== 'undefined' && window.CITIZEN_MOCK_SUITE) {
+                generatedTests = generatedTests.slice(0, 102);
+            }
             
             // Populate combobox
             populateTestSelect();
@@ -4434,7 +4466,11 @@
         
         function hideSubscriptionModal() {
             const el = document.getElementById('subscriptionModal');
-            if (el) el.style.display = 'none';
+            if (el) {
+                el.style.display = 'none';
+                var box = el.querySelector('.subscription-modal-box');
+                if (box) box.classList.remove('subscription-modal-box--payment');
+            }
         }
 
         function showTestAreaSubscriptionBlock() {
@@ -4446,6 +4482,7 @@
                 document.getElementById('testAreaSubStep1').style.display = 'block';
                 document.getElementById('testAreaSubStepLogin').style.display = 'none';
                 document.getElementById('testAreaSubStepPayment').style.display = 'none';
+                block.classList.remove('subscription-block--payment');
                 var err = document.getElementById('testAreaSubLoginError');
                 if (err) { err.style.display = 'none'; err.textContent = ''; }
                 var reqMsg = document.getElementById('testAreaSubRequestMsg');
@@ -4637,6 +4674,15 @@
             }
         }
 
+        function citizenEscapeHtml(s) {
+            if (s == null || s === undefined) return '';
+            return String(s)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;');
+        }
+
         // نمایش یک سوال (روش جدید)
         function displayQuestion() {
             if (!generatedTests || generatedTests.length === 0) {
@@ -4735,7 +4781,44 @@
             if (!questionCard) return;
             var sourceText = mainPageLangMode === 'fr' ? (question.q_fr || question.q) : question.q;
             var optionsList = mainPageLangMode === 'fr' && question.options_fr && question.options_fr.length ? question.options_fr : (question.options || []);
-            let html = `
+            const useMockExamLayout = typeof window !== 'undefined' && window.CITIZEN_MOCK_EXAM_LAYOUT;
+
+            const mockOptSvg = '<svg class="mock-exam-opt-ic" width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M14 2v6h6M8 13h8M8 17h8M8 9h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>';
+
+            let html;
+            if (useMockExamLayout) {
+                html = `
+                <div class="mock-exam-q-fa">${citizenEscapeHtml(question.q_fa || question.q)}</div>
+                <div class="mock-exam-q-en">
+                    <button type="button" class="mock-exam-copy-q" onclick="copyQuestion(currentQuestion, event)" title="کپی سوال">📋</button>
+                    <span>${citizenEscapeHtml(sourceText)}</span>
+                </div>
+                <div class="mock-exam-options">`;
+                optionsList.forEach((option, index) => {
+                    const isSelected = userAnswers[currentQuestion] === index;
+                    const correctAnswer = question.correct;
+                    const isCorrect = index === correctAnswer;
+                    const hasAnswer = userAnswers[currentQuestion] !== undefined;
+                    let extraClass = '';
+                    if (hasAnswer) {
+                        if (isSelected && isCorrect) {
+                            extraClass = ' mock-exam-option--correct';
+                        } else if (isSelected && !isCorrect) {
+                            extraClass = ' mock-exam-option--incorrect';
+                        } else if (!isSelected && isCorrect) {
+                            extraClass = ' mock-exam-option--reveal-correct';
+                        }
+                    }
+                    html += `
+                    <button type="button" class="mock-exam-option${extraClass}" onclick="selectAnswer(${index})" data-index="${index}">
+                        ${mockOptSvg}
+                        <span class="mock-exam-opt-text">${citizenEscapeHtml(option)}</span>
+                        <span role="presentation" class="mock-exam-opt-copy" onclick="event.stopPropagation(); copySingleOption(currentQuestion, ${index}, event);" title="Copy">📋</span>
+                    </button>`;
+                });
+                html += `</div>`;
+            } else {
+                html = `
                 <div class="question-text-fa" style="font-size: 1.15em; font-weight: bold; color: #1e3c72; margin-bottom: 12px; direction: rtl; text-align: right;">
                     ${question.q_fa || question.q}
                 </div>
@@ -4745,49 +4828,46 @@
                 </div>
             `;
             
-            html += `<div class="options-container" style="margin-top: 20px;">`;
+                html += `<div class="options-container" style="margin-top: 20px;">`;
             
-            optionsList.forEach((option, index) => {
-                const isSelected = userAnswers[currentQuestion] === index;
-                const letter = String.fromCharCode(65 + index);
-                const correctAnswer = question.correct;
-                const isCorrect = index === correctAnswer;
-                const hasAnswer = userAnswers[currentQuestion] !== undefined;
-                
-                let bgColor = '#ffffff';
-                let borderColor = '#e8ecf0';
-                let classes = '';
-                
-                // فقط بعد از انتخاب یک پاسخ، رنگ‌ها را نمایش بده
-                if (hasAnswer) {
-                    if (isSelected && isCorrect) {
-                        // اگر گزینه درست انتخاب شده باشد → سبز
-                        bgColor = '#d4edda';
-                        borderColor = '#28a745';
-                        classes = 'correct';
-                    } else if (isSelected && !isCorrect) {
-                        // اگر گزینه غلط انتخاب شده باشد → قرمز
-                        bgColor = '#f8d7da';
-                        borderColor = '#dc3545';
-                        classes = 'incorrect';
+                optionsList.forEach((option, index) => {
+                    const isSelected = userAnswers[currentQuestion] === index;
+                    const letter = String.fromCharCode(65 + index);
+                    const correctAnswer = question.correct;
+                    const isCorrect = index === correctAnswer;
+                    const hasAnswer = userAnswers[currentQuestion] !== undefined;
+                    
+                    let bgColor = '#ffffff';
+                    let borderColor = '#e8ecf0';
+                    let classes = '';
+                    
+                    if (hasAnswer) {
+                        if (isSelected && isCorrect) {
+                            bgColor = '#d4edda';
+                            borderColor = '#28a745';
+                            classes = 'correct';
+                        } else if (isSelected && !isCorrect) {
+                            bgColor = '#f8d7da';
+                            borderColor = '#dc3545';
+                            classes = 'incorrect';
+                        }
+                        if (!isSelected && isCorrect && hasAnswer) {
+                            bgColor = '#d4edda';
+                            borderColor = '#28a745';
+                            classes = 'correct';
+                        }
                     }
-                    // اگر کاربر یک پاسخ داده و جواب درست انتخاب نشده، جواب درست را هم سبز کن
-                    if (!isSelected && isCorrect && hasAnswer) {
-                        bgColor = '#d4edda';
-                        borderColor = '#28a745';
-                        classes = 'correct';
-                    }
-                }
-                
-                html += `
+                    
+                    html += `
                     <div class="option ${classes}" onclick="selectAnswer(${index})" data-index="${index}" style="padding: 22px 28px; margin: 18px 0; background: ${bgColor}; border: 3px solid ${borderColor}; border-radius: 16px; cursor: pointer; transition: all 0.4s; font-size: 1.08em; direction: ltr; text-align: left; display: flex; align-items: center; gap: 10px;">
                         <span class="copy-icon" onclick="event.stopPropagation(); copySingleOption(currentQuestion, ${index}, event);" title="کپی ${letter}" style="cursor: pointer; font-size: 1.1em;">📋</span>
                         <span>${option}</span>
                     </div>
                 `;
-            });
+                });
             
-            html += `</div>`;
+                html += `</div>`;
+            }
             questionCard.innerHTML = html;
             
             // Update navigation buttons (main question nav bar)
@@ -5188,6 +5268,7 @@
         
         // راه‌اندازی اولیه برنامه
         function initializeApp() {
+            syncMainPageLangModeFromSitePrefs();
             // توقف هر تایمر قبلی
             stopTimer();
             
@@ -5206,8 +5287,16 @@
             
             // با تاخیر کوتاه برای اطمینان از آماده بودن DOM
             setTimeout(function() {
-                selectTest(0);
-                console.log('selectTest(0) called');
+                var startIdx = 0;
+                if (typeof window !== 'undefined' && window.CITIZEN_MOCK_SUITE && window.CITIZEN_MOCK_INITIAL_TEST != null) {
+                    var t = parseInt(window.CITIZEN_MOCK_INITIAL_TEST, 10);
+                    var maxI = (generatedTests && generatedTests.length) ? generatedTests.length : 1;
+                    if (!isNaN(t) && t >= 1) {
+                        startIdx = Math.min(t - 1, maxI - 1);
+                    }
+                }
+                selectTest(startIdx);
+                console.log('selectTest(' + startIdx + ') called');
                 
                 // اطمینان از شروع تایمر - اگر تایمر شروع نشد، دستی شروع کن
                 setTimeout(function() {
@@ -5242,18 +5331,137 @@
         }
         document.addEventListener('DOMContentLoaded', setupMainPageLangButtons);
 
+        (function() {
+            var CITIZEN_SUB_MSG = {
+                en: {
+                    loginRequired: 'Username and password are required.',
+                    loginFailed: 'Sign-in failed.',
+                    connectionError: 'Connection error.',
+                    invalidMobile: 'Please enter a valid mobile number.',
+                    requestSubmitted: 'Request submitted.',
+                    errorGeneric: 'Error',
+                    copy: 'Copy',
+                    copied: 'Copied!'
+                },
+                fr: {
+                    loginRequired: 'L’identifiant et le mot de passe sont obligatoires.',
+                    loginFailed: 'Échec de la connexion.',
+                    connectionError: 'Erreur de connexion.',
+                    invalidMobile: 'Veuillez entrer un numéro de mobile valide.',
+                    requestSubmitted: 'Demande envoyée.',
+                    errorGeneric: 'Erreur',
+                    copy: 'Copier',
+                    copied: 'Copié !'
+                }
+            };
+            var CITIZEN_SUB_PH = {
+                en: {
+                    loginMobilePlaceholder: 'Username (mobile number)',
+                    loginPasswordPlaceholder: 'Password',
+                    requestMobilePlaceholder: 'e.g. 4165551234'
+                },
+                fr: {
+                    loginMobilePlaceholder: 'Identifiant (numéro de mobile)',
+                    loginPasswordPlaceholder: 'Mot de passe',
+                    requestMobilePlaceholder: 'p. ex. 4165551234'
+                }
+            };
+            function citizenSubLangIsFr() {
+                return document.documentElement.getAttribute('data-site-lang') === 'fr-fa';
+            }
+            window.citizenSubMsg = function(key) {
+                var m = citizenSubLangIsFr() ? CITIZEN_SUB_MSG.fr : CITIZEN_SUB_MSG.en;
+                return m[key] || key;
+            };
+            window.citizenSubSyncPlaceholders = function(root) {
+                root = root || document;
+                var ph = citizenSubLangIsFr() ? CITIZEN_SUB_PH.fr : CITIZEN_SUB_PH.en;
+                root.querySelectorAll('[data-sub-i18n]').forEach(function(el) {
+                    var k = el.getAttribute('data-sub-i18n');
+                    if (ph[k]) el.placeholder = ph[k];
+                });
+            };
+            window.citizenSubCopyBtnLabel = function(btn) {
+                if (!btn) return '';
+                var span = btn.querySelector(citizenSubLangIsFr() ? '.siteLang__fr' : '.siteLang__en');
+                return span ? (span.textContent || '').trim() : (btn.textContent || '').trim();
+            };
+            window.citizenSubSetCopyBtnLabel = function(btn, text) {
+                if (!btn) return;
+                var span = btn.querySelector(citizenSubLangIsFr() ? '.siteLang__fr' : '.siteLang__en');
+                if (span) span.textContent = text;
+                else btn.textContent = text;
+            };
+        })();
+
         document.addEventListener('DOMContentLoaded', function() {
+            if (typeof citizenSubSyncPlaceholders === 'function') citizenSubSyncPlaceholders();
             var modal = document.getElementById('subscriptionModal');
-            if (!modal) return;
-            document.getElementById('subModalYes').addEventListener('click', function() {
+            if (!modal && !document.getElementById('testAreaSubscriptionBlock')) return;
+            function wireSubscriptionCopyBtn(btn, valueEl) {
+                if (!btn) return;
+                btn.addEventListener('click', function() {
+                    var text = (valueEl && (valueEl.textContent || '').trim()) || (btn.getAttribute('data-copy-text') || '').trim();
+                    if (!text) return;
+                    function showCopied() {
+                        citizenSubSetCopyBtnLabel(btn, citizenSubMsg('copied'));
+                        btn.classList.add('copied');
+                        setTimeout(function() {
+                            citizenSubSetCopyBtnLabel(btn, citizenSubMsg('copy'));
+                            btn.classList.remove('copied');
+                        }, 2000);
+                    }
+                    function copyFallback(el) {
+                        var r = document.createRange();
+                        r.selectNodeContents(el);
+                        var sel = window.getSelection();
+                        sel.removeAllRanges();
+                        sel.addRange(r);
+                        try {
+                            document.execCommand('copy');
+                            showCopied();
+                        } catch (e) {}
+                        sel.removeAllRanges();
+                    }
+                    if (navigator.clipboard && navigator.clipboard.writeText) {
+                        navigator.clipboard.writeText(text).then(showCopied).catch(function() {
+                            if (valueEl) copyFallback(valueEl);
+                            else showCopied();
+                        });
+                    } else if (valueEl) {
+                        copyFallback(valueEl);
+                    } else {
+                        var ta = document.createElement('textarea');
+                        ta.value = text;
+                        ta.setAttribute('readonly', '');
+                        ta.style.position = 'fixed';
+                        ta.style.left = '-9999px';
+                        document.body.appendChild(ta);
+                        ta.select();
+                        try {
+                            document.execCommand('copy');
+                            showCopied();
+                        } catch (e) {}
+                        document.body.removeChild(ta);
+                    }
+                });
+            }
+            if (modal) {
+            var subModalYes = document.getElementById('subModalYes');
+            if (subModalYes) subModalYes.addEventListener('click', function() {
                 document.getElementById('subscriptionStep1').style.display = 'none';
                 document.getElementById('subscriptionStepLogin').style.display = 'block';
                 document.getElementById('subscriptionStepPayment').style.display = 'none';
+                var box = modal.querySelector('.subscription-modal-box');
+                if (box) box.classList.remove('subscription-modal-box--payment');
             });
-            document.getElementById('subModalNo').addEventListener('click', function() {
+            var subModalNo = document.getElementById('subModalNo');
+            if (subModalNo) subModalNo.addEventListener('click', function() {
                 document.getElementById('subscriptionStep1').style.display = 'none';
                 document.getElementById('subscriptionStepLogin').style.display = 'none';
                 document.getElementById('subscriptionStepPayment').style.display = 'block';
+                var box = modal.querySelector('.subscription-modal-box');
+                if (box) box.classList.add('subscription-modal-box--payment');
                 var msgEl = document.getElementById('subModalRequestMsg');
                 if (msgEl) { msgEl.style.display = 'none'; msgEl.textContent = ''; }
             });
@@ -5266,7 +5474,7 @@
                     msgEl.style.display = 'none';
                     msgEl.textContent = '';
                     if (!mobile || mobile.length < 5) {
-                        msgEl.textContent = 'شماره موبایل معتبر وارد کنید.';
+                        msgEl.textContent = citizenSubMsg('invalidMobile');
                         msgEl.style.display = 'block';
                         msgEl.className = 'subscription-request-msg subscription-error';
                         return;
@@ -5279,64 +5487,37 @@
                     }).then(function(r) { return r.json(); }).then(function(data) {
                         msgEl.style.display = 'block';
                         if (data.success) {
-                            msgEl.textContent = data.message || 'درخواست ثبت شد.';
+                            msgEl.textContent = data.message || citizenSubMsg('requestSubmitted');
                             msgEl.className = 'subscription-request-msg subscription-request-success';
                             document.getElementById('subModalRequestMobile').value = '';
                         } else {
-                            msgEl.textContent = data.error || 'خطا';
+                            msgEl.textContent = data.error || citizenSubMsg('errorGeneric');
                             msgEl.className = 'subscription-request-msg subscription-error';
                         }
                     }).catch(function() {
-                        msgEl.textContent = 'خطای اتصال.';
+                        msgEl.textContent = citizenSubMsg('connectionError');
                         msgEl.className = 'subscription-request-msg subscription-error';
                         msgEl.style.display = 'block';
                     });
                 });
             }
-            document.getElementById('subModalClose').addEventListener('click', hideSubscriptionModal);
+            var subModalClose = document.getElementById('subModalClose');
+            if (subModalClose) subModalClose.addEventListener('click', hideSubscriptionModal);
             var backdrop = modal.querySelector('.subscription-modal-backdrop');
             if (backdrop) backdrop.addEventListener('click', hideSubscriptionModal);
             var payBackBtn = document.getElementById('subModalPaymentBack');
             if (payBackBtn) payBackBtn.addEventListener('click', hideSubscriptionModal);
-            var emailCopyBtn = document.getElementById('subModalEmailCopy');
-            var emailValueEl = document.getElementById('subModalEmailValue');
-            if (emailCopyBtn && emailValueEl) {
-                emailCopyBtn.addEventListener('click', function() {
-                    var text = emailValueEl.textContent || '';
-                    if (!text) return;
-                    if (navigator.clipboard && navigator.clipboard.writeText) {
-                        navigator.clipboard.writeText(text).then(function() {
-                            emailCopyBtn.textContent = 'کپی شد!';
-                            emailCopyBtn.classList.add('copied');
-                            setTimeout(function() { emailCopyBtn.textContent = 'کپی'; emailCopyBtn.classList.remove('copied'); }, 2000);
-                        }).catch(function() { copyFallback(emailValueEl, emailCopyBtn); });
-                    } else {
-                        copyFallback(emailValueEl, emailCopyBtn);
-                    }
-                });
-            }
-            function copyFallback(el, btn) {
-                var r = document.createRange();
-                r.selectNodeContents(el);
-                var sel = window.getSelection();
-                sel.removeAllRanges();
-                sel.addRange(r);
-                try {
-                    document.execCommand('copy');
-                    btn.textContent = 'کپی شد!';
-                    btn.classList.add('copied');
-                    setTimeout(function() { btn.textContent = 'کپی'; btn.classList.remove('copied'); }, 2000);
-                } catch (e) {}
-                sel.removeAllRanges();
-            }
-            document.getElementById('subModalLoginBtn').addEventListener('click', function() {
+            wireSubscriptionCopyBtn(document.getElementById('subModalEmailCopy'), document.getElementById('subModalEmailValue'));
+            wireSubscriptionCopyBtn(document.getElementById('subModalTelegramCopy'), document.getElementById('subModalTelegramValue'));
+            var subModalLoginBtn = document.getElementById('subModalLoginBtn');
+            if (subModalLoginBtn) subModalLoginBtn.addEventListener('click', function() {
                 var mobile = (document.getElementById('subModalMobile').value || '').trim();
                 var password = document.getElementById('subModalPassword').value || '';
                 var errEl = document.getElementById('subModalLoginError');
                 errEl.style.display = 'none';
                 errEl.textContent = '';
                 if (!mobile || !password) {
-                    errEl.textContent = 'کد کاربری و کلمه عبور الزامی است.';
+                    errEl.textContent = citizenSubMsg('loginRequired');
                     errEl.style.display = 'block';
                     return;
                 }
@@ -5354,14 +5535,15 @@
                             selectTest(idx, true);
                         }
                     } else {
-                        errEl.textContent = (data && data.error) ? data.error : 'خطا در ورود.';
+                        errEl.textContent = (data && data.error) ? data.error : citizenSubMsg('loginFailed');
                         errEl.style.display = 'block';
                     }
                 }).catch(function() {
-                    errEl.textContent = 'خطای اتصال.';
+                    errEl.textContent = citizenSubMsg('connectionError');
                     errEl.style.display = 'block';
                 });
             });
+            }
             var block = document.getElementById('testAreaSubscriptionBlock');
             if (block) {
                 var yesBtn = document.getElementById('testAreaSubYes');
@@ -5370,11 +5552,13 @@
                     document.getElementById('testAreaSubStep1').style.display = 'none';
                     document.getElementById('testAreaSubStepLogin').style.display = 'block';
                     document.getElementById('testAreaSubStepPayment').style.display = 'none';
+                    block.classList.remove('subscription-block--payment');
                 });
                 if (noBtn) noBtn.addEventListener('click', function() {
                     document.getElementById('testAreaSubStep1').style.display = 'none';
                     document.getElementById('testAreaSubStepLogin').style.display = 'none';
                     document.getElementById('testAreaSubStepPayment').style.display = 'block';
+                    block.classList.add('subscription-block--payment');
                     var msgEl = document.getElementById('testAreaSubRequestMsg');
                     if (msgEl) { msgEl.style.display = 'none'; msgEl.textContent = ''; }
                 });
@@ -5383,6 +5567,7 @@
                     document.getElementById('testAreaSubStep1').style.display = 'block';
                     document.getElementById('testAreaSubStepLogin').style.display = 'none';
                     document.getElementById('testAreaSubStepPayment').style.display = 'none';
+                    block.classList.remove('subscription-block--payment');
                 });
                 var loginBtn = document.getElementById('testAreaSubLoginBtn');
                 if (loginBtn) loginBtn.addEventListener('click', function() {
@@ -5392,7 +5577,7 @@
                     errEl.style.display = 'none';
                     errEl.textContent = '';
                     if (!mobile || !password) {
-                        errEl.textContent = 'کد کاربری و کلمه عبور الزامی است.';
+                        errEl.textContent = citizenSubMsg('loginRequired');
                         errEl.style.display = 'block';
                         return;
                     }
@@ -5410,11 +5595,11 @@
                                 selectTest(idx, true);
                             }
                         } else {
-                            errEl.textContent = (data && data.error) ? data.error : 'خطا در ورود.';
+                            errEl.textContent = (data && data.error) ? data.error : citizenSubMsg('loginFailed');
                             errEl.style.display = 'block';
                         }
                     }).catch(function() {
-                        errEl.textContent = 'خطای اتصال.';
+                        errEl.textContent = citizenSubMsg('connectionError');
                         errEl.style.display = 'block';
                     });
                 });
@@ -5426,7 +5611,7 @@
                     msgEl.style.display = 'none';
                     msgEl.textContent = '';
                     if (!mobile || mobile.length < 5) {
-                        msgEl.textContent = 'شماره موبایل معتبر وارد کنید.';
+                        msgEl.textContent = citizenSubMsg('invalidMobile');
                         msgEl.style.display = 'block';
                         msgEl.className = 'subscription-request-msg subscription-error';
                         return;
@@ -5439,34 +5624,21 @@
                     }).then(function(r) { return r.json(); }).then(function(data) {
                         msgEl.style.display = 'block';
                         if (data.success) {
-                            msgEl.textContent = data.message || 'درخواست ثبت شد.';
+                            msgEl.textContent = data.message || citizenSubMsg('requestSubmitted');
                             msgEl.className = 'subscription-request-msg subscription-request-success';
                             document.getElementById('testAreaSubRequestMobile').value = '';
                         } else {
-                            msgEl.textContent = data.error || 'خطا';
+                            msgEl.textContent = data.error || citizenSubMsg('errorGeneric');
                             msgEl.className = 'subscription-request-msg subscription-error';
                         }
                     }).catch(function() {
-                        msgEl.textContent = 'خطای اتصال.';
+                        msgEl.textContent = citizenSubMsg('connectionError');
                         msgEl.className = 'subscription-request-msg subscription-error';
                         msgEl.style.display = 'block';
                     });
                 });
-                var emailVal = document.getElementById('testAreaSubEmailValue');
-                var emailCopy = document.getElementById('testAreaSubEmailCopy');
-                if (emailCopy && emailVal) {
-                    emailCopy.addEventListener('click', function() {
-                        var text = emailVal.textContent || '';
-                        if (!text) return;
-                        if (navigator.clipboard && navigator.clipboard.writeText) {
-                            navigator.clipboard.writeText(text).then(function() {
-                                emailCopy.textContent = 'کپی شد!';
-                                emailCopy.classList.add('copied');
-                                setTimeout(function() { emailCopy.textContent = 'کپی'; emailCopy.classList.remove('copied'); }, 2000);
-                            }).catch(function() {});
-                        }
-                    });
-                }
+                wireSubscriptionCopyBtn(document.getElementById('testAreaSubEmailCopy'), document.getElementById('testAreaSubEmailValue'));
+                wireSubscriptionCopyBtn(document.getElementById('testAreaSubTelegramCopy'), document.getElementById('testAreaSubTelegramValue'));
             }
         });
 
@@ -5557,363 +5729,7 @@
         document.addEventListener('DOMContentLoaded', pruneEmptyAdCategoryButtons);
     </script>
     
-    <!-- دکمه بازگردانی آگهی — وقتی بنر با × بسته شد، ظاهر می‌شود -->
-    <button class="ad-sticky-restore" id="adStickyRestore" onclick="restoreStickyBanner()" type="button" aria-label="بازگردانی آگهی" title="نمایش دوباره نوار تبلیغات">📢 تبلیغات</button>
-
-    <!-- Bottom Sticky Banner Ad — تیکر متحرک، تبلیغات یکی‌یکی از راست به چپ -->
-    <div class="ad-sticky-banner" id="adStickyBanner">
-        <button class="ad-sticky-dismiss" onclick="dismissStickyBanner()" type="button" aria-label="بستن">×</button>
-        <a href="#ads-section" class="ad-sticky-link">
-            <div class="ad-sticky-ticker-wrap">
-                <div class="ad-sticky-ticker" aria-hidden="true">
-                    <span class="ad-sticky-item">🏠 مشاورین املاک · Real Estate Consultants · خرید و فروش و اجاره ملک</span>
-                    <span class="ad-sticky-sep">◆</span>
-                    <span class="ad-sticky-item">🏠 مشاورین املاک · Real Estate Consultants · خرید و فروش و اجاره ملک</span>
-                    <span class="ad-sticky-sep">◆</span>
-                    <span class="ad-sticky-item">🏠 مشاورین املاک · Real Estate Consultants · خرید و فروش و اجاره ملک</span>
-                    <span class="ad-sticky-sep">◆</span>
-                    <span class="ad-sticky-item">🏠 مشاورین املاک · Real Estate Consultants · خرید و فروش و اجاره ملک</span>
-                </div>
-            </div>
-        </a>
-    </div>
-    
-    <!-- دکمه منو (قرمز): درباره، راهنما، حمایت و غیره -->
-    <div class="help-btn-wrapper">
-        <button class="help-btn" onclick="toggleHelpMenu()" title="منو / Menu" aria-label="منو">
-            <svg class="help-btn-icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="currentColor" d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z"/></svg>
-        </button>
-        <div class="help-menu" id="helpMenu">
-            <a href="{{ url_for('about') }}" class="help-menu-item help-menu-item-link" onclick="toggleHelpMenu()">
-                <span class="help-menu-item-icon">ℹ️</span>
-                <span>درباره سایت / About (discovercanadatest.com)</span>
-            </a>
-            <a href="https://niazmandiha.invoisky.com/" target="_blank" rel="noopener" class="help-menu-item help-menu-item-link" onclick="toggleHelpMenu()">
-                <span class="help-menu-item-icon">📋</span>
-                <span>نیازمندی‌های کانادا - آمریکا — کسب‌کارهای فارسی‌زبان</span>
-            </a>
-            <div class="help-menu-item" onclick="openHelpModal()">
-                <span class="help-menu-item-icon">📖</span>
-                <span>راهنما / Help</span>
-            </div>
-            <div class="help-menu-item" onclick="openDonationModal()">
-                <span class="help-menu-item-icon">💝</span>
-                <span>حمایت مالی از سایت / Support This Site</span>
-            </div>
-            <div class="help-menu-item" onclick="openSuggestions()">
-                <span class="help-menu-item-icon">💬</span>
-                <span>پیشنهادات / Suggestions</span>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Modal حمایت مالی -->
-    <div class="donation-modal" id="donationModal" onclick="closeDonationModal(event)">
-        <div class="donation-modal-content" onclick="event.stopPropagation()">
-            <button class="donation-modal-close" onclick="closeDonationModal()">×</button>
-            <h3>💝 حمایت مالی از سایت</h3>
-            <p class="donation-modal-en">Support This Site</p>
-            <p>
-                برای ادامه فعالیت این سایت و ارائهٔ محتوای آموزشی، لطفاً با کمک مالی کوچک خود از ما حمایت کنید. هر مقدار کمک شما برای زنده نگه داشتن این سایت ارزشمند است.
-            </p>
-            <p style="margin-top: 8px; direction: ltr; text-align: center; color: #555; font-size: 0.95em;">
-                To keep this site alive and continue providing free services, please consider supporting us with a small donation.
-            </p>
-            <h4 style="margin-top: 20px;">📧 اطلاعات تماس / Contact</h4>
-            <p style="margin: 6px 0 12px; font-size: 0.93em; color: #444; text-align: center; line-height: 1.5;" dir="rtl">
-                <strong>کورش مقدسی</strong> <span dir="ltr" style="font-weight: 600;">Kourosh Moghadasi</span>
-            </p>
-            <div class="donation-modal-contact">
-                <div class="donation-modal-row">
-                    <span class="donation-modal-label">ایمیل / Email</span>
-                    <a href="mailto:Koroush.mog@gmail.com">Koroush.mog@gmail.com</a>
-                    <button type="button" class="donation-modal-copy" onclick="copyToClipboard('Koroush.mog@gmail.com', this)">کپی</button>
-                </div>
-                <div class="donation-modal-row">
-                    <span class="donation-modal-label">تلگرام / Telegram</span>
-                    <a href="https://t.me/Kouroshmoghadasi" target="_blank" rel="noopener" style="direction: ltr;">t.me/Kouroshmoghadasi</a>
-                    <button type="button" class="donation-modal-copy" onclick="copyToClipboard('https://t.me/Kouroshmoghadasi', this)">کپی</button>
-                </div>
-                <div class="donation-modal-row">
-                    <span class="donation-modal-label">موبایل · واتساپ</span>
-                    <span style="direction: ltr;">514-476-7079</span>
-                    <button type="button" class="donation-modal-copy" onclick="copyToClipboard('514-476-7079', this)">کپی</button>
-                </div>
-                <p style="margin: 10px 0 0; font-size: 0.88em; color: #666; line-height: 1.5;" dir="rtl">واتساپ روی همین شماره فعال است.</p>
-                <p style="margin: 4px 0 0; font-size: 0.85em; color: #666; direction: ltr; text-align: center;">WhatsApp is available on this number.</p>
-            </div>
-            <div class="donation-modal-payment">
-                <strong>💡 روش‌های پرداخت / Payment</strong>
-                <p style="margin-top: 8px;">🇨🇦 Interac e-Transfer به ایمیل یا موبایل بالا</p>
-                <p style="font-size: 0.9em; color: #666;">Contact via email for other options</p>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Modal راهنما -->
-    <div class="help-modal" id="helpModal" onclick="closeHelpModal(event)">
-        <div class="help-modal-content" onclick="event.stopPropagation()">
-            <button class="help-modal-close" onclick="closeHelpModal()">×</button>
-            <h2>راهنمای استفاده</h2>
-            <p style="margin-bottom: 14px;" dir="rtl">
-                به <strong>CitizenTest</strong> (وب‌سایت <strong>discovercanadatest.com</strong>) خوش آمدید. این صفحه تمرین اصلی است: <strong>۱۰۰ آزمون</strong> نمونه با <strong>۲۰ سوال</strong> در هر آزمون — الگوی نزدیک به آزمون رسمی شهروندی کانادا، بر اساس کتاب <strong>Discover Canada</strong>.
-            </p>
-            <h3 style="font-size: 1.05em; margin: 16px 0 8px; color: #1e3c72;" dir="rtl">زبان و پاسخ‌ها</h3>
-            <ul style="margin: 0 0 14px 18px; line-height: 1.7;" dir="rtl">
-                <li>با دکمه‌های <strong>En</strong> / <strong>Fr</strong> حالت نمایش را بین «انگلیسی + فارسی» و «فرانسه + فارسی» عوض کنید.</li>
-                <li>پس از کلیک روی هر گزینه، فوراً <strong style="color:#198754;">سبز</strong> (درست) یا <strong style="color:#c00;">قرمز</strong> (غلط) می‌بینید؛ جابجایی بین سوالات با «قبلی / بعدی» یا از فهرست آزمون بالای صفحه.</li>
-                <li><strong>زمان‌سنج</strong> مثل فضای آزمون است؛ در پایان آزمون نمره و جدول پاسخ‌ها نمایش داده می‌شود.</li>
-            </ul>
-            <h3 style="font-size: 1.05em; margin: 16px 0 8px; color: #1e3c72;" dir="rtl">دسترسی بدون اشتراک و اشتراک (صفحهٔ اصلی)</h3>
-            <p style="margin-bottom: 12px;" dir="rtl">
-                <strong>Test1 تا Test3</strong> در همین صفحه بدون نیاز به اشتراک است. برای <strong>Test4 تا Test100</strong> و باز کردن کامل بانک <strong>۴۱۴ سوال</strong>، باید اشتراک یک‌ماهه فعال باشد؛ جزئیات و پرداخت از همان بخش اشتراک روی همین صفحه انجام می‌شود.
-            </p>
-            <h3 style="font-size: 1.05em; margin: 16px 0 8px; color: #1e3c72;" dir="rtl">سایر بخش‌های مفید</h3>
-            <ul style="margin: 0 0 14px 18px; line-height: 1.7;" dir="rtl">
-                <li><strong>خلاصه Discover Canada</strong> و لینک‌های <strong>۴۱۴ سوال</strong>، <strong>۵۷۱ سوال</strong> و <strong>آزمون‌های دسته‌بندی‌شده</strong> روی همان صفحهٔ اصلی هستند.</li>
-                <li>می‌توانید از منوی <strong>دکمهٔ قرمز</strong> (گوشه صفحه): <strong>درباره سایت</strong>، این راهنما، <strong>حمایت مالی</strong> و <strong>پیشنهادات</strong>.</li>
-                <li>در همان منو گزینهٔ نصب <strong>PWA</strong> (نصب مثل اپ) در نوار پایین صفحه هم راهنما دارد.</li>
-            </ul>
-            <p style="margin-top: 14px; font-size: 0.9em; color: #555; line-height: 1.65;" dir="rtl">
-                این سایت ابزار آموزشی است و جایگزین منابع رسمی <strong>IRCC</strong> نیست؛ برای قوانین و تاریخ به‌روز آزمون، همیشه به سایت مهاجرت کانادا مراجعه کنید.
-            </p>
-            <p style="margin-top: 16px; padding-top: 14px; border-top: 1px solid #e2e8f0; font-size: 0.92em; line-height: 1.65; color: #444; direction: ltr; text-align: left;">
-                <strong>English:</strong> Main page — 100 practice tests (20 questions each), En/Fr + Persian, instant green/red feedback, timer, score summary. Tests 1–3 need no subscription; Test4–100 and full <strong>414-question</strong> bank need an active subscription. Use the red menu for <strong>About</strong>, this help, support, and suggestions. Content is based on <em>Discover Canada</em>; always verify with official IRCC materials.
-            </p>
-        </div>
-    </div>
-    
-    <!-- Modal پیشنهادات -->
-    <div class="suggestions-modal" id="suggestionsModal" onclick="closeSuggestionsModal(event)">
-        <div class="suggestions-modal-content" onclick="event.stopPropagation()">
-            <button class="suggestions-modal-close" onclick="closeSuggestionsModal()">×</button>
-            <h3>💬 پیشنهادات و نظرات</h3>
-            <h3 style="font-size: 1.2em; margin-top: 5px; color: #7f8c8d; font-weight: 500;">Suggestions & Feedback</h3>
-            <p style="margin-top: 10px; font-size: 0.95em; color: #444; text-align: center;" dir="rtl">
-                <strong>کورش مقدسی</strong> <span dir="ltr" style="font-weight: 600;">Kourosh Moghadasi</span>
-            </p>
-            <p>
-                به این آدرس پیشنهاد خودتون رو ارسال کنید
-            </p>
-            <p style="direction: ltr; text-align: center; margin-top: 8px; color: #555;">
-                Send your suggestions to this email address
-            </p>
-            <div class="suggestions-email-box">
-                <span class="suggestions-email-label">ایمیل / Email</span>
-                <div class="suggestions-email-value">
-                    <a href="mailto:Koroush.mog@gmail.com">Koroush.mog@gmail.com</a>
-                </div>
-                <button class="suggestions-modal-copy-btn" onclick="copyToClipboard('Koroush.mog@gmail.com', this)">
-                    کپی / Copy
-                </button>
-            </div>
-            <p style="margin-top: 18px; font-size: 0.92em; line-height: 1.65; color: #444; text-align: center;" dir="rtl">
-                تلگرام: <a href="https://t.me/Kouroshmoghadasi" target="_blank" rel="noopener" style="color: #1e3c72; font-weight: 600;">t.me/Kouroshmoghadasi</a>
-                — واتساپ روی خط <span dir="ltr" style="font-weight: 700;">514-476-7079</span>
-            </p>
-            <p style="margin-top: 6px; font-size: 0.88em; color: #555; text-align: center; direction: ltr;">
-                Telegram: <a href="https://t.me/Kouroshmoghadasi" target="_blank" rel="noopener">@Kouroshmoghadasi</a> · WhatsApp: 514-476-7079
-            </p>
-        </div>
-    </div>
-    
-    <script>
-        function toggleHelpMenu() {
-            const menu = document.getElementById('helpMenu');
-            menu.classList.toggle('active');
-        }
-        
-        function openHelpModal() {
-            const menu = document.getElementById('helpMenu');
-            menu.classList.remove('active');
-            const modal = document.getElementById('helpModal');
-            modal.classList.add('active');
-        }
-        
-        function closeHelpModal(event) {
-            const modal = document.getElementById('helpModal');
-            modal.classList.remove('active');
-        }
-        
-        function openDonationModal() {
-            const menu = document.getElementById('helpMenu');
-            if (menu) menu.classList.remove('active');
-            const modal = document.getElementById('donationModal');
-            if (modal) modal.classList.add('active');
-        }
-        
-        function closeDonationModal(event) {
-            const modal = document.getElementById('donationModal');
-            if (modal) modal.classList.remove('active');
-        }
-        
-        function openSuggestions() {
-            const menu = document.getElementById('helpMenu');
-            menu.classList.remove('active');
-            const modal = document.getElementById('suggestionsModal');
-            if (modal) {
-                modal.classList.add('active');
-            }
-        }
-        
-        function closeSuggestionsModal(event) {
-            const modal = document.getElementById('suggestionsModal');
-            if (modal) {
-                modal.classList.remove('active');
-            }
-        }
-        
-        function dismissStickyBanner() {
-            const banner = document.getElementById('adStickyBanner');
-            const restore = document.getElementById('adStickyRestore');
-            if (banner) {
-                banner.classList.add('ad-sticky-banner-dismissed');
-                try { sessionStorage.setItem('adStickyBannerDismissed', '1'); } catch (e) {}
-            }
-            if (restore) restore.classList.add('ad-sticky-restore-visible');
-        }
-        function restoreStickyBanner() {
-            const banner = document.getElementById('adStickyBanner');
-            const restore = document.getElementById('adStickyRestore');
-            if (banner) banner.classList.remove('ad-sticky-banner-dismissed');
-            if (restore) restore.classList.remove('ad-sticky-restore-visible');
-            try { sessionStorage.removeItem('adStickyBannerDismissed'); } catch (e) {}
-        }
-        
-        document.addEventListener('DOMContentLoaded', function() {
-            try {
-                if (sessionStorage.getItem('adStickyBannerDismissed') === '1') {
-                    const banner = document.getElementById('adStickyBanner');
-                    const restore = document.getElementById('adStickyRestore');
-                    if (banner) banner.classList.add('ad-sticky-banner-dismissed');
-                    if (restore) restore.classList.add('ad-sticky-restore-visible');
-                }
-            } catch (e) {}
-        });
-
-        // بعد از ۱۵ دقیقه عدم فعالیت، ریلود تا همه جریان فعلی (چک اشتراک و غیره) را ببینند
-        (function() {
-            var INACTIVITY_MS = 15 * 60 * 1000;
-            var lastActivity = Date.now();
-            function onActivity() { lastActivity = Date.now(); }
-            var events = ['mousedown', 'keydown', 'scroll', 'touchstart', 'click'];
-            events.forEach(function(ev) {
-                document.addEventListener(ev, onActivity, { passive: true });
-            });
-            setInterval(function() {
-                if (Date.now() - lastActivity >= INACTIVITY_MS) {
-                    window.location.reload();
-                }
-            }, 60000);
-        })();
-        
-        // بستن منو با کلیک خارج از آن
-        document.addEventListener('click', function(event) {
-            const helpBtn = document.querySelector('.help-btn');
-            const helpMenu = document.getElementById('helpMenu');
-            if (helpMenu && helpMenu.classList.contains('active')) {
-                if (!helpBtn.contains(event.target) && !helpMenu.contains(event.target)) {
-                    helpMenu.classList.remove('active');
-                }
-            }
-        });
-        
-        function toggleBookSummary() {
-            const content = document.getElementById('bookSummaryContent');
-            const toggle = document.querySelector('.book-summary-toggle');
-            if (content && toggle) {
-                content.classList.toggle('show');
-                toggle.classList.toggle('expanded');
-            }
-        }
-        
-        function toggleDonation() {
-            const content = document.getElementById('donationContent');
-            const contentMobile = document.getElementById('donationContentMobile');
-            const toggles = document.querySelectorAll('.donation-toggle');
-            
-            if (content) {
-            content.classList.toggle('show');
-            }
-            if (contentMobile) {
-                contentMobile.classList.toggle('show');
-            }
-            toggles.forEach(toggle => {
-            toggle.classList.toggle('expanded');
-            });
-        }
-        
-        function copyToClipboard(text, button) {
-            // حذف خط تیره از شماره تلفن برای کپی
-            const textToCopy = text.replace(/-/g, '');
-            
-            // استفاده از Clipboard API
-            if (navigator.clipboard && window.isSecureContext) {
-                navigator.clipboard.writeText(textToCopy).then(function() {
-                    showCopySuccess(button);
-                }).catch(function(err) {
-                    fallbackCopyTextToClipboard(textToCopy, button);
-                });
-            } else {
-                fallbackCopyTextToClipboard(textToCopy, button);
-            }
-        }
-        
-        function fallbackCopyTextToClipboard(text, button) {
-            const textArea = document.createElement("textarea");
-            textArea.value = text;
-            textArea.style.position = "fixed";
-            textArea.style.left = "-999999px";
-            textArea.style.top = "-999999px";
-            document.body.appendChild(textArea);
-            textArea.focus();
-            textArea.select();
-            try {
-                document.execCommand('copy');
-                showCopySuccess(button);
-            } catch (err) {
-                alert('خطا در کپی کردن / Copy failed');
-            }
-            document.body.removeChild(textArea);
-        }
-        
-        function showCopySuccess(button) {
-            const originalText = button.textContent;
-            button.textContent = '✓ کپی شد! / Copied!';
-            button.classList.add('copied');
-            
-            setTimeout(function() {
-                button.textContent = originalText;
-                button.classList.remove('copied');
-            }, 2000);
-        }
-        
-        // تابع برای باز کردن modal ثبت تبلیغ
-        function openAdRegistrationModal() {
-            const modal = document.getElementById('adRegistrationModal');
-            if (modal) {
-                modal.classList.add('active');
-                document.body.style.overflow = 'hidden'; // جلوگیری از اسکرول صفحه
-            }
-        }
-        
-        // تابع برای بستن modal ثبت تبلیغ
-        function closeAdRegistrationModal(event) {
-            if (event) {
-                event.stopPropagation();
-            }
-            const modal = document.getElementById('adRegistrationModal');
-            if (modal) {
-                modal.classList.remove('active');
-                document.body.style.overflow = ''; // برگرداندن اسکرول صفحه
-            }
-        }
-        
-        // بستن modal با کلید ESC
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape') {
-                closeAdRegistrationModal();
-            }
-        });
-        
-    </script>
+    {% if not (hide_help_fab | default(false)) %}
+    {% include '_citizen_help_fab_block.html' %}
+    {% include '_citizen_help_fab_tail_script.html' %}
+    {% endif %}

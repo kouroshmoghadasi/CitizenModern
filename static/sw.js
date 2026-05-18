@@ -2,12 +2,11 @@
  * CitizenTest PWA Service Worker
  * Caches main pages and static assets for offline / Add to Home Screen.
  */
-const CACHE_NAME = 'citizentest-v4';
+// Bump this to force clients to refresh cached HTML/assets.
+const CACHE_NAME = 'citizentest-v8';
 const URLS = [
-  '/',
-  '/book_summary.html',
-  '/citizenship-414',
-  '/citizenship-571',
+  // Keep only critical static assets for offline; do NOT precache HTML routes
+  // because we want main pages to update immediately.
   '/static/styles.css',
   '/static/images/logo.png'
 ];
@@ -40,6 +39,19 @@ self.addEventListener('fetch', function (event) {
   var url = new URL(event.request.url);
   if (url.origin !== self.location.origin) return;
   if (event.request.method !== 'GET') return;
+
+  // Never cache HTML/doc navigations; always go to network first
+  // so UI changes (like removing "My Journey") are reflected instantly.
+  if (event.request.mode === 'navigate' || (event.request.headers.get('accept') || '').includes('text/html')) {
+    event.respondWith(
+      fetch(event.request).catch(function () {
+        return caches.match('/static/images/logo.png').then(function () {
+          return Response.error();
+        });
+      })
+    );
+    return;
+  }
 
   event.respondWith(
     caches.match(event.request).then(function (cached) {

@@ -1,0 +1,18 @@
+{# Telegram notify block #}
+{% set tg_copy_btn_id = subscription_tg_copy_btn_id | default('subModalTelegramCopy') %}
+{% set tg_value_id = subscription_tg_value_id | default('subModalTelegramValue') %}
+<div class="subscription-pay-section subscription-pay-section--telegram">
+    <p class="subscription-field-label subscription-field-label--section siteLang">
+      <span class="siteLang__en">Notify us on Telegram</span>
+      <span class="siteLang__fr">Nous aviser sur Telegram</span>
+    </p>
+    <div class="subscription-telegram-block">
+        <div class="subscription-contact-row subscription-telegram-row">
+            <a class="subscription-telegram-value" id="{{ tg_value_id }}" href="https://t.me/Kouroshmoghadasi" target="_blank" rel="noopener" dir="ltr">@Kouroshmoghadasi</a>
+            <button type="button" class="subscription-btn-copy subscription-btn-copy--telegram siteLang" id="{{ tg_copy_btn_id }}" title="Copy Telegram ID" data-copy-text="@Kouroshmoghadasi">
+              <span class="siteLang__en">Copy</span>
+              <span class="siteLang__fr">Copier</span>
+            </button>
+        </div>
+    </div>
+</div>

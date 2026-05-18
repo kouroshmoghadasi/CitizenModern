@@ -1,0 +1,64 @@
+<script>
+(function () {
+  var root = document.getElementById('modernPromoCarousel');
+  if (!root) return;
+
+  var slides = root.querySelectorAll('.modern-promo-slide');
+  var indicators = root.querySelectorAll('.modern-promo-indicator');
+  var n = slides.length;
+  if (!n) return;
+
+  var cur = 0;
+  var timer = null;
+
+  function goTo(i) {
+    cur = ((i % n) + n) % n;
+    slides.forEach(function (el, j) {
+      el.classList.toggle('modern-promo-slide--active', j === cur);
+    });
+    indicators.forEach(function (el, j) {
+      var on = j === cur;
+      el.classList.toggle('modern-promo-indicator--active', on);
+      el.setAttribute('aria-current', on ? 'true' : 'false');
+    });
+  }
+
+  function next() {
+    goTo(cur + 1);
+  }
+
+  function start() {
+    if (timer) return;
+    timer = window.setInterval(next, 5000);
+  }
+
+  function stop() {
+    if (timer) {
+      window.clearInterval(timer);
+      timer = null;
+    }
+  }
+
+  indicators.forEach(function (btn, j) {
+    btn.addEventListener('click', function () {
+      stop();
+      goTo(j);
+      start();
+    });
+  });
+
+  root.addEventListener('mouseenter', stop);
+  root.addEventListener('mouseleave', start);
+
+  root.querySelector('.modern-promo-slide__register-box') &&
+    root.querySelector('.modern-promo-slide__register-box').addEventListener('keydown', function (ev) {
+      if (ev.key === 'Enter' || ev.key === ' ') {
+        ev.preventDefault();
+        if (typeof openAdRegistrationModal === 'function') openAdRegistrationModal();
+      }
+    });
+
+  goTo(0);
+  start();
+})();
+</script>

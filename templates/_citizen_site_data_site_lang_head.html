@@ -1,0 +1,18 @@
+{# Reads citizenSiteLang (+ legacy keys) into html[data-site-lang] and html lang before paint (siteLang UI labels). #}
+<script>
+  (function () {
+    try {
+      var v = localStorage.getItem("citizenSiteLang");
+      if (v !== "en-fa" && v !== "fr-fa") v = localStorage.getItem("book_summary_lang");
+      if (v !== "en-fa" && v !== "fr-fa") v = localStorage.getItem("book_summary_2_lang");
+      if (v !== "fr-fa") v = "en-fa";
+      document.documentElement.setAttribute("data-site-lang", v);
+      document.documentElement.setAttribute("lang", v === "fr-fa" ? "fr" : "en");
+      document.documentElement.setAttribute("dir", "ltr");
+    } catch (e) {
+      document.documentElement.setAttribute("data-site-lang", "en-fa");
+      document.documentElement.setAttribute("lang", "en");
+      document.documentElement.setAttribute("dir", "ltr");
+    }
+  })();
+</script>

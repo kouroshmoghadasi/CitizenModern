@@ -1,0 +1,175 @@
+<!doctype html>
+<html dir="ltr">
+<head>
+  <meta charset="utf-8" />
+  {% include '_citizen_site_data_site_lang_head.html' %}
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate" />
+  <link rel="icon" href="{{ url_for('static', filename='images/logo.png') }}" type="image/png" />
+  <title>Study | CitizenReady</title>
+  <meta name="description" content="Book summaries, Canadian history timeline, and the official Discover Canada PDF." />
+  <script>
+    (function () {
+      try {
+        var v = document.documentElement.getAttribute("data-site-lang") || "en-fa";
+        document.title = v === "fr-fa" ? "Étude | CitizenReady" : "Study | CitizenReady";
+        var md = document.querySelector('meta[name="description"]');
+        if (md) {
+          md.setAttribute(
+            "content",
+            v === "fr-fa"
+              ? "Résumés du livre, frise chronologique et PDF officiel Découvrir le Canada."
+              : "Book summaries, Canadian history timeline, and the official Discover Canada PDF."
+          );
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='modern_landing.css') }}?v=20260517x" />
+  {% set citizen_theme_profile = 'modern' %}
+  {% include '_citizen_site_theme_head.html' %}
+  <style>
+    .studyHubHero { margin-bottom: 6px; }
+    .studyHubHint {
+      margin: 0 auto;
+      max-width: 520px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.45;
+      padding: 0 8px 18px;
+    }
+    .studyHubGrid { margin-top: 14px; }
+    .studyHubCardMeta .studyHubMetaFa,
+    .studyHubCardMeta .studyHubMetaFr,
+    .studyHubCardMeta .studyHubMetaEn {
+      line-height: 1.45;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .studyHubCardMeta .studyHubMetaFa { text-align: right; direction: rtl; }
+    .studyHubCardMeta .studyHubMetaFr,
+    .studyHubCardMeta .studyHubMetaEn { text-align: left; direction: ltr; }
+    .studyHubCardMeta .studyHubMetaFr,
+    .studyHubCardMeta .studyHubMetaEn { display: none; }
+
+    /* EN pairing + show Persian: FA blurbs */
+    html[data-site-lang="en-fa"] body[data-show-fa="yes"] .studyHubCardMeta .studyHubMetaFa { display: block; }
+    html[data-site-lang="en-fa"] body[data-show-fa="yes"] .studyHubCardMeta .studyHubMetaFr,
+    html[data-site-lang="en-fa"] body[data-show-fa="yes"] .studyHubCardMeta .studyHubMetaEn { display: none !important; }
+
+    /* FR UI + show Persian: Persian blurbs under French titles (same idea as EN UI + Persian) */
+    html[data-site-lang="fr-fa"] body[data-show-fa="yes"] .studyHubCardMeta .studyHubMetaFa { display: block; }
+    html[data-site-lang="fr-fa"] body[data-show-fa="yes"] .studyHubCardMeta .studyHubMetaFr,
+    html[data-site-lang="fr-fa"] body[data-show-fa="yes"] .studyHubCardMeta .studyHubMetaEn { display: none !important; }
+
+    /* Persian sections off + EN UI: English blurbs only */
+    html[data-site-lang="en-fa"] body[data-show-fa="no"] .studyHubCardMeta .studyHubMetaFa,
+    html[data-site-lang="en-fa"] body[data-show-fa="no"] .studyHubCardMeta .studyHubMetaFr { display: none !important; }
+    html[data-site-lang="en-fa"] body[data-show-fa="no"] .studyHubCardMeta .studyHubMetaEn { display: block !important; }
+
+    /* Persian sections off + FR UI: French blurbs (no Persian) */
+    html[data-site-lang="fr-fa"] body[data-show-fa="no"] .studyHubCardMeta .studyHubMetaFa { display: none !important; }
+    html[data-site-lang="fr-fa"] body[data-show-fa="no"] .studyHubCardMeta .studyHubMetaFr { display: block !important; }
+    html[data-site-lang="fr-fa"] body[data-show-fa="no"] .studyHubCardMeta .studyHubMetaEn { display: none !important; }
+
+    /* Before inline script runs, prefer sensible defaults */
+    html[data-site-lang="en-fa"] body:not([data-show-fa]) .studyHubCardMeta .studyHubMetaFa { display: block; }
+    html[data-site-lang="en-fa"] body:not([data-show-fa]) .studyHubCardMeta .studyHubMetaFr,
+    html[data-site-lang="en-fa"] body:not([data-show-fa]) .studyHubCardMeta .studyHubMetaEn { display: none !important; }
+    html[data-site-lang="fr-fa"] body:not([data-show-fa]) .studyHubCardMeta .studyHubMetaFa { display: block; }
+    html[data-site-lang="fr-fa"] body:not([data-show-fa]) .studyHubCardMeta .studyHubMetaFr,
+    html[data-site-lang="fr-fa"] body:not([data-show-fa]) .studyHubCardMeta .studyHubMetaEn { display: none !important; }
+
+    a.chip { text-decoration: none; color: inherit; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <script>try{var Sf=localStorage.getItem('citizenSiteShowFa');if(Sf!=='yes'&&Sf!=='no')Sf=localStorage.getItem('book_summary_show_fa');if(Sf!=='yes'&&Sf!=='no')Sf=localStorage.getItem('book_summary_2_show_fa');document.body.setAttribute('data-show-fa',Sf==='no'?'no':'yes');}catch(e){document.body.setAttribute('data-show-fa','yes');}</script>
+  {% include '_citizen_site_theme_body_sync.html' %}
+  <div class="bg">
+    <div class="bg__blob bg__blob--a"></div>
+    <div class="bg__blob bg__blob--b"></div>
+  </div>
+
+  {% set modern_topbar_hide_study = true %}
+  {% set modern_topbar_hide_414 = true %}
+  {% include '_modern_site_topbar.html' %}
+
+  <main class="wrap">
+    <section class="hero studyHubHero" aria-label="Study hub">
+      <h1 class="hero__title">
+        <span class="hero__titleAccent siteLang siteLang--stack"><span class="siteLang__en">Study</span><span class="siteLang__fr">Étude</span></span>
+        <span class="hero__titleMain siteLang siteLang--stack"><span class="siteLang__en">resources</span><span class="siteLang__fr">ressources</span></span>
+      </h1>
+      <p class="hero__subtitle"><span class="siteLang"><span class="siteLang__en">Discover Canada &amp; beyond</span><span class="siteLang__fr">Découvrir le Canada et au-delà</span></span></p>
+    </section>
+    <p class="studyHubHint"><span class="siteLang"><span class="siteLang__en">Pick one path below — same destinations as before, grouped in one place.</span><span class="siteLang__fr">Choisissez un parcours ci-dessous — les mêmes destinations qu’auparavant, regroupées ici.</span></span></p>
+
+    <section class="grid studyHubGrid" aria-label="Study choices">
+      <a class="card card--hub-book1" href="{{ url_for('book_summary') }}">
+        <div class="card__icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+            <path d="M4 19.5V6a2 2 0 0 1 2-2h12v17H6a2 2 0 0 1-2-1.5Z" stroke="currentColor" stroke-width="2"/>
+            <path d="M8 8h6M8 12h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="card__body">
+          <div class="card__title siteLang"><span class="siteLang__en">Book Summary 1</span><span class="siteLang__fr">Résumé du livre 1</span></div>
+          <div class="card__meta studyHubCardMeta"><span class="studyHubMetaFa" dir="rtl">خلاصهٔ فصل‌به‌فصل؛ فارسی، انگلیسی و فرانسوی و هم‌سو با محتوای Discover Canada</span><span class="studyHubMetaFr" dir="ltr">Résumé chapitre par chapitre ; persan, anglais et français, aligné sur <em>Découvrir le Canada</em>.</span><span class="studyHubMetaEn">Chapter-by-chapter summary in Persian, English, and French — aligned with Discover Canada.</span></div>
+        </div>
+        <div class="card__chev" aria-hidden="true">›</div>
+      </a>
+
+      <a class="card card--hub-book2" href="{{ url_for('book_summary_2') }}">
+        <div class="card__icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+            <path d="M6 4h11a2 2 0 0 1 2 2v13a1 1 0 0 1-1 1H7a2 2 0 0 1-2-2V4Z" stroke="currentColor" stroke-width="2"/>
+            <path d="M6 4v14a2 2 0 0 0 2 2h11M9 8h7M9 12h7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="card__body">
+          <div class="card__title siteLang"><span class="siteLang__en">Book Summary 2</span><span class="siteLang__fr">Résumé du livre 2</span></div>
+          <div class="card__meta studyHubCardMeta"><span class="studyHubMetaFa" dir="rtl">خلاصهٔ تکمیلی با جزئیات بیشتر؛ چند صفحهٔ اول رایگان، ادامه با اشتراک</span><span class="studyHubMetaFr" dir="ltr">Résumé complémentaire avec plus de détails ; premières pages gratuites, puis accès avec abonnement.</span><span class="studyHubMetaEn">Extended summary with more detail; first pages free, continued access with subscription.</span></div>
+        </div>
+        <div class="card__chev" aria-hidden="true">›</div>
+      </a>
+
+      <a class="card card--hub-timeline" href="{{ url_for('canadian_history_timeline') }}">
+        <div class="card__icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+            <path d="M4 19h16M7 17V9m5 8V5m5 12v-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M7 9h0m5-4h0m5 8h0" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="card__body">
+          <div class="card__title siteLang"><span class="siteLang__en">Key Canadian dates</span><span class="siteLang__fr">Dates clés du Canada</span></div>
+          <div class="card__meta studyHubCardMeta"><span class="studyHubMetaFa" dir="rtl">خط زمانی تاریخ کانادا؛ رویدادها، تاریخ‌ها و چهره‌های مهم از راهنمای مرجع</span><span class="studyHubMetaFr" dir="ltr">Frise chronologique du Canada ; événements, dates et figures du guide de référence.</span><span class="studyHubMetaEn">Canadian history timeline — key events, dates, and figures from the official study guide.</span></div>
+        </div>
+        <div class="card__chev" aria-hidden="true">›</div>
+      </a>
+
+      <a class="card card--hub-pdf" href="{{ url_for('discover_pdf') }}" target="_blank" rel="noopener">
+        <div class="card__icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+            <path d="M7 3h7l5 5v13a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+            <path d="M14 3v5h5M9 13h6M9 17h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="card__body">
+          <div class="card__title siteLang"><span class="siteLang__en">Official guide (PDF)</span><span class="siteLang__fr">Guide officiel (PDF)</span></div>
+          <div class="card__meta studyHubCardMeta"><span class="studyHubMetaFa" dir="rtl">نسخهٔ رسمی کتاب Discover Canada از IRCC؛ باز شدن یا دانلود فایل PDF</span><span class="studyHubMetaFr" dir="ltr">Version officielle <em>Découvrir le Canada</em> (IRCC) ; ouverture ou téléchargement du PDF.</span><span class="studyHubMetaEn">Official <em>Discover Canada</em> from IRCC — open or download the PDF.</span></div>
+        </div>
+        <div class="card__chev" aria-hidden="true">›</div>
+      </a>
+    </section>
+
+  </main>
+
+  {% include '_modern_landing_site_nav_footer.html' %}
+  {% include '_modern_site_topbar_scripts.html' %}
+</body>
+</html>

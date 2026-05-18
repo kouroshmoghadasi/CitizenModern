@@ -1,0 +1,114 @@
+<!doctype html>
+<html dir="ltr">
+<head>
+  <meta charset="utf-8" />
+  {% include '_citizen_site_data_site_lang_head.html' %}
+  {% set citizen_theme_profile = 'modern' %}
+  {% include '_citizen_site_theme_head.html' %}
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate" />
+  <link rel="icon" href="{{ url_for('static', filename='images/logo.png') }}" type="image/png" />
+  <title>Mock tests — Test1 to Test102 | CitizenReady</title>
+  <meta name="description" content="Choose one of 102 practice mock tests for the Canadian citizenship exam simulator." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='modern_landing.css') }}?v=20260511d" />
+  <style>
+    .mockHub { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; padding: 0 16px 48px; }
+    .mockHub__title {
+      font-family: Inter, system-ui, sans-serif;
+      font-size: clamp(1.35rem, 4vw, 1.75rem);
+      font-weight: 800;
+      text-align: center;
+      margin: 8px 0 20px;
+      color: var(--text, #e8eaed);
+    }
+    .mockHub__sub {
+      font-family: Inter, system-ui, sans-serif;
+      text-align: center;
+      font-size: 0.95rem;
+      opacity: 0.88;
+      margin-bottom: 28px;
+      color: var(--text-muted, #b0b4b8);
+    }
+    .mockHub__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(min(100%, 108px), 1fr));
+      gap: 12px;
+    }
+    .mockHub__btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 12px 10px;
+      border-radius: 12px;
+      font-family: Inter, system-ui, sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-decoration: none;
+      color: #e8eaed;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+      transition: transform 0.15s, border-color 0.15s, background 0.15s;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+    }
+    .mockHub__btn:hover {
+      background: rgba(124, 179, 245, 0.15);
+      border-color: rgba(124, 179, 245, 0.45);
+      transform: translateY(-1px);
+    }
+    .mockHub__btn:focus-visible {
+      outline: 2px solid #7cb3f5;
+      outline-offset: 2px;
+    }
+    html[data-theme="light"] .mockHub__title {
+      color: #1a1d24;
+    }
+    html[data-theme="light"] .mockHub__sub {
+      color: #5c6370;
+      opacity: 1;
+    }
+    html[data-theme="light"] .mockHub__btn {
+      color: #1e3c72;
+      background: rgba(30, 60, 114, 0.06);
+      border-color: rgba(30, 60, 114, 0.14);
+      box-shadow: 0 2px 12px rgba(30, 60, 114, 0.08);
+    }
+    html[data-theme="light"] .mockHub__btn:hover {
+      background: rgba(30, 60, 114, 0.1);
+      border-color: rgba(30, 60, 114, 0.28);
+    }
+  </style>
+</head>
+<body>
+  {% include '_citizen_site_theme_body_sync.html' %}
+  <div class="bg">
+    <div class="bg__blob bg__blob--a"></div>
+    <div class="bg__blob bg__blob--b"></div>
+  </div>
+  {% set modern_topbar_hide_study = true %}
+  {% set modern_topbar_hide_414 = true %}
+  {% include '_modern_site_topbar.html' %}
+
+  <main class="wrap mockHub" aria-label="Mock test list">
+    <h1 class="mockHub__title siteLang siteLang--stack">
+      <span class="siteLang__en">Mock — pick a test</span>
+      <span class="siteLang__fr">Mock — choisir un test</span>
+    </h1>
+    <p class="mockHub__sub siteLang siteLang--stack">
+      <span class="siteLang__en">102 timed practice sets (Test1–Test102). Same timer and score as the full simulator.</span>
+      <span class="siteLang__fr">102 séries chronométrées (Test1–Test102). Même minuteur et score que le simulateur.</span>
+    </p>
+    <div class="mockHub__grid" role="list">
+      {% for test_num in range(1, 103) %}
+      <a class="mockHub__btn" role="listitem" href="{{ url_for('citizenship_mock_run', test_num=test_num) }}">Test{{ test_num }}</a>
+      {% endfor %}
+    </div>
+  </main>
+  {% include '_modern_site_topbar_scripts.html' %}
+</body>
+</html>

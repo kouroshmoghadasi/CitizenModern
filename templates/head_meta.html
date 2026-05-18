@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html dir="ltr">
 <head>
     <meta charset="UTF-8">
+    {% include '_citizen_site_data_site_lang_head.html' %}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="{{ url_for('static', filename='images/logo.png') }}" type="image/png">
     <link rel="apple-touch-icon" href="{{ url_for('static', filename='images/logo.png') }}">
@@ -32,6 +33,8 @@
     <meta name="twitter:title" content="آزمون شهروندی کانادا | تمرین به فارسی و انگلیسی">
     <meta name="twitter:description" content="تمرین شهروندی کانادا: ۱۰۰ تست، ۴۱۴ و ۵۷۱ سوال، خلاصه Discover Canada — فارسی، انگلیسی، فرانسه.">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='citizen_subscription_block.css') }}?v=20260519k">
+    {% include '_citizen_fa_font_head.html' %}
     {% include 'pwa_meta.html' %}
     <script type="application/ld+json">
     {
@@ -56,6 +59,11 @@
         "url": "{{ seo_base_url() }}/",
         "sameAs": [
           "https://discovercanadatest.com/",
+          "https://timchehbazaar.com/",
+          "https://en.training.timchebazaar.com/",
+          "https://t.me/EnTraining_Timchebazaar",
+          "https://fr.training.timchebazaar.com/",
+          "https://t.me/fr_training",
           "https://t.me/Kouroshmoghadasi"
         ],
         "logo": {
@@ -114,3 +122,5 @@
       ]
     }
     </script>
+    {% set citizen_theme_profile = 'modern' %}
+    {% include '_citizen_site_theme_head.html' %}

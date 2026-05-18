@@ -1,0 +1,95 @@
+<body class="mock-exam-page">
+<script>try{var Sf=localStorage.getItem('citizenSiteShowFa');if(Sf!=='yes'&&Sf!=='no')Sf=localStorage.getItem('book_summary_show_fa');if(Sf!=='yes'&&Sf!=='no')Sf=localStorage.getItem('book_summary_2_show_fa');document.body.setAttribute('data-show-fa',Sf==='no'?'no':'yes');}catch(e){document.body.setAttribute('data-show-fa','yes');}</script>
+{% include '_citizen_site_theme_body_sync.html' %}
+{% include 'content_protection.html' %}
+<div class="bg">
+  <div class="bg__blob bg__blob--a"></div>
+  <div class="bg__blob bg__blob--b"></div>
+</div>
+{% set modern_topbar_hide_study = true %}
+{% set modern_topbar_hide_414 = true %}
+{% include '_modern_site_topbar.html' %}
+
+<div class="mock-exam-root">
+  <p class="mock-exam-session" dir="ltr">
+    {% if initial_mock_test is defined and initial_mock_test %}Mock · Test{{ initial_mock_test }}{% else %}Mock{% endif %}
+  </p>
+
+  <div class="mock-exam-sr-only">
+    <label for="testNumberSelect">Test</label>
+    <select id="testNumberSelect" onchange="selectTestFromDropdown()" title="Test select" tabindex="-1" aria-hidden="true"></select>
+    <label for="testNumberSelectMobile">Test</label>
+    <select id="testNumberSelectMobile" onchange="selectTestFromDropdownMobile()" title="Test select mobile" tabindex="-1" aria-hidden="true"></select>
+  </div>
+
+  <div class="mock-exam-layout">
+    <main class="mock-exam-main" aria-label="Question">
+      <div class="mock-exam-nav-frame mock-exam-nav-frame--desktop">
+        <div class="mock-exam-nav-stats" role="group" aria-label="Timer and score">
+          <div class="mock-exam-stat mock-exam-stat--time">
+            <span class="mock-exam-stat__ic" aria-hidden="true">⏱</span>
+            <span class="timer mock-exam-stat__time mock-exam-timer-digits" id="timer">45:00</span>
+          </div>
+          <div class="mock-exam-stat mock-exam-stat--ok">
+            <span class="mock-exam-stat__lab">✓ <span class="mock-exam-stat__lab-text">Correct</span></span>
+            <span class="mock-exam-stat__num" id="correctCounter">0</span>
+          </div>
+          <div class="mock-exam-stat mock-exam-stat--bad">
+            <span class="mock-exam-stat__lab">✗ <span class="mock-exam-stat__lab-text">Incorrect</span></span>
+            <span class="mock-exam-stat__num" id="incorrectCounter">0</span>
+          </div>
+        </div>
+        <nav class="mock-exam-qnav mock-exam-qnav--desktop" aria-label="Question navigation">
+          <button type="button" class="test-nav-btn prev" onclick="navigateQuestion(-1)" id="testPrevBtn" title="Previous">قبلی</button>
+          <div class="question-display-container" dir="ltr">
+            <span class="question-label">Q</span>
+            <span id="testQuestionNumberDisplay" class="question-number-display">1 / 20</span>
+          </div>
+          <button type="button" class="test-nav-btn next" onclick="navigateQuestion(1)" id="testNextBtn" title="Next">بعدی</button>
+        </nav>
+      </div>
+
+      <div class="mock-exam-nav-frame mock-exam-nav-frame--mobile">
+        <div class="mock-exam-nav-stats" role="group" aria-label="Timer and score (mobile)">
+          <div class="mock-exam-stat mock-exam-stat--time">
+            <span class="mock-exam-stat__ic" aria-hidden="true">⏱</span>
+            <span class="timer mock-exam-stat__time mock-exam-timer-digits" id="timerMobile">45:00</span>
+          </div>
+          <div class="mock-exam-stat mock-exam-stat--ok">
+            <span class="mock-exam-stat__lab">✓</span>
+            <span class="mock-exam-stat__num" id="correctCounterMobile">0</span>
+          </div>
+          <div class="mock-exam-stat mock-exam-stat--bad">
+            <span class="mock-exam-stat__lab">✗</span>
+            <span class="mock-exam-stat__num" id="incorrectCounterMobile">0</span>
+          </div>
+        </div>
+        <nav class="mock-exam-qnav mock-exam-qnav--mobile" aria-label="Question navigation (mobile)">
+          <button type="button" class="test-nav-btn test-nav-btn-mobile prev" onclick="navigateQuestion(-1)" id="testPrevBtnMobile" title="Previous">قبلی</button>
+          <div class="question-display-container question-display-container-mobile" dir="ltr">
+            <span class="question-label">Q</span>
+            <span id="testQuestionNumberDisplayMobile" class="question-number-display">1 / 20</span>
+          </div>
+          <button type="button" class="test-nav-btn test-nav-btn-mobile next" onclick="navigateQuestion(1)" id="testNextBtnMobile" title="Next">بعدی</button>
+        </nav>
+      </div>
+
+      <div id="testContainer">
+        {% include '_test_area_subscription_block.html' %}
+
+        <div id="questionCard" class="mock-exam-question-card"></div>
+      </div>
+
+      <div class="results mock-exam-results" id="results" style="display: none;">
+        <h2 class="mock-exam-results__title">نتایج آزمون</h2>
+        <div class="score mock-exam-results__score" id="score"></div>
+        <div class="score-text mock-exam-results__score-text" id="scoreText"></div>
+        <div class="mock-exam-results__actions">
+          <button type="button" class="submit-btn mock-exam-results__btn mock-exam-results__btn--primary" onclick="showAnswers()">مشاهده جدول پاسخ‌ها</button>
+          <button type="button" class="submit-btn mock-exam-results__btn mock-exam-results__btn--next" id="nextTestBtn" onclick="goToNextTest()">آزمون بعدی →</button>
+        </div>
+        <div id="answersTable"></div>
+      </div>
+    </main>
+  </div>
+</div>

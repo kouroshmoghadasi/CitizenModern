@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  {% include '_citizen_site_data_site_lang_head.html' %}
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <link rel="icon" href="{{ url_for('static', filename='images/logo.png') }}" type="image/png" />
+  <link rel="apple-touch-icon" href="{{ url_for('static', filename='images/logo.png') }}" />
+  {% set citizen_theme_profile = 'modern' %}
+  {% include '_citizen_site_theme_head.html' %}
+  <meta name="robots" content="noindex, nofollow" />
+  <title>{% if initial_mock_test is defined and initial_mock_test %}Mock · Test {{ initial_mock_test|int }} | CitizenReady{% else %}Mock test | CitizenReady{% endif %}</title>
+  {% include 'pwa_meta.html' %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  {% include '_citizen_fa_font_head.html' %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='modern_landing.css') }}?v=20260519i" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='mock_exam.css') }}?v=20260519i" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='citizen_subscription_block.css') }}?v=20260519k" />

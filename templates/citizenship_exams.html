@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html dir="ltr" class="modern-exams-shell" data-theme="dark">
 <head>
     <meta charset="UTF-8">
+    {% include '_citizen_site_data_site_lang_head.html' %}
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <link rel="icon" href="{{ url_for('static', filename='images/logo.png') }}" type="image/png">
     <link rel="apple-touch-icon" href="{{ url_for('static', filename='images/logo.png') }}">
@@ -15,28 +16,14 @@
     {% set seo_og_type = "website" %}
     {% include '_seo_head_social.html' %}
     {% include 'pwa_meta.html' %}
+{% set citizen_theme_profile = 'modern' %}
+{% include '_citizen_site_theme_head.html' %}
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        :root {
-            --bg: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            --card-bg: #fff;
-            --text: #1a1a1a;
-            --accent: #1e3c72;
-            --accent-light: #2c5282;
-            --border: rgba(30,60,114,0.1);
-        }
-        body.theme-dark {
-            --bg: linear-gradient(135deg, #1a1d24 0%, #0f1115 100%);
-            --card-bg: #252830;
-            --text: #e8eaed;
-            --accent: #7cb3f5;
-            --accent-light: #90c5f7;
-            --border: rgba(255,255,255,0.1);
-        }
         html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
-        body {
-            font-family: Tahoma, 'Segoe UI', Roboto, sans-serif;
-            background: var(--bg);
+        html.modern-exams-shell body {
+            font-family: "Inter", Tahoma, 'Segoe UI', Roboto, sans-serif;
+            background: transparent !important;
             min-height: 100vh;
             min-height: 100dvh;
             padding: max(16px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) max(16px, env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px));
@@ -46,15 +33,38 @@
             user-select: none;
             -webkit-touch-callout: none;
         }
-        .wrap { max-width: 960px; margin: 0 auto; width: 100%; }
-        .back-bar { margin-bottom: 16px; display: flex; flex-wrap: wrap; gap: 10px; justify-content: space-between; }
-        .back-btn {
-            display: inline-block; padding: 12px 18px; min-height: 48px; line-height: 1.3; box-sizing: border-box;
-            background: var(--accent); color: #fff;
-            text-decoration: none; border-radius: 10px; font-weight: 600;
-            -webkit-tap-highlight-color: transparent; touch-action: manipulation;
+        html.modern-exams-shell .topbar {
+            direction: ltr;
+            unicode-bidi: isolate;
         }
-        .back-btn:hover { opacity: 0.92; }
+        html.modern-exams-shell .citizenship-exams-main {
+            position: relative;
+            z-index: 1;
+            max-width: 960px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        html.modern-exams-shell a.chip {
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
+        }
+        .citizenship-exams-main {
+            --bg: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            --card-bg: #fff;
+            --exam-body-text: #1a1a1a;
+            --accent: #1e3c72;
+            --accent-light: #2c5282;
+            --border: rgba(30,60,114,0.1);
+        }
+        html[data-theme="dark"] .citizenship-exams-main {
+            --bg: linear-gradient(135deg, #1a1d24 0%, #0f1115 100%);
+            --card-bg: #252830;
+            --exam-body-text: #e8eaed;
+            --accent: #7cb3f5;
+            --accent-light: #90c5f7;
+            --border: rgba(255,255,255,0.1);
+        }
         .page-header {
             background: linear-gradient(135deg, #1e3c72 0%, #2c5282 100%);
             color: #fff; padding: 26px 22px; border-radius: 16px; margin-bottom: 26px;
@@ -64,7 +74,7 @@
         .page-header p { opacity: 0.95; font-size: clamp(0.88rem, 3.5vw, 0.95em); }
         .page-header .exam-visit-count {
             margin-top: 14px; font-size: clamp(0.82rem, 3.2vw, 0.92em); opacity: 0.96; line-height: 1.45;
-            font-weight: 600; text-align: center; direction: rtl;
+            font-weight: 600; text-align: center; direction: ltr;
         }
         .page-header .exam-visit-count strong { color: #ff8a80; font-weight: 800; }
         .exam-grid {
@@ -78,7 +88,7 @@
             transition: transform 0.2s, box-shadow 0.2s;
             position: relative;
         }
-        body.theme-dark .exam-card { box-shadow: 0 4px 20px rgba(0,0,0,0.35); }
+        html[data-theme="dark"] .exam-card { box-shadow: 0 4px 20px rgba(0,0,0,0.35); }
         @media (hover: hover) {
             .exam-card:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(30,60,114,0.15); }
         }
@@ -101,7 +111,7 @@
             border-bottom: 1px solid var(--border);
             box-sizing: border-box;
         }
-        body.theme-dark .exam-card-img-wrap { background: rgba(0, 0, 0, 0.22); }
+        html[data-theme="dark"] .exam-card-img-wrap { background: rgba(0, 0, 0, 0.22); }
         .exam-card img {
             max-width: 100%;
             max-height: min(70vw, 420px);
@@ -114,9 +124,11 @@
         }
         .exam-card-body { padding: 16px 18px 20px; }
         .exam-card-body h2 { font-size: clamp(1.05rem, 4vw, 1.2em); color: var(--accent); margin-bottom: 8px; }
-        .exam-card-body p { font-size: clamp(0.85rem, 3.2vw, 0.9em); color: var(--text); opacity: 0.88; overflow-wrap: anywhere; }
+        .exam-card-body h2.siteLang--stack,
+        .exam-card-body p.siteLang--stack { text-align: center; }
+        .exam-card-body p { font-size: clamp(0.85rem, 3.2vw, 0.9em); color: var(--exam-body-text); opacity: 0.88; overflow-wrap: anywhere; }
         .exam-badge { display: inline-block; margin-top: 10px; font-size: 0.8em; font-weight: 700; padding: 4px 10px; border-radius: 8px; background: rgba(241,196,15,0.25); color: #b8860b; }
-        body.theme-dark .exam-badge { color: #f1c40f; background: rgba(241,196,15,0.15); }
+        html[data-theme="dark"] .exam-badge { color: #f1c40f; background: rgba(241,196,15,0.15); }
 
         .exam-section-title {
             font-size: clamp(1.05rem, 3.8vw, 1.2rem);
@@ -128,210 +140,218 @@
             text-align: right;
             direction: rtl;
         }
-        body.theme-dark .exam-section-title { border-bottom-color: rgba(124, 179, 245, 0.25); }
+        html[data-theme="dark"] .exam-section-title { border-bottom-color: rgba(124, 179, 245, 0.25); }
         .exam-section-title:first-of-type { margin-top: 0; }
 
         @media (max-width: 520px) {
-            body { padding: max(12px, env(safe-area-inset-top, 0px)) max(12px, env(safe-area-inset-right, 0px)) max(12px, env(safe-area-inset-bottom, 0px)) max(12px, env(safe-area-inset-left, 0px)); }
-            .back-bar { flex-direction: column; align-items: stretch; }
-            .back-bar .back-btn { width: 100%; text-align: center; }
+            html.modern-exams-shell body { padding: max(12px, env(safe-area-inset-top, 0px)) max(12px, env(safe-area-inset-right, 0px)) max(12px, env(safe-area-inset-bottom, 0px)) max(12px, env(safe-area-inset-left, 0px)); }
             .page-header { padding: 20px 16px; }
         }
     </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='modern_landing.css') }}?v=20260509h" />
 </head>
 <body>
-    <script>try{var t=localStorage.getItem('citizenship571_theme');if(t==='dark')document.body.classList.add('theme-dark');}catch(e){}</script>
+  <script>try{var Sf=localStorage.getItem('citizenSiteShowFa');if(Sf!=='yes'&&Sf!=='no')Sf=localStorage.getItem('book_summary_show_fa');if(Sf!=='yes'&&Sf!=='no')Sf=localStorage.getItem('book_summary_2_show_fa');document.body.setAttribute('data-show-fa',Sf==='no'?'no':'yes');}catch(e){document.body.setAttribute('data-show-fa','yes');}</script>
+  <script>(function(){try{var fr=document.documentElement.getAttribute('data-site-lang')==='fr-fa';document.querySelectorAll('img[data-alt-fr]').forEach(function(img){var f=img.getAttribute('data-alt-fr');if(fr&&f)img.setAttribute('alt',f);});}catch(e){}})();</script>
+    {% include '_citizen_site_theme_body_sync.html' %}
     {% include 'content_protection.html' %}
-    <div class="wrap">
-        <div class="back-bar">
-            <a href="/" class="back-btn">← خانه / Home</a>
-        </div>
+  <div class="bg">
+    <div class="bg__blob bg__blob--a"></div>
+    <div class="bg__blob bg__blob--b"></div>
+  </div>
+  {% set modern_topbar_hide_study = true %}
+  {% set modern_topbar_hide_414 = true %}
+  {% include '_modern_site_topbar.html' %}
+    <main class="citizenship-exams-main">
         <div class="page-header">
-            <h1>آزمون‌های نمونه</h1>
-            {% if exam_section_views is not none %}
-            <p class="exam-visit-count" role="status">بازدید ثبت‌شده از بخش آزمون‌های نمونه: <strong>{{ exam_section_views }}</strong></p>
-            {% endif %}
+            <h1 class="siteLang siteLang--stack"><span class="siteLang__en">Categorized practice tests by chapter</span><span class="siteLang__fr">Tests pratiques classés par chapitre</span></h1>
+            {% set exam_visit_count_class = 'exam-visit-count' %}
+            {% include '_exam_section_visit_count.html' %}
         </div>
         <div class="exam-grid">
             <article class="exam-card" id="introduction-exam">
                 <a href="{{ url_for('citizenship_introduction') }}">
                     <div class="exam-card-img-wrap">
-                    <img src="{{ url_for('static', filename='images/citizenship-introduction-thumbnail.png') }}" alt="Citizenship Test — Introduction: oath, Queen of Canada, loyalty" width="320" height="180" loading="lazy">
+                    <img src="{{ url_for('static', filename='images/citizenship-introduction-thumbnail.png') }}" alt="Citizenship test — Introduction: oath, Crown of Canada, loyalty" width="320" height="180" loading="lazy" data-alt-fr="Test de citoyenneté — Introduction : serment, Couronne du Canada, loyauté">
                     </div>
                     <div class="exam-card-body">
-                        <h2>Introduction</h2>
-                        <p>Oath of citizenship, the Crown, and loyalty — Discover Canada opening topics</p>
+                        <h2 class="siteLang siteLang--stack"><span class="siteLang__en">Introduction</span><span class="siteLang__fr">Introduction</span></h2>
+                        <p class="siteLang siteLang--stack"><span class="siteLang__en">Oath of citizenship, the Crown, and loyalty — Discover Canada opening topics</span><span class="siteLang__fr">Serment de citoyenneté, la Couronne et loyauté — sujets d’ouverture de <em>Découvrir le Canada</em></span></p>
                     </div>
                 </a>
             </article>
             <article class="exam-card" id="rights-responsibilities-exam">
                 <a href="{{ url_for('citizenship_rights_responsibilities') }}">
                     <div class="exam-card-img-wrap">
-                    <img src="{{ url_for('static', filename='images/citizenship-rights-responsibilities-thumbnail.png') }}" alt="Rights and Responsibilities of Citizenship — Canadian law, Magna Carta" width="320" height="180" loading="lazy">
+                    <img src="{{ url_for('static', filename='images/citizenship-rights-responsibilities-thumbnail.png') }}" alt="Rights and responsibilities of citizenship — Canadian law, Magna Carta" width="320" height="180" loading="lazy" data-alt-fr="Droits et responsabilités de la citoyenneté — droit canadien, Magna Carta">
                     </div>
                     <div class="exam-card-body">
-                        <h2>Rights and Responsibilities</h2>
-                        <p>Chapter 1 — law, freedoms, and citizenship duties (Discover Canada)</p>
+                        <h2 class="siteLang siteLang--stack"><span class="siteLang__en">Rights and Responsibilities</span><span class="siteLang__fr">Droits et responsabilités</span></h2>
+                        <p class="siteLang siteLang--stack"><span class="siteLang__en">Chapter 1 — law, freedoms, and citizenship duties (Discover Canada)</span><span class="siteLang__fr">Chapitre 1 — lois, libertés et devoirs de citoyenneté (<em>Découvrir le Canada</em>)</span></p>
                     </div>
                 </a>
             </article>
             <article class="exam-card" id="who-we-are-exam">
                 <a href="{{ url_for('citizenship_who_we_are') }}">
                     <div class="exam-card-img-wrap">
-                    <img src="{{ url_for('static', filename='images/citizenship-who-we-are-thumbnail.png') }}" alt="Who We Are — Parliament Hill, BNA Act, hockey, beaver, Canadian identity collage" width="320" height="180" loading="lazy">
+                    <img src="{{ url_for('static', filename='images/citizenship-who-we-are-thumbnail.png') }}" alt="Who we are — Parliament Hill, BNA Act, hockey, beaver, Canadian identity" width="320" height="180" loading="lazy" data-alt-fr="Qui sommes-nous — Parlement, loi de 1867, hockey, castor, identité canadienne">
                     </div>
                     <div class="exam-card-body">
-                        <h2>Who We Are</h2>
-                        <p>Chapter 2 — identity, symbols, regions, and Canadian society (Discover Canada)</p>
+                        <h2 class="siteLang siteLang--stack"><span class="siteLang__en">Who We Are</span><span class="siteLang__fr">Qui sommes-nous</span></h2>
+                        <p class="siteLang siteLang--stack"><span class="siteLang__en">Chapter 2 — identity, symbols, regions, and Canadian society (Discover Canada)</span><span class="siteLang__fr">Chapitre 2 — identité, symboles, régions et société canadienne (<em>Découvrir le Canada</em>)</span></p>
                     </div>
                 </a>
             </article>
             <article class="exam-card" id="canadas-history-exam">
                 <a href="{{ url_for('citizenship_canadas_history') }}">
                     <div class="exam-card-img-wrap">
-                    <img src="{{ url_for('static', filename='images/citizenship-canadas-history-thumbnail.png') }}" alt="Canada's History — Indigenous peoples, explorers, New France, Confederation (Discover Canada)" width="320" height="213" loading="lazy">
+                    <img src="{{ url_for('static', filename='images/citizenship-canadas-history-thumbnail.png') }}" alt="Canada’s history — Indigenous peoples, explorers, New France, Confederation" width="320" height="213" loading="lazy" data-alt-fr="Histoire du Canada — peuples autochtones, explorateurs, Nouvelle-France, Confédération">
                     </div>
                     <div class="exam-card-body">
-                        <h2>Canada's History</h2>
-                        <p>Chapter 3 — Indigenous history, European contact, and Confederation (Discover Canada)</p>
+                        <h2 class="siteLang siteLang--stack"><span class="siteLang__en">Canada's History</span><span class="siteLang__fr">Histoire du Canada</span></h2>
+                        <p class="siteLang siteLang--stack"><span class="siteLang__en">Chapter 3 — Indigenous history, European contact, and Confederation (Discover Canada)</span><span class="siteLang__fr">Chapitre 3 — histoire autochtone, présence européenne et Confédération (<em>Découvrir le Canada</em>)</span></p>
                     </div>
                 </a>
             </article>
             <article class="exam-card" id="canadian-history-timeline-study">
                 <a href="{{ url_for('canadian_history_timeline') }}">
                     <div class="exam-card-img-wrap">
-                    <img src="{{ url_for('static', filename='images/canada-history-timeline-hero.png') }}" alt="Key events in Canadian history — illustrated timeline, study page" width="320" height="180" loading="lazy">
+                    <img src="{{ url_for('static', filename='images/canada-history-timeline-hero.png') }}" alt="Key events in Canadian history — illustrated timeline, study page" width="320" height="180" loading="lazy" data-alt-fr="Dates clés de l’histoire du Canada — frise illustrée, page d’étude">
                     </div>
                     <div class="exam-card-body">
-                        <h2>Key events in Canadian history</h2>
-                        <p>Bilingual study page with search — text from the official IRCC guide (Discover Canada)</p>
+                        <h2 class="siteLang siteLang--stack"><span class="siteLang__en">Key events in Canadian history</span><span class="siteLang__fr">Dates clés de l’histoire du Canada</span></h2>
+                        <p class="siteLang siteLang--stack"><span class="siteLang__en">Bilingual study page with search — text from the official IRCC guide (Discover Canada)</span><span class="siteLang__fr">Page d’étude bilingue avec recherche — texte tiré du guide officiel d’IRCC (<em>Découvrir le Canada</em>)</span></p>
                     </div>
                 </a>
             </article>
             <article class="exam-card" id="canadas-economy-exam">
                 <a href="{{ url_for('citizenship_canadas_economy') }}">
                     <div class="exam-card-img-wrap">
-                    <img src="{{ url_for('static', filename='images/citizenship-canada-economy-thumbnail.png') }}" alt="Canada's Economy — trade, Parliament, CN Tower, services and resources (Discover Canada Chapter 9)" width="320" height="213" loading="lazy">
+                    <img src="{{ url_for('static', filename='images/citizenship-canada-economy-thumbnail.png') }}" alt="Canada’s economy — trade, Parliament, CN Tower, sectors and resources (Chapter 9)" width="320" height="213" loading="lazy" data-alt-fr="Économie du Canada — commerce, Parlement, tour CN, secteurs et ressources (chapitre 9)">
                     </div>
                     <div class="exam-card-body">
-                        <h2>Canada's Economy</h2>
-                        <p>Chapter 9 — trade with the United States, NAFTA, industries, and the G8 (Discover Canada)</p>
+                        <h2 class="siteLang siteLang--stack"><span class="siteLang__en">Canada's Economy</span><span class="siteLang__fr">Économie du Canada</span></h2>
+                        <p class="siteLang siteLang--stack"><span class="siteLang__en">Chapter 9 — trade with the United States, NAFTA, industries, and the G8 (Discover Canada)</span><span class="siteLang__fr">Chapitre 9 — commerce avec les États-Unis, ALENA, secteurs et G8 (<em>Découvrir le Canada</em>)</span></p>
                     </div>
                 </a>
             </article>
             <article class="exam-card" id="canadas-regions-exam">
                 <a href="{{ url_for('citizenship_canadas_regions') }}">
                     <div class="exam-card-img-wrap">
-                    <img src="{{ url_for('static', filename='images/citizenship-canada-regions-thumbnail.png') }}" alt="Canada's Regions — provinces, territories, capitals, Atlantic to Pacific (Discover Canada Chapter 10)" width="320" height="213" loading="lazy">
+                    <img src="{{ url_for('static', filename='images/citizenship-canada-regions-thumbnail.png') }}" alt="Canada’s regions — provinces, territories, capitals, Atlantic to Pacific (Chapter 10)" width="320" height="213" loading="lazy" data-alt-fr="Régions du Canada — provinces, territoires, capitales, Atlantique au Pacifique (chapitre 10)">
                     </div>
                     <div class="exam-card-body">
-                        <h2>Canada's Regions</h2>
-                        <p>Chapter 10 — provinces and territories, capitals, geography, and Atlantic Canada (Discover Canada)</p>
+                        <h2 class="siteLang siteLang--stack"><span class="siteLang__en">Canada's Regions</span><span class="siteLang__fr">Les régions du Canada</span></h2>
+                        <p class="siteLang siteLang--stack"><span class="siteLang__en">Chapter 10 — provinces and territories, capitals, geography, and Atlantic Canada (Discover Canada)</span><span class="siteLang__fr">Chapitre 10 — provinces et territoires, capitales, géographie et Canada atlantique (<em>Découvrir le Canada</em>)</span></p>
                     </div>
                 </a>
             </article>
             <article class="exam-card" id="how-canadians-govern-exam">
                 <a href="{{ url_for('citizenship_how_canadians_govern_themselves') }}">
                     <div class="exam-card-img-wrap">
-                    <img src="{{ url_for('static', filename='images/citizenship-how-canadians-govern-thumbnail.png') }}" alt="How Canadians Govern Themselves — Peace Tower, Crown, Constitution Act, Parliament" width="320" height="180" loading="lazy">
+                    <img src="{{ url_for('static', filename='images/citizenship-how-canadians-govern-thumbnail.png') }}" alt="How Canadians govern themselves — Peace Tower, Crown, Constitution Act, Parliament" width="320" height="180" loading="lazy" data-alt-fr="Comment les Canadiens se gouvernent — Tour de la Paix, Couronne, loi constitutionnelle, Parlement">
                     </div>
                     <div class="exam-card-body">
-                        <h2>How Canadians Govern Themselves</h2>
-                        <p>Federalism, Parliament, the Crown, and levels of government (Discover Canada)</p>
+                        <h2 class="siteLang siteLang--stack"><span class="siteLang__en">How Canadians Govern Themselves</span><span class="siteLang__fr">Comment les Canadiens se gouvernent</span></h2>
+                        <p class="siteLang siteLang--stack"><span class="siteLang__en">Federalism, Parliament, the Crown, and levels of government (Discover Canada)</span><span class="siteLang__fr">Fédéralisme, Parlement, Couronne et paliers de gouvernement (<em>Découvrir le Canada</em>)</span></p>
                     </div>
                 </a>
             </article>
             <article class="exam-card" id="federal-elections-exam">
                 <a href="{{ url_for('citizenship_federal_elections') }}">
                     <div class="exam-card-img-wrap">
-                    <img src="{{ url_for('static', filename='images/citizenship-federal-elections-thumbnail.png') }}" alt="Federal Elections in Canada — voting, Parliament Hill, Elections Canada" width="320" height="213" loading="lazy">
+                    <img src="{{ url_for('static', filename='images/citizenship-federal-elections-thumbnail.png') }}" alt="Federal elections in Canada — voting, Parliament Hill, Elections Canada" width="320" height="213" loading="lazy" data-alt-fr="Élections fédérales au Canada — vote, Parlement, Élections Canada">
                     </div>
                     <div class="exam-card-body">
-                        <h2>Federal Elections</h2>
-                        <p>Chapter 6 — voting, MPs, and Elections Canada (Discover Canada)</p>
+                        <h2 class="siteLang siteLang--stack"><span class="siteLang__en">Federal Elections</span><span class="siteLang__fr">Élections fédérales</span></h2>
+                        <p class="siteLang siteLang--stack"><span class="siteLang__en">Chapter 6 — voting, MPs, and Elections Canada (Discover Canada)</span><span class="siteLang__fr">Chapitre 6 — vote, députés et Élections Canada (<em>Découvrir le Canada</em>)</span></p>
                     </div>
                 </a>
             </article>
             <article class="exam-card" id="justice-system-exam">
                 <a href="{{ url_for('citizenship_justice_system') }}">
                     <div class="exam-card-img-wrap">
-                    <img src="{{ url_for('static', filename='images/citizenship-justice-system-thumbnail.png') }}" alt="The Justice System — presumption of innocence, due process, courts" width="320" height="180" loading="lazy">
+                    <img src="{{ url_for('static', filename='images/citizenship-justice-system-thumbnail.png') }}" alt="The justice system — presumption of innocence, due process, courts" width="320" height="180" loading="lazy" data-alt-fr="Le système judiciaire — présomption d’innocence, procédure régulière, tribunaux">
                     </div>
                     <div class="exam-card-body">
-                        <h2>The Justice System</h2>
-                        <p>Chapter 7 — courts, police, legal rights, and due process</p>
+                        <h2 class="siteLang siteLang--stack"><span class="siteLang__en">The Justice System</span><span class="siteLang__fr">Le système judiciaire</span></h2>
+                        <p class="siteLang siteLang--stack"><span class="siteLang__en">Chapter 7 — courts, police, legal rights, and due process</span><span class="siteLang__fr">Chapitre 7 — tribunaux, police, droits juridiques et procédure régulière</span></p>
                     </div>
                 </a>
             </article>
             <article class="exam-card" id="canadian-symbols-exam">
                 <a href="{{ url_for('citizenship_canadian_symbols') }}">
                     <div class="exam-card-img-wrap">
-                    <img src="{{ url_for('static', filename='images/citizenship-canadian-symbols-thumbnail.png') }}" alt="Canadian Symbols — Crown, Parliament, RCMP, coat of arms, Discover Canada" width="320" height="213" loading="lazy">
+                    <img src="{{ url_for('static', filename='images/citizenship-canadian-symbols-thumbnail.png') }}" alt="Canadian symbols — Crown, Parliament, RCMP, coat of arms" width="320" height="213" loading="lazy" data-alt-fr="Symboles canadiens — Couronne, Parlement, GRC, armoiries">
                     </div>
                     <div class="exam-card-body">
-                        <h2>Canadian Symbols</h2>
-                        <p>Chapter 8 — Crown, emblems, anthem, and national symbols (Discover Canada)</p>
+                        <h2 class="siteLang siteLang--stack"><span class="siteLang__en">Canadian Symbols</span><span class="siteLang__fr">Symboles canadiens</span></h2>
+                        <p class="siteLang siteLang--stack"><span class="siteLang__en">Chapter 8 — Crown, emblems, anthem, and national symbols (Discover Canada)</span><span class="siteLang__fr">Chapitre 8 — Couronne, emblèmes, hymne et symboles nationaux (<em>Découvrir le Canada</em>)</span></p>
                     </div>
                 </a>
             </article>
             <article class="exam-card" id="modern-canada-exam">
                 <a href="{{ url_for('citizenship_modern_canada') }}">
                     <div class="exam-card-img-wrap">
-                    <img src="{{ url_for('static', filename='images/citizenship-modern-canada-thumbnail.png') }}" alt="Modern Canada — oil in Alberta, post-war prosperity, trade, unemployment insurance, old age security" width="320" height="180" loading="lazy">
+                    <img src="{{ url_for('static', filename='images/citizenship-modern-canada-thumbnail.png') }}" alt="Modern Canada — economy, social programs, Canada since the mid-20th century" width="320" height="180" loading="lazy" data-alt-fr="Canada moderne — économie, programmes sociaux, Canada depuis le milieu du XXe siècle">
                     </div>
                     <div class="exam-card-body">
-                        <h2>Modern Canada</h2>
-                        <p>Chapter 4 — economy, social programs, and Canada since the mid‑20th century (Discover Canada)</p>
+                        <h2 class="siteLang siteLang--stack"><span class="siteLang__en">Modern Canada</span><span class="siteLang__fr">Canada moderne</span></h2>
+                        <p class="siteLang siteLang--stack"><span class="siteLang__en">Chapter 4 — economy, social programs, and Canada since the mid‑20th century (Discover Canada)</span><span class="siteLang__fr">Chapitre 4 — économie, programmes sociaux et Canada depuis le milieu du XX<sup>e</sup> siècle (<em>Découvrir le Canada</em>)</span></p>
                     </div>
                 </a>
             </article>
             <article class="exam-card" id="federal-questions-226">
                 <a href="{{ url_for('federal_questions_226') }}">
                     <div class="exam-card-img-wrap">
-                    <img src="{{ url_for('static', filename='images/citizenship-federal-elections-thumbnail.png') }}" alt="226 Federal Questions — first 16 free, full set with 414 subscription" width="320" height="213" loading="lazy">
+                    <img src="{{ url_for('static', filename='images/citizenship-federal-elections-thumbnail.png') }}" alt="226 federal questions — first 16 free, full access with 414 subscription" width="320" height="213" loading="lazy" data-alt-fr="226 questions fédérales — les 16 premières gratuites, accès complet avec abonnement 414">
                     </div>
                     <div class="exam-card-body">
-                        <h2>226 Federal Questions</h2>
-                        <p>Same subscription as 414/571: first 16 free, then paywall — correct answer highlighted</p>
-                        <span class="exam-badge">NEW</span>
+                        <h2 class="siteLang siteLang--stack"><span class="siteLang__en">226 Federal Questions</span><span class="siteLang__fr">226 questions fédérales</span></h2>
+                        <p class="siteLang siteLang--stack"><span class="siteLang__en">Same subscription as 414/571: first 16 free, then paywall — correct answer highlighted</span><span class="siteLang__fr">Même abonnement que 414/571 : les 16 premières gratuites, puis accès payant — bonne réponse mise en évidence</span></p>
+                        <span class="exam-badge siteLang"><span class="siteLang__en">NEW</span><span class="siteLang__fr">NOUVEAU</span></span>
                     </div>
                 </a>
             </article>
             <article class="exam-card">
                 <a href="{{ url_for('exam1') }}">
                     <div class="exam-card-img-wrap">
-                    <img src="{{ url_for('static', filename='images/exam1-thumbnail.png') }}" alt="Exam1 — Rights and Responsibilities" width="320" height="180" loading="lazy">
+                    <img src="{{ url_for('static', filename='images/exam1-thumbnail.png') }}" alt="Sample test 1 — rights and responsibilities of citizenship" width="320" height="180" loading="lazy" data-alt-fr="Test blanc 1 — droits et responsabilités de la citoyenneté">
                     </div>
                     <div class="exam-card-body">
-                        <h2>Exam1</h2>
-                        <p>Rights and Responsibilities of Citizenship</p>
+                        <h2 class="siteLang siteLang--stack"><span class="siteLang__en">Exam1</span><span class="siteLang__fr">Test blanc 1</span></h2>
+                        <p class="siteLang siteLang--stack"><span class="siteLang__en">Rights and Responsibilities of Citizenship</span><span class="siteLang__fr">Droits et responsabilités de la citoyenneté</span></p>
                     </div>
                 </a>
             </article>
             <article class="exam-card">
                 <a href="{{ url_for('exam2') }}">
                     <div class="exam-card-img-wrap">
-                    <img src="{{ url_for('static', filename='images/exam2-thumbnail.png') }}" alt="Exam2 — History of Canada — Quiz Questions" width="320" height="180" loading="lazy">
+                    <img src="{{ url_for('static', filename='images/exam2-thumbnail.png') }}" alt="Sample test 2 — history of Canada" width="320" height="180" loading="lazy" data-alt-fr="Test blanc 2 — histoire du Canada">
                     </div>
                     <div class="exam-card-body">
-                        <h2>Exam2</h2>
-                        <p>History of Canada</p>
+                        <h2 class="siteLang siteLang--stack"><span class="siteLang__en">Exam2</span><span class="siteLang__fr">Test blanc 2</span></h2>
+                        <p class="siteLang siteLang--stack"><span class="siteLang__en">History of Canada</span><span class="siteLang__fr">Histoire du Canada</span></p>
                     </div>
                 </a>
             </article>
             <article class="exam-card">
                 <a href="{{ url_for('exam3') }}">
                     <div class="exam-card-img-wrap">
-                    <img src="{{ url_for('static', filename='images/exam3-thumbnail.png') }}" alt="Exam3 — Canada's History — Quiz Questions" width="320" height="180" loading="lazy">
+                    <img src="{{ url_for('static', filename='images/exam3-thumbnail.png') }}" alt="Sample test 3 — Canada’s history, part 2" width="320" height="180" loading="lazy" data-alt-fr="Test blanc 3 — histoire du Canada, partie 2">
                     </div>
                     <div class="exam-card-body">
-                        <h2>Exam3</h2>
-                        <p>Canada's History — part 2</p>
+                        <h2 class="siteLang siteLang--stack"><span class="siteLang__en">Exam3</span><span class="siteLang__fr">Test blanc 3</span></h2>
+                        <p class="siteLang siteLang--stack"><span class="siteLang__en">Canada's History — part 2</span><span class="siteLang__fr">Histoire du Canada — partie 2</span></p>
                     </div>
                 </a>
             </article>
         </div>
-    </div>
+    </main>
+  {% include '_modern_site_topbar_scripts.html' %}
     <script>
       (function () {
         // برخی مرورگرهای درون‌برنامه‌ای (in-app) گاهی کلیک روی کارت‌های بزرگ را درست پاس نمی‌دهند.

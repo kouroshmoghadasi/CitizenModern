@@ -1,0 +1,56 @@
+/* Align book_summary.html with modern landing chrome (modern_landing.css loads before this file). */
+
+html.modern-book-shell {
+  height: 100%;
+}
+
+html.modern-book-shell body {
+  margin: 0;
+  padding: 0 !important;
+  font-family: "Inter", Tahoma, "Segoe UI", Roboto, sans-serif;
+  background: transparent !important;
+}
+
+html.modern-book-shell body::before {
+  display: none !important;
+}
+
+html.modern-book-shell .wrap.book-summary-shell-main {
+  width: min(1200px, calc(100% - 28px));
+  margin: 0 auto;
+  padding: 12px 10px 44px;
+  position: relative;
+  z-index: 1;
+}
+
+html.modern-book-shell .book-summary-shell-main > .container {
+  margin-top: 0;
+  border-radius: var(--radius, 14px);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  overflow: hidden;
+}
+
+html.modern-book-shell[data-theme="light"] .book-summary-shell-main > .container {
+  border-color: rgba(24, 24, 27, 0.12);
+  box-shadow: var(--shadow);
+}
+
+/* Keep chrome like the LTR home page: brand left, controls right (page stays rtl for body content). */
+html.modern-book-shell .topbar {
+  direction: ltr;
+  unicode-bidi: isolate;
+}
+
+html.modern-book-shell a.chip {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+@media (max-width: 640px) {
+  html.modern-book-shell .wrap.book-summary-shell-main {
+    width: min(1200px, calc(100% - 16px));
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+}

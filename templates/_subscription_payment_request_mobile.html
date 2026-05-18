@@ -1,0 +1,15 @@
+{% set sub_req_mobile_id = subscription_request_mobile_id | default('subModalRequestMobile') %}
+{% set sub_req_submit_id = subscription_request_submit_id | default('subModalRequestSubmit') %}
+{% set sub_req_msg_id = subscription_request_msg_id | default('subModalRequestMsg') %}
+<div class="subscription-pay-section subscription-pay-section--mobile subscription-mobile-block">
+  <label for="{{ sub_req_mobile_id }}" class="subscription-field-label subscription-mobile-label siteLang">
+    <span class="siteLang__en">Mobile number (username)</span>
+    <span class="siteLang__fr">Numéro de mobile (identifiant)</span>
+  </label>
+  <input type="tel" id="{{ sub_req_mobile_id }}" class="subscription-input subscription-input--tel" dir="ltr" inputmode="tel" autocomplete="tel" data-sub-i18n="requestMobilePlaceholder">
+  <button type="button" class="subscription-btn subscription-btn-submit subscription-btn-request siteLang" id="{{ sub_req_submit_id }}">
+    <span class="siteLang__en">Request access</span>
+    <span class="siteLang__fr">Demander l’accès</span>
+  </button>
+</div>
+<p id="{{ sub_req_msg_id }}" class="subscription-request-msg" style="display: none;"></p>

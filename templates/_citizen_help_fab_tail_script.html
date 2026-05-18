@@ -1,0 +1,226 @@
+<script>
+        function toggleHelpMenu(ev) {
+            if (ev) ev.stopPropagation();
+            const menu = document.getElementById('helpMenu');
+            if (!menu) return;
+            menu.classList.toggle('active');
+            syncHelpMenuToggleFromMenu();
+        }
+        
+        function syncHelpMenuToggleFromMenu() {
+            var menu = document.getElementById('helpMenu');
+            var btn = document.getElementById('helpMenuToggle') || document.querySelector('.help-btn');
+            if (!menu || !btn) return;
+            var open = menu.classList.contains('active');
+            btn.classList.toggle('is-open', open);
+            btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+            btn.setAttribute('aria-label', open ? 'بستن منو / Close menu' : 'منو / Menu');
+            btn.setAttribute('title', open ? 'بستن' : 'منو / Menu');
+        }
+
+        function openHelpModal() {
+            const menu = document.getElementById('helpMenu');
+            if (menu) menu.classList.remove('active');
+            syncHelpMenuToggleFromMenu();
+            const modal = document.getElementById('helpModal');
+            if (modal) modal.classList.add('active');
+        }
+        
+        function closeHelpModal(event) {
+            const modal = document.getElementById('helpModal');
+            modal.classList.remove('active');
+        }
+        
+        function openDonationModal() {
+            const menu = document.getElementById('helpMenu');
+            if (menu) menu.classList.remove('active');
+            syncHelpMenuToggleFromMenu();
+            const modal = document.getElementById('donationModal');
+            if (modal) modal.classList.add('active');
+        }
+        
+        function closeDonationModal(event) {
+            const modal = document.getElementById('donationModal');
+            if (modal) modal.classList.remove('active');
+        }
+        
+        function openSuggestions() {
+            const menu = document.getElementById('helpMenu');
+            if (menu) menu.classList.remove('active');
+            syncHelpMenuToggleFromMenu();
+            const modal = document.getElementById('suggestionsModal');
+            if (modal) {
+                modal.classList.add('active');
+            }
+        }
+        
+        function closeSuggestionsModal(event) {
+            const modal = document.getElementById('suggestionsModal');
+            if (modal) {
+                modal.classList.remove('active');
+            }
+        }
+        
+        function dismissStickyBanner() {
+            const banner = document.getElementById('adStickyBanner');
+            const restore = document.getElementById('adStickyRestore');
+            if (banner) {
+                banner.classList.add('ad-sticky-banner-dismissed');
+                try { sessionStorage.setItem('adStickyBannerDismissed', '1'); } catch (e) {}
+            }
+            if (restore) restore.classList.add('ad-sticky-restore-visible');
+        }
+        function restoreStickyBanner() {
+            const banner = document.getElementById('adStickyBanner');
+            const restore = document.getElementById('adStickyRestore');
+            if (banner) banner.classList.remove('ad-sticky-banner-dismissed');
+            if (restore) restore.classList.remove('ad-sticky-restore-visible');
+            try { sessionStorage.removeItem('adStickyBannerDismissed'); } catch (e) {}
+        }
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            try {
+                if (sessionStorage.getItem('adStickyBannerDismissed') === '1') {
+                    const banner = document.getElementById('adStickyBanner');
+                    const restore = document.getElementById('adStickyRestore');
+                    if (banner) banner.classList.add('ad-sticky-banner-dismissed');
+                    if (restore) restore.classList.add('ad-sticky-restore-visible');
+                }
+            } catch (e) {}
+        });
+
+        // بعد از ۱۵ دقیقه عدم فعالیت، ریلود تا همه جریان فعلی (چک اشتراک و غیره) را ببینند
+        (function() {
+            var INACTIVITY_MS = 15 * 60 * 1000;
+            var lastActivity = Date.now();
+            function onActivity() { lastActivity = Date.now(); }
+            var events = ['mousedown', 'keydown', 'scroll', 'touchstart', 'click'];
+            events.forEach(function(ev) {
+                document.addEventListener(ev, onActivity, { passive: true });
+            });
+            setInterval(function() {
+                if (Date.now() - lastActivity >= INACTIVITY_MS) {
+                    window.location.reload();
+                }
+            }, 60000);
+        })();
+        
+        // بستن منو با کلیک خارج از آن
+        document.addEventListener('click', function(event) {
+            const helpBtn = document.getElementById('helpMenuToggle') || document.querySelector('.help-btn');
+            const helpMenu = document.getElementById('helpMenu');
+            if (helpMenu && helpMenu.classList.contains('active') && helpBtn) {
+                if (!helpBtn.contains(event.target) && !helpMenu.contains(event.target)) {
+                    helpMenu.classList.remove('active');
+                    syncHelpMenuToggleFromMenu();
+                }
+            }
+        });
+
+        document.addEventListener('keydown', function (e) {
+            if (e.key !== 'Escape') return;
+            const helpMenu = document.getElementById('helpMenu');
+            if (helpMenu && helpMenu.classList.contains('active')) {
+                helpMenu.classList.remove('active');
+                syncHelpMenuToggleFromMenu();
+            }
+        });
+        
+        function toggleBookSummary() {
+            const content = document.getElementById('bookSummaryContent');
+            const toggle = document.querySelector('.book-summary-toggle');
+            if (content && toggle) {
+                content.classList.toggle('show');
+                toggle.classList.toggle('expanded');
+            }
+        }
+        
+        function toggleDonation() {
+            const content = document.getElementById('donationContent');
+            const contentMobile = document.getElementById('donationContentMobile');
+            const toggles = document.querySelectorAll('.donation-toggle');
+            
+            if (content) {
+            content.classList.toggle('show');
+            }
+            if (contentMobile) {
+                contentMobile.classList.toggle('show');
+            }
+            toggles.forEach(toggle => {
+            toggle.classList.toggle('expanded');
+            });
+        }
+        
+        function copyToClipboard(text, button) {
+            // حذف خط تیره از شماره تلفن برای کپی
+            const textToCopy = text.replace(/-/g, '');
+            
+            // استفاده از Clipboard API
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(textToCopy).then(function() {
+                    showCopySuccess(button);
+                }).catch(function(err) {
+                    fallbackCopyTextToClipboard(textToCopy, button);
+                });
+            } else {
+                fallbackCopyTextToClipboard(textToCopy, button);
+            }
+        }
+        
+        function fallbackCopyTextToClipboard(text, button) {
+            const textArea = document.createElement("textarea");
+            textArea.value = text;
+            textArea.style.position = "fixed";
+            textArea.style.left = "-999999px";
+            textArea.style.top = "-999999px";
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                showCopySuccess(button);
+            } catch (err) {
+                alert('خطا در کپی کردن / Copy failed');
+            }
+            document.body.removeChild(textArea);
+        }
+        
+        function showCopySuccess(button) {
+            const originalText = button.textContent;
+            button.textContent = '✓ کپی شد! / Copied!';
+            button.classList.add('copied');
+            
+            setTimeout(function() {
+                button.textContent = originalText;
+                button.classList.remove('copied');
+            }, 2000);
+        }
+        
+        // تابع برای باز کردن modal ثبت تبلیغ
+        function openAdRegistrationModal() {
+            const modal = document.getElementById('adRegistrationModal');
+            if (modal) {
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden'; // جلوگیری از اسکرول صفحه
+            }
+        }
+        
+        // تابع برای بستن modal ثبت تبلیغ
+        function closeAdRegistrationModal(event) {
+            if (event) {
+                event.stopPropagation();
+            }
+            const modal = document.getElementById('adRegistrationModal');
+            if (modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = ''; // برگرداندن اسکرول صفحه
+            }
+        }
+        
+        // بستن modal با کلید ESC
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeAdRegistrationModal();
+            }
+        });
+</script>

@@ -1,0 +1,139 @@
+<script>
+(function () {
+  var btn = document.getElementById("topbarSubscribeBtn");
+  var modal = document.getElementById("purchasePanelModal");
+  if (!btn || !modal) return;
+
+  var stepAsk = document.getElementById("purchasePanelStepAsk");
+  var stepPaid = document.getElementById("purchasePanelStepPaid");
+  var stepPay = document.getElementById("purchasePanelStepPay");
+  var intro = document.getElementById("purchasePanelIntro");
+
+  function readSiteLang() {
+    try {
+      var v = localStorage.getItem("citizenSiteLang");
+      if (v === "en-fa" || v === "fr-fa") return v;
+      v = localStorage.getItem("book_summary_lang");
+      if (v === "en-fa" || v === "fr-fa") return v;
+    } catch (e) {}
+    return "en-fa";
+  }
+
+  function isFr() {
+    return readSiteLang() === "fr-fa";
+  }
+
+  function resetSteps() {
+    if (stepAsk) stepAsk.hidden = false;
+    if (stepPaid) stepPaid.hidden = true;
+    if (stepPay) stepPay.hidden = true;
+    if (intro) intro.hidden = false;
+  }
+
+  function applyDirection() {
+    var lang = isFr() ? "fr" : "en";
+    modal.setAttribute("dir", "ltr");
+    modal.setAttribute("lang", lang);
+    var box = document.getElementById("purchasePanelBox");
+    if (box) {
+      box.setAttribute("dir", "ltr");
+      box.setAttribute("lang", lang);
+    }
+  }
+
+  function openPanel() {
+    if (window.citizenAccountClose) window.citizenAccountClose();
+    applyDirection();
+    resetSteps();
+    modal.hidden = false;
+    btn.setAttribute("aria-expanded", "true");
+    document.body.classList.add("purchase-panel-open");
+  }
+
+  function closePanel() {
+    modal.hidden = true;
+    btn.setAttribute("aria-expanded", "false");
+    document.body.classList.remove("purchase-panel-open");
+    resetSteps();
+  }
+
+  window.citizenPurchaseClose = closePanel;
+
+  btn.addEventListener("click", function () {
+    if (modal.hidden) openPanel();
+    else closePanel();
+  });
+
+  var closeBtn = document.getElementById("purchasePanelClose");
+  if (closeBtn) closeBtn.addEventListener("click", closePanel);
+  modal.querySelectorAll("[data-purchase-close]").forEach(function (el) {
+    el.addEventListener("click", closePanel);
+  });
+
+  document.addEventListener("keydown", function (ev) {
+    if (ev.key === "Escape" && !modal.hidden) closePanel();
+  });
+
+  function wireCopy(copyBtn, getText) {
+    if (!copyBtn) return;
+    copyBtn.addEventListener("click", function () {
+      var text = getText();
+      if (!text) return;
+      var done = function () {
+        copyBtn.textContent = isFr() ? "Copié!" : "Copied!";
+        setTimeout(function () {
+          copyBtn.textContent = isFr() ? "Copier" : "Copy";
+        }, 2000);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done).catch(done);
+      } else {
+        done();
+      }
+    });
+  }
+
+  wireCopy(document.getElementById("purchasePanelEmailCopy"), function () {
+    var el = document.getElementById("purchasePanelEmailValue");
+    return el ? (el.textContent || "").trim() : "";
+  });
+  wireCopy(document.getElementById("purchasePanelTelegramCopy"), function () {
+    var copyBtn = document.getElementById("purchasePanelTelegramCopy");
+    if (copyBtn && copyBtn.getAttribute("data-copy-text")) return copyBtn.getAttribute("data-copy-text");
+    var el = document.getElementById("purchasePanelTelegramValue");
+    return el ? (el.textContent || "").trim() : "";
+  });
+
+  var paidYes = document.getElementById("purchasePanelPaidYes");
+  if (paidYes) {
+    paidYes.addEventListener("click", function () {
+      if (stepAsk) stepAsk.hidden = true;
+      if (stepPaid) stepPaid.hidden = false;
+    });
+  }
+
+  var paidNo = document.getElementById("purchasePanelPaidNo");
+  if (paidNo) {
+    paidNo.addEventListener("click", function () {
+      if (stepAsk) stepAsk.hidden = true;
+      if (intro) intro.hidden = true;
+      if (stepPay) stepPay.hidden = false;
+    });
+  }
+
+  function backToAsk() {
+    resetSteps();
+  }
+
+  var paidBack = document.getElementById("purchasePanelPaidBack");
+  if (paidBack) paidBack.addEventListener("click", backToAsk);
+
+  var openSignIn = document.getElementById("purchasePanelOpenSignIn");
+  if (openSignIn) {
+    openSignIn.addEventListener("click", function () {
+      closePanel();
+      if (window.citizenAccountOpenSignIn) window.citizenAccountOpenSignIn();
+    });
+  }
+})();
+</script>

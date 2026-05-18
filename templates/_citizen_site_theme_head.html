@@ -1,0 +1,49 @@
+{# Sets html[data-theme] early from shared prefs (home toggle wins).
+   Set citizen_theme_profile: modern | exam | book_summary
+   Optional citizen_theme_page_key for exam (default citizenship571_theme). #}
+<script>
+(function () {
+  var SITE_KEY = 'citizenSiteTheme';
+  var LEGACY_HOME_KEY = 'modernLandingTheme';
+  var PROFILE = {{ (citizen_theme_profile | default('modern')) | tojson }};
+  var PAGE_KEY = {{ (citizen_theme_page_key | default('citizenship571_theme')) | tojson }};
+
+  function readLocal(k) {
+    try {
+      return localStorage.getItem(k);
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function resolve() {
+    var g = readLocal(SITE_KEY);
+    if (g === 'dark' || g === 'light') return g;
+    g = readLocal(LEGACY_HOME_KEY);
+    if (g === 'dark' || g === 'light') return g;
+
+    if (PROFILE === 'book_summary') {
+      var bs = readLocal('book_summary_theme');
+      return bs === 'light' ? 'light' : 'dark';
+    }
+
+    if (PROFILE === 'book_summary_2') {
+      var b2 = readLocal('book_summary_2_theme');
+      return b2 === 'dark' ? 'dark' : 'light';
+    }
+
+    if (PROFILE === 'exam') {
+      var pk = readLocal(PAGE_KEY);
+      return pk === 'dark' ? 'dark' : 'light';
+    }
+
+    try {
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) return 'light';
+    } catch (e2) {}
+    return 'dark';
+  }
+
+  var mode = resolve();
+  document.documentElement.setAttribute('data-theme', mode === 'light' ? 'light' : 'dark');
+})();
+</script>

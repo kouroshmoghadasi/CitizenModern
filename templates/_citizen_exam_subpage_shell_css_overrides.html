@@ -1,0 +1,555 @@
+<style>
+html[data-theme="light"] body.citizenship-exam-subpage,
+html[data-theme="dark"] body.citizenship-exam-subpage,
+html[data-theme="light"] body.citizenship414-page,
+html[data-theme="dark"] body.citizenship414-page {
+    font-family: "Inter", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+}
+html[data-theme="light"] body.citizenship-exam-subpage,
+html[data-theme="light"] body.citizenship414-page { color-scheme: light; }
+html[data-theme="dark"] body.citizenship-exam-subpage,
+html[data-theme="dark"] body.citizenship414-page { color-scheme: dark; }
+.citizenship-exam-subpage .topbar { direction: ltr; }
+body[data-show-fa="no"] .block-fa { display: none !important; }
+
+/* Exam/chapter header subtitle: FA vs EN/FR (matches topbar Persian checkbox + site lang) */
+.exam-header-subtitle { margin: 0; line-height: 1.45; }
+.exam-header-subtitle span { display: none; }
+body[data-show-fa="yes"] .exam-header-subtitle .exam-header-subtitle__fa { display: block; }
+html[data-site-lang="en-fa"] body[data-show-fa="no"] .exam-header-subtitle .exam-header-subtitle__en { display: block; }
+html[data-site-lang="fr-fa"] body[data-show-fa="no"] .exam-header-subtitle .exam-header-subtitle__fr { display: block; }
+/* If only one of EN/FR is missing, avoid blank line */
+.exam-header-subtitle .exam-header-subtitle__en:empty,
+.exam-header-subtitle .exam-header-subtitle__fr:empty { display: none !important; }
+.exam-hero-text .exam-header-subtitle { font-size: 0.95em; }
+
+/* One row, two visually separate frames: navigation vs jump-to-question (LTR flex inside RTL pages) */
+.exam-q-controls {
+  display: flex;
+  flex-direction: row-reverse;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 20px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  direction: ltr;
+  min-width: 0;
+}
+.exam-q-controls > .tool-bar,
+.exam-q-controls > [id^="q-nav-bar"] {
+  margin-bottom: 0 !important;
+  padding: 12px 14px !important;
+  border-radius: 10px !important;
+  border: 1px solid var(--border) !important;
+  box-sizing: border-box;
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+body.theme-dark .exam-q-controls > .tool-bar,
+body.theme-dark .exam-q-controls > [id^="q-nav-bar"] {
+  box-shadow:
+    0 2px 10px rgba(0, 0, 0, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+/* Navigation frame — cooler tint (dark: expl-bg2 vs option-bg so panels differ) */
+.exam-q-controls > [id^="q-nav-bar"] {
+  flex: 1 1 auto;
+  min-width: 0;
+  align-self: center;
+  background: var(--expl-bg) !important;
+}
+body.theme-dark .exam-q-controls > [id^="q-nav-bar"] {
+  background: var(--expl-bg2) !important;
+}
+/* Jump-to-question frame — neutral panel */
+.exam-q-controls > .tool-bar {
+  flex: 0 1 auto;
+  min-width: 0;
+  align-self: center;
+  justify-content: space-between;
+  background: var(--option-bg) !important;
+}
+body.theme-dark .exam-q-controls > .tool-bar {
+  background: var(--expl-bg) !important;
+}
+.exam-q-controls > .tool-bar > .group:only-child {
+  margin-inline-start: auto;
+}
+/* Mobile: keep one horizontal row (two frames side by side); scroll if needed */
+@media (max-width: 720px) {
+  .exam-q-controls {
+    flex-direction: row-reverse;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 8px;
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: visible;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+  }
+  /* Override Exam1–3 grid layout + chapter nav — stay single row inside frame */
+  .exam-q-controls > [id^="q-nav-bar"] {
+    order: 0;
+    flex: 1 1 0;
+    min-width: 0;
+    width: auto;
+    align-self: center;
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 6px !important;
+    padding: 8px 10px !important;
+  }
+  .exam-q-controls > [id^="q-nav-bar"] .q-nav-current {
+    grid-column: unset !important;
+    flex: 1 1 auto;
+    min-width: 0;
+    text-align: center;
+    font-size: clamp(0.68rem, 2.9vw, 0.85rem);
+    line-height: 1.2;
+  }
+  .exam-q-controls > [id^="q-nav-bar"] .q-nav-btn {
+    width: auto !important;
+    flex: 0 1 auto;
+    min-height: 40px !important;
+    padding: 7px 8px !important;
+    font-size: clamp(0.68rem, 2.6vw, 0.8rem);
+    white-space: nowrap;
+  }
+  /* Override per-page .tool-bar { flex-direction: column } inside merged controls */
+  .exam-q-controls > .tool-bar {
+    flex: 0 0 auto;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    width: auto;
+    min-width: min-content;
+    justify-content: flex-end;
+    gap: 8px !important;
+    align-self: center;
+    padding: 8px 10px !important;
+  }
+  .exam-q-controls > .tool-bar .group {
+    width: auto !important;
+    flex: 0 0 auto;
+    justify-content: center !important;
+  }
+  .exam-q-controls > .tool-bar > .group:only-child {
+    margin-inline-start: auto;
+  }
+  .exam-q-controls > .tool-bar .exam-score-row {
+    flex-wrap: nowrap !important;
+    gap: 10px;
+    font-size: clamp(0.72rem, 2.8vw, 0.85rem);
+  }
+  .exam-q-controls > .tool-bar .go-to-q-wrap {
+    flex-wrap: nowrap !important;
+    gap: 6px;
+  }
+  .exam-q-controls > .tool-bar .go-to-q-wrap input[type="number"] {
+    width: 52px !important;
+    min-height: 38px !important;
+    padding: 6px 6px !important;
+    font-size: 14px !important;
+  }
+  .exam-q-controls > .tool-bar .go-to-q-wrap .go-to-q-btn {
+    min-height: 38px !important;
+    padding: 7px 12px !important;
+    font-size: 0.8rem !important;
+  }
+  /* Persian «سوال» → compact “Q” (visual only; label text stays for accessibility) */
+  .exam-q-controls .go-to-q-wrap > label.theme-label {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    min-width: 0.85em;
+    margin: 0 !important;
+    padding: 0 2px !important;
+    color: transparent !important;
+    font-size: 0 !important;
+    line-height: 0 !important;
+    overflow: visible;
+    white-space: nowrap;
+  }
+  .exam-q-controls .go-to-q-wrap > label.theme-label::after {
+    content: "Q";
+    color: var(--text);
+    font-size: clamp(0.78rem, 3.2vw, 0.92rem);
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  /* Exam1–3 mobile: stacked layout — no squeezed single row / overlap */
+  .exam-q-controls.exam-q-controls--sample-test {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    flex-wrap: nowrap !important;
+    gap: 0 !important;
+    padding: 10px 12px !important;
+    overflow-x: visible !important;
+    overflow-y: visible !important;
+    max-width: 100%;
+  }
+  .exam-q-controls.exam-q-controls--sample-test > [id^="q-nav-bar"] {
+    order: -1 !important;
+    width: 100% !important;
+    flex: none !important;
+    min-width: 0 !important;
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    gap: 8px 10px;
+    align-items: center;
+    padding: 10px 8px !important;
+    box-sizing: border-box;
+  }
+  .exam-q-controls.exam-q-controls--sample-test > [id^="q-nav-bar"] .q-nav-btn:first-of-type {
+    order: unset !important;
+    grid-column: 1;
+    justify-self: stretch;
+    width: 100% !important;
+    max-width: none;
+    min-height: 44px !important;
+    padding: 8px 6px !important;
+    font-size: 0.7rem !important;
+    line-height: 1.25;
+    white-space: normal !important;
+    text-align: center;
+    word-break: break-word;
+  }
+  .exam-q-controls.exam-q-controls--sample-test > [id^="q-nav-bar"] .q-nav-current {
+    order: unset !important;
+    grid-column: 2;
+    grid-row: 1;
+    flex: none !important;
+    min-width: 0;
+    max-width: 100%;
+    padding: 0 4px;
+    font-size: clamp(0.72rem, 3.2vw, 0.88rem) !important;
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .exam-q-controls.exam-q-controls--sample-test > [id^="q-nav-bar"] .q-nav-btn:last-of-type {
+    order: unset !important;
+    grid-column: 3;
+    justify-self: stretch;
+    width: 100% !important;
+    max-width: none;
+    min-height: 44px !important;
+    padding: 8px 6px !important;
+    font-size: 0.7rem !important;
+    line-height: 1.25;
+    white-space: normal !important;
+    text-align: center;
+    word-break: break-word;
+  }
+  .exam-q-controls.exam-q-controls--sample-test > .tool-bar {
+    order: 0 !important;
+    width: 100% !important;
+    flex: none !important;
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 12px !important;
+    margin-inline-start: 0 !important;
+    padding-inline-start: 0 !important;
+    padding-inline-end: 0 !important;
+    border-inline-start: none !important;
+    border-top: 1px solid var(--border) !important;
+    padding-top: 12px !important;
+    margin-top: 10px;
+    min-height: unset !important;
+  }
+  .exam-q-controls.exam-q-controls--sample-test .exam-score-row {
+    flex: 1 1 auto;
+    justify-content: center !important;
+    min-width: 0;
+  }
+  .exam-q-controls.exam-q-controls--sample-test .go-to-q-wrap {
+    flex: 0 0 auto;
+  }
+}
+
+/* ——— Exam1–3 sample tests: one cohesive control bar ——— */
+.exam-q-controls.exam-q-controls--sample-test {
+  flex-direction: row-reverse;
+  align-items: stretch;
+  gap: 0;
+  padding: 10px 12px;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: 0 2px 14px rgba(0, 0, 0, 0.07);
+}
+body.theme-dark .exam-q-controls.exam-q-controls--sample-test {
+  box-shadow: 0 4px 22px rgba(0, 0, 0, 0.38);
+}
+.exam-q-controls.exam-q-controls--sample-test > [id^="q-nav-bar"],
+.exam-q-controls.exam-q-controls--sample-test > .tool-bar {
+  border: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  border-radius: 0 !important;
+  padding-top: 4px !important;
+  padding-bottom: 4px !important;
+}
+.exam-q-controls.exam-q-controls--sample-test > .tool-bar {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center !important;
+  gap: 12px 16px !important;
+  border-inline-start: 1px solid var(--border) !important;
+  padding-inline-start: 14px !important;
+  margin-inline-start: 10px;
+  min-height: 3.25rem;
+}
+.exam-q-controls.exam-q-controls--sample-test > [id^="q-nav-bar"] {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 10px !important;
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 3.25rem;
+  padding-inline: 4px !important;
+}
+.exam-q-controls.exam-q-controls--sample-test > [id^="q-nav-bar"] .q-nav-current {
+  grid-column: unset !important;
+  flex: 1 1 auto;
+  min-width: 0;
+  order: 2;
+  text-align: center;
+  font-weight: 700;
+  font-size: clamp(0.78rem, 2.2vw, 0.95rem);
+  line-height: 1.25;
+  color: var(--text-muted);
+  letter-spacing: 0.01em;
+}
+.exam-q-controls.exam-q-controls--sample-test > [id^="q-nav-bar"] .q-nav-current span[id^="currentQNum"] {
+  color: var(--accent);
+  font-weight: 800;
+}
+.exam-q-controls.exam-q-controls--sample-test > [id^="q-nav-bar"] .q-nav-btn:first-of-type { order: 1; }
+.exam-q-controls.exam-q-controls--sample-test > [id^="q-nav-bar"] .q-nav-btn:last-of-type { order: 3; }
+.exam-q-controls.exam-q-controls--sample-test > [id^="q-nav-bar"] .q-nav-btn {
+  flex: 0 1 auto;
+  width: auto !important;
+  min-width: 0;
+  min-height: 44px !important;
+  padding: 0 14px !important;
+  font-size: 0.8rem !important;
+  font-weight: 600;
+  white-space: nowrap;
+  border-radius: 10px !important;
+  border: 1px solid color-mix(in srgb, var(--accent) 42%, var(--border)) !important;
+  background: color-mix(in srgb, var(--accent) 9%, var(--card-bg)) !important;
+  color: var(--accent) !important;
+  box-shadow: none !important;
+  transition: background 0.15s, border-color 0.15s, opacity 0.15s;
+}
+.exam-q-controls.exam-q-controls--sample-test > [id^="q-nav-bar"] .q-nav-btn:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--accent) 16%, var(--card-bg)) !important;
+  border-color: color-mix(in srgb, var(--accent) 55%, var(--border)) !important;
+}
+.exam-q-controls.exam-q-controls--sample-test > [id^="q-nav-bar"] .q-nav-btn.btn-prev {
+  background: color-mix(in srgb, var(--accent) 9%, var(--card-bg)) !important;
+  color: var(--accent) !important;
+}
+.exam-q-controls.exam-q-controls--sample-test > [id^="q-nav-bar"] .q-nav-btn:last-of-type {
+  background: var(--accent) !important;
+  color: #fff !important;
+  border-color: var(--accent) !important;
+}
+.exam-q-controls.exam-q-controls--sample-test > [id^="q-nav-bar"] .q-nav-btn:last-of-type:hover:not(:disabled) {
+  opacity: 0.92;
+  filter: brightness(1.05);
+}
+.exam-q-controls.exam-q-controls--sample-test .exam-score-row {
+  flex-wrap: nowrap !important;
+  justify-content: flex-start !important;
+  align-items: stretch;
+  gap: 8px !important;
+  margin: 0;
+}
+.exam-q-controls.exam-q-controls--sample-test .exam-score-pill {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  min-width: 3.5rem;
+  padding: 6px 10px 7px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--option-bg) 88%, transparent);
+}
+.exam-q-controls.exam-q-controls--sample-test .exam-score-pill__top {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  line-height: 1;
+}
+.exam-q-controls.exam-q-controls--sample-test .exam-score-pill__ic {
+  font-size: 0.85rem;
+  opacity: 0.85;
+}
+.exam-q-controls.exam-q-controls--sample-test .exam-score-pill__n {
+  font-size: 1.15rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.1;
+}
+.exam-q-controls.exam-q-controls--sample-test .exam-score-pill.ok .exam-score-pill__n {
+  color: #1e7e34;
+}
+.exam-q-controls.exam-q-controls--sample-test .exam-score-pill.bad .exam-score-pill__n {
+  color: #c0392b;
+}
+body.theme-dark .exam-q-controls.exam-q-controls--sample-test .exam-score-pill.ok .exam-score-pill__n {
+  color: #6ee7a0;
+}
+body.theme-dark .exam-q-controls.exam-q-controls--sample-test .exam-score-pill.bad .exam-score-pill__n {
+  color: #ffb4a8;
+}
+.exam-q-controls.exam-q-controls--sample-test .exam-score-pill__cap {
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--text-muted);
+  text-align: center;
+  line-height: 1.15;
+  max-width: 5.5rem;
+  opacity: 0.92;
+}
+.exam-q-controls.exam-q-controls--sample-test .exam-score-pill.ok {
+  border-color: rgba(30, 126, 52, 0.28);
+  background: rgba(30, 126, 52, 0.07);
+}
+.exam-q-controls.exam-q-controls--sample-test .exam-score-pill.bad {
+  border-color: rgba(192, 57, 43, 0.28);
+  background: rgba(192, 57, 43, 0.06);
+}
+body.theme-dark .exam-q-controls.exam-q-controls--sample-test .exam-score-pill.ok {
+  border-color: rgba(95, 207, 128, 0.28);
+  background: rgba(95, 207, 128, 0.08);
+}
+body.theme-dark .exam-q-controls.exam-q-controls--sample-test .exam-score-pill.bad {
+  border-color: rgba(255, 138, 128, 0.28);
+  background: rgba(255, 138, 128, 0.07);
+}
+.exam-q-controls.exam-q-controls--sample-test .go-to-q-wrap {
+  justify-content: flex-end !important;
+  align-items: center;
+  padding: 4px 6px 4px 8px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--option-bg);
+  gap: 8px !important;
+}
+.exam-q-controls.exam-q-controls--sample-test .go-to-q-wrap input[type="number"] {
+  border-radius: 8px !important;
+  text-align: center;
+  font-weight: 700;
+}
+.exam-q-controls.exam-q-controls--sample-test .go-to-q-wrap .go-to-q-btn {
+  border-radius: 8px !important;
+  font-weight: 700;
+  min-width: 2.75rem;
+}
+@media (max-width: 720px) {
+  .exam-q-controls.exam-q-controls--sample-test .exam-score-pill__n {
+    font-size: 1.05rem;
+  }
+  .exam-q-controls.exam-q-controls--sample-test .exam-score-pill__cap {
+    font-size: 0.58rem;
+    max-width: 4.8rem;
+  }
+}
+
+/* --- Align exam / 414 chrome with modern landing (tokens + page backdrop) --- */
+html[data-theme="dark"] body.citizenship-exam-subpage,
+html[data-theme="dark"] body.citizenship414-page {
+  --bg: radial-gradient(1200px 800px at 20% 30%, rgba(96, 165, 250, 0.14), transparent 55%),
+    radial-gradient(1000px 700px at 80% 70%, rgba(217, 119, 6, 0.13), transparent 55%),
+    linear-gradient(180deg, #070a12, #0b1020);
+  --card-bg: rgba(18, 24, 41, 0.78);
+  --text: rgba(255, 255, 255, 0.92);
+  --text-muted: rgba(255, 255, 255, 0.72);
+  --border: rgba(255, 255, 255, 0.1);
+  --option-bg: rgba(255, 255, 255, 0.06);
+  --option-border: rgba(255, 255, 255, 0.12);
+  --expl-bg: rgba(45, 50, 60, 0.55);
+  --expl-bg2: rgba(53, 58, 69, 0.75);
+  --accent: #7cb3f5;
+  --accent-light: #90c5f7;
+  --header-bg: linear-gradient(135deg, #2d3748 0%, #1e3c72 100%);
+  --header-text: #fff;
+  background: var(--bg);
+  color: var(--text);
+}
+
+html[data-theme="light"] body.citizenship-exam-subpage,
+html[data-theme="light"] body.citizenship414-page {
+  --bg: linear-gradient(180deg, #fffcf9 0%, #faf6f2 50%, #f5f0ea 100%);
+  --card-bg: #fef9f2;
+  --text: #1c1917;
+  --text-muted: #57534e;
+  --border: rgba(60, 48, 40, 0.1);
+  --option-bg: #fdf6ee;
+  --option-border: rgba(60, 48, 40, 0.1);
+  --expl-bg: #fffbf7;
+  --expl-bg2: #faf6f2;
+  --accent: #1e3c72;
+  --accent-light: #2c5282;
+  --header-bg: linear-gradient(135deg, #1e3c72 0%, #2c5282 100%);
+  --header-text: #fff;
+  background: var(--bg);
+  color: var(--text);
+}
+
+html[data-theme="light"] body.citizenship-exam-subpage .bg,
+html[data-theme="light"] body.citizenship414-page .bg {
+  display: none;
+}
+
+/* Persian paywall / subscription blocks (RTL) */
+body.citizenship-exam-subpage .q-card > [class^="paywall-"],
+body.citizenship414-page .paywall-414 {
+  direction: rtl;
+  text-align: right;
+  unicode-bidi: embed;
+}
+body.citizenship-exam-subpage .q-card > [class^="paywall-"] input,
+body.citizenship414-page .paywall-414 input {
+  direction: rtl;
+  text-align: right;
+}
+body.citizenship-exam-subpage [class*="-email-block"],
+body.citizenship414-page .paywall-414-email-block {
+  justify-content: flex-start;
+}
+body.citizenship-exam-subpage [class*="-email-value"],
+body.citizenship414-page .paywall-414-email-value {
+  direction: ltr;
+  unicode-bidi: embed;
+  text-align: left;
+}
+</style>

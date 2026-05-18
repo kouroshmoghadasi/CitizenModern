@@ -1,0 +1,18 @@
+{# Login step — ids passed by parent via with block or defaults for modal #}
+{% set sub_mobile_id = subscription_login_mobile_id | default('subModalMobile') %}
+{% set sub_pass_id = subscription_login_password_id | default('subModalPassword') %}
+{% set sub_err_id = subscription_login_error_id | default('subModalLoginError') %}
+{% set sub_btn_id = subscription_login_btn_id | default('subModalLoginBtn') %}
+<p class="subscription-label siteLang subscription-login-label">
+  <span class="siteLang__en">Enter your username (mobile number) and password:</span>
+  <span class="siteLang__fr">Entrez votre identifiant (numéro de mobile) et votre mot de passe&nbsp;:</span>
+</p>
+<input type="text" id="{{ sub_mobile_id }}" class="subscription-input subscription-login-mobile" autocomplete="username" dir="ltr" inputmode="tel" data-sub-i18n="loginMobilePlaceholder">
+<input type="password" id="{{ sub_pass_id }}" class="subscription-input subscription-login-password" autocomplete="current-password" dir="ltr" data-sub-i18n="loginPasswordPlaceholder">
+<p id="{{ sub_err_id }}" class="subscription-error" style="display: none;"></p>
+<div class="subscription-login-actions">
+  <button type="button" class="subscription-btn subscription-btn-submit siteLang" id="{{ sub_btn_id }}">
+    <span class="siteLang__en">Sign in</span>
+    <span class="siteLang__fr">Connexion</span>
+  </button>
+</div>

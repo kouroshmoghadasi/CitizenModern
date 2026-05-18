@@ -1,0 +1,10 @@
+{% set sub_yes_id = subscription_yes_btn_id | default('subModalYes') %}
+{% set sub_no_id = subscription_no_btn_id | default('subModalNo') %}
+<button type="button" class="subscription-btn subscription-btn-yes siteLang" id="{{ sub_yes_id }}">
+  <span class="siteLang__en">Yes</span>
+  <span class="siteLang__fr">Oui</span>
+</button>
+<button type="button" class="subscription-btn subscription-btn-no siteLang" id="{{ sub_no_id }}">
+  <span class="siteLang__en">Not yet</span>
+  <span class="siteLang__fr">Pas encore</span>
+</button>

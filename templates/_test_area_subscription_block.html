@@ -1,0 +1,34 @@
+{# Inline subscription paywall — centered card with title bar (EN / FR) #}
+<div id="testAreaSubscriptionBlock" class="test-area-subscription-block siteLang" dir="ltr" lang="en" style="display: none;">
+  <header class="test-area-sub-titlebar" aria-labelledby="testAreaSubTitle">
+    <h2 id="testAreaSubTitle" class="test-area-sub-title">{% include '_subscription_package_title.html' %}</h2>
+  </header>
+  <div class="test-area-sub-body">
+    <div class="test-area-sub-intro">{% include '_subscription_package_intro_content.html' %}</div>
+    <div id="testAreaSubStep1" class="test-area-sub-step">
+      <p class="subscription-question">{% include '_subscription_purchase_question.html' %}</p>
+      <div class="subscription-buttons">
+        {% with subscription_yes_btn_id='testAreaSubYes', subscription_no_btn_id='testAreaSubNo' %}
+        {% include '_subscription_yes_no_buttons.html' %}
+        {% endwith %}
+      </div>
+    </div>
+    <div id="testAreaSubStepLogin" class="test-area-sub-step subscription-login-compact" style="display: none;">
+      {% with subscription_login_mobile_id='testAreaSubMobile', subscription_login_password_id='testAreaSubPassword', subscription_login_error_id='testAreaSubLoginError', subscription_login_btn_id='testAreaSubLoginBtn' %}
+      {% include '_subscription_login_step.html' %}
+      {% endwith %}
+    </div>
+    <div id="testAreaSubStepPayment" class="test-area-sub-step subscription-payment-info" style="display: none;">
+      {% include '_subscription_payment_lead.html' %}
+      {% with subscription_request_mobile_id='testAreaSubRequestMobile', subscription_request_submit_id='testAreaSubRequestSubmit', subscription_request_msg_id='testAreaSubRequestMsg' %}
+      {% include '_subscription_payment_request_mobile.html' %}
+      {% endwith %}
+      {% with subscription_email_value_id='testAreaSubEmailValue', subscription_email_copy_btn_id='testAreaSubEmailCopy' %}
+      {% include '_subscription_payment_email_block.html' %}
+      {% endwith %}
+      {% with subscription_tg_copy_btn_id='testAreaSubTelegramCopy', subscription_tg_value_id='testAreaSubTelegramValue' %}
+      {% include '_subscription_payment_telegram_block.html' %}
+      {% endwith %}
+    </div>
+  </div>
+</div>

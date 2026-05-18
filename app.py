@@ -14,6 +14,10 @@ from datetime import datetime, timezone, date, timedelta
 from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
+# Without debug mode, Jinja keeps compiled templates until process exit — HTML edits look “stuck”.
+# Safe for this app; set FLASK_TEMPLATES_AUTO_RELOAD=0 to disable (e.g. unusual prod layout).
+if os.environ.get('FLASK_TEMPLATES_AUTO_RELOAD', '1').lower() not in ('0', 'false', 'no'):
+    app.config['TEMPLATES_AUTO_RELOAD'] = True
 app.secret_key = os.getenv('FLASK_SECRET_KEY', 'change-this-secret-in-production-citizen-subscription')
 # تا وقتی کش پاک نشده، ورود اشتراک حفظ شود (به‌جای از بین رفتن با بستن مرورگر)
 app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(days=90)
@@ -447,7 +451,7 @@ def _count_exam_section_visits():
         cur.execute(
             """
             SELECT COUNT(*) FROM visitor_log
-            WHERE page_visited IN ('/citizenship-exams', '/citizenship-introduction', '/citizenship-rights-responsibilities', '/citizenship-who-we-are', '/citizenship-canadas-history', '/citizenship-how-canadians-govern-themselves', '/citizenship-federal-elections', '/citizenship-canadian-symbols', '/citizenship-canadas-economy', '/citizenship-canadas-regions', '/citizenship-justice-system', '/citizenship-modern-canada', '/exam1', '/exam2', '/exam3')
+            WHERE page_visited IN ('/citizenship-exams', '/citizenship-introduction', '/citizenship-rights-responsibilities', '/citizenship-who-we-are', '/citizenship-canadas-history', '/citizenship-how-canadians-govern-themselves', '/citizenship-federal-elections', '/citizenship-canadian-symbols', '/citizenship-canadas-economy', '/citizenship-canadas-regions', '/citizenship-justice-system', '/citizenship-modern-canada', '/exam1', '/exam2', '/exam3', '/mock', '/mock/run')
             """
             + exclude_sql,
             exclude_params,
@@ -485,14 +489,70 @@ def add_cache_headers(response):
     return response
 
 
+_MODERN_LANDING_LEGACY_SUBTITLE = re.compile(
+    r"Start\s+with\s+practice\s+tests\.?",
+    re.IGNORECASE,
+)
+
+
+def _finalize_modern_landing_html(html: str) -> str:
+    """Force canonical hero subtitle (covers stale template RAM, proxies, or odd deploys)."""
+    return _MODERN_LANDING_LEGACY_SUBTITLE.sub("Start with the Book Summary", html)
+
+
 @app.route('/')
 def index():
     """Serve the main HTML page (no long-lived HTML cache — تلگرام/OG باید متاهای به‌روز بگیرند)."""
+    # Main page (new modern UI)
+    resp = app.make_response(
+        _finalize_modern_landing_html(render_template("modern_landing.html"))
+    )
+    resp.headers['Cache-Control'] = 'no-store, no-cache, must-revalidate'
+    resp.headers['Pragma'] = 'no-cache'
+    resp.headers['Expires'] = '0'
+    return resp
+
+
+@app.route('/classic')
+def classic_home():
+    """Legacy / classic home (previous main page)."""
     resp = app.make_response(render_template('canadian_citizenship.html'))
     resp.headers['Cache-Control'] = 'no-cache, must-revalidate'
     resp.headers['Pragma'] = 'no-cache'
     resp.headers['Expires'] = '0'
     return resp
+
+
+@app.route('/modern')
+def modern_landing():
+    """A modern dark landing page mock (UI-only)."""
+    resp = app.make_response(
+        _finalize_modern_landing_html(render_template("modern_landing.html"))
+    )
+    resp.headers['Cache-Control'] = 'no-store, no-cache, must-revalidate'
+    resp.headers['Pragma'] = 'no-cache'
+    resp.headers['Expires'] = '0'
+    return resp
+
+
+@app.route('/modern_landing.html')
+def modern_landing_html_alias():
+    """Alias for people typing the template name in URL."""
+    return redirect(url_for('modern_landing'), code=301)
+
+
+@app.route('/study')
+@app.route('/study/')
+@app.route('/study.html')
+def study_hub():
+    """Hub page: book summaries, timeline, official PDF (linked from modern Study card)."""
+    log_visitor('/study')
+    resp = app.make_response(render_template('study_hub.html'))
+    resp.headers['Cache-Control'] = 'no-store, no-cache, must-revalidate'
+    resp.headers['Pragma'] = 'no-cache'
+    resp.headers['Expires'] = '0'
+    return resp
+
 
 @app.route('/book_summary.html')
 def book_summary():
@@ -2253,6 +2313,7 @@ def citizenship_571():
         show_paywall=show_paywall,
         max_question_571=max_question_571,
         citizenship_571_total=len(all_questions),
+        modern_topbar_use_home_nav=True,
     ))
     resp.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
     resp.headers['Pragma'] = 'no-cache'
@@ -2440,14 +2501,19 @@ def citizenship_exams():
 def citizenship_exam_report():
     """صفحهٔ فهرست قبولی از تاریخ ۲۵ ژانویه ۲۰۲۶؛ فیلتر تاریخ امتحان + نمره در _get_citizenship_exam_report_rows."""
     log_visitor('/citizenship-exam-report')
+    report_rows = _get_citizenship_exam_report_rows()
+    waiting_rows = _get_citizenship_exam_waiting_rows()
     resp = app.make_response(
         render_template(
             'citizenship_exam_report.html',
-            report_rows=_get_citizenship_exam_report_rows(),
-            waiting_rows=_get_citizenship_exam_waiting_rows(),
+            report_rows=report_rows,
+            waiting_rows=waiting_rows,
+            report_kpis=_get_citizenship_exam_report_kpis(report_rows, waiting_rows),
+            modern_topbar_use_home_nav=True,
         )
     )
-    resp.headers['Cache-Control'] = 'public, max-age=120'
+    resp.headers['Cache-Control'] = 'no-store, no-cache, must-revalidate'
+    resp.headers['Pragma'] = 'no-cache'
     return resp
 
 
@@ -2485,6 +2551,33 @@ def exam1():
         show_paywall=show_paywall,
         free_count=free_n,
         exam_section_views=_count_exam_section_visits(),
+    ))
+    resp.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
+    resp.headers['Pragma'] = 'no-cache'
+    resp.headers['Expires'] = '0'
+    return resp
+
+
+@app.route('/mock')
+def citizenship_mock_hub():
+    """Mock hub: 102 buttons (Test1–Test102) → each opens the timed simulator."""
+    log_visitor('/mock')
+    resp = app.make_response(render_template('mock_hub.html'))
+    resp.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
+    resp.headers['Pragma'] = 'no-cache'
+    resp.headers['Expires'] = '0'
+    return resp
+
+
+@app.route('/mock/run/<int:test_num>')
+def citizenship_mock_run(test_num):
+    """Run mock test number 1–102 (timer, one-by-one questions, same engine as /classic)."""
+    if test_num < 1 or test_num > 102:
+        return redirect(url_for('citizenship_mock_hub'))
+    log_visitor('/mock/run')
+    resp = app.make_response(render_template(
+        'citizenship_mock.html',
+        initial_mock_test=test_num,
     ))
     resp.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
     resp.headers['Pragma'] = 'no-cache'
@@ -3040,30 +3133,30 @@ Sitemap: {base}/sitemap.xml
 
 # یک منبع برای sitemap.xml و صفحهٔ HTML /site-map (لینک داخلی و خزیدن گوگل)
 _SITEMAP_PAGE_DEFS = [
-    {'path': '/', 'changefreq': 'daily', 'priority': '1.0', 'label_fa': 'صفحهٔ اصلی — ۱۰۰ تست تمرینی', 'label_en': 'Home'},
-    {'path': '/site-map', 'changefreq': 'monthly', 'priority': '0.55', 'label_fa': 'نقشهٔ سایت (فهرست همهٔ صفحات)', 'label_en': 'HTML sitemap'},
-    {'path': '/about', 'changefreq': 'monthly', 'priority': '0.6', 'label_fa': 'دربارهٔ سایت و تماس', 'label_en': 'About'},
-    {'path': '/book_summary.html', 'changefreq': 'weekly', 'priority': '0.9', 'label_fa': 'خلاصهٔ کتاب ۱ (سه زبان)', 'label_en': 'Book summary'},
-    {'path': '/book_summary_2.html', 'changefreq': 'weekly', 'priority': '0.88', 'label_fa': 'خلاصهٔ کتاب ۲ (سه زبان)', 'label_en': 'Book summary 2'},
-    {'path': '/canadian-history-timeline', 'changefreq': 'monthly', 'priority': '0.82', 'label_fa': 'خط زمانی تاریخ کانادا (Discover Canada)', 'label_en': 'Canadian history timeline (study page)'},
-    {'path': '/citizenship-414', 'changefreq': 'weekly', 'priority': '0.9', 'label_fa': '۴۱۴ سوال شهروندی', 'label_en': '414 questions'},
-    {'path': '/citizenship-571', 'changefreq': 'weekly', 'priority': '0.9', 'label_fa': '۵۷۱ سوال شهروندی', 'label_en': '571 questions'},
-    {'path': '/citizenship-exams', 'changefreq': 'weekly', 'priority': '0.85', 'label_fa': 'فهرست آزمون‌های نمونه (فصل‌به‌فصل)', 'label_en': 'Sample exams index'},
-    {'path': '/citizenship-introduction', 'changefreq': 'weekly', 'priority': '0.85', 'label_fa': 'آزمون Introduction', 'label_en': 'Introduction'},
-    {'path': '/citizenship-rights-responsibilities', 'changefreq': 'weekly', 'priority': '0.85', 'label_fa': 'آزمون Rights and Responsibilities', 'label_en': 'Rights & responsibilities'},
-    {'path': '/citizenship-who-we-are', 'changefreq': 'weekly', 'priority': '0.85', 'label_fa': 'آزمون Who We Are', 'label_en': 'Who we are'},
-    {'path': '/citizenship-canadas-history', 'changefreq': 'weekly', 'priority': '0.85', 'label_fa': "آزمون Canada's History", 'label_en': "Canada's history"},
-    {'path': '/citizenship-how-canadians-govern-themselves', 'changefreq': 'weekly', 'priority': '0.85', 'label_fa': 'آزمون How Canadians Govern', 'label_en': 'How Canadians govern'},
-    {'path': '/citizenship-federal-elections', 'changefreq': 'weekly', 'priority': '0.85', 'label_fa': 'آزمون Federal Elections', 'label_en': 'Federal elections'},
-    {'path': '/citizenship-canadian-symbols', 'changefreq': 'weekly', 'priority': '0.85', 'label_fa': 'آزمون Canadian Symbols', 'label_en': 'Canadian symbols'},
-    {'path': '/citizenship-canadas-economy', 'changefreq': 'weekly', 'priority': '0.85', 'label_fa': "آزمون Canada's Economy", 'label_en': "Canada's economy"},
-    {'path': '/citizenship-canadas-regions', 'changefreq': 'weekly', 'priority': '0.85', 'label_fa': "آزمون Canada's Regions", 'label_en': "Canada's regions"},
-    {'path': '/citizenship-justice-system', 'changefreq': 'weekly', 'priority': '0.85', 'label_fa': 'آزمون Justice System', 'label_en': 'Justice system'},
-    {'path': '/citizenship-modern-canada', 'changefreq': 'weekly', 'priority': '0.85', 'label_fa': 'آزمون Modern Canada', 'label_en': 'Modern Canada'},
-    {'path': '/exam1', 'changefreq': 'weekly', 'priority': '0.85', 'label_fa': 'Exam1 — Rights & Responsibilities', 'label_en': 'Exam 1'},
-    {'path': '/exam2', 'changefreq': 'weekly', 'priority': '0.85', 'label_fa': "Exam2 — Canada's History", 'label_en': 'Exam 2'},
-    {'path': '/exam3', 'changefreq': 'weekly', 'priority': '0.85', 'label_fa': "Exam3 — Canada's History (نمونهٔ دوم)", 'label_en': 'Exam 3'},
-    {'path': '/citizenship-exam-report', 'changefreq': 'weekly', 'priority': '0.55', 'label_fa': 'لیست قبولی آزمون شهروندی', 'label_en': 'Exam pass list'},
+    {'path': '/', 'changefreq': 'daily', 'priority': '1.0', 'label_fa': 'صفحهٔ اصلی — ۱۰۰ تست تمرینی', 'label_en': 'Home', 'label_fr': 'Accueil'},
+    {'path': '/site-map', 'changefreq': 'monthly', 'priority': '0.55', 'label_fa': 'نقشهٔ سایت (فهرست همهٔ صفحات)', 'label_en': 'HTML sitemap', 'label_fr': 'Plan du site (HTML)'},
+    {'path': '/about', 'changefreq': 'monthly', 'priority': '0.6', 'label_fa': 'دربارهٔ سایت و تماس', 'label_en': 'About', 'label_fr': 'À propos'},
+    {'path': '/book_summary.html', 'changefreq': 'weekly', 'priority': '0.9', 'label_fa': 'خلاصهٔ کتاب ۱ (سه زبان)', 'label_en': 'Book summary', 'label_fr': 'Résumé du livre 1'},
+    {'path': '/book_summary_2.html', 'changefreq': 'weekly', 'priority': '0.88', 'label_fa': 'خلاصهٔ کتاب ۲ (سه زبان)', 'label_en': 'Book summary 2', 'label_fr': 'Résumé du livre 2'},
+    {'path': '/canadian-history-timeline', 'changefreq': 'monthly', 'priority': '0.82', 'label_fa': 'خط زمانی تاریخ کانادا (Discover Canada)', 'label_en': 'Canadian history timeline (study page)', 'label_fr': 'Frise chronologique du Canada (page d’étude)'},
+    {'path': '/citizenship-414', 'changefreq': 'weekly', 'priority': '0.9', 'label_fa': '۴۱۴ سوال شهروندی', 'label_en': '414 questions', 'label_fr': '414 questions'},
+    {'path': '/citizenship-571', 'changefreq': 'weekly', 'priority': '0.9', 'label_fa': '۵۷۱ سوال شهروندی', 'label_en': '571 questions', 'label_fr': '571 questions'},
+    {'path': '/citizenship-exams', 'changefreq': 'weekly', 'priority': '0.85', 'label_fa': 'فهرست آزمون‌های نمونه (فصل‌به‌فصل)', 'label_en': 'Sample exams index', 'label_fr': 'Liste des tests d’entraînement'},
+    {'path': '/citizenship-introduction', 'changefreq': 'weekly', 'priority': '0.85', 'label_fa': 'آزمون Introduction', 'label_en': 'Introduction', 'label_fr': 'Introduction'},
+    {'path': '/citizenship-rights-responsibilities', 'changefreq': 'weekly', 'priority': '0.85', 'label_fa': 'آزمون Rights and Responsibilities', 'label_en': 'Rights & responsibilities', 'label_fr': 'Droits et responsabilités'},
+    {'path': '/citizenship-who-we-are', 'changefreq': 'weekly', 'priority': '0.85', 'label_fa': 'آزمون Who We Are', 'label_en': 'Who we are', 'label_fr': 'Qui nous sommes'},
+    {'path': '/citizenship-canadas-history', 'changefreq': 'weekly', 'priority': '0.85', 'label_fa': "آزمون Canada's History", 'label_en': "Canada's history", 'label_fr': 'Histoire du Canada'},
+    {'path': '/citizenship-how-canadians-govern-themselves', 'changefreq': 'weekly', 'priority': '0.85', 'label_fa': 'آزمون How Canadians Govern', 'label_en': 'How Canadians govern', 'label_fr': 'Comment les Canadiens se gouvernent'},
+    {'path': '/citizenship-federal-elections', 'changefreq': 'weekly', 'priority': '0.85', 'label_fa': 'آزمون Federal Elections', 'label_en': 'Federal elections', 'label_fr': 'Élections fédérales'},
+    {'path': '/citizenship-canadian-symbols', 'changefreq': 'weekly', 'priority': '0.85', 'label_fa': 'آزمون Canadian Symbols', 'label_en': 'Canadian symbols', 'label_fr': 'Symboles canadiens'},
+    {'path': '/citizenship-canadas-economy', 'changefreq': 'weekly', 'priority': '0.85', 'label_fa': "آزمون Canada's Economy", 'label_en': "Canada's economy", 'label_fr': 'Économie du Canada'},
+    {'path': '/citizenship-canadas-regions', 'changefreq': 'weekly', 'priority': '0.85', 'label_fa': "آزمون Canada's Regions", 'label_en': "Canada's regions", 'label_fr': 'Régions du Canada'},
+    {'path': '/citizenship-justice-system', 'changefreq': 'weekly', 'priority': '0.85', 'label_fa': 'آزمون Justice System', 'label_en': 'Justice system', 'label_fr': 'Système de justice'},
+    {'path': '/citizenship-modern-canada', 'changefreq': 'weekly', 'priority': '0.85', 'label_fa': 'آزمون Modern Canada', 'label_en': 'Modern Canada', 'label_fr': 'Canada moderne'},
+    {'path': '/exam1', 'changefreq': 'weekly', 'priority': '0.85', 'label_fa': 'Exam1 — Rights & Responsibilities', 'label_en': 'Exam 1', 'label_fr': 'Examen 1'},
+    {'path': '/exam2', 'changefreq': 'weekly', 'priority': '0.85', 'label_fa': "Exam2 — Canada's History", 'label_en': 'Exam 2', 'label_fr': 'Examen 2'},
+    {'path': '/exam3', 'changefreq': 'weekly', 'priority': '0.85', 'label_fa': "Exam3 — Canada's History (نمونهٔ دوم)", 'label_en': 'Exam 3', 'label_fr': 'Examen 3'},
+    {'path': '/citizenship-exam-report', 'changefreq': 'weekly', 'priority': '0.55', 'label_fa': 'لیست قبولی آزمون شهروندی', 'label_en': 'Exam pass list', 'label_fr': 'Liste des réussites à l’examen'},
 ]
 
 
@@ -3413,8 +3506,142 @@ def _today():
     return date.today()
 
 
+def _subscription_login_payload():
+    """JSON body or form fields (some clients omit Content-Type)."""
+    data = request.get_json(silent=True)
+    if data:
+        return data
+    if request.form:
+        return request.form.to_dict()
+    return {}
+
+
+def _subscription_mobile_variants(mobile):
+    """Possible mobile keys as stored in subscription_users."""
+    raw = (mobile or '').strip()
+    digits = re.sub(r'\D', '', raw)
+    out = []
+
+    def add(v):
+        v = (v or '').strip()
+        if v and v not in out:
+            out.append(v)
+
+    add(raw)
+    add(digits)
+    if not digits:
+        return out
+    if len(digits) == 10:
+        add('1' + digits)
+        add('+1' + digits)
+    if len(digits) == 11 and digits.startswith('1'):
+        add(digits[1:])
+        add('+' + digits)
+    if digits.startswith('98') and len(digits) >= 12:
+        add('0' + digits[2:])
+    if digits.startswith('09') and len(digits) == 11:
+        add(digits[1:])
+    elif len(digits) == 10 and digits[0] == '9':
+        add('0' + digits)
+    return out
+
+
+def _lookup_subscription_user(cur, mobile):
+    for cand in _subscription_mobile_variants(mobile):
+        cur.execute(
+            "SELECT id, password_hash, mobile FROM subscription_users WHERE mobile = %s",
+            (cand,),
+        )
+        row = cur.fetchone()
+        if row:
+            return row
+    return None
+
+
+def _normalize_subscription_section(section):
+    s = (section or '').strip().lower()
+    if not s or s in ('bundle', 'both', 'full', 'all'):
+        return 'bundle'
+    if s == '414':
+        return 'questions_414'
+    if s in ('tests', 'questions_414'):
+        return s
+    return None
+
+
+_SUB_SESSION_KEYS = ('sub_user_id', 'sub_mobile', 'sub_tests_expiry', 'sub_414_expiry')
+
+
+def _clear_subscription_session():
+    for key in _SUB_SESSION_KEYS:
+        session.pop(key, None)
+
+
+def _apply_subscription_session_from_db(user_id, mobile=None):
+    """Refresh session expiry from DB. Returns True if at least one section is still active."""
+    today = _today()
+    try:
+        conn = get_db_connection()
+        if not conn:
+            return False
+        cur = conn.cursor(cursor_factory=RealDictCursor)
+        cur.execute(
+            """
+            SELECT section, expiry_date FROM subscription_subscriptions
+            WHERE user_id = %s AND status = 'active' AND expiry_date >= %s
+            """,
+            (user_id, today),
+        )
+        subs = cur.fetchall()
+        if mobile is None:
+            cur.execute("SELECT mobile FROM subscription_users WHERE id = %s", (user_id,))
+            row = cur.fetchone()
+            mobile = (row.get('mobile') if row else None) or session.get('sub_mobile')
+        cur.close()
+        conn.close()
+    except Exception:
+        return False
+
+    session.pop('sub_tests_expiry', None)
+    session.pop('sub_414_expiry', None)
+    if not subs:
+        return False
+
+    session.permanent = True
+    session['sub_user_id'] = user_id
+    if mobile:
+        session['sub_mobile'] = str(mobile).strip()
+    for r in subs:
+        s = r['section']
+        e = r['expiry_date']
+        if isinstance(e, datetime):
+            e = e.date()
+        if e >= today:
+            iso = e.isoformat() if hasattr(e, 'isoformat') else str(e)
+            if s == 'tests':
+                session['sub_tests_expiry'] = iso
+            elif s == 'questions_414':
+                session['sub_414_expiry'] = iso
+    return bool(session.get('sub_tests_expiry') or session.get('sub_414_expiry'))
+
+
+def _sync_subscription_session_if_logged_in():
+    """Drop session when subscription period ended (or revoked in admin)."""
+    user_id = session.get('sub_user_id')
+    if not user_id:
+        return
+    if not _apply_subscription_session_from_db(user_id):
+        _clear_subscription_session()
+
+
 # حداقل تاریخ امتحان برای فهرست عمومی قبولی (فقط ردیف‌های با تاریخ امتحان >= این مقدار)
 _CITIZENSHIP_PASS_LIST_EXAM_SINCE = date(2026, 1, 25)
+# اشتراک منقضی‌شدهٔ اخیر (status هنوز active) در فهرست «در حال مطالعه» می‌ماند.
+_CITIZENSHIP_STUDYING_SUB_GRACE_DAYS = 7
+
+
+def _citizenship_studying_subscription_since():
+    return _today() - timedelta(days=_CITIZENSHIP_STUDYING_SUB_GRACE_DAYS)
 
 
 def _parse_optional_date(value):
@@ -3449,6 +3676,51 @@ def _exam_score_as_float(raw):
         return None
 
 
+def _citizenship_score_indicates_pass(raw, min_exclusive=14.0):
+    """نمرهٔ عددی > آستانه، یا متن صریح قبولی (قبول / pass / réussi)."""
+    if raw is None:
+        return False, None
+    s = str(raw).strip()
+    if not s:
+        return False, None
+    lower = s.lower()
+    pass_tokens = (
+        'قبول',
+        'pass',
+        'passed',
+        'réussi',
+        'reussi',
+        'reussite',
+        'réussite',
+        'accepté',
+        'accepte',
+        'accepted',
+    )
+    if any(tok in lower for tok in pass_tokens):
+        return True, None
+    sc = _exam_score_as_float(raw)
+    if sc is not None and sc > min_exclusive:
+        return True, sc
+    return False, None
+
+
+def _get_citizenship_exam_report_kpis(report_rows, waiting_rows, min_exclusive=14.0):
+    """شاخص‌های خلاصه برای صفحهٔ گزارش قبولی."""
+    scores = []
+    for r in report_rows or []:
+        passed, sc = _citizenship_score_indicates_pass(r.get('score'), min_exclusive)
+        if passed and sc is not None:
+            scores.append(sc)
+    avg = round(sum(scores) / len(scores), 1) if scores else None
+    pass_count = len(report_rows or [])
+    studying_count = len(waiting_rows or [])
+    return {
+        'studying_count': studying_count,
+        'avg_pass_score': avg,
+        'pass_count': pass_count,
+    }
+
+
 def _get_citizenship_exam_report_rows(min_exclusive=14.0, limit=800, exam_since=None):
     """فهرست عمومی قبولی: تاریخ امتحان از exam_since (پیش‌فرض ۲۵ ژانویه ۲۰۲۶) تا امروز + آستانهٔ عددی نمره فقط در کد."""
     if exam_since is None:
@@ -3480,8 +3752,8 @@ def _get_citizenship_exam_report_rows(min_exclusive=14.0, limit=800, exam_since=
         return []
 
     for r in raw:
-        sc = _exam_score_as_float(r.get('citizenship_exam_score'))
-        if sc is None or sc <= min_exclusive:
+        passed, sc = _citizenship_score_indicates_pass(r.get('citizenship_exam_score'), min_exclusive)
+        if not passed:
             continue
         ed_raw = r.get('citizenship_exam_date')
         exam_d = ed_raw if isinstance(ed_raw, date) else _parse_optional_date(ed_raw)
@@ -3504,7 +3776,7 @@ def _get_citizenship_exam_report_rows(min_exclusive=14.0, limit=800, exam_since=
             'apply': apply_disp,
             'exam': exam_disp,
             'score': score_disp,
-            '_sort_score': sc,
+            '_sort_score': sc if sc is not None else 20.0,
             '_exam_d': exam_d,
         })
     rows_out.sort(key=lambda x: (x['_exam_d'], x['_sort_score'], x['name']), reverse=True)
@@ -3514,8 +3786,9 @@ def _get_citizenship_exam_report_rows(min_exclusive=14.0, limit=800, exam_since=
     return rows_out
 
 
-def _get_citizenship_exam_waiting_rows(limit=800):
-    """پرداخت‌کنندگان با حداقل یک ردیف در subscription_payments که هنوز نمرهٔ امتحان ثبت نکرده‌اند."""
+def _get_citizenship_exam_waiting_rows(limit=800, min_exclusive=14.0):
+    """اشتراک فعال (یا منقضی در ۷ روز اخیر با status=active) بدون قبولی — KPI «در حال مطالعه»."""
+    sub_since = _citizenship_studying_subscription_since()
     rows_out = []
     try:
         conn = get_db_connection()
@@ -3525,17 +3798,17 @@ def _get_citizenship_exam_waiting_rows(limit=800):
         cur.execute(
             """
             SELECT u.first_name, u.last_name, u.citizenship_city,
-                   u.citizenship_apply_date, u.citizenship_exam_date
+                   u.citizenship_apply_date, u.citizenship_exam_date,
+                   u.citizenship_exam_score
             FROM subscription_users u
-            WHERE EXISTS (SELECT 1 FROM subscription_payments p WHERE p.user_id = u.id)
-              AND (
-                    u.citizenship_exam_score IS NULL
-                    OR TRIM(COALESCE(u.citizenship_exam_score, '')) = ''
-                  )
+            WHERE EXISTS (
+                SELECT 1 FROM subscription_subscriptions s
+                WHERE s.user_id = u.id AND s.status = 'active' AND s.expiry_date >= %s
+            )
             ORDER BY u.id DESC
             LIMIT %s
             """,
-            (limit,),
+            (sub_since, limit),
         )
         raw = cur.fetchall()
         cur.close()
@@ -3544,6 +3817,9 @@ def _get_citizenship_exam_waiting_rows(limit=800):
         return []
 
     for r in raw:
+        passed, _ = _citizenship_score_indicates_pass(r.get('citizenship_exam_score'), min_exclusive)
+        if passed:
+            continue
         fn = (r.get('first_name') or '').strip()
         ln = (r.get('last_name') or '').strip()
         name = ' '.join(x for x in (fn, ln) if x) or '—'
@@ -3560,11 +3836,22 @@ def _get_citizenship_exam_waiting_rows(limit=800):
     return rows_out
 
 
+@app.context_processor
+def _subscription_session_context_sync():
+    """Each page render: end session automatically when DB subscription is no longer active."""
+    _sync_subscription_session_if_logged_in()
+    return {}
+
+
 @app.route('/api/subscription/status', methods=['GET'])
 def api_subscription_status():
     """Return current session subscription status for both sections."""
+    _sync_subscription_session_if_logged_in()
     today = _today()
     out = {
+        'logged_in': bool(session.get('sub_user_id')),
+        'mobile': (session.get('sub_mobile') or '').strip() or None,
+        'has_active': False,
         'tests': False,
         'tests_expiry': None,
         'questions_414': False,
@@ -3590,63 +3877,79 @@ def api_subscription_status():
                 out['questions_414_expiry'] = exp.isoformat() if hasattr(exp, 'isoformat') else str(exp)
         except Exception:
             pass
+    out['has_active'] = bool(out['tests'] or out['questions_414'])
+    out['has_full_access'] = bool(out['tests'] and out['questions_414'])
+    user_id = session.get('sub_user_id')
+    out['display_name'] = None
+    out['username'] = out['mobile']
+    if user_id:
+        try:
+            conn = get_db_connection()
+            if conn:
+                cur = conn.cursor(cursor_factory=RealDictCursor)
+                cur.execute(
+                    "SELECT mobile, first_name, last_name FROM subscription_users WHERE id = %s",
+                    (user_id,),
+                )
+                row = cur.fetchone()
+                cur.close()
+                conn.close()
+                if row:
+                    fn = (row.get('first_name') or '').strip()
+                    ln = (row.get('last_name') or '').strip()
+                    name = ' '.join(x for x in (fn, ln) if x)
+                    out['display_name'] = name or None
+                    mob = (row.get('mobile') or '').strip()
+                    if mob:
+                        out['username'] = mob
+                        out['mobile'] = mob
+        except Exception:
+            pass
     return jsonify(out)
+
+
+@app.route('/api/subscription/logout', methods=['POST'])
+def api_subscription_logout():
+    """Clear subscription session (topbar account sign-out)."""
+    _clear_subscription_session()
+    return jsonify({'success': True}), 200
+
 
 @app.route('/api/subscription/login', methods=['POST'])
 def api_subscription_login():
     """Validate mobile + password and ensure subscription for the requested section; set session and return success."""
-    data = request.get_json() or {}
-    mobile = (data.get('mobile') or '').strip()
+    data = _subscription_login_payload()
+    mobile = (data.get('mobile') or data.get('username') or '').strip()
     password = (data.get('password') or '').strip()
-    section = (data.get('section') or '').strip()  # 'tests' or 'questions_414'
+    section = _normalize_subscription_section(data.get('section'))
     if not mobile or not password:
         return jsonify({'success': False, 'error': 'کد کاربری و کلمه عبور الزامی است.'}), 200
-    if section not in ('tests', 'questions_414'):
-        return jsonify({'success': False, 'error': 'ورودی نامعتبر.'}), 200
+    if section is None:
+        return jsonify({'success': False, 'error': 'ورودی نامعتبر (بخش اشتراک).'}), 200
     try:
         conn = get_db_connection()
         if not conn:
             return jsonify({'success': False, 'error': 'خطای اتصال به پایگاه داده.'}), 200
         cur = conn.cursor(cursor_factory=RealDictCursor)
-        cur.execute("SELECT id, password_hash FROM subscription_users WHERE mobile = %s", (mobile,))
-        row = cur.fetchone()
+        row = _lookup_subscription_user(cur, mobile)
         cur.close()
         conn.close()
         if not row or not check_password_hash(row['password_hash'], password):
             return jsonify({'success': False, 'error': 'کد کاربری یا کلمه عبور اشتباه است.'}), 200
         user_id = row['id']
-        conn = get_db_connection()
-        if not conn:
-            return jsonify({'success': False, 'error': 'خطای اتصال.'}), 200
-        cur = conn.cursor(cursor_factory=RealDictCursor)
-        cur.execute("""
-            SELECT section, expiry_date FROM subscription_subscriptions
-            WHERE user_id = %s AND status = 'active' AND expiry_date >= %s
-        """, (user_id, _today()))
-        subs = cur.fetchall()
-        cur.close()
-        conn.close()
-        expiry_by_section = {r['section']: r['expiry_date'] for r in subs}
-        exp = expiry_by_section.get(section)
-        if not exp:
+        mobile = (row.get('mobile') or mobile).strip()
+        if not _apply_subscription_session_from_db(user_id, mobile):
             return jsonify({'success': False, 'error': 'اشتراک منقضی شده یا خریداری نشده است.'}), 200
-        if isinstance(exp, datetime):
-            exp = exp.date()
-        session.permanent = True  # کوکی ورود تا ۹۰ روز (یا تا پاک کردن کش) حفظ شود
-        session['sub_user_id'] = user_id
-        session['sub_mobile'] = mobile
-        if section == 'tests':
-            session['sub_tests_expiry'] = exp.isoformat()
-        else:
-            session['sub_414_expiry'] = exp.isoformat()
-        # If they have the other section too, set it so we don't ask again
-        for s, e in expiry_by_section.items():
-            if isinstance(e, datetime):
-                e = e.date()
-            if s == 'tests' and e >= _today():
-                session['sub_tests_expiry'] = e.isoformat()
-            elif s == 'questions_414' and e >= _today():
-                session['sub_414_expiry'] = e.isoformat()
+        if section == 'bundle':
+            if not (session.get('sub_tests_expiry') and session.get('sub_414_expiry')):
+                _clear_subscription_session()
+                return jsonify({'success': False, 'error': 'اشتراک منقضی شده یا خریداری نشده است.'}), 200
+        elif section == 'tests' and not session.get('sub_tests_expiry'):
+            _clear_subscription_session()
+            return jsonify({'success': False, 'error': 'اشتراک منقضی شده یا خریداری نشده است.'}), 200
+        elif section == 'questions_414' and not session.get('sub_414_expiry'):
+            _clear_subscription_session()
+            return jsonify({'success': False, 'error': 'اشتراک منقضی شده یا خریداری نشده است.'}), 200
         return jsonify({'success': True, 'message': 'ورود موفق.'}), 200
     except Exception as e:
         return jsonify({'success': False, 'error': str(e)}), 200
@@ -4028,7 +4331,7 @@ def admin_api_visitor_dashboard():
                 SELECT COUNT(*) AS total_hits,
                        COUNT(DISTINCT ip_address) AS unique_ips
                 FROM visitor_log
-                WHERE page_visited IN ('/citizenship-exams', '/citizenship-introduction', '/citizenship-rights-responsibilities', '/citizenship-who-we-are', '/citizenship-canadas-history', '/citizenship-how-canadians-govern-themselves', '/citizenship-federal-elections', '/citizenship-canadian-symbols', '/citizenship-canadas-economy', '/citizenship-canadas-regions', '/citizenship-justice-system', '/citizenship-modern-canada', '/exam1', '/exam2', '/exam3')
+                WHERE page_visited IN ('/citizenship-exams', '/citizenship-introduction', '/citizenship-rights-responsibilities', '/citizenship-who-we-are', '/citizenship-canadas-history', '/citizenship-how-canadians-govern-themselves', '/citizenship-federal-elections', '/citizenship-canadian-symbols', '/citizenship-canadas-economy', '/citizenship-canadas-regions', '/citizenship-justice-system', '/citizenship-modern-canada', '/exam1', '/exam2', '/exam3', '/mock', '/mock/run')
                 """
                 + exclude_sql,
                 exclude_params,
@@ -4038,7 +4341,7 @@ def admin_api_visitor_dashboard():
                 """
                 SELECT page_visited, COUNT(*) AS cnt
                 FROM visitor_log
-                WHERE page_visited IN ('/citizenship-exams', '/citizenship-introduction', '/citizenship-rights-responsibilities', '/citizenship-who-we-are', '/citizenship-canadas-history', '/citizenship-how-canadians-govern-themselves', '/citizenship-federal-elections', '/citizenship-canadian-symbols', '/citizenship-canadas-economy', '/citizenship-canadas-regions', '/citizenship-justice-system', '/citizenship-modern-canada', '/exam1', '/exam2', '/exam3')
+                WHERE page_visited IN ('/citizenship-exams', '/citizenship-introduction', '/citizenship-rights-responsibilities', '/citizenship-who-we-are', '/citizenship-canadas-history', '/citizenship-how-canadians-govern-themselves', '/citizenship-federal-elections', '/citizenship-canadian-symbols', '/citizenship-canadas-economy', '/citizenship-canadas-regions', '/citizenship-justice-system', '/citizenship-modern-canada', '/exam1', '/exam2', '/exam3', '/mock', '/mock/run')
                 """
                 + exclude_sql
                 + """
@@ -4066,7 +4369,7 @@ def admin_api_visitor_dashboard():
                        SUM(CASE WHEN page_visited = '/exam2' THEN 1 ELSE 0 END) AS exam2_hits,
                        SUM(CASE WHEN page_visited = '/exam3' THEN 1 ELSE 0 END) AS exam3_hits
                 FROM visitor_log
-                WHERE page_visited IN ('/citizenship-exams', '/citizenship-introduction', '/citizenship-rights-responsibilities', '/citizenship-who-we-are', '/citizenship-canadas-history', '/citizenship-how-canadians-govern-themselves', '/citizenship-federal-elections', '/citizenship-canadian-symbols', '/citizenship-canadas-economy', '/citizenship-canadas-regions', '/citizenship-justice-system', '/citizenship-modern-canada', '/exam1', '/exam2', '/exam3')
+                WHERE page_visited IN ('/citizenship-exams', '/citizenship-introduction', '/citizenship-rights-responsibilities', '/citizenship-who-we-are', '/citizenship-canadas-history', '/citizenship-how-canadians-govern-themselves', '/citizenship-federal-elections', '/citizenship-canadian-symbols', '/citizenship-canadas-economy', '/citizenship-canadas-regions', '/citizenship-justice-system', '/citizenship-modern-canada', '/exam1', '/exam2', '/exam3', '/mock', '/mock/run')
                   AND access_time >= CURRENT_DATE - INTERVAL '30 days'
                 """
                 + exclude_sql

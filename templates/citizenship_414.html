@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html dir="ltr">
 <head>
 <meta charset="UTF-8">
+{% include '_citizen_site_data_site_lang_head.html' %}
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="{{ url_for('static', filename='images/logo.png') }}" type="image/png">
     <link rel="apple-touch-icon" href="{{ url_for('static', filename='images/logo.png') }}">
@@ -29,6 +30,10 @@
     <script type="application/ld+json">
     {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"خانه","item":"{{ seo_base_url() }}"},{"@type":"ListItem","position":2,"name":"۴۱۴ سوال شهروندی","item":"{{ seo_base_url() }}/citizenship-414"}]}
     </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='modern_landing.css') }}?v=20260509h" />
 <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 :root {
@@ -94,29 +99,7 @@ body {
         }
         body.theme-dark .tool-bar { box-shadow: 0 2px 10px rgba(0,0,0,0.3); }
         .tool-bar .group { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
-        .theme-toggle-wrap { display: flex; align-items: center; gap: 6px; }
         .theme-label { font-weight: 600; color: var(--text); font-size: 0.95em; }
-        .theme-btn {
-            width: 44px;
-            height: 44px;
-            border-radius: 12px;
-            border: 2px solid var(--border);
-            background: var(--card-bg);
-            font-size: 1.35em;
-            cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
-        }
-        .theme-btn:hover { transform: scale(1.08); box-shadow: 0 4px 12px rgba(0,0,0,0.12); }
-        .theme-btn[aria-pressed="true"] {
-            border-color: #1e3c72;
-            box-shadow: 0 0 0 2px rgba(30,60,114,0.35);
-            background: linear-gradient(135deg, #e8eef5 0%, #dce4ed 100%);
-        }
-        body.theme-dark .theme-btn[aria-pressed="true"] {
-            border-color: #7cb3f5;
-            box-shadow: 0 0 0 2px rgba(124,179,245,0.4);
-            background: linear-gradient(135deg, #3d4a5c 0%, #2d3748 100%);
-        }
         .go-to-q-wrap {
             display: flex;
             align-items: center;
@@ -172,17 +155,6 @@ body {
         }
         .page-header h1 { font-size: 1.6em; margin-bottom: 8px; }
         .page-header p { font-size: 0.95em; opacity: 0.95; }
-        .back-bar { margin-bottom: 12px; text-align: right; }
-        .back-btn {
-            display: inline-block;
-            padding: 10px 20px;
-            background: var(--accent);
-            color: #fff;
-            text-decoration: none;
-            border-radius: 10px;
-            font-weight: 600;
-        }
-        .back-btn:hover { background: var(--accent-light); }
         .section-title { font-size: 1.1em; font-weight: 700; color: var(--accent); margin: 24px 0 12px 0; padding-bottom: 6px; border-bottom: 2px solid var(--section-border); }
         .q-card-441 {
             background: #f0f0f0;
@@ -208,12 +180,10 @@ body {
         body.theme-dark .block-en { background: rgba(124,179,245,0.1); border-left-color: #7cb3f5; }
         .block-fa { direction: rtl; text-align: right; margin-bottom: 10px; padding: 10px 12px; background: rgba(241,196,15,0.12); border-radius: 10px; border-right: 3px solid #f1c40f; }
         body.theme-dark .block-fa { background: rgba(241,196,15,0.15); }
+        /* Match topbar «Persian sections»: hide FA translation/explanation blocks when off */
+        body[data-show-fa="no"] .block-fa { display: none !important; }
         .block-fr { direction: ltr; text-align: left; margin-bottom: 10px; padding: 10px 12px; background: rgba(0,82,147,0.08); border-radius: 10px; border-left: 3px solid #005293; }
         body.theme-dark .block-fr { background: rgba(0,82,147,0.18); border-left-color: #4a9fd4; }
-        .lang-mode-btn { padding: 10px 18px; border-radius: 10px; border: 2px solid var(--border); background: var(--card-bg); color: var(--text); font-weight: 600; font-size: 0.95em; cursor: pointer; transition: all 0.2s; -webkit-appearance: none; appearance: none; }
-        .lang-mode-btn:hover { border-color: var(--accent); }
-        .lang-mode-btn[aria-pressed="true"] { border-color: #1e3c72; background: linear-gradient(135deg, #2c5282 0%, #1e3c72 100%); color: #fff; box-shadow: 0 0 0 2px rgba(30,60,114,0.25); }
-        body.theme-dark .lang-mode-btn[aria-pressed="true"] { border-color: #7cb3f5; box-shadow: 0 0 0 2px rgba(124,179,245,0.35); }
         .q-num-badge {
             display: inline-flex; align-items: center; justify-content: center;
             min-width: 2rem; height: 1.75rem; padding: 0 0.5rem;
@@ -255,6 +225,26 @@ body {
         }
         .paywall-414-btn-copy:hover { opacity: 0.9; }
         .paywall-414-btn-copy.copied { background: #28a745; }
+        .paywall-414 {
+            direction: rtl;
+            text-align: right;
+            unicode-bidi: embed;
+        }
+        .paywall-414 input {
+            direction: rtl;
+            text-align: right;
+        }
+        .paywall-414-email-block {
+            justify-content: flex-start;
+        }
+        .paywall-414-email-value {
+            direction: ltr;
+            unicode-bidi: embed;
+            text-align: left;
+        }
+        .paywall-414 #paywall414LoginBtn {
+            margin-inline-start: 0;
+        }
         /* یک سوال در هر لحظه — بقیه مخفی */
         .questions-one-by-one .q-card-441 { display: none; }
         .questions-one-by-one .q-card-441.current { display: block; }
@@ -286,30 +276,41 @@ body {
         .q-nav-bar-414 .q-nav-btn:hover:not(:disabled) { opacity: 0.9; }
         .q-nav-bar-414 .q-nav-btn:disabled { opacity: 0.5; cursor: not-allowed; }
         .q-nav-bar-414 .q-nav-btn.btn-prev { background: var(--card-bg); color: var(--accent); }
+
+        /* Shared topbar (modern_landing.css): keep exam UI fonts/colors/gradient */
+        html[data-theme="light"] body.citizenship414-page,
+        html[data-theme="dark"] body.citizenship414-page {
+            font-family: Tahoma, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+        }
+        html[data-theme="light"] body.citizenship414-page { color-scheme: light; }
+        html[data-theme="dark"] body.citizenship414-page { color-scheme: dark; }
+        /* Header is LTR; page stays RTL for Persian chrome */
+        .citizenship414-page .topbar { direction: ltr; }
 </style>
+{% set citizen_theme_profile = 'modern' %}
+{% include '_citizen_site_theme_head.html' %}
 </head>
-<body>
-    <script>try{var t=localStorage.getItem('citizenship414_theme');if(t==='dark')document.body.classList.add('theme-dark');}catch(e){}</script>
+<body class="citizenship414-page">
+    <script>try{var Sf=localStorage.getItem('citizenSiteShowFa');if(Sf!=='yes'&&Sf!=='no')Sf=localStorage.getItem('book_summary_show_fa');if(Sf!=='yes'&&Sf!=='no')Sf=localStorage.getItem('book_summary_2_show_fa');document.body.setAttribute('data-show-fa',Sf==='no'?'no':'yes');}catch(e){document.body.setAttribute('data-show-fa','yes');}</script>
+    {% include '_citizen_site_theme_body_sync.html' %}
     {% include 'content_protection.html' %}
+    <div class="bg">
+        <div class="bg__blob bg__blob--a"></div>
+        <div class="bg__blob bg__blob--b"></div>
+    </div>
+    {% set modern_topbar_hide_study = true %}
+    {% set modern_topbar_hide_414 = true %}
+    {% include '_modern_site_topbar.html' %}
     <div class="wrap">
-        <div class="back-bar">
-            <a href="/" class="back-btn">← بازگشت به صفحه اصلی / Back to Home</a>
-        </div>
         <div class="tool-bar">
-            <div class="group theme-toggle-wrap">
-                <button type="button" class="lang-mode-btn" id="langModeEn" aria-pressed="true">English + فارسی</button>
-                <button type="button" class="lang-mode-btn" id="langModeFr" aria-pressed="false">Français + فارسی</button>
-            </div>
             <div class="group go-to-q-wrap">
                 <span class="go-to-q-icon" title="Go to question number / برو به سوال" aria-hidden="true">🔍</span>
                 <label for="goToQuestion414" class="theme-label" style="margin: 0;">سوال</label>
                 <input type="number" id="goToQuestion414" min="1" max="{{ max_question_414 }}" placeholder="مثلاً 120" aria-label="Question number (1–{{ max_question_414 }})">
                 <button type="button" class="go-to-q-btn" id="goToQuestionBtn414">برو</button>
-            </div>
-            <div class="group theme-toggle-wrap">
-                <span class="theme-label">Theme:</span>
-                <button type="button" class="theme-btn theme-light" id="themeLight" title="روشن / Light" aria-pressed="true">☀️</button>
-                <button type="button" class="theme-btn theme-dark" id="themeDark" title="تاریک / Dark" aria-pressed="false">🌙</button>
             </div>
         </div>
         <div id="q-nav-bar-414" class="q-nav-bar-414" data-max-question="{{ max_question_414 }}">
@@ -366,15 +367,15 @@ body {
         {% endfor %}
         {% if show_paywall %}
         <div class="q-card q-card-441 paywall-as-paywall-slot" id="q{{ max_question_414 }}">
-            <div class="paywall-414" style="padding: 0; margin: 0; border: none; max-width: none;">
-                <h2 style="margin-bottom: 12px; color: var(--accent);">دسترسی به سوالات {{ citizenship_414_free_preview + 1 }} تا ۴۱۴</h2>
-                <p style="margin-bottom: 16px;">برای مشاهده همه ۴۱۴ سوال و دسترسی به تست‌ها، اشتراک یک‌ماهه <strong>{{ subscription_price }} دلار</strong> (کل بسته) لازم است. واریز به آدرس ایمیل زیر و ارسال کد واریز به همان ایمیل؛ پس از تأیید، کد کاربری و رمز برای شما ارسال می‌شود.</p>
+            <div class="paywall-414" dir="rtl" lang="fa" style="padding: 0; margin: 0; border: none; max-width: none;">
+                {% with subscription_paywall_title_align='right' %}{% include '_subscription_paywall_heading.html' %}{% endwith %}
+                <div class="subscription-paywall-lead-wrap" style="margin-bottom: 16px; text-align: right;">{% include '_subscription_payment_lead.html' %}</div>
                 <div class="paywall-414-email-block">
                     <span class="paywall-414-email-label">ایمیل:</span>
                     <span class="paywall-414-email-value" id="paywall414EmailValue">Koroush.mog@gmail.com</span>
                     <button type="button" class="paywall-414-btn-copy" id="paywall414EmailCopy" title="کپی">کپی</button>
                 </div>
-                <p style="margin-bottom: 14px;"><strong>ورود (در صورت داشتن کد و رمز):</strong></p>
+                <p style="margin-bottom: 14px; text-align: right;"><strong>ورود:</strong></p>
                 <input type="text" id="paywall414Mobile" placeholder="کد کاربری (شماره موبایل)" style="width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid var(--border); border-radius: 10px;">
                 <input type="password" id="paywall414Password" placeholder="کلمه عبور" style="width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid var(--border); border-radius: 10px;">
                 <p id="paywall414Error" class="subscription-error" style="display: none; color: #c00; margin-bottom: 8px;"></p>
@@ -460,45 +461,54 @@ body {
         </script>
         {% endif %}
 
-        <div class="back-bar">
-            <a href="/" class="back-btn">← بازگشت به صفحه اصلی / Back to Home</a>
-  </div>
 </div>
     <script>
         (function() {
             var themeKey = 'citizenship414_theme';
             var langModeKey = 'citizenship414_lang_mode';
-            var themeLight = document.getElementById('themeLight');
-            var themeDark = document.getElementById('themeDark');
-            var langModeEn = document.getElementById('langModeEn');
-            var langModeFr = document.getElementById('langModeFr');
 
             function applyTheme(val) {
                 if (val === 'dark') {
                     document.body.classList.add('theme-dark');
-                    if (themeLight) themeLight.setAttribute('aria-pressed', 'false');
-                    if (themeDark) themeDark.setAttribute('aria-pressed', 'true');
                 } else {
                     document.body.classList.remove('theme-dark');
-                    if (themeLight) themeLight.setAttribute('aria-pressed', 'true');
-                    if (themeDark) themeDark.setAttribute('aria-pressed', 'false');
                 }
+                document.documentElement.setAttribute('data-theme', val === 'dark' ? 'dark' : 'light');
             }
             function applyLangMode(mode) {
                 var showEn = (mode === 'en');
                 document.querySelectorAll('.lang-block-en').forEach(function(el) { el.style.display = showEn ? '' : 'none'; });
                 document.querySelectorAll('.lang-block-fr').forEach(function(el) { el.style.display = showEn ? 'none' : ''; });
-                if (langModeEn) langModeEn.setAttribute('aria-pressed', showEn ? 'true' : 'false');
-                if (langModeFr) langModeFr.setAttribute('aria-pressed', showEn ? 'false' : 'true');
+                try {
+                    document.documentElement.setAttribute('data-site-lang', showEn ? 'en-fa' : 'fr-fa');
+                    document.documentElement.setAttribute('lang', showEn ? 'en' : 'fr');
+                    document.documentElement.setAttribute('dir', 'ltr');
+                } catch (e) {}
             }
-            var savedTheme = localStorage.getItem(themeKey) || 'light';
-            var savedMode = localStorage.getItem(langModeKey) || 'en';
+            var savedTheme = (function () {
+                try {
+                    var g = localStorage.getItem('citizenSiteTheme');
+                    if (g === 'dark' || g === 'light') return g === 'dark' ? 'dark' : 'light';
+                    g = localStorage.getItem('modernLandingTheme');
+                    if (g === 'dark' || g === 'light') return g === 'dark' ? 'dark' : 'light';
+                    var p = localStorage.getItem(themeKey);
+                    return (p === 'dark') ? 'dark' : 'light';
+                } catch (e) {
+                    return 'light';
+                }
+            })();
+            var savedMode = 'en';
+            try {
+                var sl = localStorage.getItem('citizenSiteLang');
+                if (sl === 'fr-fa') savedMode = 'fr';
+                else if (sl === 'en-fa') savedMode = 'en';
+                else if (localStorage.getItem(langModeKey) === 'fr') savedMode = 'fr';
+            } catch (e) {}
             applyTheme(savedTheme);
             applyLangMode(savedMode);
-            if (themeLight) themeLight.addEventListener('click', function() { localStorage.setItem(themeKey, 'light'); applyTheme('light'); });
-            if (themeDark) themeDark.addEventListener('click', function() { localStorage.setItem(themeKey, 'dark'); applyTheme('dark'); });
-            if (langModeEn) langModeEn.addEventListener('click', function() { localStorage.setItem(langModeKey, 'en'); applyLangMode('en'); });
-            if (langModeFr) langModeFr.addEventListener('click', function() { localStorage.setItem(langModeKey, 'fr'); applyLangMode('fr'); });
+            try {
+                localStorage.setItem(langModeKey, savedMode);
+            } catch (e) {}
 
             var goInput = document.getElementById('goToQuestion414');
             var goBtn = document.getElementById('goToQuestionBtn414');
@@ -601,5 +611,6 @@ body {
             });
         })();
     </script>
+    {% include '_modern_site_topbar_scripts.html' %}
 </body>
 </html>

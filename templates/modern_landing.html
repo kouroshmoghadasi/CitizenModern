@@ -1,0 +1,312 @@
+<!doctype html>
+<html dir="ltr">
+<head>
+  <meta charset="utf-8" />
+  {% include '_citizen_site_data_site_lang_head.html' %}
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate" />
+  {# Inline: survives stale /static CSS cache (immutable 1y). #}
+  <style>
+    .journey, .journey__btn, .journey__icon, .journey__hint, .journey__sep { display: none !important; }
+    #landingLayout .hero__links,
+    #landingLayout .hero__kicker,
+    html[data-theme="dark"] #landingLayout .hero__links,
+    html[data-theme="dark"] #landingLayout .hero__kicker {
+      display: none !important;
+      visibility: hidden !important;
+      height: 0 !important;
+      max-height: 0 !important;
+      overflow: hidden !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      border: 0 !important;
+      clip: rect(0, 0, 0, 0) !important;
+      position: absolute !important;
+      width: 1px !important;
+    }
+  </style>
+  <link rel="icon" href="{{ url_for('static', filename='images/logo.png') }}" type="image/png" />
+  <title>Canadian Citizenship Test</title>
+  <meta name="description" content="Practice tests and study materials for the Canadian citizenship test." />
+  <script>
+    (function () {
+      try {
+        var v = document.documentElement.getAttribute("data-site-lang") || "en-fa";
+        document.title = v === "fr-fa" ? "Test de citoyenneté canadienne" : "Canadian Citizenship Test";
+        var md = document.querySelector('meta[name="description"]');
+        if (md) {
+          md.setAttribute(
+            "content",
+            v === "fr-fa"
+              ? "Tests pratiques et matériel d'étude pour le test de citoyenneté canadienne."
+              : "Practice tests and study materials for the Canadian citizenship test."
+          );
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  {% include '_citizen_fa_font_head.html' %}
+  {# Static assets are cached for 1 year; bump v when CSS changes. #}
+  <link rel="stylesheet" href="{{ url_for('static', filename='modern_landing.css') }}?v=20260520a" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='citizen_help_fab.css') }}?v=20260520b" />
+  {% set citizen_theme_profile = 'modern' %}
+  {% include '_citizen_site_theme_head.html' %}
+  {% include 'pwa_meta.html' %}
+</head>
+<body>
+<script>
+(function () {
+  try {
+    function readShowFa() {
+      var v = localStorage.getItem("citizenSiteShowFa");
+      if (v === "yes" || v === "no") return v !== "no";
+      v = localStorage.getItem("book_summary_show_fa");
+      if (v === "yes" || v === "no") return v !== "no";
+      v = localStorage.getItem("book_summary_2_show_fa");
+      if (v === "yes" || v === "no") return v !== "no";
+      return true;
+    }
+    document.body.setAttribute("data-show-fa", readShowFa() ? "yes" : "no");
+  } catch (e) {
+    document.body.setAttribute("data-show-fa", "yes");
+  }
+})();
+</script>
+  <div class="bg">
+    <div class="bg__blob bg__blob--a"></div>
+    <div class="bg__blob bg__blob--b"></div>
+  </div>
+
+  {% set modern_topbar_hide_study = true %}
+  {% set modern_topbar_hide_home = true %}
+  {% set modern_topbar_hide_414 = true %}
+  {% include '_modern_site_topbar.html' %}
+
+  <main class="wrap">
+    {% include '_modern_landing_promo_carousel.html' %}
+    <!-- Dark theme: keep the beautiful landing layout -->
+    <div class="landingLayout" id="landingLayout" aria-label="Landing layout">
+      <section class="hero" aria-label="Landing hero">
+        <h1 class="hero__title">
+          <span class="hero__titleAccent siteLang siteLang--stack"><span class="siteLang__en">Canadian</span><span class="siteLang__fr">Citoyenneté</span></span>
+          <span class="hero__titleMain siteLang siteLang--stack"><span class="siteLang__en">Citizenship Test</span><span class="siteLang__fr">canadienne</span></span>
+        </h1>
+
+        <p class="hero__subtitle" id="landingHeroSubtitle"><span class="siteLang"><span class="siteLang__en">Start with the Book Summary</span><span class="siteLang__fr">Commencez par le résumé du livre</span></span></p>
+      </section>
+
+      <section class="grid grid--landing" aria-label="Primary actions">
+        <a class="card card--study" href="/study">
+          <div class="card__icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+              <path d="M4 19.5V6a2 2 0 0 1 2-2h12v17H6a2 2 0 0 1-2-1.5Z" stroke="currentColor" stroke-width="2"/>
+              <path d="M8 8h6M8 12h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="card__body">
+            <div class="card__title siteLang"><span class="siteLang__en">Study</span><span class="siteLang__fr">Étude</span></div>
+            <div class="card__meta siteLang"><span class="siteLang__en">Discover Canada and keynotes</span><span class="siteLang__fr">Découvrir le Canada et les points clés</span></div>
+            <div class="card__sub">
+              <span class="card__subMuted siteLang"><span class="siteLang__en">Last read:</span><span class="siteLang__fr">Dernière lecture :</span></span>
+              <span class="card__subStrong">Page 1</span>
+              <span class="card__subMuted">·</span>
+              <span class="card__subMuted">1%</span>
+            </div>
+          </div>
+          <div class="card__chev" aria-hidden="true">›</div>
+        </a>
+
+        <a class="card card--practice" href="/citizenship-exams">
+          <div class="card__icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+              <path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="card__body">
+            <div class="card__title siteLang"><span class="siteLang__en">Practice</span><span class="siteLang__fr">Entraînement</span></div>
+            <div class="card__meta siteLang"><span class="siteLang__en">30 Tests with 600+ Questions</span><span class="siteLang__fr">30 tests, plus de 600 questions</span></div>
+            <div class="progress" aria-label="Progress 0 of 20">
+              <div class="progress__bar">
+                <div class="progress__fill" style="width: 0%"></div>
+              </div>
+              <div class="progress__text">0/20</div>
+            </div>
+          </div>
+          <div class="card__chev" aria-hidden="true">›</div>
+        </a>
+
+        <a class="card card--bank414" href="{{ url_for('citizenship_414') }}">
+          <div class="card__icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+              <path d="M6 7h12M6 12h12M6 17h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path d="M4 5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5Z" stroke="currentColor" stroke-width="2"/>
+            </svg>
+          </div>
+          <div class="card__body">
+            <div class="card__title siteLang"><span class="siteLang__en">414 Citizenship Tests</span><span class="siteLang__fr">414 tests de citoyenneté</span></div>
+            <div class="card__meta siteLang"><span class="siteLang__en">Full question bank · jump to any item</span><span class="siteLang__fr">Banque complète · accès par numéro</span></div>
+            <div class="card__sub">
+              <span class="card__subMuted siteLang"><span class="siteLang__en">English / Français + Persian</span><span class="siteLang__fr">Anglais / français + persan</span></span>
+            </div>
+          </div>
+          <div class="card__chev" aria-hidden="true">›</div>
+        </a>
+
+        <a class="card card--mock" href="/mock">
+          <div class="card__icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+              <path d="M4 7h16v10H4V7Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+              <path d="M8 21h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path d="M11 15l3.5-2.25L11 10.5v4.5Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="card__body">
+            <div class="card__title siteLang"><span class="siteLang__en">Mock</span><span class="siteLang__fr">Mock</span></div>
+            <div class="card__meta siteLang"><span class="siteLang__en">Test simulator with real test UI</span><span class="siteLang__fr">Simulateur avec interface d'examen réaliste</span></div>
+            <div class="card__sub">
+              <span class="card__subMuted siteLang"><span class="siteLang__en">No attempts yet</span><span class="siteLang__fr">Aucune tentative</span></span>
+            </div>
+          </div>
+          <div class="card__chev" aria-hidden="true">›</div>
+        </a>
+        <a class="card card--bank571" href="{{ url_for('citizenship_571') }}">
+          <div class="card__icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path d="M9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2M9 12h6M9 16h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="card__body">
+            <div class="card__title siteLang"><span class="siteLang__en">571 Citizenship Questions</span><span class="siteLang__fr">571 questions de citoyenneté</span></div>
+          </div>
+          <div class="card__chev" aria-hidden="true">›</div>
+        </a>
+
+        <a class="card card--report" href="{{ url_for('citizenship_exam_report') }}">
+          <div class="card__icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="card__body">
+            <div class="card__title siteLang"><span class="siteLang__en">Pass list</span><span class="siteLang__fr">Liste des réussites</span></div>
+            <div class="card__meta siteLang"><span class="siteLang__en">Recent exam results</span><span class="siteLang__fr">Résultats récents</span></div>
+          </div>
+          <div class="card__chev" aria-hidden="true">›</div>
+        </a>
+      </section>
+
+    </div>
+
+    <!-- Light theme: show the practice-page layout -->
+    <div class="practiceLayout practicePage" id="practiceLayout" aria-label="Practice layout">
+      <section class="practiceHero" aria-label="Practice page hero">
+        <h1 class="practiceTitle">
+          <span class="practiceTitle__line practiceTitle__line--a siteLang siteLang--stack"><span class="siteLang__en">Canadian</span><span class="siteLang__fr">Citoyenneté</span></span>
+          <span class="practiceTitle__line practiceTitle__line--b siteLang siteLang--stack"><span class="siteLang__en">Citizenship Test</span><span class="siteLang__fr">canadienne</span></span>
+          <span class="practiceTitle__line practiceTitle__line--c siteLang siteLang--stack"><span class="siteLang__en">Practice</span><span class="siteLang__fr">Entraînement</span></span>
+        </h1>
+
+        <nav class="crumbs" aria-label="Breadcrumb">
+          <span class="crumbs__home" aria-hidden="true">⌂</span>
+          <a class="crumbs__link" href="/" onclick="return false;"><span class="siteLang"><span class="siteLang__en">Home</span><span class="siteLang__fr">Accueil</span></span></a>
+          <span class="crumbs__sep" aria-hidden="true">›</span>
+          <span class="crumbs__current siteLang"><span class="siteLang__en">Practice</span><span class="siteLang__fr">Entraînement</span></span>
+        </nav>
+
+        <div class="practiceStats" aria-label="Practice stats">
+          <span class="practiceStats__item siteLang"><span class="siteLang__en">Completed: <strong>0/20</strong></span><span class="siteLang__fr">Complété : <strong>0/20</strong></span></span>
+          <span class="practiceStats__sep" aria-hidden="true">·</span>
+          <span class="practiceStats__item siteLang"><span class="siteLang__en">Avg Score: <strong>0%</strong></span><span class="siteLang__fr">Score moy. : <strong>0%</strong></span></span>
+        </div>
+
+        <div class="leafRow" aria-hidden="true">
+          <span>🍁</span><span>🍁</span><span>🍁</span><span>🍁</span><span>🍁</span><span>🍁</span><span>🍁</span><span>🍁</span>
+          <span>🍁</span><span>🍁</span><span>🍁</span><span>🍁</span><span>🍁</span><span>🍁</span><span>🍁</span><span>🍁</span>
+        </div>
+
+      </section>
+
+      <section class="practiceList" aria-label="Essential practices">
+        <div class="sectionLabel siteLang"><span class="siteLang__en">Essential practices:</span><span class="siteLang__fr">Pratiques essentielles :</span></div>
+
+        <div class="testGrid">
+          <a class="testCard" href="#" onclick="return false;">
+            <div class="testCard__q">?</div>
+            <div class="testCard__main">
+              <div class="testCard__title siteLang"><span class="siteLang__en">Practice Test 1</span><span class="siteLang__fr">Test d'entraînement 1</span></div>
+              <div class="testCard__meta siteLang"><span class="siteLang__en">20 Questions</span><span class="siteLang__fr">20 questions</span></div>
+            </div>
+            <div class="testCard__status siteLang"><span class="siteLang__en">Not started</span><span class="siteLang__fr">Pas commencé</span></div>
+            <div class="testCard__action" aria-hidden="true">▶</div>
+          </a>
+
+          <a class="testCard" href="#" onclick="return false;">
+            <div class="testCard__q">?</div>
+            <div class="testCard__main">
+              <div class="testCard__title siteLang"><span class="siteLang__en">Practice Test 2</span><span class="siteLang__fr">Test d'entraînement 2</span></div>
+              <div class="testCard__meta siteLang"><span class="siteLang__en">20 Questions</span><span class="siteLang__fr">20 questions</span></div>
+            </div>
+            <div class="testCard__status testCard__status--inprogress siteLang"><span class="siteLang__en">In progress</span><span class="siteLang__fr">En cours</span></div>
+            <div class="testCard__action" aria-hidden="true">⏸</div>
+          </a>
+
+          <a class="testCard" href="#" onclick="return false;">
+            <div class="testCard__q">?</div>
+            <div class="testCard__main">
+              <div class="testCard__title siteLang"><span class="siteLang__en">Practice Test 3</span><span class="siteLang__fr">Test d'entraînement 3</span></div>
+              <div class="testCard__meta siteLang"><span class="siteLang__en">20 Questions</span><span class="siteLang__fr">20 questions</span></div>
+            </div>
+            <div class="testCard__status siteLang"><span class="siteLang__en">Not started</span><span class="siteLang__fr">Pas commencé</span></div>
+            <div class="testCard__action" aria-hidden="true">▶</div>
+          </a>
+
+          <a class="testCard" href="#" onclick="return false;">
+            <div class="testCard__q">?</div>
+            <div class="testCard__main">
+              <div class="testCard__title siteLang"><span class="siteLang__en">Practice Test 4</span><span class="siteLang__fr">Test d'entraînement 4</span></div>
+              <div class="testCard__meta siteLang"><span class="siteLang__en">20 Questions</span><span class="siteLang__fr">20 questions</span></div>
+            </div>
+            <div class="testCard__status siteLang"><span class="siteLang__en">Not started</span><span class="siteLang__fr">Pas commencé</span></div>
+            <div class="testCard__action" aria-hidden="true">▶</div>
+          </a>
+
+          <a class="testCard" href="#" onclick="return false;">
+            <div class="testCard__q">?</div>
+            <div class="testCard__main">
+              <div class="testCard__title siteLang"><span class="siteLang__en">Practice Test 5</span><span class="siteLang__fr">Test d'entraînement 5</span></div>
+              <div class="testCard__meta siteLang"><span class="siteLang__en">20 Questions</span><span class="siteLang__fr">20 questions</span></div>
+            </div>
+            <div class="testCard__status siteLang"><span class="siteLang__en">Not started</span><span class="siteLang__fr">Pas commencé</span></div>
+            <div class="testCard__action" aria-hidden="true">▶</div>
+          </a>
+
+          <a class="testCard" href="#" onclick="return false;">
+            <div class="testCard__q">?</div>
+            <div class="testCard__main">
+              <div class="testCard__title siteLang"><span class="siteLang__en">Practice Test 6</span><span class="siteLang__fr">Test d'entraînement 6</span></div>
+              <div class="testCard__meta siteLang"><span class="siteLang__en">20 Questions</span><span class="siteLang__fr">20 questions</span></div>
+            </div>
+            <div class="testCard__status siteLang"><span class="siteLang__en">Not started</span><span class="siteLang__fr">Pas commencé</span></div>
+            <div class="testCard__action" aria-hidden="true">▶</div>
+          </a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  {% include '_modern_landing_site_nav_footer.html' %}
+
+  {% include '_sticky_real_estate_banner.html' %}
+  {% include '_modern_landing_ad_registration_modal.html' %}
+  {% include '_citizen_help_fab_block.html' %}
+  {% include '_citizen_help_fab_tail_script.html' %}
+  {% include '_modern_landing_promo_carousel_script.html' %}
+
+  {% set modern_topbar_landing = true %}
+  {% include '_modern_site_topbar_scripts.html' %}
+</body>
+</html>

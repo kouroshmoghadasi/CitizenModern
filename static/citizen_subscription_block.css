@@ -1,0 +1,416 @@
+/* siteLang EN / FR (same rules as modern_landing.css) */
+.test-area-subscription-block.siteLang .siteLang__fr,
+#subscriptionModal.siteLang .siteLang__fr,
+.subscription-modal-box.siteLang .siteLang__fr {
+  display: none !important;
+}
+html[data-site-lang="fr-fa"] .test-area-subscription-block.siteLang .siteLang__en,
+html[data-site-lang="fr-fa"] #subscriptionModal.siteLang .siteLang__en,
+html[data-site-lang="fr-fa"] .subscription-modal-box.siteLang .siteLang__en {
+  display: none !important;
+}
+html[data-site-lang="fr-fa"] .test-area-subscription-block.siteLang:not(.siteLang--stack) .siteLang__fr,
+html[data-site-lang="fr-fa"] #subscriptionModal.siteLang:not(.siteLang--stack) .siteLang__fr,
+html[data-site-lang="fr-fa"] .subscription-modal-box.siteLang:not(.siteLang--stack) .siteLang__fr {
+  display: inline !important;
+}
+
+/* Inline subscription / paywall — centered card + title bar (EN / FR) */
+
+.test-area-subscription-block,
+#subscriptionModal .subscription-modal-box {
+  max-width: min(28rem, calc(100% - 1.5rem));
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1rem;
+  padding: 0;
+  box-sizing: border-box;
+  direction: ltr !important;
+  text-align: left !important;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.5;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #1e3c72;
+  box-shadow: 0 4px 20px rgba(30, 60, 114, 0.14);
+  background: #fff;
+}
+
+#testContainer > .test-area-subscription-block {
+  display: none;
+}
+
+.test-area-sub-titlebar,
+.subscription-modal-titlebar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  padding: 0.875rem 2.75rem;
+  text-align: center;
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+  color: #fff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  box-sizing: border-box;
+}
+
+.subscription-modal-titlebar .subscription-modal-close {
+  position: absolute;
+  top: 50%;
+  right: 0.5rem;
+  left: auto;
+  transform: translateY(-50%);
+  margin: 0;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  font-size: 1.35rem;
+  line-height: 1;
+  opacity: 1;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.subscription-modal-titlebar .subscription-modal-close:hover {
+  background: rgba(255, 255, 255, 0.28);
+}
+
+.test-area-sub-body,
+.subscription-modal-body {
+  padding: 1.25rem 1.35rem;
+  box-sizing: border-box;
+}
+
+#subscriptionModal .subscription-modal-box {
+  max-width: min(28rem, calc(100% - 2rem));
+  padding: 0;
+  position: relative;
+}
+
+#subscriptionModal .subscription-modal-body {
+  padding: 1.25rem 1.35rem 1.35rem;
+  max-height: min(70vh, 520px);
+  overflow-y: auto;
+}
+
+
+#subscriptionModal.subscription-modal {
+  direction: ltr !important;
+}
+
+.test-area-subscription-block .test-area-sub-title,
+.test-area-subscription-block .test-area-sub-intro,
+.test-area-subscription-block .subscription-question,
+.test-area-subscription-block .subscription-label,
+.test-area-subscription-block .subscription-pay-lead,
+.test-area-subscription-block p,
+#subscriptionModal .subscription-modal-title,
+#subscriptionModal .subscription-modal-intro,
+#subscriptionModal .subscription-question,
+#subscriptionModal .subscription-label,
+#subscriptionModal .subscription-pay-lead,
+#subscriptionModal p {
+  text-align: left !important;
+}
+
+#subscriptionModal .subscription-modal-box .subscription-input,
+.test-area-subscription-block .subscription-input {
+  direction: ltr;
+  text-align: left;
+}
+
+#subscriptionModal .subscription-modal-box .subscription-buttons,
+.test-area-subscription-block .subscription-buttons {
+  justify-content: flex-start;
+}
+
+.test-area-subscription-block .test-area-sub-title,
+#subscriptionModal .subscription-modal-title {
+  margin: 0 !important;
+  font-size: 1.05rem;
+  line-height: 1.4;
+  font-weight: 700;
+  text-align: center !important;
+  color: #fff !important;
+}
+
+.test-area-subscription-block .test-area-sub-intro,
+#subscriptionModal .subscription-modal-intro {
+  margin: 0 0 1rem;
+  font-size: 0.875rem;
+  line-height: 1.55;
+}
+
+.test-area-subscription-block .subscription-question {
+  text-align: center !important;
+}
+
+.test-area-subscription-block .subscription-intro-line,
+#subscriptionModal .subscription-intro-line {
+  margin: 0 0 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.55;
+}
+
+.test-area-subscription-block .subscription-intro-line--alt,
+#subscriptionModal .subscription-intro-line--alt {
+  margin-bottom: 0;
+}
+
+.test-area-subscription-block .subscription-intro-price,
+#subscriptionModal .subscription-intro-price,
+#purchasePanelModal .subscription-intro-price {
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--accent, #c05621);
+}
+
+/* $20 line — gentle wiggle (L/R + up/down) to draw attention */
+.subscription-intro-price--featured {
+  display: inline-block;
+  position: relative;
+  color: #e67e22;
+  transform-origin: center center;
+  animation: subscription-price-featured 2.8s ease-in-out infinite;
+  will-change: transform;
+}
+
+.subscription-intro-line--alt {
+  padding: 0.35rem 0.5rem;
+  margin-left: -0.5rem;
+  margin-right: -0.5rem;
+  border-radius: 8px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(230, 126, 34, 0.08) 20%,
+    rgba(230, 126, 34, 0.12) 50%,
+    rgba(230, 126, 34, 0.08) 80%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: subscription-deal-row-shimmer 4s ease-in-out infinite;
+}
+
+@keyframes subscription-price-featured {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+    filter: brightness(1);
+    text-shadow: 0 0 0 rgba(230, 126, 34, 0);
+  }
+  15% {
+    transform: translate(-4px, -5px) scale(1.07);
+    filter: brightness(1.1);
+    text-shadow: 0 0 12px rgba(230, 126, 34, 0.45);
+  }
+  30% {
+    transform: translate(5px, 3px) scale(1.09);
+    filter: brightness(1.12);
+    text-shadow: 0 0 14px rgba(230, 126, 34, 0.5);
+  }
+  45% {
+    transform: translate(-3px, 5px) scale(1.06);
+    filter: brightness(1.08);
+    text-shadow: 0 0 10px rgba(230, 126, 34, 0.4);
+  }
+  60% {
+    transform: translate(4px, -4px) scale(1.1);
+    filter: brightness(1.14);
+    text-shadow: 0 0 16px rgba(230, 126, 34, 0.55);
+  }
+  75% {
+    transform: translate(-5px, 2px) scale(1.07);
+    filter: brightness(1.1);
+    text-shadow: 0 0 12px rgba(230, 126, 34, 0.45);
+  }
+  90% {
+    transform: translate(2px, -3px) scale(1.05);
+    filter: brightness(1.06);
+    text-shadow: 0 0 8px rgba(230, 126, 34, 0.35);
+  }
+}
+
+@keyframes subscription-deal-row-shimmer {
+  0%,
+  100% {
+    background-position: 100% 0;
+  }
+  50% {
+    background-position: 0% 0;
+  }
+}
+
+html[data-theme="dark"] .subscription-intro-price--featured {
+  color: #f5a962;
+}
+
+html[data-theme="dark"] .subscription-intro-line--alt {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(245, 169, 98, 0.06) 20%,
+    rgba(245, 169, 98, 0.1) 50%,
+    rgba(245, 169, 98, 0.06) 80%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .subscription-intro-price--featured,
+  .subscription-intro-line--alt {
+    animation: none;
+  }
+
+  .subscription-intro-price--featured {
+    text-shadow: 0 0 10px rgba(230, 126, 34, 0.35);
+  }
+}
+
+.test-area-subscription-block .subscription-label,
+.test-area-subscription-block .subscription-question,
+#subscriptionModal .subscription-label,
+#subscriptionModal .subscription-question {
+  margin: 0 0 0.75rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+.test-area-subscription-block .test-area-sub-step,
+#subscriptionModal .subscription-step {
+  margin-top: 0;
+}
+
+.test-area-subscription-block .subscription-login-compact .subscription-label {
+  display: none;
+}
+
+.test-area-subscription-block .subscription-input,
+#subscriptionModal .subscription-input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.625rem 0.75rem;
+  margin: 0 0 0.625rem;
+  font-size: 0.9375rem;
+  line-height: 1.45;
+  border-radius: 8px;
+}
+
+.test-area-subscription-block .subscription-login-actions,
+#subscriptionModal .subscription-login-actions {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 0.625rem;
+  margin-top: 0.375rem;
+}
+
+.test-area-subscription-block .subscription-login-actions .subscription-btn,
+#subscriptionModal .subscription-login-actions .subscription-btn {
+  flex: 1 1 0;
+  min-width: 0;
+  width: auto !important;
+  margin-top: 0 !important;
+  padding: 0.625rem 0.875rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+
+.test-area-subscription-block .test-area-sub-step > .subscription-btn-submit:not(.subscription-login-actions *),
+#subscriptionModal .subscription-step > .subscription-btn-submit:not(.subscription-login-actions *) {
+  width: auto !important;
+  min-width: 6rem;
+  margin-top: 0.375rem;
+  padding: 0.625rem 1.125rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+
+.test-area-subscription-block .subscription-buttons {
+  gap: 0.625rem;
+  margin-top: 0.125rem;
+}
+
+.test-area-subscription-block .subscription-buttons .subscription-btn,
+#subscriptionModal .subscription-buttons .subscription-btn {
+  flex: 1 1 0;
+  min-width: 0;
+  padding: 0.625rem 0.875rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.test-area-subscription-block .subscription-error,
+#subscriptionModal .subscription-error {
+  margin: 0 0 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+
+.test-area-subscription-block .subscription-pay-lead,
+.test-area-subscription-block .subscription-field-label {
+  font-size: 0.875rem;
+  line-height: 1.55;
+}
+
+.subscription-payment-info > .subscription-pay-lead,
+.purchase-panel-body .subscription-payment-info > .subscription-pay-lead,
+#purchasePanelModal .subscription-payment-info > .subscription-pay-lead {
+  margin-top: 0.625rem !important;
+  margin-bottom: 0.875rem;
+  padding-top: 0.25rem;
+  text-align: center !important;
+  line-height: 1.6;
+}
+
+.subscription-payment-info > .subscription-pay-lead strong {
+  color: var(--accent, #c05621);
+  font-weight: 700;
+}
+
+html[data-theme="dark"] .subscription-payment-info > .subscription-pay-lead strong {
+  color: #f5a962;
+}
+
+.test-area-subscription-block.subscription-block--payment {
+  max-width: min(32rem, calc(100% - 1.5rem));
+}
+
+html[data-theme="dark"] .test-area-subscription-block,
+html[data-theme="dark"] #subscriptionModal .subscription-modal-box {
+  background: #121a2b;
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+html[data-theme="dark"] .test-area-sub-titlebar,
+html[data-theme="dark"] .subscription-modal-titlebar {
+  background: linear-gradient(135deg, #1a2744 0%, #243b5c 100%);
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+.test-area-subscription-block.subscription-block--payment .test-area-sub-intro,
+.subscription-modal-box.subscription-modal-box--payment .subscription-modal-intro {
+  display: block !important;
+  margin-bottom: 0.75rem;
+}
+
+.test-area-subscription-block.subscription-block--payment .subscription-pay-lead {
+  margin-bottom: 0.875rem;
+}
+
+.test-area-subscription-block.subscription-block--payment .subscription-mobile-block,
+.test-area-subscription-block.subscription-block--payment #testAreaSubRequestMsg {
+  display: none !important;
+}

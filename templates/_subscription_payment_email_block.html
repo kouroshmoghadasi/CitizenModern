@@ -1,0 +1,16 @@
+{# Payment email block #}
+{% set email_value_id = subscription_email_value_id | default('subModalEmailValue') %}
+{% set email_copy_btn_id = subscription_email_copy_btn_id | default('subModalEmailCopy') %}
+<div class="subscription-pay-section subscription-pay-section--email">
+    <p class="subscription-field-label subscription-field-label--section siteLang">
+      <span class="siteLang__en">Pay to email</span>
+      <span class="siteLang__fr">Paiement par courriel</span>
+    </p>
+    <div class="subscription-contact-row subscription-email-row">
+        <span class="subscription-email-value" id="{{ email_value_id }}" dir="ltr">Koroush.mog@gmail.com</span>
+        <button type="button" class="subscription-btn-copy siteLang" id="{{ email_copy_btn_id }}" title="Copy email">
+          <span class="siteLang__en">Copy</span>
+          <span class="siteLang__fr">Copier</span>
+        </button>
+    </div>
+</div>

@@ -1,0 +1,15 @@
+    <script>try{var Sf=localStorage.getItem('citizenSiteShowFa');if(Sf!=='yes'&&Sf!=='no')Sf=localStorage.getItem('book_summary_show_fa');if(Sf!=='yes'&&Sf!=='no')Sf=localStorage.getItem('book_summary_2_show_fa');document.body.setAttribute('data-show-fa',Sf==='no'?'no':'yes');}catch(e){document.body.setAttribute('data-show-fa','yes');}</script>
+    {% include '_citizen_site_theme_body_sync.html' %}
+    {% include 'content_protection.html' %}
+    <div class="bg">
+        <div class="bg__blob bg__blob--a"></div>
+        <div class="bg__blob bg__blob--b"></div>
+    </div>
+    {% set modern_topbar_hide_414 = true %}
+    {% set _use_home_nav = modern_topbar_use_home_nav | default(false) or request.endpoint in ('citizenship_exam_report', 'citizenship_571') %}
+    {% if _use_home_nav %}
+    {% set modern_topbar_hide_study = true %}
+    {% else %}
+    {% set modern_topbar_hide_home = true %}
+    {% endif %}
+    {% include '_modern_site_topbar.html' %}

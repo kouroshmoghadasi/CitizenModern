@@ -1,0 +1,56 @@
+{# Hero promo carousel — below sticky topbar, scoped styles in modern_landing.css #}
+<section id="modernPromoCarousel" class="modern-promo-carousel" aria-label="Featured partners">
+  <div class="modern-promo-carousel__panel" role="region" aria-roledescription="carousel">
+    <div class="modern-promo-carousel__track">
+      <div class="modern-promo-slide modern-promo-slide--active" data-slide="0">
+        <a href="{{ url_for('index') }}#ads-section" class="modern-promo-slide__ad-link" title="تیم شکور · Équipe Shakour · مشاوره املاک">
+          <picture>
+            <source media="(max-width: 768px)" srcset="{{ url_for('static', filename='images/shakour-hero-mobile.png') }}">
+            <img src="{{ url_for('static', filename='images/shakour-hero-desktop.png') }}" alt="تیم شکور · Équipe Shakour · مشاوره تخصصی املاک · 514-730-3909" class="modern-promo-slide__img" loading="eager" />
+          </picture>
+        </a>
+      </div>
+      <div class="modern-promo-slide" data-slide="1">
+        <a href="{{ url_for('index') }}#ads-section" class="modern-promo-slide__ad-link" title="خاطره تحویلداری یکتا · مترجم رسمی">
+          <picture>
+            <source media="(max-width: 1024px)" srcset="{{ url_for('static', filename='images/header-slide-khatereh-yekta-mobile.png') }}">
+            <img src="{{ url_for('static', filename='images/header-slide-khatereh-yekta.png') }}" alt="خاطره تحویلداری یکتا — مترجم رسمی" class="modern-promo-slide__img modern-promo-slide__img--wide" width="1024" height="153" loading="lazy" />
+          </picture>
+        </a>
+      </div>
+      <div class="modern-promo-slide modern-promo-slide--register" data-slide="2">
+        <div class="modern-promo-slide__register-box" onclick="openAdRegistrationModal()" role="button" tabindex="0" title="Advertise — Annoncez">
+          <p class="modern-promo-slide__register-kicker siteLang">
+            <span class="siteLang__en">Partner spotlight</span>
+            <span class="siteLang__fr">Espace partenaires</span>
+          </p>
+          <h3 class="modern-promo-slide__register-title">
+            <span class="siteLang siteLang--stack modern-promo-slide__register-titleInner">
+              <span class="siteLang__en">Advertise with us</span>
+              <span class="siteLang__fr">Annoncez avec nous</span>
+            </span>
+          </h3>
+          <p class="modern-promo-slide__register-sub siteLang">
+            <span class="siteLang__en">Tap for details &amp; pricing</span>
+            <span class="siteLang__fr">Appuyez pour détails &amp; tarifs</span>
+          </p>
+          <p class="modern-promo-slide__register-faHint" dir="rtl">معرفی کسب‌وکار برای فارسی‌زبانان کانادا</p>
+          <div class="modern-promo-slide__register-phone">
+            <span class="modern-promo-slide__register-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+            </span>
+            <a href="tel:+15144767079" class="modern-promo-slide__register-tel siteLang" onclick="event.stopPropagation()" aria-label="Call 514-476-7079">
+              <span class="siteLang__en">514-476-7079</span>
+              <span class="siteLang__fr">514&nbsp;476‑7079</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modern-promo-carousel__indicators" role="tablist" aria-label="Carousel slides">
+      <button type="button" class="modern-promo-indicator modern-promo-indicator--active" data-go="0" aria-label="Slide 1 — Équipe Shakour" aria-current="true"></button>
+      <button type="button" class="modern-promo-indicator" data-go="1" aria-label="Slide 2 — Khatereh Yekta"></button>
+      <button type="button" class="modern-promo-indicator" data-go="2" aria-label="Slide 3 — Advertise"></button>
+    </div>
+  </div>
+</section>

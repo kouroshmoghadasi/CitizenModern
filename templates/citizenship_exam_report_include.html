@@ -35,7 +35,7 @@
     .citizen-exam-report td {
         padding: 10px 12px;
         border-bottom: 1px solid var(--border, rgba(30,60,114,0.12));
-        text-align: right;
+        text-align: start;
         vertical-align: top;
         overflow-wrap: anywhere;
     }
@@ -62,7 +62,6 @@
         font-weight: 600;
         color: var(--accent, #1e3c72);
     }
-    /* موبایل: هر ردیف جدول به‌صورت کارت با برچسب کنار مقدار */
     @media (max-width: 640px) {
         .citizen-exam-report {
             padding: 14px 12px;
@@ -127,19 +126,24 @@
             border: none;
             border-bottom: 1px solid var(--border, rgba(30,60,114,0.1));
             padding: 11px 0;
-            text-align: right;
+            text-align: start;
             box-sizing: border-box;
         }
         .citizen-exam-report-table td:last-child {
             border-bottom: none;
         }
         .citizen-exam-report-table td::before {
-            content: attr(data-label);
             font-weight: 700;
             font-size: 0.78rem;
             color: var(--accent, #1e3c72);
             line-height: 1.4;
             word-break: break-word;
+        }
+        html:not([data-site-lang="fr-fa"]) .citizen-exam-report-table td::before {
+            content: attr(data-label-en);
+        }
+        html[data-site-lang="fr-fa"] .citizen-exam-report-table td::before {
+            content: attr(data-label-fr);
         }
         .citizen-exam-report-table .col-row-num {
             font-variant-numeric: tabular-nums;
@@ -151,71 +155,119 @@
         }
     }
 </style>
-<section class="citizen-exam-report" aria-labelledby="citizen-exam-report-title" lang="fa" dir="rtl">
-    <h2 id="citizen-exam-report-title">لیست قبولی افراد از تاریخ 25 ژانویه 2026 تا کنون</h2>
+<section class="citizen-exam-report siteLang" aria-labelledby="citizen-exam-report-title">
+    <h2 id="citizen-exam-report-title" class="siteLang siteLang--stack">
+        <span class="siteLang__en">Pass list from January 25, 2026 to present</span>
+        <span class="siteLang__fr">Liste des réussites du 25 janvier 2026 à aujourd'hui</span>
+    </h2>
     {% if report_rows and report_rows|length > 0 %}
-    <div class="table-wrap" role="region" aria-label="جدول لیست قبولی">
+    <div class="table-wrap" role="region" aria-label="Pass list table">
         <table class="citizen-exam-report-table">
             <thead>
                 <tr>
-                    <th scope="col" class="col-row-num">ردیف</th>
-                    <th scope="col">نام و نام خانوادگی</th>
-                    <th scope="col">شهر</th>
-                    <th scope="col">تاریخ اپلای</th>
-                    <th scope="col">تاریخ امتحان</th>
-                    <th scope="col">نمرهٔ امتحان</th>
+                    <th scope="col" class="col-row-num siteLang">
+                        <span class="siteLang__en">#</span>
+                        <span class="siteLang__fr">N°</span>
+                    </th>
+                    <th scope="col" class="siteLang">
+                        <span class="siteLang__en">Full name</span>
+                        <span class="siteLang__fr">Nom complet</span>
+                    </th>
+                    <th scope="col" class="siteLang">
+                        <span class="siteLang__en">City</span>
+                        <span class="siteLang__fr">Ville</span>
+                    </th>
+                    <th scope="col" class="siteLang">
+                        <span class="siteLang__en">Application date</span>
+                        <span class="siteLang__fr">Date de demande</span>
+                    </th>
+                    <th scope="col" class="siteLang">
+                        <span class="siteLang__en">Exam date</span>
+                        <span class="siteLang__fr">Date d'examen</span>
+                    </th>
+                    <th scope="col" class="siteLang">
+                        <span class="siteLang__en">Exam score</span>
+                        <span class="siteLang__fr">Note d'examen</span>
+                    </th>
                 </tr>
             </thead>
             <tbody>
                 {% for row in report_rows %}
                 <tr>
-                    <td class="col-row-num" data-label="ردیف">{{ loop.index }}</td>
-                    <td data-label="نام و نام خانوادگی">{{ row.name }}</td>
-                    <td data-label="شهر">{{ row.city }}</td>
-                    <td data-label="تاریخ اپلای">{{ row.apply }}</td>
-                    <td data-label="تاریخ امتحان">{{ row.exam }}</td>
-                    <td data-label="نمرهٔ امتحان">{{ row.score }}</td>
+                    <td class="col-row-num" data-label-en="#" data-label-fr="N°">{{ loop.index }}</td>
+                    <td data-label-en="Full name" data-label-fr="Nom complet">{{ row.name }}</td>
+                    <td data-label-en="City" data-label-fr="Ville">{{ row.city }}</td>
+                    <td data-label-en="Application date" data-label-fr="Date de demande">{{ row.apply }}</td>
+                    <td data-label-en="Exam date" data-label-fr="Date d'examen">{{ row.exam }}</td>
+                    <td data-label-en="Exam score" data-label-fr="Note d'examen">{{ row.score }}</td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
     </div>
     {% else %}
-    <p class="citizen-exam-report-empty">در این بازه زمانی هیچ ردیفی مطابق معیار فهرست ثبت نشده است.</p>
+    <p class="citizen-exam-report-empty siteLang siteLang--stack">
+        <span class="siteLang__en">No rows match the list criteria for this period.</span>
+        <span class="siteLang__fr">Aucune ligne ne correspond aux critères de la liste pour cette période.</span>
+    </p>
     {% endif %}
 </section>
 
-<section class="citizen-exam-report" aria-labelledby="citizen-exam-waiting-title" lang="fa" dir="rtl">
-    <h2 id="citizen-exam-waiting-title">لیست افراد در انتظار امتحان</h2>
+<section class="citizen-exam-report siteLang" aria-labelledby="citizen-exam-waiting-title">
+    <h2 id="citizen-exam-waiting-title" class="siteLang siteLang--stack">
+        <span class="siteLang__en">Waiting for exam</span>
+        <span class="siteLang__fr">En attente d'examen</span>
+    </h2>
     {% set waiting = waiting_rows if waiting_rows is defined else [] %}
     {% if waiting and waiting|length > 0 %}
-    <div class="table-wrap" role="region" aria-label="جدول افراد در انتظار امتحان">
+    <div class="table-wrap" role="region" aria-label="Waiting list table">
         <table class="citizen-exam-report-table">
             <thead>
                 <tr>
-                    <th scope="col" class="col-row-num">ردیف</th>
-                    <th scope="col">نام و نام خانوادگی</th>
-                    <th scope="col">شهر</th>
-                    <th scope="col">تاریخ اپلای</th>
-                    <th scope="col">تاریخ امتحان</th>
-                    <th scope="col">نمرهٔ امتحان</th>
+                    <th scope="col" class="col-row-num siteLang">
+                        <span class="siteLang__en">#</span>
+                        <span class="siteLang__fr">N°</span>
+                    </th>
+                    <th scope="col" class="siteLang">
+                        <span class="siteLang__en">Full name</span>
+                        <span class="siteLang__fr">Nom complet</span>
+                    </th>
+                    <th scope="col" class="siteLang">
+                        <span class="siteLang__en">City</span>
+                        <span class="siteLang__fr">Ville</span>
+                    </th>
+                    <th scope="col" class="siteLang">
+                        <span class="siteLang__en">Application date</span>
+                        <span class="siteLang__fr">Date de demande</span>
+                    </th>
+                    <th scope="col" class="siteLang">
+                        <span class="siteLang__en">Exam date</span>
+                        <span class="siteLang__fr">Date d'examen</span>
+                    </th>
+                    <th scope="col" class="siteLang">
+                        <span class="siteLang__en">Exam score</span>
+                        <span class="siteLang__fr">Note d'examen</span>
+                    </th>
                 </tr>
             </thead>
             <tbody>
                 {% for row in waiting %}
                 <tr>
-                    <td class="col-row-num" data-label="ردیف">{{ loop.index }}</td>
-                    <td data-label="نام و نام خانوادگی">{{ row.name }}</td>
-                    <td data-label="شهر">{{ row.city }}</td>
-                    <td data-label="تاریخ اپلای">{{ row.apply }}</td>
-                    <td data-label="تاریخ امتحان">{{ row.exam }}</td>
-                    <td data-label="نمرهٔ امتحان">—</td>
+                    <td class="col-row-num" data-label-en="#" data-label-fr="N°">{{ loop.index }}</td>
+                    <td data-label-en="Full name" data-label-fr="Nom complet">{{ row.name }}</td>
+                    <td data-label-en="City" data-label-fr="Ville">{{ row.city }}</td>
+                    <td data-label-en="Application date" data-label-fr="Date de demande">{{ row.apply }}</td>
+                    <td data-label-en="Exam date" data-label-fr="Date d'examen">{{ row.exam }}</td>
+                    <td data-label-en="Exam score" data-label-fr="Note d'examen">—</td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
     </div>
     {% else %}
-    <p class="citizen-exam-report-empty">فعلاً کسی در این فهرست ثبت نشده است.</p>
+    <p class="citizen-exam-report-empty siteLang siteLang--stack">
+        <span class="siteLang__en">No one is listed here at the moment.</span>
+        <span class="siteLang__fr">Personne n'est inscrit sur cette liste pour le moment.</span>
+    </p>
     {% endif %}
 </section>

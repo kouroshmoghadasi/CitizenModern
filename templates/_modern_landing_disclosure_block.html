@@ -1,0 +1,52 @@
+{# PWA dialog only — opened from footer link “Install app (PWA)” like other nav links. ids for pwa_meta.js #}
+<dialog id="modernSiteFootDialogPwa" class="modernSiteFootDialog" aria-labelledby="modernSiteFootDialogPwaTitle">
+  <div class="modernSiteFootDialog__chrome">
+    <h2 id="modernSiteFootDialogPwaTitle" class="modernSiteFootDialog__title siteLang">
+      <span class="siteLang__en">Install as app (PWA)</span>
+      <span class="siteLang__fr">Installation (PWA)</span>
+    </h2>
+    <button type="button" class="modernSiteFootDialog__close" data-modern-site-foot-close="modernSiteFootDialogPwa" aria-label="بستن / Close">×</button>
+  </div>
+  <div class="modernSiteFootDialog__scroll">
+    <div id="pwa-install-bar" class="pwa-install-bar" style="display: none;">
+      <span class="pwa-install-text">این سایت را مثل اپ روی گوشی یا ویندوز نصب کنید (PWA)</span>
+      <button type="button" id="pwa-install-btn" class="pwa-install-btn" style="display: none;" onclick="window.pwaInstall && window.pwaInstall();">نصب APP</button>
+      <span id="pwa-install-fallback" class="pwa-install-fallback" style="display: none;">برای نصب: منوی مرورگر (⋮) &gt; افزودن به صفحه اصلی</span>
+      <p id="pwa-install-hint-windows" class="pwa-install-hint pwa-install-hint-windows" style="display: none;">در ویندوز: منوی مرورگر (⋮) &gt; اپلیکیشن‌ها &gt; نصب اپلیکیشن CitizenTest. اگر قبلاً اپ را حذف کرده‌اید و دکمه نصب کار نمی‌کند، در آدرس <code>chrome://apps</code> روی اپ راست‌کلیک کنید و «Remove from Chrome» را بزنید، سپس این صفحه را رفرش کنید و دوباره «نصب APP» بزنید.</p>
+      <p id="pwa-install-hint-android" class="pwa-install-hint pwa-install-hint-android" style="display: none;">در اندروید: منوی Chrome (سه‌نقطه ⋮) &gt; «افزودن به صفحه اصلی» یا «نصب اپلیکیشن» &gt; نصب یا اضافه کردن.</p>
+      <p class="pwa-install-hint">در آیفون: Safari &gt; اشتراک‌گذاری &gt; افزودن به صفحه اصلی</p>
+    </div>
+  </div>
+</dialog>
+
+<script>
+(function () {
+  var trigger = document.getElementById("modernSiteFootPwaTrigger");
+  var d = document.getElementById("modernSiteFootDialogPwa");
+  if (trigger && d && typeof d.showModal === "function") {
+    trigger.addEventListener("click", function (e) {
+      e.preventDefault();
+      try {
+        d.showModal();
+      } catch (err) {
+        d.setAttribute("open", "");
+      }
+      if (typeof window.citizenShowPwaInstallUi === "function") {
+        window.citizenShowPwaInstallUi();
+      }
+    });
+  }
+  if (d) {
+    d.addEventListener("click", function (e) {
+      if (e.target === d) d.close();
+    });
+  }
+  document.querySelectorAll("[data-modern-site-foot-close]").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var id = btn.getAttribute("data-modern-site-foot-close");
+      var dlg = id && document.getElementById(id);
+      if (dlg && dlg.open) dlg.close();
+    });
+  });
+})();
+</script>

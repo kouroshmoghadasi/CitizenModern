@@ -1,32 +1,33 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html dir="ltr" class="modern-book-shell" data-theme="dark">
 <head>
     <meta charset="UTF-8">
+    {% include '_citizen_site_data_site_lang_head.html' %}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="{{ url_for('static', filename='images/logo.png') }}" type="image/png">
     <link rel="apple-touch-icon" href="{{ url_for('static', filename='images/logo.png') }}">
     <meta property="og:image" content="{{ seo_base_url() }}{{ url_for('static', filename='images/logo.png') }}">
-    <meta property="og:image:alt" content="خلاصهٔ کتاب ۱ — CitizenTest">
+    <meta property="og:image:alt" content="Book Summary 1 — CitizenTest">
     <meta property="og:site_name" content="CitizenTest · discovercanadatest.com">
     <meta property="og:locale" content="fa_IR">
     <meta property="og:locale:alternate" content="en_CA">
     <meta property="og:locale:alternate" content="fr_CA">
     <meta name="twitter:image" content="{{ seo_base_url() }}{{ url_for('static', filename='images/logo.png') }}">
-    <title>خلاصهٔ کتاب ۱ — فارسی، انگلیسی و فرانسه</title>
+    <title>Book Summary 1 — Persian, English & French</title>
     <meta name="description" content="خلاصه و ترجمهٔ کتاب شهروندی کانادا (Discover Canada / DiscoverCanada) به فارسی، انگلیسی و فرانسه — فصل‌ها، تاریخ، جغرافیا، حکومت، حقوق و مسئولیت‌ها؛ مرور برای آزمون دانش IRCC. نمونه سوال، نمونه تست و نمونه آزمون شهروندی کانادا.">
     <meta name="keywords" content="discovercanadatest.com, Discover Canada, خلاصه کتاب شهروندی, خلاصه Discover Canada, آموزش شهروندی, نمونه سوال شهروندی, مرور کتاب شهروندی, نکات کلیدی شهروندی, جزوه شهروندی, آمادگی آزمون شهروندی, کتاب Discover Canada, IRCC study guide, راهنمای مطالعه شهروندی, حقوق و مسئولیت‌ها, Who We Are, Canada history summary, Découvrir le Canada, résumé Discover Canada, résumé livre citoyenneté, résumé Découvrir le Canada, résumé examen citoyenneté, Discover Canada summary, citizenship study guide Canada, Discover Canada book summary, Canadian citizenship study guide, citizenship education, sample citizenship questions, study guide citizenship, résumé test citoyenneté, formation citoyenneté, exemples questions citoyenneté, خلاصه به سه زبان, فارسی انگلیسی فرانسه, تابعیت کانادا, naturalization study, CitizenTest, کورش مقدسی, کورش, مقدسی, Kourosh Moghadasi, Kouroshmoghadasi, KANA Soft System, شهروندی کانادا, امتحان شهروندی کانادا, شهروندی, سیتیزن شیپی کانادا, امتحان سیتیزن شیپی کانادا, DiscoverCanada, خلاصه کتاب DiscoverCanada, کتاب شهروندی کانادا, نمونه سوال امتحان شهروندی کانادا, نمونه تست امتحان شهروندی کانادا, نمونه آزمون شهروندی کانادا, ترجمه کتاب شهروندی کانادا, خاطره تحویلداری یکتا, Khatereh Tahvildari-Yekta">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <link rel="canonical" href="{{ seo_base_url() }}/book_summary.html">
-    <meta property="og:title" content="خلاصهٔ کتاب ۱ — فارسی، انگلیسی و فرانسه">
+    <meta property="og:title" content="Book Summary 1 — Persian, English & French">
     <meta property="og:description" content="خلاصه و ترجمهٔ کتاب شهروندی کانادا (Discover Canada) به سه زبان؛ مرور IRCC و نمونه سوال / تست / آزمون شهروندی.">
     <meta property="og:url" content="{{ seo_base_url() }}/book_summary.html">
     <meta property="og:type" content="article">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="خلاصهٔ کتاب ۱">
+    <meta name="twitter:title" content="Book Summary 1">
     <meta name="twitter:description" content="خلاصه و ترجمهٔ کتاب شهروندی کانادا (Discover Canada)؛ نمونه سوال و آزمون شهروندی به سه زبان.">
     {% include 'pwa_meta.html' %}
     <script type="application/ld+json">
-    {"@context":"https://schema.org","@type":"Article","name":"خلاصهٔ کتاب ۱ — فارسی، انگلیسی و فرانسه","description":"خلاصهٔ کتاب ۱ برای آزمون شهروندی کانادا به سه زبان؛ مرور سریع نکات کلیدی.","url":"{{ seo_base_url() }}/book_summary.html","inLanguage":["fa","en","fr"],"publisher":{"@type":"Organization","name":"CitizenTest"}}
+    {"@context":"https://schema.org","@type":"Article","name":"Book Summary 1 — Persian, English & French","description":"Book summary part 1 for the Canadian citizenship test in three languages; quick review of key points.","url":"{{ seo_base_url() }}/book_summary.html","inLanguage":["fa","en","fr"],"publisher":{"@type":"Organization","name":"CitizenTest"}}
     </script>
     <style>
         * {
@@ -147,31 +148,6 @@
             transition: background 0.2s, transform 0.2s;
         }
         .back-btn:hover { background: var(--bs-accent2); transform: translateY(-1px); }
-        .sub-nav {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px 16px;
-            margin-bottom: 20px;
-            padding: 12px 16px;
-            background: var(--bs-container-bg);
-            border-radius: 12px;
-            border: 1px solid var(--bs-border);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-        }
-        body.theme-dark .sub-nav { box-shadow: 0 2px 8px rgba(0,0,0,0.2); }
-        .sub-nav a {
-            color: var(--bs-accent);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.95em;
-            padding: 6px 12px;
-            border-radius: 8px;
-            transition: background 0.2s, color 0.2s;
-        }
-        .sub-nav a:hover { background: rgba(30,60,114,0.1); }
-        body.theme-dark .sub-nav a:hover { background: rgba(124,179,245,0.15); }
-        .sub-nav a[href="{{ request.path }}"] { background: rgba(30,60,114,0.15); }
-        body.theme-dark .sub-nav a[href="{{ request.path }}"] { background: rgba(124,179,245,0.2); }
 
         .content {
             padding: 50px 40px;
@@ -230,7 +206,7 @@
             border-bottom: 2px solid #f1c40f;
         }
 
-        /* عنوان بخش‌ها: همیشه فارسی + (انگلیسی یا فرانسه بسته به EN+FA / FR+FA) */
+        /* عنوان بخش‌ها: همیشه فارسی + (انگلیسی یا فرانسه بسته به EN / FR) */
         .summary-title-stack {
             display: flex;
             flex-direction: column;
@@ -853,43 +829,30 @@
             }
         }
     </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='modern_landing.css') }}?v=20260516e" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='book_summary_modern.css') }}?v=20260509g" />
+  {% set citizen_theme_profile = 'book_summary' %}
+  {% include '_citizen_site_theme_head.html' %}
 </head>
 <body data-lang="en-fa" data-show-fa="yes">
+{% include '_citizen_site_theme_body_sync.html' %}
 {% include 'content_protection.html' %}
-    <script>try{var t=localStorage.getItem('book_summary_theme');if(t==='dark')document.body.classList.add('theme-dark');var L=localStorage.getItem('book_summary_lang');if(L==='en')L='en-fa';if(L==='fr')L='fr-fa';if(L==='fa')L='en-fa';if(L==='en-fa'||L==='fr-fa')document.body.setAttribute('data-lang',L);var Sf=localStorage.getItem('book_summary_show_fa');document.body.setAttribute('data-show-fa',Sf==='no'?'no':'yes');}catch(e){}</script>
+    <script>try{var L=document.documentElement.getAttribute('data-site-lang');if(L!=='en-fa'&&L!=='fr-fa'){L=localStorage.getItem('citizenSiteLang');if(L!=='en-fa'&&L!=='fr-fa')L=localStorage.getItem('book_summary_lang');if(L==='en')L='en-fa';if(L==='fr')L='fr-fa';if(L==='fa')L='en-fa';}if(L==='en-fa'||L==='fr-fa')document.body.setAttribute('data-lang',L);var Sf=localStorage.getItem('citizenSiteShowFa');if(Sf!=='yes'&&Sf!=='no')Sf=localStorage.getItem('book_summary_show_fa');if(Sf!=='yes'&&Sf!=='no')Sf=localStorage.getItem('book_summary_2_show_fa');document.body.setAttribute('data-show-fa',Sf==='no'?'no':'yes');}catch(e){}</script>
+  <div class="bg">
+    <div class="bg__blob bg__blob--a"></div>
+    <div class="bg__blob bg__blob--b"></div>
+  </div>
+  {% set modern_topbar_hide_home = true %}
+  {% set modern_topbar_hide_414 = true %}
+  {% include '_modern_site_topbar.html' %}
+  <main class="wrap book-summary-shell-main">
     <div class="container">
         <div class="header">
-            <h1 class="header-book-summary-title">📖 خلاصهٔ کتاب ۱</h1>
+            <h1 class="header-book-summary-title siteLang siteLang--stack"><span class="siteLang__en">📖 Book Summary 1</span><span class="siteLang__fr">📖 Résumé du livre 1</span></h1>
         </div>
-        <div class="back-bar">
-            <a href="/" class="back-btn back-btn-oneline">
-                <span class="back-1l-fa">← بازگشت به صفحه اصلی</span><span class="back-1l-sep"> / </span><span class="back-1l-en">Back to Home</span><span class="back-1l-fr">Retour à l'accueil</span>
-            </a>
-        </div>
-        <div class="sub-nav" style="margin: 0 20px 8px; justify-content: center;">
-            <a href="{{ url_for('book_summary') }}">خلاصهٔ کتاب ۱</a>
-            <a href="{{ url_for('book_summary_2') }}">خلاصهٔ کتاب ۲</a>
-        </div>
-        <div class="tool-bar">
-            <div class="group theme-toggle-wrap">
-                <span class="theme-label theme-label-toolbar-fa">زبان:</span>
-                <button type="button" class="theme-btn" id="langEnFa" title="نمایش انگلیسی همراه با فارسی" aria-pressed="true">EN+FA</button>
-                <button type="button" class="theme-btn" id="langFrFa" title="نمایش فرانسوی همراه با فارسی" aria-pressed="false">FR+FA</button>
-            </div>
-            <div class="group theme-toggle-wrap">
-                <label class="summary-fa-checkbox-label" title="با تیک زدن، متن و خلاصهٔ فارسی هم نمایش داده می‌شود؛ با برداشتن تیک، فقط انگلیسی یا فرانسوی می‌ماند.">
-                    <input type="checkbox" id="summaryShowFa" aria-label="نمایش بخش فارسی خلاصهٔ کتاب">
-                    <span class="summary-fa-checkbox-caption">نمایش بخش فارسی</span>
-                </label>
-            </div>
-            <script>try{var s=document.getElementById('summaryShowFa');if(s)s.checked=document.body.getAttribute('data-show-fa')!=='no';}catch(e){}</script>
-            <div class="group theme-toggle-wrap">
-                <span class="theme-label theme-label-toolbar-fa">تم:</span>
-                <button type="button" class="theme-btn" id="themeLight" title="تم روشن (حالت روز)" aria-pressed="true">☀️</button>
-                <button type="button" class="theme-btn" id="themeDark" title="تم تاریک (حالت شب)" aria-pressed="false">🌙</button>
-            </div>
-        </div>
-
         <div class="content">
             <!-- Section: Introduction (Discover Canada — Chapter-style topics aligned with site quizzes) -->
             <div class="summary-section">
@@ -3400,47 +3363,8 @@
             </div>
         </div>
     </div>
-    <script>
-(function(){
-    var KEY_THEME = 'book_summary_theme', KEY_LANG = 'book_summary_lang', KEY_SHOW_FA = 'book_summary_show_fa';
-    function theme(isDark){
-        document.body.classList.toggle('theme-dark', !!isDark);
-        try{ localStorage.setItem(KEY_THEME, isDark ? 'dark' : 'light'); }catch(e){}
-        var light = document.getElementById('themeLight'), dark = document.getElementById('themeDark');
-        if(light){ light.setAttribute('aria-pressed', isDark ? 'false' : 'true'); }
-        if(dark){ dark.setAttribute('aria-pressed', isDark ? 'true' : 'false'); }
-    }
-    function lang(langCode){
-        document.body.setAttribute('data-lang', langCode);
-        try{ localStorage.setItem(KEY_LANG, langCode); }catch(e){}
-        var enFa = document.getElementById('langEnFa'), frFa = document.getElementById('langFrFa');
-        if(enFa){ enFa.setAttribute('aria-pressed', langCode === 'en-fa' ? 'true' : 'false'); }
-        if(frFa){ frFa.setAttribute('aria-pressed', langCode === 'fr-fa' ? 'true' : 'false'); }
-    }
-    function showFa(on){
-        var v = on ? 'yes' : 'no';
-        document.body.setAttribute('data-show-fa', v);
-        try{ localStorage.setItem(KEY_SHOW_FA, v); }catch(e){}
-        var cb = document.getElementById('summaryShowFa');
-        if(cb){ cb.checked = !!on; }
-    }
-    document.getElementById('themeLight')&&document.getElementById('themeLight').addEventListener('click', function(){ theme(false); });
-    document.getElementById('themeDark')&&document.getElementById('themeDark').addEventListener('click', function(){ theme(true); });
-    document.getElementById('langEnFa')&&document.getElementById('langEnFa').addEventListener('click', function(){ lang('en-fa'); });
-    document.getElementById('langFrFa')&&document.getElementById('langFrFa').addEventListener('click', function(){ lang('fr-fa'); });
-    document.getElementById('summaryShowFa')&&document.getElementById('summaryShowFa').addEventListener('change', function(){ showFa(this.checked); });
-    var L0 = document.body.getAttribute('data-lang') || 'en-fa';
-    var enFaBtn = document.getElementById('langEnFa'), frFaBtn = document.getElementById('langFrFa');
-    if(enFaBtn) enFaBtn.setAttribute('aria-pressed', L0 === 'en-fa' ? 'true' : 'false');
-    if(frFaBtn) frFaBtn.setAttribute('aria-pressed', L0 === 'fr-fa' ? 'true' : 'false');
-    var isDark = document.body.classList.contains('theme-dark');
-    var lightBtn = document.getElementById('themeLight'), darkBtn = document.getElementById('themeDark');
-    if(lightBtn) lightBtn.setAttribute('aria-pressed', isDark ? 'false' : 'true');
-    if(darkBtn) darkBtn.setAttribute('aria-pressed', isDark ? 'true' : 'false');
-    var sf0 = document.body.getAttribute('data-show-fa') || 'yes';
-    showFa(sf0 !== 'no');
-})();
-    </script>
+  </main>
+  {% include '_modern_site_topbar_scripts.html' %}
 </body>
 </html>
 

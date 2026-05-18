@@ -1,0 +1,6 @@
+{# Bilingual EN/FR via html[data-site-lang] + modern_landing.css .siteLang rules.
+   Optional before include: {% set exam_visit_count_class = 'exam-visit-count' %} or intro/ch1 class. #}
+{% if exam_section_views is not none %}
+{% set _evcc = exam_visit_count_class | default('exam-visit-count-ch1') %}
+<p class="{{ _evcc }} siteLang siteLang--stack" role="status"><span class="siteLang__en">Recorded visits for this section: <strong>{{ exam_section_views }}</strong></span><span class="siteLang__fr">Visites enregistrées pour cette section&nbsp;: <strong>{{ exam_section_views }}</strong></span></p>
+{% endif %}

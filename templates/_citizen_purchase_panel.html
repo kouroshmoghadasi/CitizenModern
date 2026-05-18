@@ -1,0 +1,94 @@
+{# Topbar subscribe popup — purchase info only (EN / FR). #}
+<link rel="stylesheet" href="{{ url_for('static', filename='citizen_purchase_panel.css') }}?v=20260519k" />
+<link rel="stylesheet" href="{{ url_for('static', filename='citizen_subscription_block.css') }}?v=20260519k" />
+<div id="purchasePanelModal" class="subscription-modal purchase-panel-modal" role="dialog" aria-modal="true" aria-labelledby="purchasePanelTitle" dir="ltr" lang="en" hidden>
+  <div class="subscription-modal-backdrop" data-purchase-close></div>
+  <div class="subscription-modal-box purchase-panel-box" id="purchasePanelBox" dir="ltr">
+    <header class="subscription-modal-titlebar purchase-panel-titlebar">
+      <h2 id="purchasePanelTitle" class="subscription-modal-title siteLang">
+        <span class="siteLang__en">Subscribe</span>
+        <span class="siteLang__fr">S’abonner</span>
+      </h2>
+      <button type="button" class="subscription-modal-close" id="purchasePanelClose" aria-label="Close">&times;</button>
+    </header>
+    <div class="purchase-panel-body">
+      <div id="purchasePanelIntro" class="purchase-panel-intro siteLang">
+        <p class="purchase-panel-price">
+          <span class="siteLang__en"><strong>${{ subscription_price }} CAD</strong> — one-month access to the full bundle.</span>
+          <span class="siteLang__fr"><strong>{{ subscription_price }}&nbsp;$</strong> — accès d’un mois à l’ensemble complet.</span>
+        </p>
+        <p class="purchase-panel-price purchase-panel-price--alt subscription-intro-line--alt">
+          <span class="siteLang__en"><strong class="subscription-intro-price subscription-intro-price--featured">$20 CAD</strong> — two-month subscription.</span>
+          <span class="siteLang__fr"><strong class="subscription-intro-price subscription-intro-price--featured">20&nbsp;$</strong> — abonnement de deux mois.</span>
+        </p>
+      </div>
+      <div id="purchasePanelStepAsk" class="purchase-panel-step">
+        <p class="purchase-panel-question siteLang">
+          <span class="siteLang__en">Have you already paid?</span>
+          <span class="siteLang__fr">Avez-vous déjà payé&nbsp;?</span>
+        </p>
+        <div class="purchase-panel-actions purchase-panel-actions--split">
+          <button type="button" class="purchase-panel-btn purchase-panel-btn--primary siteLang" id="purchasePanelPaidYes">
+            <span class="siteLang__en">Yes</span>
+            <span class="siteLang__fr">Oui</span>
+          </button>
+          <button type="button" class="purchase-panel-btn purchase-panel-btn--ghost siteLang" id="purchasePanelPaidNo">
+            <span class="siteLang__en">Not yet</span>
+            <span class="siteLang__fr">Pas encore</span>
+          </button>
+        </div>
+      </div>
+      <div id="purchasePanelStepPaid" class="purchase-panel-step" hidden>
+        <p class="purchase-panel-hint siteLang">
+          <span class="siteLang__en">Sign in with the username and password we sent you after payment.</span>
+          <span class="siteLang__fr">Connectez-vous avec l’identifiant et le mot de passe reçus après le paiement.</span>
+        </p>
+        <div class="purchase-panel-actions purchase-panel-actions--split">
+          <button type="button" class="purchase-panel-btn purchase-panel-btn--primary siteLang" id="purchasePanelOpenSignIn">
+            <span class="siteLang__en">Sign in</span>
+            <span class="siteLang__fr">Connexion</span>
+          </button>
+          <button type="button" class="purchase-panel-btn purchase-panel-btn--ghost siteLang" id="purchasePanelPaidBack">
+            <span class="siteLang__en">Back</span>
+            <span class="siteLang__fr">Retour</span>
+          </button>
+        </div>
+      </div>
+      <div id="purchasePanelStepPay" class="purchase-panel-step subscription-payment-info" hidden>
+        {% include '_subscription_payment_lead.html' %}
+        <div class="subscription-pay-section subscription-pay-section--email">
+          <p class="subscription-field-label subscription-field-label--section siteLang">
+            <span class="siteLang__en">Pay to email</span>
+            <span class="siteLang__fr">Paiement par courriel</span>
+          </p>
+          <div class="subscription-email-block">
+            <span class="subscription-email-label siteLang">
+              <span class="siteLang__en">Email</span>
+              <span class="siteLang__fr">Courriel</span>
+            </span>
+            <div class="subscription-contact-row subscription-email-row">
+              <span class="subscription-email-value" id="purchasePanelEmailValue" dir="ltr">Koroush.mog@gmail.com</span>
+              <button type="button" class="subscription-btn-copy siteLang" id="purchasePanelEmailCopy" title="Copy email"><span class="siteLang__en">Copy</span><span class="siteLang__fr">Copier</span></button>
+            </div>
+          </div>
+        </div>
+        <div class="subscription-pay-section subscription-pay-section--telegram">
+          <p class="subscription-field-label subscription-field-label--section siteLang">
+            <span class="siteLang__en">Notify us on Telegram</span>
+            <span class="siteLang__fr">Nous aviser sur Telegram</span>
+          </p>
+          <div class="subscription-telegram-block">
+            <span class="subscription-telegram-label siteLang">
+              <span class="siteLang__en">Telegram ID</span>
+              <span class="siteLang__fr">Identifiant Telegram</span>
+            </span>
+            <div class="subscription-contact-row subscription-telegram-row">
+              <a class="subscription-telegram-value" id="purchasePanelTelegramValue" href="https://t.me/Kouroshmoghadasi" target="_blank" rel="noopener" dir="ltr">@Kouroshmoghadasi</a>
+              <button type="button" class="subscription-btn-copy subscription-btn-copy--telegram siteLang" id="purchasePanelTelegramCopy" title="Copy Telegram ID" data-copy-text="@Kouroshmoghadasi"><span class="siteLang__en">Copy</span><span class="siteLang__fr">Copier</span></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

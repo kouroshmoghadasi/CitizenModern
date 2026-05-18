@@ -1,4 +1,5 @@
 <body>
+{% include '_citizen_site_theme_body_sync.html' %}
 {% include 'content_protection.html' %}
     <div class="container">
         <div class="test-selector">
@@ -71,20 +72,8 @@
                             </picture>
                         </a>
                     </div>
-                    <!-- Slide 3: عنوان سایت -->
-                    <div class="header-slide header-slide-title-only" id="slide2">
-                        <div class="slide-visitor-text">Visitors : <span class="visitor-count-value">0</span></div>
-                        <div class="header-title-standalone">
-                            <h1 class="header-h1">
-                                <span class="header-title-line1" dir="rtl">آزمون تمرینی شهروندی</span>
-                                <span class="header-title-line2" dir="rtl">کانادا</span>
-                                <span class="header-title-flag" aria-hidden="true">🇨🇦</span>
-                            </h1>
-                            <p class="header-title-en">Canadian Citizenship Practice Test</p>
-                        </div>
-                    </div>
-                    <!-- Slide 4: ثبت تبلیغ -->
-                    <div class="header-slide header-slide-ad-registration" id="slide3">
+                    <!-- Slide 3: ثبت تبلیغ -->
+                    <div class="header-slide header-slide-ad-registration" id="slide2">
                         <div class="slide-visitor-text">Visitors : <span class="visitor-count-value">0</span></div>
                         <div class="header-slide-ad-registration-box" onclick="openAdRegistrationModal()" role="button" tabindex="0" title="برای ثبت تبلیغ کلیک کنید">
                             <h3 class="header-slide-ad-registration-title">برای ثبت تبلیغ تماس بگیرید</h3>
@@ -99,8 +88,7 @@
                     <div class="header-carousel-indicators">
                         <div class="header-indicator active" onclick="goToSlide(0)" aria-label="اسلاید ۱ — تیم شکور"></div>
                         <div class="header-indicator" onclick="goToSlide(1)" aria-label="اسلاید ۲ — خاطره تحویلداری یکتا"></div>
-                        <div class="header-indicator" onclick="goToSlide(2)" aria-label="اسلاید ۳ — عنوان"></div>
-                        <div class="header-indicator" onclick="goToSlide(3)" aria-label="اسلاید ۴ — ثبت تبلیغ"></div>
+                        <div class="header-indicator" onclick="goToSlide(2)" aria-label="اسلاید ۳ — ثبت تبلیغ"></div>
                     </div>
                 </div>
             </div>
@@ -141,41 +129,7 @@
             </div>
 
             <div id="testContainer">
-                <!-- بلوک اشتراک داخل محیط تست (مثل ۴۱۴) — وقتی Test4+ بدون دسترسی انتخاب شود -->
-                <div id="testAreaSubscriptionBlock" class="test-area-subscription-block" style="display: none;">
-                    <h2 class="test-area-sub-title">دسترسی به کل بسته</h2>
-                    <p class="test-area-sub-intro"><span class="subscription-intro-price">مبلغ: {{ subscription_price }} دلار</span> — دسترسی یک‌ماهه به کل بسته (تست‌ها از Test4 به بعد + همه ۴۱۴ سوال). Test1 تا Test3 بدون اشتراک در دسترس است.</p>
-                    <div id="testAreaSubStep1" class="test-area-sub-step">
-                        <p class="subscription-question">آیا اشتراک یک‌ماهه خریداری شده است؟</p>
-                        <div class="subscription-buttons">
-                            <button type="button" class="subscription-btn subscription-btn-yes" id="testAreaSubYes">بله</button>
-                            <button type="button" class="subscription-btn subscription-btn-no" id="testAreaSubNo">خیر</button>
-                        </div>
-                    </div>
-                    <div id="testAreaSubStepLogin" class="test-area-sub-step" style="display: none;">
-                        <p class="subscription-label">کد کاربری (شماره موبایل) و کلمه عبور را وارد کنید:</p>
-                        <input type="text" id="testAreaSubMobile" placeholder="کد کاربری (شماره موبایل)" class="subscription-input" autocomplete="username">
-                        <input type="password" id="testAreaSubPassword" placeholder="کلمه عبور" class="subscription-input" autocomplete="current-password">
-                        <p id="testAreaSubLoginError" class="subscription-error" style="display: none;"></p>
-                        <button type="button" class="subscription-btn subscription-btn-submit" id="testAreaSubLoginBtn">ورود</button>
-                    </div>
-                    <div id="testAreaSubStepPayment" class="test-area-sub-step" style="display: none;">
-                        <p>برای دسترسی، مبلغ را به آدرس ایمیل زیر واریز کنید و کد واریز را برای ما ایمیل کنید. پس از تأیید، کد کاربری و کلمه عبور برای شما ارسال می‌شود.</p>
-                        <p class="subscription-mobile-intro"><strong>شماره موبایل شما همان «کد کاربری» خواهد بود.</strong> لطفاً وارد کنید:</p>
-                        <div class="subscription-mobile-block">
-                            <label for="testAreaSubRequestMobile" class="subscription-mobile-label">شماره موبایل (کد کاربری):</label>
-                            <input type="text" id="testAreaSubRequestMobile" placeholder="09xxxxxxxxx" class="subscription-input" autocomplete="tel">
-                            <button type="button" class="subscription-btn subscription-btn-request" id="testAreaSubRequestSubmit">ثبت درخواست دسترسی</button>
-                        </div>
-                        <p id="testAreaSubRequestMsg" class="subscription-request-msg" style="display: none;"></p>
-                        <div class="subscription-email-block">
-                            <span class="subscription-email-label">ایمیل:</span>
-                            <span class="subscription-email-value" id="testAreaSubEmailValue">Koroush.mog@gmail.com</span>
-                            <button type="button" class="subscription-btn-copy" id="testAreaSubEmailCopy" title="کپی">کپی</button>
-                        </div>
-                        <button type="button" class="subscription-btn subscription-btn-back" id="testAreaSubPaymentBack">متوجه شدم، بازگشت</button>
-                    </div>
-                </div>
+                {% include '_test_area_subscription_block.html' %}
                 <div id="questionCard" style="background: white; padding: 20px 25px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); margin-bottom: 20px;">
                     <!-- Question will be inserted here -->
                 </div>

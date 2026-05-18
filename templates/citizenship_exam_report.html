@@ -1,19 +1,40 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html dir="ltr">
 <head>
     <meta charset="UTF-8">
+    {% include '_citizen_site_data_site_lang_head.html' %}
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <link rel="icon" href="{{ url_for('static', filename='images/logo.png') }}" type="image/png">
     <link rel="apple-touch-icon" href="{{ url_for('static', filename='images/logo.png') }}">
-    <title>لیست قبولی آزمون شهروندی | discovercanadatest.com</title>
-    <meta name="description" content="لیست قبولی شرکت‌کنندگان آزمون شهروندی از ۲۵ ژانویه ۲۰۲۶؛ به‌روزرسانی در CitizenTest.">
+    <title>Citizenship pass list | CitizenTest</title>
+    <meta name="description" content="Voluntary pass list for Canadian citizenship practice on CitizenTest — from January 25, 2026." />
+    <script>
+      (function () {
+        try {
+          var v = document.documentElement.getAttribute("data-site-lang") || "en-fa";
+          document.title = v === "fr-fa"
+            ? "Liste de réussite | CitizenTest"
+            : "Citizenship pass list | CitizenTest";
+          var md = document.querySelector('meta[name="description"]');
+          if (md) {
+            md.setAttribute(
+              "content",
+              v === "fr-fa"
+                ? "Liste volontaire des réussites aux tests pratiques de citoyenneté sur CitizenTest — depuis le 25 janvier 2026."
+                : "Voluntary pass list for Canadian citizenship practice on CitizenTest — from January 25, 2026."
+            );
+          }
+        } catch (e) {}
+      })();
+    </script>
     {% include '_seo_meta_keywords_brand.html' %}
-    {% set seo_title = "لیست قبولی آزمون شهروندی کانادا | CitizenTest" %}
-    {% set seo_description = "لیست قبولی شرکت‌کنندگان از ۲۵ ژانویه ۲۰۲۶؛ آزمون تمرینی شهروندی discovercanadatest.com." %}
+    {% set seo_title = "Citizenship pass list | CitizenTest" %}
+    {% set seo_description = "Voluntary pass list for Canadian citizenship practice on CitizenTest — from January 25, 2026." %}
     {% set seo_image = "images/logo.png" %}
     {% set seo_path = "/citizenship-exam-report" %}
     {% set seo_og_type = "website" %}
     {% include '_seo_head_social.html' %}
+    {% include '_citizen_exam_subpage_head_assets.html' %}
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
@@ -73,9 +94,73 @@
             color: var(--text);
             box-shadow: 0 2px 12px rgba(0,0,0,0.05);
         }
-        .report-intro p { margin: 0 0 12px; }
+        .report-intro p { margin: 0 0 12px; text-align: start; }
         .report-intro p:last-child { margin-bottom: 0; }
         .report-intro a { color: var(--accent); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
+        .report-page-header h1.siteLang--stack,
+        .report-intro.siteLang--stack { text-align: center; }
+        .report-intro.siteLang--stack p { text-align: start; }
+        .report-kpi-grid {
+            --kpi-gold: #f1c40f;
+            --kpi-gold-soft: #f7dc6f;
+            --kpi-red: #e74c3c;
+            --kpi-red-bright: #ff5252;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        .report-kpi {
+            background: linear-gradient(165deg, rgba(241, 196, 15, 0.08) 0%, var(--card-bg) 55%, rgba(231, 76, 60, 0.06) 100%);
+            border: 1px solid rgba(241, 196, 15, 0.38);
+            border-radius: 14px;
+            padding: 16px 14px;
+            text-align: center;
+            box-shadow: 0 2px 14px rgba(0, 0, 0, 0.06);
+        }
+        .report-kpi__label {
+            display: block;
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--kpi-gold);
+            margin-bottom: 8px;
+            line-height: 1.35;
+        }
+        .report-kpi__value {
+            display: block;
+            font-size: clamp(1.5rem, 5vw, 1.85rem);
+            font-weight: 800;
+            line-height: 1.15;
+            color: var(--kpi-red-bright);
+            font-variant-numeric: tabular-nums;
+            text-shadow: 0 0 16px rgba(231, 76, 60, 0.22);
+        }
+        .report-kpi__hint {
+            display: block;
+            margin-top: 6px;
+            font-size: 0.72rem;
+            color: var(--kpi-gold-soft);
+            opacity: 0.92;
+        }
+        body.theme-dark .report-kpi-grid {
+            --kpi-gold: #ffd54f;
+            --kpi-gold-soft: #ffe082;
+            --kpi-red: #ff6b6b;
+            --kpi-red-bright: #ff8a80;
+        }
+        @media (max-width: 900px) {
+            .report-kpi-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+        @media (max-width: 720px) {
+            .report-kpi-grid {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+        }
         @media (max-width: 640px) {
             body {
                 padding: max(12px, env(safe-area-inset-top, 0px)) max(12px, env(safe-area-inset-right, 0px)) max(20px, env(safe-area-inset-bottom, 0px)) max(12px, env(safe-area-inset-left, 0px));
@@ -105,26 +190,67 @@
             }
         }
     </style>
+{% set citizen_theme_profile = 'modern' %}
+{% include '_citizen_site_theme_head.html' %}
+{% include '_citizen_exam_subpage_shell_css_overrides.html' %}
 </head>
-<body>
-    <script>try{var t=localStorage.getItem('citizenship571_theme');if(t==='dark')document.body.classList.add('theme-dark');}catch(e){}</script>
-    {% include 'content_protection.html' %}
+<body class="citizenship-exam-subpage">
+    {% set modern_topbar_use_home_nav = true %}
+    {% include '_citizen_exam_subpage_body_top.html' %}
     <div class="wrap">
-        <div class="back-bar">
-            <a href="/" class="back-btn">← خانه / Home</a>
-        </div>
         <div class="report-page-header">
-            <h1>گزارش قبولی و فهرست انتظار امتحان</h1>
+            <h1 class="siteLang siteLang--stack">
+                <span class="siteLang__en">Passing report &amp; exam waiting list</span>
+                <span class="siteLang__fr">Rapport de réussite et liste d'attente d'examen</span>
+            </h1>
         </div>
-        <article class="report-intro" lang="fa">
-            <p>
-                این صفحه در <strong>CitizenTest</strong> (<a href="{{ url_for('index') }}">discovercanadatest.com</a>) یک <strong>گزارش داوطلبانه و آموزشی</strong> است: نام شرکت‌کنندگان در جلسات تمرینی یا آزمون‌های مرتبط با <strong>آزمون شهروندی کانادا</strong> و کتاب <strong>Discover Canada</strong> اینجا ثبت می‌شود تا انگیزهٔ یادگیری و تجربهٔ جمعی دیده شود. این فهرست <strong>رسمی IRCC نیست</strong> و جایگزین نتیجهٔ رسمی مهاجرت نمی‌شود.
+        <article class="report-intro siteLang siteLang--stack">
+            <p class="siteLang__en">
+                This page on <strong>CitizenTest</strong> (<a href="{{ url_for('index') }}">discovercanadatest.com</a>) is a <strong>voluntary, educational report</strong>: names of participants in practice sessions or tests related to the <strong>Canadian citizenship test</strong> and <strong>Discover Canada</strong> are listed here to encourage learning and shared experience. This list is <strong>not an official IRCC result</strong> and does not replace official immigration outcomes.
             </p>
-            <p>
-                برای آمادگی آزمون می‌توانید از <a href="{{ url_for('citizenship_414') }}">بانک ۴۱۴ سوال</a>، <a href="{{ url_for('citizenship_571') }}">۵۷۱ سوال</a>، <a href="{{ url_for('citizenship_exams') }}">آزمون‌های فصلی</a> و <a href="{{ url_for('book_summary') }}">خلاصهٔ کتاب ۱</a> استفاده کنید.
+            <p class="siteLang__fr">
+                Cette page sur <strong>CitizenTest</strong> (<a href="{{ url_for('index') }}">discovercanadatest.com</a>) est un <strong>rapport volontaire et pédagogique</strong>&nbsp;: les noms des participants aux séances de pratique ou aux tests liés à l'<strong>examen de citoyenneté canadienne</strong> et au guide <strong>Découvrir le Canada</strong> sont publiés ici pour encourager l'apprentissage et l'expérience collective. Cette liste <strong>n'est pas un résultat officiel d'IRCC</strong> et ne remplace pas une décision officielle en matière d'immigration.
             </p>
         </article>
+        {% if report_kpis is defined and report_kpis %}
+        <div class="report-kpi-grid siteLang" role="group" aria-label="Report summary">
+            <div class="report-kpi">
+                <span class="report-kpi__label siteLang siteLang--stack">
+                    <span class="siteLang__en">Passes</span>
+                    <span class="siteLang__fr">Réussites</span>
+                </span>
+                <span class="report-kpi__value">{{ report_kpis.pass_count }}</span>
+                <span class="report-kpi__hint siteLang siteLang--stack">
+                    <span class="siteLang__en">Since Jan 25, 2026</span>
+                    <span class="siteLang__fr">Depuis le 25 janv. 2026</span>
+                </span>
+            </div>
+            <div class="report-kpi">
+                <span class="report-kpi__label siteLang siteLang--stack">
+                    <span class="siteLang__en">Preparing for exam</span>
+                    <span class="siteLang__fr">En préparation à l'examen</span>
+                </span>
+                <span class="report-kpi__value">{{ report_kpis.studying_count }}</span>
+                <span class="report-kpi__hint siteLang siteLang--stack">
+                    <span class="siteLang__en">Active subscription, not passed yet</span>
+                    <span class="siteLang__fr">Abonnement actif, pas encore réussi</span>
+                </span>
+            </div>
+            <div class="report-kpi">
+                <span class="report-kpi__label siteLang siteLang--stack">
+                    <span class="siteLang__en">Average pass score</span>
+                    <span class="siteLang__fr">Note moyenne de réussite</span>
+                </span>
+                <span class="report-kpi__value">{% if report_kpis.avg_pass_score is not none %}{{ report_kpis.avg_pass_score }}{% else %}—{% endif %}</span>
+                <span class="report-kpi__hint siteLang siteLang--stack">
+                    <span class="siteLang__en">Numeric scores only</span>
+                    <span class="siteLang__fr">Notes numériques seulement</span>
+                </span>
+            </div>
+        </div>
+        {% endif %}
         {% include 'citizenship_exam_report_include.html' %}
     </div>
+    {% include '_modern_site_topbar_scripts.html' %}
 </body>
 </html>

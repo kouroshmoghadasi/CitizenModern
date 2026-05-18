@@ -1,0 +1,345 @@
+<script>
+(function () {
+  var API = window.location.origin;
+  var btn = document.getElementById("topbarAccountBtn");
+  var badge = document.getElementById("topbarAccountBadge");
+  var modal = document.getElementById("acctPanelModal");
+  if (!btn || !modal) return;
+
+  var memberBox = document.getElementById("acctPanelMember");
+  var loginBox = document.getElementById("acctPanelLogin");
+  var lastStatus = null;
+
+  function readSiteLang() {
+    try {
+      var v = localStorage.getItem("citizenSiteLang");
+      if (v === "en-fa" || v === "fr-fa") return v;
+      v = localStorage.getItem("book_summary_lang");
+      if (v === "en-fa" || v === "fr-fa") return v;
+    } catch (e) {}
+    return "en-fa";
+  }
+
+  function isFr() {
+    return readSiteLang() === "fr-fa";
+  }
+
+  var acctI18n = {
+    en: {
+      accessUntil: function (d) {
+        return "You have access to all resources until " + d + ".";
+      },
+      placeholderMobile: "Username",
+      placeholderPassword: "Password",
+      loginRequired: "Username and password are required.",
+      connectionError: "Connection error.",
+      loginFailed: "Sign-in failed.",
+      accountActive: "Active subscription",
+      account: "Account",
+    },
+    fr: {
+      accessUntil: function (d) {
+        return "Vous avez accès à toutes les ressources jusqu'au " + d + ".";
+      },
+      placeholderMobile: "Identifiant",
+      placeholderPassword: "Mot de passe",
+      loginRequired: "L'identifiant et le mot de passe sont obligatoires.",
+      connectionError: "Erreur de connexion.",
+      loginFailed: "Échec de la connexion.",
+      accountActive: "Abonnement actif",
+      account: "Compte",
+    },
+  };
+
+  function t(key) {
+    var pack = isFr() ? acctI18n.fr : acctI18n.en;
+    return pack[key];
+  }
+
+  function setViewVisible(el, visible) {
+    if (!el) return;
+    if (visible) el.removeAttribute("hidden");
+    else el.setAttribute("hidden", "");
+  }
+
+  function hideAllViews() {
+    setViewVisible(memberBox, false);
+    setViewVisible(loginBox, false);
+  }
+
+  function latestExpiryIso(data) {
+    var dates = [];
+    if (data && data.tests_expiry) dates.push(String(data.tests_expiry).slice(0, 10));
+    if (data && data.questions_414_expiry) dates.push(String(data.questions_414_expiry).slice(0, 10));
+    if (!dates.length) return null;
+    dates.sort();
+    return dates[dates.length - 1];
+  }
+
+  function fmtGregorian(iso) {
+    if (!iso) return "";
+    var s = String(iso).slice(0, 10);
+    try {
+      var d = new Date(s + "T12:00:00");
+      if (isNaN(d.getTime())) return s;
+      var loc = isFr() ? "fr-CA" : "en-CA";
+      return d.toLocaleDateString(loc, {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+        timeZone: "UTC",
+      });
+    } catch (e) {
+      return s;
+    }
+  }
+
+  function setBtnState(kind) {
+    btn.classList.remove("iconbtn--account-active", "iconbtn--account-warn");
+    if (badge) badge.hidden = true;
+    if (kind === "active") {
+      btn.classList.add("iconbtn--account-active");
+      btn.setAttribute("aria-label", t("accountActive"));
+      btn.setAttribute("title", t("accountActive"));
+      if (badge) {
+        badge.hidden = false;
+        badge.textContent = "✓";
+      }
+    } else {
+      btn.setAttribute("aria-label", t("account"));
+      btn.setAttribute("title", t("account"));
+    }
+  }
+
+  function setLoginMode(active) {
+    var box = document.getElementById("acctPanelBox");
+    if (box) box.classList.toggle("acct-panel-box--login", !!active);
+    var titleDefault = modal.querySelector(".acct-panel-title-default");
+    var titleLogin = modal.querySelector(".acct-panel-title-login");
+    if (titleDefault) titleDefault.hidden = !!active;
+    if (titleLogin) titleLogin.hidden = !active;
+  }
+
+  function showMember(data) {
+    hideAllViews();
+    setLoginMode(false);
+    setViewVisible(memberBox, true);
+    var nameEl = document.getElementById("acctPanelDisplayName");
+    var userEl = document.getElementById("acctPanelUsername");
+    var displayName = (data.display_name || "").trim();
+    if (nameEl) nameEl.textContent = displayName || data.username || data.mobile || "—";
+    if (userEl) userEl.textContent = data.username || data.mobile || "—";
+    var accessEl = document.getElementById("acctPanelAccessUntil");
+    if (accessEl) {
+      var expIso = latestExpiryIso(data);
+      if (expIso) {
+        accessEl.textContent = t("accessUntil")(fmtGregorian(expIso));
+        accessEl.hidden = false;
+      } else {
+        accessEl.textContent = "";
+        accessEl.hidden = true;
+      }
+    }
+  }
+
+  function showLoginStep() {
+    hideAllViews();
+    setViewVisible(loginBox, true);
+    setLoginMode(true);
+    syncLoginPlaceholders();
+    var err = document.getElementById("acctPanelLoginError");
+    if (err) {
+      err.hidden = true;
+      err.textContent = "";
+    }
+    var mobileEl = document.getElementById("acctPanelMobile");
+    if (mobileEl) {
+      try {
+        mobileEl.focus();
+      } catch (e) {}
+    }
+  }
+
+  function applyPopupView(data) {
+    data = data || {};
+    lastStatus = data;
+    if (data.has_full_access) {
+      showMember(data);
+      setBtnState("active");
+    } else {
+      showLoginStep();
+      setBtnState("default");
+    }
+    try {
+      window.dispatchEvent(new CustomEvent("citizenSubscriptionUpdated", { detail: data }));
+    } catch (e) {}
+  }
+
+  function fetchStatus() {
+    return fetch(API + "/api/subscription/status", {
+      method: "GET",
+      credentials: "include",
+      headers: { "Content-Type": "application/json" },
+    })
+      .then(function (r) {
+        return r.json();
+      })
+      .then(function (d) {
+        lastStatus = d;
+        setBtnState(d && d.has_full_access ? "active" : "default");
+        return d;
+      })
+      .catch(function () {
+        setBtnState("default");
+        return null;
+      });
+  }
+
+  function syncLoginPlaceholders() {
+    var mobileEl = document.getElementById("acctPanelMobile");
+    var passEl = document.getElementById("acctPanelPassword");
+    var pack = isFr() ? acctI18n.fr : acctI18n.en;
+    if (mobileEl) mobileEl.placeholder = pack.placeholderMobile;
+    if (passEl) passEl.placeholder = pack.placeholderPassword;
+  }
+
+  function applyAcctPanelDirection() {
+    var lang = isFr() ? "fr" : "en";
+    modal.setAttribute("dir", "ltr");
+    modal.setAttribute("lang", lang);
+    var box = document.getElementById("acctPanelBox");
+    if (box) {
+      box.setAttribute("dir", "ltr");
+      box.setAttribute("lang", lang);
+    }
+    syncLoginPlaceholders();
+  }
+
+  window.addEventListener("storage", function (e) {
+    if (e.key === "citizenSiteLang" && !modal.hidden) applyAcctPanelDirection();
+  });
+
+  function openPanel() {
+    if (window.citizenPurchaseClose) window.citizenPurchaseClose();
+    applyAcctPanelDirection();
+    modal.hidden = false;
+    btn.setAttribute("aria-expanded", "true");
+    document.body.classList.add("acct-panel-open");
+    fetchStatus().then(function (d) {
+      applyPopupView(d || {});
+    });
+  }
+
+  function closePanel() {
+    modal.hidden = true;
+    btn.setAttribute("aria-expanded", "false");
+    document.body.classList.remove("acct-panel-open");
+    setLoginMode(false);
+    hideAllViews();
+  }
+
+  window.citizenAccountOpenSignIn = function () {
+    openPanel();
+  };
+
+  window.citizenAccountClose = closePanel;
+
+  var suppressAccountClick = false;
+
+  btn.addEventListener("click", function () {
+    if (suppressAccountClick) {
+      suppressAccountClick = false;
+      return;
+    }
+    if (modal.hidden) openPanel();
+    else closePanel();
+  });
+
+  var closeBtn = document.getElementById("acctPanelClose");
+  if (closeBtn) closeBtn.addEventListener("click", closePanel);
+  modal.querySelectorAll("[data-acct-close]").forEach(function (el) {
+    el.addEventListener("click", closePanel);
+  });
+
+  document.addEventListener("keydown", function (ev) {
+    if (ev.key === "Escape" && !modal.hidden) closePanel();
+  });
+
+  var loginBack = document.getElementById("acctPanelLoginBack");
+  if (loginBack) loginBack.addEventListener("click", closePanel);
+
+  var loginBtn = document.getElementById("acctPanelLoginBtn");
+  if (loginBtn) {
+    loginBtn.addEventListener("click", function () {
+      var mobile = (document.getElementById("acctPanelMobile").value || "").trim();
+      var password = document.getElementById("acctPanelPassword").value || "";
+      var errEl = document.getElementById("acctPanelLoginError");
+      errEl.hidden = true;
+      errEl.textContent = "";
+      if (!mobile || !password) {
+        errEl.textContent = t("loginRequired");
+        errEl.hidden = false;
+        return;
+      }
+      fetch(API + "/api/subscription/login", {
+        method: "POST",
+        credentials: "include",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          mobile: mobile,
+          password: password,
+          section: "bundle",
+          username: mobile,
+        }),
+      })
+        .then(function (r) {
+          return r.json();
+        })
+        .then(function (data) {
+          if (data && data.success) {
+            document.getElementById("acctPanelPassword").value = "";
+            return fetchStatus().then(function (d) {
+              lastStatus = d || {};
+              setBtnState(d && d.has_full_access ? "active" : "default");
+              closePanel();
+            });
+          }
+          errEl.textContent = (data && data.error) ? data.error : t("loginFailed");
+          errEl.hidden = false;
+        })
+        .catch(function () {
+          errEl.textContent = t("connectionError");
+          errEl.hidden = false;
+        });
+    });
+  }
+
+  var memberClose = document.getElementById("acctPanelMemberClose");
+  if (memberClose) memberClose.addEventListener("click", closePanel);
+
+  var signOutBtn = document.getElementById("acctPanelSignOut");
+  if (signOutBtn) {
+    signOutBtn.addEventListener("click", function () {
+      fetch(API + "/api/subscription/logout", {
+        method: "POST",
+        credentials: "include",
+        headers: { "Content-Type": "application/json" },
+      })
+        .then(function () {
+          return fetchStatus();
+        })
+        .then(function (d) {
+          lastStatus = d || {};
+          setBtnState("default");
+          closePanel();
+        });
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", fetchStatus);
+  } else {
+    fetchStatus();
+  }
+})();
+</script>

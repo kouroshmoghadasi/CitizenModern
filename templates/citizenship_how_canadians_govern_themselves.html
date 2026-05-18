@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html dir="ltr">
 <head>
     <meta charset="UTF-8">
+    {% include '_citizen_site_data_site_lang_head.html' %}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="{{ url_for('static', filename='images/logo.png') }}" type="image/png">
     <link rel="apple-touch-icon" href="{{ url_for('static', filename='images/logo.png') }}">
@@ -14,6 +15,7 @@
     {% set seo_path = "/citizenship-how-canadians-govern-themselves" %}
     {% include '_seo_head_social.html' %}
     {% include 'pwa_meta.html' %}
+    {% include '_citizen_exam_subpage_head_assets.html' %}
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
@@ -67,12 +69,7 @@
         .tool-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 20px; padding: 14px 18px; background: var(--card-bg); border-radius: 12px; border: 1px solid var(--border); box-shadow: 0 2px 10px rgba(0,0,0,0.06); }
         body.theme-dark .tool-bar { box-shadow: 0 2px 10px rgba(0,0,0,0.3); }
         .tool-bar .group { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
-        .theme-toggle-wrap { display: flex; align-items: center; gap: 6px; }
         .theme-label { font-weight: 600; color: var(--text); font-size: 0.95em; }
-        .theme-btn { width: 44px; height: 44px; border-radius: 12px; border: 2px solid var(--border); background: var(--card-bg); font-size: 1.35em; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s; }
-        .theme-btn:hover { transform: scale(1.08); box-shadow: 0 4px 12px rgba(0,0,0,0.12); }
-        .theme-btn[aria-pressed="true"] { border-color: #1e3c72; box-shadow: 0 0 0 2px rgba(30,60,114,0.35); background: linear-gradient(135deg, #e8eef5 0%, #dce4ed 100%); }
-        body.theme-dark .theme-btn[aria-pressed="true"] { border-color: #7cb3f5; box-shadow: 0 0 0 2px rgba(124,179,245,0.4); background: linear-gradient(135deg, #3d4a5c 0%, #2d3748 100%); }
         .go-to-q-wrap { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
         .go-to-q-wrap input[type="number"] { width: 72px; padding: 8px 10px; border: 2px solid var(--option-border); border-radius: 8px; font-size: 0.95rem; background: var(--option-bg); color: var(--text); box-shadow: inset 0 1px 3px rgba(0,0,0,0.06); }
         body.theme-dark .go-to-q-wrap input[type="number"] { box-shadow: inset 0 1px 3px rgba(0,0,0,0.22); }
@@ -111,47 +108,36 @@
         .block-en { direction: ltr; text-align: left; margin-bottom: 10px; padding: 10px 12px; background: rgba(30,60,114,0.06); border-radius: 10px; border-left: 3px solid var(--accent); }
         .block-fa { direction: rtl; text-align: right; margin-bottom: 10px; padding: 10px 12px; background: rgba(241,196,15,0.12); border-radius: 10px; border-right: 3px solid #f1c40f; }
         .block-fr { direction: ltr; text-align: left; margin-bottom: 10px; padding: 10px 12px; background: rgba(0,82,147,0.08); border-radius: 10px; border-left: 3px solid #005293; }
-        .lang-mode-btn { padding: 10px 18px; border-radius: 10px; border: 2px solid var(--border); background: var(--card-bg); color: var(--text); font-weight: 600; cursor: pointer; -webkit-appearance: none; appearance: none; }
-        .lang-mode-btn[aria-pressed="true"] { border-color: #1e3c72; background: linear-gradient(135deg, #2c5282 0%, #1e3c72 100%); color: #fff; box-shadow: 0 0 0 2px rgba(30,60,114,0.25); }
-        body.theme-dark .lang-mode-btn[aria-pressed="true"] { border-color: #7cb3f5; box-shadow: 0 0 0 2px rgba(124,179,245,0.35); }
         .q-num-badge { display: inline-flex; align-items: center; justify-content: center; min-width: 2rem; height: 1.75rem; padding: 0 0.5rem; background: linear-gradient(135deg, #1e3c72 0%, #2c5282 100%); color: #fff; border-radius: 8px; font-weight: 700; font-size: 0.9em; margin-right: 0.6rem; }
         .block-fa .q-num-badge { margin-right: 0; margin-left: 0.6rem; }
     </style>
+{% set citizen_theme_profile = 'modern' %}
+{% include '_citizen_site_theme_head.html' %}
+{% include '_citizen_exam_subpage_shell_css_overrides.html' %}
 </head>
-<body>
-    <script>try{var t=localStorage.getItem('citizenship571_theme');if(t==='dark')document.body.classList.add('theme-dark');}catch(e){}</script>
-    {% include 'content_protection.html' %}
+<body class="citizenship-exam-subpage">
+    {% include '_citizen_exam_subpage_body_top.html' %}
     <div class="wrap">
-        <div class="back-bar ch1-top-nav">
-            <a href="{{ url_for('citizenship_exams') }}" class="back-btn">← همهٔ آزمون‌ها / All exams</a>
-            <a href="/" class="back-btn" style="background:var(--card-bg);color:var(--accent);border:2px solid var(--accent);">خانه / Home</a>
-        </div>
-        {% if exam_section_views is not none %}
-        <p class="exam-visit-count-ch1" role="status">بازدید ثبت‌شده از بخش آزمون‌های نمونه: <strong>{{ exam_section_views }}</strong></p>
-        {% endif %}
+        {% include '_exam_section_visit_count.html' %}
         {% set header_title_en = "How Canadians Govern Themselves" %}
         {% set header_subtitle_fa = "چگونه کانادایی‌ها حکومت می‌کنند — (Discover Canada)" %}
+        {% set header_subtitle_en = "Federalism, Parliament, the Crown, and levels of government (Discover Canada)" %}
+        {% set header_subtitle_fr = "Fédéralisme, Parlement, Couronne et paliers de gouvernement (Découvrir le Canada)" %}
         {% include '_exam_page_header.html' %}
+        <div class="exam-q-controls">
         <div class="tool-bar">
-            <div class="group theme-toggle-wrap">
-                <button type="button" class="lang-mode-btn" id="langModeEnGov" aria-pressed="true">English + فارسی</button>
-                <button type="button" class="lang-mode-btn" id="langModeFrGov" aria-pressed="false">Français + فارسی</button>
-            </div>
             <div class="group go-to-q-wrap">
                 <label for="goToQuestionGov" class="theme-label" style="margin: 0;">سوال</label>
                 <input type="number" id="goToQuestionGov" min="1" max="{{ max_question_govern }}" placeholder="1–{{ max_question_govern }}" aria-label="Question number">
                 <button type="button" class="go-to-q-btn" id="goToQuestionBtnGov">برو</button>
             </div>
-            <div class="group theme-toggle-wrap">
-                <span class="theme-label">Theme:</span>
-                <button type="button" class="theme-btn theme-light" id="themeLightGov" title="روشن / Light" aria-pressed="true">☀️</button>
-                <button type="button" class="theme-btn theme-dark" id="themeDarkGov" title="تاریک / Dark" aria-pressed="false">🌙</button>
-            </div>
+
         </div>
         <div id="q-nav-bar-govern" class="q-nav-bar-gov" data-max-question="{{ max_visible_govern }}">
             <button type="button" class="q-nav-btn btn-prev" id="qPrevGov" aria-label="سوال قبلی">← سوال قبلی</button>
             <span class="q-nav-current" role="status" aria-live="polite" dir="ltr">Question <span id="currentQNumGov">1</span> of {{ max_visible_govern }}</span>
             <button type="button" class="q-nav-btn" id="qNextGov" aria-label="سوال بعدی">سوال بعدی →</button>
+        </div>
         </div>
         <div id="questions-container-govern" class="questions-one-by-one">
         {% for q in govern_questions %}
@@ -199,9 +185,8 @@
         {% if show_paywall_govern %}
         <div class="q-card paywall-as-q4" id="q4">
             <div class="paywall-govern" style="padding: 0; margin: 0; border: none; max-width: none;">
-                <h2 style="margin-bottom: 12px; color: var(--accent);">دسترسی به سوالات ۴ تا {{ max_question_govern }}</h2>
-                <p style="margin-bottom: 16px;">برای مشاهدهٔ همهٔ {{ max_question_govern }} سوال How Canadians Govern Themselves، همان اشتراک (کد کاربری و رمز) مربوط به ۴۱۴ سوال کافی است.</p>
-                <p style="margin-bottom: 14px;"><strong>ورود (در صورت داشتن کد و رمز):</strong></p>
+                {% include '_subscription_paywall_heading.html' %}
+                {% include '_subscription_paywall_login_lead.html' %}
                 <input type="text" id="paywallGovernMobile" placeholder="کد کاربری (شماره موبایل)" style="width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid var(--border); border-radius: 10px; background: var(--card-bg); color: var(--text);">
                 <input type="password" id="paywallGovernPassword" placeholder="کلمه عبور" style="width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid var(--border); border-radius: 10px; background: var(--card-bg); color: var(--text);">
                 <p id="paywallGovernError" class="subscription-error" style="display: none; color: #c00; margin-bottom: 8px;"></p>
@@ -211,38 +196,47 @@
         {% endif %}
         </div>
 
-        <div class="back-bar" style="margin-top: 24px;">
-            <a href="/" class="back-btn">← بازگشت به صفحه اصلی / Back to Home</a>
-        </div>
     </div>
     <script>
         (function() {
             var themeKey = 'citizenship571_theme';
             var langModeKey = 'citizenship_govern_lang_mode';
-            var themeLight = document.getElementById('themeLightGov');
-            var themeDark = document.getElementById('themeDarkGov');
-            var langModeEn = document.getElementById('langModeEnGov');
-            var langModeFr = document.getElementById('langModeFrGov');
             function applyTheme(val) {
-                if (val === 'dark') { document.body.classList.add('theme-dark'); if (themeLight) themeLight.setAttribute('aria-pressed', 'false'); if (themeDark) themeDark.setAttribute('aria-pressed', 'true'); }
-                else { document.body.classList.remove('theme-dark'); if (themeLight) themeLight.setAttribute('aria-pressed', 'true'); if (themeDark) themeDark.setAttribute('aria-pressed', 'false'); }
+                if (val === 'dark') { document.body.classList.add('theme-dark'); }
+                else { document.body.classList.remove('theme-dark'); }
+                document.documentElement.setAttribute('data-theme', val === 'dark' ? 'dark' : 'light');
             }
             function applyLangMode(mode) {
                 var showEn = (mode === 'en');
                 document.querySelectorAll('.lang-block-en').forEach(function(el) { el.style.display = showEn ? '' : 'none'; });
                 document.querySelectorAll('.lang-block-fr').forEach(function(el) { el.style.display = showEn ? 'none' : ''; });
-                if (langModeEn) langModeEn.setAttribute('aria-pressed', showEn ? 'true' : 'false');
-                if (langModeFr) langModeFr.setAttribute('aria-pressed', showEn ? 'false' : 'true');
+                try {
+                    document.documentElement.setAttribute('data-site-lang', showEn ? 'en-fa' : 'fr-fa');
+                    document.documentElement.setAttribute('lang', showEn ? 'en' : 'fr');
+                    document.documentElement.setAttribute('dir', 'ltr');
+                } catch (e) {}
             }
-            var savedTheme = localStorage.getItem(themeKey) || 'light';
-            var savedMode = localStorage.getItem(langModeKey) || 'en';
+            var savedTheme = (function () {
+                try {
+                    var g = localStorage.getItem('citizenSiteTheme');
+                    if (g === 'dark' || g === 'light') return g === 'dark' ? 'dark' : 'light';
+                    g = localStorage.getItem('modernLandingTheme');
+                    if (g === 'dark' || g === 'light') return g === 'dark' ? 'dark' : 'light';
+                    var p = localStorage.getItem(themeKey);
+                    return (p === 'dark') ? 'dark' : 'light';
+                } catch (e) {
+                    return 'light';
+                }
+            })();
+            var savedMode = 'en';
+            try {
+                var sl = localStorage.getItem('citizenSiteLang');
+                if (sl === 'fr-fa') savedMode = 'fr';
+                else if (sl === 'en-fa') savedMode = 'en';
+                else if (localStorage.getItem(langModeKey) === 'fr') savedMode = 'fr';
+            } catch (e) {}
             applyTheme(savedTheme);
             applyLangMode(savedMode);
-            if (themeLight) themeLight.addEventListener('click', function() { localStorage.setItem(themeKey, 'light'); applyTheme('light'); });
-            if (themeDark) themeDark.addEventListener('click', function() { localStorage.setItem(themeKey, 'dark'); applyTheme('dark'); });
-            if (langModeEn) langModeEn.addEventListener('click', function() { localStorage.setItem(langModeKey, 'en'); applyLangMode('en'); });
-            if (langModeFr) langModeFr.addEventListener('click', function() { localStorage.setItem(langModeKey, 'fr'); applyLangMode('fr'); });
-
             var goInput = document.getElementById('goToQuestionGov');
             var goBtn = document.getElementById('goToQuestionBtnGov');
             var container = document.getElementById('questions-container-govern');
@@ -344,5 +338,6 @@
             });
         })();
     </script>
+    {% include '_modern_site_topbar_scripts.html' %}
 </body>
 </html>

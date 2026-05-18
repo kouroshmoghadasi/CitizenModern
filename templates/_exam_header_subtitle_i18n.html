@@ -1,0 +1,11 @@
+{# Subtitle under chapter/exam headers: Persian when body[data-show-fa=yes], else EN vs FR via html[data-site-lang].
+   Set before include: header_subtitle_fa, header_subtitle_en, header_subtitle_fr
+   Optional: header_subtitle_class — extra classes on <p> (e.g. font-size from hero). #}
+{% if header_subtitle_fa or header_subtitle_en or header_subtitle_fr %}
+{% set _subcls = header_subtitle_class | default('') %}
+<p class="exam-header-subtitle {{ _subcls }}" style="opacity: 0.95;">
+  {% if header_subtitle_fa %}<span class="exam-header-subtitle__fa" dir="rtl">{{ header_subtitle_fa }}</span>{% endif %}
+  {% if header_subtitle_en %}<span class="exam-header-subtitle__en">{{ header_subtitle_en }}</span>{% endif %}
+  {% if header_subtitle_fr %}<span class="exam-header-subtitle__fr">{{ header_subtitle_fr }}</span>{% endif %}
+</p>
+{% endif %}
