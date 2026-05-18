@@ -1,12 +1,19 @@
 <!DOCTYPE html>
-<html dir="ltr">
+<html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>پنل مدیر | اشتراک‌ها</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: Tahoma, sans-serif; background: #f0f4f8; min-height: 100vh; padding: 20px; }
+        body {
+            font-family: Tahoma, "Segoe UI", sans-serif;
+            background: #f0f4f8;
+            min-height: 100vh;
+            padding: 20px;
+            direction: rtl;
+            text-align: right;
+        }
         .header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 24px; padding: 16px 20px; background: #fff; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.06); }
         .header h1 { font-size: 1.25rem; color: #1e3c72; }
         .header a { padding: 10px 18px; background: #1e3c72; color: #fff; text-decoration: none; border-radius: 8px; font-weight: 600; }
@@ -42,7 +49,11 @@
         .pay-fixed-amount { font-weight: 700; color: #1e3c72; }
         .reset-password-result { padding: 12px; background: #f0f9ff; border: 1px solid #0ea5e9; border-radius: 8px; }
         .reset-password-result label { display: block; margin-bottom: 6px; font-weight: 600; color: #333; }
-        .reset-password-display { padding: 10px 12px; font-family: monospace; font-size: 1.1rem; width: 220px; margin-left: 8px; border-radius: 6px; border: 1px solid #ccc; }
+        .reset-password-display { padding: 10px 12px; font-family: monospace; font-size: 1.1rem; width: 220px; margin-inline-start: 8px; border-radius: 6px; border: 1px solid #ccc; direction: ltr; text-align: left; }
+        .modal-actions { display: flex; gap: 10px; justify-content: flex-start; flex-wrap: wrap; }
+        input[type="date"],
+        input[type="number"] { direction: ltr; text-align: left; }
+        select { text-align: right; }
         .payments-summary { margin-top: 14px; padding: 12px 14px; background: #e8f4fc; border-radius: 8px; font-size: 0.95rem; color: #1e3c72; border: 1px solid #b8d4e8; }
         .payments-summary .sep { margin: 0 10px; color: #94a3b8; }
         .table-pager { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 14px; padding-top: 12px; border-top: 1px solid #eee; font-size: 0.9rem; color: #475569; }
@@ -63,12 +74,13 @@
         .days-visual-num { font-weight: 700; font-variant-numeric: tabular-nums; min-width: 2.25em; color: #1e293b; }
         .days-bar-track { flex: 1; min-width: 72px; height: 12px; background: #e2e8f0; border-radius: 999px; overflow: hidden; border: 1px solid #cbd5e1; }
         .days-bar-fill { height: 100%; border-radius: 999px; transition: width 0.3s ease; }
-        .days-bar-fill.tier-ok { background: linear-gradient(90deg, #4ade80, #16a34a); }
-        .days-bar-fill.tier-caution { background: linear-gradient(90deg, #facc15, #ca8a04); }
-        .days-bar-fill.tier-warning { background: linear-gradient(90deg, #fb923c, #ea580c); }
-        .days-bar-fill.tier-critical { background: linear-gradient(90deg, #f87171, #dc2626); }
+        .days-bar-fill.tier-ok { background: linear-gradient(270deg, #4ade80, #16a34a); }
+        .days-bar-fill.tier-caution { background: linear-gradient(270deg, #facc15, #ca8a04); }
+        .days-bar-fill.tier-warning { background: linear-gradient(270deg, #fb923c, #ea580c); }
+        .days-bar-fill.tier-critical { background: linear-gradient(270deg, #f87171, #dc2626); }
         .days-bar-fill.tier-muted { background: #94a3b8; width: 0 !important; min-width: 0; }
         .row-num-cell { color: #64748b; font-weight: 600; font-variant-numeric: tabular-nums; width: 3rem; }
+        .cell-ltr { direction: ltr; text-align: left; unicode-bidi: isolate; }
     </style>
 </head>
 <body>
@@ -406,7 +418,7 @@
                     <input type="text" id="editPayNotes" placeholder="اختیاری">
                 </div>
             </div>
-            <div style="display: flex; gap: 10px; justify-content: flex-end;">
+            <div class="modal-actions">
                 <button type="button" class="btn btn-outline" id="editPaymentCancel">انصراف</button>
                 <button type="button" class="btn" id="editPaymentSave">ذخیره</button>
             </div>
@@ -449,7 +461,7 @@
                     <p style="font-size: 0.8rem; color: #666; margin: 6px 0 0;">بخش‌های تست و ۴۱۴ هر دو به این تاریخ تنظیم می‌شوند. برای نگه‌داشتن انقضای فعلی، این فیلد را خالی بگذارید و ذخیره کنید.</p>
                 </div>
             </div>
-            <div style="display: flex; gap: 10px; justify-content: flex-end;">
+            <div class="modal-actions">
                 <button type="button" class="btn btn-outline" id="editUserNameCancel">انصراف</button>
                 <button type="button" class="btn" id="editUserNameSave">ذخیره</button>
             </div>
@@ -638,7 +650,7 @@
                         var delTitle = payCount > 0 ? 'حذف فقط برای کاربران بدون پرداخت ثبت‌شده' : 'حذف کاربر (نیاز به تأیید)';
                         var delDisabled = payCount > 0 ? ' disabled' : '';
                         var tr = document.createElement('tr');
-                        tr.innerHTML = '<td>' + u.id + '</td><td>' + (u.mobile || '').replace(/</g, '&lt;') + '</td><td>' + (nameStr !== '—' ? nameStr.replace(/</g, '&lt;') : nameStr) + '</td><td>' + cityDisp + '</td><td>' + applyDisp.replace(/</g, '&lt;') + '</td><td>' + examDisp.replace(/</g, '&lt;') + '</td><td>' + scoreDisp + '</td><td>' + expBadge + '</td><td>' + (u.notes || '—').replace(/</g, '&lt;') + '</td><td>' +
+                        tr.innerHTML = '<td>' + u.id + '</td><td class="cell-ltr">' + (u.mobile || '').replace(/</g, '&lt;') + '</td><td>' + (nameStr !== '—' ? nameStr.replace(/</g, '&lt;') : nameStr) + '</td><td>' + cityDisp + '</td><td class="cell-ltr">' + applyDisp.replace(/</g, '&lt;') + '</td><td class="cell-ltr">' + examDisp.replace(/</g, '&lt;') + '</td><td>' + scoreDisp + '</td><td class="cell-ltr">' + expBadge + '</td><td>' + (u.notes || '—').replace(/</g, '&lt;') + '</td><td>' +
                             '<button type="button" class="btn btn-sm btn-pay-user" data-user-id="' + u.id + '">ثبت پرداخت</button> ' +
                             '<button type="button" class="btn btn-sm btn-outline edit-name-btn" data-user-id="' + u.id + '" data-first-name="' + escAttr(u.first_name || '') + '" data-last-name="' + escAttr(u.last_name || '') + '" data-city="' + escAttr(u.citizenship_city != null ? String(u.citizenship_city) : '') + '" data-apply-date="' + escAttr(isoDateOnly(u.citizenship_apply_date)) + '" data-exam-date="' + escAttr(isoDateOnly(u.citizenship_exam_date)) + '" data-exam-score="' + escAttr(u.citizenship_exam_score != null ? String(u.citizenship_exam_score) : '') + '" data-expiry-date="' + escAttr(isoDateOnly(u.tests_expiry || u.questions_414_expiry)) + '" title="ویرایش نام، شهر، انقضا، تاریخ اپلای، امتحان و نمره">ویرایش</button> ' +
                             '<button type="button" class="btn btn-sm btn-free" data-user-id="' + u.id + '" title="دسترسی رایگان یک‌ساله">لطف</button> ' +
@@ -1003,7 +1015,7 @@
                     var namePart = paymentDisplayName(p);
                     var userDisplay = namePart ? (namePart.replace(/</g, '&lt;') + ' (' + (p.mobile || '').replace(/</g, '&lt;') + ')') : (p.mobile || '#' + p.user_id).replace(/</g, '&lt;');
                     var tr = document.createElement('tr');
-                    tr.innerHTML = '<td>' + userDisplay + '</td><td>' + p.amount + ' $</td><td>' + (p.payment_date || '') + '</td><td>' + (p.payment_reference || '—').replace(/</g, '&lt;') + '</td>' +
+                    tr.innerHTML = '<td class="cell-ltr">' + userDisplay + '</td><td class="cell-ltr">' + p.amount + ' $</td><td class="cell-ltr">' + (p.payment_date || '') + '</td><td>' + (p.payment_reference || '—').replace(/</g, '&lt;') + '</td>' +
                         '<td><button type="button" class="btn btn-sm btn-outline edit-pay-btn" data-pay-id="' + p.id + '">ویرایش</button></td>' +
                         '<td><button type="button" class="btn btn-sm btn-danger delete-pay-btn" data-pay-id="' + p.id + '">حذف</button></td>';
                     tbody.appendChild(tr);
@@ -1084,7 +1096,7 @@
                 var slice = filteredPen.slice((pendingPage - 1) * PAGE_SIZE, pendingPage * PAGE_SIZE);
                 slice.forEach(function(row) {
                     var tr = document.createElement('tr');
-                    tr.innerHTML = '<td>' + (row.mobile || '').replace(/</g, '&lt;') + '</td><td>' + (row.created_at || '—').replace(/</g, '&lt;') + '</td>';
+                    tr.innerHTML = '<td class="cell-ltr">' + (row.mobile || '').replace(/</g, '&lt;') + '</td><td class="cell-ltr">' + (row.created_at || '—').replace(/</g, '&lt;') + '</td>';
                     tbody.appendChild(tr);
                 });
                 renderTablePager(document.getElementById('pendingPager'), filteredPen.length, pendingPage, function(p) {
