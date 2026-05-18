@@ -151,9 +151,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="{{ url_for('static', filename='modern_landing.css') }}?v=20260509h" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='modern_landing.css') }}?v=20260521d" />
+  <script>document.documentElement.setAttribute("data-site-section", "practice");</script>
+  {% include '_citizen_exam_subpage_shell_css_overrides.html' %}
 </head>
-<body>
+<body class="modern-exams-practice">
   <script>try{var Sf=localStorage.getItem('citizenSiteShowFa');if(Sf!=='yes'&&Sf!=='no')Sf=localStorage.getItem('book_summary_show_fa');if(Sf!=='yes'&&Sf!=='no')Sf=localStorage.getItem('book_summary_2_show_fa');document.body.setAttribute('data-show-fa',Sf==='no'?'no':'yes');}catch(e){document.body.setAttribute('data-show-fa','yes');}</script>
   <script>(function(){try{var fr=document.documentElement.getAttribute('data-site-lang')==='fr-fa';document.querySelectorAll('img[data-alt-fr]').forEach(function(img){var f=img.getAttribute('data-alt-fr');if(fr&&f)img.setAttribute('alt',f);});}catch(e){}})();</script>
     {% include '_citizen_site_theme_body_sync.html' %}
@@ -163,6 +165,8 @@
     <div class="bg__blob bg__blob--b"></div>
   </div>
   {% set modern_topbar_hide_study = true %}
+  {% set modern_topbar_show_practice = true %}
+  {% set modern_topbar_nav_mode = 'practice' %}
   {% set modern_topbar_hide_414 = true %}
   {% include '_modern_site_topbar.html' %}
     <main class="citizenship-exams-main">

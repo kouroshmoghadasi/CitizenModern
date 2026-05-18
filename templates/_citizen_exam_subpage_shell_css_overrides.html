@@ -13,6 +13,22 @@ html[data-theme="light"] body.citizenship414-page { color-scheme: light; }
 html[data-theme="dark"] body.citizenship-exam-subpage,
 html[data-theme="dark"] body.citizenship414-page { color-scheme: dark; }
 .citizenship-exam-subpage .topbar { direction: ltr; }
+/* Practice pages: Study must not appear in topbar — only Practice */
+body.citizenship-exam-subpage .topbar__right a.chip--study,
+body.citizenship-exam-subpage .topbar__right a[href="/study"],
+body.modern-exams-practice .topbar__right a.chip--study,
+body.modern-exams-practice .topbar__right a[href="/study"],
+body.citizenship-exam-subpage .topbar-mobile-sheet a[href="/study"],
+body.modern-exams-practice .topbar-mobile-sheet a[href="/study"] {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+}
 body[data-show-fa="no"] .block-fa { display: none !important; }
 
 /* Exam/chapter header subtitle: FA vs EN/FR (matches topbar Persian checkbox + site lang) */
@@ -264,28 +280,14 @@ body.theme-dark .exam-q-controls > [id^="q-nav-bar"] .q-nav-btn.btn-prev {
     padding: 7px 12px !important;
     font-size: 0.8rem !important;
   }
-  /* Persian «سوال» → compact “Q” (visual only; label text stays for accessibility) */
   .exam-q-controls .go-to-q-wrap > label.theme-label {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
     flex: 0 0 auto;
-    min-width: 0.85em;
     margin: 0 !important;
     padding: 0 2px !important;
-    color: transparent !important;
-    font-size: 0 !important;
-    line-height: 0 !important;
-    overflow: visible;
-    white-space: nowrap;
-  }
-  .exam-q-controls .go-to-q-wrap > label.theme-label::after {
-    content: "Q";
-    color: var(--text);
-    font-size: clamp(0.78rem, 3.2vw, 0.92rem);
+    font-size: clamp(0.72rem, 2.8vw, 0.85rem);
     font-weight: 700;
     line-height: 1.2;
+    white-space: nowrap;
   }
 
   /* All exam/chapter pages: stacked layout on mobile — no overlap */

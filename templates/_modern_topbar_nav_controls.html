@@ -1,0 +1,23 @@
+{# Shared topbar controls (language, theme, account) — after Home/Study/Practice chips. #}
+<div class="langBar" role="group" aria-label="Language (EN / FR)">
+  <button type="button" class="chip chip--langToggle" id="siteLangEnFa" aria-pressed="true" title="English">EN</button>
+  <button type="button" class="chip chip--langToggle" id="siteLangFrFa" aria-pressed="false" title="Français">FR</button>
+</div>
+<label class="topbarShowFa" title="When checked, Persian summary text is shown with English or French on book summary pages">
+  <input type="checkbox" id="siteShowPersianSections" aria-label="Show Persian sections in book summaries" />
+  <span class="topbarShowFa__caption siteLang"><span class="siteLang__en">Persian sections</span><span class="siteLang__fr">Parties persanes</span></span>
+</label>
+<button class="iconbtn iconbtn--theme" type="button" id="themeToggle" aria-label="Switch to light mode" aria-pressed="true" title="Theme">
+  <span id="themeToggleIcon" aria-hidden="true"></span>
+</button>
+<button type="button" class="chip chip--lang chip--subscribe siteLang" id="topbarSubscribeBtn" aria-haspopup="dialog" aria-expanded="false" title="Subscribe">
+  <span class="siteLang__en">Subscribe</span>
+  <span class="siteLang__fr">S’abonner</span>
+</button>
+<button class="iconbtn iconbtn--account" type="button" id="topbarAccountBtn" aria-label="Account" aria-haspopup="dialog" aria-expanded="false" title="Account">
+  <svg class="iconbtn--account__svg" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <path d="M20 21a8 8 0 1 0-16 0" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    <path d="M12 13a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" stroke="currentColor" stroke-width="2"/>
+  </svg>
+  <span class="iconbtn--account__badge" id="topbarAccountBadge" aria-hidden="true" hidden></span>
+</button>

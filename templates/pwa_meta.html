@@ -8,7 +8,7 @@
 <script>
 (function(){
   if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
-    navigator.serviceWorker.register('{{ url_for("static", filename="sw.js", v="8") }}', { scope: '/' }).then(function(){}, function(){});
+    navigator.serviceWorker.register('{{ url_for("static", filename="sw.js", v="9") }}', { scope: '/' }).then(function(){}, function(){});
   }
   var pwaInstallPrompt = null;
   function isWindows() {

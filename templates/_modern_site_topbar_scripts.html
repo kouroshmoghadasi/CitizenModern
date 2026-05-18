@@ -296,5 +296,111 @@
   }
 })();
 </script>
+<script>
+/* Practice pages: Study off, Practice on (works even if cached HTML is old) */
+(function () {
+  var practice =
+    document.documentElement.getAttribute("data-site-section") === "practice" ||
+    document.body.classList.contains("citizenship-exam-subpage") ||
+    document.body.classList.contains("modern-exams-practice");
+  if (!practice) return;
+
+  document
+    .querySelectorAll('.topbar__right a[href="/study"], .topbar-mobile-sheet a[href="/study"]')
+    .forEach(function (el) {
+      el.remove();
+    });
+
+  document.querySelectorAll(".topbar__right, .topbar-mobile-sheet nav").forEach(function (nav) {
+    if (!nav || nav.querySelector('a[href="/citizenship-exams"], a.chip--practice')) return;
+    var a = document.createElement("a");
+    a.className = "chip chip--lang chip--practice";
+    a.href = "/citizenship-exams";
+    a.innerHTML =
+      '<span class="siteLang"><span class="siteLang__en">Practice</span><span class="siteLang__fr">Entraînement</span></span>';
+    var first = nav.querySelector(".langBar, .chip--langToggle, button, label");
+    if (first) nav.insertBefore(a, first);
+    else nav.insertBefore(a, nav.firstChild);
+  });
+})();
+</script>
+<script>
+/* Mobile: top menu — tap Menu to expand/collapse sheet below header */
+(function () {
+  var chrome = document.getElementById("siteHeaderChrome");
+  var toggle = document.getElementById("topbarMobileToggle");
+  var panel = document.getElementById("topbarMobilePanel");
+  if (!chrome || !toggle || !panel) return;
+
+  var mq = window.matchMedia("(max-width: 560px)");
+
+  function isMobile() {
+    return mq.matches;
+  }
+
+  function setExpanded(expanded) {
+    chrome.classList.toggle("site-header-chrome--menu-expanded", expanded);
+    toggle.setAttribute("aria-expanded", expanded ? "true" : "false");
+    var label = expanded ? "Close menu" : "Open menu";
+    toggle.setAttribute("title", label);
+    toggle.setAttribute("aria-label", label);
+    if (expanded) {
+      panel.removeAttribute("hidden");
+    } else if (isMobile()) {
+      panel.setAttribute("hidden", "");
+    }
+    try {
+      document.documentElement.classList.toggle("topbar-menu-open", expanded && isMobile());
+    } catch (e) {}
+  }
+
+  function collapse() {
+    if (isMobile()) setExpanded(false);
+  }
+
+  toggle.addEventListener("click", function (e) {
+    e.stopPropagation();
+    if (!isMobile()) return;
+    setExpanded(!chrome.classList.contains("site-header-chrome--menu-expanded"));
+  });
+
+  document.addEventListener("click", function (e) {
+    if (!isMobile() || !chrome.classList.contains("site-header-chrome--menu-expanded")) return;
+    if (chrome.contains(e.target)) return;
+    collapse();
+  });
+
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") collapse();
+  });
+
+  function onMqChange() {
+    if (isMobile()) {
+      setExpanded(false);
+      try {
+        if (!sessionStorage.getItem("topbarMenuHintSeen")) {
+          chrome.classList.add("site-header-chrome--hint");
+          sessionStorage.setItem("topbarMenuHintSeen", "1");
+          window.setTimeout(function () {
+            chrome.classList.remove("site-header-chrome--hint");
+          }, 4200);
+        }
+      } catch (err) {}
+    } else {
+      chrome.classList.remove("site-header-chrome--hint");
+      panel.removeAttribute("hidden");
+      setExpanded(false);
+    }
+  }
+
+  if (typeof mq.addEventListener === "function") {
+    mq.addEventListener("change", onMqChange);
+  } else if (typeof mq.addListener === "function") {
+    mq.addListener(onMqChange);
+  }
+  onMqChange();
+})();
+</script>
+
 {% include '_citizen_account_panel_scripts.html' %}
 {% include '_citizen_purchase_panel_scripts.html' %}

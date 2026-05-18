@@ -7,9 +7,18 @@
     </div>
     {% set modern_topbar_hide_414 = true %}
     {% set _use_home_nav = modern_topbar_use_home_nav | default(false) or request.endpoint in ('citizenship_exam_report', 'citizenship_571') %}
-    {% if _use_home_nav %}
     {% set modern_topbar_hide_study = true %}
-    {% else %}
-    {% set modern_topbar_hide_home = true %}
-    {% endif %}
+    {% set modern_topbar_hide_home = (not _use_home_nav) %}
+    {% set modern_topbar_show_practice = (not _use_home_nav) %}
+    {% if not _use_home_nav %}{% set modern_topbar_nav_mode = 'practice' %}{% endif %}
     {% include '_modern_site_topbar.html' %}
+    {% if not _use_home_nav %}
+    <script>
+    (function () {
+      document.documentElement.setAttribute("data-site-section", "practice");
+      document.querySelectorAll('.topbar__right a[href="/study"], .topbar-mobile-sheet a[href="/study"]').forEach(function (el) {
+        el.remove();
+      });
+    })();
+    </script>
+    {% endif %}

@@ -3,7 +3,7 @@
  * Caches main pages and static assets for offline / Add to Home Screen.
  */
 // Bump this to force clients to refresh cached HTML/assets.
-const CACHE_NAME = 'citizentest-v8';
+const CACHE_NAME = 'citizentest-v9';
 const URLS = [
   // Keep only critical static assets for offline; do NOT precache HTML routes
   // because we want main pages to update immediately.
