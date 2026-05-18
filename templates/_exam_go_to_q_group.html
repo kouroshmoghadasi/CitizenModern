@@ -1,0 +1,14 @@
+{# Jump-to-question — follows html[data-site-lang] (EN/FR). #}
+{# Vars: go_input_id, go_btn_id, go_max; optional go_placeholder, go_show_icon #}
+{% set go_ph = go_placeholder | default('1–' ~ go_max) %}
+<div class="group go-to-q-wrap">
+    {% if go_show_icon %}<span class="go-to-q-icon" title="Go to question number" aria-hidden="true">🔍</span>{% endif %}
+    <label for="{{ go_input_id }}" class="theme-label siteLang" style="margin: 0;">
+        <span class="siteLang__en">Question</span>
+        <span class="siteLang__fr">Question</span>
+    </label>
+    <input type="number" id="{{ go_input_id }}" min="1" max="{{ go_max }}" placeholder="{{ go_ph }}" aria-label="Question number">
+    <button type="button" class="go-to-q-btn" id="{{ go_btn_id }}">
+        <span class="siteLang"><span class="siteLang__en">Go</span><span class="siteLang__fr">Aller</span></span>
+    </button>
+</div>

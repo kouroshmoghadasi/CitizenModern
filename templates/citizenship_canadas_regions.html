@@ -129,18 +129,18 @@
         {% include '_exam_page_header.html' %}
         <div class="exam-q-controls">
         <div class="tool-bar">
-            <div class="group go-to-q-wrap">
-                <label for="goToQuestionReg" class="theme-label" style="margin: 0;">سوال</label>
-                <input type="number" id="goToQuestionReg" min="1" max="{{ max_question_reg }}" placeholder="1–{{ max_question_reg }}" aria-label="Question number">
-                <button type="button" class="go-to-q-btn" id="goToQuestionBtnReg">برو</button>
-            </div>
+            {% set go_input_id = 'goToQuestionReg' %}
+            {% set go_btn_id = 'goToQuestionBtnReg' %}
+            {% set go_max = max_question_reg %}
+            {% include '_exam_go_to_q_group.html' %}
 
         </div>
-        <div id="q-nav-bar-reg" class="q-nav-bar-sym" data-max-question="{{ max_visible_reg }}">
-            <button type="button" class="q-nav-btn btn-prev" id="qPrevReg" aria-label="سوال قبلی">← سوال قبلی</button>
-            <span class="q-nav-current" role="status" aria-live="polite" dir="ltr">Question <span id="currentQNumReg">1</span> of {{ max_visible_reg }}</span>
-            <button type="button" class="q-nav-btn" id="qNextReg" aria-label="سوال بعدی">سوال بعدی →</button>
-        </div>
+        {% set q_nav_id = 'q-nav-bar-reg' %}
+        {% set q_prev_id = 'qPrevReg' %}
+        {% set q_next_id = 'qNextReg' %}
+        {% set q_num_id = 'currentQNumReg' %}
+        {% set q_max = max_visible_reg %}
+        {% include '_exam_q_nav_bar.html' %}
         </div>
         <div id="questions-container-reg" class="questions-one-by-one">
         {% for q in reg_questions %}

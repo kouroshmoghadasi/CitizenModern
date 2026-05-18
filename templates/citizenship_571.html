@@ -242,19 +242,20 @@
     {% include '_citizen_exam_subpage_body_top.html' %}
     <div class="wrap">
         <div class="tool-bar">
-            <div class="group go-to-q-wrap">
-                <span class="go-to-q-icon" title="Go to question number / برو به سوال" aria-hidden="true">🔍</span>
-                <label for="goToQuestion571" class="theme-label" style="margin: 0;">سوال</label>
-                <input type="number" id="goToQuestion571" min="1" max="{{ max_question_571 }}" placeholder="مثلاً 250" aria-label="Question number (1–{{ max_question_571 }})">
-                <button type="button" class="go-to-q-btn" id="goToQuestionBtn571">برو</button>
-            </div>
+            {% set go_input_id = 'goToQuestion571' %}
+            {% set go_btn_id = 'goToQuestionBtn571' %}
+            {% set go_max = max_question_571 %}
+            {% set go_placeholder = 'e.g. 250' %}
+            {% set go_show_icon = true %}
+            {% include '_exam_go_to_q_group.html' %}
 
         </div>
-        <div id="q-nav-bar-571" class="q-nav-bar-571" data-max-question="{{ max_question_571 }}">
-            <button type="button" class="q-nav-btn btn-prev" id="qPrev571" aria-label="سوال قبلی">← سوال قبلی</button>
-            <span class="q-nav-current" role="status" aria-live="polite" dir="ltr">Question <span id="currentQNum571">1</span> of {{ max_question_571 }}</span>
-            <button type="button" class="q-nav-btn" id="qNext571" aria-label="سوال بعدی">سوال بعدی →</button>
-        </div>
+        {% set q_nav_id = 'q-nav-bar-571' %}
+        {% set q_prev_id = 'qPrev571' %}
+        {% set q_next_id = 'qNext571' %}
+        {% set q_num_id = 'currentQNum571' %}
+        {% set q_max = max_question_571 %}
+        {% include '_exam_q_nav_bar.html' %}
         <div id="questions-container-571" class="questions-one-by-one">
         {% for q in questions %}
         {% set slide_no = q['slide'] if 'slide' in q else none %}

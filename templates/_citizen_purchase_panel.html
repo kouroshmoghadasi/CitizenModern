@@ -1,6 +1,6 @@
 {# Topbar subscribe popup — purchase info only (EN / FR). #}
 <link rel="stylesheet" href="{{ url_for('static', filename='citizen_purchase_panel.css') }}?v=20260519k" />
-<link rel="stylesheet" href="{{ url_for('static', filename='citizen_subscription_block.css') }}?v=20260519k" />
+<link rel="stylesheet" href="{{ url_for('static', filename='citizen_subscription_block.css') }}?v=20260520d" />
 <div id="purchasePanelModal" class="subscription-modal purchase-panel-modal" role="dialog" aria-modal="true" aria-labelledby="purchasePanelTitle" dir="ltr" lang="en" hidden>
   <div class="subscription-modal-backdrop" data-purchase-close></div>
   <div class="subscription-modal-box purchase-panel-box" id="purchasePanelBox" dir="ltr">
@@ -14,8 +14,8 @@
     <div class="purchase-panel-body">
       <div id="purchasePanelIntro" class="purchase-panel-intro siteLang">
         <p class="purchase-panel-price">
-          <span class="siteLang__en"><strong>${{ subscription_price }} CAD</strong> — one-month access to the full bundle.</span>
-          <span class="siteLang__fr"><strong>{{ subscription_price }}&nbsp;$</strong> — accès d’un mois à l’ensemble complet.</span>
+          <span class="siteLang__en"><strong class="subscription-intro-price subscription-intro-price--featured">${{ subscription_price }} CAD</strong> — one-month access to the full bundle.</span>
+          <span class="siteLang__fr"><strong class="subscription-intro-price subscription-intro-price--featured">{{ subscription_price }}&nbsp;$</strong> — accès d’un mois à l’ensemble complet.</span>
         </p>
         <p class="purchase-panel-price purchase-panel-price--alt subscription-intro-line--alt">
           <span class="siteLang__en"><strong class="subscription-intro-price subscription-intro-price--featured">$20 CAD</strong> — two-month subscription.</span>

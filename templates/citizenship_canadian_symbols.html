@@ -127,18 +127,18 @@
         {% include '_exam_page_header.html' %}
         <div class="exam-q-controls">
         <div class="tool-bar">
-            <div class="group go-to-q-wrap">
-                <label for="goToQuestionSym" class="theme-label" style="margin: 0;">سوال</label>
-                <input type="number" id="goToQuestionSym" min="1" max="{{ max_question_sym }}" placeholder="1–{{ max_question_sym }}" aria-label="Question number">
-                <button type="button" class="go-to-q-btn" id="goToQuestionBtnSym">برو</button>
-            </div>
+            {% set go_input_id = 'goToQuestionSym' %}
+            {% set go_btn_id = 'goToQuestionBtnSym' %}
+            {% set go_max = max_question_sym %}
+            {% include '_exam_go_to_q_group.html' %}
 
         </div>
-        <div id="q-nav-bar-sym" class="q-nav-bar-sym" data-max-question="{{ max_visible_sym }}">
-            <button type="button" class="q-nav-btn btn-prev" id="qPrevSym" aria-label="سوال قبلی">← سوال قبلی</button>
-            <span class="q-nav-current" role="status" aria-live="polite" dir="ltr">Question <span id="currentQNumSym">1</span> of {{ max_visible_sym }}</span>
-            <button type="button" class="q-nav-btn" id="qNextSym" aria-label="سوال بعدی">سوال بعدی →</button>
-        </div>
+        {% set q_nav_id = 'q-nav-bar-sym' %}
+        {% set q_prev_id = 'qPrevSym' %}
+        {% set q_next_id = 'qNextSym' %}
+        {% set q_num_id = 'currentQNumSym' %}
+        {% set q_max = max_visible_sym %}
+        {% include '_exam_q_nav_bar.html' %}
         </div>
         <div id="questions-container-sym" class="questions-one-by-one">
         {% for q in sym_questions %}

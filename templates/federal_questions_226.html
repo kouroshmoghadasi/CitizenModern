@@ -147,19 +147,19 @@
 
         <div class="exam-q-controls">
         <div class="tool-bar">
-            <div class="group go-to-q-wrap">
-                <label for="goToQuestion226" class="theme-label" style="margin: 0;">سوال</label>
-                <input id="goToQuestion226" type="number" min="1" max="{{ max_question_226 }}" placeholder="1–{{ max_question_226 }}" aria-label="Question number">
-                <button type="button" class="go-to-q-btn" id="goToQuestionBtn226">برو</button>
-            </div>
+            {% set go_input_id = 'goToQuestion226' %}
+            {% set go_btn_id = 'goToQuestionBtn226' %}
+            {% set go_max = max_question_226 %}
+            {% include '_exam_go_to_q_group.html' %}
 
         </div>
 
-        <div id="q-nav-bar-226" class="q-nav-bar-ch4" data-max-question="{{ max_question_226 }}">
-            <button type="button" class="q-nav-btn btn-prev" id="qPrev226" aria-label="سوال قبلی">← سوال قبلی</button>
-            <span class="q-nav-current" role="status" aria-live="polite" dir="ltr">Question <span id="currentQNum226">1</span> of {{ max_question_226 }}</span>
-            <button type="button" class="q-nav-btn" id="qNext226" aria-label="سوال بعدی">سوال بعدی →</button>
-        </div>
+        {% set q_nav_id = 'q-nav-bar-226' %}
+        {% set q_prev_id = 'qPrev226' %}
+        {% set q_next_id = 'qNext226' %}
+        {% set q_num_id = 'currentQNum226' %}
+        {% set q_max = max_question_226 %}
+        {% include '_exam_q_nav_bar.html' %}
         </div>
 
         <div id="questions-container-226" class="questions-one-by-one">

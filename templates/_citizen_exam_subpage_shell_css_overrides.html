@@ -26,6 +26,16 @@ html[data-site-lang="fr-fa"] body[data-show-fa="no"] .exam-header-subtitle .exam
 .exam-header-subtitle .exam-header-subtitle__fr:empty { display: none !important; }
 .exam-hero-text .exam-header-subtitle { font-size: 0.95em; }
 
+/* Exam controls: EN/FR labels (site lang, not Persian question blocks) */
+.citizenship-exam-subpage .siteLang .siteLang__fr,
+.citizenship414-page .siteLang .siteLang__fr { display: none; }
+html[data-site-lang="fr-fa"] .citizenship-exam-subpage .siteLang .siteLang__en,
+html[data-site-lang="fr-fa"] .citizenship414-page .siteLang .siteLang__en { display: none; }
+html[data-site-lang="fr-fa"] .citizenship-exam-subpage .siteLang .siteLang__fr,
+html[data-site-lang="fr-fa"] .citizenship414-page .siteLang .siteLang__fr { display: inline; }
+.citizenship-exam-subpage .q-nav-current__prefix { margin-inline-end: 0.2em; }
+.citizenship-exam-subpage .q-nav-current__suffix { margin-inline-start: 0.2em; }
+
 /* One row, two visually separate frames: navigation vs jump-to-question (LTR flex inside RTL pages) */
 .exam-q-controls {
   display: flex;
@@ -83,6 +93,100 @@ body.theme-dark .exam-q-controls > .tool-bar {
 .exam-q-controls > .tool-bar > .group:only-child {
   margin-inline-start: auto;
 }
+
+/* Question nav — Prev / Next (all chapter & exam pages) */
+.exam-q-controls > [id^="q-nav-bar"] {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 12px !important;
+}
+.exam-q-controls > [id^="q-nav-bar"] .q-nav-current {
+  flex: 1 1 auto;
+  min-width: 0;
+  text-align: center;
+  font-weight: 600;
+  font-size: clamp(0.8rem, 2.1vw, 0.95rem);
+  line-height: 1.35;
+  color: var(--text-muted);
+  letter-spacing: 0.01em;
+}
+.exam-q-controls > [id^="q-nav-bar"] .q-nav-current__num,
+.exam-q-controls > [id^="q-nav-bar"] .q-nav-current span[id^="currentQNum"] {
+  color: var(--accent);
+  font-weight: 800;
+  font-size: 1.08em;
+  margin: 0 0.15em;
+}
+.exam-q-controls > [id^="q-nav-bar"] .q-nav-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  flex: 0 1 auto;
+  min-width: 5.25rem;
+  min-height: 44px;
+  padding: 0 16px !important;
+  border-radius: 12px !important;
+  border: 1.5px solid color-mix(in srgb, var(--accent) 42%, var(--border)) !important;
+  background: color-mix(in srgb, var(--accent) 7%, var(--card-bg)) !important;
+  color: var(--accent) !important;
+  font-family: inherit;
+  font-size: 0.875rem !important;
+  font-weight: 700 !important;
+  line-height: 1.2 !important;
+  white-space: nowrap !important;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.07);
+  transition: background 0.18s ease, border-color 0.18s ease, transform 0.12s ease, box-shadow 0.18s ease;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+.exam-q-controls > [id^="q-nav-bar"] .q-nav-btn__chev {
+  font-size: 1.05em;
+  line-height: 1;
+  opacity: 0.92;
+}
+.exam-q-controls > [id^="q-nav-bar"] .q-nav-btn:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--accent) 14%, var(--card-bg)) !important;
+  border-color: color-mix(in srgb, var(--accent) 58%, var(--border)) !important;
+  box-shadow: 0 2px 10px color-mix(in srgb, var(--accent) 20%, transparent);
+}
+.exam-q-controls > [id^="q-nav-bar"] .q-nav-btn:active:not(:disabled) {
+  transform: scale(0.98);
+}
+.exam-q-controls > [id^="q-nav-bar"] .q-nav-btn:disabled {
+  opacity: 0.4 !important;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+.exam-q-controls > [id^="q-nav-bar"] .q-nav-btn.btn-prev {
+  background: transparent !important;
+  border-color: color-mix(in srgb, var(--accent) 36%, var(--border)) !important;
+}
+body.theme-dark .exam-q-controls > [id^="q-nav-bar"] .q-nav-btn.btn-prev {
+  background: rgba(255, 255, 255, 0.05) !important;
+}
+.exam-q-controls > [id^="q-nav-bar"] .q-nav-btn.q-nav-btn--next,
+.exam-q-controls > [id^="q-nav-bar"] .q-nav-btn:last-of-type {
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light, var(--accent)) 100%) !important;
+  color: #fff !important;
+  border-color: transparent !important;
+  box-shadow: 0 2px 12px color-mix(in srgb, var(--accent) 38%, transparent);
+}
+.exam-q-controls > [id^="q-nav-bar"] .q-nav-btn.q-nav-btn--next .q-nav-btn__chev,
+.exam-q-controls > [id^="q-nav-bar"] .q-nav-btn:last-of-type .q-nav-btn__chev {
+  opacity: 1;
+}
+.exam-q-controls > [id^="q-nav-bar"] .q-nav-btn.q-nav-btn--next:hover:not(:disabled),
+.exam-q-controls > [id^="q-nav-bar"] .q-nav-btn:last-of-type:hover:not(:disabled) {
+  filter: brightness(1.06);
+  box-shadow: 0 4px 16px color-mix(in srgb, var(--accent) 45%, transparent);
+}
+
 /* Mobile: keep one horizontal row (two frames side by side); scroll if needed */
 @media (max-width: 720px) {
   .exam-q-controls {
@@ -118,14 +222,6 @@ body.theme-dark .exam-q-controls > .tool-bar {
     text-align: center;
     font-size: clamp(0.68rem, 2.9vw, 0.85rem);
     line-height: 1.2;
-  }
-  .exam-q-controls > [id^="q-nav-bar"] .q-nav-btn {
-    width: auto !important;
-    flex: 0 1 auto;
-    min-height: 40px !important;
-    padding: 7px 8px !important;
-    font-size: clamp(0.68rem, 2.6vw, 0.8rem);
-    white-space: nowrap;
   }
   /* Override per-page .tool-bar { flex-direction: column } inside merged controls */
   .exam-q-controls > .tool-bar {
@@ -192,8 +288,8 @@ body.theme-dark .exam-q-controls > .tool-bar {
     line-height: 1.2;
   }
 
-  /* Exam1–3 mobile: stacked layout — no squeezed single row / overlap */
-  .exam-q-controls.exam-q-controls--sample-test {
+  /* All exam/chapter pages: stacked layout on mobile — no overlap */
+  .exam-q-controls {
     flex-direction: column !important;
     align-items: stretch !important;
     flex-wrap: nowrap !important;
@@ -203,7 +299,7 @@ body.theme-dark .exam-q-controls > .tool-bar {
     overflow-y: visible !important;
     max-width: 100%;
   }
-  .exam-q-controls.exam-q-controls--sample-test > [id^="q-nav-bar"] {
+  .exam-q-controls > [id^="q-nav-bar"] {
     order: -1 !important;
     width: 100% !important;
     flex: none !important;
@@ -215,21 +311,17 @@ body.theme-dark .exam-q-controls > .tool-bar {
     padding: 10px 8px !important;
     box-sizing: border-box;
   }
-  .exam-q-controls.exam-q-controls--sample-test > [id^="q-nav-bar"] .q-nav-btn:first-of-type {
+  .exam-q-controls > [id^="q-nav-bar"] .q-nav-btn:first-of-type {
     order: unset !important;
     grid-column: 1;
     justify-self: stretch;
     width: 100% !important;
     max-width: none;
     min-height: 44px !important;
-    padding: 8px 6px !important;
-    font-size: 0.7rem !important;
-    line-height: 1.25;
-    white-space: normal !important;
-    text-align: center;
-    word-break: break-word;
+    padding: 0 10px !important;
+    font-size: clamp(0.78rem, 2.8vw, 0.875rem) !important;
   }
-  .exam-q-controls.exam-q-controls--sample-test > [id^="q-nav-bar"] .q-nav-current {
+  .exam-q-controls > [id^="q-nav-bar"] .q-nav-current {
     order: unset !important;
     grid-column: 2;
     grid-row: 1;
@@ -243,21 +335,17 @@ body.theme-dark .exam-q-controls > .tool-bar {
     overflow: hidden;
     text-overflow: ellipsis;
   }
-  .exam-q-controls.exam-q-controls--sample-test > [id^="q-nav-bar"] .q-nav-btn:last-of-type {
+  .exam-q-controls > [id^="q-nav-bar"] .q-nav-btn:last-of-type {
     order: unset !important;
     grid-column: 3;
     justify-self: stretch;
     width: 100% !important;
     max-width: none;
     min-height: 44px !important;
-    padding: 8px 6px !important;
-    font-size: 0.7rem !important;
-    line-height: 1.25;
-    white-space: normal !important;
-    text-align: center;
-    word-break: break-word;
+    padding: 0 10px !important;
+    font-size: clamp(0.78rem, 2.8vw, 0.875rem) !important;
   }
-  .exam-q-controls.exam-q-controls--sample-test > .tool-bar {
+  .exam-q-controls > .tool-bar {
     order: 0 !important;
     width: 100% !important;
     flex: none !important;
@@ -276,12 +364,12 @@ body.theme-dark .exam-q-controls > .tool-bar {
     margin-top: 10px;
     min-height: unset !important;
   }
-  .exam-q-controls.exam-q-controls--sample-test .exam-score-row {
+  .exam-q-controls .exam-score-row {
     flex: 1 1 auto;
     justify-content: center !important;
     min-width: 0;
   }
-  .exam-q-controls.exam-q-controls--sample-test .go-to-q-wrap {
+  .exam-q-controls .go-to-q-wrap {
     flex: 0 0 auto;
   }
 }

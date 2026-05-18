@@ -183,18 +183,18 @@
                 <span class="ok exam-score-pill"><span class="exam-score-pill__top"><span class="exam-score-pill__ic" aria-hidden="true">✓</span><strong id="examCorrectCount" class="exam-score-pill__n">0</strong></span><span class="exam-score-pill__cap siteLang siteLang--stack"><span class="siteLang__en">Correct</span><span class="siteLang__fr">Justes</span></span></span>
                 <span class="bad exam-score-pill"><span class="exam-score-pill__top"><span class="exam-score-pill__ic" aria-hidden="true">✗</span><strong id="examWrongCount" class="exam-score-pill__n">0</strong></span><span class="exam-score-pill__cap siteLang siteLang--stack"><span class="siteLang__en">Incorrect</span><span class="siteLang__fr">Erreurs</span></span></span>
             </div>
-            <div class="group go-to-q-wrap">
-                <label for="goToQuestionExam1" class="theme-label" style="margin: 0;">سوال</label>
-                <input type="number" id="goToQuestionExam1" min="1" max="{{ max_visible_exam1 }}" placeholder="1–{{ max_visible_exam1 }}" aria-label="Question number">
-                <button type="button" class="go-to-q-btn" id="goToQuestionBtnExam1">برو</button>
-            </div>
+            {% set go_input_id = 'goToQuestionExam1' %}
+            {% set go_btn_id = 'goToQuestionBtnExam1' %}
+            {% set go_max = max_visible_exam1 %}
+            {% include '_exam_go_to_q_group.html' %}
 
         </div>
-        <div id="q-nav-bar-exam1" class="q-nav-bar-ch1" data-max-question="{{ max_visible_exam1 }}">
-            <button type="button" class="q-nav-btn btn-prev" id="qPrevExam1" aria-label="سوال قبلی">← سوال قبلی</button>
-            <span class="q-nav-current" role="status" aria-live="polite" dir="ltr">Question <span id="currentQNumExam1">1</span> of {{ max_visible_exam1 }}</span>
-            <button type="button" class="q-nav-btn" id="qNextExam1" aria-label="سوال بعدی">سوال بعدی →</button>
-        </div>
+        {% set q_nav_id = 'q-nav-bar-exam1' %}
+        {% set q_prev_id = 'qPrevExam1' %}
+        {% set q_next_id = 'qNextExam1' %}
+        {% set q_num_id = 'currentQNumExam1' %}
+        {% set q_max = max_visible_exam1 %}
+        {% include '_exam_q_nav_bar.html' %}
         </div>
         <div id="questions-container-exam1" class="questions-one-by-one">
         {% for q in questions %}
