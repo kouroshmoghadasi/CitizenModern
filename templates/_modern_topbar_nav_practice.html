@@ -1,3 +1,7 @@
-{# Practice section only — no Study chip (citizenship-introduction, chapter tests, /citizenship-exams). #}
-<a class="chip chip--lang chip--practice{% if _topbar_practice_current | default(false) %} chip--nav-current{% endif %}" href="{{ url_for('citizenship_exams') }}"{% if _topbar_practice_current | default(false) %} aria-current="page"{% endif %}><span class="siteLang"><span class="siteLang__en">Practice</span><span class="siteLang__fr">Entraînement</span></span></a>
+{# Practice section — one “up” chip: hub → Home; chapter/test → Practice list. #}
+{% if request.endpoint == 'citizenship_exams' %}
+<a class="chip chip--lang" href="/"><span class="siteLang"><span class="siteLang__en">Home</span><span class="siteLang__fr">Accueil</span></span></a>
+{% else %}
+<a class="chip chip--lang chip--practice" href="{{ url_for('citizenship_exams') }}"><span class="siteLang"><span class="siteLang__en">Practice</span><span class="siteLang__fr">Entraînement</span></span></a>
+{% endif %}
 {% include '_modern_topbar_nav_controls.html' %}

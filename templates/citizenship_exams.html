@@ -151,7 +151,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="{{ url_for('static', filename='modern_landing.css') }}?v=20260521d" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='modern_landing.css') }}?v=20260521e" />
   <script>document.documentElement.setAttribute("data-site-section", "practice");</script>
   {% include '_citizen_exam_subpage_shell_css_overrides.html' %}
 </head>
@@ -165,7 +165,7 @@
     <div class="bg__blob bg__blob--b"></div>
   </div>
   {% set modern_topbar_hide_study = true %}
-  {% set modern_topbar_show_practice = true %}
+  {% set modern_topbar_show_practice = false %}
   {% set modern_topbar_nav_mode = 'practice' %}
   {% set modern_topbar_hide_414 = true %}
   {% include '_modern_site_topbar.html' %}
@@ -217,17 +217,6 @@
                     <div class="exam-card-body">
                         <h2 class="siteLang siteLang--stack"><span class="siteLang__en">Canada's History</span><span class="siteLang__fr">Histoire du Canada</span></h2>
                         <p class="siteLang siteLang--stack"><span class="siteLang__en">Chapter 3 — Indigenous history, European contact, and Confederation (Discover Canada)</span><span class="siteLang__fr">Chapitre 3 — histoire autochtone, présence européenne et Confédération (<em>Découvrir le Canada</em>)</span></p>
-                    </div>
-                </a>
-            </article>
-            <article class="exam-card" id="canadian-history-timeline-study">
-                <a href="{{ url_for('canadian_history_timeline') }}">
-                    <div class="exam-card-img-wrap">
-                    <img src="{{ url_for('static', filename='images/canada-history-timeline-hero.png') }}" alt="Key events in Canadian history — illustrated timeline, study page" width="320" height="180" loading="lazy" data-alt-fr="Dates clés de l’histoire du Canada — frise illustrée, page d’étude">
-                    </div>
-                    <div class="exam-card-body">
-                        <h2 class="siteLang siteLang--stack"><span class="siteLang__en">Key events in Canadian history</span><span class="siteLang__fr">Dates clés de l’histoire du Canada</span></h2>
-                        <p class="siteLang siteLang--stack"><span class="siteLang__en">Bilingual study page with search — text from the official IRCC guide (Discover Canada)</span><span class="siteLang__fr">Page d’étude bilingue avec recherche — texte tiré du guide officiel d’IRCC (<em>Découvrir le Canada</em>)</span></p>
                     </div>
                 </a>
             </article>

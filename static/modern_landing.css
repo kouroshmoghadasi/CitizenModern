@@ -1007,14 +1007,20 @@ html[data-theme="dark"] .card--hub-pdf .card__icon {
     flex-wrap: nowrap;
   }
   .topbar .brand {
-    flex: 1 1 auto;
-    min-width: 0;
+    flex: 0 1 auto;
+    min-width: min-content;
+    max-width: min(12rem, 46vw);
     gap: 8px;
     justify-self: unset;
+    overflow: hidden;
   }
   .topbar .brand__name {
     font-size: 0.95rem;
     letter-spacing: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    min-width: 0;
   }
   .topbar .brand__logo {
     width: 20px;
@@ -1198,10 +1204,22 @@ html[data-theme="dark"] .card--hub-pdf .card__icon {
 }
 
 @media (max-width: 400px) {
-  .topbar .brand__name {
+  /* Light: maple only — dark: keep CitizenReady wordmark visible */
+  html[data-theme="light"] .topbar .brand__name {
     display: none;
   }
-  .topbar .brand__logo,
+  html:not([data-theme="light"]) .topbar .brand__name {
+    display: inline;
+    font-size: 0.88rem;
+    max-width: 7.75rem;
+  }
+  .topbar .brand__logo {
+    display: inline-block;
+    flex-shrink: 0;
+  }
+  html[data-theme="light"] .topbar .brand__logo {
+    display: none;
+  }
   html[data-theme="light"] .topbar .brand__leaf {
     display: inline-block;
   }
@@ -2819,16 +2837,8 @@ html[data-theme="light"] .acct-panel-member__welcome {
 }
 
 .acct-panel-member__actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 4px;
-}
-
-.acct-panel-member__actions .subscription-btn {
-  flex: 1 1 8rem;
+  display: block;
   margin-top: 0;
-  width: auto;
 }
 
 #acctPanelModal .subscription-btn-signout {
@@ -2865,23 +2875,6 @@ html[data-theme="light"] .acct-panel-access-until {
   margin: 0 0 1rem;
   text-align: center;
   color: var(--sub-text-muted, #64748b);
-}
-
-.acct-panel-member__row {
-  margin: 0 0 14px;
-  font-size: 1rem;
-  line-height: 1.5;
-}
-
-.acct-panel-member__label {
-  display: inline-block;
-  min-width: 5.5rem;
-  opacity: 0.85;
-}
-
-.acct-panel-member__value {
-  font-size: 1.08rem;
-  color: var(--accent, #c05621);
 }
 
 .acct-panel-box {
@@ -2922,23 +2915,6 @@ body.acct-panel-open {
 .acct-panel-modal.subscription-modal {
   direction: ltr !important;
   text-align: left !important;
-}
-
-#acctPanelModal .subscription-modal-close {
-  left: auto !important;
-  right: 12px !important;
-}
-
-#acctPanelModal .acct-panel-member__row {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  justify-content: flex-start;
-  gap: 0.25rem 0.5rem;
-}
-
-#acctPanelModal .acct-panel-member__label {
-  min-width: auto;
 }
 
 #acctPanelModal .subscription-buttons {

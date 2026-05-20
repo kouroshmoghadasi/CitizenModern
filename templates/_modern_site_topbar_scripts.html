@@ -297,13 +297,18 @@
 })();
 </script>
 <script>
-/* Practice pages: Study off, Practice on (works even if cached HTML is old) */
+/* Practice pages: Study off; hub → Home chip, chapter → Practice chip (cached HTML) */
 (function () {
+  var path = (window.location.pathname || "/").replace(/\/+$/, "") || "/";
+  if (path === "/citizenship-414" || path === "/citizenship-571" || path.indexOf("/citizenship-exam-report") === 0) {
+    return;
+  }
   var practice =
     document.documentElement.getAttribute("data-site-section") === "practice" ||
-    document.body.classList.contains("citizenship-exam-subpage") ||
     document.body.classList.contains("modern-exams-practice");
   if (!practice) return;
+
+  var isHub = path === "/citizenship-exams";
 
   document
     .querySelectorAll('.topbar__right a[href="/study"], .topbar-mobile-sheet a[href="/study"]')
@@ -311,13 +316,98 @@
       el.remove();
     });
 
+  var homeHtml =
+    '<span class="siteLang"><span class="siteLang__en">Home</span><span class="siteLang__fr">Accueil</span></span>';
+  var practiceHtml =
+    '<span class="siteLang"><span class="siteLang__en">Practice</span><span class="siteLang__fr">Entraînement</span></span>';
+
   document.querySelectorAll(".topbar__right, .topbar-mobile-sheet nav").forEach(function (nav) {
-    if (!nav || nav.querySelector('a[href="/citizenship-exams"], a.chip--practice')) return;
+    if (!nav) return;
+    nav.querySelectorAll("a[data-practice-nav-up]").forEach(function (el) {
+      el.remove();
+    });
+    nav.querySelectorAll("a.chip--practice, a.chip[href='/']").forEach(function (el) {
+      if (el.closest(".brand")) return;
+      el.remove();
+    });
+
     var a = document.createElement("a");
-    a.className = "chip chip--lang chip--practice";
-    a.href = "/citizenship-exams";
-    a.innerHTML =
-      '<span class="siteLang"><span class="siteLang__en">Practice</span><span class="siteLang__fr">Entraînement</span></span>';
+    a.setAttribute("data-practice-nav-up", "1");
+    if (isHub) {
+      a.className = "chip chip--lang";
+      a.href = "/";
+      a.innerHTML = homeHtml;
+    } else {
+      a.className = "chip chip--lang chip--practice";
+      a.href = "/citizenship-exams";
+      a.innerHTML = practiceHtml;
+    }
+    var first = nav.querySelector(".langBar, .chip--langToggle, button, label");
+    if (first) nav.insertBefore(a, first);
+    else nav.insertBefore(a, nav.firstChild);
+  });
+})();
+</script>
+<script>
+/* Study pages: hub → Home chip only; child → Study hub chip (cached HTML) */
+(function () {
+  var path = (window.location.pathname || "/").replace(/\/+$/, "") || "/";
+  var study =
+    document.documentElement.getAttribute("data-site-section") === "study" ||
+    path === "/study" ||
+    path === "/book_summary" ||
+    path === "/book_summary.html" ||
+    path === "/book_summary_2" ||
+    path === "/book_summary_2.html" ||
+    path === "/canadian-history-timeline" ||
+    path === "/canadian-history-timeline.html";
+  if (!study) return;
+
+  try {
+    document.documentElement.setAttribute("data-site-section", "study");
+    document.body.classList.add("modern-study-section");
+  } catch (e0) {}
+
+  var isHub = path === "/study";
+
+  document
+    .querySelectorAll(
+      '.topbar__right a[href="/"], .topbar-mobile-sheet a[href="/"], ' +
+        '.topbar__right a[href="/study"], .topbar-mobile-sheet a[href="/study"], ' +
+        '.topbar__right a.chip--practice, .topbar-mobile-sheet a.chip--practice, ' +
+        '.topbar__right a.chip--414, .topbar-mobile-sheet a.chip--414'
+    )
+    .forEach(function (el) {
+      if (el.closest(".brand")) return;
+      el.remove();
+    });
+
+  var homeHtml =
+    '<span class="siteLang"><span class="siteLang__en">Home</span><span class="siteLang__fr">Accueil</span></span>';
+  var studyHtml =
+    '<span class="siteLang"><span class="siteLang__en">Study</span><span class="siteLang__fr">Étude</span></span>';
+
+  document.querySelectorAll(".topbar__right, .topbar-mobile-sheet nav").forEach(function (nav) {
+    if (!nav) return;
+    nav.querySelectorAll("a[data-study-nav-up]").forEach(function (el) {
+      el.remove();
+    });
+    nav.querySelectorAll("a.chip--study, a.chip--practice, a.chip--414, a.chip[href='/']").forEach(function (el) {
+      if (el.closest(".brand")) return;
+      el.remove();
+    });
+
+    var a = document.createElement("a");
+    a.setAttribute("data-study-nav-up", "1");
+    if (isHub) {
+      a.className = "chip chip--lang";
+      a.href = "/";
+      a.innerHTML = homeHtml;
+    } else {
+      a.className = "chip chip--lang chip--study";
+      a.href = "/study";
+      a.innerHTML = studyHtml;
+    }
     var first = nav.querySelector(".langBar, .chip--langToggle, button, label");
     if (first) nav.insertBefore(a, first);
     else nav.insertBefore(a, nav.firstChild);

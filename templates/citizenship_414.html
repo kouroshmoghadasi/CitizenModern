@@ -33,7 +33,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='modern_landing.css') }}?v=20260509h" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='modern_landing.css') }}?v=20260521e" />
 <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 :root {
@@ -302,7 +302,7 @@ body {
         <div class="bg__blob bg__blob--b"></div>
     </div>
     {% set modern_topbar_hide_study = true %}
-    {% set modern_topbar_show_practice = true %}
+    {% set modern_topbar_show_practice = false %}
     {% set modern_topbar_hide_414 = true %}
     {% include '_modern_site_topbar.html' %}
     <div class="wrap">

@@ -2,7 +2,7 @@
 <html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>پنل مدیر | اشتراک‌ها</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -81,6 +81,109 @@
         .days-bar-fill.tier-muted { background: #94a3b8; width: 0 !important; min-width: 0; }
         .row-num-cell { color: #64748b; font-weight: 600; font-variant-numeric: tabular-nums; width: 3rem; }
         .cell-ltr { direction: ltr; text-align: left; unicode-bidi: isolate; }
+        .badge-free { background: #d1fae5; color: #047857; border: 1px solid #6ee7b7; }
+        .admin-table-wrap { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+        .admin-users-actions { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+        .admin-users-actions .btn-sm { white-space: nowrap; }
+
+        @media (max-width: 1024px) {
+            body {
+                padding: max(12px, env(safe-area-inset-top, 0px)) max(12px, env(safe-area-inset-right, 0px)) max(20px, env(safe-area-inset-bottom, 0px)) max(12px, env(safe-area-inset-left, 0px));
+            }
+            .card-body { padding: 14px 12px; }
+            .header { padding: 14px 12px; }
+            .header h1 { font-size: 1.05rem; }
+            .table-filter-row .f { min-width: 0; max-width: none; }
+            .admin-table-wrap--cards { overflow-x: visible; }
+            .admin-responsive-table {
+                min-width: 0 !important;
+                width: 100%;
+                display: block;
+            }
+            .admin-responsive-table thead {
+                position: absolute;
+                width: 1px;
+                height: 1px;
+                overflow: hidden;
+                clip: rect(0, 0, 0, 0);
+                white-space: nowrap;
+                border: 0;
+            }
+            .admin-responsive-table tbody { display: block; }
+            .admin-responsive-table tbody tr {
+                display: block;
+                margin-bottom: 14px;
+                padding: 12px 14px 10px;
+                border: 1px solid #e2e8f0;
+                border-radius: 12px;
+                background: #fff;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            }
+            .admin-responsive-table tbody tr:hover { background: #fff; }
+            .admin-responsive-table td {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: flex-start;
+                gap: 10px 14px;
+                width: 100% !important;
+                border: none;
+                border-bottom: 1px solid #eee;
+                padding: 10px 0;
+                text-align: start;
+            }
+            .admin-responsive-table td:last-child { border-bottom: none; }
+            .admin-responsive-table td::before {
+                content: attr(data-label);
+                flex: 0 0 auto;
+                max-width: 42%;
+                font-size: 0.78rem;
+                font-weight: 700;
+                color: #64748b;
+                line-height: 1.4;
+            }
+            .admin-responsive-table td.col-actions {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 8px;
+                padding-top: 12px;
+            }
+            .admin-responsive-table td.col-actions::before {
+                max-width: none;
+                margin-bottom: 4px;
+            }
+            .admin-responsive-table .admin-users-actions {
+                flex-direction: column;
+                align-items: stretch;
+                width: 100%;
+            }
+            .admin-responsive-table .admin-users-actions .btn {
+                width: 100%;
+                text-align: center;
+                padding: 10px 12px;
+                min-height: 44px;
+            }
+            .table-pager { flex-direction: column; align-items: stretch; }
+            .table-pager .pager-info { margin-inline-start: 0; text-align: center; }
+            .form-inline .f { min-width: 0; flex: 1 1 100%; }
+            .form-inline input, .form-inline select { width: 100%; min-width: 0; }
+            .payments-summary {
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+                font-size: 0.88rem;
+            }
+            .payments-summary .sep { display: none; }
+        }
+
+        @media (max-width: 480px) {
+            .admin-responsive-table td {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 4px;
+            }
+            .admin-responsive-table td::before { max-width: none; }
+        }
     </style>
 </head>
 <body>
@@ -184,7 +287,7 @@
                 </div>
                 <div class="f" style="align-items: center;">
                     <label>&nbsp;</label>
-                    <label style="display: flex; align-items: center; gap: 6px; font-weight: normal;"><input type="checkbox" id="addUserFreeAccess"> دسترسی رایگان (لطف) — یک سال کل بسته</label>
+                    <label style="display: flex; align-items: center; gap: 6px; font-weight: normal;"><input type="checkbox" id="addUserFreeAccess"> دسترسی رایگان — یک سال کل بسته (بدون پرداخت)</label>
                 </div>
                 <button type="button" class="btn" id="btnAddUser">افزودن کاربر</button>
                 <button type="button" class="btn btn-outline" id="btnClearUser">پاک کردن فرم</button>
@@ -345,8 +448,9 @@
                     <input type="search" id="usersGridFilter" placeholder="موبایل، نام، شهر، انقضا، یادداشت، شناسه…" autocomplete="off">
                 </div>
             </div>
-            <p class="table-filter-hint" style="margin-bottom: 10px;">جستجو در ستون‌های جدول (شامل تاریخ‌ها و نمره)؛ اعداد فارسی و انگلیسی هر دو پشتیبانی می‌شوند.</p>
-            <table id="usersTable">
+            <p class="table-filter-hint" style="margin-bottom: 10px;">جستجو در ستون‌های جدول (شامل تاریخ‌ها و نمره)؛ اعداد فارسی و انگلیسی هر دو پشتیبانی می‌شوند. در موبایل هر کاربر به‌صورت کارت نمایش داده می‌شود؛ دکمهٔ سبز <strong>رایگان</strong> = یک سال اشتراک بدون ثبت پرداخت.</p>
+            <div class="admin-table-wrap admin-table-wrap--cards">
+            <table id="usersTable" class="admin-responsive-table admin-users-table">
                 <thead>
                     <tr>
                         <th>شناسه</th>
@@ -363,6 +467,7 @@
                 </thead>
                 <tbody></tbody>
             </table>
+            </div>
             <div id="usersPager" class="table-pager" aria-label="صفحه‌بندی کاربران"></div>
         </div>
     </div>
@@ -376,20 +481,21 @@
                     <input type="search" id="paymentsGridFilter" placeholder="نام، موبایل، مبلغ، تاریخ، کد واریز…" autocomplete="off">
                 </div>
             </div>
-            <p class="table-filter-hint" style="margin-bottom: 10px;">فقط نمایش جدول فیلتر می‌شود؛ جمع مبلغ و آمار پایین بر اساس همهٔ پرداخت‌های بارگذاری‌شده از سرور است.</p>
-            <table id="paymentsTable">
+            <p class="table-filter-hint" style="margin-bottom: 10px;">فقط نمایش جدول فیلتر می‌شود؛ جمع مبلغ و آمار پایین بر اساس همهٔ پرداخت‌های بارگذاری‌شده از سرور است. در موبایل هر پرداخت به‌صورت کارت نمایش داده می‌شود.</p>
+            <div class="admin-table-wrap admin-table-wrap--cards">
+            <table id="paymentsTable" class="admin-responsive-table admin-payments-table">
                 <thead>
                     <tr>
                         <th>نام و نام خانوادگی (موبایل)</th>
                         <th>مبلغ</th>
                         <th>تاریخ پرداخت</th>
                         <th>کد واریز</th>
-                        <th>ویرایش</th>
-                        <th>حذف</th>
+                        <th>عملیات</th>
                     </tr>
                 </thead>
                 <tbody></tbody>
             </table>
+            </div>
             <div id="paymentsPager" class="table-pager" aria-label="صفحه‌بندی پرداخت‌ها"></div>
             <p id="paymentsSummary" class="payments-summary" style="display: none;" aria-live="polite"></p>
             <p class="payments-summary-hint" style="margin-top: 8px; font-size: 0.8rem; color: #64748b;">خلاصه بر اساس همین جدول است (حداکثر ۲۰۰ پرداخت اخیر از سرور).</p>
@@ -647,16 +753,28 @@
                         var cityDisp = cityRaw !== '—' ? cityRaw.replace(/</g, '&lt;') : '—';
                         var payCount = parseInt(u.payment_count, 10);
                         if (isNaN(payCount)) payCount = 0;
+                        var hasActiveExp = exp !== '—' && new Date(exp) >= new Date();
+                        var freeTag = (payCount === 0 && hasActiveExp) ? ' <span class="badge badge-free">رایگان</span>' : '';
                         var delTitle = payCount > 0 ? 'حذف فقط برای کاربران بدون پرداخت ثبت‌شده' : 'حذف کاربر (نیاز به تأیید)';
                         var delDisabled = payCount > 0 ? ' disabled' : '';
                         var tr = document.createElement('tr');
-                        tr.innerHTML = '<td>' + u.id + '</td><td class="cell-ltr">' + (u.mobile || '').replace(/</g, '&lt;') + '</td><td>' + (nameStr !== '—' ? nameStr.replace(/</g, '&lt;') : nameStr) + '</td><td>' + cityDisp + '</td><td class="cell-ltr">' + applyDisp.replace(/</g, '&lt;') + '</td><td class="cell-ltr">' + examDisp.replace(/</g, '&lt;') + '</td><td>' + scoreDisp + '</td><td class="cell-ltr">' + expBadge + '</td><td>' + (u.notes || '—').replace(/</g, '&lt;') + '</td><td>' +
-                            '<button type="button" class="btn btn-sm btn-pay-user" data-user-id="' + u.id + '">ثبت پرداخت</button> ' +
-                            '<button type="button" class="btn btn-sm btn-outline edit-name-btn" data-user-id="' + u.id + '" data-first-name="' + escAttr(u.first_name || '') + '" data-last-name="' + escAttr(u.last_name || '') + '" data-city="' + escAttr(u.citizenship_city != null ? String(u.citizenship_city) : '') + '" data-apply-date="' + escAttr(isoDateOnly(u.citizenship_apply_date)) + '" data-exam-date="' + escAttr(isoDateOnly(u.citizenship_exam_date)) + '" data-exam-score="' + escAttr(u.citizenship_exam_score != null ? String(u.citizenship_exam_score) : '') + '" data-expiry-date="' + escAttr(isoDateOnly(u.tests_expiry || u.questions_414_expiry)) + '" title="ویرایش نام، شهر، انقضا، تاریخ اپلای، امتحان و نمره">ویرایش</button> ' +
-                            '<button type="button" class="btn btn-sm btn-free" data-user-id="' + u.id + '" title="دسترسی رایگان یک‌ساله">لطف</button> ' +
-                            '<button type="button" class="btn btn-sm btn-outline change-user-pw-btn" data-user-id="' + u.id + '" title="تغییر رمز این کاربر">تغییر رمز</button> ' +
+                        tr.innerHTML =
+                            '<td data-label="شناسه">' + u.id + '</td>' +
+                            '<td data-label="موبایل" class="cell-ltr">' + (u.mobile || '').replace(/</g, '&lt;') + '</td>' +
+                            '<td data-label="نام">' + (nameStr !== '—' ? nameStr.replace(/</g, '&lt;') : nameStr) + '</td>' +
+                            '<td data-label="شهر">' + cityDisp + '</td>' +
+                            '<td data-label="تاریخ اپلای" class="cell-ltr">' + applyDisp.replace(/</g, '&lt;') + '</td>' +
+                            '<td data-label="تاریخ امتحان" class="cell-ltr">' + examDisp.replace(/</g, '&lt;') + '</td>' +
+                            '<td data-label="نمره">' + scoreDisp + '</td>' +
+                            '<td data-label="انقضا" class="cell-ltr">' + expBadge + freeTag + '</td>' +
+                            '<td data-label="یادداشت">' + (u.notes || '—').replace(/</g, '&lt;') + '</td>' +
+                            '<td data-label="عملیات" class="col-actions"><div class="admin-users-actions">' +
+                            '<button type="button" class="btn btn-sm btn-pay-user" data-user-id="' + u.id + '">ثبت پرداخت</button>' +
+                            '<button type="button" class="btn btn-sm btn-outline edit-name-btn" data-user-id="' + u.id + '" data-first-name="' + escAttr(u.first_name || '') + '" data-last-name="' + escAttr(u.last_name || '') + '" data-city="' + escAttr(u.citizenship_city != null ? String(u.citizenship_city) : '') + '" data-apply-date="' + escAttr(isoDateOnly(u.citizenship_apply_date)) + '" data-exam-date="' + escAttr(isoDateOnly(u.citizenship_exam_date)) + '" data-exam-score="' + escAttr(u.citizenship_exam_score != null ? String(u.citizenship_exam_score) : '') + '" data-expiry-date="' + escAttr(isoDateOnly(u.tests_expiry || u.questions_414_expiry)) + '" title="ویرایش نام، شهر، انقضا، تاریخ اپلای، امتحان و نمره">ویرایش</button>' +
+                            '<button type="button" class="btn btn-sm btn-free" data-user-id="' + u.id + '" title="یک سال اشتراک کامل بدون ثبت پرداخت">رایگان ۱ سال</button>' +
+                            '<button type="button" class="btn btn-sm btn-outline change-user-pw-btn" data-user-id="' + u.id + '" title="تغییر رمز این کاربر">تغییر رمز</button>' +
                             '<button type="button" class="btn btn-sm btn-danger delete-user-btn" data-user-id="' + u.id + '"' + delDisabled + ' title="' + escAttr(delTitle) + '">حذف</button>' +
-                            '</td>';
+                            '</div></td>';
                         tbody.appendChild(tr);
                     });
                     tbody.querySelectorAll('.change-user-pw-btn').forEach(function(btn) {
@@ -703,7 +821,7 @@
                         if (btn.classList.contains('btn-free')) {
                             btn.addEventListener('click', function() {
                                 var id = this.getAttribute('data-user-id');
-                                if (!confirm('دسترسی رایگان یک‌ساله (کل بسته) برای این کاربر اعطا شود؟')) return;
+                                if (!confirm('اشتراک رایگان یک‌ساله (کل بسته، بدون ثبت پرداخت) برای این کاربر اعطا شود؟')) return;
                                 fetch('/admin/api/subscription/grant-free', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ user_id: parseInt(id, 10) }) })
                                     .then(function(r) { return r.json(); }).then(function(data) {
                                         showMsg('usersMsg', data.success ? data.message : (data.error || 'خطا'), !data.success);
@@ -1015,9 +1133,15 @@
                     var namePart = paymentDisplayName(p);
                     var userDisplay = namePart ? (namePart.replace(/</g, '&lt;') + ' (' + (p.mobile || '').replace(/</g, '&lt;') + ')') : (p.mobile || '#' + p.user_id).replace(/</g, '&lt;');
                     var tr = document.createElement('tr');
-                    tr.innerHTML = '<td class="cell-ltr">' + userDisplay + '</td><td class="cell-ltr">' + p.amount + ' $</td><td class="cell-ltr">' + (p.payment_date || '') + '</td><td>' + (p.payment_reference || '—').replace(/</g, '&lt;') + '</td>' +
-                        '<td><button type="button" class="btn btn-sm btn-outline edit-pay-btn" data-pay-id="' + p.id + '">ویرایش</button></td>' +
-                        '<td><button type="button" class="btn btn-sm btn-danger delete-pay-btn" data-pay-id="' + p.id + '">حذف</button></td>';
+                    tr.innerHTML =
+                        '<td data-label="کاربر" class="cell-ltr">' + userDisplay + '</td>' +
+                        '<td data-label="مبلغ" class="cell-ltr">' + p.amount + ' $</td>' +
+                        '<td data-label="تاریخ پرداخت" class="cell-ltr">' + (p.payment_date || '').replace(/</g, '&lt;') + '</td>' +
+                        '<td data-label="کد واریز">' + (p.payment_reference || '—').replace(/</g, '&lt;') + '</td>' +
+                        '<td data-label="عملیات" class="col-actions"><div class="admin-users-actions">' +
+                        '<button type="button" class="btn btn-sm btn-outline edit-pay-btn" data-pay-id="' + p.id + '">ویرایش</button>' +
+                        '<button type="button" class="btn btn-sm btn-danger delete-pay-btn" data-pay-id="' + p.id + '">حذف</button>' +
+                        '</div></td>';
                     tbody.appendChild(tr);
                 });
                 tbody.querySelectorAll('.edit-pay-btn').forEach(function(btn) {

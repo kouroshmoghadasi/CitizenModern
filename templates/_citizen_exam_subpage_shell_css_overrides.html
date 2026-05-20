@@ -13,13 +13,16 @@ html[data-theme="light"] body.citizenship414-page { color-scheme: light; }
 html[data-theme="dark"] body.citizenship-exam-subpage,
 html[data-theme="dark"] body.citizenship414-page { color-scheme: dark; }
 .citizenship-exam-subpage .topbar { direction: ltr; }
-/* Practice pages: Study must not appear in topbar — only Practice */
-body.citizenship-exam-subpage .topbar__right a.chip--study,
-body.citizenship-exam-subpage .topbar__right a[href="/study"],
+/* Practice section only: hide Study chip (Study section keeps parent “Study” / “Home” nav) */
+html[data-site-section="practice"] body.citizenship-exam-subpage .topbar__right a.chip--study,
+html[data-site-section="practice"] body.citizenship-exam-subpage .topbar__right a[href="/study"],
+html[data-site-section="practice"] body.citizenship-exam-subpage .topbar-mobile-sheet a[href="/study"],
+html[data-site-section="practice"] body.citizenship-exam-subpage .topbar-mobile-sheet a.chip--study,
 body.modern-exams-practice .topbar__right a.chip--study,
+body.modern-exams-practice .topbar__right a.chip--practice,
 body.modern-exams-practice .topbar__right a[href="/study"],
-body.citizenship-exam-subpage .topbar-mobile-sheet a[href="/study"],
-body.modern-exams-practice .topbar-mobile-sheet a[href="/study"] {
+body.modern-exams-practice .topbar-mobile-sheet a[href="/study"],
+body.modern-exams-practice .topbar-mobile-sheet a.chip--practice {
   display: none !important;
   visibility: hidden !important;
   pointer-events: none !important;

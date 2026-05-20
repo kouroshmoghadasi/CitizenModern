@@ -62,19 +62,30 @@
         font-weight: 600;
         color: var(--accent, #1e3c72);
     }
-    @media (max-width: 640px) {
+    .citizen-exam-report td[dir="auto"],
+    .citizen-exam-report td.cell-ltr {
+        unicode-bidi: plaintext;
+    }
+    .citizen-exam-report td.cell-ltr {
+        direction: ltr;
+        text-align: left;
+    }
+
+    /* Tablet + phone: stacked cards (readable without horizontal scroll) */
+    @media (max-width: 1024px) {
         .citizen-exam-report {
-            padding: 14px 12px;
-            margin-bottom: 16px;
+            padding: clamp(14px, 3vw, 18px) clamp(12px, 3vw, 16px);
+            margin-bottom: clamp(14px, 3vw, 20px);
             border-radius: 12px;
+            overflow-x: clip;
         }
         .citizen-exam-report h2 {
-            font-size: clamp(0.95rem, 4.2vw, 1.08rem);
-            margin-bottom: 12px;
-            line-height: 1.55;
-            padding: 0 2px;
+            font-size: clamp(0.95rem, 3.5vw, 1.12rem);
+            margin-bottom: 14px;
+            line-height: 1.5;
+            padding: 0 4px;
             hyphens: auto;
-            overflow-wrap: break-word;
+            overflow-wrap: anywhere;
         }
         .citizen-exam-report .table-wrap {
             overflow-x: visible;
@@ -85,7 +96,8 @@
         .citizen-exam-report-table {
             min-width: 0 !important;
             width: 100%;
-            font-size: 0.9375rem;
+            max-width: 100%;
+            font-size: clamp(0.875rem, 2.8vw, 0.95rem);
             display: block;
         }
         .citizen-exam-report-table thead {
@@ -105,53 +117,97 @@
         .citizen-exam-report-table tbody tr {
             display: block;
             margin-bottom: 12px;
-            padding: 4px 14px 12px;
-            border: 1px solid var(--border, rgba(30,60,114,0.15));
+            padding: 12px 14px 10px;
+            border: 1px solid var(--border, rgba(30, 60, 114, 0.15));
             border-radius: 12px;
             background: var(--card-bg, #fff);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
         }
         body.theme-dark .citizen-exam-report-table tbody tr {
-            box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.28);
         }
         .citizen-exam-report-table tbody tr:nth-child(even) {
             background: var(--card-bg, #fff);
         }
-        .citizen-exam-report-table td {
+        .citizen-exam-report-table td.col-row-num {
+            display: block;
+            border: none;
+            padding: 0 0 10px;
+            margin-bottom: 6px;
+            font-size: 1.05rem;
+            font-weight: 800;
+            font-variant-numeric: tabular-nums;
+            color: var(--accent, #1e3c72);
+            text-align: start;
+        }
+        .citizen-exam-report-table td.col-row-num::before {
+            content: none !important;
+            display: none;
+        }
+        .citizen-exam-report-table td:not(.col-row-num) {
             display: grid;
-            grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
-            gap: 6px 12px;
+            grid-template-columns: minmax(5.5rem, 38%) minmax(0, 1fr);
+            gap: 4px 12px;
             align-items: start;
             width: 100% !important;
+            max-width: 100%;
             border: none;
-            border-bottom: 1px solid var(--border, rgba(30,60,114,0.1));
-            padding: 11px 0;
+            border-bottom: 1px solid var(--border, rgba(30, 60, 114, 0.1));
+            padding: 10px 0;
             text-align: start;
             box-sizing: border-box;
-        }
-        .citizen-exam-report-table td:last-child {
-            border-bottom: none;
-        }
-        .citizen-exam-report-table td::before {
-            font-weight: 700;
-            font-size: 0.78rem;
-            color: var(--accent, #1e3c72);
-            line-height: 1.4;
+            overflow-wrap: anywhere;
             word-break: break-word;
         }
-        html:not([data-site-lang="fr-fa"]) .citizen-exam-report-table td::before {
-            content: attr(data-label-en);
+        .citizen-exam-report-table td:not(.col-row-num):last-child {
+            border-bottom: none;
+            padding-bottom: 2px;
         }
-        html[data-site-lang="fr-fa"] .citizen-exam-report-table td::before {
+        .citizen-exam-report-table td:not(.col-row-num)::before {
+            font-weight: 700;
+            font-size: 0.75rem;
+            line-height: 1.35;
+            color: var(--accent, #1e3c72);
+            opacity: 0.95;
+            overflow-wrap: anywhere;
+        }
+        html[data-site-lang="fr-fa"] .citizen-exam-report-table td:not(.col-row-num)::before {
             content: attr(data-label-fr);
         }
-        .citizen-exam-report-table .col-row-num {
-            font-variant-numeric: tabular-nums;
+        html:not([data-site-lang="fr-fa"]) .citizen-exam-report-table td:not(.col-row-num)::before {
+            content: attr(data-label-en);
         }
         .citizen-exam-report-empty {
             font-size: 0.92rem;
             padding: 14px 8px;
             line-height: 1.6;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .citizen-exam-report-table td:not(.col-row-num) {
+            grid-template-columns: 1fr;
+            gap: 4px;
+            padding: 9px 0;
+        }
+        .citizen-exam-report-table td:not(.col-row-num)::before {
+            font-size: 0.72rem;
+            margin-bottom: 2px;
+        }
+        .citizen-exam-report-table tbody tr {
+            padding: 12px 12px 8px;
+        }
+    }
+
+    /* Desktop: table with touch-friendly horizontal scroll if needed */
+    @media (min-width: 1025px) {
+        .citizen-exam-report .table-wrap {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            overscroll-behavior-x: contain;
+        }
+        .citizen-exam-report-table {
+            min-width: min(100%, 640px);
         }
     }
 </style>
@@ -194,12 +250,12 @@
             <tbody>
                 {% for row in report_rows %}
                 <tr>
-                    <td class="col-row-num" data-label-en="#" data-label-fr="N°">{{ loop.index }}</td>
-                    <td data-label-en="Full name" data-label-fr="Nom complet">{{ row.name }}</td>
-                    <td data-label-en="City" data-label-fr="Ville">{{ row.city }}</td>
-                    <td data-label-en="Application date" data-label-fr="Date de demande">{{ row.apply }}</td>
-                    <td data-label-en="Exam date" data-label-fr="Date d'examen">{{ row.exam }}</td>
-                    <td data-label-en="Exam score" data-label-fr="Note d'examen">{{ row.score }}</td>
+                    <td class="col-row-num" data-label-en="#" data-label-fr="N°">#{{ loop.index }}</td>
+                    <td data-label-en="Full name" data-label-fr="Nom complet" dir="auto">{{ row.name }}</td>
+                    <td data-label-en="City" data-label-fr="Ville" dir="auto">{{ row.city }}</td>
+                    <td data-label-en="Application date" data-label-fr="Date de demande" class="cell-ltr">{{ row.apply }}</td>
+                    <td data-label-en="Exam date" data-label-fr="Date d'examen" class="cell-ltr">{{ row.exam }}</td>
+                    <td data-label-en="Exam score" data-label-fr="Note d'examen" dir="auto">{{ row.score }}</td>
                 </tr>
                 {% endfor %}
             </tbody>
@@ -240,25 +296,15 @@
                         <span class="siteLang__en">Application date</span>
                         <span class="siteLang__fr">Date de demande</span>
                     </th>
-                    <th scope="col" class="siteLang">
-                        <span class="siteLang__en">Exam date</span>
-                        <span class="siteLang__fr">Date d'examen</span>
-                    </th>
-                    <th scope="col" class="siteLang">
-                        <span class="siteLang__en">Exam score</span>
-                        <span class="siteLang__fr">Note d'examen</span>
-                    </th>
                 </tr>
             </thead>
             <tbody>
                 {% for row in waiting %}
                 <tr>
-                    <td class="col-row-num" data-label-en="#" data-label-fr="N°">{{ loop.index }}</td>
-                    <td data-label-en="Full name" data-label-fr="Nom complet">{{ row.name }}</td>
-                    <td data-label-en="City" data-label-fr="Ville">{{ row.city }}</td>
-                    <td data-label-en="Application date" data-label-fr="Date de demande">{{ row.apply }}</td>
-                    <td data-label-en="Exam date" data-label-fr="Date d'examen">{{ row.exam }}</td>
-                    <td data-label-en="Exam score" data-label-fr="Note d'examen">—</td>
+                    <td class="col-row-num" data-label-en="#" data-label-fr="N°">#{{ loop.index }}</td>
+                    <td data-label-en="Full name" data-label-fr="Nom complet" dir="auto">{{ row.name }}</td>
+                    <td data-label-en="City" data-label-fr="Ville" dir="auto">{{ row.city }}</td>
+                    <td data-label-en="Application date" data-label-fr="Date de demande" class="cell-ltr">{{ row.apply }}</td>
                 </tr>
                 {% endfor %}
             </tbody>

@@ -5,17 +5,31 @@
         <div class="bg__blob bg__blob--a"></div>
         <div class="bg__blob bg__blob--b"></div>
     </div>
+    {% include '_modern_topbar_study_endpoints.html' %}
     {% set modern_topbar_hide_414 = true %}
     {% set _use_home_nav = modern_topbar_use_home_nav | default(false) or request.endpoint in ('citizenship_exam_report', 'citizenship_571') %}
+    {% set _use_study_nav = (modern_topbar_nav_mode | default('')) == 'study' or request.endpoint in _modern_topbar_study_endpoints %}
     {% set modern_topbar_hide_study = true %}
-    {% set modern_topbar_hide_home = (not _use_home_nav) %}
-    {% set modern_topbar_show_practice = (not _use_home_nav) %}
-    {% if not _use_home_nav %}{% set modern_topbar_nav_mode = 'practice' %}{% endif %}
+    {% set modern_topbar_hide_home = false %}
+    {% set modern_topbar_show_practice = false %}
+    {% if _use_home_nav %}
+    {% elif _use_study_nav %}
+    {% set modern_topbar_nav_mode = 'study' %}
+    {% elif not _use_home_nav %}
+    {% set modern_topbar_nav_mode = 'practice' %}
+    {% endif %}
+    {% if _use_study_nav and not _use_home_nav %}
+    <script>
+    document.documentElement.setAttribute("data-site-section", "study");
+    try { document.body.classList.add("modern-study-section"); } catch (e) {}
+    </script>
+    {% elif not _use_home_nav %}
+    <script>document.documentElement.setAttribute("data-site-section", "practice");</script>
+    {% endif %}
     {% include '_modern_site_topbar.html' %}
-    {% if not _use_home_nav %}
+    {% if not _use_study_nav and not _use_home_nav %}
     <script>
     (function () {
-      document.documentElement.setAttribute("data-site-section", "practice");
       document.querySelectorAll('.topbar__right a[href="/study"], .topbar-mobile-sheet a[href="/study"]').forEach(function (el) {
         el.remove();
       });

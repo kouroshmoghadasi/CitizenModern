@@ -1,4 +1,4 @@
-/* Account popup — sign-in only */
+/* Account popup — EN / FR, LTR (aligned with Subscribe / payment modals) */
 
 #acctPanelModal,
 #acctPanelModal .subscription-modal-box,
@@ -7,25 +7,74 @@
   text-align: left !important;
 }
 
-#acctPanelModal .subscription-modal-close {
+#acctPanelModal .acct-panel-box {
+  max-width: min(26rem, calc(100% - 2rem));
+  padding: 0;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+#acctPanelModal .acct-panel-titlebar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  padding: 0.875rem 2.75rem;
+  box-sizing: border-box;
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+  color: #fff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+#acctPanelModal .acct-panel-titlebar .subscription-modal-title {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.35;
+  text-align: center;
+  color: #fff !important;
+}
+
+#acctPanelModal .acct-panel-titlebar .subscription-modal-close {
+  position: absolute;
+  top: 50%;
+  right: 0.5rem;
   left: auto !important;
-  right: 12px !important;
+  transform: translateY(-50%);
+  margin: 0;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  font-size: 1.35rem;
+  line-height: 1;
+  opacity: 1;
+  cursor: pointer;
+}
+
+#acctPanelModal .acct-panel-titlebar .subscription-modal-close:hover {
+  background: rgba(255, 255, 255, 0.28);
+}
+
+html[data-theme="dark"] #acctPanelModal .acct-panel-titlebar {
+  background: linear-gradient(135deg, #1a2744 0%, #243b5c 100%);
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+#acctPanelModal .acct-panel-body {
+  padding: 1.25rem 1.35rem 1.15rem;
+  box-sizing: border-box;
 }
 
 #acctPanelModal .acct-panel-box--login {
-  max-width: 22rem;
-  padding: 1.25rem 1.25rem 1rem;
-}
-
-#acctPanelModal .acct-panel-box--login .subscription-modal-title {
-  margin: 0 0 1rem;
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--sub-text, #1e293b);
-}
-
-html[data-theme="dark"] #acctPanelModal .acct-panel-box--login .subscription-modal-title {
-  color: #f1f5f9;
+  max-width: min(22rem, calc(100% - 2rem));
 }
 
 #acctPanelModal #acctPanelLogin[hidden],
@@ -39,6 +88,54 @@ html[data-theme="dark"] #acctPanelModal .acct-panel-box--login .subscription-mod
   align-items: stretch;
   gap: 0.625rem;
   width: 100%;
+}
+
+#acctPanelModal .acct-panel-member__details {
+  margin: 0 0 1rem;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+#acctPanelModal .acct-panel-member__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.65rem 0.75rem;
+  border-radius: 10px;
+  border: 1px solid var(--border, rgba(148, 163, 184, 0.28));
+  background: var(--sub-surface, rgba(255, 255, 255, 0.04));
+}
+
+#acctPanelModal .acct-panel-member__label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--sub-text-muted, #64748b);
+}
+
+#acctPanelModal .acct-panel-member__value {
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--accent, #c05621);
+}
+
+#acctPanelModal .acct-panel-member__value--ltr {
+  direction: ltr;
+  text-align: left;
+  unicode-bidi: isolate;
+}
+
+#acctPanelModal .acct-panel-member__actions {
+  margin-top: 1rem;
+}
+
+#acctPanelModal .acct-panel-member__actions .subscription-btn {
+  width: 100%;
+  margin-top: 0;
 }
 
 #acctPanelModal .acct-login-input {

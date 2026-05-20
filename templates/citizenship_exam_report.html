@@ -161,6 +161,16 @@
                 gap: 10px;
             }
         }
+        @media (max-width: 1024px) {
+            .report-intro {
+                padding: 16px 14px;
+                margin-bottom: 16px;
+            }
+            .report-intro p {
+                font-size: clamp(0.9rem, 2.8vw, 1rem);
+                line-height: 1.65;
+            }
+        }
         @media (max-width: 640px) {
             body {
                 padding: max(12px, env(safe-area-inset-top, 0px)) max(12px, env(safe-area-inset-right, 0px)) max(20px, env(safe-area-inset-bottom, 0px)) max(12px, env(safe-area-inset-left, 0px));

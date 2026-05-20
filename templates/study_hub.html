@@ -96,7 +96,13 @@
   </div>
 
   {% set modern_topbar_hide_414 = true %}
+  {% set modern_topbar_show_practice = false %}
+  {% set modern_topbar_nav_mode = 'study' %}
   {% include '_modern_site_topbar.html' %}
+  <script>
+  document.documentElement.setAttribute("data-site-section", "study");
+  try { document.body.classList.add("modern-study-section"); } catch (e) {}
+  </script>
 
   <main class="wrap">
     <section class="hero studyHubHero" aria-label="Study hub">

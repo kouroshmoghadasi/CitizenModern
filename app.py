@@ -3636,14 +3636,6 @@ def _sync_subscription_session_if_logged_in():
 
 # حداقل تاریخ امتحان برای فهرست عمومی قبولی (فقط ردیف‌های با تاریخ امتحان >= این مقدار)
 _CITIZENSHIP_PASS_LIST_EXAM_SINCE = date(2026, 1, 25)
-# اشتراک منقضی‌شدهٔ اخیر (status هنوز active) در فهرست «در حال مطالعه» می‌ماند.
-_CITIZENSHIP_STUDYING_SUB_GRACE_DAYS = 7
-
-
-def _citizenship_studying_subscription_since():
-    return _today() - timedelta(days=_CITIZENSHIP_STUDYING_SUB_GRACE_DAYS)
-
-
 def _parse_optional_date(value):
     """Accept YYYY-MM-DD or empty; return date or None."""
     if value is None:
@@ -3787,8 +3779,11 @@ def _get_citizenship_exam_report_rows(min_exclusive=14.0, limit=800, exam_since=
 
 
 def _get_citizenship_exam_waiting_rows(limit=800, min_exclusive=14.0):
-    """اشتراک فعال (یا منقضی در ۷ روز اخیر با status=active) بدون قبولی — KPI «در حال مطالعه»."""
-    sub_since = _citizenship_studying_subscription_since()
+    """
+    منتظر امتحان: اشتراک فعال (انقضا >= امروز، همان معیار پنل ادمین) و بدون ثبت قبولی.
+    مرتب‌سازی: نزدیک‌ترین انقضا اول.
+    """
+    today = _today()
     rows_out = []
     try:
         conn = get_db_connection()
@@ -3798,17 +3793,21 @@ def _get_citizenship_exam_waiting_rows(limit=800, min_exclusive=14.0):
         cur.execute(
             """
             SELECT u.first_name, u.last_name, u.citizenship_city,
-                   u.citizenship_apply_date, u.citizenship_exam_date,
-                   u.citizenship_exam_score
+                   u.citizenship_apply_date, u.citizenship_exam_score,
+                   (SELECT MAX(s.expiry_date) FROM subscription_subscriptions s
+                    WHERE s.user_id = u.id AND s.status = 'active' AND s.expiry_date >= %s) AS subscription_expiry
             FROM subscription_users u
             WHERE EXISTS (
                 SELECT 1 FROM subscription_subscriptions s
                 WHERE s.user_id = u.id AND s.status = 'active' AND s.expiry_date >= %s
             )
-            ORDER BY u.id DESC
+            ORDER BY (
+                SELECT MIN(s.expiry_date) FROM subscription_subscriptions s
+                WHERE s.user_id = u.id AND s.status = 'active' AND s.expiry_date >= %s
+            ) ASC NULLS LAST, u.id DESC
             LIMIT %s
             """,
-            (sub_since, limit),
+            (today, today, today, limit),
         )
         raw = cur.fetchall()
         cur.close()
@@ -3828,11 +3827,23 @@ def _get_citizenship_exam_waiting_rows(limit=800, min_exclusive=14.0):
         if hasattr(ad, 'isoformat'):
             ad = ad.isoformat()
         apply_disp = (str(ad)[:10] if ad else '') or '—'
-        ed_raw = r.get('citizenship_exam_date')
-        if hasattr(ed_raw, 'isoformat'):
-            ed_raw = ed_raw.isoformat()
-        exam_disp = (str(ed_raw)[:10] if ed_raw else '') or '—'
-        rows_out.append({'name': name, 'city': city, 'apply': apply_disp, 'exam': exam_disp})
+        exp = r.get('subscription_expiry')
+        exp_d = _subscription_expiry_as_date(exp)
+        if exp_d is None or exp_d < today:
+            continue
+        days_left = _days_until_expiry(exp, today)
+        if days_left is None or days_left < 0:
+            continue
+        exp_disp = exp_d.isoformat()
+        rows_out.append({
+            'name': name,
+            'city': city,
+            'apply': apply_disp,
+            'expiry': exp_disp,
+            'days_remaining': days_left,
+            'days_bar_pct': _admin_days_bar_percent(days_left),
+            'days_tier': _admin_days_expiry_tier(days_left),
+        })
     return rows_out
 
 

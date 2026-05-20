@@ -2,7 +2,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     {% include '_citizen_fa_font_head.html' %}
-    <link rel="stylesheet" href="{{ url_for('static', filename='modern_landing.css') }}?v=20260521d" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='modern_landing.css') }}?v=20260521e" />
+    {% include '_modern_topbar_study_endpoints.html' %}
+    {% if request.endpoint in _modern_topbar_study_endpoints %}
+    <script>document.documentElement.setAttribute("data-site-section", "study");</script>
+    {% else %}
     <script>document.documentElement.setAttribute("data-site-section", "practice");</script>
     <style>
       html[data-site-section="practice"] .topbar__right a.chip--study,
@@ -13,3 +17,4 @@
         pointer-events: none !important;
       }
     </style>
+    {% endif %}

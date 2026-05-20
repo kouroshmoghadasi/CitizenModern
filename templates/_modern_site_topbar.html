@@ -4,10 +4,14 @@
 {% set _topbar_study_current = (request.endpoint == 'study_hub') %}
 {% set _topbar_414_current = (request.endpoint == 'citizenship_414') %}
 {% include '_modern_topbar_practice_endpoints.html' %}
+{% include '_modern_topbar_study_endpoints.html' %}
 {% set _topbar_in_practice_section = request.endpoint in _modern_topbar_practice_endpoints %}
-{% set modern_topbar_hide_study = (modern_topbar_hide_study | default(false)) or _topbar_in_practice_section %}
-{% set modern_topbar_show_practice = (modern_topbar_show_practice | default(false)) or _topbar_in_practice_section %}
-{% set _topbar_practice_current = _topbar_in_practice_section %}
+{% set _topbar_in_study_section = request.endpoint in _modern_topbar_study_endpoints %}
+{% set modern_topbar_hide_study = (modern_topbar_hide_study | default(false)) or _topbar_in_practice_section or _topbar_in_study_section %}
+{% set modern_topbar_show_practice = modern_topbar_show_practice | default(false) %}
+{% if request.endpoint in ('citizenship_414', 'citizenship_571', 'citizenship_exam_report') %}
+  {% set modern_topbar_show_practice = false %}
+{% endif %}
 
 <div class="site-header-chrome" id="siteHeaderChrome">
   <header class="topbar" id="siteTopbar">
@@ -34,6 +38,8 @@
     <nav class="topbar__right" aria-label="Top navigation">
       {% if modern_topbar_nav_mode == 'practice' %}
       {% include '_modern_topbar_nav_practice.html' %}
+      {% elif modern_topbar_nav_mode == 'study' %}
+      {% include '_modern_topbar_nav_study.html' %}
       {% else %}
       {% include '_modern_topbar_nav.html' %}
       {% endif %}

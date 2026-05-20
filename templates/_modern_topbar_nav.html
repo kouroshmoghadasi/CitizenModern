@@ -8,8 +8,8 @@
 <a class="chip chip--lang{% if _topbar_home_current %} chip--nav-current{% endif %}" href="/"{% if _topbar_home_current %} aria-current="page"{% endif %}><span class="siteLang"><span class="siteLang__en">Home</span><span class="siteLang__fr">Accueil</span></span></a>
   {% endif %}
 {% endif %}
-{% if _topbar_on_practice_page or (modern_topbar_show_practice | default(false)) %}
-<a class="chip chip--lang chip--practice{% if _topbar_practice_current | default(_topbar_on_practice_page) %} chip--nav-current{% endif %}" href="{{ url_for('citizenship_exams') }}"{% if _topbar_practice_current | default(_topbar_on_practice_page) %} aria-current="page"{% endif %}><span class="siteLang"><span class="siteLang__en">Practice</span><span class="siteLang__fr">Entraînement</span></span></a>
+{% if not _topbar_on_practice_page and (modern_topbar_show_practice | default(false)) %}
+<a class="chip chip--lang chip--practice{% if _topbar_practice_current | default(false) %} chip--nav-current{% endif %}" href="{{ url_for('citizenship_exams') }}"{% if _topbar_practice_current | default(false) %} aria-current="page"{% endif %}><span class="siteLang"><span class="siteLang__en">Practice</span><span class="siteLang__fr">Entraînement</span></span></a>
 {% elif not (modern_topbar_hide_study | default(false)) %}
 <a class="chip chip--lang chip--study{% if _topbar_study_current %} chip--nav-current{% endif %}" href="/study"{% if _topbar_study_current %} aria-current="page"{% endif %}><span class="siteLang"><span class="siteLang__en">Study</span><span class="siteLang__fr">Étude</span></span></a>
 {% endif %}
