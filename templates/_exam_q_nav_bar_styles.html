@@ -1,0 +1,184 @@
+{# Shared Prev/Next nav — all pages using _exam_q_nav_bar.html (414, 571, chapters, exams). #}
+<style>
+[id^="q-nav-bar"] {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 20px;
+  padding: 14px 16px;
+  background: var(--option-bg, #f0f4f8);
+  border: 1px solid var(--border, rgba(30, 60, 114, 0.14));
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  box-sizing: border-box;
+}
+body.theme-dark [id^="q-nav-bar"],
+html[data-theme="dark"] [id^="q-nav-bar"] {
+  background: var(--expl-bg, #2d323c);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.22);
+}
+.exam-q-controls > [id^="q-nav-bar"] {
+  margin-bottom: 0;
+}
+[id^="q-nav-bar"] .q-nav-current {
+  flex: 1 1 auto;
+  min-width: 0;
+  text-align: center;
+  font-weight: 700;
+  font-size: clamp(0.85rem, 2.2vw, 1.05em);
+  line-height: 1.35;
+  color: var(--text, #1a1a1a);
+}
+[id^="q-nav-bar"] .q-nav-current__num,
+[id^="q-nav-bar"] .q-nav-current span[id^="currentQNum"] {
+  color: var(--accent, #1e3c72);
+  font-weight: 800;
+}
+[id^="q-nav-bar"] .q-nav-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  flex: 0 0 auto;
+  min-width: 5.5rem;
+  min-height: 48px;
+  padding: 12px 18px;
+  border-radius: 10px;
+  border: 2.5px solid var(--accent, #1e3c72);
+  background-color: var(--accent, #1e3c72);
+  color: #fff;
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 800;
+  line-height: 1.2;
+  white-space: nowrap;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.14);
+  -webkit-appearance: none;
+  appearance: none;
+  transition: background-color 0.18s ease, border-color 0.18s ease, opacity 0.18s ease, box-shadow 0.18s ease, transform 0.12s ease;
+  -webkit-tap-highlight-color: rgba(30, 60, 114, 0.15);
+  touch-action: manipulation;
+}
+[id^="q-nav-bar"] .q-nav-btn__chev {
+  font-size: 1.2em;
+  line-height: 1;
+  font-weight: 800;
+}
+[id^="q-nav-bar"] .q-nav-btn:hover:not(:disabled) {
+  filter: brightness(1.06);
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.18);
+}
+[id^="q-nav-bar"] .q-nav-btn:active:not(:disabled) {
+  transform: scale(0.98);
+}
+[id^="q-nav-bar"] .q-nav-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+[id^="q-nav-bar"] .q-nav-btn.btn-prev {
+  background-color: var(--card-bg, #fff);
+  color: var(--accent, #1e3c72);
+  border-color: var(--accent, #1e3c72);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+body.theme-dark [id^="q-nav-bar"] .q-nav-btn.btn-prev,
+html[data-theme="dark"] [id^="q-nav-bar"] .q-nav-btn.btn-prev {
+  background-color: var(--card-bg, #252830);
+  color: var(--accent, #7cb3f5);
+  border-color: var(--accent, #7cb3f5);
+}
+[id^="q-nav-bar"] .q-nav-btn.btn-prev:disabled {
+  opacity: 0.65;
+  border-color: color-mix(in srgb, var(--accent, #1e3c72) 55%, var(--border, #ccc));
+  color: color-mix(in srgb, var(--accent, #1e3c72) 55%, var(--text-muted, #888));
+}
+[id^="q-nav-bar"] .q-nav-btn.q-nav-btn--next {
+  background: linear-gradient(135deg, var(--accent, #1e3c72) 0%, var(--accent-light, #2c5282) 100%);
+  background-color: var(--accent, #1e3c72);
+  color: #fff;
+  border-color: var(--accent, #1e3c72);
+}
+body.theme-dark [id^="q-nav-bar"] .q-nav-btn.q-nav-btn--next,
+html[data-theme="dark"] [id^="q-nav-bar"] .q-nav-btn.q-nav-btn--next {
+  border-color: var(--accent, #7cb3f5);
+}
+
+@media (max-width: 720px) {
+  [id^="q-nav-bar"] {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    gap: 8px 10px;
+    align-items: center;
+    padding: 12px 10px;
+    margin-bottom: 16px;
+  }
+  [id^="q-nav-bar"] .q-nav-btn.btn-prev {
+    grid-column: 1;
+    justify-self: stretch;
+    width: 100%;
+    min-width: 0;
+    min-height: 50px;
+    padding: 0 10px;
+    font-size: clamp(0.8rem, 3.2vw, 0.9rem);
+  }
+  [id^="q-nav-bar"] .q-nav-current {
+    grid-column: 2;
+    grid-row: 1;
+    flex: none;
+    max-width: 42vw;
+    padding: 0 4px;
+    font-size: clamp(0.72rem, 3.4vw, 0.88rem);
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  [id^="q-nav-bar"] .q-nav-btn.q-nav-btn--next {
+    grid-column: 3;
+    justify-self: stretch;
+    width: 100%;
+    min-width: 0;
+    min-height: 50px;
+    padding: 0 10px;
+    font-size: clamp(0.8rem, 3.2vw, 0.9rem);
+  }
+  [id^="q-nav-bar"] .q-nav-btn__chev {
+    font-size: 1.35em;
+  }
+}
+
+@media (max-width: 400px) {
+  [id^="q-nav-bar"] .q-nav-btn {
+    position: relative;
+  }
+  [id^="q-nav-bar"] .q-nav-btn__text {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+  [id^="q-nav-bar"] .q-nav-btn {
+    gap: 0;
+    min-width: 0;
+    min-height: 52px;
+    padding: 0;
+    font-size: 1.35rem;
+  }
+  [id^="q-nav-bar"] .q-nav-btn__chev {
+    font-size: 1.5em;
+  }
+  [id^="q-nav-bar"] .q-nav-current {
+    max-width: 38vw;
+    font-size: clamp(0.68rem, 3.6vw, 0.82rem);
+  }
+}
+</style>

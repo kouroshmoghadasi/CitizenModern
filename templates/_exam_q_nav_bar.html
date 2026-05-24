@@ -1,6 +1,7 @@
 {# Prev / current / next row — follows html[data-site-lang] (EN/FR). #}
 {# Vars: q_nav_id, q_prev_id, q_next_id, q_num_id, q_max #}
-<div id="{{ q_nav_id }}" class="q-nav-bar-ch1" data-max-question="{{ q_max }}">
+{% include '_exam_q_nav_bar_styles.html' %}
+<div id="{{ q_nav_id }}" class="q-nav-bar q-nav-bar-ch1" data-max-question="{{ q_max }}">
     <button type="button" class="q-nav-btn btn-prev" id="{{ q_prev_id }}" aria-label="Previous question">
         <span class="q-nav-btn__chev" aria-hidden="true">←</span>
         <span class="q-nav-btn__text siteLang"><span class="siteLang__en">Prev</span><span class="siteLang__fr">Préc.</span></span>
