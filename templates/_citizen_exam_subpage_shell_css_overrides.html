@@ -143,31 +143,27 @@ body.theme-dark .exam-q-controls > .tool-bar {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
-  flex: 0 1 auto;
-  min-width: 5.25rem;
-  min-height: 44px;
-  padding: 0 16px !important;
+  flex: 0 0 auto;
+  min-width: 7rem;
+  min-height: 52px;
+  padding: 14px 20px !important;
   border-radius: 12px !important;
   border: 2px solid var(--accent) !important;
-  background: var(--accent) !important;
+  background-color: var(--accent) !important;
   color: #fff !important;
   font-family: inherit;
-  font-size: 0.875rem !important;
+  font-size: 1rem !important;
   font-weight: 700 !important;
   line-height: 1.2 !important;
   white-space: nowrap !important;
   text-align: center;
   cursor: pointer;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.07);
-  transition: background 0.18s ease, border-color 0.18s ease, transform 0.12s ease, box-shadow 0.18s ease;
-  -webkit-tap-highlight-color: transparent;
+  box-shadow: 0 4px 14px color-mix(in srgb, var(--accent) 42%, transparent) !important;
+  transition: filter 0.18s ease, transform 0.12s ease, box-shadow 0.18s ease;
+  -webkit-appearance: none;
+  appearance: none;
+  -webkit-tap-highlight-color: rgba(30, 60, 114, 0.12);
   touch-action: manipulation;
-}
-.exam-q-controls > [id^="q-nav-bar"] .q-nav-btn__chev {
-  font-size: 1.05em;
-  line-height: 1;
-  opacity: 0.92;
 }
 .exam-q-controls > [id^="q-nav-bar"] .q-nav-btn:hover:not(:disabled) {
   filter: brightness(1.06);
@@ -184,8 +180,8 @@ body.theme-dark .exam-q-controls > .tool-bar {
 .exam-q-controls > [id^="q-nav-bar"] .q-nav-btn.btn-prev {
   background-color: var(--card-bg) !important;
   color: var(--accent) !important;
-  border: 2.5px solid var(--accent) !important;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12) !important;
+  border: 2px solid var(--accent) !important;
+  box-shadow: 0 2px 10px rgba(30, 60, 114, 0.12) !important;
 }
 body.theme-dark .exam-q-controls > [id^="q-nav-bar"] .q-nav-btn.btn-prev {
   background-color: var(--card-bg) !important;
@@ -198,10 +194,6 @@ body.theme-dark .exam-q-controls > [id^="q-nav-bar"] .q-nav-btn.btn-prev {
   color: #fff !important;
   border-color: transparent !important;
   box-shadow: 0 2px 12px color-mix(in srgb, var(--accent) 38%, transparent);
-}
-.exam-q-controls > [id^="q-nav-bar"] .q-nav-btn.q-nav-btn--next .q-nav-btn__chev,
-.exam-q-controls > [id^="q-nav-bar"] .q-nav-btn:last-of-type .q-nav-btn__chev {
-  opacity: 1;
 }
 .exam-q-controls > [id^="q-nav-bar"] .q-nav-btn.q-nav-btn--next:hover:not(:disabled),
 .exam-q-controls > [id^="q-nav-bar"] .q-nav-btn:last-of-type:hover:not(:disabled) {
@@ -325,16 +317,14 @@ body.theme-dark .exam-q-controls > [id^="q-nav-bar"] .q-nav-btn.btn-prev {
     justify-self: stretch;
     width: 100% !important;
     max-width: none;
-    min-height: 50px !important;
-    padding: 0 10px !important;
-    font-size: clamp(0.8rem, 3.2vw, 0.9rem) !important;
-    -webkit-appearance: none !important;
-    appearance: none !important;
-    border: 2.5px solid var(--accent) !important;
+    min-height: 52px !important;
+    padding: 12px 10px !important;
+    font-size: clamp(0.82rem, 3.4vw, 0.95rem) !important;
     background-color: var(--card-bg) !important;
     color: var(--accent) !important;
-    font-weight: 800 !important;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12) !important;
+    border: 2px solid var(--accent) !important;
+    font-weight: 700 !important;
+    box-shadow: 0 2px 10px rgba(30, 60, 114, 0.12) !important;
   }
   .exam-q-controls > [id^="q-nav-bar"] .q-nav-current {
     order: unset !important;
@@ -356,22 +346,15 @@ body.theme-dark .exam-q-controls > [id^="q-nav-bar"] .q-nav-btn.btn-prev {
     justify-self: stretch;
     width: 100% !important;
     max-width: none;
-    min-height: 50px !important;
-    padding: 0 10px !important;
-    font-size: clamp(0.8rem, 3.2vw, 0.9rem) !important;
-    -webkit-appearance: none !important;
-    appearance: none !important;
-    border: 2.5px solid var(--accent) !important;
+    min-height: 52px !important;
+    padding: 12px 10px !important;
+    font-size: clamp(0.82rem, 3.4vw, 0.95rem) !important;
     background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light, var(--accent)) 100%) !important;
     background-color: var(--accent) !important;
     color: #fff !important;
-    font-weight: 800 !important;
-    box-shadow: 0 2px 8px color-mix(in srgb, var(--accent) 40%, transparent) !important;
-  }
-  .exam-q-controls > [id^="q-nav-bar"] .q-nav-btn__chev {
-    font-size: 1.25em !important;
-    font-weight: 800 !important;
-    opacity: 1 !important;
+    border: 2px solid var(--accent) !important;
+    font-weight: 700 !important;
+    box-shadow: 0 4px 14px color-mix(in srgb, var(--accent) 42%, transparent) !important;
   }
   .exam-q-controls > .tool-bar {
     order: 0 !important;
@@ -466,19 +449,19 @@ body.theme-dark .exam-q-controls.exam-q-controls--sample-test {
 .exam-q-controls.exam-q-controls--sample-test > [id^="q-nav-bar"] .q-nav-btn:first-of-type { order: 1; }
 .exam-q-controls.exam-q-controls--sample-test > [id^="q-nav-bar"] .q-nav-btn:last-of-type { order: 3; }
 .exam-q-controls.exam-q-controls--sample-test > [id^="q-nav-bar"] .q-nav-btn {
-  flex: 0 1 auto;
+  flex: 0 0 auto;
   width: auto !important;
-  min-width: 0;
-  min-height: 44px !important;
-  padding: 0 14px !important;
-  font-size: 0.8rem !important;
+  min-width: 6.5rem;
+  min-height: 52px !important;
+  padding: 12px 18px !important;
+  font-size: 0.95rem !important;
   font-weight: 700;
   white-space: nowrap;
-  border-radius: 10px !important;
+  border-radius: 12px !important;
   border: 2px solid var(--accent) !important;
-  background: var(--accent) !important;
+  background-color: var(--accent) !important;
   color: #fff !important;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1) !important;
+  box-shadow: 0 4px 14px color-mix(in srgb, var(--accent) 40%, transparent) !important;
   transition: filter 0.15s, opacity 0.15s, box-shadow 0.15s;
 }
 .exam-q-controls.exam-q-controls--sample-test > [id^="q-nav-bar"] .q-nav-btn:hover:not(:disabled) {
@@ -487,8 +470,8 @@ body.theme-dark .exam-q-controls.exam-q-controls--sample-test {
 .exam-q-controls.exam-q-controls--sample-test > [id^="q-nav-bar"] .q-nav-btn.btn-prev {
   background-color: var(--card-bg) !important;
   color: var(--accent) !important;
-  border: 2.5px solid var(--accent) !important;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12) !important;
+  border: 2px solid var(--accent) !important;
+  box-shadow: 0 2px 10px rgba(30, 60, 114, 0.12) !important;
 }
 .exam-q-controls.exam-q-controls--sample-test > [id^="q-nav-bar"] .q-nav-btn:last-of-type {
   background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light, var(--accent)) 100%) !important;

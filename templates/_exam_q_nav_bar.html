@@ -3,8 +3,7 @@
 {% include '_exam_q_nav_bar_styles.html' %}
 <div id="{{ q_nav_id }}" class="q-nav-bar q-nav-bar-ch1" data-max-question="{{ q_max }}">
     <button type="button" class="q-nav-btn btn-prev" id="{{ q_prev_id }}" aria-label="Previous question">
-        <span class="q-nav-btn__chev" aria-hidden="true">←</span>
-        <span class="q-nav-btn__text siteLang"><span class="siteLang__en">Prev</span><span class="siteLang__fr">Préc.</span></span>
+        <span class="q-nav-btn__text siteLang"><span class="siteLang__en">Previous</span><span class="siteLang__fr">Précédent</span></span>
     </button>
     <span class="q-nav-current" role="status" aria-live="polite" dir="ltr">
         <span class="siteLang q-nav-current__prefix"><span class="siteLang__en">Question</span><span class="siteLang__fr">Question</span></span>
@@ -12,7 +11,6 @@
         <span class="siteLang q-nav-current__suffix"><span class="siteLang__en">of {{ q_max }}</span><span class="siteLang__fr">sur {{ q_max }}</span></span>
     </span>
     <button type="button" class="q-nav-btn q-nav-btn--next" id="{{ q_next_id }}" aria-label="Next question">
-        <span class="q-nav-btn__text siteLang"><span class="siteLang__en">Next</span><span class="siteLang__fr">Suiv.</span></span>
-        <span class="q-nav-btn__chev" aria-hidden="true">→</span>
+        <span class="q-nav-btn__text siteLang"><span class="siteLang__en">Next</span><span class="siteLang__fr">Suivant</span></span>
     </button>
 </div>
