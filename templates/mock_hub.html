@@ -65,6 +65,29 @@
       outline: 2px solid #7cb3f5;
       outline-offset: 2px;
     }
+    .mockHub__btn--hard {
+      flex-direction: column;
+      gap: 3px;
+      min-height: 56px;
+      background: linear-gradient(145deg, rgba(127, 29, 29, 0.55) 0%, rgba(69, 10, 10, 0.72) 55%, rgba(120, 53, 15, 0.45) 100%);
+      border-color: rgba(248, 113, 113, 0.55);
+      box-shadow: 0 2px 14px rgba(220, 38, 38, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    }
+    .mockHub__btn--hard:hover {
+      background: linear-gradient(145deg, rgba(185, 28, 28, 0.62) 0%, rgba(127, 29, 29, 0.78) 55%, rgba(154, 52, 18, 0.5) 100%);
+      border-color: rgba(252, 165, 165, 0.75);
+      box-shadow: 0 4px 18px rgba(239, 68, 68, 0.35);
+    }
+    .mockHub__btnLabel { line-height: 1.1; }
+    .mockHub__diff {
+      font-size: 0.62rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #fecaca;
+      line-height: 1;
+      opacity: 0.95;
+    }
     html[data-theme="light"] .mockHub__title {
       color: #1a1d24;
     }
@@ -81,6 +104,19 @@
     html[data-theme="light"] .mockHub__btn:hover {
       background: rgba(30, 60, 114, 0.1);
       border-color: rgba(30, 60, 114, 0.28);
+    }
+    html[data-theme="light"] .mockHub__btn--hard {
+      color: #fff;
+      background: linear-gradient(145deg, #b91c1c 0%, #7f1d1d 52%, #9a3412 100%);
+      border-color: rgba(185, 28, 28, 0.65);
+      box-shadow: 0 2px 14px rgba(185, 28, 28, 0.28);
+    }
+    html[data-theme="light"] .mockHub__btn--hard:hover {
+      background: linear-gradient(145deg, #dc2626 0%, #991b1b 52%, #c2410c 100%);
+      border-color: #b91c1c;
+    }
+    html[data-theme="light"] .mockHub__diff {
+      color: #fee2e2;
     }
   </style>
 </head>
@@ -105,7 +141,49 @@
     </p>
     <div class="mockHub__grid" role="list">
       {% for test_num in range(1, 103) %}
+      {% if test_num == 40 %}
+      <a class="mockHub__btn mockHub__btn--hard" role="listitem" href="{{ url_for('citizenship_mock_run', test_num=test_num) }}" title="Mock Test 1 — Hard level / سطح سخت">
+        <span class="mockHub__btnLabel">Test40</span>
+        <span class="mockHub__diff siteLang siteLang--stack" aria-hidden="true">
+          <span class="siteLang__en">Hard</span>
+          <span class="siteLang__fr">Difficile</span>
+        </span>
+      </a>
+      {% elif test_num == 41 %}
+      <a class="mockHub__btn mockHub__btn--hard" role="listitem" href="{{ url_for('citizenship_mock_run', test_num=test_num) }}" title="Mock Test 2 — Hard level / سطح سخت">
+        <span class="mockHub__btnLabel">Test41</span>
+        <span class="mockHub__diff siteLang siteLang--stack" aria-hidden="true">
+          <span class="siteLang__en">Hard</span>
+          <span class="siteLang__fr">Difficile</span>
+        </span>
+      </a>
+      {% elif test_num == 42 %}
+      <a class="mockHub__btn mockHub__btn--hard" role="listitem" href="{{ url_for('citizenship_mock_run', test_num=test_num) }}" title="Mock Test 3 — Hard level / سطح سخت">
+        <span class="mockHub__btnLabel">Test42</span>
+        <span class="mockHub__diff siteLang siteLang--stack" aria-hidden="true">
+          <span class="siteLang__en">Hard</span>
+          <span class="siteLang__fr">Difficile</span>
+        </span>
+      </a>
+      {% elif test_num == 43 %}
+      <a class="mockHub__btn mockHub__btn--hard" role="listitem" href="{{ url_for('citizenship_mock_run', test_num=test_num) }}" title="Mock Test 4 — Hard level / سطح سخت">
+        <span class="mockHub__btnLabel">Test43</span>
+        <span class="mockHub__diff siteLang siteLang--stack" aria-hidden="true">
+          <span class="siteLang__en">Hard</span>
+          <span class="siteLang__fr">Difficile</span>
+        </span>
+      </a>
+      {% elif test_num == 44 %}
+      <a class="mockHub__btn mockHub__btn--hard" role="listitem" href="{{ url_for('citizenship_mock_run', test_num=test_num) }}" title="Mock Test 5 — Hard level / سطح سخت">
+        <span class="mockHub__btnLabel">Test44</span>
+        <span class="mockHub__diff siteLang siteLang--stack" aria-hidden="true">
+          <span class="siteLang__en">Hard</span>
+          <span class="siteLang__fr">Difficile</span>
+        </span>
+      </a>
+      {% else %}
       <a class="mockHub__btn" role="listitem" href="{{ url_for('citizenship_mock_run', test_num=test_num) }}">Test{{ test_num }}</a>
+      {% endif %}
       {% endfor %}
     </div>
   </main>

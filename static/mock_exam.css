@@ -42,6 +42,37 @@
   color: #475569;
 }
 
+.mock-difficulty {
+  display: inline-block;
+  margin-inline-start: 0.35em;
+  padding: 0.12em 0.55em;
+  border-radius: 999px;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  vertical-align: middle;
+  text-transform: uppercase;
+}
+
+.mock-difficulty--hard {
+  color: #fff;
+  background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+  border: 1px solid rgba(185, 28, 28, 0.65);
+  box-shadow: 0 1px 6px rgba(220, 38, 38, 0.35);
+}
+
+.mock-difficulty--medium {
+  color: #78350f;
+  background: #fef3c7;
+  border: 1px solid #f59e0b;
+}
+
+.mock-difficulty--easy {
+  color: #14532d;
+  background: #dcfce7;
+  border: 1px solid #22c55e;
+}
+
 .mock-exam-layout {
   display: block;
   max-width: 100%;

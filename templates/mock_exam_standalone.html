@@ -11,8 +11,10 @@
 {% include '_modern_site_topbar.html' %}
 
 <div class="mock-exam-root">
-  <p class="mock-exam-session" dir="ltr">
-    {% if initial_mock_test is defined and initial_mock_test %}Mock · Test{{ initial_mock_test }}{% else %}Mock{% endif %}
+  <p class="mock-exam-session" dir="ltr" id="mockExamSessionLabel">
+    {% if initial_mock_test is defined and initial_mock_test %}
+      Mock · Test{{ initial_mock_test }}{% if initial_mock_test in [40, 41, 42, 43, 44] %} <span class="mock-difficulty mock-difficulty--hard" title="Hard level">Hard</span>{% endif %}
+    {% else %}Mock{% endif %}
   </p>
 
   <div class="mock-exam-sr-only">
