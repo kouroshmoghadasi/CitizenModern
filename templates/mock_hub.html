@@ -78,6 +78,20 @@
       border-color: rgba(252, 165, 165, 0.75);
       box-shadow: 0 4px 18px rgba(239, 68, 68, 0.35);
     }
+    .mockHub__btn--medium {
+      flex-direction: column;
+      gap: 3px;
+      min-height: 56px;
+      background: linear-gradient(145deg, rgba(245, 158, 11, 0.22) 0%, rgba(234, 179, 8, 0.18) 55%, rgba(2, 132, 199, 0.12) 100%);
+      border-color: rgba(245, 158, 11, 0.45);
+      box-shadow: 0 2px 14px rgba(245, 158, 11, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+      color: #fff;
+    }
+    .mockHub__btn--medium:hover {
+      background: linear-gradient(145deg, rgba(245, 158, 11, 0.32) 0%, rgba(234, 179, 8, 0.26) 55%, rgba(2, 132, 199, 0.16) 100%);
+      border-color: rgba(253, 230, 138, 0.65);
+      box-shadow: 0 4px 18px rgba(245, 158, 11, 0.24);
+    }
     .mockHub__btnLabel { line-height: 1.1; }
     .mockHub__diff {
       font-size: 0.62rem;
@@ -114,6 +128,16 @@
     html[data-theme="light"] .mockHub__btn--hard:hover {
       background: linear-gradient(145deg, #dc2626 0%, #991b1b 52%, #c2410c 100%);
       border-color: #b91c1c;
+    }
+    html[data-theme="light"] .mockHub__btn--medium {
+      color: #78350f;
+      background: linear-gradient(145deg, #fef3c7 0%, #fde68a 52%, #fed7aa 100%);
+      border-color: rgba(245, 158, 11, 0.7);
+      box-shadow: 0 2px 14px rgba(245, 158, 11, 0.16);
+    }
+    html[data-theme="light"] .mockHub__btn--medium:hover {
+      background: linear-gradient(145deg, #fde68a 0%, #fbbf24 52%, #fdba74 100%);
+      border-color: #f59e0b;
     }
     html[data-theme="light"] .mockHub__diff {
       color: #fee2e2;
@@ -179,6 +203,22 @@
         <span class="mockHub__diff siteLang siteLang--stack" aria-hidden="true">
           <span class="siteLang__en">Hard</span>
           <span class="siteLang__fr">Difficile</span>
+        </span>
+      </a>
+      {% elif test_num == 45 %}
+      <a class="mockHub__btn mockHub__btn--medium" role="listitem" href="{{ url_for('citizenship_mock_run', test_num=test_num) }}" title="Mock Test 5 — Medium level / سطح متوسط">
+        <span class="mockHub__btnLabel">Test45</span>
+        <span class="mockHub__diff siteLang siteLang--stack" aria-hidden="true" style="color:#fde68a">
+          <span class="siteLang__en">Medium</span>
+          <span class="siteLang__fr">Moyen</span>
+        </span>
+      </a>
+      {% elif test_num == 46 %}
+      <a class="mockHub__btn mockHub__btn--medium" role="listitem" href="{{ url_for('citizenship_mock_run', test_num=test_num) }}" title="Mock Test 4 — Medium level / سطح متوسط">
+        <span class="mockHub__btnLabel">Test46</span>
+        <span class="mockHub__diff siteLang siteLang--stack" aria-hidden="true" style="color:#fde68a">
+          <span class="siteLang__en">Medium</span>
+          <span class="siteLang__fr">Moyen</span>
         </span>
       </a>
       {% else %}
