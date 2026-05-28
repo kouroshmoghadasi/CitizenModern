@@ -228,6 +228,30 @@
           <span class="siteLang__fr">Moyen</span>
         </span>
       </a>
+      {% elif test_num == 47 %}
+      <a class="mockHub__btn mockHub__btn--medium" role="listitem" href="{{ url_for('citizenship_mock_run', test_num=test_num) }}" title="Mock Test 3 — Medium level / سطح متوسط">
+        <span class="mockHub__btnLabel">Test47</span>
+        <span class="mockHub__diff siteLang siteLang--stack" aria-hidden="true">
+          <span class="siteLang__en">Medium</span>
+          <span class="siteLang__fr">Moyen</span>
+        </span>
+      </a>
+      {% elif test_num == 48 %}
+      <a class="mockHub__btn mockHub__btn--medium" role="listitem" href="{{ url_for('citizenship_mock_run', test_num=test_num) }}" title="Mock Test 2 — Medium level / سطح متوسط">
+        <span class="mockHub__btnLabel">Test48</span>
+        <span class="mockHub__diff siteLang siteLang--stack" aria-hidden="true">
+          <span class="siteLang__en">Medium</span>
+          <span class="siteLang__fr">Moyen</span>
+        </span>
+      </a>
+      {% elif test_num == 49 %}
+      <a class="mockHub__btn mockHub__btn--medium" role="listitem" href="{{ url_for('citizenship_mock_run', test_num=test_num) }}" title="Mock Test 1 — Medium level / سطح متوسط">
+        <span class="mockHub__btnLabel">Test49</span>
+        <span class="mockHub__diff siteLang siteLang--stack" aria-hidden="true">
+          <span class="siteLang__en">Medium</span>
+          <span class="siteLang__fr">Moyen</span>
+        </span>
+      </a>
       {% else %}
       <a class="mockHub__btn" role="listitem" href="{{ url_for('citizenship_mock_run', test_num=test_num) }}">Test{{ test_num }}</a>
       {% endif %}
